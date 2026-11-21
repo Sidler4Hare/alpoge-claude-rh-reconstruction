@@ -1,0 +1,18 @@
+con-leche: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-leche: parse done: 140218 fold records — 140210 declarations after the 8 built-in prelude records (8 stream copies of prelude records dropped) t=36.7s (parse 36.7s)
+con-leche: install 0/140218 basis block ConLeche.BasisKind.eqK t=36.7s
+con-leche: install 25000/140218 theorem Complex.exp_def t=52.2s
+con-leche: install 50000/140218 theorem BoundedContinuousFunction.toLpHom._proof_3 t=62.3s
+con-leche: install 75000/140218 theorem List.flatMap_append_perm t=78.4s
+con-leche: install 100000/140218 theorem Nat.squarefree_iff_prime_squarefree t=133.0s
+con-leche: install 125000/140218 theorem Formalism.L2.Col.Br.zMinor._proof_4 t=277.0s
+con-leche: install done: 140218/140218 declarations installed, 137728 checks pending t=348.7s (install 312.0s)
+con-leche: check 25000/137728 theorem Complex.sin_neg t=385.4s
+con-leche: check 50000/137728 theorem _private.Mathlib.Analysis.MeanInequalities.0.NNReal.Lr_rpow_le_Lp_mul_Lq._simp_1_1 t=446.6s
+con-leche: check 75000/137728 theorem _private.Mathlib.RingTheory.Ideal.Quotient.Nilpotent.0.Ideal.IsNilpotent.induction_on._proof_1_2 t=530.8s
+con-leche: check 100000/137728 theorem AddChar.ext t=651.4s
+con-leche: check 125000/137728 definition Formalism.IndefR.RecTie.ChainReal.X t=771.9s
+con-leche: check done: 137728/137728 t=816.7s (check 467.9s)
+con-leche: done: parse 36.7s, install 312.0s, check 467.9s, 2 workers t=816.7s
+con-leche: accepted 140188 declarations (--verified)
+Process exit code: 0

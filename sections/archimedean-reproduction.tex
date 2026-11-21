@@ -1,0 +1,276 @@
+\subsection{Reproduction on the archimedean frame slab}
+\label{arrep:section}
+
+Write $\Psi$ for the CM type, $p=p_0$, $q=r-p$, and $G=G_\tau$
+for the Hermitian matrix at $\tau$. The pairing is linear in its
+first variable, so the Gram matrix of a column frame $x$ is
+$x^tG\bar x$. Put $J=\operatorname{diag}(1_p,-1_q)$. The domain
+$\mathcal D$ consists of invertible frames at all $\tau$ whose first $p$
+columns span a positive space. This is equivalent to the prescribed
+signs of all the leading Gram determinants: after the first $p$
+columns, the additional orthogonal directions belong to a negative
+definite space. Choose an orthoframe $x_0$ with Gram matrix $J$ at
+every place. Let $B$ be the product of the invertible upper triangular
+groups, and let $dy$ be ordinary Lebesgue measure in the original
+complex matrix coordinates. Set
+\[
+ S_\delta=\{y:\ |(y_\tau^tG_\tau\bar y_\tau-J)_{ij}|<\delta
+                         \text{ for every }\tau,i,j\}.
+\]
+
+For each place choose nonnegative integers $c_1,\ldots,c_q$,
+$c'_1,\ldots,c'_p$ and write $a_i=\sum_{j\ge i}c_j$,
+$a'_i=\sum_{j\ge i}c'_j$. In physical column order the character
+$\chi_\lambda(b)=\prod_{\tau,i}b_{\tau,ii}^{\lambda_{\tau,i}}$ has weight
+\[
+ \lambda_\tau=(-n/2-a'_p,\ldots,-n/2-a'_1,\;
+                          n/2+a_1,\ldots,n/2+a_q).
+\]
+The polynomial letters at each place have $n$ columns and two row
+blocks. The $q$ rows are the negative rows in their physical order,
+and the $p$ rows are the positive rows in reverse physical order.
+A row-highest harmonic polynomial has row degrees $a_i,a'_i$, is
+invariant under lower unitriangular row substitutions in each letter
+block, and is killed by
+$\sum_{k=1}^n\partial_{u_{ik}}\partial_{v_{jk}}$ for every pair
+of opposite rows at the same place. These conventions apply to
+differential symbols as well as ordinary polynomial variables.
+
+\begin{proposition}\label{arrep:reproduce}
+Let $n$ be even, $2r\le n$, and let $P_1,\ldots,P_m$ be any finite
+family of such polynomials, with at least one nonzero member. Denote by
+$K(x,y)$ the result of applying
+$\sum_j P_j(\partial_z)\overline{P_j}(\partial_w)$ at $z=w=0$
+to the doubled Gaussian below, where the bar conjugates coefficients.
+If $0<\delta\le1/(4(r+1))$, then there is a positive real number
+$\rho_\delta$ such that every holomorphic $F$ on $\mathcal D$ with
+$F(xb)=\chi_\lambda(b)F(x)$ and bounded absolute value on the
+orthoframes satisfies the absolutely convergent identity
+\[
+         \int_{S_\delta} K(x,y)F(y)\,dy=\rho_\delta F(x)
+                               \qquad(x\in\mathcal D).
+\]
+On orthoframes the pointwise automorphic norm in the bounded-family
+construction equals $|F|$. The scalar depends on the specified measure,
+archimedean data, family and slab. It applies to every deep level
+using those same data.
+\end{proposition}
+
+\begin{proof}
+First compute what survives the insertion into the Gaussian. Suppress
+$\tau$, let $P_+,P_-$ be the diagonal projections to the two physical
+blocks, and set $S=-J$, $\kappa=\tau(\kappa_0)$,
+$h=\kappa/4$, $t=\pi i\kappa=-\pi\operatorname{Im}\kappa>0$. Put
+\[
+\begin{aligned}
+ L&=P_+\bar y^tG^t+P_-x^{-1},&
+ H&=P_+x^tG+P_-\bar y^{-1},\\
+ W&=(L^{-1}SL)^tG,& Y&=(hW-(hW)^*)/(2i).
+\end{aligned}
+\]
+The kernel of the bottom rows of $L$ is the positive space spanned
+by the first $p$ columns of $x$. The kernel of its top rows is
+the negative orthogonal complement of the first $p$ columns of $y$.
+They intersect trivially. Interchanging $x,y$ and conjugating gives
+invertibility of $H$. The involution $L^{-1}SL$ acts by $-1$ on the
+first space and $+1$ on the second. For $v=v_++v_-$ in this
+decomposition, the real part of $v^tW\bar v$ is
+$-\langle v_+,v_+\rangle+\langle v_-,v_-\rangle$ because the
+cross terms have zero real part. Thus $W+W^*$ is negative definite.
+As $h/(2i)<0$, the Hermitian matrix $Y=(h/(2i))(W+W^*)$ is positive.
+
+Write $M=L^{-t}GH^{-1}$ and $N=L^{-t}GY^{-1}GH^{-1}$.
+For each column $k$ put $\alpha=P_+z_k+P_-w_k$,
+$\beta=P_+w_k+P_-z_k$. The actual undifferentiated Gaussian has
+prefactor $\prod_\tau(\det L\,\det H)^{-n/2}$ and exponent
+$-4\pi\sum_{\tau,k}h_\tau^2\beta^t N\alpha$.
+The off-diagonal blocks of $M^{-1}=HG^{-1}L^t$ vanish because
+the corresponding products before taking blocks are identity
+matrices. Its diagonal blocks are the leading $p$ block of
+$x^tG\bar y$ and the trailing $q$ block of $\bar y^{-1}G^{-1}x^{-t}$.
+In particular $SM=MS$. Moreover
+\[
+                     \frac{h}{2i}(SN+NS)=M .
+\]
+Indeed $W G^{-1}W=G$ and $W^*G^{-1}W^*=G$. For $T=W+W^*$
+these give $WG^{-1}T=TG^{-1}W^*$ and therefore
+$GT^{-1}W=W^*T^{-1}G$. It follows that
+$WT^{-1}G+GT^{-1}W=G$. Multiply this last identity on the left
+by $L^{-t}$ and on the right by $H^{-1}$,
+using $L^{-t}W=SL^{-t}G$ and $WH^{-1}=GH^{-1}S$.
+The latter equality follows from $SM=MS$.
+
+The off-diagonal terms in $\sum_k\beta^t N\alpha$ are linear
+combinations of $\sum_kz_{ik}z_{jk}$ and $\sum_kw_{ik}w_{jk}$
+for opposite rows $i,j$. Pairing with a polynomial differential
+symbol at zero makes multiplication by each such quadratic adjoint
+to its mixed Laplacian. Every term containing one of these quadratics
+vanishes, also after both sets of derivatives are taken. Only finitely
+many degrees of the exponential enter the pairing. Thus one may
+differentiate the following explicit expression instead:
+\[
+ \prod_\tau (\det L\,\det H)^{-n/2}
+ \exp\!\left(\sum_{\tau,k}t_\tau
+      [\,w_{+,k}^t M_{++}z_{+,k}-z_{-,k}^t M_{--}w_{-,k}\,]\right).
+\]
+It is holomorphic in $x$ and antiholomorphic in $y$.
+The two diagonal blocks of $M(y,x)$ are the adjoints of those
+of $M(x,y)$, and the prefactors interchange by complex conjugation.
+Consequently $K(y,x)=\overline{K(x,y)}$.
+
+Let $\mathcal U=\prod_\tau\{u:u^tG_\tau\bar u=G_\tau\}$. Under
+simultaneous left translation by $u$, $L,H$ acquire right factors
+$u^{-1},\bar u^{-1}$, so $M$ and the prefactor are invariant.
+Under $x\mapsto xb$, write the two diagonal blocks of $b$ as $A,D$.
+Then $L$ acquires left factor $1\oplus D^{-1}$ and $H$ left factor
+$A^t\oplus1$. The prefactor gains $(\det D/\det A)^{n/2}$ at this
+place. In the exponent the substitutions in $z$ are $A^{-t}$ on
+the positive rows and $D$ on the negative rows. In the differential
+symbol the resulting row substitutions are $A^{-1}$ and $D^t$.
+Both are lower triangular in letter order. The prescribed row
+degrees give exactly the remaining factor of $\chi_\lambda(b)$.
+This proves equivariance in $x$, and symmetry gives the conjugate
+character in $y$.
+
+At $x=y=x_0$ one has $L=x_0^{-1}$, $H=\bar x_0^{-1}$ and $M=J$.
+The exponential becomes $\exp(\sum_{\tau,i,k}t_\tau z_{\tau ik}
+w_{\tau ik})$. With $P_{j,\nu}$ the monomial coefficients, ordinary
+differentiation gives
+\[
+ C_0=K(x_0,x_0)=
+   \left(\prod_\tau|\det x_{0,\tau}|^n\right)
+   \sum_{j,\nu}|P_{j,\nu}|^2\,\nu!\,
+                       \prod_\tau t_\tau^{|\nu_\tau|}>0 .
+\]
+Here $|\nu_\tau|$ is the sum of all exponents at that place and
+$\nu!$ is the product of their factorials.
+
+We next identify the only holomorphic function that can survive
+the compact torus average. In coordinates $g=x_0^{-1}y$, let
+$\Delta_{\tau,i}$ be the leading $i$-row principal minor of $g_\tau$.
+Define
+\[
+ H_\lambda(y)=\prod_\tau
+    \Delta_{\tau,r}^{\,\lambda_{\tau,r}}
+    \prod_{i=1}^{r-1}\Delta_{\tau,i}^{
+                              \lambda_{\tau,i}-\lambda_{\tau,i+1}} .
+\]
+For $r=0$ take the empty product. The weight decreases within each
+block. When $0<p<r$ the only internal negative exponent occurs at
+$i=p$, where the minor cannot vanish: the projection of a positive
+$p$-plane to the standard positive coordinate space has trivial
+kernel. Hence $H_\lambda$ is holomorphic throughout $\mathcal D$ and
+has value $1$ at $x_0$. Under left diagonal unitary translation in
+the $g$ coordinates it has character $\chi_\lambda$, and under right
+triangular multiplication it has the same character.
+
+These two transformations determine a holomorphic function up to its
+value at $x_0$. Indeed on the big cell near $g=1$ write $g=\ell b$
+with $\ell$ lower unitriangular. The two character laws imply
+invariance of the restriction to $\ell$ under diagonal unitary
+conjugation. On every strictly lower entry $\ell_{ij}$ the simultaneous
+circle $\operatorname{diag}(e^{is},e^{2is},\ldots,e^{ris})$ acts with
+positive weight $i-j$. The holomorphic power series of the restriction
+therefore has only its constant term. Right equivariance determines
+the function on a neighborhood, and the identity theorem extends the
+conclusion. Indeed indefinite Gram--Schmidt identifies the domain with
+the product of the orthoframes and the upper triangular matrices with
+positive real diagonal. Both are connected: the unitary group modulo
+$U(p)\times U(q)$ is the matrix ball described below, with connected
+compact fiber. It follows that
+\[
+               K(y,x_0)=C_0H_\lambda(y).
+\]
+For this application the left torus law follows from simultaneous
+invariance and right equivariance of $K$ in its second variable.
+
+We check absolute integrability on the slab. The preceding
+Gram--Schmidt coordinates write $y=x_0 g b$ with $g$ standard
+$J$-unitary and $b$ upper triangular with positive real diagonal.
+For our $\delta$, each leading Gram matrix has operator distance
+at most $r\delta<1/4$ from the corresponding signed identity. Thus
+even the closure of the permitted Gram matrices is compact with all
+pivots nonzero and of the required signs. The signed triangular
+factorization $b^tJ\bar b$ has a continuous inverse there by the
+Gram--Schmidt recursion. The permitted $b$ therefore have compact
+closure inside the triangular group. In these smooth coordinates
+Lebesgue measure is $dg\,j(b)\,db$, where $dg$ is Haar measure and
+$j$ is smooth positive: the original measure is left invariant
+under $\mathcal U$ since $|\det u_\tau|=1$. Both $|\chi_\lambda(b)|$
+and $j(b)$ are bounded on this compact closure. In particular
+$F$ is bounded throughout $S_\delta$.
+
+At a place with $pq>0$ write the standard unitary matrix
+$g=\left(\begin{smallmatrix}A&B\\ C&D\end{smallmatrix}\right)$.
+All singular values of $A$ and $D$ are at least one by the unitary
+relations. The complementary-minor identity and $g^{-1}=Jg^*J$
+give $|\det A|=|\det D|$ and bound each leading minor of size
+$i>p$ by $|\det D|$ using the complementary trailing minor of
+$g^{-1}$. For $i\le p$ the exterior powers of $A$ bound it by
+$|\det A|$. As $|\det g|=1$, the product of the minor estimates,
+keeping the exact denominator at $i=p$, gives the one-place bound
+\[
+       |H_{\lambda,\tau}(x_{0,\tau}g)|
+          \le |\det A|^{\lambda_{\tau,1}-\lambda_{\tau,r}}
+          \le |\det A|^{-n}\le1 .
+\]
+If either block is empty the group is compact and the function bounded.
+For the mixed signature the group modulo the compact block diagonal
+subgroup is the ball $Z=C A^{-1}$, $Z^*Z<I_p$, the graph coordinates
+of its positive planes. The group is transitive by orthogonal
+completion, and $|\det A|=\det(I_p-Z^*Z)^{-1/2}$.
+The invariant density on the ball is proportional to
+$\det(I_p-Z^*Z)^{-r}\,dZ$. To see this, for an acting matrix with
+blocks $a,b,c,d$, set $U=a+bZ$ and $Z'=(c+dZ)U^{-1}$.
+Then $I_p-Z'^*Z'=U^{-*}(I_p-Z^*Z)U^{-1}$ and the differential is
+$H\mapsto(d-Z'b)HU^{-1}$. Block elimination gives
+$|\det U|\,|\det(d-Z'b)|=|\det g_{\rm acting}|=1$, so the real
+Jacobian is $|\det U|^{-2r}$. Hence integration of $|\det A|^{-n}$
+on the group reduces, up to a finite constant, to integration of
+$\det(I_p-Z^*Z)^{n/2-r}$ on a bounded ball. Its exponent is
+nonnegative. This proves that $H_\lambda$ is bounded and absolutely
+integrable on $S_\delta$, including at $n=2r$. In particular both
+$K(x_0,y)F(y)$ and $|K(x_0,y)|^2$ are integrable there.
+
+Finally let $t$ range over the product diagonal unitary torus with
+probability Haar measure. Its action on frames is
+$t\cdot y=x_0 t x_0^{-1}y$. The holomorphic projection
+$F_\lambda(y)=\int\chi_\lambda(t)^{-1}F(t\cdot y)\,dt$ has the two
+character laws above and has value $F(x_0)$ at $x_0$. Thus
+$F_\lambda=F(x_0)H_\lambda$. The slab and its measure are invariant
+under this torus. By absolute convergence and the conjugate torus
+law of $K(x_0,y)$, replacing $F$ with $F_\lambda$ in the integral
+at $x_0$ leaves its value unchanged. The resulting constant is
+\[
+                \rho_\delta=\frac{1}{C_0}
+                   \int_{S_\delta}|K(x_0,y)|^2\,dy>0 .
+\]
+Positivity follows from continuity, $K(x_0,x_0)=C_0>0$, and the
+open neighborhood of $x_0$ in the slab (with mass one in dimension
+zero). Left translation carries the identity and absolute convergence
+to every orthoframe by applying it to the translated bounded
+holomorphic function. Right equivariance then carries it to every
+frame of $\mathcal D$.
+\end{proof}
+
+The required invariant finite family can be chosen in these same
+variables. At each place form the product of the initial $i$-row
+minors to powers $c_i$ in the negative letters and to powers $c'_i$
+in the positive letters, using respectively the first $q$ and the
+last $p$ columns, nested within each set. Since $n\ge p+q$, these
+sets are disjoint. The product over places is a nonzero row-highest
+polynomial and all mixed Laplacians kill it. The entire space of
+the stated harmonics lies in total degree
+$d=\sum_{\tau,i}i(c_{\tau,i}+c'_{\tau,i})$, extending the arrays by
+zero. Its dimension is at most $\binom{nr|\Psi|+d}{d}$, the number
+of monomials of degree at most $d$. The compact column groups $U(n)^\Psi$ act on opposite letters
+by a unitary matrix and its contragredient, preserving the row
+conditions and the contractions. An invariant Hermitian product
+exists by averaging. An orthonormal basis $P_1,\ldots,P_m$ then has
+invariant sum $\sum_j P_j(z)\overline{P_j(w)}$ and positive $C_0$.
+Thus the insertion used for spanning bounded forms satisfies the
+proposition with its actual weight and with finite $m$.
+
+\src{src/Development/AbelianVarietyTheory/Definitions/SpanningFamilies/IsSystem.lean}{65}{The doubled Gaussian before the two polynomial insertions};
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/SetIntegralCompOfStable.lean}{268}{The positive reproducing scalar on the full frame slab}; and
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/HermitianThetaSeriesSpanBoundedForms.lean}{168}{Spanning bounded families in the range $4r<n$}.

@@ -1,0 +1,1068 @@
+\subsection{The framed presentation and its real-place defect}
+\label{dp:section}
+
+Let \(O\) be the ring of integers of a finite extension \(E/\mathbf Q_\ell\),
+with residue field \(k\) of odd characteristic. The two presentations used
+here are presentations of \emph{framed} representations. In rank three
+the form-preserving group in the two dual blocks has Lie algebra
+\(\mathfrak {gl}_3\). In rank four, fixing the multiplier gives
+\(\mathfrak {sp}_4\). Write \(M_j\) for the residual Lie algebra of
+weight \(j\), with Galois action by the adjoint of the residual point.
+The grading records the weight of an entry \(ab\) as \(w_a-w_b\).
+In particular the tangent vector that reads that entry is indexed here
+by the weight of the entry it reads.
+
+Write \(G=G_{\mathbf Q,S}\) for the Galois group unramified outside the
+finite primes \(S\) and infinity. Partition \(S=T\sqcup Q\), with
+\(\ell=v_0\in T\), and use the full local decomposition groups \(G_v\)
+with their maps to \(G\). At \(v\in T\) a complete local augmented
+algebra \(B\) supplies a simultaneous family \(\rho_v\) of local
+representations. In rank three \(T=\{\ell\}\) and \(B\) is the
+prescribed quotient of the local ring. In rank four
+\(T=\{\ell\}\cup S_b\). At \(q\in Q\) representations must kill
+\(N_q=I_q\cap\ker\bar r\), where \(I_q\) is inertia. In both
+applications \([I_q:N_q]\) is prime to \(\ell\). Let \(r_0\) be the
+chosen integral lift. An object over a local \(O\)-algebra \(C\)
+consists of \(i:B\to C\), a lift \(r\) with the prescribed form and
+multiplier, and congruence-to-identity isometries \(\alpha_v\), with
+\[
+ \alpha_{v_0}=1,\qquad
+ r(s)\alpha_v=\alpha_v\,i(\rho_v(s))\quad(s\in G_v).
+\]
+All matrix-valued maps are continuous. Representations over finite
+Artin \(O\)-algebras use the discrete topology.
+
+\begin{proposition}[Relative generators and relations]\label{dp:relative}
+Suppose that \(B\) has a finite weighted power series presentation, the
+entries of \(\rho_v\) have the indicated weights, and the base point
+has weight zero. The framed ring \(U\) has a presentation over \(B\)
+by \(g_j\) variables and at most \(o_j\) relations of weight \(j\).
+The following formulas describe both integers. Put \(M=M_j\), write
+\(dy(s)=s y-y\), and set
+\[
+ {\cal T}(M)=\{(z,(y_v)):\ z\in Z^1(G,M),\
+ z|_{N_q}=0,\ z|_{G_v}=dy_v,\ y_{v_0}=0\}.
+\]
+Then \(g_j=\dim_k{\cal T}(M)\). An obstruction cocycle is a continuous
+triple \((c,(b_v),(b_q))\), where \(c\in Z^2(G,M)\) and
+\(db_w=c|_{G_w}\) for \(w\in S\). Divide by the triples
+\[
+ \bigl(dh,(h|_{G_v}-dy_v)_v,(h|_{G_q}-e_q)_q\bigr),
+ \qquad e_q\in Z^1(G_q,M),\quad e_q|_{N_q}=0.
+\]
+The dimension of the resulting space \({\cal O}b(M)\) is \(o_j\).
+The variables can be chosen among entries of \(r(g)-r_0(g)\) and
+\(\alpha_v-1\). Zero equations can be appended in each weight to
+give exactly \(o_j\) listed equations.
+\end{proposition}
+
+\begin{proof}
+For clarity, the usual finite presentation argument starts with finitely
+many matrices. The maximal pro-\(\ell\) quotient of \(\ker\bar r\) in
+\(G\) is topologically finitely generated. Indeed its Frattini quotient
+is dual to \(H^1(\ker\bar r,\mathbf F_\ell)\), which is finite by
+finiteness of number-field cohomology with ramification in a finite
+set. The kernel of this maximal quotient is characteristic in
+\(\ker\bar r\). Every Artin lift factors through the corresponding
+quotient of \(G\), since the congruence kernel of a matrix group over
+a finite local \(O\)-algebra is an \(\ell\)-group. Choose topological
+generators there, adjoining lifts of the finite residual quotient.
+Start with \(B\) and matrix-entry variables shifted by their base
+values for the generators and frames. Invertibility holds modulo the
+maximal ideal and hence in the power series ring. The free profinite
+group on the generators maps continuously to its matrix group by
+passage through the finite coefficient quotients. Impose its relators,
+the form, block, multiplier, inertia and frame equations. These are
+closed ideal conditions and give precisely the stated universal
+property, first over Artin rings and then over their inverse limits.
+The noetherian ring already contains the limits of its ideals.
+Every matrix-product summand has the weight of the resulting entry.
+The base lift preserves the weight spaces and normalizes the form and
+block conditions. Thus these equations respect the matrix weights,
+including the relations obtained by profinite limits. This weight
+argument works termwise modulo powers of the maximal ideal.
+
+Hold \(B\) fixed at its residual point and evaluate on \(k[\epsilon]\),
+\(\epsilon^2=0\). Write \(r=(1+\epsilon z)\bar r\) and
+\(\alpha_v=1-\epsilon y_v\). Multiplication is exactly the cocycle
+identity and the frame equations are the equations defining
+\({\cal T}(M)\). In particular no quotient by global conjugation
+occurs. Matrix-entry evaluations span the dual of this finite
+dimensional space because they separate all the pairs. Choose a basis
+among these evaluations in each weight. With the corresponding
+variables \(t_i\), the map \(P=B[[t_1,\ldots,t_g]]\to U\) is
+surjective by successively lifting modulo powers of the maximal ideal.
+Its kernel \(I\) lies in \(\mathfrak m_B P+\mathfrak m_P^2\), by the
+chosen basis. The kernel is closed under taking weight components:
+substitution of the homogeneous images is componentwise modulo every
+power, and both rings are separated. Therefore \(I/\mathfrak m_PI\)
+has a homogeneous basis lifting to homogeneous generators. Finiteness
+of this vector space permits only finitely many weights. Nakayama's
+lemma gives generation of the full ideal.
+
+For the bound, put \(C=I/\mathfrak m_PI\). In
+\(P/\mathfrak m_PI\) the maximal ideal annihilates \(C\). Choose \(h\)
+so large that \(C\) meets the \(h\)-th maximal-ideal power trivially.
+This follows from Krull intersection and finite dimension of \(C\).
+After truncating by that power, the extension onto \(P/(I+\mathfrak
+m_P^h)\) therefore still has kernel \(C\). Lift the universal matrices
+as functions across this finite extension, preserving their form,
+and lift the frames. A form-preserving congruence matrix admits such
+lifts: lift its entries and correct the form error to first order
+by subtracting half its adjoint-symmetrization error in the kernel.
+In the paired blocks one may equivalently lift the first block and
+use its inverse transpose in the second. At \(v\in T\) the specified
+lift is supplied by the structural map of \(B\). At \(q\in Q\)
+there is a local lift killing \(N_q\): \(G_q/N_q\) is an extension
+of \(\widehat{\mathbf Z}\) by the finite prime-to-\(\ell\) group
+\(I_q/N_q\). Averaging on the finite subgroup and
+\(\ell\)-cohomological dimension one of \(\widehat{\mathbf Z}\)
+give \(H^2(G_q/N_q,M)=0\), which kills the local multiplication
+error. Locally constant lifts of matrices exist since all the rings
+in this step are finite.
+
+For a set-theoretic lift \(\widetilde r\), the excess of
+\(\widetilde r(s)\widetilde r(t)\widetilde r(st)^{-1}\) over 1
+is a Lie-algebra-valued two-cocycle with coefficients in \(C\).
+Comparison with the true local lifts, conjugated by the lifted
+frames, gives the cochains \(b_w\). Changing the global lifts
+adds \(dh\), changing frames adds a local coboundary, and changing
+a local lift killing \(N_q\) adds a cocycle vanishing there.
+Conversely these changes exhaust the displayed coboundaries. The
+frame at \(v_0\) may be restored to 1 by common conjugation. Thus
+the class after a linear pushout \(C\to k\) vanishes exactly when
+the point lifts over \(B\) to that pushout. The component supported
+on \(C_j\) has its matrix values in \(M_j\): choose homogeneous lifts
+of the entries through the graded truncation and take the coefficient
+of a degree-\(j\) kernel element in each error. For the auxiliary
+local corrections one may project cochains onto the matching weight
+since the residual action preserves every weight. Equivalently first
+push out to a homogeneous kernel line, where only entries of its own
+weight admit a nonzero homogeneous correction.
+
+The resulting linear map \(C_j^\vee\to{\cal O}b(M_j)\) is injective.
+Indeed a zero obstruction gives \(U\to A\) lifting the truncated
+point in the pushed-out extension \(A\). Its composite with \(P\to U\)
+and the canonical map \(P\to A\) differ by a \(B\)-derivation into
+the kernel \(k\). This derivation kills
+\(\mathfrak m_BP+\mathfrak m_P^2\), hence \(I\). On \(I\) the first
+map is zero and the second map is exactly the chosen functional.
+This proves the bound, including the case of a zero obstruction
+space. The padding by zero relations makes no minimality assertion.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/LemmaP.lean}{256}{The relative presentation argument}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/FramedTwoCoboundaries.lean}{249}{its precise functor and indexing}.
+\end{proof}
+
+\begin{proposition}[The equation count]\label{dp:count}
+For a finite \(k[G]\)-module \(M\) on which every \(N_q\) acts
+trivially, the above spaces satisfy
+\[
+ \dim{\cal O}b(M)-\dim{\cal T}(M)=
+ \dim M^{c=1}+\dim H^0(G,M^\vee(1)),
+\]
+where \(c\) is complex conjugation and \(M^\vee=\operatorname{Hom}_k(M,k)\).
+\end{proposition}
+
+\begin{proof}
+Let \(L_q\subset H^1(G_q,M)\) be the inflated classes from
+\(G_q/N_q\) and let \(A^1\) be the product of \(H^1(G_v,M)\)
+for \(v\in T\) and \(H^1(G_q,M)/L_q\) for \(q\in Q\).
+Write \(r_1:H^1(G,M)\to A^1\) and
+\(r_2:H^2(G,M)\to\prod_{w\in S}H^2(G_w,M)\).
+Sending a pair in \({\cal T}\) to its global class has image
+\(\ker r_1\). For any class there choose the local primitives and
+subtract the global coboundary of the primitive at \(v_0\).
+Over the zero class the choices are local invariant vectors at
+\(T\) modulo the simultaneous global invariant vector, as is also
+seen by starting with an arbitrary global primitive. Forgetting the
+local cochains in \({\cal O}b\) has image \(\ker r_2\) by definition,
+and kernel \(\operatorname{coker}r_1\), by subtracting a global
+primitive of \(c\). Thus
+\[
+ \dim{\cal T}=\dim\ker r_1+\sum_{v\in T}h^0_v-h^0_G,\qquad
+ \dim{\cal O}b=\dim\operatorname{coker}r_1+\dim\ker r_2.
+\]
+For \(q\in Q\), averaging over \(I_q/N_q\) expresses \(L_q\)
+as the coinvariants of Frobenius on \(M^{I_q/N_q}\).
+The kernel and cokernel of Frobenius minus 1 have the same dimension,
+so \(\dim L_q=h_q^0\). The final segment of Poitou--Tate identifies
+\(\dim\operatorname{coker}r_2=\dim H^0(G,M^\vee(1))\).
+The real place has zero positive-degree cohomology since \(\ell\)
+is odd. With \(\chi=h^0-h^1+h^2\), the remaining terms are
+\(\chi_G-\sum_{w\in S}\chi_w\). The local Euler characteristics
+are \(-\dim M\) at \(\ell\) and zero at all other finite primes.
+The global Euler characteristic is \(-\dim M^{c=-1}\).
+These formulas give the assertion. For the finite module formulas
+see Milne~\cite{milneADT},
+I, Theorems 2.8, 4.10 and 5.1. Passing from group orders to
+\(k\)-dimensions divides all logarithms by \(\log |k|\).
+\end{proof}
+
+In rank three the auxiliary datum supplies \(g\) with
+\(\eta(g)=\bar\Psi(g)=1\) and \(\bar\chi_\ell(g)=-1\).
+Indeed its field-disjointness condition gives \(h\) in the joint
+kernel of the residual cyclotomic and finite characters, outside
+\(\ker\eta\). Hence \(\bar\Psi(h)=1\) and \(\eta(h)=-1\).
+Since \(\eta(c)=-1\), \(\Psi(c)=1\), take \(g=ch\).
+It acts as minus the identity on the twisted dual. On
+\(\mathfrak {gl}_3(k)\) the action of \(c\) is negative transpose
+across the antidiagonal. Its fixed part in weight zero is the line
+\(\operatorname{diag}(a,0,-a)\). In either first off-diagonal the
+two entries are negative partners, giving one line, and each outer
+corner is its own negative, giving zero. The relative list therefore
+has \(g_j+{\bf1}_{|j|\le1}\) equations. The eight normalization
+entries have weights \(0,0,1,-1,2,-2,1,-1\). The resulting equation
+counts in weights \((-1,-2,1,2,0)\) are
+\[
+ (g_{-1}+3,\ g_{-2}+1,\ g_1+3,\ g_2+1,\ g_0+3).
+\]
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/BoxPresOf.lean}{149}{The rank-three framed ring}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/MopBase.lean}{105}{the normalization entries}.
+
+In rank four put \(u=(1,0)\), \(v=(-1,1)\), \(p=(0,1)\),
+\(t=(1,1)\). The positive roots are \(u,v,p,t\). The zero
+weight space has dimension two, and each of the eight root spaces has
+dimension one. On weight \(j=(a,b)\), \(G\) acts by
+\(\bar\alpha^a\bar\Psi^b\) and \(c\) by \((-1)^a\).
+For \(j=0,\pm p\) this character differs from \(\bar\chi_\ell\)
+at \(c\). For the six roots \(\pm u,\pm v,\pm t\), the specified
+\(s_\ell\) has cyclotomic residue 1 and root-character residue
+different from 1. Thus the twisted dual has no invariants and
+\[
+ o_j=g_j+2{\bf1}_{j=0}+{\bf1}_{j=p\ \mathrm{or}\ j=-p}.
+\]
+There is a separate arithmetic premise for \(g_j=0\) at the six
+roots. It is the strict residual class vanishing for the characters
+\(\bar\alpha^{\pm1},\bar\beta^{\pm1},\bar\theta^{\pm1}\) imposed by
+the good datum. It kills \(\ker r_1\); the local invariants at every
+\(v\in T\) vanish because the root character is nontrivial at \(s_v\).
+The first dimension formula of the proof now gives \(g_j=0\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/NumsZero.lean}{17}{The residual vanishing characters and their use in the count}.
+
+\subsection{The rank-four local chart at the diagonal point}
+\label{dp:chart}
+
+Write \(\chi\) for the \(\ell\)-adic cyclotomic character.
+The base characters in order are
+\[
+ (\theta,\Psi,\alpha,1),\qquad
+ \Psi=\chi^e\psi,\quad\alpha=\chi\omega^{-1}\xi,\quad
+ \beta=\Psi/\alpha,\quad\theta=\alpha\Psi .
+\]
+The multiplier is \(\theta\). The good datum has \(e\ge2\), finite
+characters \(\psi,\xi,\omega\), and \(\xi\) unramified at \(T\).
+At \(\ell\) it gives \(s_0\in I_\ell\cap\ker\psi\cap\ker\omega\)
+with \(\chi(s_0)\) of infinite order. It also gives
+\(\chi(s_\ell)=1\), \(\bar\omega=\bar\chi\), and
+\(\bar\xi(s_\ell)\bar\Psi(s_\ell)^i\ne1\) for every integer \(i\).
+
+\begin{proposition}[Local charts of the framed symplectic ring]\label{dp:local}
+At the diagonal point, the completed characteristic-zero local ring
+for the ordinary projector equations at \(\ell\) is a weighted power
+series ring over \(E\). It has two coordinates of each weight
+\(0,u,v,p,t\), and one of each weight \(-u,-v,-p,-t\).
+For \(q\in S_b\) the corresponding ring for the condition
+\(r(I_q\cap\ker\psi)=1\) has two weight-zero coordinates and one
+of each of the eight root weights.
+\end{proposition}
+
+\begin{proof}
+Use finite local Artin \(E\)-algebras \(A\) with residue \(E\),
+given their finite-dimensional \(\ell\)-adic vector space topology.
+At \(\ell\) write \(d_i=\psi_i(s_0)\) for the four diagonal values.
+They are distinct, since their exponents on \(\chi(s_0)\) are
+\(e+1,e,1,0\). The source equations specify
+\(\det(X-r(s_0))=\prod_i(X-d_i)\). Hence
+\[
+ P_i=\prod_{k\ne i}\frac{r(s_0)-d_k}{d_i-d_k}
+\]
+are orthogonal projectors summing to one. Each image is a direct
+summand of rank one by reduction to \(E\). The other equations say
+\(P_jr(g)P_i=0\) for \(j>i\), and
+\(P_i(r(h)-\psi_i(h))P_i=0\) for \(h\in I_\ell\). They specify
+stability of the ordered flag and the prescribed inertial action on
+its lines. The multiplier pairs lines \(i\) and \(5-i\) perfectly:
+pairing any two eigenlines with \(d_i d_j\ne\theta(s_0)\) gives zero,
+and nonsingularity of the entire pairing gives the assertion.
+Rescaling eigenvectors lifting the original basis now produces a
+symplectic basis reducing to that basis. Conversely an upper
+triangular lift in such a basis with the given inertia characters
+obeys the projector equations, since the partial sums of the
+eigenlines of \(r(s_0)\) are its prescribed flag. The flag is
+uniquely recovered by the projectors, including over nonreduced \(A\).
+
+In the open cell of the symplectic flag variety at this flag there
+is a unique lower unipotent matrix carrying the standard flag to a
+given flag. This is Gaussian elimination with diagonal pivots units:
+factor a near-identity change of symplectic basis into a lower
+unipotent and an upper triangular factor. The involution
+\(g\mapsto J^{-1}g^{-t}J\) preserves the two factors, so uniqueness
+in \(\mathrm{GL}_4\) makes the factors symplectic. The lower
+unipotent Lie algebra has one line in each negative root. Exponential
+and logarithm are polynomial inverse maps here in characteristic
+zero, since strictly triangular matrices are nilpotent. Thus the
+moving-flag parameters give four smooth negative-weight directions.
+It remains to consider a lift in the upper triangular group with
+standard flag and fixed multiplier.
+
+The diagonal deformations of \(\alpha\) and 1 are independent
+unramified twists, determining the other two by the multiplier.
+They lift across every small extension \(A'\to A\): use logarithm
+on \(1+\mathfrak m_A\), lift the value at Frobenius additively, and
+use \(\widehat{\mathbf Z}\to\mathbf Z_\ell\) to define the lifted
+continuous additive character. Here and below a small extension has
+kernel \(V\) killed by the maximal ideal of \(A'\). With lifted
+diagonal fixed, the obstruction to lifting the upper-unipotent part
+is in
+\[
+ H^2(G_{\mathbf Q_\ell},\mathfrak n\otimes_E V),\qquad
+ \mathfrak n=E(\alpha)\oplus E(\beta)\oplus E(\Psi)\oplus E(\theta).
+\]
+Indeed a continuous vector-space section on the nilpotent entries,
+in upper-unipotent exponential coordinates, gives a lifted cochain.
+The multiplication error takes values in the additive kernel.
+Conjugation on that kernel uses only the residual diagonal, so the
+four root spaces split as written. A coboundary error can be
+removed by subtracting a continuous one-cochain. Local Tate duality
+gives \(H^2(G_{\mathbf Q_\ell},E(\gamma))^\vee
+=H^0(G_{\mathbf Q_\ell},E(\chi/\gamma))\).
+For \(\gamma=\alpha,\beta,\theta\) the residual value at \(s_\ell\)
+differs from 1 by the displayed nontriviality with \(i=0,-1,1\),
+respectively, while \(\chi(s_\ell)=1\). For \(\gamma=\Psi\) use
+\(\chi(s_0)^{e-1}\ne1\). The four obstructions vanish. Every
+surjection of finite local Artin \(E\)-algebras factors into small
+extensions, giving formal smoothness.
+
+The framed tangent space for a positive root \(\gamma\) consists of
+all \(Z^1(G_{\mathbf Q_\ell},E(\gamma))\). By local Euler
+characteristic and the preceding \(H^2=0\), its dimension is
+\((1+h^0)+(1-h^0)=2\). The two unramified characters give two
+zero-weight parameters. Together with the moving flag this gives
+fourteen. The \(\ell\)-adic vector-space duality and Euler formula
+used here follow from the finite-module theorems by applying them
+to the finite quotients of a stable lattice and inverting \(\ell\).
+For this passage the inverse systems of finite cohomology groups
+are Mittag--Leffler, and every continuous cochain on the compact
+powers of the Galois group takes values in a bounded lattice.
+
+At \(q\in S_b\) the effective local group is \(G_q/(I_q\cap\ker\psi)\).
+Its inertia quotient \(\Delta\) is finite since \(\ker\psi\) is
+open. Its order may be divisible by \(\ell\). Over \(E\), averaging
+over \(\Delta\) is exact. Consequently for each weight space \(W\)
+of the symplectic adjoint, \(H^2\) of the effective group is zero
+and \(H^1\) is the space of Frobenius coinvariants of \(W^\Delta\).
+Indeed a stable lattice in \(W^\Delta\) reduces this last calculation
+to cohomological dimension one of \(\widehat{\mathbf Z}\) on its
+finite \(\ell\)-power quotients. Thus \(h^1=h^0\).
+The small-extension multiplication-error argument with smooth
+symplectic matrices gives formal smoothness, and its framed tangent
+space has dimension \(h^1+\dim W-h^0=\dim W\) weight by weight.
+
+To pass from this calculation to the completion, the integral local
+ring \(R\) represents the actual matrix equations: both the
+undivided projector expressions and the inertia-kernel conditions
+are closed matrix equations in the unrestricted framed ring.
+Write \(x:R\to O\) for the diagonal point and \(J=\ker x\).
+Then \(\widehat{(R[1/\ell])_{J[1/\ell]}}\) represents precisely the
+above Artin \(E\)-valued lifts. For such a lift, its matrix entries
+minus their diagonal base values form a bounded subset of the
+nilpotent ideal of \(A\) by compactness. Put them into a finite
+\(O\)-lattice \(L\) in that ideal. If \(\mathfrak m_A^d=0\), the
+order \(O+L+\cdots+L^{d-1}\) is complete local with residue \(k\)
+and contains the entire representation. Its finite \(O\)-module
+topology is its maximal-ideal topology, since its nilpotent ideal
+is killed by the \(d\)-th power. This gives a map from \(R\)
+reducing to \(x\), hence a local map on the indicated completion.
+Conversely such a map kills \(J^d\), and \(R/J^d\) is a finite
+\(O\)-module by the filtration with quotients \(J^i/J^{i+1}\).
+It thus induces a continuous lift with bounded entries. Two
+choices of order embed in a common one obtained by enlarging \(L\),
+so the universal property also gives uniqueness.
+
+Choose homogeneous lifts of a basis of \( (J/J^2)\otimes_O E\)
+in \(J[1/\ell]\), using shifted matrix entries. They give a
+surjection from a power series ring onto the completion. Formal
+smoothness forces it to be an isomorphism: lift the inverse tangent
+map successively to the power series ring modulo its maximal-ideal
+powers. The resulting composite on the power series ring has
+invertible linear term and is an automorphism by recursive
+substitution. The coordinates and inverse are homogeneous in each
+finite order, by uniqueness of the inverse. This also supplies
+cotangent injectivity for the original integral ring after tensoring
+with \(E\). The kernel of the map \(R\) to this completion is the
+kernel of \(R\to(R[1/\ell])_{J[1/\ell]}\) by Krull intersection.
+It is a finitely generated ideal, so a single \(y\in R\) with
+\(x(y)\ne0\) annihilates it, by clearing the finitely many
+denominators separately and taking their product.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/SpFlag.lean}{309}{The inertia projector equations},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/SpLiftL.lean}{32}{the four character checks}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/LocBase.lean}{142}{the integral chart requirements}.
+\end{proof}
+
+\subsection{Cotangent faithfulness after the symplectic cuts}
+\label{dp:cut}
+
+\begin{lemma}\label{dp:cutlemma}
+Let \(P\) be an augmented noetherian complete local \(O\)-algebra,
+with augmentation ideal \(J\). Suppose a weighted chart
+\(\phi:P\to E[[Y_1,\ldots,Y_n]]\) induces an isomorphism from
+\((J/J^2)\otimes_O E\) to the cotangent at \(Y=0\).
+Let \(u_1,\ldots,u_h\in J\) be homogeneous with independent images in
+this rational cotangent. There is a chart of \(P'=P/(u_i)\) with
+one fewer variable of the given weight for each cut, again inducing
+a cotangent isomorphism. If \(P'\) is further divided by the kernel
+of this latter chart, every \(O\)-valued point derivation at its
+augmentation descends to the resulting domain.
+\end{lemma}
+
+\begin{proof}
+Complete the linearly independent \(d\phi(u_i)\) to a basis in each
+weight. Replace the first coordinates by the full series
+\(\phi(u_i)\), keeping the complementary homogeneous linear
+coordinates. The substitution has zero constant terms and invertible
+linear part. Its inverse is obtained recursively in total degree.
+Each finite degree respects the weights even when negative and zero
+weights occur. Set the first \(h\) new coordinates to zero. On
+cotangents this kills precisely the span of \(du_i\), and the
+cotangent of \(P'\) is \(J/(J^2+(u_i))\). Exact scalar extension
+therefore gives the asserted isomorphism. For \(a\) in the new
+chart kernel its augmentation vanishes and its differential is zero
+after inverting \(\ell\). Some \(0\ne c\in O\) then satisfies
+\(ca\in(\ker x_{P'})^2\). Every integral point derivation kills this
+square, hence kills \(a\) by torsion-freeness of \(O\). The chart
+target is a domain.
+\end{proof}
+
+For the application take \(P=B[[t_1,\ldots,t_g]]\) from
+Proposition~\ref{dp:relative}. The simultaneous local ring \(B\)
+represents the product of the finitely many local functors. Its
+rational completion is the power series ring on the union of the
+local coordinates by Proposition~\ref{dp:local}. The relative
+variables add their own free summands to the cotangent, so \(P\)
+has the required chart. The global relations cut out \(U\) inside
+this ambient formal spectrum. The next cuts are lifted to \(P\)
+from the following entries of \(U\), in one-based indices:
+\[
+ {\cal P}=\big((1,2),(1,4),(3,2),(2,1),(4,1),(2,3)\big).
+\]
+At \(\ell\) take these entries of \(r(\phi_0)\), where
+\(\phi_0=\lim_n s_\ell^{\ell^{n!}}\) is the element specified by the
+datum. At every other \(v\in T\) take these entries of \(\alpha_v\).
+All have zero augmentation. Use the six Lie algebra elements,
+in the same order,
+\[
+ E_{12}-E_{34},\quad E_{14},\quad E_{32},\quad
+ E_{21}-E_{43},\quad E_{41},\quad E_{23}.
+\]
+Each lies in \(\mathfrak {sp}_4(O)\) for the antidiagonal pairing with
+signs \(1,1,-1,-1\), and has just one nonzero entry among \({\cal P}\).
+For a selected element \(X\) conjugate \(r_0\) and all the local lifts
+by \(1+\epsilon X\) over \(O[\epsilon]/(\epsilon^2)\), leaving all
+frames equal to 1. This preserves the local equations by conjugation.
+At \(\ell\) the only nonzero selected derivative is
+\(\psi_j(\phi_0)-\psi_i(\phi_0)\). Indeed the residual diagonal at
+\(\phi_0\) is the same as at \(s_\ell\), since the values belong to
+\(k^\times\) and the residue degree \([k:\mathbf F_\ell]\) divides
+\(n!\) eventually. Each pair has different first weight, so
+\(\bar\xi(s_\ell)\bar\Psi(s_\ell)^m\ne1\) for all \(m\) makes
+the residual entries distinct. At \(v\ne\ell\) keep the global
+lift fixed, move only \(\alpha_v\) to \(1+\epsilon X\), and
+conjugate the corresponding local diagonal lift by its inverse.
+This tests one entry with derivative 1. These point derivations of
+\(U\) pull back to \(P\), proving independence for any homogeneous
+lifts of all the indicated cuts there.
+
+Lemma~\ref{dp:cutlemma} now gives the post-cut chart and the
+integral descent of derivations needed in
+Section~\ref{dp:section}'s framed construction. Let \(b=|S_b|\).
+In each odd root the cut removes \(b+1\) variables. The remaining
+dimensions there are 1 for \(u,v,t\) and 0 for their negatives,
+using the residual vanishings above. In weights \((-p,p,0)\)
+the dimensions are
+\[
+ (1+b+g_{-p},\quad 2+b+g_p,\quad 2+2b+g_0).
+\]
+The remaining frame equations at each bad prime have weights
+\(p,-p,0,0\), and the two normalization entries of
+\(r(g_0)+\theta(g_0)r(g_0^{-1})\) have weights \(p,-p\).
+Adding their counts to Proposition~\ref{dp:count} gives final lists
+of lengths \(2+b+g_{-p},\,2+b+g_p,\,2+2b+g_0\), respectively.
+They define the quotient of the resulting domain used by the model.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExModel.lean}{155}{The entries and six root vectors}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExModel.lean}{425}{the normalized model}.
+
+\subsection{The selected rank-three branch at a resonant character}
+\label{dp:ordinary3}
+
+Here \(G=G_{\mathbf Q_\ell}\), \(I\) is its inertia, and \(\eta\)
+is an unramified character of order dividing two. Put \(H=\ker\eta\)
+and \(I_0=I\cap H\cap\ker\tau\), where \(\tau\) has finite image.
+The source specifies \(\Psi|_I=\chi^e\tau|_I\) with \(e\ge1\).
+The matrix group is \(\mathrm{GL}_3\rtimes\{1,-1\}\), where
+\(-1\) sends \(A\) to \(J A^{-t}J\) and \(J\) reverses the basis.
+Put \((d_1,d_2,d_3)=(\Psi,1,\Psi^{-1})\). The base point of
+the unrestricted local framed ring \(R\) is
+\(r_0(g)=(\operatorname{diag}(d_i(g)),\eta(g))\), and its
+augmentation is \(x\). For \(s\in I_0\) put \(A_i(s)=r(s)-d_i(s)\)
+in the matrix block. The ordinary ideal \(I_{\rm ord}\) fixes the
+characteristic polynomial on \(I_0\) to \(\prod_i(X-d_i(s))\)
+and kills all entries of \(A_1(s)A_2(s')A_3(s'')\) for independent
+\(s,s',s''\in I_0\). The definition then saturates by a specific
+element \(\delta\), described below. Write
+\[
+ I_Y=(I_{\rm ord}:\delta^\infty),\qquad
+ I_t=\bigcap_{\substack{\mathfrak p\text{ minimal over }I_Y\\
+                          \mathfrak p\subseteq\ker x}}\mathfrak p .
+\]
+Taking the radical of \(I_Y\) before selecting these primes gives
+the same intersection. The framed universal property makes \(x\)
+the unique map with this specified matrix point.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/IsInertiaInfiniteCyclotomic.lean}{97}{The ordinary equations, saturation and selected primes}.
+
+\begin{proposition}\label{dp:rank3chart}
+There is a unique selected prime. The completion of
+\((R/I_t)[1/\ell]\) at \(x\) is a power series ring over \(E\)
+with coordinate counts \(1,2,3,4,2\) in weights \(-2,-1,0,1,2\).
+The kernel of the resulting chart from \(R\) is \(I_t\).
+These statements hold also when a ratio of two adjacent diagonal
+characters is cyclotomic.
+\end{proposition}
+
+\begin{proof}
+As in Proposition~\ref{dp:local}, use continuous lifts over Artin
+\(E\)-algebras, now of \(r_0\). Choose the specified
+\(s_0\in I_0\) with \(\chi(s_0)\) of infinite order.
+The eigenvalues \(d_i(s_0)\) are distinct. The characteristic
+polynomial gives three rank-one projectors. Write \(V_1\) for the
+first eigenline and \(V_2\) for the sum of the first two.
+In eigen-coordinates, \(A_2(s_0)A_3(s_0)\) is a unit multiple of
+the first projector, and \(A_1(s_0)A_2(s_0)\) is a unit multiple
+of the third. The triple products therefore say that \(r(s)\) acts by
+\(d_1(s)\) on \(V_1\), preserves \(V_2\), and acts on the last
+quotient by \(d_3(s)\). Subtracting these two diagonal terms from
+the specified trace gives \(d_2(s)\) on \(V_2/V_1\). Conversely
+these three conditions imply every triple product, by applying its
+factors from right to left along this flag.
+
+The flag is unique by its ordered characters at \(s_0\). Conjugation
+by \(g\in G\) preserves \(I_0\) and all the \(d_i\). When
+\(\eta(g)=-1\) the induced action on flags first takes the dual flag
+in reversed order via \(J\); its ordered quotient characters on
+inertia are again \(d_1,d_2,d_3\) since \(d_{4-i}^{-1}=d_i\).
+Uniqueness therefore gives stability under the full semidirect
+action. By lower-unipotent change of basis the moving flag contributes
+three free coordinates, two of weight \(-1\) and one of weight
+\(-2\). Once the flag is standard all matrix blocks are upper
+triangular, since inverse transpose across the antidiagonal preserves
+the standard flag. Conjugation here and below is in the semidirect
+group, so a change of basis also changes the block of an element
+outside \(H\) by the prescribed involution.
+
+The diagonal part relative to \(r_0\) is an unramified cocycle in
+the nilpotent diagonal torus: on inertia the action on the torus
+is trivial, and a character trivial on \(I_0\) factors there
+through a finite group with no nonzero additive image in an
+\(E\)-algebra. Take logarithms. The three coordinates \(b_i\) of
+the value at a chosen Frobenius are free, even if \(\eta\ne1\).
+Indeed a cocycle on \(\widehat{\mathbf Z}\) with Frobenius action
+\(D=1\) or \(D(b_1,b_2,b_3)=(-b_3,-b_2,-b_1)\) has value
+\(\sum_{k=0}^{n-1}D^kb\) at its \(n\)-th power. This extends
+continuously using parity and the projection to \(\mathbf Z_\ell\).
+Thus the base for the upper unipotent part is
+\(\Lambda=E[[b_1,b_2,b_3]]\).
+
+First divide the upper unipotent group by its central line \(E_{13}\).
+The two adjacent entries form an additive module. For fixed diagonal
+they are precisely continuous one-cocycles, with no quotient by
+coboundaries. If \(H=G\), they give two independent rank-one
+problems with respective parameters \(t=b_1-b_2,b_2-b_3\).
+Their characters are \(\Psi\exp(t\nu)\), where the continuous
+unramified additive character \(\nu\) is 1 on Frobenius.
+If \([G:H]=2\), the two adjacent lines are exchanged by the
+antidiagonal inverse transpose on their Lie algebra. The module
+is induced from the first line on \(H\): this line and its translate
+by a Frobenius form a basis, also for the deformed diagonal over
+every Artin algebra. Its character on \(H\) is
+\(\Psi|_H\exp(t\nu_H)\), with \(t=b_1-b_3\) and \(\nu_H\) equal
+to 1 on Frobenius of \(H\). Indeed the value of the unramified
+diagonal logarithm on the square of Frobenius is \(b+Db\).
+This description by induction works functorially in the diagonal
+parameters. In particular at \(t=0\) the indicated module is
+isomorphic over the whole diagonal base to the constant module.
+
+Here is the local equation for either one of these problems. Let
+\(G_*=G\) in the split case and \(G_*=H\) in the induced case.
+Denote the corresponding \(G\)-module at the origin by \(W\) and
+put \(m=\dim_E Z^1(G,W)\). For its cocycle functor over \(\Lambda\),
+a minimal presentation uses \(m\) variables and at most
+\(\dim_E H^2(G,W)\) relations. To justify this version over \(E\),
+the functor preserves fibre products of Artin algebras since its
+objects are functions subject to equalities, and its tangent is
+finite-dimensional by local Euler characteristic. Schlessinger's
+prorepresentability criterion~\cite[Theorem 2.11]{schlessingerArtin}
+therefore applies (the functor at the residue field is
+one point). One can include the three diagonal
+parameters in the functor and then work relative to their power
+series ring. The small-extension argument in the proof of
+Proposition~\ref{dp:relative} applies verbatim using continuous
+linear sections of surjections of finite-dimensional \(E\)-spaces;
+here the single obstruction is the coboundary of a lifted one-cochain.
+The relation bound concerns the actual ideal modulo its maximal-ideal
+multiple. Local Tate duality, with Shapiro's lemma in the induced
+case, gives
+\[
+ \dim_E H^2(G,W)=
+ {\bf1}_{\,\Psi|_{G_*}=\chi|_{G_*}} .
+\]
+If this is zero the cocycle algebra is a power series ring.
+
+If the dimension is one, its possible single equation is, up to a
+change of variables, exactly \(tY=0\). We verify its order of
+vanishing. Choose the relative variables \(X_1,\ldots,X_m\) among
+linear evaluations of the cocycle; they have weight one for scalar
+multiplication of the cocycle. Modulo \(t\) the module is constant
+up to the functorial basis isomorphism just proved, so every cocycle
+is an arbitrary linear combination of a basis of \(Z^1(G,W)\) with
+coefficients in the maximal ideal of the test algebra. Its completed
+algebra over \(\Lambda/(t)\) is free in the \(m\) variables. The
+chosen evaluations still give coordinates there by the inverse
+function theorem. It follows that every equation is divisible by
+\(t\). No relation has an \(X\)-independent term, since zero is
+a cocycle for every diagonal.
+
+Vary \(t\) to \(h\) and the cocycle to \(kz\) over
+\(E[h,k]/(h^2,k^2,hk)\), choosing any linear diagonal section of
+the parameter \(t\). The obstruction to lifting to
+\(E[h,k]/(h^2,k^2)\), in the \(hk\) coefficient, maps to
+\(\nu_{G_*}\smile [z_*]\) under the preceding cohomology
+identification. In the split case this follows by expanding the
+cocycle identity with character \(\chi(1+h\nu)\): its error on
+\((g,g')\) is \(hk\,\nu(g)\chi(g)z(g')\) up to the sign of the
+coboundary convention. In the induced case the cochain map to
+\(G_*\) restricts and projects to the inducing line; it commutes
+with reduction for the induced basis and gives the identical
+calculation. Every class of \(H^1(G_*,E(\chi))\) occurs by
+Shapiro. The local Tate pairing of this space with \(H^1(G_*,E)\)
+is perfect and \(\nu_{G_*}\ne0\). Hence for some \(z\) the
+obstruction is nonzero.
+
+In particular there is one relation, with nonzero mixed term
+\(t\sum_i c_i X_i\), some \(c_i\ne0\). It may be chosen
+homogeneous of weight one. Indeed the ideal is stable under scalar
+multiplication of all \(X_i\), which fixes \(b\). Its weight
+components belong to the ideal by polynomial interpolation in each
+finite truncation over the infinite field \(E\). All relations lie
+in \(t(X_1,\ldots,X_m)\), so a relation with this nonzero
+quadratic term generates the one-dimensional space of relations
+modulo the maximal-ideal multiple. Its weight-one component still
+generates. Write it \(t\sum_i a_i(b)X_i\); some \(a_i\) is a
+unit. Use \(Y=\sum_i a_i(b)X_i\) as one of the relative
+coordinates. This proves the claimed equation including its
+multiplicity.
+
+Finally restore the central root. Its Galois action on \(I_0\)
+is \(\Psi^2=\chi^{2e}\), hence its \(H^2\) vanishes by local
+duality since \(2e\ne1\). Multiplication errors for a lifted
+central entry in a small extension are two-cocycles for this root
+module, as above. The map to the first-layer functor is therefore
+formally smooth with relative tangent its space of one-cocycles.
+This adds free variables also over the singular first-layer ring:
+choose relative cotangent coordinates and split the corresponding
+power series surjection order by order by formal smoothness.
+Equivalently the small-extension relation bound with zero obstruction
+gives zero relative relations. The central coordinate has weight two.
+
+We compute the effect of the prescribed saturation in these
+coordinates. The source chooses \(f\in H\cap\ker\tau\) mapping to
+a positive power of Frobenius. For \(i=1,2,3\) put
+\(c_i=\prod_{k\ne i}(d_i(s_0)-d_k(s_0))\in E^\times\).
+Its trace expression is \(c_i\,\mathrm{tr}(P_i r(f))\), where
+\(P_i\) is the corresponding eigenprojector of \(r(s_0)\). In an
+upper triangular basis this equals \(c_i\kappa_i(f)\), with
+\(\kappa_i\) the \(i\)-th diagonal character on \(H\). Indeed each
+\(P_i\) is upper triangular with only its \(i\)-th diagonal entry
+equal to 1. Thus \(\delta\) is, up to a unit in the characteristic-zero
+completion, precisely
+\[
+  \prod_{i=1}^2\bigl(\kappa_i(f)/\kappa_{i+1}(f)-\chi(f)\bigr).
+\]
+For a resonant adjacent block the corresponding factor is
+\(\chi(f)(\exp(a t)-1)\), with \(a=\nu_{G_*}(f)>0\).
+It is a unit times \(t\). This formula also covers the two equal
+ratios on \(H\) in the induced case. In the quotient by all the
+coordinates \(Y\) belonging to resonant blocks, the ring is a
+power series domain and the image of \(\delta\) is nonzero:
+each adjacent ratio still varies as
+\(\Psi(f)\exp(a t)\) for a nonzero diagonal parameter \(t\).
+Since \(tY=0\) and \(t\) divides \(\delta\) in each resonant
+block, the \(\delta\)-power torsion is exactly the ideal of these
+\(Y\)'s. This establishes the calculation even if \(\delta(x)=0\).
+
+For any \(G\)-module \(W\) in an adjacent block the local Euler
+formula over \(\mathbf Q_\ell\) gives
+\(\dim Z^1(G,W)=2\dim W+\dim H^2(G,W)\).
+Saturation removes exactly one variable for each of the latter
+dimensions. The adjacent roots thus leave four weight-one
+coordinates in all; the central root adds two of weight two.
+The three unramified diagonal coordinates and the three lower flag
+coordinates give the other asserted counts.
+
+Localization at the characteristic-zero point and completion are
+flat and commute with \((I_{\rm ord}:\delta^n)\): take the kernel
+of multiplication by \(\delta^n\) on the quotient. The chain
+stabilizes by noetherianity. It follows that the completion of the
+localization modulo \(I_Y\) is the power series domain just computed.
+Faithful flatness makes the localized quotient a domain.
+Consequently there is exactly one minimal prime over \(I_Y\)
+contained in \(\ker x\), the contraction of the zero ideal of this
+local quotient. Its contraction to \(R\) is also the kernel of the
+completed chart. This proves the assertion about the selected
+integral ideal \(I_t\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/RtChart.lean}{41}{The corresponding twelve-coordinate conclusion}.
+\end{proof}
+
+The preceding computation is a statement about the ordinary matrix
+ideal in the completed local ring. Application to the integral
+presentation uses a weight grading on \(R/I_t\). The unrestricted
+matrix ring has homogeneous coordinates given by shifted entries.
+The ordinary equations are weight-homogeneous, \(\delta\) has
+weight zero, and the map to the completed chart preserves weights.
+Its kernel \(I_t\) is thus closed under projection onto each weight.
+Conjugation by a matrix congruent to 1 also preserves the selected
+branch over arbitrary integral test algebras. Indeed conjugate the
+universal \(R/I_t\)-valued family by the generic matrix \(1+X\)
+in \((R/I_t)[[X_{ij}]]\). Embed this ring coefficientwise into
+\(E[[Y_1,\ldots,Y_{12},X_{ij}]]\) by the chart. The ordinary
+equations are conjugation invariant; \(\delta\) is unchanged because
+its defining traces use elements of \(H\), and it is nonzero in this
+domain. Hence the conjugate annihilates \(I_Y\). For \(a\in I_t\)
+some \(s\) with \(x(s)\ne0\) satisfies \(sa\in I_Y\), by the
+calculation of the localized prime. The conjugate image of \(s\) has
+constant coefficient \(x(s)\), so \(a\) also maps to zero.
+Injectivity then gives the same conclusion before passage to \(E\).
+Substituting any matrix of elements of the maximal ideal for \(X\)
+proves the integral assertion. This supplies the local presentation required by
+Proposition~\ref{dp:relative} in rank three. Identifying potentially
+crystalline points of the required type on the entire model is
+a further arithmetic statement.
+
+In rank four the local and relative arguments use the good-datum
+hypotheses, including the separate residual vanishings.
+In both ranks, finiteness of the integral invariant quotient,
+exclusion of extraneous one-sided points and rigidity of the
+nontrivial two-sided points still require arithmetic control of
+representations away from the diagonal base point. The local charts
+and equation counts alone yield none of these global-point assertions.
+
+\subsection{The special fibre of the invariant algebra}\label{dp:finitecurves}
+
+There is a separate arithmetic test for the finiteness hypothesis in
+Theorem~\ref{newcoh:orbitdegree}. In rank three it leaves only
+strongly irreducible three-dimensional specializations on \(G_K\).
+In rank four it leaves an absolutely irreducible four-dimensional
+specialization or an even absolutely irreducible two-dimensional
+constituent. The fields of coefficients in these statements have
+characteristic \(\ell\).
+
+\begin{lemma}[Detecting a nonfinite invariant algebra]\label{dp:detect}
+Let \(O\) be a complete DVR with finite residue field \(k\) and
+uniformizer \(\pi\). Let \(S\) be a quotient of a finite formal
+power series algebra over \(O\) by a closed ideal stable under
+projection onto the weight components for integral vector weights.
+Write \(C\subset S\) for the image of the weight-zero power series.
+Assume the variables are in the maximal ideal. Then \(C\) is finite
+over \(O\) if and only if every continuous local map
+\[
+               S\longrightarrow k'[[t]],\qquad \pi\longmapsto 0,
+\]
+for finite extensions \(k'/k\), takes \(C\) into the constants.
+\end{lemma}
+\begin{proof}
+The nonzero minimal exponent vectors of weight zero are finite
+by Dickson's lemma, and they generate the monoid of all balanced
+exponents by subtraction. Denote the corresponding monomials by
+\(m_j\). Substituting these into a formal power series over \(O\)
+surjects onto \(C\): fix one factorization for each exponent and
+group the terms accordingly. The bounded total degrees of the
+\(m_j\) ensure convergence in both descriptions. Thus \(C\) is
+complete noetherian local, with maximal ideal \((\pi,m_j)\).
+Weight-zero projection gives \(C\cap\pi S=\pi C\).
+If \(C/\pi C\) is artinian, a power of its maximal ideal is zero.
+Consequently the \(\pi\)-adic and maximal-ideal topologies on \(C\)
+are equivalent; lifting a \(k\)-basis of \(C/\pi C\) and expanding
+successively in powers of \(\pi\) gives finitely many \(O\)-module
+generators. Conversely a finite algebra has artinian special fibre,
+whose image in the domain \(k'[[t]]\) is a finite field.
+
+Otherwise some \(m_j\) is not nilpotent modulo \(\pi C\). By the
+projection identity it survives on a prime quotient of \(S/\pi S\).
+Cut this complete local domain to dimension one while preserving
+the image \(b\ne0\) of \(m_j\). At each step of dimension \(>1\)
+choose an element of the maximal ideal outside the finitely many
+height-one primes dividing \(b\), and take a minimal prime over
+that nonzero element. This prime has height one, avoids \(b\), and
+is strictly below the maximal ideal. The resulting one-dimensional
+complete domain has finite normalization since it is excellent.
+This normalization is local by completeness and the domain property,
+and is an equicharacteristic complete DVR with finite residue
+extension. Its coefficient field is the unique lift of this finite
+field, so a uniformizer identifies it with \(k'[[t]]\) over \(k\).
+Here \(b\) has strictly positive valuation. This proves the criterion.
+\end{proof}
+
+In the two presentations one may use homogeneous coordinates taken
+from matrix entries minus their residual diagonal lifts. Indeed these
+entries generate the representing ring topologically, by the framed
+universal property, and homogeneous cotangent generators suffice by
+successive approximation. Equivalently, on the post-cut rank-four
+model the entries generate \(S\) in the sense that they distinguish
+its maps to complete local algebras. They then span its relative
+cotangent space by testing the dual numbers of the residue field.
+For these coordinates \(C\) is the closure of the algebra generated
+by weight-zero products of entries. Closure does not change module
+finiteness: a finite \(O\)-submodule is compact, hence closed, and
+an \(O\)-submodule of a finite \(O\)-module is finite. Thus
+Lemma~\ref{dp:detect} applies to the actual weight-zero entry algebra.
+The image of the invariant part \(B\) of the presentation in the
+post-cut ring is \(B/(I\cap B)\). In rank four one first takes
+weight zero for the first coordinate and subsequently for the second;
+this is simultaneous weight \((0,0)\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/FinCrit.lean}{122}{Curve detection in rank three};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/FgMapMk.lean}{24}{From the rank-four weight-zero entry algebra to the invariant quotient}.
+
+Here are two arithmetic facts about such curves. We may enlarge
+\(k'((t))\) by a finite extension and normalize its valuation ring
+to define constituent spaces, their flags and stable lattices.
+Take intersections and saturated quotients of the original lattice
+to get stable lattices on subquotients. Their residual constituents
+together give the residual semisimplification of the original
+representation, by reduction of these exact lattice sequences.
+
+First, a continuous character of a number-field Galois group into
+the units of an equal-characteristic DVR with finite residue field
+is constant if its inertia characters at every finite place have
+finite image, with ramification at only finitely many places.
+Indeed a prime-to-\(\ell\) root of unity is the unique lift of its
+residue and the principal units have no torsion in characteristic
+\(\ell\). Dividing by the lift of the residual character leaves an
+everywhere unramified character into principal units. It factors
+through the finite narrow class group by global class field theory,
+and is therefore trivial. This argument applies on every finite
+number-field extension as well. If a matrix representation becomes
+triangular there, and its inertial eigencharacters have finite
+image, all its diagonal characters there are constant. On the full
+group every eigenvalue is then a root of unity, by raising a group
+element to a positive power in the subgroup. Its characteristic
+polynomial is the constant lift of its reduction, even if the
+subgroup and power depend on the curve.
+
+\begin{lemma}[Odd two-dimensional subquotients on a curve]\label{dp:pan}
+Let \(\ell>2\). Suppose a continuous two-dimensional representation
+of \(G_{\mathbb Q}\) over a finite extension of \(k'((t))\) has a
+stable lattice, is unramified outside finitely many primes, has
+finite inertial eigencharacters everywhere, and is triangular on
+\(G_{\mathbb Q_\ell}\) over an algebraic closure. Suppose its
+residual semisimplification is a sum of two characters of opposite
+parity. Then its characteristic polynomials agree with the constant
+lifts of their reductions; in particular it is geometrically
+reducible.
+\end{lemma}
+\begin{proof}
+After a finite coefficient extension twist by the constant inverse
+of the first residual character. Write \(1,\bar\chi\) for the
+resulting residual characters. By the preceding character argument
+the determinant is the constant lift of \(\bar\chi\). Use its
+Teichm\"uller lift \(\chi\) to \(W(k')\), enlarging \(k'\) to the
+residue field of the chosen extension. It is an odd finite-order
+character and is de Rham locally at \(\ell\). We use the number
+field \(\mathbf Q\), an abelian totally real field unramified at
+\(\ell\), so the required extension of the residual determinant
+to \(G_{\mathbf Q}\) is already given. Choose a finite set \(S\)
+of finite primes containing \(\ell\) and every ramified prime
+of the twisted representation. Pan's ordinary
+pseudodeformation ring for \(G_{\mathbb Q,S}\) at \(1+\bar\chi\),
+with determinant \(\chi\), is finite over
+\(\Lambda=W(k')[[\mathbb Z_\ell^\times(\ell)]]\), where the group
+in brackets is the pro-\(\ell\) part of the local units.
+Use the distinguished theorem when
+\(\bar\chi|_{G_{\mathbb Q_\ell}}\ne1\). If its restriction is
+trivial, use the character-labelled theorem and the actual
+subcharacter \(\lambda_1\) of the local triangular representation.
+Both local diagonal characters are integral units, since the
+inverses are integral too. In a triangular basis
+\((r(\sigma)-\lambda_1(\sigma))(r(\tau)-\lambda_2(\tau))=0\)
+for local \(\sigma,\tau\); taking the trace after multiplying by
+any \(r(g)\) gives the extra ordinary pseudocharacter relation.
+The coefficient homomorphism from \(W(k')\) to the normalized
+curve DVR is reduction to \(k'\) followed by its constant inclusion.
+Thus the trace and, in the second case, the chosen character
+define the asserted map of universal rings on passing to the
+inverse limit of the Artin quotients. The finiteness assertions
+used here hold for every odd prime, including three.
+The map on \(\Lambda\) comes from an inertia
+character which has finite image in the residue-field units, so
+it kills the augmentation of the pro-\(\ell\) group and also
+\(\ell\). The image of the finite algebra in this DVR is a finite
+field. The trace and determinant therefore equal their residual
+values as constants. The characteristic-polynomial criterion for
+semisimplification (Brauer--Nesbitt) finishes the proof.
+\cite[Theorems~5.1.1(1) and~6.1.1(1) in the published
+version, Theorems~5.1.2(1) and~6.1.2(1) on pp.~71 and~95--96
+of the author manuscript]{panFM}
+\end{proof}
+
+We explain how traces control the marked entries required here. Put
+\(\mathcal E=\operatorname{span}\{r(g)\}\) over the algebraic
+closure of the fraction field of the curve, using \(G_K\) in rank
+three. It is an algebra. It contains the individual coordinate
+projectors \(E_{ii}\) in both models. In rank three the marked
+difference \(Z=r(g_1)-Jr(g_1)^tJ\) belongs to this algebra since
+the second matrix is \(r(cg_1^{-1}c)\). The normalization kills
+entries \(01,10\), and antisymmetry under reverse transpose makes
+\(Z=\operatorname{diag}(z,0,-z)\). The reduction of \(z\) is
+\(\bar\Psi(g_1)-\bar\Psi(g_1)^{-1}\ne0\). Lagrange interpolation
+gives all three projectors. In rank four the marked block matrix
+\(r(\phi)\) has coprime characteristic polynomials on the blocks
+\(\{0,2\}\) and \(\{1,3\}\), by the distinct residual values
+between blocks. Polynomial interpolation gives the first block
+projector. In that block \(r(g_0)+\theta(g_0)r(g_0)^{-1}\) is
+diagonal by normalization, with diagonal difference reducing to
+\((\bar\alpha(g_0)-1)(\bar\Psi(g_0)-1)\ne0\). We obtain
+\(E_{00},E_{22}\) and then their symplectic adjoints \(E_{33},E_{11}\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/EiiUnit.lean}{169}{The four marked projectors}.
+
+If the semisimplification is a sum of characters, a full invariant
+flag is consequently a coordinate flag: every stable subspace is
+preserved by all \(E_{ii}\). Order the coordinates by this flag,
+assigning numbers \(b_i\) so \(b_i>b_j\) for every nonzero
+off-diagonal entry in position \(ij\). The reverse position
+\((j^*,i^*)\), with \(i^*=n-1-i\), also occurs. This follows by
+reverse transpose in rank three and symplectic adjunction in rank
+four, both preserving \(\mathcal E\). Therefore \(h_i=b_i-b_{i^*}\)
+is strictly decreasing on these directed entries. The functional
+\(ij\mapsto h_i-h_j\) factors through their weights. For rank three
+this follows from \((h_0,h_1,h_2)=(h_0,0,-h_0)\). For rank four it
+is the linear form \((h_0-h_1)\lambda+(h_0-h_2)\mu\) on differences
+of the coordinates \((\lambda_i,\mu_i)=(1,1),(0,1),(1,0),(0,0)\).
+Thus a nonzero balanced monomial uses diagonal entries only. These
+are the diagonal characters on the flag and are constant by class
+field theory. In rank three all negative-sign elements have the
+matrix of a positive-sign element, by multiplication by \(c\).
+Conversely, an absolutely irreducible constituent of dimension \(>1\)
+forces a nonconstant characteristic-polynomial coefficient if the
+residual semisimplification consists of characters. Such coefficients
+are themselves sums of weight-zero monomials.
+
+\begin{proposition}[Remaining characteristic-\(\ell\) curves]\label{dp:curvebranches}
+For finiteness of the invariant quotient in rank three it suffices
+to exclude curves on which \(r|_{G_K}\) is strongly absolutely
+irreducible. In rank four it suffices to exclude curves on which
+\(r\) is absolutely irreducible, and those with an absolutely
+irreducible two-dimensional constituent on which complex conjugation
+is scalar.
+\end{proposition}
+\begin{proof}
+The needed local flags specialize even where the marked inertia
+eigenvalues coalesce modulo \(\pi\). In rank three take the closed
+incidence scheme in the projective full flag variety requiring
+stability under \(H\) and the ordered characters \(d_i\) on \(I_0\).
+It has a point over the fraction field of the chart constructed
+in Proposition~\ref{dp:rank3chart}. Its proper image contains the
+generic point of \(R/I_t\) by the kernel assertion there, so every
+geometric fibre has a flag. In rank four use the symplectic flag
+variety, stability under the full decomposition group and the four
+prescribed inertia characters. The condition \(\mathrm{OnComp}\)
+gives a domain carrying the local equations and an augmentation to
+\(O\) at the diagonal point, through which the test factors. Thus
+the differences \(d_i(s_0)-d_j(s_0)\) are nonzero in its fraction
+field. There the projectors give a flag by the calculation in
+Proposition~\ref{dp:local}. Properness specializes it to the given
+geometric point. The closed
+conditions in both assertions are intersections of the closed
+stability and action equations, so no finite presentation of the
+inertia group is needed. Away from \(\ell\) the fixed residual
+or finite character kernel bounds inertia. At \(\ell\) the
+inertia characters on these flags have finite image in equal
+characteristic, also on the full inertia in rank three since
+\([I:I_0]\) is finite. These properties pass to subquotients.
+
+In rank three the algebra \(\mathcal E\) contains \(E_{ij}\)
+precisely when some matrix entry in that position is nonzero, by
+sandwiching between \(E_{ii}\) and \(E_{jj}\). Its entry relation
+is thus transitive. Its equivalence classes for mutual
+reachability are the simple diagonal blocks after the classes
+are topologically ordered, each supporting a full matrix algebra.
+Reverse transpose permutes the classes and reverses the order.
+The only possible two-element class is \(\{0,2\}\): its reverse
+must be the unique class of size two. The middle singleton is
+incomparable to that class, since both classes are fixed by
+reversal. Thus a two-dimensional constituent forces the actual
+outer block decomposition. The middle character and the determinant
+on \(G_K\) have finite inertia and trivial reduction and hence are
+one by the character argument. The outer block \(U\) has determinant
+one. It extends to \(W\) on \(G_{\mathbb Q}\) with
+\(W(c)=D=\operatorname{diag}(-1,1)\), by the matrix identity
+\(J_2 U(h)^{-t}J_2=D U(h)D^{-1}\) for \(h\in G_K\), with
+\(J_2\) the two-by-two antidiagonal unit matrix. The marked
+outer coordinates retain the original integral lattice, which
+is also preserved by \(D\). The formula on the two open cosets
+is continuous, and \(D^2=1\) gives the group law
+as in Proposition~\ref{spreal:end}.
+Its residual characters are \(\eta\bar\Psi,\bar\Psi^{-1}\).
+
+On \(I_\ell\subset G_K\) the two inertia constituents of \(W\)
+are finite and hence constant, equal to \(\bar\Psi,\bar\Psi^{-1}\)
+by reduction. They are distinct since \(\psi_\ell^2=1\) and
+\(\ell-1\nmid2e\). The restriction to inertia has a common eigenline
+by the local flag. The eigenspace for its character is exactly one
+line by distinctness. Its character is invariant under the full
+decomposition group because it is the restriction of one of the
+global residual characters. The line is therefore stable under
+that group. Away from \(\ell\) the extension adds only the finite
+quadratic character. Lemma~\ref{dp:pan} now excludes an absolutely
+irreducible outer block. If an irreducible three-dimensional
+representation becomes reducible over a finite number-field
+extension, pass to its normal core. Its restriction there is
+semisimple: the sum of the simple submodules is nonzero and is
+stable under the full group. The isotypic components are permuted
+transitively, with equal multiplicities. Primality of dimension
+three makes every simple constituent on this subgroup a character.
+The preceding potential triangularity argument gives constant
+characteristic polynomials, contradicting absolute irreducibility.
+
+In rank four any reducible symplectic similitude representation
+has simple constituents of dimension at most two. A stable line
+lies in its stable three-dimensional perpendicular and a stable
+hyperplane gives such a line by duality. A stable two-plane gives
+two pieces of dimension two directly. Every two-dimensional
+constituent inherits a local flag by intersection and quotient,
+and its residual semisimplification is a pair from
+\((\bar\theta,\bar\Psi,\bar\alpha,1)\). Lemma~\ref{dp:pan} excludes
+all opposite-parity pairs. The equal-parity pairs are precisely
+\(\{\bar\theta,\bar\alpha\}\) and \(\{\bar\Psi,1\}\), with parity
+read on the two coordinate pairs \(\{0,2\}\), \(\{1,3\}\).
+The preceding marked-entry argument and Lemma~\ref{dp:detect}
+complete both reductions.
+\end{proof}
+
+The rank-four source separates this issue from its characteristic-zero
+purity and automorphy assertions. Its first deduction of finiteness
+uses the positive-characteristic exclusion \(\mathrm{Con}(D)\), whose
+test includes the nonsplit extension with irreducible even block on
+indices \(1,3\). In the tower the ideal \(J\) is required to satisfy
+\(\mathfrak m_{X.B}^n\subset J+\mathfrak m_{O'}X.B+
+(\psi_{v,i}(s)-1:s\in I_v)\). This gives finiteness on the
+fixed-inertia special fibre \emph{of the quotient by \(J\)}.
+Using it for a given curve also requires showing that the curve
+annihilates \(J\) on the tower. Its localization clause for
+irreducible, locally distinguished curves already assumes this
+annihilation. The characteristic-zero seed and purity clauses
+alone impose no equation on a purely characteristic-\(\ell\)
+component. In rank three the source uses a common finite-index
+subgroup for constancy of all the special-fibre characteristic
+polynomials. The curve criterion shows why it is enough to
+settle the remaining representations of Proposition~\ref{dp:curvebranches}
+one curve at a time.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/GfResZpow.lean}{179}{Rank-three finiteness from special-fibre characteristic polynomials};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VWinPm.lean}{75}{The characteristic used in each of the three conclusions};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PotentialModularityTower.lean}{38}{Finiteness and localization conditions on the tower ideal}.

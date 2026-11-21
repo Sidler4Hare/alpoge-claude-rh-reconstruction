@@ -1,0 +1,23 @@
+{
+  "print_success_message": true,
+  "string_extension": true,
+  "export_file_path": "analytic-prefix.ndjson",
+  "pp_options": {
+    "proofs": false,
+    "width": 120
+  },
+  "permitted_axioms": [
+    "Classical.choice",
+    "propext",
+    "Quot.sound"
+  ],
+  "nat_extension": true,
+  "unpermitted_axiom_hard_error": true,
+  "pp_to_stdout": true,
+  "num_threads": 4,
+  "pp_declars": [
+    "Formalism.VW.rh_of_every",
+    "Deduction.poleData",
+    "Deduction.landau_window"
+  ]
+}

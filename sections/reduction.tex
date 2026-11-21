@@ -1,0 +1,129 @@
+\section{Assembly on one arithmetic family}\label{main:assembly}
+
+Fix \(\psi\), and let \(\mathcal F_\psi\) be the cyclic family from Section~\ref{intro:main}. A host at scale \(x\) has a field \(E\), a retained subset of characters, a rank \(t\), and a positive scale \(b\). The source requires on that \emph{same} host both the estimates for the discarded characters with constant \(4\) and a bound \(\sqrt b\) on the cohomological length budget for \((E,t)\). The class of a family requires complete windows and the condition at every index of every sufficiently large scale. \src{src/Development/AutomorphicArithmetic/CharacterBoxes/Supply.lean}{22}{window-family class} and \src{src/Development/AutomorphicArithmetic/CharacterBoxes/Supply.lean}{42}{cyclic host request}.
+
+\begin{lemma}[Simultaneous choice]\label{red:simultaneous}
+Let a finite collection of family predicates \(P_j(F,H)\) have the following property. For each \(j\) there is \(\epsilon_j>0\) such that at each \(0<\epsilon\le\epsilon_j\) one can choose a size requirement \(K_j\) ensuring \(P_j(F,H)\) for every admissible pair satisfying that requirement. Suppose requirements have finite joins, with satisfaction of a join implying satisfaction of each summand. If, for all sufficiently small \(\epsilon>0\) and every \(K\), a design theorem produces an admissible pair \((F,H)\) satisfying \(K\) and a property \(Q\), then at every such \(\epsilon\) there is one pair satisfying \(Q\) and all the \(P_j\).
+\end{lemma}
+\begin{proof}
+Reduce the range of \(\epsilon\) by taking the minimum of the finitely many positive thresholds and the design threshold. Fix \(\epsilon\) first. Take the join of the requirements furnished at that \(\epsilon\), apply the design theorem once, and evaluate each universal assertion at its output. The hypotheses on \(K\) are exactly those of \(\code{FamP.Large}\). Its three effective conditions compare lower bounds on a first collection of constants, thresholds depending on preceding choices, and thresholds depending on the accumulated choices. The join is the pointwise maximum at each stage. The identity \(\operatorname{Large}(K\vee K')\Leftrightarrow\operatorname{Large}(K)\wedge\operatorname{Large}(K')\) follows componentwise from the defining inequalities. \src{src/Formalism/SharpRestriction/ParamsHeightRankConstant.lean}{147}{join of requirements}, \src{src/Formalism/SharpRestriction/ParamsHeightRankConstant.lean}{163}{conjunction of uniform predicates} and \src{src/Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean}{24}{application to the selected family}.
+\end{proof}
+
+\begin{formalinput}[The family selected for a primitive character]\label{red:design}
+Fix a primitive Dirichlet character \(\psi\), and take the window
+power \(3/2\). The following is the specialization of the original
+family construction and geometric comparison used in this paper.
+There is an \(\varepsilon_0>0\) such that, for
+\(0<\varepsilon<\varepsilon_0\) and for every staged lower size
+requirement of Lemma~\ref{red:simultaneous}, there are one
+family \(F\), a nonnegative height exponent \(C_H\), and a threshold
+\(x_0\) with the following properties.
+
+\begin{enumerate}
+\item The family meets the specified size requirement. Its set of
+good scales contains \([Y,Y^{3/2}]\) for arbitrarily large \(Y\).
+At each sufficiently large scale, every point of the family carries
+a host \((E,t,b)\) realizing \(\mathcal F_\psi\) with its prescribed
+weights and the coset shares of Section~\ref{ar:section}.
+The discarded primitive twists there obey
+\(|G_\chi(x)|\le x^{1/2+\varepsilon}\) and
+\(|L'(1,\chi)/L(1,\chi)|\le4\log x\).
+On the same host, for every choice of algebraic closure and local
+coefficient data, the cohomological lengths
+\(h_{\ell,e}\) of Section~\ref{sup:length} are finite for
+\(1\le e<t\), and for every finite set \(S\) of primes,
+\[
+        \sum_{\ell\in S}\log\ell\sum_{1\le e<t}h_{\ell,e}
+                \le\sqrt b .
+\]
+\item At each good \(x\ge x_0\) one has a common frame, primes \(q,d\),
+sets \(T,T_2\), integers \(m,f,k\), positive scales as in
+Section~\ref{ar:section}, a base point, and a point \(i(u)\) in
+the family for each translate. All the scale, share, derivative
+and rank conditions of Lemmas~\ref{ar:balance}, \ref{ar:extract}
+and Proposition~\ref{ar:four} hold. There is a common array of
+integers \(a_t\). The local lattices at \(i(u)\) have the weights
+\(w_{u,j,\rho}\) under the coordinate map \(\beta\).
+At that same point the geometric prime sum and its centre are
+the sums of \(\mathrm{ASK}_{u,t,j}\) and
+\(\mathrm{MAIN}_{u,t,j}\) over \(t,j\).
+\item Write \(B_0,N_c\) for the geometric budgets on this frame and
+\(\mathcal A_u,\mathcal M_u\) for those last two sums. The
+divisibility, slope and degree comparisons give
+\[
+\begin{aligned}
+ \mathcal A_u-\mathcal M_u
+ &\le x^{(e_{\rm div}+e_{\rm loss}+3)\varepsilon}
+       \big[n_T a_E(1+m^2/k)+m(B_0+N_c)\big],\\
+ B_0&\le2nmb\,x^\varepsilon,\qquad
+ N_c\le n_2 k b\,x^{2\varepsilon}/n^2 ,
+\end{aligned}
+\]
+for every required \(u\), with \(e_{\rm div}\le2,\ e_{\rm loss}\le0\).
+The pointwise comparison uses a threshold common to all these data
+after \(F\) and its constants have been chosen.
+\end{enumerate}
+\end{formalinput}
+
+Here are the component results used in this statement. The design
+first supplies the cohomological and character conditions as a single
+request on each host. Its additional choices control the sizes of
+the thick sets, the auxiliary primes, the thin-character errors,
+the rank ratios and the number of row words. For the common scale
+\(\Gamma\), each row word \(v\) has
+\(1/3\le d_v\Gamma^2/D_*\le3\). The number of row words is at least
+\(3\Gamma^2x^{C_H}\). The level primes \(T_u\) and the common
+stabilizer denominators of Section~\ref{geo:engine} obey the size
+bounds of the same design.
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean}{12}{cohomological budget on all local data},
+\src{src/Formalism/SharpRestriction/ParamsHeightRankConstant.lean}{187}{quantifiers of the design},
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/Chosen.lean}{83}{seven simultaneous choices} and
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopShape.lean}{52}{specialization to the cyclic request}.
+
+One can check the interface between cohomology and local division
+numerically. At a fixed point write \(L=x^\varepsilon\), so that
+\(B_0=fmbL\). Let \(H_j\) be the sum of the local error lengths
+at the noncentral places in layer \(j\), with their logarithmic norms
+and ramification factors. Let \(d_j\) be the small-level rank and
+\(D_0\) the rank of the common row space. The local length estimate
+and the rank comparison at this point give
+\[
+ H_j\le d_j\{C(fmbL^2+(\log x)^2N_c)+V\},\qquad d_j=D_0,
+\]
+where \(V=\sum_\ell\log\ell\sum_{1\le e<t}h_{\ell,e}\).
+Taking the supremum of the finite subsums in part 1 gives
+\(V\le\sqrt b\). Here \(b\ge1,\ f,m\ge1,\ N_c\ge0\), and eventually
+\((\log x)^2\le L\). Hence \(V\le b\le B_0\) and
+\[
+                  H_j\le D_0(|C|+1)L(B_0+N_c).
+\]
+Together with coverage of the local twisted multiplicities this
+is the input for local division. Full rank and the comparison of
+mean slopes convert the divisor estimate into the slope input.
+The prime gains, the Gram matrix inequalities, the irreducibility
+loss, local division and this slope input are the five premises of
+the global comparison. Theorem~\ref{geo:hn} explains the elimination
+of the intervening slope. At a fixed translate the two resulting
+geometric bounds give part 3, with \(e_{\rm div},e_{\rm loss}\)
+the exponents for division and loss. Thus part 3 describes the
+precise strength of the cited geometric result used here.
+\src{src/Formalism/SharpRestriction/GlobalTheoremInputs.lean}{40}{local length estimate},
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/DivinNOfHypV.lean}{76}{division at one point},
+\src{src/Formalism/SharpRestriction/GlobalTheoremInputs.lean}{158}{five global inputs},
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/LevelOfCongruence.lean}{175}{elimination of the slope},
+\src{src/Formalism/SizeWindowBrackets/SChain.lean}{33}{the two geometric budgets} and
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChTop.lean}{42}{pointwise discrepancy on the selected data}.
+
+\begin{proof}[Derivation of Theorem~\ref{main:window} using the cited arithmetic inputs]
+The closed representation theorem of Section~\ref{tr:section} supplies a row of local--global compatibility data. In the final assembly the \emph{same} proof \(h\) occurs twice in the literature record, together with the local correspondence existence theorem, and gives the window input through \(\code{vwin\_of\_row}\). The constructor of the record is \(\langle h,\mathrm{recTExists},h\rangle\). It is important that the row is instantiated. A derivation starting only with the parameterized theorem taking \(h\) as an argument would still have this entire input to prove. The separate theta matching and covolume arguments are explicitly passed at the next layer. \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean}{6}{closed representation input}, \src{src/Development/AutomorphicArithmetic/CharacterBoxes/MainConclusion.lean}{7}{use and discharge of the row} and \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean}{810}{theta and height specializations}.
+
+Apply Section~\ref{sup:section}'s host-existence input for the request of \(\psi\), with \(\lambda=3/2\). Apply Lemma~\ref{red:simultaneous} to the nine closed properties taken together in the design theorem. They control the chain length data, local division, local errors, irreducibility, small-level ranks, rank comparisons, prime gains, Gram estimates and the global comparison. For the selected pair, the bounds on the auxiliary size and the common stabilizer denominator are provided by the design. Its cohomological budget and small-level rank identity enter the division input. The nonnegative prime-length terms have all finite subsums at most \(\sqrt b\), so their sum is at most \(\sqrt b\le b\) for \(b\ge1\). The local length estimate then proves \(\code{DIVinN}\). Joining it with the error and division bounds produces the divisor estimate on the family. The rank comparison yields its slope bound. The global implication takes these estimates together with the same family's Gram, gain and irreducibility data and yields the tied comparison. These specialized arithmetic implications are inputs proved in the pinned source. Section~\ref{geo:engine} gives their lattice and height calculations, and Section~\ref{ar:section} identifies the signed expression to which they apply. \src{src/Development/AutomorphicArithmetic/CharacterBoxes/DivinNOfHypV.lean}{117}{cohomology into division}, \src{src/Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean}{29}{five inputs to the global comparison} and \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopShape.lean}{52}{numeric specialization}.
+
+For each sufficiently small \(\varepsilon>0\) we have thus obtained a single family \(F\) and constants such that (i) \(F\) has arbitrarily late windows of power length \(\lambda\), (ii) every sufficiently large point of its good set has tied geometry at every required translate, and (iii) its host satisfies the character bounds. At each such point, the transport to the pointwise theorem identifies the retained sets by injectivity of their common frame coordinates. Equations~\eqref{ar:balanceeq} and \eqref{ar:active} give an \(x_1\) such that
+\[
+  x\in\operatorname{Win}(F),\quad x\ge x_1
+       \quad\Longrightarrow\quad
+ G_{\mathcal F_\psi}(x)\le x^{1/2+(e_D+e_L+7)\varepsilon}.
+\]
+The bound holds for every point in that set, since the threshold in the pointwise comparison precedes the choice of a frame there. At the actual specialization \(e_D=2,e_L=0\). For any \(Y_0\) take a family window starting after \(\max(1,x_1,Y_0)\). Every \(x\) in \([Y,Y^{3/2}]\) belongs to its good set and exceeds the threshold, so this is \eqref{eq:window}. The constant \(9\) thus measures the loss in the exponent per fixed \(\varepsilon\), and the starting point may depend on \(\varepsilon\). \src{src/Development/AutomorphicArithmetic/PrimitiveCosets/LevelGmLeOnFamilyScales.lean}{13}{transport of the tied data}, \src{src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean}{55}{application at every translate}, \src{src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean}{26}{specialization to each primitive character} and \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopPlug.lean}{14}{window exponent}.
+\end{proof}

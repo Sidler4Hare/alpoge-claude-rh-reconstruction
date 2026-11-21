@@ -1,0 +1,567 @@
+\subsection{Local descent on an adapted pair of theta towers}
+\label{tcr:main}
+
+Write \(d=a+a'\), \(k=(a-a')/2\), and \(s=p+q\). In the
+\(A\)-step take \(q=0<p\), remove a plane from \(V,W\), and put
+\(z=k,\ \xi=\alpha|\cdot|_E^{a'/2}\). In the \(B\)-step take
+\(q>0\), remove a plane from \(V',W\), and put
+\(z=k+1,\ \xi=\beta|\cdot|_E^{a/2}\).
+The one-plane evaluation \(e_0\) belongs to the unchanged source
+and the two-plane cone operator \(T\) to the changed source. Subscripts
+on these maps denote their local factors. The adaptedness assumptions
+are those of \S\ref{newtheta:global}: the two integral lattices
+split into their two lines and their orthogonal complements, the
+finite designated bases have the prescribed columns, and the Cartan
+involutions pair the two lines and restrict to the lower involutions.
+
+\begin{lemma}[Square integrability and kernels]\label{tcr:kernels}
+Each upper polynomial period, with the stipulated primed support,
+belongs to \(L^2([U(W)])\). For any of the matching maps, the period
+on each side factors through the restricted tensor product of its
+small local theta quotients. A nonzero such period map is injective
+on that tensor product.
+\end{lemma}
+\begin{proof}
+The periods are smooth, of uniform moderate growth, finite under the
+enveloping center and compact-finite at infinity, as in the proof
+of Proposition~\ref{threal:detectline}. Apply the cuspidal-exponent
+criterion for square integrability, with the constant term divided
+by the square root of the modulus of its parabolic
+\cite[I.4.11]{moeglinWaldspurger}. The center of the unitary group
+has compact adelic quotient.
+
+Consider a cuspidal exponent on a Levi of a flag of isotropic
+subspaces. If the first subspace has dimension \(r>1\), its first
+Levi block is \(\mathrm{GL}_r(\mathbb A_E)\). Any cuspidal projection
+there is generic and unitary after a central real twist. Here a
+cuspidal projection is computed by pairing the flag constant term
+on \(M(F)\backslash M(\mathbb A_F)^1\), where all rational
+character moduli are one, with a rapidly decreasing cuspidal test
+on the Levi \(M\). Uniform moderate growth suffices for convergence;
+the central height variables remain free for extracting exponents.
+Fix the other cuspidal factors and vary the first cusp vector. A
+nonzero pairing gives an equivariant functional with values in
+the smooth contragredient of that cuspidal factor, using finite
+compact invariance of the local test. An action off the norm-one
+subgroup is accounted for by a compensating split-central
+translation, hence by the extracted central exponent.
+At a completely
+split unramified prime with \(\nu_w(\pi)\) of infinite order it has
+to be a subquotient of the first block in the Jacquet module of the
+upper small quotient. Indeed the full flag constant term can be taken
+first along the \(r\)-plane and then in its remaining unitary factor.
+Integration there and cuspidal projection commute with the first
+block action. The local calculation in Proposition~\ref{threal:detectline}
+rules out precisely these subquotients for \(r>1\). This argument
+uses the full split source-coinvariant calculation at that one
+prime and does not require the period to be in \(L^2\).
+
+If \(r=1\), the two line components are smaller periods by
+Propositions~\ref{threal:coneA}, \ref{tpd:unfold} and
+Lemma~\ref{tpd:so}, including their zero-orbit formulas. A missing
+source plane gives no corresponding nonzero orbit. The same
+calculation applies to the remaining flag on each contributing
+smaller period. For this calculation rational hyperbolic coordinates
+suffice: at the places where the resulting bases are not integral
+they change finitely many local tests. At infinity the estimates of
+Proposition~\ref{threal:decay} apply to Schwartz tests and their
+derivatives. Center-finiteness of the successive coefficient as an
+automorphic function follows also by Harish-Chandra projection from
+the preceding coefficient. Thus every general linear block of a
+contributing cuspidal exponent is a line. If there are \(j\) such
+blocks, write \(T_i=|t_i|_E\) for their parameters in flag order.
+The real exponents \(b_i\) of the unnormalized term satisfy
+\(b_i\le a/2\), since at every stage they are half the rank of one
+of the two current sources. The square root of the modulus has
+exponents \((d-2i+1)/2\): the line radical for a space of dimension
+\(d-2i+2\) has determinant modulus \(T_i^{d-2i+1}\) (its middle
+module has dimension \(d-2i\) over \(E\), and its central
+\(F\)-line has modulus \(T_i\)). Hence
+\[
+        b_i-(d-2i+1)/2\ \le\ -(a'-2i+1)/2<0
+        \qquad(1\le i\le j\le s).
+\]
+Every nonzero generating ray of the closed positive chamber
+\(\log T_1\ge\cdots\ge\log T_j\ge0\) has strictly negative
+normalized exponent. The criterion gives the assertion.
+
+Fix the other local tests. Source invariance factors the resulting
+map into \(L^2\) through the big theta module of the trivial
+representation, which has finite length and a unique simple quotient
+with multiplicity one in its cosocle
+\cite{howeTranscending,ganTakedaHowe,minguezHowe}. An admissible
+finite-length image in a unitary representation is semisimple.
+For a submodule take its Hilbert closure: the projection to a
+compact-open fixed space at a finite place or a compact isotypic
+space at a real place shows that the closure intersects the
+algebraic image in the submodule. These spaces are finite-dimensional,
+so orthogonal complements taken on them give an algebraic splitting;
+at infinity it is stable under derivatives by skew adjointness on
+smooth vectors. Thus each local map kills the kernel of the prescribed
+small quotient. At the support place \(v_1\) on the primed side one
+uses the supported coinvariants, which map isomorphically to this
+same small quotient by Proposition~\ref{split:kernel}. Applying
+the universal property of a tensor product to finite sums and then
+enlarging the finite set of places gives the factorization.
+
+The kernel of the map on the resulting restricted product is stable
+under independent finite-place translations and the real Lie and
+compact actions. A submodule containing a nonzero vector contains
+the full finite tensor product supporting that vector: the individual
+simple factors have scalar endomorphisms, and the algebraic density
+theorem gives simplicity of their finite external product. Enlarging
+the finite set, using the nonzero spherical vectors at the new
+places, gives the whole restricted product. This proves injectivity
+whenever the period map is nonzero.
+\end{proof}
+
+\begin{lemma}[Nonzero smaller images at infinity]\label{tcr:bump}
+Suppose the smaller period on the changed-source side is nonzero
+on polynomial tests. Then \(P_{1,\infty}T_\infty\) is nonzero on
+upper polynomial tests, where \(P_{1,\infty}\) is its real matching
+map. For the other side \(P'_{1,\infty}e_{0,\infty}\) is nonzero
+whenever its smaller real quotient is nonzero.
+\end{lemma}
+\begin{proof}
+Choose smaller finite tests and a target argument at which the
+smaller period is a nonzero functional \(D\) of the smaller real
+test. It is continuous for the Schwartz topology by
+Corollary~\ref{threal:limits} and source-invariant. Its restriction
+to polynomial tests factors through the smaller real quotient by
+Lemma~\ref{tcr:kernels}. For \(e_0\), multiply any smaller Fock
+polynomial by the vacuum on the complementary summand, whose
+evaluation is nonzero. The positive complex structure preserves
+this decomposition by adaptedness. Thus the one-plane evaluation
+is onto on polynomials.
+
+For \(T\), use the mixed coordinates with modulation space
+\(Y\otimes Ex'\oplus Ex\otimes W_1\), where \(Y\) is the changed
+source. Before the second evaluation the first position is
+\(v\in Y_\infty\). For a real compact source element \(h\) denote
+the evaluation at \(v=u x\), followed by the second evaluation
+and \(D\), by \(A_h(u)\), where \(u\in\prod_{w\mid\infty}\mathbb C\).
+In these coordinates multiplication of the initial test by a
+scalar test \(b(v)\) multiplies \(A_h(u)\) by \(b(h^{-1}ux)\).
+Indeed the source acts on the first position by pullback and on
+the residual oscillator by its Weil action. With \(h=1,u=1\),
+the evaluation onto the smaller Schwartz space is surjective
+by extension in the omitted linear coordinates.
+
+In the \(A\)-step the scalar under the integral for \(DT_\infty\)
+is \(A_h(u)\) times the everywhere nonzero Mellin density on
+\((\mathbb C^\times)^{[F:\mathbb Q]}\). In the \(B\)-step one
+instead pairs the one-coordinate Fourier transform of \(A_h\)
+at each place with the Mellin density of exponent \(k+1\), by
+the partial Fourier identity in Proposition~\ref{tpd:unfold}.
+We describe the transformed density on \(u\ne0\). Relative to
+additive area on \(\mathbb C\), the original density is a nonzero
+constant times
+\[
+          (l/|l|)^{m_w}|l|^{2k},\qquad |m_w|=m_{\alpha,w}-m_{\beta,w}>d .
+\]
+Complex conjugation of the displacement or reversal of the Fourier
+pairing can reverse the angular weight. The Fourier transform of
+this tempered distribution has a smooth nowhere-zero density on
+\(\mathbb C^\times\). Indeed it is equivariant under rotations and
+positive dilations. On their free transitive orbit such a distribution
+is a scalar times the corresponding character times Haar density:
+divide by the character and use translation invariance in angle and
+logarithmic radius. If its scalar vanished it would be supported
+at the origin, hence be a finite sum of derivatives of the delta
+distribution. Its inverse Fourier transform would then be a
+polynomial of homogeneous degree \(2k\) and angular weight of
+absolute value \(>2k\), which is impossible by expanding in
+\(l,\bar l\). This argument applies separately at every real place.
+
+Here is why integration over the compact directions cannot cancel
+this density. In the first mixed coordinates
+\((h,u)\mapsto h^{-1}ux\) maps the compact group times the
+nonzero scalars onto the product of punctured null cones. At each
+place the two compact unitary groups are transitive on the two
+unit spheres, and the lengths of the two components of a null
+vector are equal. The fibers are the compact line stabilizers,
+acting by \((h,u)\mapsto(jh,\eta u)\) for \(jx=\eta x\).
+The factor acting on the smaller oscillator is the smaller compact
+source and disappears after \(D\). The scalar on this stabilizer
+also cancels: for the unchanged radial measure the source determinant
+factor on the line is \(\nu^{-1}(\eta)\) in the \(A\)-step and
+\(\nu(\eta)\) in the \(B\)-step, as in the source Levi calculations
+of Proposition~\ref{threal:coneA} and Lemma~\ref{tpd:mellin}.
+In the first chart the weight on \(u\) is \(\nu(u)\) in the
+\(A\)-step. In the other step the Fourier transform carries a
+rotation of \(u\) to its dual rotation, so the transformed angular
+weight is \(\nu^{-1}(u)\). Explicitly the \(B\)-chart functions
+after applying \(D\) satisfy
+\[
+        B_{jh}(l)=\nu(\eta)B_h(\eta l),\qquad |\eta|=1.
+\]
+The argument \(\eta l\) follows because the displacement is
+\(\bar l\,y\otimes x'\): the Fourier kernel pairs \(u\) with \(l\)
+by a real trace of a fixed nonzero multiple of \(ul\).
+Substitution in the defining Mellin integral with weight \(\nu(l)\)
+cancels the factor \(\nu(\eta)\). This proves invariance of the integrated density
+along the compact fibers in either chart.
+
+Choose first a test with \(A_1(1)\ne0\), then multiply it by a
+nonnegative bump \(b(v)\) supported sufficiently near \(x\) on
+each punctured cone and positive at \(x\). The pullback of that
+support has all \(|u_w|\) bounded away from zero and infinity.
+The Fourier distribution may therefore be evaluated there using
+its smooth density. After compact-fiber integration the remaining
+integrand, apart from \(b\), is continuous and nonzero at \(x\);
+in a small neighborhood a fixed phase makes its real part positive.
+This proves \(DT_\infty\ne0\) on Schwartz tests. Compact averaging,
+Fourier transformation, restriction and the absolutely convergent
+Mellin moment are continuous in the Schwartz seminorms, as in
+Lemma~\ref{tpd:mellin}. Hermite expansions approximate any
+Schwartz test by polynomials times the vacuum in these seminorms.
+The output for an upper polynomial is again lower polynomial:
+decompose it over the smaller positive summand and its orthogonal
+complement; the compact orbit spans a finite-dimensional polynomial
+space and all evaluation and displacement act in the complement.
+Consequently some upper polynomial has \(DT_\infty\ne0\), as claimed.
+\end{proof}
+
+\begin{proposition}[Descending the test maps]\label{tcr:descend}
+Suppose both smaller period maps are nonzero. After application of
+the smaller matching map, each of \(T_v,e_{0,v}\) factors through
+the upper matching map, at every inert place and at the product of
+the real places (on polynomial vectors there). Both resulting maps
+intertwine the target line parabolic with
+\(\xi\boxtimes\pi_1\) inflated trivially on its radical.
+At infinity this means its Lie algebra and the compact part of its
+Levi. The two real maps so obtained are nonzero.
+\end{proposition}
+\begin{proof}
+First produce auxiliary upper tests at every other place for each
+of the two operations, such that their smaller images are nonzero.
+At infinity use Lemma~\ref{tcr:bump}. At a ramified place use the
+standard matched pair of Proposition~\ref{tpd:ram} or
+Corollary~\ref{threal:ramA}. At an unramified split place use the
+vacuum in Proposition~\ref{tpd:ordinary}. At \(v_1\), if a
+supported primed test is required, use the surjection of supported
+tests onto the whole upper quotient. All the indicated local maps
+at that split place already factor through the upper quotient
+there by those propositions (one may compare with the zero test on
+the opposite side). In the \(A\)-step the smaller unchanged primed
+source is compact at infinity and needs no support for integration.
+When the smaller supported space is required for matching, one
+can also use the representatives of Lemma~\ref{tpd:so}: the same
+matrix proof of its lifting assertion works for \(q=0\).
+In the \(B\)-step the changed-source operator itself preserves the
+full-rank condition by Lemma~\ref{tpd:mellin}.
+
+At an inert place the following vacuum calculation requires no
+factorization. The tensor lattice at the place is self-dual for
+the additive-character symplectic pairing. The prime is nondyadic.
+In the two-plane symplectic decomposition its summands in the
+removed tensor blocks have the following description. Each isotropic
+line tensor a residual space pairs perfectly with the opposite
+isotropic line tensor that space. The four products of the two pairs
+of lines split into two such dual pairs. Adaptedness and self-duality
+make these pairs of lattices mutually dual, including any fractional
+line ideals. Take the removed modulation space and these opposite
+summands as its dual position space. In those positions the basic
+vector is the lattice indicator times the smaller basic vector,
+up to scalar: invariance under the modulation lattice imposes
+support on its position dual and invariance under the full dual
+translation lattice forces constancy there. The tensor factor on
+the residual space is itself the smaller basic line by the same
+Heisenberg characterization. This argument also applies to the
+one-plane evaluation. Normalize each evaluation on the vacuum.
+The source compact fixes the basic vector, by the unramified
+oscillator vacuum calculation in Proposition~\ref{threal:allinert}.
+The displacement is a single position coordinate in the respective
+chart. Thus shifted evaluation gives precisely the smaller basic
+vector times \(1_{\mathfrak a_v}(l)\), where the integral translation
+ideal \(\mathfrak a_v\) is the localization of
+\[
+ \mathfrak b\,\mathfrak D_E^{-1}\bar{\mathfrak c}^{-1}
+       \quad(A),\qquad \mathfrak b^{-1}\bar{\mathfrak c}\quad(B).
+\]
+With multiplicative unit volume one its Mellin integral is
+\[
+  u_v=\nu_v(b_v)|b_v|_{E_v}^{z}
+           (1-\nu_v(\pi_v)|\pi_v|_{E_v}^{z})^{-1},
+        \qquad b_v\mathcal O_{E_v}=\mathfrak a_v .
+\]
+This is nonzero, including when \(\nu_v(\pi_v)=1\). All but
+finitely many \(b_v\) are units, and the product of these basic
+factors converges absolutely to a nonzero number since \(z>1\).
+
+Now put a vector in the kernel of an upper matching map at the
+place under consideration and the chosen auxiliary tests everywhere
+else. Lemma~\ref{tcr:kernels} kills its upper period identically.
+In particular its \(\xi\) coefficient is zero. This coefficient
+is a fixed nonzero Haar multiple of the smaller period on the
+tensor of the transformed tests, by the constant-term formulas.
+For the primed cone formula for a general upper test, first take
+the Levi difference of Proposition~\ref{tpd:unfold}; on the
+\(\beta\)-coefficient it acts by the difference of the two
+characters at the chosen idele, a nonzero scalar, and on \(T\)
+it acts by that same scalar. For a zero evaluation with supported
+representative, make the correction at \(v_1\) before reading the
+other local factor. By smaller injectivity
+(Lemma~\ref{tcr:kernels}) the tensor of lower images vanishes.
+All its other factors are nonzero, so the one at the place under
+consideration vanishes. This proves the claimed factorizations.
+
+The target equivariance can be read from the same formulas. For
+a local element of the line Levi or radical take its right translate
+in the upper constant term. At the identity the radical acts
+trivially by left invariance, the line acts by \(\xi\), and the
+smaller target group translates the smaller period. Subtract the
+corresponding two smaller expressions and again cancel the fixed
+nonzero auxiliary factors by smaller injectivity. At infinity
+one takes compact Levi translates and differentiates the identity
+for one-parameter subgroups at zero; these operations preserve the
+polynomial domain in the required differentiable sense. Continuity
+for passing the derivative through the periods follows from
+Proposition~\ref{threal:decay}. For a one-parameter element outside
+the compact the identity before differentiation holds for Schwartz
+tests by the same absolutely convergent integrals. The nonzero
+real images follow from Lemma~\ref{tcr:bump}.
+\end{proof}
+
+\begin{proposition}[Inert and real uniqueness]\label{tcr:unique}
+Under the assumptions of Proposition~\ref{tcr:descend}, the two
+descended maps at an inert place satisfy \(D_{T,v}=u_vD_{0,v}\).
+At infinity \(D_{T,\infty}=c_\infty D_{0,\infty}\) for a unique
+nonzero scalar. For fixed real models, upper and lower real
+matching maps and measures, this number is independent of every
+finite character, matching quotient and choice of admissible
+Weil actions in the two towers.
+\end{proposition}
+\begin{proof}
+At an inert place the upper spherical vector generates its
+irreducible representation. The line parabolic and the lattice
+stabilizer satisfy \(G=PK\) by the integral Witt argument in
+Proposition~\ref{threal:coneA}. Hence the spherical vector generates
+even under \(P\). The comparison of its two images in the preceding
+proof gives the identity on the whole representation.
+
+Here is the compact weight calculation at one real place.
+Write \(R=d-s,S=s,P=a-p,Q=p,A=m_\alpha,B=m_\beta\), and
+\(\Delta=A-B>d\). Put
+\[
+ c_\pm=\tfrac12(B\pm(P-Q)),\qquad
+ h_+=c_++\tfrac12(\Delta-R+S),\quad
+ h_-=c_-+\tfrac12(\Delta+R-S).
+\]
+The bottom \(U(R)\times U(S)\)-type of
+Proposition~\ref{threal:allreal} has weights
+\[
+ ((h_+)^P,(c_+)^{R-P};(h_-)^Q,(c_-)^{S-Q}),
+\]
+where superscripts denote repetitions. To see the normalization,
+start from the two target compact vacuum weights \(\pm(P-Q)/2\);
+the source determinant in the joint harmonics adds
+\((\Delta-R+S)/2\) in the first \(P\) positions and
+\((\Delta+R-S)/2\) in the first \(Q\) positions, and the target
+splitting adds \(B/2\) throughout.
+Alternatively the bottom-layer formula for the ordered two-block
+parabolic is its inducing differential plus
+\(\rho(\mathfrak u\cap\mathfrak p)-\rho(\mathfrak u\cap\mathfrak k)\)
+in Paul--Trapa's cover normalization: in the first positive block
+this correction is \(((S-Q)-(R-P))/2\), in the first negative
+block its negative, and in the remaining positive and negative
+blocks it is respectively \((P-Q)/2\) and its negative.
+The inducing parameter is in the good range by \(\Delta>d\);
+the bottom type occurs once by the bottom-layer formula for
+cohomological induction (the inducing Levi type is a character).
+In ordinary, uncovered normalization one subtracts \(\rho(\mathfrak u)\)
+from the inducing differential. The two character exponents then
+become \((A-a')/2,(B+a)/2\); their difference is
+\((\Delta-d)/2>0\), so the bottom-type theorem applies.
+\cite[\S2 and Theorem~4.1]{paulTrapaHowe}
+\cite[Theorem~5.3 and Proposition~6.1]{voganZuckerman}
+
+The compact Levi on an isotropic line acts by the same circle
+\(\eta\) in one positive and one negative coordinate, and by
+\(U(R-1)\times U(S-1)\) on the other coordinates. Indeed a null
+vector is a sum of two vectors of equal norm, and an element
+carrying it to \(\eta\) times itself acts by \(\eta\) on each.
+For a \(U(n)\) weight \(\lambda_1\ge\cdots\ge\lambda_n\) the
+\(U(n-1)\)-weights interlace it with multiplicity one, and their
+omitted circle weight is \(\sum\lambda_i-\sum\mu_i\). Its maximum
+\(\lambda_1\) forces \(\mu_i=\lambda_{i+1}\) for all \(i\);
+its minimum \(\lambda_n\) forces \(\mu_i=\lambda_i\).
+In the \(A\)-step both high blocks occur and \(h_++h_-=A\) is
+the maximum diagonal-circle weight. In the \(B\)-step both low
+blocks occur and \(c_++c_-=B\) is the minimum. These are exactly
+the respective angular characters of \(\xi\). The extreme block
+in the upper bottom type thus consists of a single irreducible
+type of the smaller compact, with one entry deleted in each sign.
+It is the lower bottom type by the same weights formula:
+\(P-Q\) and \(R-S\) do not change. It occurs once in \(\pi_1\).
+The compact restrictions of the two parabolic maps on the upper
+bottom type are therefore proportional. The Iwasawa Lie algebra
+identity \(\mathfrak g=\mathfrak p+\mathfrak k\) and the
+Poincar\'e--Birkhoff--Witt theorem show that \(U(\mathfrak p_{\mathbb C})\)
+acting on this compact type generates the entire irreducible module.
+For the product of real places take the exterior tensor product
+of the bottom types and apply the same argument componentwise.
+This proves dimension at most one for the required space of maps.
+Both are nonzero, so the scalar is unique and nonzero.
+
+For fixed base data the infinite characters are fixed by their
+specified exponents \(m_\alpha,m_\beta\). The doubled Siegel law
+fixes the resulting real oscillator actions: the ratio of two
+Heisenberg implementations with the same doubled Levi law is a
+character trivial on that Levi and on the root unipotents, hence
+trivial on the doubled group, as in Proposition~\ref{threal:inert}.
+The compact integral defining \(T_\infty\) and its Mellin weight
+therefore agree for all the allowed systems. The fixed realizations
+of the upper and lower real maps give the same proportionality
+equation on every polynomially matched real pair in all these
+systems. Since some real test has nonzero zero-evaluation image
+and its upper image can be matched on the other side, this equation
+determines the same number \(c_\infty\) for all systems. If
+there are no such systems the uniform comparison is vacuous.
+\end{proof}
+
+\begin{theorem}[The scalar for the two undoubled periods]\label{tcr:global}
+For every triple of \S\ref{newtheta:global} and every allowed set
+of real and finite matching maps, the primed period is nonzero
+on some supported test, and there is a unique \(c\ne0\) such that
+\(I(\Phi)=cI'(\Phi')\) on all matched pairs. For given adapted upper
+and lower geometries and given upper and lower real matching maps,
+there is \(C\ne0\) independent of all admissible \(X\), Weil actions
+and finite matching maps such that
+\[
+ \begin{array}{ll}
+ c=C\,F_X(1-k)L^{S_0}(\nu,k)c_1,
+       &(q=0<p;\ e_1=e_2=+1,\ s_{\rm unit}=+1),\\[2pt]
+ c\,L^{S_0}(\nu,k+1)=c_1/(C F_X(-k)),
+       &(q>0;\ e_1=e_2=-1,\ s_{\rm unit}=+1).
+ \end{array}
+\]
+Here \(F_X\) is the finite factor of \S\ref{newtheta:global},
+and \(c_1\) is the scalar for the specified smaller matching maps.
+\end{theorem}
+\begin{proof}
+First work on an adapted pair of geometries and suppose the
+assertions of nonvanishing and proportionality hold in the smaller
+rank. In particular both smaller period maps are nonzero: supported
+primed vectors are matched by surjectivity of the opposite quotient
+and the distinguished lower full-rank quotient. Use polynomial
+inputs initially; nonzero polynomial inputs are available by
+Corollary~\ref{threal:limits} and density. For \(T\) use the
+integral with multiplicative units of volume one and local source
+compacts of volume one. Normalize finite mixed evaluations on
+their vacua. Rational coherent evaluations differ from this system
+by fixed scalars with almost every scalar one
+(Proposition~\ref{threal:coneA}). At infinity keep the real
+evaluations fixed.
+
+On upper matched tests, the restricted tensor product of lower
+images of \(T\) is a scalar times that of \(e_0\). At the real
+places use Proposition~\ref{tcr:unique}; at the finite places use
+Propositions~\ref{tpd:ordinary}, \ref{tpd:ram},
+Corollary~\ref{threal:ramA} and Proposition~\ref{tcr:unique}.
+For a finite tensor sum this follows by applying the tensor product
+of the descended linear maps to the equality of upper tensors in
+the definition of polynomial matching. Outside the finite test set
+one must retain the product of the vacuum multipliers: these
+converge absolutely and have nonzero product. The translation
+ideal contributes \(N(\mathfrak a)^{-z}\nu(\mathfrak a)\).
+It is a unit at the ramified factors. As computed after
+Lemma~\ref{tpd:mellin} and Proposition~\ref{tpd:ram}, its
+character value is \(\nu(\mathfrak b)\nu(\mathfrak c)\) in \(A\)
+and its inverse in \(B\). The partial Euler factors at the primes
+of \(Q\) are one since \(\nu\) is ramified there. The ramified
+factors are the stated Gauss factors, with arguments \(1-k,-k\)
+respectively and with unit sign \(+1\) in both cases.
+All these factors are nonzero. The remaining factors consist of
+\(c_\infty\), the absolute ideal norm power, the fixed changes of
+evaluation, and the quotient of the two Haar normalizations in
+the orbit formulas. They give a single \(C\ne0\) for the stated
+fixed data by Proposition~\ref{tcr:unique}. The Haar measures
+are part of the models; no equality of Haar masses in different
+dimensions is needed.
+
+Use the smaller identity on these two tensors. In \(A\), the
+unprimed \(\xi\)-coefficient is the cone and the primed one is the
+zero evaluation, giving the first formula. In \(B\), the primed
+coefficient is the cone and the unprimed one is the zero evaluation,
+giving the reciprocal in the second formula.
+Propositions~\ref{threal:endA} and~\ref{threal:endB} show that
+the resulting scalar compares the upper periods at every target
+argument. The zero-coefficient side is nonzero for some upper
+test: choose its real polynomial and finite factors as in
+Proposition~\ref{tcr:descend}, then apply smaller injectivity to
+their nonzero tensor. Choose a matching vector on the other side,
+using the supported surjection at \(v_1\) when the other side is
+primed. The comparison just proved gives nonzero upper periods
+on both tests. This also proves uniqueness of \(c\). Passage to
+every matched limit is Corollary~\ref{threal:limits}.
+
+To apply this argument by induction on \(p+q\), start at
+Theorem~\ref{threal:base}. For the induction step the integral
+plane construction of Proposition~\ref{famtheta:plane} supplies
+the hyperbolic summands with their ideal lattices in the changing
+source and target. On a given rational hyperbolic plane choose
+Cartan involutions interchanging the two null lines at infinity
+and an arbitrary compatible Cartan on its complement. At the
+designated split places take the new adapted integral bases in the
+prescribed column order. These choices do not change the rational
+spaces, the lattices, the Haar measures or their theta integrals.
+The smaller tensor has a rational symplectic basis by symplectic
+elimination, giving its usual rational Schr\"odinger model.
+Its basic vector is the lattice Heisenberg eigenline. It can also
+be obtained by partial evaluation of the upper basic vector in the
+adapted coordinates above: the removed mutually dual lattices
+give the position indicator in those coordinates, leaving the
+smaller eigenline. At a split dyadic place one uses the two isotropic
+idempotent halves as in Proposition~\ref{tpd:ordinary}; their
+individual quadratic phases vanish. In rational coordinates the
+basic lattice gives the ordinary integral indicator almost everywhere.
+Use any fixed lower source Haar measures. For the two lower
+oscillators use the same pairs of splitting characters
+\((\beta,\beta/\alpha)\), \((\alpha,\alpha/\beta)\).
+Subtracting two from either rank preserves the quadratic character
+restriction required for each unitary splitting. Use the local
+splitting and its doubling law
+\cite[(1.16) and Proposition~2.2]{harrisKudlaSweet}, and their
+adelic product for the two Hecke characters
+\cite[\S\S2--3]{wuThetaTower}. On rational elements the character
+factors, absolute determinant factors and Weil indices have product
+one, giving the rational theta action through Poisson summation.
+Equivalently the doubling in a rational diagonal polarization
+uses the prescribed determinant character on its Siegel Levi
+and evaluation at zero; restricting to the two isometric summands
+recovers the chosen single Weil action. All smaller gap inequalities
+hold since \(p+q\) decreases by one, \(a'\) decreases by at most
+two and \(k\) decreases by at most one. The local matching results
+in \S\ref{threal:main} apply at both levels. The induction
+hypothesis and the preceding adapted argument now apply.
+
+We finally transport the existence and uniqueness assertion to the
+original markings. At infinity choose separately in each source
+and commonly in the target real isometries conjugating the original
+Cartan involutions to the adapted ones. Their oscillator operators
+carry the Gaussian line and its creation derivatives onto the new
+ones by Heisenberg covariance. On the period the source translation
+disappears by Haar invariance and the common target translation
+right translates both functions by the same element. Under this
+transport the original and new pairs of real simple quotient maps
+differ, after identifying their targets, by one nonzero scalar
+for each side, by real Howe uniqueness. The same comparison at
+the finitely many remarked split places follows by finite Howe
+uniqueness. At all other places one can keep the original maps.
+The support condition uses matrix rank in the polarization
+specified by the chosen split embedding and is invariant under
+invertible row and column changes. Therefore a pair matched with
+the original maps is transported to an adapted matched pair after
+rescaling one test by the product of these finitely many scalar
+ratios. The two upper period functions are proportional also for
+the original data, and a supported nonzero matched pair transports
+back. This transport is needed only for the existence assertion
+for an arbitrary marking. For the uniform recursion with fixed,
+already adapted geometries use the direct calculation in the
+first part of the proof. The upper period scalar may depend on
+the chosen matching maps and on \(X\).
+\end{proof}
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/LocAOf.lean}{17}{The unprimed test comparison},
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/LocBOf.lean}{17}{the primed test comparison}, and
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/StepFacEq.lean}{85}{the quantifiers for a single descent constant}.

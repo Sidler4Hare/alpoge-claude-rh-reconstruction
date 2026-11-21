@@ -1,0 +1,439 @@
+\paragraph{The cusp test on the principal marked charts.}
+Retain the period chart and identity Fourier mark of
+Propositions~\ref{bfam:unitread} and \ref{bfam:oncharts}.
+The following argument uses the mark at one prime over \(M\).
+In particular it applies before summing over the definite column genus.
+
+\begin{lemma}\label{crev:mode}
+For every rational isotropic row line and every orthonormal frame on
+the chart, the real diagonal transvection restriction of each marked
+theta jet has mean zero along any period with trivial multiplier.
+Its full real cusp-torus average is zero as well.
+\end{lemma}
+\begin{proof}
+Write \(v\ne0\) for the isotropic row and \(I=(Ev)^n\) in the
+rational trace symplectic space of the oscillator. Choose a rational
+Lagrangian in one row containing \(Ev\), and take its \(n\)-fold sum
+\(D\). Complete it to a symplectic polarization \(D\oplus D^*\),
+using \(D^*\) for the position variable. Translations by \(a\in
+D(\mathbb A_f)\) are multiplication by the finite additive character
+of \(z(a)\) at a position \(z\). In particular they act as the identity
+at all \(z\) annihilating \(I\).
+
+Let \(\varphi\) be the marked finite vector in these coordinates.
+The finite translation calculation preceding Lemma~\ref{bfam:genus}
+gives an element of \(I(\mathbb A_f)\) acting on the single marked
+vacuum with eigenvalue different from one. Indeed, at a prime of
+\(\mathfrak m\) its first \(r\) residues are a basis and a primitive
+vector on the conjugate line, divided by the local half-level,
+detects one of them. The unshifted character of the isotropic line
+is one. It follows pointwise that
+\[
+                 \varphi(z)=0\qquad (z|_{I(\mathbb A_f)}=0).
+\]
+This also holds for a sum of the indicated marks, term by term. The
+calculation takes place after changing polarization, which intertwines
+the Weyl translations by the Fourier and substitution laws in the
+proof of Proposition~\ref{bfam:unitread}.
+
+In this polarization the real diagonal flow is a shear. Its
+infinitesimal action \(N\) has image \(I_{\mathbb R}\) and kernel
+\(I_{\mathbb R}^{\perp}\), and it fixes \(D_{\mathbb R}\) pointwise.
+The shear contributes the character with quadratic exponent,
+up to the fixed Fourier sign, \(Q(z)=\tfrac12\langle \widetilde
+z,N\widetilde z\rangle\), where \(\widetilde z\) is a lift of the
+position and the pairing is symplectic. At each place the trace
+polarization applied to the transvection
+\(\kappa_0 h(y,v)v\) gives a nonzero real multiple of
+\(\sum_{j=1}^n|h_\tau(y_j,v)|^2\). The multiples have the same sign:
+they are obtained from the product of \(\tau\xi_0\) and
+\(\tau\kappa_0=\pm2\tau\xi_0\) with one fixed choice of sign, and
+the scaling \(k_0\) of the real parameter is positive. Consequently
+\(Q(z)=0\) exactly on the annihilator of \(I_{\mathbb R}\).
+
+More explicitly, on the real flow the first period matrix is fixed
+because the shear fixes the chosen first Lagrangian. The second
+matrix changes by the first times the real symmetric shear matrix.
+Thus \(\Im\Omega\), the holomorphic argument \(hz_j\), the Gaussian
+prefactor and \(\det h\) in Proposition~\ref{bfam:unitread} stay
+fixed. The change in each summand is exactly its quadratic phase,
+also after applying the polynomial in the \(z_j\)-derivatives.
+The real restriction therefore has the expansion
+\[
+            \sum_{\ell\in D^*(\mathbb Q)}
+                 \varphi(\ell)\,A_x(\ell)\,e^{2\pi i s Q(\ell)}
+\]
+with the Fourier sign absorbed in \(Q\). At the fixed frame the
+archimedean coefficient is a polynomial times a decaying Gaussian,
+and the compact finite support restricts rational positions to a
+fixed denominator lattice. The series converges absolutely and
+uniformly for real \(s\). If a rational position annihilates \(I\)
+at infinity it annihilates \(I\) at all finite places. Hence every
+zero-frequency summand vanishes. Averaging over \([0,T]\) and
+taking \(T\to\infty\) gives zero by dominated convergence, even
+when individual frequencies are not characters of the chosen
+period circle. For a periodic sum this is its period mean.
+Real translates of the starting frame give the same conclusion.
+Integrating along the diagonal circles in the full cusp torus now
+gives the torus average by translation invariance of Haar probability.
+\end{proof}
+
+\begin{proposition}\label{crev:half}
+On each of these principal period charts the raw theta readings at
+\(n=8(fr+1)\) are bounded in Petersson norm. For every nonzero
+reading each orthonormal frame attaining at least half the component
+supremum has row minimum squared at least \(\varepsilon\) of
+Proposition~\ref{bergvol:global}. The same minimum conclusion applies
+to every nonzero bounded cusp form with trivial transvection multiplier on
+the chart. In particular the cusp and half-maximum tests on the raw
+rules in Theorem~\ref{bfam:oncharts} follow from its stated marked
+period uniformization.
+\end{proposition}
+\begin{proof}
+Write \(a(x)=\min_{0\ne v\in L'}\sum_\tau{\rm maj}_{x,\tau}(v)>0\).
+Lemma~\ref{bfam:minimum} and Proposition~\ref{intjet:arch}, at
+orthonormalized frames, first give a bound of the form
+\[
+             \|P(x)\|_{\rm Pet}\le C(1+a(x)^{-1})^B .
+\]
+Indeed \(\lambda^2\ge 2a(x)/R_E^2\), the theta generator has
+mean square one, and the directional norm and its weight correction
+are fixed on orthonormal frames. Here \(C,B\) may depend on the
+fixed section and stage. Multiplication by its nonzero fixed
+reflex scalar does not affect this assertion.
+
+Put \(H=2M\sqrt d\). For \(a=a(x)<\min(1,H^{-1})\) choose a
+shortest \(v\). Its integral self-pairing vanishes by the norm
+argument following Proposition~\ref{bergvol:global}. The
+transvection there acts trivially modulo \(M\) on \(\mathfrak a L'\),
+so lies in the actual marked stabilizer by Lemma~\ref{munf:marks}.
+Its multiplier on the raw sections is trivial by the eighth-power
+and identity-mark calculation in Theorem~\ref{bfam:oncharts},
+which uses only the transformation formula. Take \(H\) as period
+in the scaled coordinate, and write \(G(\zeta)\) for the raw
+coefficient along this flow. It is holomorphic on
+\(\Im\zeta>-1/a\) by the leading-minor calculation above.
+
+We give the majorant comparison needed to apply the polynomial bound
+before knowing a global supremum. At a single place set
+\(l=\|\tau v\|_x^2\le a\). Rotate the positive and negative blocks
+so the two components of \(\tau v\) lie on their first coordinate
+axes, each of norm \(\sqrt{l/2}\). These rotations preserve the
+central majorant. In this plane the new positive line has positive
+and negative coordinates \(A=1-i\zeta l/2,\ B_1=-i\zeta l/2\),
+with \(|A|^2-|B_1|^2=1+l\Im\zeta\). All orthogonal directions
+retain their majorant. The two comparison eigenvalues in the plane
+are \(K\) and \(K^{-1}\), where
+\[
+ K=\frac{(|A|+|B_1|)^2}{1+l\Im\zeta}
+    \le\frac{(1+l|\zeta|)^2}{1+l\Im\zeta}.
+\]
+Indeed a unitary change of phase makes the normalized line coordinates
+nonnegative and its orthogonal negative mate interchanges them.
+At \(\zeta=s-i/(2a)\), \(0\le s\le H\), this gives \(K\le 13\):
+the denominator is at least \(1/2\) and
+\(l|\zeta|\le Ha+1/2\le3/2\).
+Thus the new row minimum is at least \(a/13\).
+The leading-minor variation estimate preceding
+Lemma~\ref{bfam:harm} bounds the conversion from Petersson norm
+to raw coefficient on this line by \(2^{w/2}\).
+It follows that
+\[
+      \sup_{0\le s\le H}|G(s-i/(2a))|
+                    \le 2^{w/2}C(1+13/a)^B .
+\]
+For \(y=\Im\zeta\ge0\), \(0\le s\le H\), the same comparison
+gives \(K\le(1+a(H+y))^2\). The leading-minor formula bounds
+the raw metric conversion by \((1+ay)^{w/2}\).
+Together these give polynomial growth of \(G(s+iy)\) in \(y\)
+for the fixed starting frame. In \(q=\exp(2\pi i\zeta/H)\),
+Cauchy's coefficient estimates therefore remove all negative
+Laurent powers. Lemma~\ref{crev:mode} removes the constant power.
+The maximum principle for \(G/q\) on the disk of radius
+\(\exp(\pi/(aH))\) gives
+\[
+      \|P(x)\|_{\rm Pet}=|G(0)|
+       \le 2^{w/2}C(1+13/a)^B e^{-\pi/(aH)} .
+\]
+This is bounded as \(a\downarrow0\). On the complementary range
+the original polynomial estimate is bounded. Hence every nonzero
+section has a finite positive supremum and one can choose an
+orthonormal frame above half of it. With boundedness established,
+the half-maximum argument following Proposition~\ref{bergvol:global}
+applies with its original \(\varepsilon\); the qualitative constants
+\(B,C\) disappear. For a general bounded cusp form the real torus
+and positive-frequency argument there supplies its diagonal zero
+mode. Thus the same quantitative conclusion holds for that space
+at every weight whose transvection character is trivial.
+\end{proof}
+The proof uses the short vector of the component under consideration.
+It gives the absolute-constant bound of Corollary~\ref{bfam:metric}
+for all selected parameters, all permitted column lattices and
+auxiliary integers at every good embedding; it requires neither
+a common fundamental domain as the rank changes nor a uniform
+constant in the preliminary polynomial growth estimate.
+\src{src/Development/AbelianVarietyTheory/Proofs/CuspFormEvaluations/ExistsExpansionOfEqSumThFr.lean}{26}{The source's different zero-mode test using positivity of the last row weight};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/FirstMinAtHalfMax.lean}{111}{Transfer to the minimum at the selected level}.
+
+\begin{corollary}\label{crev:twist}
+On the good marked charts the algebraic rule space defined by
+testing all good complex readings requires no additional cusp
+comparison for the raw spanning argument. A regular unit section on
+a component with constant positive Petersson norm, in mutually dual
+multiplicative metrics for it and its inverse, preserves this cusp
+condition in both directions. This applies to the key and the
+horizontal determinant whenever they exist on that component with
+their stated constant metrics.
+\end{corollary}
+\begin{proof}
+In the rule definition the cusp subspace is the intersection of
+the regular weight rules with the inverse images, under every good
+reading, of the complex spans of the analytic cusp forms. Each such
+span is the analytic cusp space itself: holomorphy, transformation
+law and vanishing of the torus integrals are linear, and each
+finite sum of bounded forms is bounded. Conversely inclusion in the
+span holds for each member. Lemma~\ref{bfam:rule},
+Lemma~\ref{crev:mode} and Proposition~\ref{crev:half} place the
+raw rules in this intersection. For generation one only needs to
+express the reading of every member in the span of the raw readings,
+which is the conclusion of Proposition~\ref{munf:span} on those
+charts. Injectivity after scalar extension in Lemma~\ref{bfam:rule}
+then descends the span to the coefficient field.
+
+For the multiplication assertion use a common finite-index
+transvection period lattice killing both characters. Passing to
+it leaves each normalized constant term unchanged when applied to
+a function periodic for the original lattice. Along a rational
+isotropic row the positive-ray metric estimate following
+Proposition~\ref{bergvol:global} and boundedness imply that
+every nonzero Fourier coefficient of either factor has all
+coordinates nonnegative, by growing one imaginary coordinate
+at a time. At height zero the coefficients are absolutely summable
+by smoothness on the real torus. Thus the product constant is the
+product of the two constants, by convolution: two vectors with
+nonnegative coordinates can sum to zero only if both are zero.
+This proves cusp vanishing for the product, and boundedness follows
+by multiplicativity of the metric. Apply the same argument to the
+inverse section, which is holomorphic and has the reciprocal
+constant norm. In particular its Fourier support is tested afresh
+using holomorphy in the same upper tube, even though its \emph{weight}
+has the opposite sign. The polynomial growth bound uses only the
+weight spread. This treats the Fourier condition in the rule space;
+a separate use of a subcanonical sheaf on a compactification must
+identify its restriction with that space.
+\end{proof}
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/CuspFree.lean}{14}{All good embeddings in the definition of the cusp rules};
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/JFDFree.lean}{42}{The span of the bounded holomorphic cusp readings}.
+
+\paragraph{The flag measure of the selected unitary genus.}
+Let \(F_0=E^+\). Use the host fields of Proposition~\ref{host:art},
+the genus of the self-dual row, and its odd principal level \(M\ge3\).
+Write \(K\) for the finite adelic stabilizer and \(K(M)\) for its
+principal subgroup. Let \(c_r\) and \({\rm mass}_I\) be as in
+Proposition~\ref{bergvol:compactmass}.
+
+\begin{proposition}\label{crev:mass}
+For the full adelic packet of marked rows, the sum of the component
+flag volumes in the normalization of Lemma~\ref{bergvol:local} is
+\[
+        V=[K:K(M)]\,\frac{c_r^f\,{\rm mass}_I}{(2\pi)^{fr}}
+           \le V_* .
+\]
+Adelic probability on flag-invariant functions pushes forward to
+the sum of the fundamental-set measures divided by \(V\).
+Conditioning on a nonempty union of components gives the same
+formula with its own total flag volume.
+\end{proposition}
+\begin{proof}
+In the marked period description of Lemma~\ref{munf:marks}, the
+finite double cosets of \(G=U(h_0)\) represent the marked rows of
+this genus. Indeed finite translates of the completed reference
+lattice and its basis give a row by intersection with the rational
+space. Conversely choose local isometries to a specified row in
+the genus. At primes of \(M\) the extension is split and the mark
+is a basis on one half with its pairing-dual on the other. An
+invertible matrix over the local residue quotient lifts to an
+integral invertible matrix by lifting entries. Thus the local
+isometries may match the marks and the stabilizer is \(K(M)\).
+In terms of the two algebraic Lie ranks \(p,q\), the real flag
+space at a place is \(U(p_0,r-p_0)/U(1)^r\), with \(p_0=q\).
+
+Use the rational form \(J=\operatorname{diag}(1_{p_0},-1_{r-p_0})\) given
+by Lemma~\ref{cmeig:row}, and compare with \(G_c=U(1_r)\), the
+group of the positive definite standard form. At every finite
+place the two self-dual lattices are isometric, including residue
+characteristic two, by the local part of that lemma. Keep track of
+the Haar densities in this assertion. On the Lie algebra for a
+Hermitian matrix \(J\), left translation identifies an invariant
+top differential by identifying its tangent at one with the fixed
+\(F_0\)-space of skew-Hermitian matrices via \(X\mapsto JX\).
+Choose the same rational top differential on that vector space
+for both \(J\) and \(1_r\). Under an isometry \(P^*JP=1_r\),
+the comparison in these coordinates is \(A\mapsto P^*AP\).
+Its determinant on the skew-Hermitian space is
+\(N_{E/F_0}(\det P)^r\): extend scalars to the split algebra,
+where the two factors multiply an unrestricted \(r\)-by-\(r\)
+matrix on its left and right. Its absolute value is one at each
+finite place because \(N(\det P)=1/\det J=\pm1\).
+Thus the corresponding maximal stabilizers have the same local
+volume. No choice of their local bases contributes a discriminant.
+
+The global scalar and convergence factors in the Tamagawa measure
+are the same: the base field and dimension agree and the geometric
+character lattice in both cases is generated by determinant with
+the quadratic Galois action of \(E/F_0\). At each real place the
+common gauge in the \(A\)-coordinates is the same scalar times
+Lebesgue measure on the imaginary diagonal and the complex
+strictly lower entries. Multiplication by \(J\) only changes signs
+in these coordinates. Divide out that same scalar for both groups.
+Use volume one for the maximal stabilizers at finite places and
+the resulting real coordinate densities. In these choices the
+total adelic covolumes of the two groups are equal: they are
+obtained from Tamagawa measure by a common scalar and both
+Tamagawa numbers are two for a nonzero Hermitian space over a
+quadratic extension. See \href{https://doi.org/10.1007/BF02391774}
+{Weil, \emph{Sur la formule de Siegel dans la th\'eorie des groupes
+classiques}}, and Ichino, \emph{A regularized Siegel--Weil formula
+for unitary groups}, \S4. For the definite group the real volume is
+\(c_r^f\). The finite double cosets at maximal level are its
+standard lattice genus: cutting the quotient over such a coset
+divides this common real volume by its finite automorphism group.
+Summing gives \(c_r^f\,{\rm mass}_I\).
+
+For the indefinite group, the quotient of the real density by
+angle measure \(d\theta_1\cdots d\theta_r\) is the stated flag
+measure. At the central flag the tangent projection takes the
+strictly lower entries of the Lie algebra with Jacobian one.
+At a lower unipotent matrix \(u=k b\), with \(k\) unitary and
+\(b\) upper triangular, the projected tangent in this frame is
+the strictly lower part of \(b(u^{-1}du)b^{-1}\).
+The unipotent differential has determinant one in its entries.
+Conjugation on matrices modulo upper triangular matrices has
+complex determinant \(\prod_{i>j} b_{ii}/b_{jj}\). Its squared
+absolute value is \(\prod_{i=1}^{r-1}D_i^{-2}\), using
+\(|b_{ii}|^2=D_i/D_{i-1}\) and \(D_0=D_r=1\).
+This recovers the chart density at every point.
+
+Over each finite double coset \(gK(M)\), the quotient of
+\(G_\infty\times gK(M)\) is by
+\(\Gamma_g=G(F_0)\cap gK(M)g^{-1}\). Cutting the real factor
+by a fundamental set for \(\Gamma_g\) gives the common finite
+volume \(1/[K:K(M)]\) times real quotient volume. There is no
+stabilizer on the flag: it would be discrete in a compact torus,
+hence finite, and the principal subgroup on the underlying
+integral period lattice is torsion-free. For the latter, at an
+odd prime dividing \(M\) the powers of a nonidentity
+\(1+\ell^a B\), \(a\ge1,\ B\not\equiv0\bmod\ell\), have depth
+\(a+v_\ell(t)\) at exponent \(t>0\), by the binomial theorem.
+Integrating along the angle tori therefore gives \((2\pi)^{fr}\)
+times the flag integral. The same disintegration applies to any
+nonnegative measurable function of the flag. Applying it first
+to one proves the identity and then dividing by the total mass
+proves the probability formula. The congruence index is at most
+\(M^{2fr^2}\) by reduction on the row, so
+Proposition~\ref{bergvol:compactmass} gives the required bound.
+\end{proof}
+In particular both analytic tests in
+Proposition~\ref{bergvol:global} are available on the selected
+principal packet for the bounded analytic cusp space of trivial
+transvection character. Using this for an algebraic component
+uses its identified framed period charts. For the rule space the
+reading is as in Corollary~\ref{crev:twist}; agreement with a
+separately defined toroidal sheaf is a geometric comparison.
+
+\begin{corollary}[Analytic estimates on a selected good cover]\label{crev:good}
+Take a stage in the selected range on the host of
+Proposition~\ref{host:art}, a core with the prescribed host,
+polarized datum and level, and the deep cover \(Y\) with
+\(Y.\mathrm{Good}(e,o)\). Use its identity auxiliary rule
+at \(n=8(fr+1)\), and the parameters and semiabelian tests of
+Theorem~\ref{bfam:oncharts}. At every good embedding the raw
+rules are cusp rules on this \(Y\). The short integral rules in
+that theorem span the untwisted space on the cover and on each
+component, with logarithmic Petersson norms at most
+\(C(frL)^2S+2\log D_M\) for the stated stage size bounds.
+For the component cusp spaces at the frame weights of
+Corollary~\ref{bergvol:size} the normalized evaluation kernel
+is at most \(\beta_*\).
+\end{corollary}
+\begin{proof}
+Here \(Y.\mathrm{Good}(e,o)\) contains the following data. Its
+\code{unf} gives the complex framed period uniformization at each
+good embedding, including the section transformation law and the
+Haar mean-square-one normalization of the theta generator on unit
+frames. In these coordinates the first \(p_0=q\) Hermitian
+directions are positive. Their conjugate, reversed tangent block
+has Lie rank \(q\), and the other tangent block has Lie rank \(p\)
+at the labelled \(\tau\). Thus the pivot \(\lambda_{\tau,p}\)
+in Theorem~\ref{bfam:oncharts} is numbered in the algebraic
+weights, while the positive block used for the majorant ends at
+\(p_0\) in the Hermitian flag.
+
+The \code{modelW} and \code{xiAbs} clauses give the signed host
+Gram matrix and the absolute polarization coefficient at every
+place. The common lattice embedding and alternating pairing in
+\code{adPin} identify the original period lattice, its finite
+adelic translates, the half-level mark and the eigenframe
+coordinates on these same components. In particular stripping the
+fixed host ideal from a translate of the reference period
+\(\mathfrak a L'_*\) gives the translated Hermitian self-dual row:
+finite unitary matrices commute with \(\mathfrak a\), and
+localization detects self-duality. This is \(L'\) in the return
+count and in Lemma~\ref{bfam:minimum}. The \code{lev} clause gives
+auxiliary integer one on the deep variety; the spanning construction
+there uses its identity auxiliary map of Corollary~\ref{bfam:mark}.
+It does not replace the original map from the deep variety to the
+base by an identity.
+
+The \code{dictU} and \code{levelK} clauses identify the rational
+and right-principal-level equivalences with the chart action and
+exhaust the real flag orbits. Indeed the adelic frame map is
+equivariant modulo arithmetic translates under the rational and
+level actions and intertwines the real action; it hits each flag
+modulo its upper triangular frame change. Equality of its frames
+modulo the arithmetic action forces rational and finite-level
+equivalence. The unit frames over each flag form a single orbit
+under its diagonal angle group. Together with the marked-period
+classification in Lemma~\ref{munf:marks}, this is the packet and
+the probability disintegration of Proposition~\ref{crev:mass}.
+The \code{unit} clause gives leading Gram determinants of absolute
+value one at the adelic frames, as used in their metric reading.
+
+Finally \code{chiTriv} gives trivial arithmetic multiplier at the
+dominant natural weights on each good chart. It gives the same
+for every integral flag weight: for fixed arithmetic element its
+multiplier is multiplicative in addition of weights and never
+zero. Take natural weights with \(n=0\) that are one on an
+initial segment at one labelled embedding and zero elsewhere.
+Consecutive differences give all individual weight coordinates,
+with reversed order and a minus sign on the dual block. Their
+integral span is the whole flag weight lattice. In particular
+there is no character loss in the transvection period for the
+frame weights. Apply Propositions~\ref{crev:half} and
+\ref{crev:mass}, then Proposition~\ref{bergvol:global}.
+The actual all-weight space \code{cuspW} is the intersection of
+the regular rules with the good-reading tests of
+Corollary~\ref{crev:twist}; at a natural weight it is the ordinary
+rule space \code{cusp}, and \code{cuspOn} adds only the component
+support condition. Thus Theorem~\ref{bfam:oncharts} applies with
+its integral tests and no additional analytic cusp assumption.
+\end{proof}
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/NormNegCmConstantEqAtAllEmbeddings.lean}{187}{The clauses of the selected deep cover};
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/FamilyUniformisationBasePointOrthogonalBis.lean}{97}{The marked finite translates in the period identification};
+\src{src/Development/AbelianVarietyTheory/Definitions/Foundations/IsProbabilityMeasureMuPart.lean}{425}{The actual all-weight rule space};
+\src{src/Development/AbelianVarietyTheory/Counterexamples/LevelGroupExamples/AdelEqZeroOfOffDom.lean}{77}{Generation of the arithmetic characters by natural weights}.
+
+Constructing such covers at all scales is a separate existence
+statement. For example, the sized-cover construction starts with
+the pinned core, a stage in range, the host splitting bound at least
+five and \(15\) coprime to the base level. It constructs the half-level,
+uses PEL moduli representability, forms the coefficient compositum
+with a ray class field, and builds the marked uniformization; the
+field-size bound uses the ray-class-field estimate. If the comparison
+to a prescribed base frame requires \(Y.\mathrm{Match}\), that
+condition concerns the same base embedding and base frames and is
+not part of \(\mathrm{Good}\). The corollary asserts the estimates
+on the selected \(Y\); it does not construct the core, the compatible
+family or its toroidal compactifications.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsGoodCoverOverSizedField.lean}{111}{Inputs and construction of the sized good level};
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/NormNegCmConstantEqAtAllEmbeddings.lean}{207}{The common marked frames included in goodness}.

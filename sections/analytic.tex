@@ -1,0 +1,100 @@
+\section{Detection of zeros by one-sided estimates}\label{an:section}
+
+The arithmetic construction controls the positive excursions of a real function on intervals whose starting points may grow arbitrarily far apart. The proof below derives a zero-free half-plane from precisely this information. The proof of Lemma~\ref{an:tails} with an arbitrary exponential growth rate is due to the present reconstruction. The pinned development proves the specialization with growth rate \(2\) by explicit exponential tilts. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauTails.lean}{80}{formal concentration estimate}.
+
+\subsection{The polar part}
+For a finite family \(\mathcal F=((a_i,\chi_i))_{i\in J}\) as in \eqref{eq:centred}, put \(g(u)=G_{\mathcal F}(e^u)\) for \(u\ge0\). The functions are locally continuous, since each summand in the ramp turns on at zero height at its breakpoint. For \(y\ge1\),
+\[
+ |P_\chi(y)|\le y\sum_{n\le y}\frac{\log n}{n}
+ \ll y(1+\log^2 y).
+\]
+The bound follows by partial summation, or by grouping the integers in dyadic intervals. The finitely many compensation coefficients are fixed. In particular \(|g(u)|\le C_0e^{2u}\), so \(\Phi(s)=\int_0^\infty g(u)e^{-su}\,du\) converges for \(\Re s>2\).
+
+\begin{proposition}[Polar divisor of the family transform]\label{an:poles}
+The Laplace transform \(\Phi\) of \(g\) extends meromorphically to \(\Re s>0\). Its poles in this half-plane are the zeros of the family or of its conjugate characters, counted as a set. They are simple as poles. If \(m_\chi(\rho)\) denotes the zero multiplicity, then
+\begin{equation}\label{eq:residue}
+ \operatorname*{res}_{s=\rho}\Phi(s)
+ =\frac{\sum_{i\in J}a_i(m_{\chi_i}(\rho)+m_{\overline{\chi_i}}(\rho))/2}
+             {\rho(1-\rho)} .
+\end{equation}
+Every such residue is nonzero, and at a real pole it is strictly positive.
+\end{proposition}
+\begin{proof}
+Set \(b=0\) and \(f(s)=L(s,\chi)\) for a nonprincipal character. For the conductor-one principal character set \(b=1\) and take the removable continuation of \(f(s)=(s-1)\zeta(s)\). Write \(p=f'/f\). Nonvanishing of \(L(1,\chi)\) in the first case and \(f(1)=1\) in the second make \(p(1)\) meaningful. The constant term of \(\zeta\) at one gives \(p(1)=\gamma\) in the second case. For \(\Re s>1\) the Mellin transform of one ramp is
+\[
+ \int_n^\infty (y/n-1)y^{-s-1}dy
+ =n^{-s}\big((s-1)^{-1}-s^{-1}\big).
+\]
+Absolute convergence of \(\sum_n\Lambda(n)n^{-\Re s}\) justifies termwise integration. The logarithmic derivative of the Euler product therefore gives the transform of \(P_\chi\) as \(- (L'/L)(s)/(s(s-1))\). In the principal case the two compensations contribute \(-1/(s-1)^2+(1+\gamma)/(s-1)\). In the other case the compensation contributes \(p(1)/(s-1)\). Combining the fractions yields in both cases
+\begin{equation}\label{eq:mellin}
+ \Phi_\chi(s):=\int_1^\infty G_\chi(y)y^{-s-1}dy
+ =-\frac{p(s)-s p(1)+b(1-s)}{s(s-1)} .
+\end{equation}
+The numerator vanishes at one and is holomorphic there. At a zero \(\rho\) of order \(m\), factoring \(f(s)=(s-\rho)^m h(s)\), \(h(\rho)\ne0\), gives \(p(s)=m/(s-\rho)+h'(s)/h(s)\). This proves the claimed principal part for a single term. The standard nonvanishing theorem on \(\Re s\ge1\) confines these zeros to \(0<\Re\rho<1\). These classical inputs are the ones used by the formal character-family lemma. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/CharFamilyLFunctionNeZeroOfOneLeRe.lean}{9}{classical boundary nonvanishing}.
+
+On the real \(y\)-axis, conjugating \(G_\chi(y)\) replaces \(\chi\) by \(\bar\chi\), including in the compensating term. Thus \(y=e^u\) gives \(\Phi=\sum_i a_i(\Phi_{\chi_i}+\Phi_{\bar\chi_i})/2\) on the half-plane of absolute convergence and hence on continuation. At a zero in this union at least one of the multiplicities in \eqref{eq:residue} is positive. Since all the weights are positive, the common denominator prevents cancellation even for a nonreal \(\rho\). For real \(\rho\), the denominator is positive as well. Finiteness of the family and isolatedness of zeros give only finitely many poles on each compact subset of the open half-plane. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean}{137}{single-character continuation} and \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean}{346}{weighted zero multiplicities}.
+\end{proof}
+
+\subsection{Concentration at a common derivative order}
+We use the following local integral hypothesis on a measurable real function \(g\). For fixed \(\delta>0\), \(0<\theta<1\), every \(\eta>0\) admits arbitrarily large \(U\) such that, for \(I_U=[U,(1+\delta)U]\),
+\begin{equation}\label{eq:mass}
+ \int_{I_U}g_+(u)e^{-\theta u}\,du\le e^{\eta U},\qquad g_+=\max(g,0).
+\end{equation}
+A nonnegative majorant with this integral bound suffices. In the formal definition it is explicitly included as a witness. If \(G_{\mathcal F}(y)\le C y^\theta\) on arbitrarily late \([Y,Y^{1+\delta}]\), then \(U=\log Y\) gives a bound \(\max(0,C)\delta U\) for the integral, so \eqref{eq:mass} holds for every \(\eta>0\). \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauZeroFreeCriterion.lean}{26}{integrated logarithmic window}.
+
+\begin{lemma}[Exponential concentration]\label{an:tails}
+Given \(a\ge0\) and \(\delta>0\), one can fix \(\sigma>\max(a,2)\) so that for every sufficiently large \(U\) there is an integer \(k\ge U\) satisfying
+\[
+ \int_{[0,\infty)\setminus I_U}\frac{u^k e^{-(\sigma-a)u}}{k!}\,du
+ \le C_\delta\,\sigma^{-k}.
+\]
+The constant may depend on the chosen \(a,\delta,\sigma\).
+\end{lemma}
+\begin{proof}
+Write \(b=1+\delta/2\) and \(I(v)=v-1-\log v\) for \(v>0\). The two numbers \(I(1/b)\) and \(I((1+\delta)/b)\) are positive. Take \(c\) equal to half their minimum. Choose \(\sigma>\max(2,a)\) so large that, for \(\lambda=\sigma-a\), \(b\lambda\ge1\) and \(\log(\sigma/\lambda)<c\). Put \(k=\lceil b\lambda U\rceil\) and \(n=k+1\).
+
+Under the change \(t=\lambda u\), the integral in the lemma is \(\lambda^{-n}\) times the probability that a variable of density \(t^{n-1}e^{-t}/(n-1)!\) lies outside \([\lambda U,\lambda(1+\delta)U]\). Its exponential moment at \(h<1\) is \((1-h)^{-n}\), by the gamma integral. For \(v<1\) use \(h=1-1/v<0\) to bound the lower tail at \(nv\), and for \(v>1\) use the same formula with \(h>0\) to bound the upper tail. In either case Markov's inequality gives \(e^{-hnv}(1-h)^{-n}=e^{-nI(v)}\). Here the respective ratios \(\lambda U/n\) and \(\lambda(1+\delta)U/n\) converge to \(1/b\) and \((1+\delta)/b\). They eventually lie on the appropriate sides of one and have rate at least \(c\). The integral is at most \(2\lambda^{-n}e^{-nc}\le(2/\lambda)\sigma^{-k}\). The ceiling gives \(k\ge U\).
+\end{proof}
+
+\begin{lemma}[A signed coefficient inequality]\label{an:signed}
+Suppose \(|g(u)|\le C_0 e^{a u}\) and \eqref{eq:mass} holds. Put \(A_k(s)=(-1)^k\Phi^{(k)}(s)/k!\) in the half-plane of convergence. With \(\sigma\) fixed as in Lemma~\ref{an:tails}, for every \(\eta>0\) there are arbitrarily large \(U\) and integers \(k\ge U\) for which, simultaneously for every \(\tau\in\mathbb R\),
+\begin{equation}\label{eq:signed}
+ |A_k(\sigma+i\tau)|+\Re A_k(\sigma)
+ \le C_1 e^{\eta U}(\sigma-\theta)^{-k}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Differentiation under the integral is justified locally in \(\Re s>a\) by an integrable exponential times \(u^k\). Write \(w=u^ke^{-\sigma u}/k!\). The left side of \eqref{eq:signed} is bounded by \(\int_0^\infty(|g|+g)w=2\int_0^\infty g_+w\), uniformly in \(\tau\). On \(I_U\), the exponential series gives \(u^ke^{-(\sigma-\theta)u}/k!\le(\sigma-\theta)^{-k}\). On the complement use the growth bound and Lemma~\ref{an:tails} at its chosen order \(k\). Now \(\sigma^{-k}\le(\sigma-\theta)^{-k}\) and \(U\) can be taken positive. This proves \eqref{eq:signed} with a constant independent of the window, order, height and \(\eta\). \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean}{40}{uniform derivative inequality}.
+\end{proof}
+
+\subsection{Isolation and contradiction}
+\begin{lemma}[A pole detected on a vertical line]\label{an:isolate}
+Let \(Z\subset\{0<\Re s<\sigma\}\) be locally finite in \(\Re s>0\), let \(0<\theta<\sigma\) and suppose some point of \(Z\) lies to the right of \(\theta\). Put \(E=\sigma-\theta\). At least one of the following holds.
+\begin{enumerate}
+\item Some \(z=\sigma+i\tau\), \(\rho\in Z\) and \(0<r\le E\) satisfy \(d=|z-\rho|<r\), \(B(z,r)\cap Z=\{\rho\}\), and \(B(\sigma,r)\cap Z=\varnothing\).
+\item There is a real \(\beta\in Z\) and \(r\le E\) such that \(d=\sigma-\beta<r\) and \(B(\sigma,r)\cap Z=\{\beta\}\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Intersect \(Z\) with the compact \(\overline B(\sigma,E)\). Let \(D\) be the smallest distance from \(\sigma\) in this finite intersection, or \(E\) if it is empty. The open ball of radius \(D\) is free of poles. Suppose a point \(w\in Z\) has \(\sigma-\Re w<D\). At \(z_0=\sigma+i\Im w\), its distance is \(\sigma-\Re w\). Choose \(e>0\) so small that \(|z_0-w|+e<D\) and \(D+e<\sigma\). For heights within \(e\) of \(\Im w\), only the finitely many points in \(\overline B(z_0,D+e)\) can have distance \(<D\) from the moving centre. Two distinct such points can be equidistant at at most one height. Indeed, subtracting squared distances gives an affine equation in the height. When the imaginary parts agree, the horizontal distances are unequal since both points are left of the vertical line. Choose a height avoiding all these finitely many ties. Its nearest point has distance \(d<D\). A radius strictly between \(d\) and the minimum of \(D\) and the remaining distances gives the first conclusion, with \(D\) alone used when there is no second point.
+
+Otherwise every horizontal distance is at least \(D\). The assumed point right of \(\theta\) forces \(D<E\), so the minimum is attained. Equality of Euclidean and horizontal distances forces any minimizer to be \(\beta=\sigma-D\) on the real axis. Finiteness gives a radius \(r\) between \(D\) and the next distance, capped by \(E\). This gives the second conclusion. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy.lean}{28}{real-centre dichotomy} and \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauNearest.lean}{36}{perturbation of height}.
+\end{proof}
+
+\begin{theorem}[One-sided windows exclude zeros]\label{an:zero}
+For a finite positive admissible family as in Proposition~\ref{an:poles}, \eqref{eq:mass} implies that all its character \(L\)-functions are zero-free in \(\Re s>\theta\), away from the pole of \(\zeta\).
+\end{theorem}
+\begin{proof}
+Assume the contrary. Proposition~\ref{an:poles} gives a pole right of \(\theta\), and all poles satisfy \(0<\Re s<1\). Apply Lemmas~\ref{an:signed} and \ref{an:isolate} using \(a=2\) and the same \(\sigma\). In either case choose \(d<r'<r\). Subtracting the unique principal part on \(B(z,r)\), Cauchy's estimate on the circle of radius \(r'\) gives, with \(c_\rho=\operatorname{res}_{\rho}\Phi\),
+\[
+ \left|A_k(z)-\frac{c_\rho}{(z-\rho)^{k+1}}\right|
+ \le M(r')^{-k}.
+\]
+In the first case \(\Phi\) is also holomorphic in \(B(\sigma,r)\), giving \(|A_k(\sigma)|\le M'(r')^{-k}\). Hence the left side of \eqref{eq:signed} is at least \(|c_\rho|d^{-k-1}-(M+M')(r')^{-k}\). In the second case \(z=\sigma\), \(\rho=\beta\), and both the residue and \(\sigma-\beta\) are positive real numbers. Then the real part alone gives the lower bound \(c_\beta d^{-k-1}-M(r')^{-k}\). In particular no restriction on the arguments of the complex residues or on the parity of the available orders is required.
+
+Writing \(q=d/r'\in(0,1)\) and using \(r'\le \sigma-\theta\), multiplication of the two bounds by \(d^k\) gives
+\[
+ 0<C_2\le C_3q^k+C_1e^{\eta U}q^k.
+\]
+Here \(C_2=|c_\rho|/d\), also in the real case. Take \(\eta=\tfrac12\log(1/q)\), then choose windows with \(U\to\infty\). Since \(k\ge U\), the right side tends to zero. This contradiction proves the assertion. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean}{83}{formal pole exclusion} and \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ZeroFreeOfRpowWindow.lean}{11}{character-family conclusion}.
+\end{proof}

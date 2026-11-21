@@ -1,0 +1,399 @@
+\section{The common field, its integral lattice and its translates}\label{host:sec}
+
+Fix a primitive Dirichlet character \(\psi\) of conductor \(M\), of order
+\(o\). The arithmetic field itself and the finite sets used in its
+translates admit explicit constructions. Both matter in applying the
+prime bounds: changing the field after the pair is chosen could change
+the list of twists that was tested.
+
+\begin{proposition}[Cyclotomic realization]\label{host:art}
+Put \(N_e=\operatorname{lcm}(2^{e+2},M)\), \(U_e=(\mathbf Z/N_e)^\times\),
+\(C_e=(\mathbf Z/2^{e+2})^\times/\{\pm1\}\), \(B=\operatorname{im}\psi\).
+Let \(\eta_e:U_e\to C_e\times B\) send \(u\) to \(([u],\psi(u))\),
+and set \(H_e=\operatorname{im}\eta_e,\ A_0=\ker(H_e\to B)\).
+Then \(A_0\) is cyclic, \([H_e:A_0]=o\), and \(|H_e|=c\,2^e\) for all
+sufficiently large \(e\), where \(1\le c\le o\) is independent of \(e\).
+
+Take \(e\ge2\) and a pair \(q,d\) from Theorem~\ref{pr:pair}, with
+\(Y^{\varepsilon/5}\ge4M\). There is an abelian CM field \(E\) with
+Galois group \(\{\pm1\}^2\times H_e\). The characters trivial on
+\(\{(1,1,h):h\in A_0\}\), pulled back to integers prime to \(N_e qd\),
+are precisely
+\[
+      \psi^a J_q^{\,i}J_d^{\,j},
+ \qquad 0\le a<o,\quad i,j\in\{0,1\},\qquad J_p(u)=(u/p).
+\]
+The retained characters are the \(o\) primitive inducers of the
+\(\psi^a\). Each remaining one is among the twists tested on the same pair.
+\end{proposition}
+\begin{proof}
+Reduction of unit groups modulo a divisor is onto, by the Chinese
+remainder theorem prime by prime. It follows that both projections of
+\(H_e\) are onto. The kernel of the second injects into \(C_e\), cyclic
+of order \(2^e\): for \(e\ge1\) the class of \(5\) generates, since
+\(v_2(5^{2^j}-1)=j+2\) by successive squaring and all its powers are
+\(1\bmod4\). For \(e=0\) the quotient is trivial. The kernel of the first
+projection identifies with \(B_e=\psi(\{u\in U_e:u\equiv\pm1\bmod
+2^{e+2}\})\). Reduction from level \(e+1\) shows \(B_{e+1}\subseteq B_e\).
+This descending chain in the fixed finite group \(B\) stabilizes. Take
+\(c\) equal to the eventual order and use the exact sequence with quotient
+\(C_e\).
+
+Define \(w:\{\pm1\}\to H_e\) by \(w(h)=\eta_e(h)\).
+By the Chinese remainder theorem the homomorphism
+\[
+    u\longmapsto
+    \bigl(J_q(u),J_d(u),\,\eta_e(u)w(J_q(u))\bigr)
+       \quad\text{on }(\mathbf Z/N_eqd)^\times
+\]
+is onto. Indeed the signs can be prescribed at \(q,d\), and one then
+chooses the \(\eta_e\)-image to attain the specified third coordinate.
+Take \(E\) to be the subfield of \(\mathbf Q(\zeta_{N_e qd})\) fixed
+by the kernel. Its kernel condition is exactly
+\[
+ u\equiv\pm1\bmod 2^{e+2},\qquad \psi(u)=J_q(u)=J_d(u)=1.
+\]
+Thus \(E\) is the compositum of the maximal real \(2^{e+2}\)-cyclotomic
+field, the field cut out by \(\psi\), and the quadratic fields of
+discriminants \(-q,-d\). In fact \(q,d\equiv3\bmod4\).
+Complex conjugation has coordinates \((-1,-1,1)\), since \(w(-1)^2=1\).
+Its fixed field is totally real by abelianness, and \(E\) contains the
+imaginary quadratic field \(K=\mathbf Q(\sqrt{-d})\).
+The integer \(N_e\) is also the least divisor of \(N_e\) through which
+\(\psi\) factors and which is divisible by \(2^{e+2}\): a modulus for
+the primitive \(\psi\) must be divisible by \(M\).
+
+A character of \(H_e\) killing \(A_0\) is a character of \(B\). Since
+\(B\subset\mathbf C^\times\) is cyclic of order \(o\), it raises values
+of \(\psi\) to a power. Its value on the \(w(J_q)\) term is a sign
+character of \(J_q\), absorbed into \(i\). Conversely choose the character
+on the first sign to undo this additional sign. This proves equality of
+the two character lists. They consist of \(4o\) distinct characters:
+one can vary \(J_q\) and \(J_d\) independently while \(u\bmod N_e\) is
+fixed, and conversely can set both signs to one. Passing to primitive
+inducers at a fixed common modulus preserves distinctness. In particular
+there are exactly three nonempty binary choices tested per power of \(\psi\).
+\end{proof}
+
+\begin{lemma}[The half-different]\label{host:different}
+There is an integral ideal \(\mathfrak b\) of \(E\), invariant under
+\(\operatorname{Gal}(E/K)\), such that
+\(\mathfrak D_{E/K}=\mathfrak b\,\overline{\mathfrak b}\) and
+\(\mathfrak b+\overline{\mathfrak b}=\mathcal O_E\).
+The \(\mathcal O_K\)-lattice \(I=\mathfrak b^{-1}\) is self-dual for
+\((u,v)\mapsto\operatorname{Tr}_{E/K}(u\bar v)\).
+\end{lemma}
+\begin{proof}
+All finite ramification in \(E/K\) lies above primes dividing \(N_eq\).
+Indeed the other three factors in the compositum with \(K\) are
+unramified outside \(N_eq\), and unramified local extensions stay
+unramified after base change. Each such rational prime splits in \(K\).
+For odd primes dividing \(M\), and for \(q\), this follows from
+\(-d\equiv1\bmod p\). For \(p=2\) use the odd discriminant
+\(-d\equiv1\bmod8\). The different is invariant under every
+\(\mathbf Q\)-automorphism of \(E\), by the defining trace dual.
+For each rational prime in its support choose one of the two places of
+\(K\) and place in \(\mathfrak b\) every factor of the different above
+that place with its full multiplicity. Conjugation supplies exactly
+the disjoint remaining factors; automorphisms fixing \(K\) preserve
+the choice. For any fractional ideal \(J\), the integrality of
+\(\operatorname{Tr}_{E/K}(u\bar J)\) is equivalent to
+\(u\bar J\subseteq\mathfrak D_{E/K}^{-1}\), since \(\bar J\) is closed
+under multiplication by \(\mathcal O_E\). Hence
+\(I^\#=(\bar I)^{-1}\mathfrak D_{E/K}^{-1}=\mathfrak b^{-1}\).
+\end{proof}
+
+\begin{lemma}[The rank fits the cohomology bound]\label{host:rank}
+Suppose \(x^{2+8\varepsilon}\le n=|H_e|\le2x^{2+8\varepsilon}\) and
+\(0<\varepsilon<1/52\). Put \(f=2n,\ L=x^\varepsilon\) and choose \(m,k\)
+to be the least even integers at least \(x^{1/2-\varepsilon/16}\) and
+\(x^{9/2+10\varepsilon}\), respectively. Define
+\[
+ \begin{split}
+ r&=k+m-1,\qquad P=\lceil x^{377}\rceil,\\
+ D&=8\left\lceil \frac{10r}{8}
+       \left(f+\frac{f^2(k-1)^3L^2}{m}\right)\right\rceil,\qquad
+ t=8fr+4+PD-r .
+ \end{split}
+\]
+Then \(t\) is a positive odd integer and \(t\le x^{400}\) for all
+sufficiently large \(x\), uniformly in \(0<\varepsilon<1/52\).
+\end{lemma}
+\begin{proof}
+Here \(r\) is odd, \(f\ge1\), and \(D\) is divisible by eight, proving
+positivity and parity. With \(u=x^{1/100}\ge2\), the stated ranges give
+\[
+ f\le4u^{216},\quad k\le2u^{470},\quad r\le4u^{470},\quad
+ m\ge u^{49},\quad L^2\le u^4.
+\]
+The rounding bound \(2\lceil v/2\rceil\le2v\) holds for \(v\ge2\).
+The exponent of \(f^2(k-1)^3L^2/m\) in \(u\) is at most
+\(432+1410+4-49=1797\), with coefficient \(128\). Consequently
+\(D\le5288u^{2267}\), while \(P\le2u^{37700}\). Thus
+\[
+ t\le 10708u^{39967}\le u^{40000}
+\]
+because \(10708\le2^{33}\le u^{33}\). This strict margin is needed
+when the cohomology window is read at the rescaled value in
+Section~\ref{sup:section}.
+\end{proof}
+
+\begin{proposition}[A dense set with bounded orbit intersections]\label{host:behrend}
+For \(n\ge1,\ L\ge2\) integers there is \(S\subset[0,n/(4L))\cap\mathbf Z\)
+with
+\[
+ |S|\ge (n/L)\exp\{-C\sqrt{\log n\,\log L}\}
+\]
+for an absolute \(C\). For distinct \(s_1,s_2,s_3\in S\) and distinct
+nonzero \(i,j\in[-L,L]\cap\mathbf Z\) one has
+\(j(s_2-s_1)\ne i(s_3-s_1)\). In \(\mathbf Z/n\), every translate of
+\(S\) meets \(L\) consecutive terms of an orbit of step \(h\) in at most
+two terms if \(\operatorname{ord}(h)>4L\). For
+\(\operatorname{ord}(h)\le4L\) it meets the whole orbit in at most one
+distinct point.
+\end{proposition}
+\begin{proof}
+Set \(v=\log(4L)\). If \(\log n\le64v\), the singleton \(\{0\}\)
+suffices on increasing the absolute constant, since \(v\le3\log L\).
+Otherwise put \(S_0=\log(n/(4L))\),
+\(d_0=\lfloor\sqrt{S_0/v}\rfloor,\ b=\lfloor e^{S_0/d_0}/(4L)\rfloor\)
+and \(B=4Lb\). These choices give \(b\ge2,\ b\ge e^{S_0/d_0}/(8L)\).
+Encode \(\{0,\ldots,b-1\}^{d_0}\) as base-\(B\) integers. All encoded
+values are \(<B^{d_0}\le n/(4L)\). One level of the squared Euclidean norm
+has at least \(b^{d_0}/(2d_0 b^2)\) vectors. Its log cardinality is at least
+\[
+ S_0-d_0\log(8L)-2S_0/d_0-\log(2d_0)
+ \ \ge\ S_0-C_1\sqrt{S_0 v}.
+\]
+Here \(d_0\) lies between \(\tfrac12\sqrt{S_0/v}\) and \(\sqrt{S_0/v}\).
+Absorbing \(\log4\) and using \(v\le3\log L\) gives the claimed size.
+If the asserted integer relation held, each digit of the signed
+difference would have absolute value at most \(2L(b-1)<B\).
+Reducing successively modulo \(B\) forces every such digit to be zero.
+This would give three distinct collinear vectors on the same Euclidean
+sphere, which a line meets in at most two points.
+
+For three hits at times \(a<b'<c\) in a length-\(L\) segment with step
+of order \(>4L\), the representatives \(s_1,s_2,s_3\) are distinct.
+The translates cancel, so
+\((c-a)(s_2-s_1)-(b'-a)(s_3-s_1)\equiv0\bmod n\).
+Its absolute value is \(<n\), and its vanishing over \(\mathbf Z\)
+contradicts the preceding property. For an orbit of order \(m'\le4L\),
+any two hits have \(n\mid m'(s_2-s_1)\) with absolute value \(<n\).
+They therefore coincide.
+\end{proof}
+
+In the application \(n_0=|A_0|=n/o\), \(o\) is fixed and
+\(L_w=10\lceil405\log x\rceil+2\lceil30/\varepsilon\rceil+22\).
+Use \(S\) in the cyclic group \(A_0\) with \(n_0,L_w\) in place of
+\(n,L\). For fixed \(\varepsilon\) its lower bound divided by \(n\)
+is at least \(x^{-\varepsilon}\) eventually: the logarithm of its
+reciprocal is bounded by
+\(\log(oL_w)+C\sqrt{\log n_0\log L_w}=o(\log x)\).
+Thus the set giving the lower density also supplies the orbit restriction
+at every translate.
+
+\begin{lemma}[One choice of the top set]\label{host:shares}
+In a finite group \(H\) of order \(n\asymp x^{2+8\varepsilon}\) with
+subgroup \(A_0\) of fixed index \(o\), put \(\delta=x^{-\varepsilon/8}\).
+Include points independently with probability \(\delta\) on the identity
+coset and \(3\delta/4\) on the others. Let \(D(T)\ge0\) be any weighted
+cost with \(\mathbf E D(T)\le B_0\). For sufficiently large \(x\) there is
+one \(T\) with \(D(T)\le4 B_0,\ |T|\ge n\delta/2\), and
+\[
+  \big||T\cap C|-\lambda_C|T|\big|\le |T|x^{-1+\varepsilon}
+  \quad\text{at every coset},\qquad
+  \lambda_C=\frac{3+\mathbf1_{C=A_0}}{3o+1}.
+\]
+\end{lemma}
+\begin{proof}
+Let \(\mu=\mathbf E|T|\ge3n\delta/4\). Each coset count has mean
+\(\lambda_C\mu\) and variance at most \(\mu\), by independence. For
+\(a=\mu x^{-1+\varepsilon}/(4(o+1))\), Chebyshev and a union bound
+give failure probability at most \(o\mu/a^2=O_o(x^{2-2\varepsilon}/\mu)
+=o(1)\). On success, \(\big||T|-\mu\big|\le oa\), hence
+\(|T|\ge n\delta/2\) and \((o+1)a\le |T|x^{-1+\varepsilon}\).
+Apply the triangle inequality to each coset. Markov's inequality gives
+\(\Pr(D>4B_0)\le1/4\) for \(B_0>0\); for \(B_0=0\) the cost is zero
+almost surely. The two good events intersect.
+\end{proof}
+
+For example, if the cost counts chosen points \(t\) for which at least
+\(k+1\) points of some specified window \(W\) of size at most \(L\) are
+chosen, its expectation is bounded by a union over the windows and their
+subsets. For \(t\in W\), the event requires \(t\) and at least \(k\)
+other points, costing at most \(\delta(L\delta)^k\); for \(t\notin W\),
+the bound is \(\delta(L\delta)^{k+1}\). This supplies a valid input
+\(B_0\) whenever the windows and their weights are specified.
+Lemma~\ref{host:shares} does not give a simultaneous automorphic realization
+of the resulting translates. That additional assertion identifies the
+centre \(a_t\) and the weights \(w_{u,j,\rho}\) for all the local periods
+with the \emph{same} values in the Fourier discrepancy. The quantitative
+form still needed is given in Section~\ref{scope:account}.
+
+\subsection{Bounds for all characters at the thin coordinates}
+
+\begin{proposition}[Uniform thin-coordinate estimate]\label{host:thin}
+Fix \(M,\varepsilon\) as in Theorem~\ref{pr:pair}. Suppose
+\(Y\le x\), \(x^{2+8\varepsilon}\le |H_e|\le2x^{2+8\varepsilon}\),
+and \(q,d\) are the pair selected at \(Y\). For all sufficiently large
+\(x\) (with \(Y\) above the pair threshold), the primitive Dirichlet inducer
+\(\chi\) of each character of \(\operatorname{Gal}(E/\mathbf Q)\), for the field \(E\) of Proposition~\ref{host:art}, satisfies
+\[
+        |G_\chi(y)|\le y e^{-x^{\varepsilon/8}}
+        \qquad \bigl(y\ge \exp(x^{\varepsilon/3})/3\bigr).
+\]
+\end{proposition}
+\begin{proof}
+Write \(N\) for the primitive conductor. From \(N\mid N_eqd\),
+\(2^e\le|H_e|\), and the ranges of the pair, we obtain
+\(H=\log(2N)\ll_{M,\varepsilon}x^{\varepsilon/5}(\log x)^2\).
+There is a fixed \(\nu>0\) such that any exceptional real zero of \(\chi\),
+if present, is at most \(1-\nu\). A primitive real character
+on the cyclotomic modulus \(N_eqd\) factors as a product of local
+quadratic or trivial characters. At an odd prime the principal units
+are a group of odd order and are killed by a quadratic character.
+At 2 every odd square is \(1\bmod8\), and every unit \(1\bmod8\) is
+a square modulo a power of 2 (lift an odd square one bit at a time).
+The part away from \(q,d\) therefore has conductor dividing \(8M\).
+If a \(q\)- or \(d\)-factor is present, Theorem~\ref{pr:pair} supplies
+the gap \(1/400\) at real height zero. The remaining real primitive
+characters form a fixed finite set. Classical nonvanishing at one and
+analyticity give them a common positive gap near one. At conductor one
+use analyticity and nonvanishing of \((s-1)\zeta(s)\) at one.
+
+Let \(D_\chi(t)=\sum_{n\le t}\Lambda(n)\chi(n)
+-\mathbf1_{\chi=1}t\).
+For \(t\ge(2N)^{12}\) sufficiently large, Corollary~1.4 of \cite{tz}
+applied at modulus \(N\ge2\) gives
+\[
+ |D_\chi(t)|/t\ll
+ e^{-c\log t/H}+e^{-c\sqrt{\log t}}+t^{-\nu}+t^{-1/4}.
+\]
+Indeed, multiply the formula for each unit class by \(\chi\) and sum.
+Its primary terms cancel for a nonprincipal character. Its exceptional
+term cancels unless \(\chi\) is the corresponding real character, in
+which case the real gap bounds it. The absolute errors add to
+\(O(t\Delta)\) because \(H_b(t)\le 3t/\varphi(N)\) in the notation
+of Lemma~\ref{pr:signs}. Prime powers of exponent at least two contribute
+\(O(\sqrt t\log^2t)\), by summing the trivial bound for their prime bases.
+The second exponential weakens the corresponding bound in Corollary~1.4.
+For \(N=1\), use the same formula for the odd class modulo two, add the
+prime \(2\) and then the higher powers.
+
+Summation of the ramp gives
+\(P_\chi(y)=y\int_1^y(\sum_{n\le t}\Lambda(n)\chi(n))t^{-2}\,dt\).
+In fact, for both kinds of character,
+\[
+            G_\chi(y)=-y\int_y^\infty D_\chi(t)t^{-2}\,dt .
+\]
+To identify the constant, use
+\(-L'/L(s,\chi)=s\int_1^\infty
+(\sum_{n\le t}\Lambda(n)\chi(n))t^{-1-s}\,dt\) for real \(s>1\).
+After subtraction, the displayed error is integrable against \(dt/t\),
+so the limit \(s\downarrow1\) gives the nonprincipal constant. In the
+principal case subtract \(s/(s-1)\) before taking the limit; the
+result is \(-1-\gamma\), as required by \eqref{eq:centred}.
+
+Put \(A=\log y\ge x^{\varepsilon/3}-\log3\). Integrating the first two
+errors from \(A\) to infinity in the variable \(\log t\) gives
+\(O(H e^{-c A/H}+(1+\sqrt A)e^{-c\sqrt A})\);
+the power errors give \(O_\nu(e^{-\nu A}+e^{-A/4})\).
+All are \(o(e^{-x^{\varepsilon/8}})\) uniformly up to \(y=\infty\).
+Indeed \(A/H\gg x^{2\varepsilon/15}/(\log x)^2\) and
+\(\sqrt A\gg x^{\varepsilon/6}\), with both exponents strictly larger
+than \(\varepsilon/8\). In particular \(y\) is eventually above
+\((2N)^{12}\).
+\end{proof}
+
+\begin{lemma}[Variation of the ramp]\label{host:variation}
+For \(a,w,b>0\), extending the same ramp formula to \(0<y<1\) where
+necessary, one has
+\[
+ |wG_\chi(a/w)-bG_\chi(a/b)|\le 3a\,|w-b|/\min(w,b).
+\]
+For \(y,y'\ge1\) the change in \(G_1\) is \(O(|y-y'|)\); that in
+\(G_\chi\) for \(\chi\ne1\) is at most
+\(|y-y'|(\log\max(y,y')+C+|L'(1,\chi)/L(1,\chi)|)\).
+\end{lemma}
+\begin{proof}
+Write \(\Psi(v)=\sum_{n\le v}\Lambda(n)\). One has
+\(\Psi(v)\le 4(\log2)v<3v\) also for small \(v>0\).
+Indeed each prime power between \(2^{j-1}\) (excluded) and \(2^j\)
+contributes its prime to \(\binom{2^j}{2^{j-1}}\) by the factorial
+valuation formula. Bound the binomial coefficient by \(2^{2^j}\), sum
+over \(j\), and round \(v\ge1\) up to a power of two. Below one
+\(\Psi(v)=0\). Off the finitely many breakpoints on a compact interval
+of \(u>0\), the derivative of
+\(uP_\chi(a/u)=\sum_n\Lambda(n)\chi(n)(a/n-u)_+\)
+has absolute value at most \(\Psi(a/u)\).
+The nonprincipal compensation is constant after multiplication by \(u\).
+In the principal case the total derivative is \(a/u-\Psi(a/u)\),
+also of magnitude at most \(3a/u\). Integrate between \(w\) and \(b\).
+For variation in \(y\), differentiate the ramp itself and use
+\(\sum_{n\le y}\Lambda(n)/n=\log y+O(1)\), proved in
+Theorem~\ref{pr:pair}. For the principal term subtraction of \(\log y\)
+leaves a bounded derivative. The functions are continuous at breakpoints,
+so integration gives the asserted bounds there as well.
+\end{proof}
+
+\begin{proposition}[The analytic CM scalar on the selected hosts]\label{host:period}
+Fix a primitive character \(\psi\)
+and a positive exponent \(\varepsilon\) as in
+Theorem~\ref{pr:pair}. At a selected scale \(x\) let \(E\) be the
+field in Proposition~\ref{host:art}, let \(d\) be the second
+auxiliary prime and put \(L=x^\varepsilon\).
+In the normalization of the determinant comparison in Section~9 the
+real scalar is
+\[
+ A_{J_d}=\gamma+\log(2\pi)-\log\operatorname{rd}(E)
+                         -\frac{L'(1,J_d)}{L(1,J_d)} .
+\]
+Uniformly in all allowed primes and cyclotomic levels at \(x\),
+\[
+ |A_{J_d}|+\log d+\log\operatorname{rd}(E)
+          \ll_\psi (1+x^{\varepsilon/5})\log^2(2x)=o(L).
+\]
+Here and in the little-oh estimate the threshold may depend on
+\(\psi,\varepsilon\). In particular the analytic size condition
+\(|A_{J_d}|\le3L\) holds throughout every sufficiently late selected
+window.
+\end{proposition}
+\begin{proof}
+Write \(M\) for the primitive conductor of \(\psi\).
+At the page used in the construction \(2^e\le2x^{2+8\varepsilon}\).
+The field \(E\) is contained in the cyclotomic field of conductor
+dividing \(C=\operatorname{lcm}(2^{e+2},M)qd\).
+The discriminant tower gives \(\operatorname{rd}(E)\le
+\operatorname{rd}(\mathbf Q(\zeta_C))\le C\). For the second
+inequality, factor \(X^C-1=\Phi_C(X)Q(X)\), differentiate at
+\(\zeta_C\), and take norms. Then
+\(|N\Phi_C'(\zeta_C)|\le C^{\varphi(C)}\), since \(Q(\zeta_C)\)
+is a nonzero algebraic integer and \(\mathbf Z[\zeta_C]\) is the
+integer ring. On the initial interval starting at \(Y_*\le x\),
+the prime bounds are
+\(\log q\le Y_*^{\varepsilon/5}\) and
+\(\log d\le Y_*^{\varepsilon/5}(\log Y_*)^2\).
+They give the stated bound for \(\log C\), including the dyadic
+level and the fixed conductor. The quadratic character of the
+imaginary field of discriminant \(-d\) is \(J_d\), since \(d\)
+is prime and \(d\equiv7\bmod16\). The formula for \(A_{J_d}\)
+is the definition of the analytic scalar, and all its terms are
+real. Apply Theorem~\ref{pr:pair} to the trivial base character
+and its \(d\)-twist to obtain
+\(|L'(1,J_d)/L(1,J_d)|\le4\log x\). Finally
+\(x^{-4\varepsilon/5}\log^2(2x)\to0\).
+\end{proof}
+Consequently, wherever the determinant-degree comparison of
+Section~9 identifies the corrected constant as
+\[
+ c_1=-\tfrac12(p-q')A_{J_d}
+                +q'\big(\log\operatorname{rd}(E)-\log d\big),
+\]
+one has \(|c_1|=o(rL)\) uniformly even for varying signature
+\((p,q')\), \(r=p+q'\ge1\). This removes a numerical period bound
+from the list of hypotheses to be checked on the actual hosts.
+Identifying an integral determinant degree with that scalar is a
+geometric assertion.
+\src{src/Development/AbelianVarietyTheory/Definitions/CMLattices/ExistsIsThetaDegOfIsLocalModel.lean}{23}{normalization of the analytic CM scalar} and
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean}{39}{dyadic level at the selected scale}.

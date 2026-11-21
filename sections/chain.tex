@@ -1,0 +1,65 @@
+\subsection{The operators in the length-\(m\) theta chain}\label{geo:chain}
+
+We use the column-side realization \code{kerRec}, which calls \code{chKerC}, then \code{chKer}. For ordinary edges \code{chKer} takes \code{matK}. For the last two edges it takes the coupled pair \code{cp1K}, \code{cp2K}. The chain is indexed by \(m_2\) ordinary edges followed by those two, with \(m_2+2=m\) by \code{ChIdx.Ok.hm}. \src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{993}{exact length} The distribution for the final edge is \code{top}, with the weight at level \(m\). See \src{src/Formalism/LocalToGlobal/Divisibility/DivisionHeightBoundStatement.lean}{943}{active kernel record} and \src{src/Formalism/LocalToGlobal/KernelLattices/ThDistC.lean}{427}{ordinary and coupled kernels}.
+
+Fix an edge \(i\to i+1\), source and target decorated points \(p,p'\) with lattices \(N,N'\), frames \(f,f'\), and indices \(\alpha,\beta\) in their respective level families. Put \(M=\mathrm{homAt}_S(N,N')\), the maps preserving the localized lattices at the specified places, and abbreviate the positive scales of \code{cAof}, \code{cBof} to \(c_A,c_B\). The actual matrix entry is
+\begin{equation}\label{geo:chain-entry}
+ K_i(p,p')=\sum_{x\in(c_A^{-1}M)/(c_BM)}
+              \Xi_i(x)\,\mathcal T_i(N,f,N',f';c_B,x).
+\end{equation}
+The sum uses classes in the indicated quotient with chosen lifts. The local tests and distribution are descended on the admissible range. Here \(c_A=\prod_P q_P^{A}\), \(c_B=T_u\prod_P q_P^{B}\), and \(S\) consists of the level places and the places used for the row. In the ordinary case \(\Xi_i\) is the level indicator times a product of \(\Xi_{i,P}(f_P'^{-1}xf_P)\). The indicator tests preservation of both the local decorated lattices and their prescribed maps at the level places. Write \(H_P=C_{i+1,P}\cap N_1\), where \(C_{i+1,P}\) is the local \code{Cbe} and \(N_1\) the specified unipotent subgroup. With \(U_P=N_1\cap\operatorname{stab}(\Lambda_{i+1,P})\), the volume ratio used by \code{XiAt} is \(V_{i+1,P}=\mathrm{relIndex}(U_P,H_P)/\mathrm{relIndex}(H_P,U_P)\), with both indices interpreted as in \code{volN}. Let \(d_{i,P}\) denote the number of auxiliary coordinates \code{FC}. \src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{542}{relative-index volume} Then the local factor is
+\[
+ \Xi_{i,P}(z)=V_{i+1,P}^{-1}q_P^{-B d_{i,P}}
+   \sum_{\mathbf t\in\mathrm{valsQ}^{d_{i,P}}}
+     \Phi_{i,P}(x_1(z,\mathbf t))
+       \psi_P(-\mathrm{chArg}(x_1(z,\mathbf t))).
+\]
+This is a finite weighted Fourier sum. The negative sign and the power of \(q_P^{-B}\) follow by substituting \code{E1at} into \code{XiAt} and expanding \code{E1}. The distribution is zero unless \(c_B\mid c_Ac_B\) and the map belongs to \((c_Ac_B)^{-1}M\). On its support, with \(M_i(N,f)\) the \code{muInvDet} factor for the edge, it is
+\[
+ \mathcal T_i=
+ \frac{M_i(N,f)}{M_i(N',f')}\,
+          \mathrm{jetOp}_{i}(J_i).
+\]
+The coefficients of \(J_i\) are the descents of the complex jet coefficients of the induced theta distribution after multiplication by \(\chi_F^{-1}\). Applied to a polynomial, \(\mathrm{jetOp}_{i}\) first multiplies by the prescribed determinant powers, then substitutes the block variables, contracts their coefficients with \(J_i\), and projects onto the target weight space. This follows by composing the maps in \code{jetMap} and \code{jetOp} in their given order. See \src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{636}{lattice quotient sum}, \src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{943}{local Fourier normalization}, \src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{1110}{scales and local factors}, \src{src/Formalism/LocalToGlobal/KernelLattices/ThDistC.lean}{31}{jet contraction}, and \src{src/Formalism/LocalToGlobal/KernelLattices/ThDistC.lean}{137}{determinant ratio}.
+
+\begin{proposition}[Composition on class representatives]\label{geo:chain-compose}
+Let \(F_i\) denote the equivariant forms on level \(i\), with direct summands indexed by its finite label set. Ordinary steps act on these forms by
+\[
+ (C_i F_i)_\beta(p')=
+       \sum_{\alpha}\sum_{c}
+          \frac{K_i(p_c,p')\,F_{i,\alpha}(p_c)}{w_c},
+\]
+where \(p_c\) are representatives of the classes in label \(\alpha\) and \(w_c\) are the source class weights. For the last two steps, the kernel between a point \(p_0\) at level \(m_2\) and a row point \(d\) is
+\[
+ L(p_0,d)=\sum_c \frac1{w_c}
+                \sum_{Y\in\mathcal Y(p_c)}
+                   K_{\mathrm{top}}(p_c,Y,d)
+                   K_{\mathrm{pre}}(p_0,p_c,Y).
+\]
+The terminal period on the resulting column \(C(f)=
+L\,C_{m_2-1}\cdots C_0\,\mathrm{start}(f)\) and a row \(G\) is
+\[
+ \mathcal P(C(f),G)
+       =\sum_e \frac1{w_e}
+            \left\langle \mathrm{br}_u C(f)(d_e),G(d_e)\right\rangle_{K}.
+\]
+Here \(L\) in the formula for \(C\) denotes the operator of the displayed coupled kernel with its source-class sum, \(d_e\) are row class representatives, and the pairing is the bilinear \code{pairBK}. The map \(\mathrm{br}_u\) is coefficient extraction in the last-column variables followed by projection to the row weight and the scalar
+\[
+ \prod_\tau t_\tau^{-n_\tau}
+        \prod_\tau c_{\mathrm{Br},\tau}\kappa_{\mathrm{Br},\tau},
+ \qquad
+ t_\tau=\iota_\tau\bigl(\overline{\pi_{T_u}}\bigr).
+\]
+\end{proposition}
+\begin{proof}
+For an ordinary step, substitute the class sum \code{ClsKer.appOf} in \code{Mat.opOf}. The normalization is \(w_c^{-1}\) on the source class, and equivariance makes each term independent of the chosen representative. Replacing \(p_c\) by \(g p_c\) contributes \(\rho(g^{-1})\) on the right of the kernel and \(\rho(g)\) on the form. For the coupled pair the two kernel entries use the \code{XiCpl1}, \code{XiCpl2} tests respectively, on the same admissible coset \(Y\). They are zero off the admissible set. Upon changing the intermediate representative, \(Y\) is transported bijectively and the intervening factors \(\rho(g^{-1})\rho(g)\) cancel in the product. Thus there is one intermediate class weight and one sum over \(Y\), rather than two unrelated coset sums. The recursion for \code{colTo} starts at the identity and composes each ordinary step on the left. The \code{colCpl} formula then applies the coupled pair. Finally \code{PtilFF} evaluates the branching map and pairs at the same row representative, with the row class weight. Substituting \code{brAt} and \code{brStdP} gives the displayed scalar. The formula is a dual pairing against the row input. It requires no identification of either of the last two maps with the Hermitian adjoint of the other.
+\end{proof}
+\noindent
+\src{src/Formalism/LocalToGlobal/Columns/RhoEqOfSmulEq.lean}{372}{class action and normalization},
+\src{src/Formalism/LocalToGlobal/Columns/RhoEqOfSmulEq.lean}{679}{matrix action},
+\src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{263}{chain recursion},
+\src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{298}{coupled contraction},
+\src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{128}{branching coefficient},
+\src{src/Formalism/LocalToGlobal/Columns/FiniteSumNonzeroLargeDepth.lean}{215}{terminal row pairing}.
+
+The active coordinate comparison \code{pairing\_eq\_colPairing} identifies the rational map \(B_k(u)\) with the column pairing. It uses the period identity supplied by the realized column data and its vanishing on the right coordinate kernel. It then evaluates on a right inverse of the surjective quotient-coordinate matrix to prove the equality on every target coordinate. The finite-place comparison \code{perToVal2F} carries the local period estimate to this rational pairing. Evaluating individual lifts would give neither this descended functional nor its accumulated finite-place constraint. In the ordinary local model the valuation is taken on the actual chain end, using the recursion \(C_{[0]}=1,\ C_{[j+1]}=C_j C_{[j]}\) and the source's compensated generator estimate. At the endpoint its scalar budget contains \(e_w\sum_{j=1}^{m}(g_S(p_w,j)+F(j,w)-E(u,j,w))\), while the period cost subtracts the stabilizer contribution once, as in \eqref{geo:budget} and Lemma~\ref{geo:generators}. These are quantitative bounds on the composition, with the model and comparison hypotheses stated there. At \(p_w=T_u\) the per-layer budget instead aggregates to \(-m\,\mathrm{EatT}(u,w)\) before multiplying by \(e_w\). See \src{src/Development/AbelianVarietyTheory/Proofs/IwasawaDecomposition/RationalPairingEqColumnPairing.lean}{60}{active endpoint comparison}, \src{src/Development/AbelianVarietyTheory/Proofs/IwasawaDecomposition/RationalPairingEqColumnPairing.lean}{23}{rational pairing on the quotient}, \src{src/Formalism/LocalToGlobal/GroupLattices/ServJointF.lean}{42}{finite-place comparison}, \src{src/Formalism/SharpRestriction/GrowthBounds/DataGChain.lean}{85}{local chain recursion}, and \src{src/Formalism/SharpRestriction/Divisibility/WeightDegreeSizes.lean}{887}{level-prime length factor}.

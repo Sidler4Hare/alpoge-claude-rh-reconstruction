@@ -1,0 +1,893 @@
+\section{From weighted traces to crystalline lattices}\label{newgal:section}
+
+Fix a CM field $E$ with maximal real subfield $E^+$, a prime $\ell$ and an
+abstract field isomorphism $\iota:k=\overline{\mathbb Q}_\ell\simeq\mathbb C$.
+All limits are taken on the $\ell$-adic side. We describe how the representation
+of Section~\ref{tr:section} inherits a local condition at a place $w\mid\ell$.
+The approximants are finite linear combinations of global characters. Their
+coefficients can have arbitrarily large denominators. The local condition concerns
+the restriction of the actual global representation, including any extensions in it.
+
+\subsection{The geometric input and the rank of the seed}
+
+In the odd-rank step there is a $d>0$ with $\sqrt{-d}\in E$ and $-d$ a square in
+$\mathbb Q_\ell$. The degree $[E^+:\mathbb Q]$ is even, and each nonsplit finite
+place of $E/E^+$ is unramified and has residue characteristic different from $\ell$.
+Let $a$ be a positive odd integer. A usable place away from $\ell$ is a split
+place $w$ whose rational residue characteristic $q$ satisfies
+$-d\in(\mathbb Q_q^\times)^2$. Two places are apart when their restrictions
+to $E^+$ differ. The auxiliary places $w_0,v'\mid\ell$ are apart. The definite
+unitary automorphic representation $U$ is unramified at nonsplit places outside
+a given finite set $T$ of nonsplit places. A seed has at $w_0$ a nontrivial
+character of a cyclic $\ell$-power quotient of a torsion-free compact open
+subgroup, chosen so that every irreducible smooth representation containing
+that character is cuspidal. At $v'$ the seed is spherical and has a lacunary
+set of $a$ jumps at one embedding. Lacunarity means that two disjoint nonempty
+subsets have different arithmetic means.
+\src{src/Development/AbelianVarietyTheory/Definitions/GaloisGeometry/LatticeDataThicknessBound.lean}{16}{Field and level assumptions},
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/GenOf.lean}{14}{local type}, and
+\src{src/Development/AbelianVarietyTheory/Definitions/GaloisGeometry/DivisionOfDeterminantCharacter.lean}{15}{lacunarity}.
+
+The geometric theorem has an intermediate output of variable dimension.
+One takes a Hecke eigenspace in a cohomology tower, passes to a semisimplification
+and twists by the Galois character attached to an algebraic Hecke character.
+The resulting representation $V$ is continuous and semisimple. On the usable
+spherical primes outside a finite set its geometric Frobenius is annihilated
+by the normalized Hecke polynomial of degree $a$. At an auxiliary embedding
+at least $a$ lacunary jumps occur. One can request additional geometric
+information at one place by changing the tower or the Hecke eigenspace.
+The separate requests yield a crystalline $V$ containing the prescribed jumps,
+or a crystalline $V$ whose Frobenius polynomial at a degree $-1$ Weil element
+divides a power of the predicted polynomial. The geometric statement requires
+the specified places to restrict compatibly to $\mathbb Q(\sqrt{-d})$.
+Above $\ell$ the two possibilities are exchanged by CM conjugation. Replacing
+an auxiliary place by its conjugate preserves apartness at $E^+$, and the
+argument uses conjugation of the local type, the spherical condition and
+the lacunary condition to make these choices.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/GeometricFlagBases/HodgeTrAt.lean}{79}{Separate geometric outputs}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/ZetaCharacterDivisibility/SeedFinOddOf.lean}{46}{conjugate-place choice}.
+
+The rank-extraction input takes a continuous semisimple $k$-representation
+$V$ of $G_E$ with a lacunary set of $a$ jumps at one labelled embedding
+as above. Let $\psi:G_E\to k^\times$ be a continuous character. On a
+dense set of $g$ suppose there is a monic polynomial $Q_g$ of degree $a$
+annihilating $g$ on $V$ and satisfying $(-1)^a Q_g(0)=\psi(g)$.
+The source supplies a continuous semisimple $W$ of dimension $a$ with
+equivariant injections
+\begin{equation}\label{newgal:injections}
+                 W\hookrightarrow V\hookrightarrow W^{\oplus m}
+\end{equation}
+for some $m$, such that the elements acting with distinct eigenvalues on $W$
+form a dense open set. The determinant character in the application comes
+from the central character and the Satake normalization. Proposition~\ref{famgal:rank} below proves the rank extraction from the
+Hodge cocharacter. The existence of the initial geometric witness is an
+arithmetic input here.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/ZetaCharacterDivisibility/PhiOfDivOf.lean}{122}{Rank-extraction hypothesis and conclusion}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/ZetaCharacterDivisibility/DivisionOneGeometricRepresentation.lean}{52}{division and cocharacter theorems}.
+
+\begin{proposition}\label{newgal:seed}
+These inputs identify the same $W$ for all geometric witnesses for a fixed
+seed eigensystem. If the witness at $w\mid\ell$ is crystalline and contains
+the $a$ prescribed distinct jumps at a labelled embedding, $W$ is crystalline
+there and has precisely those jumps. If the crystalline Frobenius polynomial
+of the witness divides a power of the predicted polynomial, the predicted
+polynomial is the Frobenius polynomial of $W$ whenever the Satake multiset
+satisfies the multiplicative genericity condition below.
+\end{proposition}
+\begin{proof}
+At a good geometric Frobenius in the open set of distinct eigenvalues,
+the degree $a$ Hecke polynomial annihilates its action on $W\subset V$.
+The minimal and characteristic polynomials both have degree $a$, so both
+equal the monic Hecke polynomial. For two geometric witnesses, intersect
+their dense open sets and discard the union of their finite exceptional
+sets. Usable geometric Frobenius elements remain dense there by the density
+argument of Section~\ref{tr:section}. Equality of traces extends by continuity
+to $G_E$, and semisimplicity in characteristic zero identifies the two $W$'s.
+The same argument applied to the constant coefficient gives $\det W=\psi$.
+Thus the $W$ already selected admits \eqref{newgal:injections} with each
+new witness, up to isomorphism.
+
+Since the global representations are semisimple, both injections split
+equivariantly. The splittings persist after restriction to a decomposition
+group. Crystalline periods commute with finite direct sums and direct
+summands, as do the labelled graded pieces of the de Rham filtration.
+Hence $W$ is crystalline when $V$ is, and every jump of $V$ occurs in
+$W^{\oplus m}$, hence in $W$. At a fixed embedding the graded dimensions
+of $W$ sum to $a$. The occurrence of $a$ distinct prescribed integers forces
+multiplicity one at each of them.
+
+Write $S=q_w^{(a-1)/2}B_w$. Multiplicative genericity says that a multiset
+of size $a$ supported on $S$ and having product $\prod_{s\in S}s$ equals
+$S$, with its multiplicities. Scaling all entries by the same nonzero
+scalar preserves this condition. The Frobenius polynomial on $W$ divides
+that on $V$ by the splitting. Its roots are supported on $S$, it has
+degree $a$, and its root product agrees with that of $S$ by the local
+compatibility of the rank-one determinant character. This proves equality
+with $\prod_{s\in S}(X-s)$. At a crystalline place the associated Weil
+action is unramified, so the characteristic polynomials for all Weil
+elements are determined by powers of the degree $-1$ element. Away from
+$\ell$ one uses the annihilating polynomial and the same product test.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/ZetaCharacterDivisibility/PhiOfDivOf.lean}{166}{Comparison across geometric realizations}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/ZetaCharacterDivisibility/PRootPin.lean}{18}{root multiplicities}.
+\end{proof}
+
+\input{sections/lacunary-rank}
+
+\subsection{Integral quotients of the regular image}
+
+Let $\Gamma$ be a compact Hausdorff group, $r:\Gamma\to\mathrm{GL}_a(k)$
+a continuous semisimple representation and $(r_i)$ a family of continuous
+$a$-dimensional representations over $k$. Give $k$ the norm $|\ell|=\ell^{-1}$.
+The approximation needed for crystalline closure is
+\begin{equation}\label{newgal:lin}
+ \inf_{I,c}\ \sup_{g\in\Gamma}
+ \left|\operatorname{tr}r(g)-\sum_{i\in I}c_i\operatorname{tr}r_i(g)\right|=0 ,
+\end{equation}
+where $I$ is a finite subfamily and $c_i\in k$. Fix a finite extension
+$K/\mathbb Q_\ell$ and a continuous homomorphism $G_K\to\Gamma$. In the
+application $K=E_w$ and this homomorphism identifies $G_K$ with a decomposition
+subgroup. Write $V_i,V$ for the restricted modules.
+
+\begin{lemma}[Finite coefficient fields]\label{newgal:coeff}
+Each continuous representation of $\Gamma$ over $k$ can be written, in its
+given basis, over a finite extension of $\mathbb Q_\ell$.
+\end{lemma}
+\begin{proof}
+There are countably many finite subextensions of $k/\mathbb Q_\ell$.
+For each degree there are finitely many local extensions up to isomorphism
+by the local-field finiteness theorem, and each has finitely many embeddings.
+For each such $L$ the compact image group meets $\mathrm{GL}_a(L)$ in a
+closed subgroup, since $L$ is complete. These subgroups cover the image.
+Baire's theorem gives one with nonempty interior. It is open and of finite
+index. Adjoin the entries of finitely many coset representatives to $L$.
+All matrices are defined over the resulting finite extension.
+\end{proof}
+
+Choose a field of definition $L$ for $r$. The sum of the translates of any
+$\mathcal O_L$-lattice is bounded by compactness and contains the original
+lattice. It is therefore a stable lattice. Choose its basis, and do the same
+for each $r_i$ over a field $L_i$. Define
+\[
+ R= r(\mathbb Z_\ell[\Gamma])\subset M_a(\mathcal O_L),\qquad
+ R_I=(r_i)_{i\in I}(\mathbb Z_\ell[\Gamma])
+       \subset\prod_{i\in I}M_a(\mathcal O_{L_i}).
+\]
+These are finite free $\mathbb Z_\ell$-modules, stable under left translation
+by $\Gamma$. We use the ordinary group ring with finite supports. Both image
+modules are already closed, since finite free $\mathbb Z_\ell$-modules are compact.
+
+\begin{lemma}[Lattice quotients from translated traces]\label{newgal:quot}
+For every positive integer $n$ there is a finite $I$ and a
+$\Gamma$-equivariant surjection $R_I\twoheadrightarrow R/\ell^nR$,
+given by $((r_i(f))_i)\mapsto r(f)\bmod\ell^nR$.
+\end{lemma}
+\begin{proof}
+In the $k$-algebra spanned by $r(\Gamma)$ the matrix trace pairing is
+nondegenerate by Proposition~\ref{tr:realize}. Choose finitely many $h_j$
+so that $r(h_j)$ span this algebra over $k$. On the finite-dimensional
+$\mathbb Q_\ell$-space $R[1/\ell]$ the map
+\[
+   x\longmapsto(\operatorname{tr}(xr(h_j)))_j\in L^b
+\]
+is therefore injective. The maximum of the norms of its coordinates is
+a norm. Comparison with the lattice norm having unit ball $R$ gives an
+integer $c\ge0$, depending only on $r$, such that
+\[
+ \max_j|\operatorname{tr}(xr(h_j))|\le\ell^{-n-c}
+       \quad\Longrightarrow\quad x\in\ell^n R.
+\]
+Use \eqref{newgal:lin} with error at most $\ell^{-n-c}$.
+If $f=\sum b_g[g]$ maps to zero in $R_I$, then
+$\sum_g b_g\operatorname{tr} r_i(gh_j)=0$ for every $i,j$.
+The ultrametric inequality and $|b_g|\le1$ give
+$|\operatorname{tr}(r(f)r(h_j))|\le\ell^{-n-c}$ for all $j$.
+This proves well-definedness. The formula gives both surjectivity and
+equivariance. The kernel contains $\ell^nR_I$, and so is a full stable
+lattice in $R_I[1/\ell]$. Global semisimplicity was used before restriction
+to $G_K$.
+\end{proof}
+
+\begin{theorem}[Crystalline closure from weighted traces]\label{newgal:liu}
+Suppose all $V_i$ are crystalline over $K$ and all their labelled filtration
+jumps belong to a common finite interval $[u,v]$. Under \eqref{newgal:lin},
+$V$ is crystalline over $K$ with jumps in the same interval.
+The assertion also holds throughout upon replacing crystalline by semistable.
+\end{theorem}
+\begin{proof}
+Use the usual Fontaine period rings for $K$. With left multiplication on
+matrices, the ambient $\mathbb Q_\ell[G_K]$-module of $R_I[1/\ell]$
+is a direct sum of $a$ copies of each $\operatorname{Res}_{L_i/\mathbb Q_\ell}V_i$,
+using models over the finite extensions $L_i/\mathbb Q_\ell$. Forgetting coefficients collects the jumps
+at the different embeddings. In particular the common interval remains valid.
+Crystalline (respectively semistable) representations with jumps in that
+interval are stable under direct sums and subquotients by exactness and
+strictness of the filtered period functor on the admissible category.
+Consequently $R_I[1/\ell]$ has this property. Lemma~\ref{newgal:quot}
+exhibits $R/\ell^nR$ as a quotient of two full $G_K$-stable $\mathbb Z_\ell$-lattices
+inside that single $\mathbb Q_\ell$-representation for each $n$. The ambient
+dimension may grow with $n$.
+
+Apply the bounded torsion theorem of T. Liu to $T=R$. In Liu's
+contravariant convention the weights are those of the filtered module
+of the dual, so our interval becomes $[-v,-u]$. A common integral Tate
+twist translates it to $[0,v-u]$. Twisting the quotient sequences uses
+the same rank-one $\mathbb Z_\ell$-lattice on both sides. Liu's result
+yields the indicated property for $R[1/\ell]$ after undoing the twist.
+It allows an arbitrary finite extension $K/\mathbb Q_\ell$, arbitrary
+positive height, and $\ell=2$ with the author's correction. For $u=v$ apply
+the positive-height statement to both $[u-1,u]$ and $[u,u+1]$ and intersect.
+T. Liu,
+\emph{Torsion $p$-adic Galois representations and a conjecture of Fontaine},
+proved Conjecture 1.0.1, pp.~633--634~\cite{liuTorsion} and
+Liu,
+\emph{A note on lattices in semi-stable representations}, errata for the 2007 paper~\cite{liuLattices}.
+
+For any $v_0\in L^a$, evaluation $x\mapsto xv_0$ on $R[1/\ell]$ is
+$G_K$-equivariant. Taking $v_0$ through a $\mathbb Q_\ell$-basis of $L^a$
+yields a surjection from a finite sum of copies of $R[1/\ell]$ onto $L^a$,
+since $1\in R$. The quotient is the full restriction of $r$.
+The $L$-action commutes with the period comparison map, giving the
+coefficient version of the assertion.
+\end{proof}
+
+For the automorphic limit take the subfamily indexed by the singleton
+$\{w\}$, where $w\mid\ell$ is spherical and apart from $w_0,v'$.
+At every embedding $\tau:E\to k$ inducing $w$ the weight at $\iota\tau$
+agrees throughout the subfamily. In the zero-based indexing of the highest
+weight $\lambda_{\iota\tau}$ the prescribed jumps are
+\begin{equation}\label{newgal:jumps}
+             J_\tau=\{j-\lambda_{\iota\tau,j}:0\le j<a\}.
+\end{equation}
+Indeed the $j$th infinitesimal-character entry equals
+$\lambda_{\iota\tau,j}+(a-1)/2-j$. Taking the minimum and maximum of
+\eqref{newgal:jumps} over $j$ and the finitely many $\tau$ over $w$
+gives the common interval. The singleton subfamily retains polynomial
+approximation at every precision, hence \eqref{newgal:lin} on the whole
+global group. Theorem~\ref{newgal:liu} therefore proves crystallinity
+of the limit at this $w$.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{166}{Singleton restriction}
+and \src{src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BlowUpFibreSemilocal.lean}{29}{jump convention}.
+
+\subsection{Comparison of exact local invariants}
+
+For exact jumps and Frobenius the source keeps more information than the
+surjection of Lemma~\ref{newgal:quot}. Let $b$ be a $\mathbb Z_\ell$-basis
+of $R$, let $e$ be the column of coordinates of $1$, and let $t$ be the
+row of traces of the $b_j$. For precision $n$ choose the approximation of
+Lemma~\ref{newgal:quot}. Enlarge its support $I_n$ to contain all previous
+supports, assigning coefficient zero to the added members. Set
+\[
+ D_n=\prod_{i\in I_n}M_a(\mathcal O_{L_i}),\qquad
+ B_n=R_{I_n}+\ell^{M_n}D_n .
+\]
+Choose increasing $M_n$ with $\ell^{-M_n}\max(1,\max_i|c_i|)
+\le\ell^{-n-c}$. If $(r_i(f))_i\in\ell^{M_n}D_n$, then the
+translated traces of $r(f)$ against all $r(h_j)$ have norm at most
+$\ell^{-n-c}$ by \eqref{newgal:lin} and integrality of all $r_i(h_j)$.
+The map of Lemma~\ref{newgal:quot} thus extends to $B_n$ by zero on
+$\ell^{M_n}D_n$. Choose a basis of $B_n$ and any integral matrix $P_n$
+lifting that map. Write $e_n$ for the coordinates of the tuple of identities,
+and $t_{ni}$ for the row of traces after projection of the basis to factor $i$.
+Then
+\begin{equation}\label{newgal:marked}
+ |P_ne_n-e|\le\ell^{-n},\qquad
+ \left|tP_n-\sum_{i\in I_n}c_i t_{ni}\right|\le\ell^{-n}.
+\end{equation}
+Here matrix norms are maximum-entry norms. The first bound follows
+by evaluating the quotient map at $1$. For the second, write each basis
+vector as $(r_i(f))_i+\ell^{M_n}z$. Its chosen lift agrees with $r(f)$ modulo
+$\ell^nR$, whose traces have norm at most $\ell^{-n}$. The approximation
+applied to $f$, and the choice of $M_n$ applied to $z$, give the bound.
+The coordinate projection $B_{n+1}\to B_n$ intertwines the actions exactly
+and commutes with the maps to $R/\ell^n R$. Both claims follow on group
+elements and on $\ell^{M_{n+1}}D_{n+1}$. These constructions work after
+restriction to $G_K$ and are compatible with any additional scalar
+approximated by the same coefficients.
+\src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/CoverExists.lean}{23}{Integral model with trace and unit coordinates}.
+
+\begin{proposition}[Reading a labelled Hodge multiset]\label{newgal:hodge}
+Fix an embedding $\tau:K\to k$. Suppose the comparison on the preceding
+lattices supplies a non-root of unity $z\in\mathbb C_\ell^\times$ and matrices
+$U,U_n$ on $R,B_n$ over $\mathbb C_\ell$ with the following properties.
+Their norms are bounded by a common $B\ge1$. For every $N$ there is $n\ge N$
+with $|UP_n-P_nU_n|\le B\ell^{-N}$. After the same isometric coefficient
+embedding on all trace rows and all $c_i$, for $j\ge0$ one has
+\[
+ tU^je=\sum_{h\in{\rm HT}_\tau(V)}z^{jh},\qquad
+ t_{ni}U_n^je_n=\sum_{h\in J_\tau}z^{jh}\quad(i\in I_n).
+\]
+Here $\operatorname{HT}_\tau$ denotes the multiset of labelled filtration jumps.
+Then $\operatorname{HT}_\tau(V)=J_\tau$.
+\end{proposition}
+\begin{proof}
+Put $S_j=\sum_{h\in J_\tau}z^{jh}$. For fixed $j$, the telescoping formula
+for $U^jP_n-P_nU_n^j$ bounds its norm by $B^j\ell^{-N}$ for $j\ge1$.
+The maximum-entry norm is submultiplicative in all dimensions here.
+In $tU^je$ replace $e$ by $P_ne_n$, commute $P_n$ past $U^j$, then
+replace $tP_n$ by $\sum c_it_{ni}$. Equations~\eqref{newgal:marked}
+bound the total error by $\max(1,|t|)B^j\ell^{-N}$. Thus the result is
+$S_j\sum c_i$ to that precision. At $j=0$ both power sums equal $a$,
+so $|1-\sum c_i|=O(\ell^{-N}/|a|)$. The same coefficients serve at
+$j$ and at zero. Let $N$ tend to infinity. Newton's identities now
+identify the multisets $\{z^h:h\in{\rm HT}_\tau(V)\}$ and
+$\{z^h:h\in J_\tau\}$. The powers of $z$ distinguish the integers.
+\end{proof}
+
+The period-theoretic hypothesis in Proposition~\ref{newgal:hodge} is
+quantitative. In the source the height is bounded by
+$H=\max_{\tau,h\in J_\tau}|h|$. For its Breuil--Kisin period
+$u\in A_{\rm inf}$ put $s_0=\theta(u^{2H})\ne0$, where
+$\theta:A_{\rm inf}\to\mathcal O_{\mathbb C_\ell}$ is Fontaine's map.
+The linked frames give integral evaluated change-of-basis matrices
+$Y,Y'$ with integral matrices $Y_1,Y'_1$ satisfying
+$YY_1=Y'Y'_1=s_0\,1$ in the respective dimensions.
+For integral cocycle matrices $C,C'$ the operators satisfy $UY=YC$,
+$U_nY'=Y'C'$. A link at level $N$ gives an integral rectangular matrix
+$D$ with $|P_nY'-YD|,\ |CD-DC'|\le\ell^{-N}$. Thus
+$|U|,|U_n|\le |s_0|^{-1}$. The identity
+\[
+ (UP_n-P_nU_n)Y'=U(P_nY'-YD)+Y(CD-DC')-(P_nY'-YD)C'
+\]
+and multiplication by $Y'_1/s_0$ give the claimed bound with
+$B=|s_0|^{-2}$, independent of the growing dimensions.
+The other period assertion identifies the operator on a Hodge-adapted
+basis with a diagonal matrix of powers $z^h$ and transports its powers
+through each column projection. The construction of those linked
+bounded-height frames and of the adapted comparison, needed at every
+precision and for the selected embedding, are cited here.
+\src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ExistsDeRhamFrameLimitLatticeBreuilKisinTower.lean}{16}{Linked frames},
+\src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ThetaConjBoundedCompatibleBreuilKisinFrames.lean}{117}{uniform estimate}, and
+\src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ClosedOfCover.lean}{159}{labelled comparison}.
+
+At a crystalline place put $D_i=\iota\mathrm{WD}(V_i)$ and
+$D=\iota\mathrm{WD}(V)$, and set $p_i=\iota^{-1}\operatorname{tr}D_i(g)$
+and $p=\iota^{-1}\operatorname{tr}D(g)$ for $g$ in the Weil group of $K$.
+Write $B_w$ for the spherical Satake
+multiset. At $g^j$ the predicted value is
+\[
+ \vartheta_j=\iota^{-1}\left(\sum_{x\in q_w^{(a-1)/2}B_w}x^{-j\deg g}\right).
+\]
+The Hecke approximation at each fixed $j$ uses the same $c_i$ for the global
+trace and this additional scalar, to arbitrary $\ell$-adic precision.
+One removes a fixed nonzero normalization factor by increasing the required
+precision. For the next proposition write $\vartheta$ for the target at $g$.
+
+\begin{proposition}[Comparison of a crystalline Frobenius trace]\label{newgal:phi}
+Assume the marked approximations \eqref{newgal:marked} satisfy also
+$|\vartheta-\sum_{i\in I_n}c_i p_i|\le\ell^{-n}$. Put
+$F=\mathbb Q_\ell^{\mathrm{nr}}\subset k$ and use the unramified embedding
+$F\hookrightarrow B_{\rm cris}$ taking $\mathcal O_F$ into $A_{\rm cris}$.
+Suppose there is a single $s\in A_{\rm cris}$ invertible in $B_{\rm cris}$,
+and matrices $A,A_n$ over $A_{\rm cris}$ on the respective lattices, with
+the following two properties. For every $N$ some $n\ge N$ has every entry
+of $AP_n-P_nA_n$ in $\ell^NA_{\rm cris}$. For every $F$-linear
+$\lambda:k\to F$, acting entrywise on the rows, one has
+\[
+ \lambda(t)Ae=s\lambda(p),\qquad
+ \lambda(t_{ni})A_ne_n=s\lambda(p_i)\quad(i\in I_n)
+\]
+in $B_{\rm cris}$. Then $p=\vartheta$.
+\end{proposition}
+\begin{proof}
+Suppose $\Delta=p-\vartheta\ne0$. Fix integers $c_1,c_2\ge0$ such that
+$\ell^{c_1}t$ is integral and $\ell^{-c_2}\le|\ell^{c_1}\Delta|\le1$.
+Choose $n$ as in the first hypothesis for $N$ and write
+$\delta=tP_n-\sum_i c_i t_{ni}$ and $\eta=\vartheta-\sum_i c_i p_i$.
+Both have norm at most $\ell^{-N}$. There is an $F$-linear $\lambda$
+taking integral values on the entries of $\ell^{c_1}t,\ell^{-N}\delta,
+\ell^{-N}\eta$ and on $z=\ell^{c_1}\Delta$, with $|\lambda(z)|\ge|z|$.
+Indeed their $\mathcal O_F$-span is finite free over the discrete valuation
+ring $\mathcal O_F$. All elements of that span are integral in $k$. In any
+basis of the span one coordinate of $z$ has absolute value at least $|z|$.
+Extend this coordinate functional $F$-linearly to $k$.
+
+Apply the seed identities to $x\mapsto\lambda(c_i x)$, subtract and
+insert $P_n$. This gives
+\[
+ \begin{split}
+ s\lambda(\Delta)={}&\lambda(t)\big[(AP_n-P_nA_n)e_n+A(e-P_ne_n)\big]\\
+                    &+\lambda(\delta) A_ne_n-s\lambda(\eta).
+ \end{split}
+\]
+Multiplication by $\ell^{c_1}$ puts the right side in $\ell^NA_{\rm cris}$.
+Multiplication next by $\ell^{c_2}/\lambda(z)\in\mathcal O_F$ gives
+$\ell^{c_2}s\in\ell^NA_{\rm cris}$ for every $N$.
+This contradicts $\ell$-adic separation and torsion-freeness of
+$A_{\rm cris}$, since $s$ is invertible in $B_{\rm cris}$.
+\end{proof}
+
+Here is the integral calculation giving the first Frobenius comparison
+from the period frames. Use a target precision \(N\) and perform the
+calculation in \(A_{\rm cris}/\ell^N\). For the two Frobenius iterates the
+linked period bases give square matrices \(W,Z\) and \(W',Z'\) on the
+target and seed-product lattices, respectively. Their scaled inverses
+satisfy \(Z^*Z=b1,\ Z'Z'^*=b1\) for the same scalar \(b\). The two
+frame congruences read \(PZ'=ZD,\ PW'=WD\), where \(P=P_n\) and \(D\)
+have size \(\operatorname{rank}R\) by \(\operatorname{rank}B_n\).
+In this quotient,
+\[
+ bWZ^*P=WZ^*PZ'Z'^*=WZ^*ZDZ'^*=bWDZ'^*=bPW'Z'^*.
+\]
+Thus the integral operators \(A=bWZ^*,\ A_n=bW'Z'^*\) intertwine to
+precision \(N\), without inverting \(P\) or cancelling \(b\).
+In the construction, if \(H\) bounds the height, the integer \(k_0\)
+for the period denominators is chosen before the level. With
+\(\tau_1\) the image of the chosen period in \(A_{\rm cris}\), one has
+\[
+ b=\varphi^{n_2}(\tau_1^{2H}\ell^{2k_0}),\qquad
+ s=\varphi^{n_2}(\tau_1)^{3H}\ell^{4k_0}\varphi^{n_1}(\tau_1)^H.
+\]
+Both lattice dimensions use these same scalars. To obtain the two frame
+congruences modulo \(\ell^N\), first ask for the frame-link precision
+\(N'\) required by the period comparison, then choose one level
+\(n\ge\max(N',N)\). At that level both iterations compare with the
+same \(D\). The unit error, weighted trace-row error and the error in
+the additional scalar are already at most \(\ell^{-n}\). In particular
+one never multiplies an error of size \(\ell^{-N}\) for an individual
+seed by \(c_i\). The potentially unbounded \(\max_i|c_i|\) entered
+earlier in the choice of \(M_n\) in \eqref{newgal:marked}.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/OpExHolds.lean}{75}{Common denominator before the level},
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/OpExHolds.lean}{86}{one level for both iterates}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/LinkOp.lean}{8}{the integral rectangular identity}.
+
+One can also see exactly where the unit and trace marks enter the
+second Frobenius comparison. For either lattice let \(b_i\) be its
+matrix readings (on a product lattice, project to one seed factor);
+thus \(\sum_i e_i b_i=1_a\), \(t_i=\operatorname{tr}(b_i)\).
+Work after extending the Weil module to the common coefficient and
+period ring \(k\otimes_F B_{\rm st}\), writing the two inclusions of
+scalars implicitly. Write \(U_j=\varphi^{n_j}(U)\) for the invariant
+period basis of this lattice, so \(AU_2=sU_1\). Denote the \(h\)th
+standard vector in coefficient dimension \(a\) by \(u_h\).
+The column comparison for the crystalline periods supplies vectors
+\(v_{jh}\) in the Weil module, whose comparison coordinates are the
+columns \(\sum_i (U_2)_{ij}b_i u_h\). Their transforms under \(g\)
+have coordinates \(\sum_i (U_1)_{ij}b_i u_h\). This is the period
+input identifying the sign of the Weil action. Now set \(z=U_2^{-1}e\).
+For each \(h\) the vector \(\sum_j z_jv_{jh}\) has comparison
+coordinates \(\sum_i e_i b_i u_h=u_h\).
+Applying the scalar-extended Weil operator and summing its diagonal
+coordinates gives
+\[
+ p\otimes 1=\sum_i \operatorname{tr}(b_i)\otimes(U_1z)_i,\qquad
+ p\otimes s=\sum_i t_i\otimes(Ae)_i .
+\]
+Applying \(\lambda\otimes1\) for any \(F\)-linear \(\lambda:k\to F\)
+gives precisely \(\lambda(t)Ae=s\lambda(p)\); the terms belong to
+\(B_{\rm cris}\subset B_{\rm st}\). The same proof for each column
+projection of the product lattice gives every seed identity before
+weighting it. Only the column comparison and the invariant periods
+are used here beyond linear algebra.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/TieRep.lean}{75}{The two systems of period columns},
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/TieRep.lean}{94}{The unit frame and trace contraction}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/ClosedPhiOfClosedTr.lean}{65}{Application to the target and each product projection}.
+
+In the crystalline comparison the two nonnegative Frobenius iterates are
+$n_1=\max(0,-\alpha)$ and $n_2=\max(0,\alpha)$, where
+$\alpha=[k(w):\mathbb F_\ell]\deg g$ is the signed exponent on the
+unramified coefficient field and $k(w)$ denotes the residue field of $K$.
+For an invertible matrix $U$ of invariant periods one requires
+$A\varphi^{n_2}(U)=s\varphi^{n_1}(U)$, and likewise at each level.
+The common $s$ and congruences of these operators are assertions about
+the linked integral frames. The second hypothesis of the proposition
+identifies their values on the marked unit, paired with the marked trace
+rows, with the Weil trace via the period comparison. Using $F$ and its
+linear functionals avoids choosing embeddings of all ramified coefficient
+fields into $B_{\rm cris}$. Given these two frame assertions, apply
+Proposition~\ref{newgal:phi} at the first $a$ positive powers of a
+geometric Frobenius. Newton's identities give the complete characteristic
+polynomial. Crystallinity gives trivial inertia and zero monodromy,
+so this determines the Frobenius-semisimplified Weil--Deligne parameter.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/IsOp2One.lean}{45}{Integral operators and common denominator},
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/IsOp2One.lean}{81}{comparison with Weil traces}, and
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ClosedPhiFunctoriality/ClosedPhiOfClosedTr.lean}{13}{passage through the integral comparison}.
+
+In particular, Theorem~\ref{newgal:liu} supplies an interval for the
+weights and the existence of the crystalline period space. It gives no
+formula pairing $t$ with a specific operator on that space. A finer
+published congruence theorem for odd $\ell$ gives equality of the labelled
+Hodge types of two semistable representations of the same rank over one
+$\mathcal O_L$ if their matrices are congruent modulo $\ell^n$, with
+$n>c(K,H)$ for a common positive height bound $H$ after twisting.
+Here $P_n$ can be rectangular and the approximation of $t$ uses a
+weighted sum. Applying that theorem to $P_n$ would require an additional
+equal-rank congruence. Propositions~\ref{newgal:hodge} and~\ref{newgal:phi}
+specify the uniform comparisons used for this more general family. An
+independent construction of the linked integral frames with the two
+period identifications is still required for this proof in that generality.
+T. Liu,
+\emph{Filtration associated to torsion semi-stable representations},
+Theorems 1.1 and 4.16~\cite{liuFiltration}.
+
+In particular, at \(\ell=5\) the trivial and the unramified quadratic
+character have the same single Hodge jump \(0\), while their Frobenius
+traces are \(1\) and \(-1\). The local approximation at a spherical
+\(w\mid\ell\) therefore uses the extra Hecke coordinates explicitly.
+Take \(Y=\{w\}\) for \(w\) apart from the two auxiliary places. The
+congruence theorem here holds on the disjoint union of the global
+indices and the local integer powers. For a fixed Weil element \(g\)
+and power \(j\), choose the coordinate with index \(-j\deg g\).
+Its nonzero Hecke normalization is fixed before requesting the
+precision. Divide it out of the approximated scalar and request the
+correspondingly finer error in the original approximation. Genericity
+at this \(w\) in every selected seed identifies its local power sum
+with its Weil trace. This gives exactly the simultaneous global and local
+test of Proposition~\ref{newgal:phi}.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{82}{Joint coordinate set}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{185}{normalization and the same coefficients}.
+
+The labelled comparison counts multiplicities. At power zero the
+augmentation has error at most the prescribed error by testing the
+constant polynomial \(1\) in \eqref{tr:approx}. At each fixed power
+the same-level rectangular estimate in Proposition~\ref{newgal:hodge}
+then recovers the full power sum, including repeated summands. Newton's
+identities require no separation of jumps. For a dominant integral
+weight in \eqref{newgal:jumps}, even equal adjacent highest-weight
+entries give distinct shifted jumps, since
+\((j+1-\lambda_{j+1})-(j-\lambda_j)\ge1\). Neither this observation nor
+the multiset argument produces an automorphic seed at a singular
+intermediate stage. The input there is the weight and local-type
+congruence together with the geometric seed and the theta-lift and
+descent steps in their stated ranges. For the odd-rank limit the
+singleton construction compares weights only away from \(w_0,v'\).
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{166}{Range of the singleton comparison}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean}{27}{Assembly from geometry, congruences and lifting}.
+
+\subsection{The classical polarized cuspidal case}
+
+There is a direct proof of the local assertions for the final classical
+$\mathrm{GL}_a$ input which also explains the normalization. Let $\pi$
+be a cuspidal automorphic representation of $\mathrm{GL}_a(\mathbb A_E)$
+whose archimedean infinitesimal character is that of an irreducible
+algebraic representation. Assume a continuous Hecke character $\chi$
+of $E^+$ satisfies
+\[
+ \pi^c\simeq\pi^\vee\otimes(\chi\circ N_{E/E^+}\circ\det),
+ \qquad \chi_v(-1)=(-1)^a\quad(v\mid\infty).
+\]
+Here $c$ is CM conjugation. The invariant bilinear pairing in the
+polarization gives precisely this duality when the smooth finite and
+archimedean modules are those of $\pi$. Choose the classical local
+Langlands correspondence with uniformizers mapping to geometric Frobenius.
+\src{src/Development/AbelianVarietyTheory/Definitions/GaloisGeometry/DualIsConjByOne.lean}{53}{Polarization}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/WeightsConjAlt.lean}{85}{cuspidal input}.
+
+\begin{proposition}\label{newgal:classical}
+For this input there is a continuous semisimple $r_\pi:G_E\to
+\mathrm{GL}_a(k)$ with labelled jumps \eqref{newgal:jumps} at all
+$w\mid\ell$. It is de Rham there and crystalline when $\pi_w$ is
+spherical. Write
+\[
+ Y_w=\operatorname{rec}_{E_w}\bigl(\pi_w\otimes|\det|_w^{(1-a)/2}\bigr).
+\]
+At every $w\nmid\ell$ one has $\iota\mathrm{WD}(r_\pi|_{G_{E_w}})^{F\text{-}\mathrm{ss}}
+\simeq Y_w$. At $w\mid\ell$ this equality also holds if the local
+representation has an Iwahori-fixed vector or if $Y_w$ has zero monodromy.
+Any continuous semisimple $r$ with the same normalized traces on a dense
+set of good Frobenius elements inherits these conclusions.
+\end{proposition}
+\begin{proof}
+Apply Barnet-Lamb, Gee, Geraghty and Taylor's Theorem~2.1.1 to $(\pi,\chi)$.
+Their weight $\mu$ uses the infinitesimal character of the dual of the
+algebraic module of highest weight $\mu$. Thus, with their index $1\le i\le a$,
+$\mu_{\iota\tau,i}=-\lambda_{\iota\tau,a-i}$. The theorem gives jumps
+$\mu_{\iota\tau,i}+a-i$, precisely \eqref{newgal:jumps}. It gives an
+integer $w_\pi$ such that the jumps at $\tau c$ are the complements
+$w_\pi-h$ of those at $\tau$. Parts (2) and (4) give the asserted
+comparisons away from $\ell$ and at Iwahori level respectively, including
+crystallinity at spherical level. Twisting by the indicated power of the
+norm multiplies spherical Satake eigenvalues at geometric Frobenius by
+$q_w^{(a-1)/2}$.
+Barnet-Lamb,
+Gee, Geraghty and Taylor, \emph{Potential automorphy and change of weight},
+\S2.1, Theorem 2.1.1(2)--(4)~\cite{blggtPotential}.
+
+For $a\ge2$ and $w\mid\ell$, the same authors' monodromy bound gives
+the semisimplified Weil representation of $Y_w$. In each class of
+irreducible Weil constituents up to unramified twist, the decreasing
+list of lengths of the special representations on the Galois side is
+dominated in partial sums by that on the automorphic side. If the
+automorphic monodromy is zero, every length is one. The bound on the
+first partial sum forces every Galois length to be one. Hence its
+monodromy also vanishes, proving the claimed equality. For $a=1$
+the same equality follows from the local compatibility of the
+$\ell$-adic character of an algebraic Hecke character. Finally the
+two global traces agree by continuity on $G_E$ and the characteristic-zero
+Brauer--Nesbitt theorem identifies $r$ with $r_\pi$.
+Barnet-Lamb,
+Gee, Geraghty and Taylor, \emph{Local-global compatibility for $l=p$, II},
+\S1, Theorems 1.1 and 3.1~\cite{blggtLocal}.
+\end{proof}
+
+For the classical correspondence these conclusions cover the ramified
+places tested in the final statement. Above $\ell$ its extra local
+comparison explicitly assumes zero monodromy on the automorphic side.
+Away from $\ell$ the full comparison gives equality of all the tested
+inertial polynomials and monodromy conditions. Applying this external
+argument to intermediate definite-unitary eigensystems would require
+their identification with suitable classical $\mathrm{GL}_a$ data and
+equality of the specified Hecke systems. Applying it with an abstract
+reciprocity map would also require the tested local parameters of that
+map to agree with the classical ones. The weighted trace construction
+and integral comparisons above describe the source's route prior to
+these identifications.
+
+\subsection{The principal level of an attached classical system}
+
+Let $F$ be an imaginary quadratic field in rank three, or $\mathbb Q$ in
+rank two, and let $M\ge1$. Write $\varepsilon_\ell$ for the cyclotomic
+character. A character $\chi:G_F\to k^\times$ trivial on
+$G_{F(\mu_M)}$ has finite image. For $v\mid p$ write $d=v_v(M)$,
+where $v_v$ gives a uniformizer value one. Put
+$U_v^0=\mathcal O_v^\times$ and $U_v^d=1+\mathfrak p_v^d$ for $d>0$.
+Under local class field theory $\chi_v$ is trivial on $U_v^d$.
+Indeed $\operatorname{Gal}(F(\mu_M)/F)$ is a subgroup of
+$(\mathbb Z/M)^\times$. Extend its character to this finite abelian
+group, using divisibility of $k^\times$. The local character on $F_v$
+is then the norm pullback of a character on $\mathbb Q_p^\times$ whose
+restriction to $\mathbb Z_p^\times$ factors modulo $p^{v_p(M)}$.
+When $d>0$, any element of $U_v^d$ acts by multiplication on the
+$\mathbb Z_p$-lattice $\mathcal O_v$ through a matrix congruent to
+one modulo $p^{v_p(M)}$, since $\mathfrak p_v^d=M\mathcal O_v$.
+Taking its determinant proves the claim. When $d=0$ the character
+on $\mathbb Q_p^\times$ is unramified.
+
+\begin{lemma}[Fixed vector criterion]\label{newgal:fixed}
+Let $\pi_v$ be a generic irreducible smooth representation of
+$\mathrm{GL}_n(F_v)$, and write $(D,r_W,N)$ for its
+Frobenius-semisimple Weil--Deligne parameter, allowing an unramified
+normalizing twist. Suppose its inertia representation is a sum of
+restrictions of characters of $W_{F_v}$ of conductor exponent at most
+$d$. If $d=0$, assume also $N=0$. Then $\pi_v$ has a nonzero vector
+fixed by the full principal congruence group $K_v(d)$, where
+$K_v(0)=\mathrm{GL}_n(\mathcal O_v)$.
+\end{lemma}
+\begin{proof}
+Write the generic representation as the irreducible parabolic induction
+of essentially square-integrable representations $\sigma_j$ of ranks
+$n_j$. Their parameters $D_j$ are the corresponding direct summands of
+$D$. For $d>0$, set $t_j=\dim D_j^{I_v}$. The Artin conductor of its
+Weil part satisfies $a(r_{W,j})\le (n_j-t_j)d$: finite inertia acts
+semisimply, and every nontrivial constituent has the same restriction
+to the ramification groups as one of the specified characters. The
+additivity of the Artin conductor on this restriction gives the bound.
+The Weil--Deligne conductor adds
+$t_j-\dim(\ker N_j)^{I_v}\le t_j$. Thus
+\[
+ a(\sigma_j)=a(r_{W,j},N_j)\le (n_j-t_j)d+t_j\le n_jd .
+\]
+Here equality of the automorphic and Weil--Deligne conductors follows
+from equality of their standard epsilon factors with the same additive
+character, and an unramified twist preserves the exponent.
+Miyauchi and Yamauchi's Theorem~1.2 characterizes $K_v(d)$-invariants
+by exactly these inequalities for every inducing block. If $d=0$, all
+the conductors vanish since inertia and monodromy are trivial. The
+same theorem then gives a spherical vector.
+Miyauchi and Yamauchi,
+\emph{A remark on conductor, depth and principal congruence subgroups},
+Theorems 1.1--1.2~\cite{miyauchiYamauchi}.
+\end{proof}
+
+\begin{proposition}[Transfer from the prescribed Galois level]\label{newgal:level}
+Suppose a continuous semisimple $r$ is attached on a cofinite set of
+places to a regular algebraic cuspidal $\pi$ over $F$. Assume $\pi$
+is conjugate self-dual in the rank-three case, and comes from the
+normalized classical weight $2e+1$ newform, $e\ge1$, in the rank-two
+case. In rank three use $r$ after the inverse cyclotomic twist occurring
+in Lemma~\ref{rk3:purity}. Suppose $r$ satisfies the following level
+conditions for one prime $\ell$ and a tuple $m$.
+\begin{enumerate}
+\item At $v\nmid\ell$ the restriction to inertia is diagonal, with entries
+$\chi_i|_{I_v}$, where each $\chi_i$ is trivial on $G_{F(\mu_M)}$.
+\item At $v\mid\ell$ there is a $G_{F_v}$-stable full flag with graded
+characters $\kappa_i$. On inertia $\kappa_i=\varepsilon_\ell^{m_i}\chi_i$,
+with $\chi_i$ as above. At this $v$ either $r$ is potentially crystalline
+or $\kappa_i\ne\kappa_j\varepsilon_\ell$ for all $i,j$.
+\end{enumerate}
+Then $\pi_f^{K_F(M)}\ne0$. At each embedding over $v\mid\ell$ its
+attached representation has filtration jumps $\{-m_i\}$. In the two
+counting applications $m=(e-1,-1,-e-1)$ and $m=(e,-e)$ respectively.
+\end{proposition}
+\begin{proof}
+Chebotarev and semisimplicity identify $r$ with the representation
+of $\pi$; this uses attachment to the classical cuspidal system as
+a hypothesis. Every $\pi_v$ is generic by global cuspidality for
+$\mathrm{GL}_n$. At $v\nmid\ell$ the prescribed finite inertia action
+implies zero monodromy, since it is trivial on an open subgroup of
+inertia, and gives precisely the specified inertia characters for the
+Weil parameter. Full local--global compatibility away from $\ell$
+therefore gives Lemma~\ref{newgal:fixed} at such $v$.
+
+At $v\mid\ell$ put $L=F_v$. The graded characters have the form
+$\kappa_i=u_i\chi_i\varepsilon_\ell^{m_i}$, with $u_i$ continuous
+and unramified. Its value on geometric Frobenius is an $\ell$-adic unit
+by compactness of $G_L$. Each graded line has the labelled jump
+$-m_i$ at every embedding of $L$, and the attached representation is
+de Rham. Strict exactness of filtered de Rham comparison now gives
+the stated jumps. Let $q_v$ be the residue cardinality. The Weil
+character of $\varepsilon_\ell$ is the unramified character $\nu$
+taking geometric Frobenius to $q_v^{-1}$. On a finite character and on
+a continuous unramified character the Weil functor gives restriction
+to $W_L$, with coefficients transported by $\iota$.
+Exactness of potentially semistable comparison gives the
+semisimplified Weil part as $\bigoplus_i\mathrm{WD}(\kappa_i)$.
+In particular its inertia is the sum of the $\chi_i|_{I_v}$.
+
+We check zero monodromy when $d=0$. Potential crystallinity gives this
+immediately in the first case. Otherwise, a nonzero monodromy matrix
+entry between the $j$th and $i$th character spaces would give
+$\mathrm{WD}(\kappa_i)=\nu\,\mathrm{WD}(\kappa_j)$ by
+$r_W(g)Nr_W(g)^{-1}=\nu(g)N$. The character
+$\theta=\kappa_i/(\kappa_j\varepsilon_\ell)$ would then have trivial
+Weil character. Write $\theta=u\chi\varepsilon_\ell^s$ as above. On
+geometric Frobenius, after returning to $k$, the Weil character takes
+the value $u(\mathrm{Frob})\chi(\mathrm{Frob})q_v^{-s}$. Its
+$\ell$-adic valuation forces $s=0$. The finite and unramified factors
+now give $\theta|_{W_L}=1$, hence $\theta=1$ by density. This contradicts
+the second alternative in the flag hypothesis.
+
+Finally the needed full comparison at a possibly ramified
+$v\mid\ell$ follows in rank three because every odd rank is
+Shin-regular. In rank two the difference of the two dominant weight
+entries is $2e-1>0$, as obtained by subtracting the half-sum of
+positive roots from the normalized infinitesimal character. This is
+the Shin-regular condition in rank two. Apply Theorem~1.1 for the CM
+case and Corollary~1.2 for the totally real case in
+Barnet-Lamb,
+Gee, Geraghty and Taylor, \emph{Local-global compatibility for $l=p$, II}~\cite{blggtLocal}.
+Thus Lemma~\ref{newgal:fixed} applies to the actual parameter on the
+automorphic side, including at the coefficient prime. Taking the restricted
+tensor product of the resulting fixed vectors gives a nonzero vector
+at principal level $M$. Use $M=N$ in rank three and
+$M=N|\operatorname{disc}F'|$ in rank two, where $F'$ is the imaginary
+quadratic field to which the rank-two representation is subsequently
+restricted. These are precisely the levels used in the fixed-field
+count of Proposition~\ref{rk3:count}.
+\end{proof}
+
+The exported rank-three counting argument calls both
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/KeepLevel.lean}{95}{the conjugate self-dual CM level theorem}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/KeepLevel.lean}{83}{the polarized CM level theorem},
+as recorded at the
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/KeepNumU.lean}{79}{count with the rank-two alternative}.
+Both theorems use an additional local comparison witness and give
+normalized good-place Frobenius polynomials as well as fixed vectors.
+Proposition~\ref{newgal:level} establishes the fixed-vector and weight
+conclusions for the stated classical representations. Its rank-two
+calculation is over $\mathbb Q$ before restriction to the CM field.
+
+\subsection{The polarized adjoint Selmer group over \texorpdfstring{$\mathbb Q$}{Q}}
+
+Let $K$ be imaginary quadratic, $n\ge2$, $k=\overline{\mathbb Q}_\ell$,
+and fix $\iota:k\simeq\mathbb C$. Write $\varepsilon$ for the $\ell$-adic
+cyclotomic character, $\delta$ for the quadratic character of $K/\mathbb Q$,
+and $c\in G_{\mathbb Q}$ for complex conjugation at a chosen embedding.
+Given $s:G_K\to\mathrm{GL}_n(k)$, a multiplier $\mu$ on $G_K$ and
+$P\in\mathrm{GL}_n(k)$ with
+\[
+ s(g)^t P s(cgc^{-1})=\mu(g)P ,
+\]
+let $A$ be a $G_{\mathbb Q}$-action on $M_n(k)$ which acts by conjugation
+by $s(g)$ for $g\in G_K$ and by $X\mapsto-P^{-1}X^tP$ for $c$. In
+particular its scalar line affords $\delta$.
+
+\begin{proposition}[The two adjoint vanishing assertions]\label{newgal:adselmer}
+Assume $s$ is continuous and absolutely irreducible on
+$G_{K(\mu_{\ell^\infty})}$. Suppose one of the following holds, with
+attachment meaning equality of normalized Frobenius polynomials at all
+but finitely many places for a classical regular algebraic cuspidal
+representation $\Pi$ of $\mathrm{GL}_n(\mathbb A_K)$.
+\begin{enumerate}
+\item $s$ is attached to a conjugate self-dual $\Pi$ and
+$\mu=\varepsilon^{1-n}|_{G_K}$.
+\item $s=r|_{G_K}$ for a continuous $r:G_{\mathbb Q}\to\mathrm{GL}_n(k)$
+and $s$ is attached to $\Pi$. There is a nondegenerate pairing on $r$
+with multiplier $\theta=\chi\varepsilon^w$, where $w\in\mathbb Z$ and
+$\chi$ factors through $\operatorname{Gal}(\mathbb Q(\mu_M)/\mathbb Q)$
+for some $M\ge1$. Here $\mu=\theta|_{G_K}$.
+\end{enumerate}
+Then $H^1_f(\mathbb Q,A)=0$ for every such $A$.
+\end{proposition}
+\begin{proof}
+In the first case $(\Pi,\delta^n)$ is polarized, since $\delta$ is
+trivial on norms from $K$ and $\delta_\infty(-1)=-1$. In the second,
+$s^c\simeq s$ by $r(c)$ and $s\simeq s^\vee\otimes\mu$ by the pairing.
+Let $\xi$ be the finite order Hecke character of $\mathbb Q$ with
+$\ell$-adic realization $\chi$, using geometric reciprocity. Put
+$\eta=\xi|\cdot|_{\mathbb A}^{w+n-1}$. Its $\ell$-adic realization is
+$\theta\varepsilon^{n-1}$. If the normalized eigenvalues of $\Pi_v$
+are $b_i=q_v^{(n-1)/2}\alpha_i$ at a good place, the dual has normalized
+eigenvalues $q_v^{n-1}/b_i$. Twisting the dual by $\eta\circ N_{K/\mathbb Q}$
+multiplies these by $\iota(\theta(\mathrm{Frob}_v))q_v^{1-n}$.
+The result is the multiset for $\Pi^c_v$, by the two isomorphisms above.
+Strong multiplicity one gives
+$\Pi^c\simeq\Pi^\vee\otimes(\eta\circ N_{K/\mathbb Q}\circ\det)$.
+Multiply $\eta$ by $\delta$ if necessary to arrange
+$\eta_\infty(-1)=(-1)^n$. The twist on $\mathrm{GL}_n(\mathbb A_K)$
+is unchanged, and the Galois multiplier
+$\varepsilon^{1-n}\eta_\ell$ restricts to $\mu$ on $G_K$.
+
+In both cases Chebotarev and Brauer--Nesbitt identify $s$ with
+$r_{\Pi,\iota}$. Fixing the same $c$, the automorphic polarization gives
+a pairing with multiplier $\mu$ and the negative adjoint action above
+(Newton--Thorne,
+\emph{Adjoint Selmer groups of automorphic Galois representations of unitary
+type}, \S1~\cite{newtonThorne}). By Schur's lemma the pairing matrices differ by a scalar,
+so they give the same action of $c$. Now apply
+Thorne, \emph{On the vanishing
+of adjoint Bloch--Kato Selmer groups of irreducible automorphic Galois
+representations}, Theorem~6.1~\cite{thorneAdjoint}, with $F=K$ and $F^+=\mathbb Q$.
+The hypothesis on the cyclotomic kernel is precisely its irreducibility
+hypothesis. This theorem covers $\ell=2$ and imposes no ordinarity or
+residual image condition. The earlier Newton--Thorne Theorem~5.2
+assumes enormous image on the cyclotomic kernel.
+
+To match the local conditions, a continuous cocycle $z$ and the action
+$A$ descend simultaneously to a finite extension $L/\mathbb Q_\ell$:
+apply Lemma~\ref{newgal:coeff} to the representation with diagonal
+blocks $A(g),1$ and upper right block $z(g)$. Continuity of $A$ follows
+from its restriction to the open subgroup $G_K$. At $v\nmid\ell$
+the prescribed equation $z(g)=A(g)x-x$ on inertia is the unramified
+condition. At $\ell$ the equation is $z(g)\otimes1=gx-x$ in
+$A\otimes_{\mathbb Q_\ell}B_{\mathrm{cris}}$, the Bloch--Kato finite
+condition. Indeed, for an embedding
+$j:\overline{\mathbb Q}\hookrightarrow\overline{\mathbb Q}_\ell$,
+the subgroup of compatible pairs of local and global automorphisms
+projects isomorphically to $G_{\mathbb Q_\ell}$: restriction to the
+algebraic closure of $\mathbb Q$ inside $\overline{\mathbb Q}_\ell$
+determines the global component. Other choices conjugate the local
+condition. In either equation an $L$-linear retraction $k\to L$
+fixing $L$, applied coefficientwise and tensored with the identity
+on the period ring when needed, gives a witness over $L$. Outside a
+finite set containing $\ell$ and the ramification of $A$, inertia
+acts trivially on $A$, so the local equation gives $z|_{I_v}=0$.
+The extension representation thus factors through the Galois group
+unramified outside this set. Hence $z$ represents a Selmer class with
+coefficients in $L$, and vanishing gives a global coboundary.
+\end{proof}
+
+In rank three the cyclotomic twist cancels from the adjoint, and its
+square supplies the multiplier $\varepsilon^{-2}$. The rank-two block
+has the alternating determinant pairing and $w=0$. In each case the
+cyclotomic-kernel irreducibility used in Proposition~\ref{newgal:adselmer}
+is a separate input to the classical argument. The exported rank-two
+proof uses its own cyclotomic irreducibility result, the cuspidal
+attachment of the modular block, and additional local witnesses in
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/RRRigII.lean}{25}{the second rigidity case}.
+The exported rank-four automorphy predicate supplies both a cuspidal
+attachment over each imaginary quadratic field on which the restriction
+is irreducible and a further comparison witness.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/AutomorphyLifting/IsAutCsdA.lean}{16}{Quadratic restriction and its witness}.
+At a place above \(\ell\) where the ordinary flag characters
+\(\kappa_i\) satisfy \(\kappa_i\ne\kappa_j\varepsilon\) for
+all \(i,j\), this witness requires a flag for which
+\(\kappa_i^m\ne(\kappa_j\varepsilon)^m\) for every \(m\ge1\).
+It also requires, for every regular algebraic cuspidal attachment
+\(\Pi\), a single real \(t\) such that at every place away from
+\(\ell\) and every place above \(\ell\) satisfying the latter
+condition, its cuspidal support consists of characters with
+uniformizer values of absolute value strictly between
+\(q_v^{t-1/2}\) and \(q_v^{t+1/2}\). Thus the first assertion
+involves finite-order ratios too, and the second uses the same
+\(t\) across the indicated places.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/AutomorphyLifting/WeakOfAtt.lean}{27}{The two requirements on the attachment}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/LeviSmoothLocalization/WinUpDown.lean}{38}{The local support and its absolute-value bounds}.
+If $J$ is the alternating similitude form, the pairing
+matrix is $P=Jr(c)^{-1}$. Write $X^*=J^{-1}X^tJ$. The map
+$X\mapsto (X-X^*)/2$ projects $A$ equivariantly onto the usual
+conjugation action on $\mathfrak{sp}(J)$. Indeed conjugation by a
+similitude commutes with $*$, and $c$ acts on $A$ by
+$X\mapsto-r(c)X^*r(c)^{-1}$. Thus a finite symplectic tangent cocycle
+which is a coboundary in $A$ has a primitive in $\mathfrak{sp}(J)$.
+This division by two takes place in $k$. On the exported rank-four path,
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ExistsCmFieldTwistH1.lean}{28}{descent from a linked CM tower}
+produces an imaginary quadratic field and polarized adjoint vanishing
+from an ordinary adjoint lifting theorem. The
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/RigSp4.lean}{181}{rank-four rigidity theorem}
+combines this with the finite local conditions for the tangent cocycle
+and the symplectic projection above. Proposition~\ref{newgal:adselmer}
+identifies that vanishing for the classical points satisfying its
+hypotheses. The exported lifting theorem concerns points of an ordinary
+determinant ring and also uses their local flags, genericity and weight
+conditions; establishing the hypotheses for those points is a separate
+step.

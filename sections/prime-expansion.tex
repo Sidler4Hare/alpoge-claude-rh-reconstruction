@@ -1,0 +1,259 @@
+\section{A paper proof of the auxiliary-prime selection}\label{pr:sec}
+
+Fix \(0<\alpha\le1/4,\ K\ge1\). Write \(L=\log Y,\ Z=Y^{400K}\).
+Consider the primes \(\mathcal P\) between \(\sqrt U\) (excluded) and \(U\)
+in a reduced class \(a\bmod m\), with \(8\mid m\). Assume
+\[
+ L^2\log m\le4\log U,\qquad
+ Y^{\alpha/6}\le\log U\le Y^{\alpha/5}L^2 .
+\]
+Every prime divisor of \(m\) is at most \(Y^{\alpha/5}\) or greater than \(Z\).
+All thresholds below are uniform in \(m,a,U\) subject to these inequalities.
+We prove the estimates on a whole interval used in Section~\ref{sup:section}.
+
+\begin{lemma}[Primes and quadratic signs in a progression]\label{pr:signs}
+For large \(Y\), \(|\mathcal P|\ge U^{9/10}\). For each fixed \(A,B>0\)
+there is at most one exceptional squarefree kernel \(s_*\) to be omitted
+from the following assertion. For odd squarefree \(1<s\le Y^A\) coprime to \(m\),
+\[
+ \left|\sum_{p\in\mathcal P}(p/s)\right|\le Y^{-B}|\mathcal P| .
+\]
+\end{lemma}
+\begin{proof}
+For the count, \(m\le U^{1/32}\) eventually. Let \(D=2^j m\) be the largest
+such multiple at most \(U^{1/32}\). Then \(U^{1/32}/2<D\le U^{1/32}\);
+\(a\) remains coprime to \(D\). Maynard's unconditional Theorem~3.2
+\cite{maynard} gives
+\[
+ \pi(U;D,a)\gg \frac{\log D}{\log U}\frac{U}{\sqrt D\,\varphi(D)}
+              \gg U^{61/64}.
+\]
+The theorem requires \(D\) sufficiently large and \(U\ge D^8\); both follow
+from the construction. At most \(\sqrt U\) primes have been counted below the
+desired interval. The fixed positive constant is absorbed by the strict
+inequality \(61/64>9/10\).
+
+For the second assertion put \(D_*=mY^A\). Uniformly for \(t\in[\sqrt U,U]\)
+and \(M=ms\), one has \(t\ge M^{12}\) eventually and
+\(\log t/\log D_*\gg L^2\). Indeed \(\log D_*=\log m+AL\),
+and \(Y^{\alpha/6}/L^3\to\infty\). Apply Thorner--Zaman, Corollary~1.4
+and Remark~1.5 \cite{tz}, to each unit class \(b\bmod M\). In terms of
+\(\Theta_b(t)=\sum_{p\le t,\ p\equiv b\bmod M}\log p\), this gives
+\[
+ \Theta_b(t)=H_b(t)(1+O(\Delta)),\qquad
+ H_b(t)=\frac{t-\chi(b)t^\beta/\beta}{\varphi(M)} .
+\]
+The second term is omitted when the exceptional real zero of modulus \(M\)
+is absent. The main terms are positive in this range, by (1.7) of
+\cite{tz}. The relative error is
+\(\Delta=\exp(-c\log t/\log M)+
+ \exp(-c(\log t)^{3/5}/(\log\log t)^{1/5})\).
+For any fixed \(B'>0\), this is \(O(Y^{-B'})\) uniformly here.
+
+There is an absolute \(c_0>0\) such that at most one primitive character
+of conductor at most \(D_*\) can have a real zero in
+\((1-c_0/\log D_*,1)\). Indeed two would induce distinct characters
+modulo the least common multiple of their conductors, at most \(D_*^2\).
+The classical uniqueness of the exceptional zero for that one modulus
+(the zero-free region recalled in \cite[\S1.1]{tz}) excludes this when
+\(c_0\) is sufficiently small. The extra Euler factors of an induced
+character do not vanish on this interval. If this character exists, take
+\(s_*\) to be the product of the primes of its conductor not dividing \(m\).
+
+Sum the displayed formula over classes \(b\equiv a\bmod m\) in
+\((\mathbf Z/M)^\times\), first without weights, then with weights
+\(\lambda(b)=(b/s)\). The Chinese remainder theorem makes the second
+sum of the primary terms zero. The exceptional term in the weighted sum
+also vanishes unless the component of \(\chi\) modulo \(s\) equals
+\(\lambda\): the product of two distinct real characters has sum zero.
+In this last case that component is nontrivial at every prime of \(s\).
+Its primitive conductor outside \(m\) has radical \(s\). For \(s\ne s_*\)
+we must then have \(1-\beta\ge c_0/\log D_*\). The \emph{unweighted}
+exceptional term sums to zero in this case, and the magnitude of the
+weighted main term divided by the unweighted main sum is
+\(t^{\beta-1}/\beta=O(\exp(-c_0\log t/\log D_*))\);
+the exceptional zeros under consideration have \(\beta\ge1/2\).
+In every case the absolute error summed over classes is
+\(O(\Delta\sum_b H_b(t))\), since the individual estimates are relative
+to positive main terms. This remains true when the base progression
+itself has a small main term.
+
+It follows that the signed prefix sum of \(\log p\), on these unit classes,
+is \(O(Y^{-B'})\) times the unsigned prefix sum for \(a\bmod m\).
+The latter is at most \((|\mathcal P|+\sqrt U)\log U\) throughout
+\([\sqrt U,U]\). Partial summation with \(1/\log t\) on this interval
+costs \(O(1/\log U)\), including both endpoints. Primes dividing \(s\)
+are below \(\sqrt U\). Use the first assertion to absorb \(\sqrt U\)
+and take \(B'>B\).
+\end{proof}
+
+\begin{proposition}[A uniform mean square]\label{pr:ms}
+For \(|\kappa(n)|\le1\), put
+\[
+ S_p(y)=\sum_{n\le Z}\Lambda(n)\kappa(n)(n/p)\min(1,y/n).
+\]
+For \(Y\le y\le Y^K\) one has
+\(\sum_{p\in\mathcal P}|S_p(y)|^2\ll_K |\mathcal P|y\log y\).
+For each fixed \(\tau>0\), the proportion of primes for which
+\(|S_p(y)|>\tfrac12y^{1/2+\tau}\) somewhere in this interval is
+\(O_{K,\tau}(Y^{-\tau})\), uniformly in \(\kappa\).
+\end{proposition}
+\begin{proof}
+Eventually \(\sqrt U>Z^2\). For \(n=\ell^j\), let \(r(n)=\ell\) if
+\(j\) is odd and \(\ell\nmid m\), and \(r(n)=1\) otherwise. Quadratic
+reciprocity expresses \((n/p)\) as a fixed sign times \((p/r(n))\):
+the signs at \(2\) and at primes of \(m\) are fixed by the progression,
+and \(r(n)\) is odd. Group the absolute coefficients by their square
+class, writing \(b_g=\sum_{r(n)=g,\ n\le Z}\Lambda(n)\min(1,y/n)\)
+in the finite elementary two-group generated by the primes up to \(Z\)
+outside \(m\).
+
+The elementary Chebyshev bound \(\sum_{n\le u}\Lambda(n)\ll u\)
+gives \(\sum_g b_g\ll y(1+\log Z)\) by partial summation.
+Even powers have cumulative weight at most \(C\sqrt u\) up to \(u\);
+integration against \(y\,du/u^2\) for \(u\ge y\) bounds their ramp
+weight by \(2C\sqrt y\). For each prime \(\ell\le y\), all its powers
+together contribute at most \(\log y+2\log\ell\): after the last power
+at most \(y\) the geometric series has total at most \(2\).
+Thus \(b_1\ll\sqrt y+Y^{\alpha/5}\log y\ll\sqrt y\).
+Among other groups with \(\ell\le y\), at most \(O(y/\log y)\) have
+positive weight, each of size \(O(\log y)\). For \(\ell>y\) the bound
+is \(2y\log\ell/\ell\). On each dyadic block above \(y\) Chebyshev's
+bound gives \(\sum_{\ell>y}(\log\ell)^2/\ell^2\ll(\log y)/y\).
+Consequently \(\sum_g b_g^2\ll y\log y\).
+
+In the expansion of the second moment the square class \(gh\) is odd,
+squarefree, coprime to \(m\) and at most \(Z^2\) whenever the coefficient
+is nonzero. Its normalized prime sum costs at most \(Y^{-K-1}\), except
+for \(gh=1\) and possibly \(gh=s_*\), by Lemma~\ref{pr:signs}.
+For either exceptional value \(d\), multiplication by \(d\) permutes
+the classes; Cauchy--Schwarz gives \(\sum_g b_g b_{gd}\le\sum_g b_g^2\).
+The remaining total is \(O(Y^{-K-1}y^2(1+\log Z)^2)\ll_K y\log y\).
+This proves the pointwise estimate.
+
+Except at integer breakpoints, \(y S'_p(y)\) is the same sum with
+\(\kappa(n)\) replaced by \(\kappa(n)\mathbf1_{n>y}\). Therefore
+\(\sum_p|S'_p(y)|^2\ll_K|\mathcal P|(\log y)/y\).
+On a dyadic block \([u,v]\subseteq[Y,Y^K]\), \(v\le2u\), integration
+of the derivative and Cauchy--Schwarz bound
+\(\sum_p\sup_{[u,v]}|S_p|^2\ll_K|\mathcal P|u\log(2u)\).
+The proportion violating the asserted threshold on the block is
+\(O_K(u^{-2\tau}\log(2u))=O_{K,\tau}(u^{-\tau})\). Sum the geometric
+series over blocks, truncating the last block at \(Y^K\). For \(K=1\)
+the pointwise estimate suffices.
+\end{proof}
+
+\begin{lemma}[Truncation using a finite-height box]\label{pr:perron}
+Let \(\chi\) be a primitive nonprincipal character of conductor at most
+\(Q\), with \(L(s,\chi)\ne0\) for \(\Re s>399/400,\ |\Im s|\le Q\).
+For \(Q\) and \(z\) sufficiently large, \(z\) a half-integer and
+\(2\le\log z\le Q^{1/8}\), one has
+\[
+ \left|\frac{L'}{L}(1,\chi)+\sum_{n\le z}\frac{\Lambda(n)\chi(n)}n\right|
+ \ll z^{-1/400}(\log z)^2(\log Q)^2+
+        \frac{(\log z)^2(1+\log Q)}{Q}.
+\]
+\end{lemma}
+\begin{proof}
+Put \(\sigma_0=399/400,\ \eta=1/\log z,\ T=Q/2\). Assume
+\(\eta\le1/800\), as is sufficient for the assertion. For \(|t|\le T\)
+the open disk of radius \(2-\sigma_0\) about \(2+it\) is zero-free.
+There is a branch of \(\log L\) there with bounded central value, by
+the absolutely convergent Euler product at real part two. Periodicity
+and partial summation give \(|L(s,\chi)|\le Q|s|/\Re s\) in the disk,
+so \(\Re\log L\ll\log Q\). For clarity, if \(F\) is the branch minus
+its central value, take \(H\gg\log Q\) with \(\Re F\le H\).
+The map \(F/(2H-F)\) takes the disk into the unit disk and vanishes at
+the centre. Schwarz's lemma gives \(|F|\ll H/\eta\) on the disk
+shortened by \(\eta/2\); Cauchy's derivative estimate on a circle of
+radius \(\eta/2\) then gives
+\(|L'/L(\sigma+it,\chi)|\ll(\log Q)/\eta^2\) for
+\(\sigma_0+\eta\le\sigma\le1+\eta\).
+
+Integrate \(-\frac{L'}L(1+w,\chi)z^w/w\) up the segment
+\(\Re w=\eta,\ |\Im w|\le T\), with factor \(1/(2\pi i)\).
+Its difference from the prime-power sum is \(O((\log z)^2/T)\).
+Indeed the scalar Perron kernel for \(v=z/n\ne1\) has error
+\(O(v^\eta/(T|\log v|))\), by integration by parts on the tails of
+the vertical inversion integral for \(\mathbf1_{v>1}\).
+Outside \(z/2<n<2z\) use \(\sum(\log n)n^{-1-\eta}\ll\eta^{-2}\).
+Inside use \(|\log(z/n)|\ge|z-n|/(2z)\), \(|z-n|\ge1/2\), and sum
+the resulting harmonic series. Absolute convergence on the initial
+line justifies interchanging the sum and the finite integral.
+Shift to \(\Re w=-1/400+\eta\); the only residue is
+\(-L'(1,\chi)/L(1,\chi)\) at zero. The two horizontal integrals cost
+\(O((\log Q)\eta^{-2}/T)\). On the new vertical line
+\(|z^w|\le e z^{-1/400}\) and \(\int_{-T}^T|w|^{-1}dt\ll\log(2T)\),
+since \(1/400-\eta\ge1/800\). The derivative bound finishes the proof.
+\end{proof}
+
+\begin{theorem}[Uniform selection of the two primes]\label{pr:pair}
+Fix \(M\ge1,\ 0<\varepsilon<1/52,\ K\ge1\). For every sufficiently
+large \(Y\), put \(z_0=Y^{\varepsilon/5}\), \(z_1=z_0(\log Y)^2\).
+There are primes \(q\in(e^{z_0/2},e^{z_0}],\
+d\in(e^{z_1/2},e^{z_1}]\) with \(q\equiv3\bmod8,\ d\equiv7\bmod16\)
+and \(d\equiv-1\) modulo \(q\) and every odd prime at most \(z_0\).
+They are coprime to \(8M\). For every primitive inducer \(\xi\) of a
+character modulo \(8M\), and every \((i,j)\in\{0,1\}^2\setminus\{(0,0)\}\),
+write \(\chi\) for the primitive character associated to
+\(\xi(\cdot)(\cdot/q)^i(\cdot/d)^j\). Simultaneously for these choices,
+\[
+ |G_\chi(y)|\le y^{1/2+\varepsilon/2},\qquad
+ |L'(1,\chi)/L(1,\chi)|\le4\log y\qquad(Y\le y\le Y^K).
+\]
+Every selected twist is nonprincipal and has the zero-free box in
+Lemma~\ref{pr:perron} up to the conductor bound used at its selection.
+\end{theorem}
+\begin{proof}
+For one progression take a list of at most \(R\) primitive base characters
+of conductor at most \(F\le\sqrt U\), where \(R\) is fixed. For \(p\in
+\mathcal P\) twisting a base character of conductor \(f\) by \((\cdot/p)\)
+gives primitive conductor \(fp\), by the prime-by-prime conductor factorization.
+For \(Q=FU\) the density estimate of Lemma~\ref{sup:density} bounds the
+number of bad primes by \(O(Q^{1/4})\): a chosen bad character determines
+its prime uniquely because its conductor has only one prime factor \(>\sqrt U\).
+Divide by \(|\mathcal P|\ge U^{9/10}\) and use \(Q\le U^{3/2}\).
+By Proposition~\ref{pr:ms} a further \(O_{K,\tau}(RY^{-\tau})\) proportion
+fails the ramp estimate for some base character. Both proportions tend to zero.
+
+For any survivor choose \(z=\lfloor Y^{400K}\rfloor+1/2\) in
+Lemma~\ref{pr:perron}. Since \(\log Q\ll Y^{\alpha/5}(\log Y)^2\),
+the error is \(O_K(Y^{-K+2\alpha/5}(\log Y)^6)\). The term divided by \(Q\)
+is smaller, since \(\log Q\ge Y^{\alpha/6}\). The elementary identity
+\[
+ G_\chi(y)=-S_p(y)+y\left(\frac{L'}L(1,\chi)
+                           +\sum_{n\le z}\frac{\Lambda(n)\chi(n)}n\right)
+\]
+follows from \(y\ge1,\ y\le z\) by splitting the ramp at \(n=y\).
+The half-integer retains exactly the terms \(n\le Y^{400K}\), and
+\(y\le Y^K<z\) for large \(Y\).
+For \(\tau=\varepsilon/2\) and either \(\alpha=\varepsilon\) or
+\(6\varepsilon/5\), the tail after multiplication by \(y\) is
+\(o(Y^{1/2+\tau})\), giving the asserted ramp bound.
+For the logarithmic derivative take instead
+\(z=\lfloor(\log Q)^{1000}\rfloor+1/2\).
+The error in Lemma~\ref{pr:perron} is \(o(1)\). The elementary estimate
+\(\sum_{n\le u}\Lambda(n)/n=\log u+O(1)\) follows from
+\(\sum_{n\le u}\Lambda(n)\lfloor u/n\rfloor=\log(\lfloor u\rfloor!)\),
+Chebyshev's bound and Stirling's formula. Hence the derivative is bounded
+by \(1000\log\log Q+O(1)\).
+
+First use \(m=8,\ a=3,\ U=e^{z_0},\ \alpha=\varepsilon,\ F=8M\)
+and all primitive inducers from \(8M\). Fix a good \(q\). Next take
+\[
+ m=16q\prod_{\substack{\ell\le z_0\\\ell\ {\rm odd\ prime}}}\ell,\quad
+ U=e^{z_1},\quad \alpha=6\varepsilon/5,\quad F=(8M)e^{z_0}.
+\]
+The Chinese remainder theorem gives the required reduced class \(a\).
+For large \(Y\), \(q>Z,\ F\le\sqrt U,\ Y^{\alpha/6}\le z_1
+\le Y^{\alpha/5}L^2\). Also \(\log m\le4z_0\): the elementary bound
+\(\sum_{\ell\le u}\log\ell\le(2\log2+o(1))u\) follows by bounding
+the primes between \(n\) and \(2n\) by the middle binomial coefficient
+and summing dyadically. Thus \(L^2\log m\le4z_1\).
+Use both the old characters and their \(q\)-twists, at most \(2\varphi(8M)\)
+characters. The resulting \(d\) provides the two remaining twist patterns.
+At both stages \(\log Q\le3Y^{\varepsilon/5}L^2\) eventually, so
+\(1000\log\log Q\le200\varepsilon L+O(\log L)\). The strict inequality
+\(200\varepsilon<4\) gives the promised bound. All choices of \(q,d\)
+precede the choice of \(y\).
+\end{proof}

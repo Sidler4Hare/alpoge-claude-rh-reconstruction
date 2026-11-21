@@ -1,0 +1,1921 @@
+\subsection{Absolute convergence, support at one split place, and the inert quotient}
+\label{threal:main}
+
+Write \(d=a+a'\), \(f=[F:\mathbb Q]\), and use the height \(H\) of
+\S\ref{newtheta:global}. Put \([G]=G(F)\backslash G(\mathbb A_F)\).
+There is a difference between the estimates needed to define the two
+periods and the identity comparing their values. We prove the estimates
+for the undoubled groups.
+
+\begin{proposition}\label{threal:decay}
+For the signatures and ranks of \S\ref{newtheta:global}, the unprimed
+theta kernel is absolutely integrable over \([U(V)]\) at every \(h\)
+for every adelic Schwartz function. For a primed test \(\Phi'\) in the
+specified full-rank space at \(v_1\) and every \(N\geq0\), there exist
+\(C_{\Phi',N}\) and an integer \(k\geq0\) such that
+\[
+ |\Theta_{\Phi'}(g,h)|\,H_{[U(V')]}(g)^N
+                      \leq C_{\Phi',N} H(h)^k .
+\]
+The primed kernel is absolutely integrable in \(g\), its integral has
+moderate growth in \(h\), and the full-rank test space is invariant
+under the two unitary actions.
+\end{proposition}
+\begin{proof}
+Use \(Y\) for either source, \(m=\dim_EY\), and let \(r\) be its
+\(F\)-rational Witt index. Fix rational hyperbolic pairs
+\((e_i,e_i^*)_{1\le i\le r}\) and their orthogonal complement \(Y_0\).
+In \(Y\otimes_EW\), take one whole half of each hyperbolic pair
+tensored with \(W\) as position coordinates and complete by a rational
+Lagrangian in the underlying symplectic space of \(Y_0\otimes_E W\).
+The theta sum now has positions
+\[
+        (x_1,\ldots,x_r,y)\in W(E)^r\times F^b,\qquad
+             b=(m-2r)d ,
+\]
+where \(W(E)\) denotes the underlying \(E\)-vector space.
+Choose the half for which the torus in the positive chamber acts on
+functions by
+\[
+ \phi(x,y)\longmapsto
+       \left(\prod_i T_i^{d/2}\right)
+       \phi(t_1x_1,\ldots,t_rx_r,y),\qquad
+          T_i=t_i^{2f},\quad t_i>0 ,
+ \tag{*}
+\]
+up to a scalar of absolute value one. Indeed each of the \(d\)
+\(E\)-coordinates contributes \(2f\) real dimensions and the
+prefactor is the square root of the real change of volume. The torus
+has value \(t_i\) at all real places and unit finite components.
+With the parabolic stabilizing the expanding isotropic flag one uses
+the opposite position half: the action on arguments is inverse to
+the action on translations.
+
+The change from the given Darboux coordinates is rational. Indeed the
+images of a rational basis are rational by assumption, and their
+determinant is nonzero. Rational linear changes, rational quadratic
+phases and partial Fourier transforms preserve the absolute value of
+the rational summation functional, by the product formula, triviality
+of \(\psi\) on \(F\), and Poisson summation with self-dual measures.
+These operations generate the rational symplectic group by the Siegel
+Bruhat decomposition. They also show that the absolute value of the
+kernel is invariant under rational left translates in either group.
+These arguments apply to each allowed unitary implementation: two
+unitary operators implementing the same action on the Heisenberg
+operators differ by a scalar of modulus one. In Schr\"odinger
+coordinates their quotient commutes with every modulation and hence
+is multiplication on \(L^2\), and commuting with the translations
+makes that multiplier constant. This argument also permits the
+use of the usual tensor-product implementations for estimates at a
+fixed adelic group element.
+
+Apply adelic reduction theory to the connected reductive group \(U(Y)\).
+Its center is the norm-one torus and has no \(F\)-split part.
+A minimal \(F\)-parabolic is the stabilizer of the chosen flag.
+The quotient is covered by a Siegel set with representatives
+\(n m_0 t k_0\), with \(n,m_0,k_0\) in fixed compact sets of the
+unipotent radical, norm-one part of the centralizing Levi, and
+maximal compact subgroup, respectively. Here \(t_i/t_{i+1}\) and
+\(t_r\) are bounded below by a positive constant. When \(r=0\) the
+set is compact. These are the compactness and fundamental-set theorems
+in adelic reduction theory, with inversion to pass from the right
+quotient to the left quotient \cite[\S\S2.1--2.2]{springerReduction}.
+The elements \(t^{-1}nt\) stay in a compact set, since the inverse
+of every positive root is bounded in this chamber. Thus the
+representatives have the form \(tc\), with \(c\) in a fixed compact
+set. In the integration coordinates above the Haar density in \(t\)
+is a constant times
+\[
+       \prod_{i=1}^{r} T_i^{-(m-2i+1)}\,\frac{dT_i}{T_i}.
+\]
+Indeed for each \(j>i\) the two relative roots with weights
+\(t_i/t_j,t_it_j\) have parameter in \(E\); the root \(t_i\) has
+parameters in the \(m-2r\) dimensional space \(Y_0\) over \(E\);
+the root \(t_i^2\) has one parameter over \(F\). Their determinant
+on the unipotent radical is
+\(\prod_i T_i^{2(r-i)+(m-2r)+1}\).
+Integration of a nonnegative rationally invariant function over a
+covering Siegel set bounds its quotient integral from above.
+
+Here are the bounds on the test in (*) as \(c,h\) vary. Fix coordinates
+over \(\mathbb Q\) using bases of the number fields and put \(D=fmd\).
+For a pure archimedean and finite tensor, the finite part of
+\(\omega(c,h)\Phi\) is supported on \(M^{-1}\widehat{\mathbb Z}^{D}\)
+and has supremum at most \(C M^{D/2}\), for an integer
+\[
+             1\le M\le C_\Phi H(h)^A .
+\]
+To see this, start with an integer \(M_0\) such that translations and
+modulations by \(M_0\widehat{\mathbb Z}^{2D}\) fix the finite test,
+using the standard \(\mathbb Q\)-adelic character and its dual
+coordinates. Increasing \(M_0\) also fixes coordinate denominators.
+After conjugation it suffices to have
+\((c,h)^{-1}M\widehat{\mathbb Z}^{2D}\subset
+ M_0\widehat{\mathbb Z}^{2D}\) in the symplectic representation.
+At each place \(v\), put \(n_v\) equal to the largest denominator
+order of the entries of \(h,h^{-1}\), or zero if all are integral,
+using all factors of \(E\otimes F_v\). The extension \(E/F\) is
+unramified at finite places. In fixed bases the entries on tensors
+involve only matrix multiplication and fixed changes of coordinates.
+All the \(c\)'s carry bounded denominators, supported at finitely many
+primes. Thus \(M=C_0\prod_{p}p^{\max_{v\mid p}n_v}\) suffices for
+a fixed positive integer \(C_0\). Since \(p\le q_v\) and the finite
+height factor is at least \(q_v^{n_v}\), this proves the bound.
+Invariance by modulations forces the stated support; invariance by
+translations makes the function constant on cosets of
+\(M\widehat{\mathbb Z}^{D}\), each of volume \(M^{-D}\) in product
+measure of integral volume one. Unitarity gives the supremum bound.
+
+At infinity, for every \(B\ge0\), the absolute value of the transformed
+test at \(z\) is at most \(C_B H(h)^{A_B}(1+\|z\|)^{-B}\).
+Indeed commute multiplication and differentiation through the unitary
+operators using Heisenberg covariance. Each is a linear combination of
+the original position and momentum operators, with coefficients
+bounded by a fixed power of the maximum of the archimedean matrix
+norms of \(h,h^{-1}\) and a constant for \(c\). Apply this identity to
+words of length at most \(B+D+2\) (round \(B\) up to an integer).
+Euclidean Sobolev embedding applied to each monomial times the
+transformed function then gives the assertion. Finite sums of pure
+tensors satisfy the same majorant. In these estimates \(A_B\) may
+depend on the fixed spaces, \(B\), and the test. The specified height
+uses the local spectral absolute values over \(F_v\), extending
+\(|\pi_v|=q_v^{-1}\), and takes the maximum of \(1\) and the norms of
+both matrices.
+\src{src/Development/AbelianVarietyTheory/Definitions/Foundations/EventuallyNormFinLeOne.lean}{405}{Matrix height across the places}.
+
+For the unprimed integral fix \(h\); then \(M\) is bounded and
+\(t_i\gg1\). Summing the Schwartz majorant with \(B>D+1\) on
+\(M^{-1}\mathbb Z^D\) gives \(O_{\Phi,h}(\prod_i T_i^{d/2})\).
+For \(r\le p\) every exponent \(d/2-(a-2i+1)\) is strictly negative,
+since \(a-d/2=(a-a')/2>2(p+q)+1\). Integration even over the larger
+rectangle \(T_i\ge c_1>0\) converges.
+
+For the primed integral we verify the support after the change of
+polarization. At \(v_1\) take the specified conjugate split coordinates,
+so the original position variable is an \(m\)-by-\(d\) matrix over
+\(F_{v_1}\). The two unitary actions there are invertible row and
+column changes times a scalar, since they preserve each of the two
+split Lagrangians. Therefore they preserve full row rank. This also
+proves invariance of the adelic span by factorization, since all other
+factors stay Schwartz and a restricted adelic element fixes the
+standard lattice factors up to scalar almost everywhere. For clarity,
+write the conjugate split matrix first in the rational Witt row basis.
+In a hyperbolic pair the two position rows are indexed by \(e_i,e_i^*\).
+In the new model the \(E\otimes F_{v_1}\)-valued position block \(x_i\)
+contains \emph{one unchanged row} and the Fourier dual of its paired
+row. Indeed the tensor symplectic pairing pairs the \(e_i\)-row on
+one split factor with the \(e_i^*\)-row on the other and conversely.
+One exchanges the position and momentum in one of these two row
+pairs, using an invertible linear identification with \(W\) from
+its form. The remaining change of polarization takes place in the
+\(Y_0\)-block. If the unchanged row vanishes, the original matrix has
+deficient rank for every value integrated over in these partial
+Fourier transforms. The transformed function therefore vanishes when
+\(x_i=0\). This holds separately for each \(i\) and survives finite
+sums. The coordinates called for in the support definition are unique
+up to scalar on Schwartz--Bruhat functions: an intertwiner with the
+stated translation and modulation laws is unique by the local
+Schr\"odinger commutant. Algebraically this follows by averaging
+modulations over compact open subgroups to project onto support in
+any ball, and then translating the indicators of balls.
+
+For a surviving rational summand \(\|x_i\|\ge c_2/M\): the rational
+points in the indicated finite support lie in \(M^{-1}\mathbb Z^D\),
+and the coordinates were chosen block by block. Given \(L\ge0\),
+spend \(rL\) powers in the archimedean majorant to obtain
+\(\prod_i (1+t_i\|x_i\|)^{-L}\ll M^{rL}\prod_i t_i^{-L}\).
+Another \(D+2\) powers suffice to sum the remaining majorant over
+\(M^{-1}\mathbb Z^D\), with bound \(O(M^D)\) by unit-cube counting.
+Thus, for every \(J\ge0\),
+\[
+             |\Theta_{\Phi'}(tc,h)|
+                    \ll_{\Phi',J} H(h)^{A_J}\prod_i T_i^{-J}.
+\]
+Here \(L\) was chosen to absorb both \(2fJ\) and the prefactor in (*).
+The quotient height at any translate is at most \(H(tc)\), which on
+this set is bounded by \(C\prod_i T_i^{A_0}\), by the matrix formula
+for \(H\). Taking \(J\ge NA_0\) gives the claimed inequality.
+Integrating the bound for any sufficiently large \(J\) proves
+absolute convergence and moderate growth, including the case \(r=0\)
+with empty products. All bounds use absolute values, so they apply
+to the prescribed Haar fundamental domains.
+\end{proof}
+
+\begin{corollary}\label{threal:limits}
+An identity with one fixed scalar for all polynomially matched pairs
+whose primed input satisfies the support condition implies the same
+identity for every matched pair in \S\ref{newtheta:global}.
+\end{corollary}
+\begin{proof}
+Fix \(h\) and a finite Schwartz factor. The unprimed proof bounded the
+absolute integral by finitely many archimedean Schwartz seminorms.
+The same is true on the primed side for a fixed admissible finite
+factor: the integer \(M\), the size of the finite factor and the
+compact set used in reduction are fixed, and the Sobolev argument
+uses finitely many seminorms of the varying archimedean factor.
+For the primed approximations the individual finite factors in the
+definition of matching need not themselves satisfy the support
+condition. Let \(B\) be their finite-dimensional span and \(B^\circ\)
+the subspace of the full finite Schwartz space spanned by admissible
+finite tensors. For \(S=\mathcal S(\mathbb R^D)\) one has
+\[
+      (S\otimes B)\cap(S\otimes B^\circ)=S\otimes(B\cap B^\circ)
+\]
+inside the algebraic tensor product with all finite Schwartz tests,
+as follows by extending a basis of \(B\cap B^\circ\) in each factor
+space \(B,B^\circ\). Products of functions realize this tensor product
+faithfully: evaluations span the dual of every finite-dimensional
+space of functions. Express the approximants and their limit in a
+basis of \(B\) adapted to \(B\cap B^\circ\). The coefficients outside
+the intersection vanish and the others converge in \(S\), being fixed
+finite linear combinations of the original coefficients. Continuity
+on each resulting finite slice permits passage to the limit at \(h\).
+\end{proof}
+
+\begin{proposition}[Even source ranks at an inert place]\label{threal:inert}
+Suppose \(v\) is inert and \(a=2u,\ a'=2w\). The two local
+Schwartz--Bruhat spaces have a common irreducible \(U(W)(F_v)\)
+quotient, invariant under their respective source groups. The maps
+can be chosen to send the prescribed vacua to the same nonzero
+spherical vector. Its unramified parameter, in the coordinates
+\(q^{2\sigma_i}\) up to permutation and separate inversions, is
+\[
+      (q,q^3,\ldots,q^{2u-1})\ \sqcup\
+      (q,q^3,\ldots,q^{2w-1}),\qquad q=|\mathcal O_F/v|.
+\]
+\end{proposition}
+\begin{proof}
+Put \(k=F_v,\ l=E_{\mathfrak w}\), and \(R=u+w\). This is an
+unramified quadratic extension of odd residual characteristic, \(q>3\),
+and \(\psi_v\) has conductor \(\mathcal O_k\). Since all ramification
+of \(\alpha,\beta\) is split, their local components are unramified.
+Both are trivial on \(k^\times\) by evenness of the ranks. A
+uniformizer of \(k\) is also a uniformizer of \(l\), so both local
+characters, and both splitting pairs, are trivial.
+
+The two source lattices are perfect Hermitian lattices. The absolute
+trace-dual condition on the target also gives a perfect skew-Hermitian
+lattice here. Indeed the standard global additive character with the
+specified infinite component has local annihilator of \(\mathcal O_k\)
+equal to the absolute codifferent; this follows from the trace
+pairing and the uniqueness of the character on \(\mathbb A_F/F\)
+with that infinite component (the dual is \(F\)). The conductor
+hypothesis makes this codifferent the unit ideal, and \(l/k\) adds
+no different. A trace-zero unit converts a perfect skew-Hermitian
+form into a Hermitian one. Such a unit is obtained by subtracting
+the conjugate of a lift of a residue element outside the base field.
+Every even-rank perfect Hermitian lattice here is integrally
+hyperbolic. Over the residue fields diagonalize and use surjectivity
+of the norm to obtain a nonzero isotropic vector in dimension at
+least two. The derivative of the norm form there is the surjective
+residue trace pairing with this vector. Hensel lifting gives a
+primitive isotropic \(x\). Choose \(y\) pairing to one with \(x\)
+and replace \(y\) by \(y-h(y,y)x/2\). The resulting hyperbolic plane
+splits integrally, giving induction. In particular the target admits
+the integral hyperbolic polarization and both source groups have the
+quasi-split sign \(+\).
+
+Use the ordinary Schr\"odinger model on \(Y^R\), for \(Y\) one of the
+two Hermitian sources. The lattice vector is, up to scalar,
+\(\mathbf1_{\Lambda_Y^R}\). To verify the identification with the
+prescribed vacuum, apply its Heisenberg eigenline condition on each
+of the two tensor lattice halves of the hyperbolic polarization of
+\(W\). The quadratic phase is one on each half, which is isotropic
+over \(l\) and stable under the trace-one element. The two conditions
+are invariance under the translations by \(\Lambda_Y^R\) and the
+modulations by its dual. They force support in \(\Lambda_Y^R\) and
+constancy there. The change to these coordinates is a unitary
+Heisenberg intertwiner and the original vacuum is nonzero.
+
+We recall why the splitting, including its scalar character, agrees
+with the one in the spherical calculation. The prescribed splitting
+on each factor extends to its hyperbolic doubling. In the doubled
+diagonal polarization evaluation at zero has on its Siegel stabilizer
+the law \(\chi(\det t)|\det t|_l^{\dim_EY/2}\), with the oscillator
+partner's dimension in the exponent if it is the source that is
+doubled. This is precisely the standard doubled splitting with
+character \(\chi\). To use the adelic law at a single place, take
+evaluation in the diagonal polarization at all places. This is an
+admissible functional: rational changes to that polarization are
+compositions of the linear changes, phases and Fourier transforms
+above, and evaluation is continuous on each fixed finite Schwartz
+slice. The functional is nonzero. After unitary identification of the
+doubled Heisenberg implementations, their quotient on elements
+supported at \(v\) is a scalar character by the commutant argument.
+The common evaluation law makes it trivial on the Siegel stabilizer.
+Its conjugates generate the hyperbolic unitary group: the Siegel
+Bruhat double cosets are represented by interchanging some of the
+hyperbolic pairs. In each hyperbolic plane the interchange, up to
+a diagonal element, is the product of three alternating upper and
+lower root unipotents by the \(2\)-by-\(2\) identity in
+\(\mathrm{SL}_2(k)\simeq SU(1,1)(k)\). Upper unipotents are in the
+stabilizer and lower ones in its opposite conjugate. Thus the
+character is trivial. Restrict on block elements \((g,1)\) of the
+doubling and apply the defining product rule on pure tensors to
+recover the given single-factor action. This argument works on both
+factors. In particular it excludes a scalar character twist that
+Heisenberg covariance alone would permit.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean}{435}{Doubled Siegel and block restriction laws}.
+
+In Liu's notation take the larger skew-Hermitian group \(G_R\) and
+the Hermitian space of dimension \(2s\), first \(s=u\), then \(s=w\).
+His unramified additive character and trivial splitting character are
+the ones just checked (a unit scaling in the trace pairing changes
+only the choice of conductor-zero additive character or hyperbolic
+basis). The trivial representation of \(U(2s)\) has parameters
+\((q,q^3,\ldots,q^{2s-1})\), since the exponents of the normalized
+Borel modulus on its \(l^\times\)-coordinates are
+\(s-i+1/2\), for \(1\le i\le s\). In fact the root computation in
+the preceding proof gives the modulus before taking its square root.
+Liu's Theorem~6.2(2), Proposition~3.4 and the parameter maps of
+\S2 say that, for \(R\ge s\) and sign \(+\), the small lift of the
+spherical representation on \(G_R\) with the \(s\) parameters inverted
+and \(q,q^3,\ldots,q^{2(R-s)-1}\) appended is the spherical
+representation with those \(s\) parameters on \(U(2s)\).
+The small-lift quotient sends \(\mathbf1_{\Lambda_Y^R}\) to a
+nonzero vector, also explicitly in the proof of his Theorem~1.1.
+The two applications give the displayed identical Weyl orbit.
+Accordingly the oscillator has in each case a quotient onto
+\(\pi\boxtimes{\bf1}\) with the same irreducible spherical \(\pi\)
+on \(G_R\). The image of each vacuum belongs to the one-dimensional
+hyperspecial fixed line; rescale one map to give equality. If maps
+on the full space of all functions are requested, extend linearly
+from Schwartz--Bruhat functions using any vector-space complement:
+the conditions concern only Schwartz--Bruhat vectors.
+For these choices of spherical vector, parameter and normalized
+induction see \cite[\S\S2, 3 and 6]{liuThetaInert}.
+\end{proof}
+
+\begin{proposition}[All inert places, including the odd row ranks]
+\label{threal:allinert}
+At every inert place, in either parity, the two local Schwartz spaces
+have a common irreducible target quotient annihilating the source
+differences. The prescribed vacua have the same nonzero image after
+one scalar normalization.
+\end{proposition}
+\begin{proof}
+Write \(d=2R\), \(Y=V\) or \(V'\), \(m=\dim_EY\), and
+\(\xi=\beta_v\) or \(\alpha_v\), respectively. These last two
+characters of \(E_v^\times\) are the same: both are unramified
+and their values at a uniformizer of \(F_v\), also a uniformizer
+of \(E_v\), are \((-1)^m\). Thus \(\xi^2=1\). On the source the
+splitting character is trivial in both cases. Use the integral
+hyperbolic polarization of \(W\) in the preceding proof. In this
+model \(U(Y)\) acts by linear substitution on \(Y^R\): in the
+Siegel Levi implementing its action the determinant modulus is
+one, with trivial splitting character. Evaluation at zero is
+source invariant. Consequently
+\[
+        \phi\longmapsto
+          \bigl(h\longmapsto(\omega(1,h)\phi)(0)\bigr)
+\]
+gives a nonzero equivariant map for the target into the normalized
+Siegel induction \(I(s_m,\xi)\) of \(U(2R)(F_v)\) from
+\((\xi\circ\det)|\det|_{E_v}^{s_m}\),
+where \(s_m=(m-R)/2\). Indeed the Siegel unipotent acts by a
+quadratic character taking value one at zero. The Levi acts at
+zero by \(\xi(\det b)|\det b|_{E_v}^{m/2}\), and the half modulus
+of this Siegel parabolic is \(|\det b|_{E_v}^{R/2}\).
+The image is nonzero already on the lattice indicator at \(h=1\).
+These substitutions are the standard Siegel splitting of the
+polarized Weil representation. The doubled uniqueness argument
+above identifies them with the actions specified here.
+
+The image has finite length as a submodule of parabolic induction
+of an admissible finite-length representation. Choose any
+irreducible quotient of this nonzero image. The composite is a
+nonzero map from the oscillator onto the trivial source times
+this quotient. The unramified vacuum theorem says that such a map
+takes the lattice vacuum to a nonzero vector in the hyperspecial
+fixed line when the source representation is spherical. Its
+hypotheses are precisely odd residue characteristic, an unramified
+quadratic extension and additive character of conductor \(\mathcal
+O_v\), self-dual lattices and unramified splitting characters. To
+interchange the Hermitian and skew-Hermitian spaces one can use a
+trace-zero unit and its inverse. The source vacuum in the given
+coordinates is a nonzero multiple of this lattice vector by the
+Heisenberg characterization above.
+\cite[Appendix, Theorem~2.A.1]{harrisSpherical}
+
+In particular this irreducible quotient has the spherical Hecke
+character of \(I(s_m,\xi)\): hyperspecial invariants are exact by
+compact averaging, and the induction has a single fixed line by
+Iwasawa decomposition. For \(m'=2R-m\) one has \(s_{m'}=-s_m\).
+The two inducing data are Weyl conjugate on their unramified
+parameters: the long Siegel Weyl element takes \(b\) to its
+inverse conjugate transpose, \(\xi\) is conjugation invariant
+and self-inverse, and the \(R\) exponents of the trivial
+\(\mathrm{GL}_R\) representation are symmetric about zero.
+The Satake classification thus identifies the two spherical
+irreducibles. Scaling the maps to their common fixed line gives
+the desired normalization.
+\end{proof}
+
+\begin{proposition}[Ordinary relatively split places]
+\label{threal:ordinarysplit}
+At every place split in \(E/F\) outside \(S=S_0\sqcup Q\), there
+is a common irreducible quotient with matching nonzero vacua,
+including when the underlying rational prime does not split
+completely in \(E\).
+\end{proposition}
+\begin{proof}
+Use the two row and dual-row models of
+Proposition~\ref{newtheta:split}. The relative splitting
+\(E\otimes F_v=k\times k\) suffices for these models. In either
+polarization the two idempotent summands of the tensor lattice give
+translations by a full lattice and modulations by its character dual.
+Indeed the source lattice is perfect for its \(E\)-valued form,
+and the partner lattice is perfect for the absolute trace pairing.
+Thus, in dual bases, the modulation coefficients range over the
+inverse different of \(k/\mathbb Q_\ell\) times the ordinary dual
+of the position lattice. This gives exactly the character dual for
+the trace additive character. The latter is forced by its infinite
+component and triviality on \(F\), since \(F\) is dense in its
+finite adeles. On each idempotent summand separately the quadratic
+phase in the vacuum condition is one by isotropy, also in residue
+characteristic two. Translation invariance and modulation invariance
+force any nonzero vacuum to be a constant times the indicator of
+the position lattice. Choose position lattice bases and the
+conjugate dual bases so its indicator is the integral-matrix test
+on each side and the two target compact subgroups agree. Scaling
+these local coordinate intertwiners identifies the given vacua
+with the two indicators. The unitary linear action is the prescribed
+one by the block and Siegel laws used above; conjugating to the dual
+polarization sends the target action to inverse transpose as in
+\eqref{newtheta:big}.
+
+In the notation of Proposition~\ref{split:good} put \(n=a\),
+\(t=\nu(\pi)\), \(s=d/2\) and
+\(D_n(z)=\prod_{j=0}^{n-1}(1-tq^{j-z})\).
+For any matrix test \(H\), the cleared determinant integral
+\(D_n(z)Z_n(H,z)\) is a Laurent polynomial in \(q^{-z}\).
+Here is the refinement needed when \(t\) has finite order. Keep the
+integrand exponent \(z-n\) fixed as in that proposition. In size
+\(j\) a ball about zero scales to \(M_j(\mathcal O_v)\). Its
+denominator divides
+\(\prod_{i=0}^{j-1}(1-tq^{n-j+i-z})\) by the same Hermite
+count with parameter \(z-n+j\) and the conversion from additive
+to group Haar measure. Its numerator is a constant times a
+Laurent monomial. Subtract the value at zero times such a ball.
+The remaining compact support is covered by pivot charts; the
+Schur-complement argument reduces to size \(j-1\), whose denominator
+is a subproduct of the one just displayed. Finite disjoint
+subdivision and induction prove the claim starting with size zero.
+
+Multiply the larger transform by \(D_n(z)\) and evaluate at \(s\).
+The source and parabolic covariance pass from the right half-plane
+to this value by the meromorphic identity principle, including if
+the value is a residue. The character and modulus factors in that
+covariance are holomorphic in \(z\). Smoothness in the target
+follows from the compact open stabilizer of the test. The larger
+vacuum has value one at the identity by the exact Hermite count,
+with \(\operatorname{vol}(\mathrm{GL}_n(\mathcal O_v))=1\).
+The smaller vacuum also has nonzero value there, since \(a'<s\),
+and can be normalized to one. The two spherical vectors are now
+equal. The common induced target of Proposition~\ref{newtheta:split}
+is irreducible by Bernstein's theorem, so both nonzero maps are
+onto. The stronger assertion on the entire source-difference
+kernel at totally split good primes was proved separately in
+Proposition~\ref{split:good}.
+\end{proof}
+
+\begin{proposition}[The real quotient for \(p=q=0\)]\label{threal:compact}
+At each infinite place write \(A=m_\alpha,\ B=m_\beta\) and
+\[
+        j=(A-B-d)/2,\qquad l=(B+a)/2 .
+\]
+The two real polynomial modules have the same source-coinvariant
+representation of the compact target \(U(d)\), with dominant highest
+weight \(((l+j)^a,l^{a'})\). Superscripts indicate repetitions.
+The tensor product of these representations over the real places
+realizes the real matching maps for this branch.
+\end{proposition}
+\begin{proof}
+The restrictions to \(\mathbb R^\times\) give \(A\equiv a'\),
+\(B\equiv a\pmod2\). Thus \(j,l\) are integers, and \(j>0\) by the
+weight condition. Let \(D_0=\mathbb C^d\), \(U_0=\mathbb C^a\),
+\(U_1=\mathbb C^{a'}\) with the standard actions. In orthonormal
+column frames the operators on the polynomial Fock modules are the
+following two representations of source times target:
+\[
+\begin{split}
+ &(\det_{U_0}^{-j}\boxtimes\det_{D_0}^{\,l})
+               \otimes\operatorname{Sym}(U_0\otimes D_0),\\
+ &(\det_{U_1}^{\,j}\boxtimes\det_{D_0}^{\,l+j})
+               \otimes\operatorname{Sym}(U_1^*\otimes D_0^*).
+\end{split}
+\]
+We verify the weights to fix the sign convention. In one unprimed
+complex matrix entry the tensor form is
+\(-\operatorname{Tr}_{\mathbb C/\mathbb R}(-i z\bar z')
+=2\,\operatorname{Im}(\bar z z')\); it changes sign on the primed
+side. The additive character is \(x\mapsto e^{-2\pi i x}\). In the
+positive plane the Heisenberg derivatives for \(1,i\) can be taken
+as \(\partial_x,-4\pi i x\). Acting on
+\(\exp(-2\pi x^2)\), the second derivative operator is \(i\) times
+the first. Thus a rotation acts on the creation operator
+\(d\rho(1)-i\,d\rho(i)\) by its ordinary character. Reversing the
+form gives the conjugate character. The infinitesimal metaplectic
+rotation on the positive plane has eigenvalues \(i(n+1/2)\):
+in the creation and annihilation operators \(b^\dagger,b\) with
+\([b,b^\dagger]=1\) its generator is the symmetrized quadratic
+\(i(b^\dagger b+bb^\dagger)/2\); the negative plane reverses this
+sign. Therefore the metaplectic vacuum has half the sum of the signed
+entry weights.
+
+The doubled Siegel normalization contributes the additional half of
+the splitting-character exponent on the determinant of each single
+unitary factor. Indeed on the doubled Siegel Levi \(t\in
+\mathrm{GL}_n(\mathbb C)\) the action of the metaplectic Lie algebra
+on evaluation gives the positive modulus; its infinitesimal phase
+is zero, as one also sees from the real change of coordinates.
+The prescribed additional phase on this Levi is
+\((\det t/|\det t|)^m\). The determinant of the doubled unitary
+element on the same Levi is \(\det t/\overline{\det t}\); hence the
+difference of the two infinitesimal implementations is
+\((m/2)\operatorname{tr}\). They differ by a Lie algebra character,
+and every such character on \(\mathfrak u(n,n)\) is a multiple of
+trace since its derived algebra is \(\mathfrak{su}(n,n)\).
+Restriction to the first block preserves the trace. Consequently the
+source vacuum powers are \((d+B-A)/2=-j\) and
+\((-d+A-B)/2=j\); the target powers are \((a+B)/2=l\) and
+\((-a'+A)/2=l+j\). The unitary groups are connected, so the
+infinitesimal action determines these integrated representations.
+The Gaussian times the Hermite polynomials form the polynomial
+module here: the annihilation equations for the decaying Gaussian
+separate into the one-coordinate first-order equations above, with
+the opposite choice of sign giving an increasing exponential, and
+the Heisenberg derivatives generate all the creation monomials.
+
+Use the Cauchy decomposition
+\(\operatorname{Sym}(U\otimes D_0)=
+\bigoplus_\lambda S_\lambda U\otimes S_\lambda D_0\);
+this follows by applying Schur--Weyl duality to each homogeneous
+degree and taking simultaneous permutation invariants.
+The only partition for which \(S_\lambda U_0=\det_{U_0}^j\) is the
+rectangle \((j^a)\), with multiplicity one. On the dual side the
+rectangle is \((j^{a'})\). Thus the first invariant space is
+\(\det^l S_{(j^a)}D_0\), and the second is
+\(\det^{l+j} S_{(j^{a'})} D_0^*\). Their highest weights agree,
+since duality reverses and negates the list of weights. Both spaces
+are irreducible. Averaging over the source compact group projects
+onto the invariants and kills precisely the span of the differences
+on the polynomial module, by complete reducibility on each finite
+degree. Composing with an identification of the two highest-weight
+modules gives the claimed surjections. Their tensor product is
+irreducible for the product of the compact targets. The maps may
+be extended linearly off the polynomial spaces, since the
+specified infinitesimal and compact transformation laws concern
+polynomial inputs and these actions preserve that subspace.
+For comparison with the source conventions see
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/ToralCohomology/PiInfUnitNe.lean}{116}{The unprimed target highest weight}.
+\end{proof}
+
+\begin{proposition}[The real quotients for all signatures]\label{threal:allreal}
+At each infinite place let \(A=m_\alpha,\ B=m_\beta\).
+In Paul--Trapa's normalization the common real representation
+is the cohomologically induced module on the ordered Levi
+\[
+ U(a-p,p)\times U(a'-q,q),\qquad
+ A_{\mathfrak q}(\det^{A/2}\boxtimes\det^{B/2}).
+\]
+The half-determinant notation uses the covers in their normalization.
+The output after twisting is an honest module for the target Lie
+algebra and its maximal compact group.
+\end{proposition}
+\begin{proof}
+Put \(r=d-p-q,\ t=p+q,\ k=A-B>d\). Work first with the
+metaplectic oscillator, before the two splitting twists. With the
+additive character and tensor form in Proposition~\ref{threal:compact},
+a positive source row has vacuum determinant exponent \((r-t)/2\);
+a negative source row has the opposite exponent. This follows by
+summing the signed one-entry weights \(1/2\) there. It is the
+convention of Paul--Trapa's joint harmonics, their formula (3.3).
+In passing to the prescribed actions the source determinant exponents
+are shifted by \((B-A)/2\) and \((A-B)/2\), respectively.
+The doubled trace argument for that shift in
+Proposition~\ref{threal:compact} applies to each signature, since
+the doubled group and its Siegel Levi have the same trace character.
+Thus the prescribed trivial source corresponds in the metaplectic
+oscillators to \(\det^{k/2}\) and \(\det^{-k/2}\).
+
+Since \(|r-t|<k\), subtracting the vacuum weights from
+\((k/2,\ldots,k/2)\) gives positive entries on both compact
+blocks of \(U(a-p,p)\). In the notation of Paul--Trapa's Lemma~3.2
+the two joint-harmonic bounds are \(a-p\le r,\ p\le t\).
+For the primed determinant all the entries after subtraction
+are negative. The bounds for \(U(q,a'-q)\) become
+\(a'-q\le r,\ q\le t\). They hold since \(r=(a-p)+(a'-q)\)
+and \(t=p+q\). Thus each character occurs in the joint harmonics.
+Part (1) of their Theorem~4.1 gives on the unprimed side
+\(A_{\mathfrak q}(\det^{k/2}\boxtimes 1)\) with first block
+\(U(a-p,p)\). Part (2) gives
+\(A_{\mathfrak q}(1\boxtimes\det^{-k/2})\) with second block
+\(U(a'-q,q)\) on the primed side. These are the same ordered
+two-block parabolic before assigning its two inducing characters.
+Finally the target splitting adds \(B/2\) to both block weights
+on the first side and \(A/2\) on the second. Tensoring by this
+determinant character commutes with cohomological induction, by
+pulling the character through the induction and derived compact
+invariant functors. Both modules therefore have the displayed
+description. The shifts inherent in the authors' normalization
+of \(A_{\mathfrak q}\) are identical on the two sides.
+\cite[\S\S2.1, 2.3, 2.8, Lemma~3.2, Theorem~4.1 and Corollary~4.3]{paulTrapaHowe}
+
+These are small theta quotients of the polynomial Fock modules,
+hence irreducible nonzero targets of equivariant surjections.
+Taking their algebraic tensor products over the real places gives
+the quotient for the product Lie algebra and maximal compact.
+Indeed the source polynomial module is spanned by finite products
+of creation monomials from the separate places. A submodule of the
+external product of simple Harish-Chandra modules is either zero
+or the whole product, by the density theorem applied to finite
+tuples in each factor (their commuting endomorphisms are scalars).
+The quotient maps kill source derivatives and compact differences;
+target derivatives and compact actions preserve matching. Extending
+the maps linearly from polynomial vectors to their ambient
+Schwartz spaces satisfies the stated real-map conditions, all of
+which test polynomial inputs. For simultaneous archimedean
+one-parameter groups one differentiates the finite product of
+the individual actions, giving the sum of the placewise derivatives.
+\end{proof}
+
+\begin{theorem}[A nonzero supported undoubled period]\label{threal:nonzero}
+For \(q=0\) and every allowed \(p\) the primed period is nonzero for some polynomial
+Schwartz test satisfying the imposed full-rank condition at \(v_1\).
+Both parities of \(a'\) are allowed.
+\end{theorem}
+\begin{proof}
+Put \(Y=V'\), \(m=a'\), \(H=U(Y)\), \(J=U(W)\). The source quotient
+is compact by the rank-zero case of reduction theory. Take probability
+quotient measures for now; other Haar normalizations multiply the
+periods by positive constants. We first prove the identity
+\begin{equation}\label{threal:norm}
+ \int_{[J]}\left|\int_{[H]}\Theta_\phi(g,h)\,dg\right|^2 dh
+  = c_H\int_{H(\mathbb A_F)}
+                \langle\omega(g,1)\phi,\phi\rangle\,dg,
+                 \qquad 0<c_H<\infty .
+\end{equation}
+Here the scalar simply accommodates the choice of group Haar measure
+on the right; it is one for quotient volume one with rational counting
+measure. We use the usual self-dual Hilbert pairing, linear in the
+first variable. For the proof it suffices to take finite pure tensors
+with polynomial Fock factors at infinity.
+
+On the doubled space \(Y\oplus(-Y)\), change from the product
+polarization for \(\phi\otimes\bar\phi\) to the diagonal polarization.
+The value at zero in the latter coordinates is
+\(\int\phi(x)\overline{\phi(x)}\,dx\): the change is a difference and
+average of the two position coordinates followed by Fourier transform
+in the average variable. The Jacobian scalars can be fixed using
+rational coordinates and globally self-dual measures, by the product
+formula. At \((g_1,g_2)\) the analogous functional gives
+\(\langle\omega(g_1,1)\phi,\omega(g_2,1)\phi\rangle\) times the
+second-block determinant character of the doubled splitting. In the
+product with the conjugate kernel that character is divided out.
+Its exact conventional form is \(\chi_W(\det g_2)\) for the splitting
+character on the \(H\)-action in the notation of the doubling
+construction. Its modulus is one and it is trivial on rational points.
+This block identity is also the change-of-model identity in
+Gan--Qiu--Takeda, \S11.3, equations preceding (11.2)~\cite{ganQiuTakeda}.
+The rational summation on the two product factors changes to the
+doubled rational summation by Poisson summation.
+
+For the given presentations, transport the standard implementations
+using their rational Darboux coordinates. On each doubled factor the
+possible discrepancy with the prescribed implementation on elements
+supported at a single place is a scalar character trivial on the
+Siegel stabilizer, by the argument of
+Proposition~\ref{threal:inert}. This argument applies over the
+real fields as well, using hyperbolic planes. At split places the
+doubled group is a general linear group, generated by the block
+parabolic and its conjugates by elementary elimination. Hence every
+single-place discrepancy is trivial on each single factor by the
+block rule. The global discrepancy is a continuous character:
+compare the two implementations with a nonzero matrix coefficient
+in a neighborhood of the identity, using unitarity and weak
+continuity. It is trivial on the dense subgroup of elements supported
+on finitely many places, hence everywhere. As a result the standard
+automorphic theta and these periods agree after the rational change
+of coordinates, up to the single scalar inherent in choosing the
+unitary coordinate transform. Taking its modulus to be one suffices
+in \eqref{threal:norm}.
+
+To interchange the three integrations, use the chamber estimate of
+Proposition~\ref{threal:decay} with \(W\) as integrating space of
+dimension \(d\) and \(Y\) as partner of dimension \(m\). Its proof
+applies to a skew-Hermitian integrating space as well. If a
+Hermitian integrating space is used in the statement of the
+Siegel--Weil formula, multiply its given skew-Hermitian form by
+any \(0\ne\delta\in E\) with \(\bar\delta=-\delta\) and multiply
+the other form by \(\delta^{-1}\). The product of the forms, the
+underlying isometry groups, the flags and their moduli are preserved
+in these conventions.
+For \(g\) in compact source representatives the single kernel is
+\(O(\prod T_i^{m/2})\), uniformly in \(g\). The squared bound is
+integrable since the \(F\)-Witt index of \(W\) is at most \(p\)
+and \(d-2p+1>m\). Now in the doubled Siegel--Weil formula integrate first over \([J]\),
+with integrating space of dimension \(d\) and doubled group \(U(2m)\).
+The parameters are \(s_0=(d-m)/2>m/2\), as \(a>a'\).
+The coefficient of the probability theta integral is one by Weil's
+convergent-range formula, applied with \(d>2m\); in the anisotropic
+case this is also Theorem~7.1 of Gan--Qiu--Takeda. The Siegel Eisenstein
+series with normalized induction is absolutely and locally uniformly
+convergent in \(\Re s>m/2\); absolute convergence holds uniformly
+on compact representatives of \([H]^2\) by majorization by the
+positive spherical section at the real parameter. Thus integration
+over \([H]^2\) permits absolute unfolding.
+We use the probability normalization for the theta integral
+\cite[introduction, Theorem~2 and \S3]{yamanaUnitary}.
+
+Every maximal rational isotropic subspace of \(Y\oplus(-Y)\) projects
+injectively onto each copy of \(Y\) since \(Y\) is anisotropic. Its
+dimension is \(m\), so it is the graph of a rational isometry.
+The set indexing the Siegel series is therefore one
+\((H\times H)(F)\)-orbit with stabilizer \(\operatorname{diag} H(F)\).
+After unfolding we integrate the matrix coefficient above, with its
+second-block character cancelled, over
+\(\operatorname{diag}H(F)\backslash H(\mathbb A_F)^2\).
+The change \(g=g_2^{-1}g_1\) gives \eqref{threal:norm} and proves
+absolute convergence of its right-hand integral. The same calculation
+with any finite replacements of the test factors is valid.
+
+We choose the factors so that the last integral is nonzero. At infinity
+the primed source is negative definite. In the entry calculation of
+Proposition~\ref{threal:compact} there are \(d-p\) negative planes
+and \(p\) positive planes in each source row. Its vacuum determinant
+power as a source representation is
+\((A-B-d+2p)/2=j+p>0\). The \(d-p\) columns from the negative
+planes are copies of the dual standard source representation.
+Choose \(m\) of those columns, possible since \(d-p\ge m\), and
+take their determinant to the power \(j+p\) times the vacuum.
+This is a nonzero source-invariant polynomial vector. Its local matrix coefficient on
+the compact source is the positive constant \(\|\phi_v\|^2\).
+At a designated finite split place the conjugate polarization has
+positions \(X\in M_{m,d}(F_v)\) and the source acts by left row
+operations times a scalar character and the square root of the
+modulus. Take the indicator of a sufficiently small compact open
+ball about \((I_m\mid0)\). If \(g\) moves this ball to intersect
+itself, the invertible leading block implies
+\(g\in 1+\pi^b M_m(\mathcal O_v)\) for a prescribed \(b\);
+this follows by writing \(g=X_1X_2^{-1}\) on the first blocks, or
+its inverse if the action is inverse. Choose \(b\) so the character
+is trivial there. The coefficient is nonnegative, vanishes off a
+compact set and is positive on a neighborhood of \(1\).
+This test satisfies the full-rank condition at \(v_1\).
+
+At any specified inert place \(W\) has an integral hyperbolic
+polarization by the lattice argument above, irrespective of the
+parity of \(m\). The source acts on \(Y^{d/2}\) by linear changes
+on all vectors times a scalar character. Now \(d/2>m\). Pick a small
+ball about a tuple whose first \(m\) vectors are a basis of \(Y\).
+The same leading-block argument inside \(\mathrm{GL}_m(E_{\mathfrak w})\)
+forces overlap only in any prescribed neighborhood of \(1\) in
+\(H(F_v)\). The scalar on this compact subgroup is trivial after
+shrinking: a continuous character of a profinite group has open
+kernel. The corresponding local integral again is strictly positive.
+
+It remains to ensure that the unrestricted product of local
+integrals is nonzero. Start with the factors just chosen at infinity
+and \(v_1\), and the usual unit-norm lattice indicators at almost
+all other places. There the hyperspecial group \(K_v\) fixes the
+indicator: in the split linear model the unramified character is
+trivial on units; in the inert hyperbolic polarization the source
+acts by pullback with the unramified splitting. More explicitly the
+character on the source for this polarization is trivial when the
+partner is hyperbolic and its splitting character is trivial, as
+is the case for the source splitting \(\alpha/\beta\) at inert places:
+the two unramified characters have equal value on a uniformizer
+by their common parity. The doubled Schr\"odinger model makes this
+pullback implementation explicit, and the doubled uniqueness already
+proved identifies it with the prescribed one. Take the local Haar
+measures to give \(K_v\) mass one at almost all places. Write
+\(b_v(g)=\langle\omega_v(g,1)\phi_v,\phi_v\rangle\) and
+\(B_v=\int|b_v|\). Outside a finite set \(S\) one has \(b_v|_{K_v}=1\)
+and \(B_v\ge1\). The integral of \(\prod_v|b_v|\) is finite by
+the absolute unfolding, and is positive on some cylinder about
+the identity. Exhaustion by finite restricted products and Tonelli
+give \(\prod_{v\notin S} B_v<\infty\), hence
+\(\sum_{v\notin S}(B_v-1)<\infty\). Thus
+\[
+        \left|\int_{H(F_v)} b_v(g)\,dg-1\right|
+              \le B_v-1
+\]
+at these places. Only finitely many local integrals can vanish;
+replace those and any exceptional finite factors by the compact
+open tests just constructed. Absolute factorization now gives a
+nonzero product. Formula~\eqref{threal:norm} yields a nonzero
+undoubled primed period. The finitely modified tensor is a valid
+supported test since the prescribed vacuum is standard almost
+everywhere.
+\end{proof}
+
+\begin{theorem}[The scalar at the definite base]\label{threal:base}
+Suppose \(p=q=0\). Both undoubled periods are nonzero, the primed
+one on the required supported subspace. Common matching quotient
+maps exist. For every choice of such maps there is a unique
+\(c\in\mathbb C^\times\) such that \(I_\Phi=cI'_{\Phi'}\) for
+all matched tests. Both parities are allowed. The inert and ordinary
+split maps are furnished by Propositions~\ref{threal:allinert} and
+\ref{threal:ordinarysplit}; the specified orbital maps at \(S\)
+and the stronger kernel and support conditions at the totally split
+good primes are those of Corollary~\ref{split:ram} and
+Proposition~\ref{split:good} in the row polarizations. The
+identification of those polarizations and their vacua is the one
+in Proposition~\ref{threal:ordinarysplit}; at \(S\) use the
+specified lattice bases. Proposition~\ref{threal:compact} gives
+the archimedean maps.
+\end{theorem}
+\begin{proof}
+First establish unprimed nonvanishing. Write \(n=a\),
+\(H=U(V)\), \(J=U(W)\), \(\chi=\beta/\alpha=\nu^{-1}\),
+\(T=S=S_0\sqcup Q\) the exact set above which \(\nu\) is ramified,
+and \(s_0=(d-n)/2=a'/2\). Both adelic quotients are compact.
+Form the Siegel section of \(U(V\oplus -V)\) through the
+doubled Schwartz vector \(\phi\otimes\bar\phi\) at \(s_0\),
+and extend it flat in normalized induction using the compact
+subgroups specified below. Pair the resulting Eisenstein series
+on the two copies of \([H]\) against the constants, cancelling the
+second-block determinant character as above. Write this scalar
+as \(Z(s)\). The graph orbit and the change of variables in
+Theorem~\ref{threal:nonzero} express \(Z(s)\), for \(\Re s\)
+large, as a positive measure constant times the product of the
+local integrals of \(f_{v,s}(g,1)\) over \(H(F_v)\). Constants
+are fixed by giving the hyperspecials volume one outside \(T\)
+and choosing product Haar measure up to one global positive
+factor. The meromorphically continued Eisenstein series can be
+paired over the compact quotient: its meromorphic continuation
+as smooth automorphic forms is locally uniform on compact sets
+after multiplication by a local scalar denominator. At \(s_0\),
+the anisotropic Siegel--Weil formula with integrating space \(W\)
+and \(d>n\) gives \(Z(s_0)=C\|I_\phi\|^2\), \(C>0\), by Fubini.
+No initial absolute convergence at \(s_0\) is used.
+\cite[Theorem~7.1 and \S11.3]{ganQiuTakeda}
+
+At each infinite place take a nonzero source-invariant polynomial
+from Proposition~\ref{threal:compact}. Choose the maximal compact
+in the doubled group containing \(H(F_v)^2\); hence
+\(f_{v,s}(g,1)=\|\phi_v\|^2\) there. The doubled section is
+compact-finite, since the doubled maximal compact at this place
+is the product of the two compact groups. At \(v\in T\), which is
+split because \(T\subset P\), take the small-ball test about a
+full row frame in \(M_{n,d}(F_v)\) constructed above. On
+\((g,1)\) the flat section equals the compactly supported matrix
+coefficient at \(s_0\) times a positive Iwasawa height raised to
+\(s-s_0\). Its integral is entire and strictly positive at \(s_0\).
+
+At every other finite place the doubled section can be taken to
+be the basic spherical section of value one at the identity.
+At split places use the characteristic function of integral
+matrices in the linear model. On the doubled row space the two
+blocks together give the integral matrices with \(2n\) rows.
+The determinant character is unramified and the integral general
+linear group fixes their indicator. At inert places the extension
+and characters are unramified, the additive character has conductor
+\(\mathcal O_v\), and the residue characteristic is odd. The
+lattices are perfect, \(W\) has even dimension and is integrally
+hyperbolic, as proved above. In its polarization the doubled row
+group acts linearly on \((V\oplus -V)^{d/2}\) with unramified
+splitting, and the product of the two lattice indicators is
+fixed by the stabilizer of the doubled self-dual lattice. This
+works also for \(n\) odd. Indeed an integral hyperbolic plane
+splits off repeatedly from a perfect Hermitian lattice of rank at
+least two over an unramified quadratic extension of odd residue
+characteristic by reduction and Hensel lifting, leaving a unit
+line in odd rank. Thus the original row group too is unramified.
+Normalize the indicators to have \(L^2\)-norm one. Evaluation on
+the doubled diagonal then has value one. Transforming back to the
+given presentation uses only finitely many departures from its
+prescribed vacuum, exactly as above.
+
+Let \(\eta=\eta_{E/F}\), and use a superscript \(T\) to omit finite
+Euler factors over \(T\). The unramified doubling computation
+with trivial representation of \(U(n)\) gives for the product of
+the factors just described outside \(T\) and infinity
+\[
+ \frac{\displaystyle\prod_{i=0}^{n-1}
+                 L^{T}_{E,\mathrm{fin}}(s+n/2-i,\chi)}
+      {\displaystyle\prod_{i=0}^{n-1}
+                 L^{T}_{F,\mathrm{fin}}(2s+n-i,\eta^{\,i})}.
+\]
+Here the base change of the spherical trivial representation has
+the \(n\) exponents \((n-1)/2-i\): it is the spherical
+constituent with trivial representation's Satake parameter,
+the half sum of positive roots, restricted to the split group
+over \(E\). In the inert odd case this list includes zero. The
+doubling \(L\)-function uses \(s+1/2\), and \(\chi|_{\mathbb A_F^\times}=1\)
+because the two ranks have equal parity. These give exactly the
+shifts and the denominator above. See the unramified formula
+\cite[\S4.2.1, (53)]{ehlsDoubling}. The product equals the
+meromorphic continuation from its region of absolute convergence.
+In particular no place with an unramified numerator has been
+removed arbitrarily: at every prime of \(E\) over \(T\) the
+character is ramified by the hypotheses, so its local factor is one.
+
+At \(s_0\) the denominator arguments are at least \(a'+1>1\).
+The numerator arguments are integers \(k=d/2-i\).
+At each infinite place the angular exponent \(m\) of \(\chi\)
+has \(|m|>d\); the gamma factors
+\(\Gamma_{\mathbb C}(k+|m|/2)\) are finite and nonzero throughout
+this interval. The Euler product gives nonvanishing when \(k>1\).
+At \(1\), one elementary proof uses that both \(\chi\) and
+\(\chi^2\) have nonzero infinity type. They have no Hecke pole.
+For \(u>1\),
+\(\zeta_E(u)^3|L_{E,\mathrm{fin}}(u,\chi)|^4
+ |L_{E,\mathrm{fin}}(u,\chi^2)|\ge1\) off the ramified factors,
+by \(3+4\cos t+\cos(2t)\ge0\) in the logarithmic Euler products.
+The finite omitted factors of the three functions are bounded
+above and below near \(1\). A zero would have order at least four
+in this product, while \(\zeta_E^3\) has pole order three. For
+\(k\le0\), apply the Hecke functional equation to the completed
+function and use nonvanishing at \(1-k\) for \(\chi^{-1}\);
+the conductor power and root number are nonzero
+\cite{tateThesis}. This proves
+\(Z(s_0)\ne0\). The primed supported period is already nonzero
+by Theorem~\ref{threal:nonzero}.
+
+We next compare the actual automorphic copies. On the definite
+source the primed integral exists also for tests without the
+support restriction. Use that extension in the following argument.
+All three quotients are compact, with compact groups at infinity.
+For any specified finite open compact level and infinite compact
+type the space of automorphic vectors is finite-dimensional:
+there are finitely many finite-adelic double cosets at that
+level, and matrix coefficients of the prescribed compact type
+span a finite-dimensional space on each. Consequently the unitary
+spectrum is discrete with finite multiplicities. More explicitly
+the orthogonal projection to any such level and type has finite
+rank; these projections exhaust a dense subspace, and a continuous
+direct integral of inequivalent unitary representations would have
+infinite rank on any projection on which it is nonzero.
+
+Let \(P_v,P'_v\) be the given local quotient maps and \(\pi\)
+the restricted tensor product of the common irreducibles, using
+their normalized vacuum images. At infinity take the entire
+product of the compact factors; the polynomial calculation of
+Proposition~\ref{threal:compact} gives its source-invariant
+quotient with multiplicity one. For each of the two periods,
+project to any irreducible automorphic summand of the target.
+A nonzero projection, with all but one test factor fixed and
+the other target factors paired with linear functionals, gives
+an intertwiner from the local oscillator to the source trivial
+representation times the local target constituent. At finite
+places local Howe duality gives a unique such irreducible quotient
+and a one-dimensional space of maps to it. This applies to
+unitary dual pairs in characteristic zero and to the split
+general linear dual pair; twisting an oscillator splitting by
+characters preserves the assertion
+\cite{ganTakedaHowe,minguezHowe}. At infinity the identical
+conclusion follows from the compact calculation. Hence every
+nonzero projection takes values in a copy of \(\pi\) and
+annihilates each local kernel. Pairing is legitimate on algebraic
+tensors: a smooth finite-level, compact-finite vector of an
+irreducible automorphic summand belongs to its algebraic restricted
+tensor product, and the pairings on the remaining factors separate
+these vectors. At each finite tensor stage the kernel of the tensor
+quotient is the sum of the subspaces having a kernel in one
+factor, by exactness of tensor products over \(\mathbb C\).
+This proves factorization of both periods. Smoothness then gives
+pointwise equality whenever two resulting automorphic vectors are
+equal in \(L^2\).
+
+In fact \(\pi\) has multiplicity one here. Let \(i_0\) be the
+unitary embedding defined by the nonzero primed image, using on
+\(\pi\) the norm transported from that image. If another copy
+exists, choose a unitary embedding \(i_1\) with image orthogonal
+to \(i_0\). For any polynomial primed test \(u\) and compact-finite
+smooth \(x\in\pi\), form the reverse lift
+\[
+  T_u(i_jx)(g)=\int_{[J]}(i_jx)(h)\,
+                \overline{\Theta'_u(g,h)}\,dh
+         \qquad (g\in U(V')(\mathbb A_F)).
+\]
+This function is constant in \(g\). In fact pairing against any
+irreducible summand of the compact-quotient source spectrum and
+varying \(x,u\) gives the same local intertwiners as above,
+now with target constituent \(\pi_v\) fixed. Injectivity of
+local Howe correspondence forces the source constituent to
+be trivial at every place. At infinity the equivariant Hom in
+the reverse direction also has this property: the Cauchy
+decomposition in the compact calculation pairs distinct partitions
+on the two compact groups. The globally trivial representation
+occurs precisely on constant functions. Therefore \(T_u(i_1x)=0\):
+its average on \([U(V')]\) is a positive normalization times
+\(\langle i_1x,I'_u\rangle=0\).
+
+On the other hand
+\[
+                 \|T_u(i_0x)\|_2^2=\|T_u(i_1x)\|_2^2.
+\]
+To see this form the flat doubled section \(f_{u,s}\) on
+\(U(W\oplus -W)\) from \(u\otimes\bar u\), with parameter
+\(s_*=(a'-d)/2=-a/2\). Pair its Eisenstein series, after the
+second-block determinant correction, over \([J]^2\) against the
+two copies of the vector \(i_jx\) and its conjugate. For \(\Re s\)
+large there is just the graph orbit, since \(W\) is anisotropic.
+Unfolding gives the integral over \(J(\mathbb A_F)\) of the
+restricted section against the matrix coefficient of the right
+regular action on \(i_jx\). In the convention with the section at
+\((1,g)\) its scalar weight is \(f_{u,s}(1,g)\chi_*(\det g)^{-1}\),
+where \(\chi_*=\alpha\) is the primed target splitting character.
+The matrix coefficient is \(\langle R(g)i_jx,i_jx\rangle\), or
+its conjugate upon conjugating the whole pairing. Either is
+independent of \(j\) by isometry and equivariance. The two
+meromorphic integrals thus agree identically. At \(s_*\) the
+anisotropic Siegel--Weil formula is holomorphic, and its coefficient
+is two for the probability theta integral because \(a'<d\).
+The doubled product identity and Fubini over the compact quotients
+give the two asserted squared norms times the same positive constant
+\cite[Theorem~7.1 and \S11.3]{ganQiuTakeda}. Choose \(u\) with
+\(I'_u\ne0\) and \(i_0x=I'_u\); then the average of
+\(T_u(i_0x)\) is a positive multiple of \(\|I'_u\|^2\).
+This contradicts \(T_u(i_1x)=0\). The two nonzero maps from the
+common quotient now lie in the same one-dimensional intertwining
+space by Schur's lemma. Restriction back to supported primed tests
+and Corollary~\ref{threal:limits} give the required nonzero scalar
+and its uniqueness.
+\end{proof}
+
+\begin{proposition}[The two periods against the cuspidal spectrum]\label{threal:orthA}
+The unprimed period pairs to zero with every irreducible cuspidal
+representation of \(J=U(W)\) whenever \(p>0\), for arbitrary \(q\).
+If \(q=0<p\), the primed period also has this property, and on
+removing a target hyperbolic plane the zero-vector orbit of the
+unprimed line constant term vanishes identically.
+\end{proposition}
+\begin{proof}
+Choose a rational prime completely split in \(E\) outside the finitely
+many exceptional primes and the prime under \(v_1\), using the
+splitting-prime theorem; let \(v\)
+be a place above it. Write \(k=F_v\). By Lemma~\ref{split:ray}, the
+unramified characters \(\alpha,\beta\) there have distinct values
+on a uniformizer. The source-invariant quotient of the unprimed local
+oscillator is the entire irreducible normalized induction
+\[
+       \pi_v=(\alpha\circ\det_a)\times(\beta\circ\det_{a'})
+\]
+by Proposition~\ref{split:good}. Thus every cuspidal constituent
+pairing nontrivially with the unprimed period must have this local
+factor. In detail the pairing, with other Schwartz coordinates and
+other cuspidal coordinates fixed, gives an equivariant map into
+the smooth dual of the conjugate of the local cusp representation.
+Smoothness follows from invariance of the test under an open
+compact subgroup, and the smooth dual in question is the original
+representation by unitarity. Source invariance follows by changing
+variables in the source integral.
+
+For \(p>0\) the source has a rational hyperbolic plane: its form is
+isotropic at every real place, it is split at the split finite places,
+and at the inert places its perfect lattice has Witt index \(\lfloor
+a/2\rfloor\). For the underlying \(F\)-quadratic norm form local
+isotropy therefore gives global isotropy by Hasse--Minkowski, and
+one completes the isotropic vector to a hyperbolic pair.
+Write \(\Pi\) for such a cuspidal representation. Its adjoint lift
+back to \(U(V)\), with conjugated oscillator, has a vector of
+nonzero average, by Fubini. Indeed the absolute source theta sum in
+Proposition~\ref{threal:decay}, integrated in \(g\), is bounded by
+a power of \(H(h)\): in its unprimed estimate retain the factors
+\(O(M^D H(h)^{A_B})\) before integrating the strictly negative
+torus exponents. A cuspidal automorphic vector of finite compact
+type decays faster than any power on a target Siegel set.
+These estimates justify both the pairing and the interchange.
+
+At any earlier source in the Witt tower, of dimension \(a-2b\)
+with \(b\ge1\), no irreducible local representation can lift to
+\(\pi_v\) in the forward oscillator. Indeed M\'inguez's split
+correspondence adds the characters
+\[
+   \beta|\cdot|^{(1-l)/2},\
+   \beta|\cdot|^{(3-l)/2},\ldots,\beta|\cdot|^{(l-1)/2},
+               \qquad l=d-(a-2b)=a'+2b ,
+\]
+to the cuspidal support of the transformed source parameter.
+The bare matrix oscillator adds the segment of the trivial
+\(\mathrm{GL}_l\) representation. The scalar in the target row
+action in \eqref{newtheta:big} is \(\beta(\det h)\) after removing
+the unitary change-of-variables multiplier. The inverse transpose
+on matrices interchanges the segment with its reversed dual, which
+has the same multiset of real powers. This gives exactly the
+displayed twist. The actual support of \(\pi_v\) has only \(a'\)
+entries with unitary part \(\beta\). The other \(a\) entries have
+unitary part \(\alpha\). This excludes the displayed segment.
+\cite[Corollary~6.3(2)]{minguezHowe}
+The first nonzero global adjoint lift of a cusp representation in a
+Witt tower is cuspidal, by the tower constant-term formula
+\cite[Proposition~3.1]{wuThetaTower}. If a lower lift were nonzero,
+the first such lift would therefore have an irreducible cuspidal
+constituent. Pairing against it and conjugating gives the excluded
+forward local intertwiner. Thus the lift on \(U(V)\) is itself
+cuspidal. The integral of a cusp representation against the constant
+function on this positive-rank group is zero: a nonzero invariant
+functional on a constituent would make it the trivial representation,
+whose constant term along the given rational parabolic is nonzero.
+This contradicts the preceding nonzero average.
+
+For the primed period suppose \(q=0<p\) and let \(Y=V'\). A target
+plane exists by the same norm-form argument, after multiplying its
+skew form by a nonzero trace-zero element of \(E\).
+The group \(U(Y)\) is anisotropic.
+If the pairing with a cusp representation \(\Pi\) is nonzero, its
+adjoint lift on \(U(Y)\) has nonzero projection to constants.
+The entire adjoint lift is cuspidal by anisotropy, and is irreducible
+by \cite[Theorem~5.3]{wuThetaTower}. Consequently it is the constant
+representation. Its occurrence as functions consists of actual
+constants, since right-invariant functions on \([U(Y)]\) are
+constant. Wu's involution theorem now says that the forward lift of
+these constants to \(W_1\) vanishes, where \(W_1\) is obtained from
+\(W\) by deleting the rational hyperbolic plane
+\cite[Theorem~5.1(3), Remark~5.2]{wuThetaTower}.
+To check the twists in this use of the theorem, let \(d_X,d_Y\)
+be its two splitting characters restricted to norm-one determinants
+on the two groups \(X=W,Y\), respectively. Complex conjugation
+of the oscillator replaces \(\psi,\chi_X,\chi_Y\) by their
+inverses. Relative to Wu's oscillator for \(\psi^{-1}\) and the
+original splitting characters it thus twists by
+\(d_X^{-1}\boxtimes d_Y^{-1}\): on the doubled Siegel Levi this
+follows from \(\chi(z/\bar z)=\chi(z)^2\); the doubled uniqueness
+argument identifies the restrictions to the two factors. Wu's
+reverse input is therefore \(d_X^{-1}\Pi\) and its output is
+\(d_Y\) times the constants. The factor \(d_Y^{-1}\) in his
+Theorem~5.1 cancels it in the forward lift.
+
+This lower forward lift is nonzero by the calculation in
+Theorem~\ref{threal:nonzero}. Here \(Y\) is unchanged, and the
+new target has dimension \(d-2>2a'\), signature
+\((d-p-1,p-1)\) with \(d-p-1\ge a'\), and is still hyperbolic
+at the inert finite places, by Witt cancellation. The convergence
+inequality there is \((d-2)-2(p-1)+1=d-2p+1>a'\).
+These give respectively the absolute doubling identity, its real
+source-invariant polynomial, and the required finite tests in that
+proof. The splitting characters have unchanged parity on deleting
+a plane. This contradiction proves the assertion for the primed
+period as well.
+
+Finally the zero-vector term on the unprimed side uses the
+oscillator for the same \(V\) and the smaller \(W_1\). In the
+polarization with position variable \(x\in V\) for the removed
+target plane, setting \(x=0\) leaves the theta sum for
+\(V\otimes W_1\); the extra source determinant character is
+trivial for this added hyperbolic plane, whose source action on
+the \(x\)-block is ordinary pullback. The source integral converges
+by the proof of Proposition~\ref{threal:decay} with \(d-2\).
+At a real place, the positive-character joint-harmonic condition in
+Proposition~\ref{threal:allreal} now requires \(p\le p-1\).
+Hence this local oscillator has zero trivial-source coinvariant
+module: if its big theta module were nonzero, its unique irreducible
+quotient would occur in the local correspondence. The source
+integral at each \(h\) kills all the Lie algebra and compact-group
+differences and so vanishes on the polynomial module. Continuity
+and Hermite approximation give the same conclusion for all Schwartz
+inputs. For the primed source the only rational isotropic vector is
+zero, since \(Y\) is definite. Thus it has no nonzero-vector
+orbit in this constant term.
+\end{proof}
+
+\begin{proposition}[Unfolding the larger nonzero orbit]\label{threal:coneA}
+Let \(p>0\). Choose rational hyperbolic pairs \(x,y\) in \(V\)
+and \(x',y'\) in \(W\), with orthogonal complements \(V_1,W_1\).
+Write \(m(t,h_1)\) for the target line Levi and \(k=(a-a')/2>1\).
+Use rational mixed Schr\"odinger coordinates and probability
+measure on the target unipotent quotient. Let \(e_A\) be evaluation
+in the coordinates dual to the modulation space
+\[
+        S_A= V\otimes_E Ex'\ \oplus\ Ex\otimes_E W_1.
+\]
+With \(K\) the source compact stabilizer and \(\rho\) the Heisenberg
+action, put
+\[
+ T_A\Phi=\int_K\int_{\mathbb A_E^\times}
+  e_A\rho(l\,x\otimes y')\omega(k_0,1)\Phi\
+             \nu(l)|l|_E^k\,d^\times l\,dk_0 .
+\]
+The entire contribution of the rational nonzero isotropic vectors
+to the unnormalized line constant term, at \(m(t,h_1)h\), is
+\[
+   c_A\,\alpha(t)|t|_E^{a'/2}\,
+      I_{V_1,W_1}\big(T_A(\omega(1,h)\Phi)\big)(h_1).
+\]
+Here \(c_A\ne0\) depends on the rational models, the evaluations
+and Haar measures; it is independent of the splitting characters.
+At \(q=0<p\) this is the entire unprimed line constant term.
+The entire primed constant term there is
+\(\alpha(t)|t|_E^{a'/2}\) times its smaller zero-evaluation
+period, with coefficient one for coherent mixed models and the same
+source Haar measure.
+\end{proposition}
+\begin{proof}
+First use \(V\otimes Ex'\) as modulation space. In its dual
+coordinate the sum runs over \(z\in V(E)\). For fixed source and
+target translates the sums are absolutely uniform on the compact
+unipotent quotient. The center acts by an additive character of a
+rational nonzero multiple of \(\langle z,z\rangle_V\); averaging
+it leaves exactly the null vectors. The remaining target unipotent
+coordinates have quotient \(W_1(\mathbb A_F)/W_1(F)\), writing
+\(W_1\) here for its underlying \(F\)-vector group. They act on
+the residual oscillator by the Heisenberg translations or
+modulations \(z\otimes w\). This follows by applying the unipotent
+matrix to the target coordinates \(x',W_1,y'\): the \(W_1\) shift
+of \(y'\) is \(w\), and the quadratic correction in the \(x'\)
+coordinate multiplies \(\langle z,z\rangle_V\), hence gives no
+phase on this cone.
+
+All nonzero rational null vectors form one \(U(V)(F)\)-orbit by
+Witt extension. At the representative \(z=x\), use \(Ex\otimes W_1\)
+as a further modulation space in the residual oscillator.
+The last compact additive average kills every nonzero dual rational
+coordinate by character orthogonality. Its surviving value is
+therefore
+\[
+    \sum_{u\ {\rm rational}}
+      (e_A\rho(x\otimes y')\,\omega(g,h)\Phi)(u),
+\]
+where \(u\) belongs to a position space for \(V_1\otimes W_1\).
+The changes of rational polarization here preserve the theta
+summation by Poisson summation with self-dual measures. Dual hyperbolic
+bases may introduce a nonzero rational \(E\)-multiple of \(x\)
+in this expression. Replacing the representative by that multiple
+does not change the orbit, and its idele norm and Hecke character
+are one.
+
+Unfold the orbit to \(H_x(F)\backslash H(\mathbb A_F)\),
+\(H=U(V)\), where the stabilizer of the vector is
+\(H_x=N_x\rtimes U(V_1)\); the line stabilizer has the additional
+Levi factor \(E^\times\). Write \(g=n\,m(b,g_1)k_0\) in source
+Iwasawa coordinates. The adelic compact in this decomposition can
+be taken to be the prescribed \(K\). At split finite places this
+is integral row reduction. At an inert finite place one scales the
+line generator to a primitive lattice vector and pairs it to one
+by self-duality. The second vector can be made isotropic by the
+surjectivity of the integral trace in the unramified extension.
+Their unimodular hyperbolic plane splits off. Any two unitary
+lattice complements here are isometric: a nonsingular finite-field
+Hermitian space has a vector of nonzero norm, so integral
+orthogonalization gives a unit diagonal, and every base-field unit
+is an integral norm. The skew self-dual case is reduced to the
+Hermitian case by the local different generator. These facts give
+transitivity on isotropic lines. At infinity the two compact unitary
+factors carry any isotropic line to the chosen line, by moving its
+two components of equal length. The resulting local decompositions
+are restricted products.
+
+On the evaluated residual oscillator \(N_x\) acts trivially:
+it fixes \(x\), acts with determinant one on \(S_A\), and acts
+trivially on \(S_A^\perp/S_A=V_1\otimes W_1\). In mixed coordinates
+the off-diagonal entries produce Heisenberg operators with parameters
+linear in the dual \(S_A\)-coordinate, and quadratic phases in that
+coordinate; both disappear at zero. It also fixes the displacement
+\(x\otimes y'\). The source line Levi contributes
+\(\nu(b)^{-1}|b|_E^{(d-2)/2}\) and the residual action of \(g_1\):
+split off the whole target plane first, on which the source acts
+by pullback on \(V\); on the remaining oscillator the source
+Siegel character is \(\beta/\alpha\) and its modulation block
+\(Ex\otimes W_1\) has dimension \(d-2\). Commuting the Levi left
+past the displacement replaces \(x\otimes y'\) by
+\(b^{-1}x\otimes y'\). The source Haar density on the line Levi
+contains \(|b|_E^{1-a}\), because \(N_x\) has \(a-2\) ordinary
+\(E\)-coordinates and one central \(F\)-coordinate of weight
+\(b\bar b\). Integration over \([N_x]\) contributes its volume.
+After the substitution \(l=b^{-1}\) the total character and modulus
+are \(\nu(l)|l|_E^k\), since \(a-1-(d-2)/2=k\).
+Integrating over \([U(V_1)]\) gives the smaller period.
+The quotient integration constant and the unipotent volume are
+positive for positive compatible Haar measures.
+
+For justification of this unfolding one can integrate the
+\emph{absolute value of the single orbit summand} over
+\(H_x(F)\backslash H(\mathbb A_F)\) first. In the coordinates just
+used its integral is bounded by the \(K,\mathbb A_E^\times\)
+integral with weight \(|l|_E^k\) of the absolute smaller theta
+sum integrated over \([U(V_1)]\). Choose the rational
+source-adapted polarization of Proposition~\ref{threal:decay} for
+this last sum. Its absolute integral is bounded by finitely many
+Schwartz seminorms for each fixed finite test. The gap in dimension
+is now \(k-1\) and the rational source Witt index is at most \(p-1\),
+so the same negative-exponent estimates apply. In mixed coordinates
+the new test is obtained by restriction to the linear coordinates
+\((l,u)\); the partial Fourier transforms for changing the smaller
+polarization act on \(u\) alone. At infinity these seminorms are
+bounded by arbitrarily rapidly decreasing functions of \(l\),
+uniformly on the compact \(K\)-orbit. At finitely many modified
+finite places the restrictions are finite sums of products of
+compactly supported tests in \(l,u\). At every other place they
+are the indicator of the integral \(l\) times the smaller lattice
+test. The absolute product is dominated by the Dedekind zeta
+Euler product at \(k>1\); the finitely many local integrals at zero
+also converge since \(k>0\). Tonelli applied to the translates of
+the absolute orbit summand now justifies its global unfolding.
+The same bounds prove that \(T_A\Phi\) is Schwartz and justify
+interchanging its evaluation with the smaller period.
+With multiplicative unit volume one at the basic places, the actual
+scalar there is the absolutely convergent product of
+\((1-\nu_w(\pi_w)(Nw)^{-k})^{-1}\), by the integral of the
+lattice indicator along the displacement line.
+
+On the target line Levi the evaluation scalar is
+\(\beta(t)|t|_E^{a/2}\) because the whole \(V\otimes Ex'\)
+block was removed first. Moving the Levi to the left past the
+displacement changes \(l\) to \(l\bar t\); hence substitution in
+the Mellin integral multiplies this scalar by
+\(\nu(\bar t)^{-1}|t|_E^{-k}=\nu(t)|t|_E^{-k}\).
+The target character is thus \(\alpha(t)|t|_E^{a'/2}\).
+An evaluation with the same specified Heisenberg laws changes the
+formula by a fixed scalar. Locally, invariance under the modulations
+factors evaluation through restriction to zero: at a finite place
+average on balls; at infinity differentiate the modulation law
+to annihilate the coordinate multiples, which generate Schwartz
+functions vanishing on that subspace (use Taylor's formula near it
+and a cutoff away from it). The remaining intertwiner commutes with
+all smaller translations and modulations, so is scalar. The
+prescribed vacuum images fix the local normalizations at almost
+every place. Thus changing the evaluations or the product measures
+leaves the asserted independence from the splitting characters.
+Finally Proposition~\ref{threal:orthA} removes the other unprimed
+orbit when \(q=0\). On the primed side definiteness leaves only
+zero, and the same first mixed evaluation gives the stated formula
+with exponent \(a'/2\) and character \(\alpha\).
+\end{proof}
+
+\begin{proposition}[Detection by the entire line constant term]\label{threal:detectline}
+Let \(f\) be a linear combination of the two periods of polynomial
+tests, with the required support on the primed tests. In all
+signatures, vanishing of the constant term of \(f\) along one
+rational isotropic line, as a function on \(J(\mathbb A_F)\),
+implies that \(f\) is cuspidal. For \(p+q>0\) this implies \(f=0\).
+\end{proposition}
+\begin{proof}
+Witt extension conjugates any two rational isotropic subspaces of the
+same dimension. If \(f\) is not cuspidal, choose the smallest \(r\)
+for which its constant term along the stabilizer \(P_r\) of a rational
+isotropic \(r\)-plane is nonzero. These are all the conjugacy classes
+of maximal proper rational parabolics. By assumption \(r\ge2\).
+On the Levi of \(P_r\), fix the other factor and vary the first
+factor \(\mathrm{GL}_r(\mathbb A_E)\). Some resulting function,
+allowing a compact right translate of \(f\) by Iwasawa decomposition,
+is nonzero. It is cuspidal on this general linear group: the further
+constant term along a \(j\)-plane in this block is the constant term
+along the \((j,r)\)-flag, computed by unipotent Fubini, and this
+also factors through the vanishing \(j\)-plane term for \(0<j<r\).
+
+Here is the spectrum to which this cuspidal function belongs.
+The original polynomial periods are compact-finite at infinity
+and finite under the center of the target enveloping algebra:
+source invariance factors the polynomial oscillator at each place
+through its big theta module of the trivial representation, which
+is of finite length by real Howe duality \cite{howeTranscending}.
+Moderate growth follows from Proposition~\ref{threal:decay}.
+The constant term restricted to its Levi is again center-finite.
+Indeed on left unipotent-invariant functions restriction of a
+central right differential operator gives its relative
+Harish-Chandra projection (up to the modulus twist for the
+unnormalized constant term). The Levi center is finite over this
+image, since the invariants of the Levi Weyl group in the Cartan
+polynomials are finite over the full Weyl invariants. This also
+gives center-finiteness on the first direct factor of the Levi.
+
+One can thus take a nonzero eigenfunction for the positive real
+split center in the finite-dimensional span of its translates
+(equivalently, extract an exponential coefficient on its Lie
+algebra). These operations commute with finite-place translations.
+Project also to a character on the compact norm-one idele class
+center, and twist by a common real power of the idele determinant
+to make the resulting central character unitary. Some such projection
+is nonzero by compact Fourier decomposition. The resulting smooth,
+compact-finite, center-finite cusp form is square-integrable modulo
+the center by rapid decay on Siegel sets. It has a nonzero projection
+to an irreducible unitary cuspidal representation of
+\(\mathrm{GL}_r(\mathbb A_E)\). Its local factors are generic by
+the cuspidal Whittaker expansion \cite{shalikaGeneric}. Thus at
+each place above the \(v\) used in Proposition~\ref{threal:orthA}
+the constant-term space must admit a generic irreducible subquotient
+unitarizable after a determinant twist. Equivalently one can carry
+out the center projections on the finite-place submodule generated
+by the original slice: its split-center translates span a finite
+number of copies of that module, and restriction to a central
+eigenspace preserves its possible finite local subquotients.
+
+At \(v\) each period factors through \(\pi_v\) by the full split
+kernel computations, whether or not its coefficients at the other
+places factor through their small theta quotients. The local
+\(P_r\) has block sizes \((r,d-2r,r)\). Evaluation on the Levi after
+taking the constant term factors through its unipotent coinvariants,
+since a right unipotent translation becomes a translation of the
+compact integration quotient. Normalizing the Jacquet functor only
+twists each general linear block by a common real determinant power.
+The geometric lemma computes the first \(\mathrm{GL}_r(k)\) action
+in the resulting filtration, with possible subquotients of
+\[
+ \left(\alpha|\cdot|^{-(a-i)/2}\right)\circ\det_i
+       \ \times\
+ \left(\beta|\cdot|^{-(a'-j)/2}\right)\circ\det_j,\qquad i+j=r .
+\]
+Indeed a shuffle selects an initial block of length \(i\) of the
+first determinant representation and of length \(j\) of the
+second. The inverse square root of the modulus of their internal
+parabolics gives the displayed exponents. The other end of the
+isotropic plane accounts for the last, separate block of size \(r\).
+\cite[geometric lemma, \S2.12]{bzgLemma}
+The first block contributes a nondegenerate Whittaker functional
+only if \(i,j\le1\): the highest derivative of the induced
+representation is the tensor product of the highest derivatives
+of its factors, and a determinant character of dimension \(>1\)
+vanishes under that functor. The Whittaker coinvariant functor is
+exact, so the same exclusion holds for every subquotient
+\cite[\S4]{bzgLemma}.
+
+It remains to examine \(r=2,\ i=j=1\). This normalized principal
+series of \(\mathrm{GL}_2(k)\) is irreducible since its character
+ratio has unitary part \(\alpha/\beta\) of infinite order and
+therefore is neither \(|\cdot|\) nor \(|\cdot|^{-1}\).
+The two Satake eigenvalues have distinct arguments and their
+absolute values differ by the factor
+\(|\pi_k|^{-(a-a')/2}\ne1\), where \(\pi_k\) is a uniformizer.
+For unitarity the multiset must be invariant under
+\(z\mapsto1/\bar z\), by the isomorphism to the conjugate dual.
+That involution preserves the argument of each eigenvalue.
+Consequently their distinct arguments force both absolute values
+to be one. No common change of modulus can achieve this, giving the
+required contradiction. Thus \(f\) is cuspidal. For \(p+q>0\)
+Propositions~\ref{threal:orthA}, \ref{tpd:zero} and \ref{tpd:orth}
+cover the two periods in every signature. Thus \(f\) is orthogonal
+to the cuspidal spectrum and hence to itself; continuity gives
+pointwise zero.
+\end{proof}
+
+\begin{corollary}[The detector in the \(a\)-descent]\label{threal:endA}
+For \(q=0<p\), suppose that for one fixed \(c\) the
+\(\alpha|\cdot|_E^{a'/2}\) components of the two periods agree up to
+\(c\) on \(m(1,h_1)\) for every \(h_1\) and every polynomially
+matched pair with supported primed test. Then those periods agree
+up to \(c\) on all of \(J(\mathbb A_F)\) for every such pair.
+\end{corollary}
+\begin{proof}
+By Proposition~\ref{threal:coneA} each entire line constant term
+is just its indicated component. The matching condition survives
+right translation by the target compact group: its real compact
+action preserves the polynomial module, and its finite action
+preserves full rank at \(v_1\) and intertwines the matching maps.
+The hypothesis therefore applies also to \(m(1,h_1)k_0\) for each
+target compact \(k_0\). The common Levi character extends this to
+\(m(t,h_1)k_0\); left unipotent invariance and Iwasawa decomposition
+cover the whole adelic group. Proposition~\ref{threal:detectline}
+now applies to the difference.
+\end{proof}
+
+\begin{proposition}[The detector in the \(a'\)-descent]\label{threal:endB}
+Let \(q>0\). Suppose a difference \(f\) of the two polynomial
+periods, with supported primed test, has its full line constant
+term transforming by \(\alpha(t)|t|_E^{a'/2}\) alone. Then \(f=0\).
+In particular equality of the \(\beta(t)|t|_E^{a/2}\) components
+of two matched periods, with one scalar for all the tests on
+\(m(1,h_1)\), implies equality with that scalar on \(J(\mathbb A_F)\).
+\end{proposition}
+\begin{proof}
+Induct on \(p\), keeping \(q>0\). For \(p=0\) the constant terms
+of both periods have only the \(\beta\)-character by
+Propositions~\ref{tpd:zero} and~\ref{tpd:unfold}. The two line
+characters have distinct moduli since \(a>a'\), so the constant
+term vanishes and Proposition~\ref{threal:detectline} applies.
+
+For \(p>0\), split off planes in \(V,W\). At the real places one
+can take compact groups adapted to the chosen planes. In detail,
+choose on each hyperbolic plane a Cartan involution exchanging its
+null lines and choose one on its orthogonal complement. The
+resulting positive structure is conjugate to the original by a
+real isometry. Translating the test by this isometry transports its
+polynomial Fock module to the new one. Source translation leaves
+the period fixed and simultaneous target translation replaces it
+by a right translate, preserving purity and the zero assertion
+to be proved. The lattices for the unused smaller finite models
+can be chosen split along the rational decomposition at almost all
+places, and compatible with the specified split polarizations at
+\(v_1\). The induction uses only these rational theta models, their
+finite tests, the prescribed signatures and the gap inequalities.
+These hold in the smaller ranks \(a-2,a',d-2\), with indices
+\(p-1,q\).
+
+For each fixed target compact translate, restriction of this
+pure constant term to the smaller unitary group is a difference
+\(f_1\) of its two polynomial periods, with supported primed test.
+Indeed the \(\alpha\)-component of the unprimed form is precisely
+the cone in Proposition~\ref{threal:coneA}; the zero evaluation
+has character \(\beta(t)|t|^{a/2}_E\). The smaller unprimed test
+is polynomial at infinity by the orthogonal Fock factorization
+of Lemma~\ref{tpd:mellin}, now with \(S_A\).
+On the primed side the supported zero evaluation of
+Lemma~\ref{tpd:so} gives precisely the \(\alpha\)-component.
+The adjustment by source differences in that lemma may be made
+anew for each fixed translate. Each resulting \(f_1\) in turn
+has a two-character line constant term in its own ranks, by the
+same calculations (and their definite-source versions). For an
+arbitrary upper target translate, source Iwasawa is not needed
+again: upper target Iwasawa and the pure character express its
+slice as a scalar times a smaller target translate of a
+compact-translate slice. Thus the same two line laws hold for all
+slices used below.
+
+We prove that the \(\beta\)-component of every such smaller
+slice is zero. Choose any rational isotropic line in \(W_1\);
+together with the first line it spans a rational isotropic
+two-plane \(D\) in \(W\). For any fixed upper right translate
+take the \(D\)-parabolic constant term of \(f\), and restrict its
+first Levi block to \(\mathrm{SL}_2(\mathbb A_E)\), writing \(F\)
+for the resulting automorphic function. Its ordinary upper
+triangular constant term on this group is the average for the
+isotropic \((1,2)\)-flag, by Fubini over the compact unipotent
+quotients. Compute the same flag average in the other order by
+first taking the outer line constant term and then the smaller
+line term. These are averages along the two filtrations of the
+\emph{same flag radical}. On \(d(t)=\operatorname{diag}(t,t^{-1})\)
+the outcome, for each fixed right translate \(h\), is
+\[
+              F_N(d(t)h)=A(h)+\nu(t)|t|_E^{1-k} B(h),
+                 \qquad k=(a-a')/2.
+\]
+The first outer factor is always \(\alpha(t)|t|_E^{a'/2}\).
+The inner factors are \(\alpha(t^{-1})|t|_E^{-a'/2}\) and
+\(\beta(t^{-1})|t|_E^{-(a-2)/2}\), respectively. These give
+the two terms displayed. Their coefficients are continuous and
+bounded on compact sets: they can be recovered by evaluating at
+two fixed \(t\)'s with different idele norms.
+
+In particular \(F\) belongs to
+\(L^2(\mathrm{SL}_2(E)\backslash\mathrm{SL}_2(\mathbb A_E))\).
+To check this, the displayed constant term is bounded on a Siegel
+set since \(1-k<0\). Its difference from \(F\) decays faster than
+any power of the split chamber parameter there. Indeed the
+height exponent in Proposition~\ref{threal:decay} can be held fixed
+for all right derivatives of the original period: choose once
+the seminorm orders needed for integration; differentiating first
+changes the test in these seminorms, not the powers of height in
+the conjugation bounds. Integrating over the compact \(D\)-radical
+therefore gives uniform moderate growth of derivatives of \(F\).
+At fixed finite level the upper additive unipotent quotient is a
+compact real torus. Subtract the mean of \(n\mapsto F(n d(t)c)\)
+and use Fourier series there to bound its value by a Sobolev norm
+of its positive-order derivatives of any sufficiently high order.
+Along the archimedean positive chamber each unipotent derivative
+gains the inverse positive root of \(d(t)\), as a right derivative
+on \(F\). Compact factors \(c\) only change the fixed bounds. This
+is the estimate in Corollary~\ref{tpd:detect} on the rank-one
+group, with the bounded mean retained. Boundedness and finite
+quotient volume give the assertion. This applies also to every
+fixed finite local translate of the vector giving \(F\).
+
+Use the good split place \(v\) of Proposition~\ref{threal:orthA}.
+At one of its two \(E\)-places \(w\) the right
+\(\mathrm{SL}_2(E_w)\) action on \(F\) factors through restriction
+of the first block in the \(r=2\) Jacquet filtration computed in
+Proposition~\ref{threal:detectline}. Its possible factors before
+restriction are determinant characters and the one principal series
+with \(i=j=1\). The latter has no unitarizable restriction
+constituent. Here is a verification. Write \(G=\mathrm{GL}_2(E_w)\)
+and \(G^+=Z(G)\mathrm{SL}_2(E_w)\). The quotient \(G/G^+\) is
+the finite group of square classes. The irreducible principal
+series \(\tau\) is finitely generated over \(G^+\) by coset
+representatives applied to a generating vector. Choose a maximal
+proper \(G^+\)-submodule; its finitely many \(G\)-conjugates
+intersect trivially by \(G\)-irreducibility. The restriction
+embeds in a finite sum of simple quotients, so is semisimple, and
+its simple factors are \(G\)-conjugate. The center acts by a scalar
+character. After twisting \(\tau\) by a real determinant power this
+central character is unitary. If any factor on \(\mathrm{SL}_2(E_w)\)
+had a positive invariant Hermitian form, so would every conjugate,
+and their direct sum would give a \(G^+\)-invariant form.
+Averaging it over \(G/G^+\) would unitarize the twist of \(\tau\),
+contrary to the Satake calculation in Proposition~\ref{threal:detectline}.
+
+The local subspace under consideration is a quotient of a
+finite-length admissible \(\mathrm{SL}_2(E_w)\)-module: in the
+Jacquet module take invariants of compact open subgroups fixing
+the vector in all the other Levi blocks. Their invariant spaces
+in the finite filtration are finite-dimensional on those blocks.
+The first block restricts as just described. A finite-length
+admissible submodule of a unitary Hilbert representation has
+unitarizable simple constituents. In fact the closure of any of
+its submodules has exactly that submodule's smooth vectors within
+it, by compact-open averaging and finite-dimensionality at each
+level; orthogonal projection then splits the submodule. Hence
+only the trivial \(\mathrm{SL}_2(E_w)\) factors remain in the
+space of translates of \(F\), and its local action is trivial.
+In particular \(F_N(d(t))=F_N(1)\) if \(t\) is a uniformizer
+at \(w\) and one elsewhere. Its modulus makes
+\(\nu(t)|t|_E^{1-k}\ne1\). The flag formula now implies \(B(1)=0\).
+The upper right translate was arbitrary, so the entire smaller
+\(\beta\)-component vanishes.
+
+The smaller slice \(f_1\) is thus pure for the \(\alpha\)-character.
+Induction gives \(f_1=0\) for each upper compact translate.
+The character law, upper unipotent invariance and Iwasawa
+decomposition give vanishing of the full upper line constant term.
+Proposition~\ref{threal:detectline} gives \(f=0\).
+Finally equality on \(m(1,h_1)\) for all matched pairs kills
+their entire \(\beta\)-component by compact stability of matching
+and Iwasawa, as in Corollary~\ref{threal:endA}. The preceding
+assertion applies to the remaining pure difference.
+\end{proof}
+
+\begin{proposition}[Matching all tests at an integral good split place]
+\label{threal:localcone}
+Let \(v\) lie above a completely split rational prime outside the
+ramification set. Use unramified characters and a pair of integral
+hyperbolic splittings in which the source, target and smaller basic
+lattices decompose as direct sums and the displacement line is
+primitive. Normalize the unit groups and \(K_v\) to volume one.
+Write \(P_{1,A},P_{1,B}\) for the two smaller quotient maps,
+normalized on their common vacuum. For every pair of locally
+matched tests \(\phi,\phi'\), in the \(a\)-step one has
+\[
+   P_{1,A}(T_{A,v}\phi)=
+    \prod_{w\mid v}L_w(\nu,k)\, P_{1,B}(e'_{0,v}\phi').
+\]
+In the \(a'\)-step the analogous equality is
+\[
+   P_{1,B}(T_{B,v}\phi')=
+    \prod_{w\mid v}L_w(\nu,k+1)\, P_{1,A}(e_{0,v}\phi).
+\]
+Here the evaluations and basic vectors in the mixed coordinates
+are normalized compatibly: evaluation of a basic vector is the
+smaller basic vector, and its displacement evaluates to zero
+outside the integral line. \(T_{B,v}\) is the local operator in
+Lemma~\ref{tpd:mellin}. Both products range over the two places
+of \(E\) above \(v\).
+At a designated ramified split place the same pairs of comparison
+maps span a space of dimension at most one in each direction.
+\end{proposition}
+\begin{proof}
+Set \(K_0=F_v\). By Propositions~\ref{split:kernel} and
+\ref{split:good}, or by Corollary~\ref{split:ram} at a designated
+ramified place, the two source coinvariants are the same
+irreducible \(\mathrm{GL}_d(K_0)\) representation \(\pi_v\).
+In particular these are the precise kernels of any of the
+surjective local maps in the matching data: a map killing the
+source differences induces a nonzero map out of this irreducible
+module. We show that the two maps to the smaller output after
+applying a cone or zero evaluation factor through these
+coinvariants.
+
+For the zero evaluation, equivariance for the unchanged source
+and its action on the smaller quotient give this immediately.
+For \(A\), project
+\(e_A\rho(x\otimes y')\omega(g,1)\phi\) to the smaller quotient.
+It is left invariant by the full \(K_0\)-point vector stabilizer
+\(H_x\), since its unipotent radical acts trivially as in
+Proposition~\ref{threal:coneA}, and its remaining source factor
+acts trivially after projection. This stabilizer is unimodular:
+the action of the residual general linear block on the row and
+column root groups has opposite determinant moduli, and is trivial
+on the center. Integration over \(H_x\backslash H(K_0)\) therefore
+gives a right \(H(K_0)\)-invariant map. Its Iwasawa coordinates
+give precisely \(P_{1,A}T_{A,v}\), up to a nonzero Haar factor,
+by the source Levi calculation above. The integral is absolute
+since \(k>0\); the locally constant compactly supported restrictions
+in the displacement and smaller position variables span a finite
+number of smaller tests. For \(B\) use the vector stabilizer of
+\(x\) in the primed source. It fixes the \(S_B\)-reduced quotient
+and the class of \(y\otimes x'\) modulo \(S_B\), with no central
+Heisenberg phase: the difference lies in
+\((V'_1+Ex)\otimes Ex'\), isotropic together with
+\(y\otimes x'\). The residual \(U(V'_1)\) again disappears after
+projection. The Iwasawa calculation in Lemma~\ref{tpd:mellin}
+gives \(P_{1,B}T_{B,v}\) by this quotient integral, now with
+positive exponent \(k+1\).
+
+Both resulting maps from \(\pi_v\) are invariant under the
+unipotent radical of the target line parabolic. For \(A\), the
+displacement changes there by an element of
+\(Ex\otimes(W_1+Ex')\) in \(S_A\), with no Heisenberg phase
+because \(x\) is isotropic. For \(B\), the displacement is fixed;
+the target unipotent preserves \(S_B\), has determinant one there,
+and acts trivially on the smaller tensor quotient. For the zero
+evaluation the assertion holds already before the smaller quotient.
+The actions on the reduced spaces in these checks are the mixed
+ones at zero, as in Proposition~\ref{threal:coneA}. Moreover the
+two maps in either comparison are equivariant for the smaller
+target group and have the same line character, by the two Levi
+computations.
+
+At this split place the line parabolic has block sizes
+\((1,d-2,1)\). Write its outer entries as \(u,z\); the element of
+\(E_v^\times\) acting on the isotropic \(E_v\)-line is
+\((u,z^{-1})\). The unnormalized line character in the \(a\)-step
+is therefore \(\alpha(u)\alpha(z)|u/z|^{a'/2}\). Dividing by
+\(\delta_P^{1/2}=|u/z|^{(d-1)/2}\) prescribes the first and last
+characters of the normalized Jacquet module to be
+\[
+       \alpha|\cdot|^{-(a-1)/2},\qquad
+       \alpha|\cdot|^{(a-1)/2}.
+\]
+The geometric lemma applied to the two determinant blocks of
+\(\pi_v\) has exactly one such subquotient: the first and last
+rows must both come from the \(\alpha\)-block, since
+\(\alpha/\beta\) has infinite order on a uniformizer in the good
+case, and is nontrivial on units in the ramified case. They leave
+the normalized induction of the determinant characters of lengths
+\(a-2,a'\) on the middle block. Its \(\alpha\)-exponent has no
+shift because one row was removed at either end. It is irreducible
+by the unitary induction theorem used in Proposition~\ref{split:good}.
+In the \(a'\)-step the line character is \(\beta(t)|t|_E^{a/2}\);
+the prescribed ends are \(\beta|\cdot|^{\mp(a'-1)/2}\). Both
+come from the other block, leaving lengths \(a,a'-2\). Thus the
+equivariant Hom into the stipulated smaller representation and
+the two given characters has dimension at most one in each case,
+by the Jacquet filtration and Schur's lemma. \cite[\S2.12]{bzgLemma}
+
+At the stated good places evaluate the two maps on the upper
+common spherical vector.
+The zero evaluation gives the nonzero smaller vacuum. In the
+cone integral the compact group fixes the test, and the shifted
+evaluation gives exactly the smaller vacuum for integral displacement.
+At each of the two places \(w\) the resulting geometric series
+is \(L_w(\nu,k)\) or \(L_w(\nu,k+1)\), respectively. The product
+is nonzero, fixing the scalar on every matched test.
+\end{proof}
+
+\begin{corollary}[The ramified unprimed comparison on all tests]\label{threal:ramA}
+At a designated ramified split place, use the local character
+\(\chi=\nu_w\), conductor \(\pi^c\), residue cardinality \(Q\)
+and measures of Proposition~\ref{tpd:ram}. For all upper matched
+tests the scalar in the \(a\)-step, multiplying the smaller primed
+zero evaluation, is
+\[
+       Q^{c(k-1)}\chi(\pi)^c
+       \sum_{r\in(\mathcal O/\pi^c)^\times}
+                         \chi(r)^{-1}\psi_v(r/\pi^c).
+\]
+\end{corollary}
+\begin{proof}
+Use the pivot-determinant tests of Proposition~\ref{tpd:ram},
+now removing the first and last of the \(a\) target pivot columns
+on the unprimed side. The upper and lower pairs are matched by the
+same integral row computation there, and both orbital functions
+have value one at the identity before applying the reductions.
+The primed zero evaluation integrates one nonpivot column with
+\(a'\) entries in \(\pi^c\mathcal O\), giving
+\(Q^{-a'c}\phi'_1\). On the unprimed side write
+\(l=(s,t)\) in the two split components. The shift \(l x\otimes y'\)
+has position entry \(s\) at the first row and last pivot column
+and momentum entry \(-t\) at the last row and first pivot column:
+in the chosen idempotent the coordinates of \(x,y'\) are the
+first and last basis vectors; pairing their conjugates into the
+dual basis gives the last and first vectors, with the minus sign
+from the skew target pair. The two entries have zero mutual
+Heisenberg half-pairing.
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/StandardValuations/AdelicInclusionMapPlaceSection.lean}{218}{Paired-coordinate identities for the unprimed displacement}.
+
+In the \(S_A\)-evaluation one integrates the first pivot column
+and the first source row except for the last pivot column. This
+follows by using the translations in \(V\otimes Ex'\) first
+and then those in \(Ex\otimes W_1\); the dual modulation
+coordinates are set equal to zero. Thus the pivot matrix has
+the form
+\[
+      \begin{pmatrix} *&*&s\\ *&D_1&0\\ u&0&0\end{pmatrix}
+\]
+with Fourier factor \(\psi_v(-tu)\). Its determinant is
+\(-su\det D_1\). Apart from \(u\), the integrated pivot entries
+have unit volume, and the \(a'\) integrated nonpivot entries of
+the first row give \(Q^{-a'c}\). Replacing \(u\) by \(-u\)
+removes the two minus signs. With
+\(D_\chi=\mathbf1_{\mathcal O^\times}\chi^{-1}\), this yields
+\(Q^{-a'c}D_\chi(s)\widehat D_\chi(t)\phi_1\).
+The compact source average fixes the test. The Mellin weight is
+\(\chi(s)\chi(t)^{-1}|st|^k\). The \(s\)-integral is one; the
+\(t\)-integral is supported on \(t=\pi^{-c}\mathcal O^\times\),
+where \(\widehat D_\chi(\pi^{-c}u)=
+ Q^{-c}\chi(u)G(\chi,\psi_v)\) by the unit residue sum.
+Consequently this integral is \(Q^{c(k-1)}\chi(\pi)^c
+G(\chi,\psi_v)\). Cancel the common factor \(Q^{-a'c}\) and use
+Proposition~\ref{threal:localcone} to pass from this nonzero
+smaller vector to all tests.
+\end{proof}
+
+For an adapted integral plane let \(\mathfrak b x\) and
+\(\mathfrak c x'\) be its two first-line lattices. The duality
+condition on the skew lattice, using the absolute trace, gives
+the second target line lattice
+\(\mathfrak D_{E/\mathbb Q}^{-1}\bar{\mathfrak c}^{-1}y'\).
+Indeed a coefficient must pair with every element of
+\(\mathfrak c x'\) into the codifferent, and the other integral
+summands are orthogonal. Thus the finite displacement
+\(l x\otimes y'\) is integral precisely for \(l\) in
+\(\mathfrak b\mathfrak D_{E/\mathbb Q}^{-1}
+  \bar{\mathfrak c}^{-1}\widehat{\mathcal O}_E\).
+These ideals are units at the specified ramified places by the
+prescribed paired integral bases and total rational splitting.
+The relative different for \(E/F\) is trivial and
+\(\nu|_{\mathbb A_F^\times}=1\), by the common parity of the
+two splitting characters. Hence the character of the codifferent
+is one, and that of the displacement ideal is
+\(\nu(\mathfrak b)\nu(\mathfrak c)\); the norm factor with
+exponent \(-k\) depends only on the chosen lattices. This gives
+the two positive ideal exponents for the \(a\)-step. In particular
+the splitting-prime calculation of the two comparison factors also
+allows nonprimitive line generators by the corresponding change of
+variable in the local Mellin test of the lattice vacuum.
+\src{src/Development/WeilBound/ThetaLifts/LocalTheory/ConeShifts/IdealId0.lean}{49}{The two displacement ideals and their character values}.
+
+\paragraph{The scalar comparison for \(p+q>0\).}
+The common local maps give an algebraic test for the
+global discrepancy. Fix polynomial real and finite tests and take the
+restricted tensor products with the specified vacuum lines. Let
+\(P,P'\) be the tensor maps to the common quotient, using the
+full-rank restriction on the primed domain. Suppose the quotient
+and full-rank surjectivities in \S\ref{newtheta:global} have been
+established at the places in question. Then \(P,P'\) are onto:
+each pure tensor has finitely many non-vacuum factors; choose lifts
+factor by factor and use the prescribed vacua elsewhere. Work with
+the rational summation functional averaged over the source, denoted
+by \(I_h,I'_h\). For fixed \(h\) its action on source differences
+vanishes by change of variables wherever the summation descends to
+the source quotient. The first additional global requirement is
+\[
+            I_h(\ker P)=0,\qquad I'_h(\ker P')=0 .
+\]
+In particular a local quotient that kills the source differences
+does not identify the annihilator of the global integral unless its
+extra kernel is killed too. Once these equalities hold, the two
+periods give well-defined linear maps \(A,A'\) from the common tensor
+module to functions of \(h\). Proportionality is equivalent, when
+\(A'\ne0\), to the following directly testable equalities for all
+module vectors \(x,y\) and adelic \(h,h_0\):
+\[
+                   A(x)(h)\,A'(y)(h_0)
+                    =A'(x)(h)\,A(y)(h_0).
+\]
+Choose \(y,h_0\) with \(A'(y)(h_0)\ne0\) to prove this equivalence;
+the scalar is nonzero exactly when \(A\ne0\). Corollary~\ref{threal:limits}
+then gives the assertion on the entire matching space. Conversely a
+nonzero primed period on some supported Schwartz test already gives
+one on a polynomial test: keep its finite factors fixed, approximate
+each archimedean Schwartz coefficient by its finite Hermite
+expansions, and use the continuity proved above. Hermite expansions
+converge in all Schwartz seminorms, by iterating the harmonic
+oscillator on the coefficients and using the creation and annihilation
+operators to control the seminorms of its eigenfunctions.
+
+Theorem~\ref{threal:base} establishes the scalar comparison at the
+definite base. Theorem~\ref{threal:nonzero} proves \(A'\ne0\) also
+for \(q=0<p\) whenever the factorization exists, and gives a nonzero
+supported period there before factorization. The graph-orbit proof
+of the base comparison changes once \(W\) has isotropic lines:
+maximal isotropic subspaces of \(W\oplus -W\) can project with
+nonzero kernels, and their terms survive in the unfolding unless
+one proves the necessary vanishing. Proposition~\ref{threal:allreal}
+gives the real quotient in these signatures, and
+Proposition~\ref{threal:detectline} reduces the global comparison to
+one entire line constant term for all target translates.
+
+The rank restriction on other available multiplicity formulas
+matters here. The determinant characters on the two inducing blocks
+give the two Satake strings of lengths \(a,a'>1\) at the completely
+split good primes. The natural Arthur parameter with these strings
+has two character blocks with nontrivial Arthur \(\mathrm{SL}_2\);
+the generic multiplicity-free formula does not apply to it.
+Chen--Zou's Theorem~7.7 treats elliptic parameters at \(F\)-rank
+one and also those for which each nontrivial Arthur block has
+cuspidal degree greater than the rational Witt index. Here those
+degrees are one. Moreover this theorem describes a discrete
+spectrum in terms of packets, defined as multisets; using it on a
+specific period would require proving discrete realization and
+identifying its packet member. Even a multiplicity of one does not
+give the ratio of functionals in different ranks.
+\cite[\S5.3, Assumption~7.2 and Theorem~7.7]{chenZouMultiplicity}
+
+In the descent in \(a\), the actual comparison of tests must send
+the larger cone integral to the smaller zero evaluation times
+\(C_A\,\mathrm{stepFac}_A\,L^{S_0}(\nu,(a-a')/2)\).
+Proposition~\ref{threal:coneA} identifies the two global constant
+terms with those operations and Corollary~\ref{threal:endA} proves
+the required detection. Identifying their images in the smaller
+matching quotients with the uniform scalar is a separate assertion.
+In the descent in \(a'\), the smaller cone integral must match the
+larger zero evaluation times
+\(C_B\,\mathrm{stepFac}_B\,L^{S_0}(\nu,(a-a')/2+1)\), and must
+land in the smaller supported space. Lemma~\ref{tpd:mellin}
+proves that support assertion, Proposition~\ref{tpd:unfold}
+identifies the cone component, and Proposition~\ref{threal:endB}
+proves detection by it in every signature. The signs in the two
+finite products and the conductors are as in \S\ref{newtheta:global}.
+The constants \(C_A,C_B\) precede the quantifiers over the characters,
+both Weil systems, and both sets of finite quotient maps once the
+evaluations, real maps and measures are fixed.
+Proposition~\ref{threal:localcone} determines both ratios on all
+tests at the integral good split places in its hypotheses.
+Proposition~\ref{tpd:ordinary} extends these identities to every
+unramified place split in \(E/F\), including resonant characters
+and the factors from the adapted line lattices.
+Corollary~\ref{threal:ramA} and Proposition~\ref{tpd:ram} determine
+the ratios at the designated ramified split places.
+At inert places Proposition~\ref{threal:allinert} gives the
+irreducible quotient and its common vacuum. Propositions~\ref{tcr:descend} and \ref{tcr:unique} prove that the
+cone and zero operations factor through the upper quotient on every
+local test and compute their ratio after projecting to the smaller quotient. At the real places
+Proposition~\ref{threal:allreal} identifies the two modules in
+each fixed rank. Proposition~\ref{tcr:unique} compares the compact-averaged
+Mellin operators and evaluations between the two ranks on the
+polynomial vectors for the fixed real quotient maps. Theorem~\ref{tcr:global}
+assembles the comparisons for the prescribed polarizations, lattice vacua
+and product measures, giving the uniform constants and nonvanishing in
+positive signature.
+\src{src/Development/WeilBound/ThetaLifts/ConeHypotheses/PolDense.lean}{46}{The two normalized cone comparisons};
+\src{src/Development/WeilBound/ThetaLifts/ConeHypotheses/PolDense.lean}{32}{Detection by the selected constant-term component}.

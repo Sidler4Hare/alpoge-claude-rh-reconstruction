@@ -1,0 +1,394 @@
+\subsection{One integer for all coefficient primes in rank three}\label{rk3:sec}
+
+Fix an imaginary quadratic field \(K\), a level \(N\ge1\), a twist
+\(e\ge1\), a prime \(p\nmid30N|\operatorname{disc}K|\), and a place
+\(w\mid p\). Write \(q=|\mathcal O_K/w|=p^h\), \(h=1\) or \(2\).
+In this subsection \(q\) is a residue norm, independent of the notation
+for the first auxiliary prime elsewhere. For \(H\le(\mathbf Z/N)^\times\),
+let \(J\) be the complex characters modulo \(N\) with kernel exactly \(H\).
+If the quotient is cyclic then \(|J|=\varphi([(\mathbf Z/N)^\times:H])\);
+otherwise \(J\) is empty. This follows by choosing the image of a generator
+under a faithful embedding in \(\mathbf C^\times\). Put \(z_j=j(q)^{-1}\).
+The multiset of the \(z_j\) is invariant under every automorphism of
+\(\overline{\mathbf Q}\).
+
+The two spectral lists used at \(w\) are the irreducible rank-three,
+polarized automorphic representations with normalized weight sequence
+\((e,0,-e)\), and the sums \(W|_{G_K}\oplus1\) from a rank-two newform
+of weight \(2e+1\), with the normalization giving weights \((e,-e)\).
+The conductor bound for the second list involves \(N|\operatorname{disc}K|\).
+The following lemma isolates the exact use of classification by finite
+lists. The same trace can belong to several distinct entries.
+
+\begin{proposition}[Counting the classical spectral lists]\label{rk3:count}
+Fix \(F=\mathbf Q\) or an imaginary quadratic field and \(n\ge2\).
+Let \(K_F(M)\) be the kernel of reduction modulo \(M\) in
+\(\mathrm{GL}_n(\widehat{\mathcal O}_F)\).
+Consider regular algebraic cuspidal representations of
+\(\mathrm{GL}_n(\mathbb A_F)\) with \(K_F(M)\)-fixed vectors and
+one prescribed infinitesimal character at each embedding. Suppose the
+pairwise differences of its Harish--Chandra parameters are at most \(H\)
+in absolute value. The number of isomorphism classes is at most
+\[
+ C_{F,n}(3M)^{n^2[F:\mathbf Q]}
+       (1+H)^{[F:\mathbf Q]n(n-1)/2}.
+\]
+On the split real centre take the prescribed character and the inverse
+character on the coefficient system; the product descends to the quotient.
+\end{proposition}
+\begin{proof}
+The regular algebraic cuspidal condition gives nonzero relative Lie
+algebra cohomology with the irreducible coefficient module of the
+prescribed infinitesimal character, using the dual if necessary.
+Take the connected maximal compact at infinity, together with the
+split central factor. Distinct cuspidal representations give distinct
+summands in cuspidal cohomology. This embeds in ordinary cohomology by
+the cuspidal summand in Franke's theorem. At finite level take compact-open
+invariants, an exact functor over \(\mathbf C\) by averaging. Since
+\(K_F(3M)\subseteq K_F(M)\), every representation counted contributes
+at least one dimension to the sum over all cohomological degrees at
+level \(3M\).
+Grobner--Raghuram,
+Thms.~6.3 and 7.6, Cor.~7.7 and Prop.~7.16~\cite{grobnerRaghuram}.
+
+At level three there are finitely many connected components. Indeed the
+determinants give finitely many ray classes and strong approximation
+for \(\mathrm{SL}_n\) gives the component description, up to the
+finite group of real signs. The stabilizers are torsion-free: in each
+adelic lattice their action on its underlying integral lattice is
+congruent to the identity modulo three. The elementary binomial
+argument in Theorem~\ref{newcoh:lemmaK} applies. The Borel--Serre
+compactifications of these components have the homotopy type of the
+interior and are compact manifolds with corners. Fix finite
+triangulations with \(C_{F,n}\) simplices in total. The finite cover
+at \(3M\) has at most \([K_F(3):K_F(3M)]\) lifts per simplex, at most
+\((3M)^{n^2[F:\mathbf Q]}\) by counting all residue matrices modulo
+\(3M\). A cellular cochain group with local coefficients has one
+copy of the fibre per cell. Thus the sum of the Betti numbers is
+bounded by the number of lifted simplices times the fibre dimension.
+Borel--Serre,
+\emph{Corners and arithmetic groups}~\cite{borelSerre}.
+
+At one embedding write the ordered infinitesimal character as
+\(\mu+\rho\), with \(\mu\) the highest weight. Weyl's formula for
+the coefficient dimension multiplies its pairwise positive differences
+divided by \(j-i\) over \(i<j\). There are \(n(n-1)/2\) factors,
+each at most \(1+H\); changing a determinant twist leaves the
+differences fixed. Taking the product over all embeddings proves the
+bound. For the present rank-three triples the infinitesimal character
+is \((e,0,-e)\). Subtracting \(\rho=(1,0,-1)\) gives dimension \(e^3\)
+at each of the two embeddings, hence \(e^6\) in all. In rank two
+\((e+1/2,1/2-e)-\rho=(e,1-e)\) has dimension \(2e\).
+\end{proof}
+
+\input{sections/spectral-volume}
+
+\begin{lemma}[Size and denominators of the classical traces]\label{rk3:purity}
+For the conjugate self-dual rank-three cuspidal systems just described,
+take principal level \(N\) and the weights for the inverse cyclotomic
+twist \(m=(e-1,-1,-e-1)\) in the convention that the labelled jumps
+are \(-m_i\). For the rank-two summands take principal level
+\(N|\operatorname{disc}K|\) and weights \((e,-e)\). Assume the usual
+classical polarized cuspidal realizations with these levels and weights.
+The resulting traces at inverse arithmetic Frobenius, indexed with
+multiplicity by the systems, are algebraic, stable as a list under
+conjugation when all such systems are taken, and satisfy
+\(|t_s|\le3\), \(q^et_s\) an algebraic integer.
+\end{lemma}
+\begin{proof}
+Use geometric Frobenius, the inverse of arithmetic Frobenius. In rank
+three the spherical parameters \(\alpha_i\) in unitary normalization
+have absolute value one. Indeed the complex representation is cuspidal,
+cohomological and conjugate self-dual over a CM field, so Caraiani's
+temperedness theorem applies. By the normalization of
+Proposition~\ref{newgal:classical}, the geometric eigenvalues of the
+inverse cyclotomic twist are \(b_i=q\alpha_i\). The cyclotomic
+character at geometric Frobenius is \(q^{-1}\), so restoring the
+original representation gives \(t_s=q^{-1}\sum_i b_i\).
+The cohomological conjugation theorem permutes the systems: all
+embeddings have the same weight triple, the level is defined
+arithmetically, and conjugation commutes with the contragredient and
+field-automorphism relations on the finite parts. Strong multiplicity
+one identifies the conjugate cuspidal representation by its finite
+part. The spherical parameters in algebraic normalization are algebraic
+and conjugate accordingly. Here the factor \(q\) is rational.
+Caraiani,
+\emph{Local-global compatibility and the action of monodromy on
+nearby cycles}, Thm.~1.2~\cite{caraianiNearby};
+Grobner--Raghuram,
+Thm.~7.17 and Remark~7.18~\cite{grobnerRaghuram}.
+
+At a coefficient prime \(v\nmid p\), a stable integral lattice for
+the corresponding member of the compatible system shows that both the
+eigenvalues of Frobenius and their inverses are integral: its matrix
+and its inverse preserve the lattice. At the coefficient prime \(p\),
+the local representation is crystalline since \(p\) divides neither
+the level nor the discriminant. Let \(q=p^h\). The normalized Newton
+slopes of its filtered isocrystal are \(v_p(b_i)/h\), with
+\(v_p(p)=1\). They lie between the smallest and largest labelled
+filtration jumps. To see the lower bound, take the isoclinic subobject
+of minimum slope with its induced filtration, after extending
+coefficients as necessary. Weak admissibility gives \(t_N\ge t_H\)
+there, and each jump is at least the minimum of the ambient jumps.
+Divide by its rank, with the usual average over embeddings. Apply the
+same argument to the dual for the upper bound. In rank three the
+endpoints are \(1-e,1+e\). Hence \(q^{e-1}b_i\) is \(p\)-integral.
+The argument applies to every embedding of the coefficient field.
+Integrality at every finite place gives the assertion for \(q^et_s\).
+
+For a normalized rank-two member \(W\) over \(\mathbf Q\) the jumps
+are \(\{-e,e\}\). The purity weight in the polarized cuspidal theorem
+is zero, since the reflected pair of jumps about \(w/2\) must be that
+same pair. Its two geometric Frobenius eigenvalues \(b_1,b_2\) at a
+good \(p\) therefore have absolute value one under every embedding.
+The \(p\)-adic slope calculation gives \(v_p(b_i)\ge-e\). Restriction
+to \(K_w\) raises Frobenius to the \(h\)th power modulo inertia, which
+acts trivially here. Thus \(t_s=1+b_1^h+b_2^h\), and integrality at
+every finite place follows as above. Equivalently, if the newform is
+in motivic weight \(2e\), its eigenvalues are divided by \(p^e\);
+this is an integral power and commutes with conjugation. This proves
+the assertions in both ranks. For the comparison between spherical
+parameters, labelled jumps and crystalline Frobenius see
+Barnet-Lamb--Gee--Geraghty--Taylor,
+Thm.~2.1.1~\cite{blggtPotential}.
+\end{proof}
+
+\begin{lemma}[The integral trace product]\label{rk3:integer}
+Suppose the finite list \((t_s)_{s\in S}\) of algebraic numbers is
+Galois invariant with multiplicities, each \(|t_s|\le3\), and each
+\(q^et_s\) is an algebraic integer. Set \(Q=q^e\) and
+\[
+ t^0_j=Q^{-1}z_j+1+Qz_j^{-1},\qquad
+ C_p=\prod_{j\in J}\prod_{s\in S}Q(t_s-t^0_j).
+\]
+Then \(C_p\) is a nonzero rational integer with
+\[
+ \log|C_p|\le |J|\,|S|\,(2e\log q+1).
+\]
+For any \(\ell\ne p\), fix an embedding of the numbers involved into
+\(\overline{\mathbf Q}_\ell\), with \(v_\ell(\ell)=1\). If at every
+\(j\) a sublist of indices \(S_j\subseteq S\) has been selected, then
+\[
+      \sum_{j\in J}\sum_{s\in S_j}v_\ell(t_s-t^0_j)
+       \ \le\ v_\ell(C_p).
+\]
+\end{lemma}
+\begin{proof}
+In a factor \(Qt_s-z_j-Q-Q^2z_j^{-1}\), all terms are algebraic
+integers. The last has absolute value \(Q^2\), the sum of the others
+has magnitude at most \(4Q+1<Q^2\) since \(Q\ge7\), and the magnitude
+of the factor is at most \(2Q^2\). The action of any Galois automorphism
+permutes the full product. A rational algebraic integer is an integer.
+Sum \(\log(2Q^2)\le1+2e\log q\) over the factors, with the empty product
+interpreted as one. At \(\ell\ne p\), \(Q\) is a unit. Every omitted
+factor has nonnegative valuation by integrality. Removing those factors
+proves the inequality. The embedding may vary with \(\ell\); the integer
+in the bound remains fixed.
+\end{proof}
+
+Here are the prime and character conditions at the rank-three
+application. The modulus \(N\) is even, \(e\ge1\),
+\(\psi(-1)=(-1)^e\), and \(\ell\) is odd with
+\(\ell\nmid\operatorname{ord}(\psi)|\operatorname{disc}K|h_K\) and
+\(\ell-1\nmid 2e\). The \(\ell\)-local component of \(\psi\) has
+square one and \((N,|\operatorname{disc}K|)=1\). If \(\psi^{(\ell)}\)
+is obtained by deleting that local component, the quadratic field \(K\)
+must not be contained in the compositum of \(\mathbf Q(\mu_\ell)\)
+and the field cut out by \(\psi^{(\ell)}\). These conditions have the
+same truth value for every faithful character of the cyclic image:
+raising its values to a power coprime to the image order preserves
+the kernels, the order of every component, and the sign at \(-1\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{9}{Prime and character hypotheses}.
+
+\begin{lemma}[Independence of the integral coefficient ring]\label{rk3:coeff}
+Let \(L_0\) be the extension of \(\mathbf Q_\ell\) generated by the
+values of the character on units, and let \(\mathcal O_0\) be its ring of integers.
+For a finite extension \(L/L_0\), put \(A_L=(L/\mathcal O_L)
+(\psi^{-1}\chi_\ell^{-e})\). The strict groups at level \(\ell N\)
+satisfy
+\[
+ S_{\ell N}(\mathbf Q,A_L)\simeq
+ S_{\ell N}(\mathbf Q,A_{L_0})\otimes_{\mathcal O_0}\mathcal O_L .
+\]
+Finiteness and length divided by the absolute ramification index
+are independent of \(L\).
+\end{lemma}
+\begin{proof}
+The character values on units have finite order prime to \(\ell\), so lie in
+an unramified extension by Hensel lifting the roots of \(X^m-1\)
+over a residue field containing \(\mu_m\), \(m=\operatorname{ord}\psi\).
+The remaining Tate character takes values in \(\mathbf Z_\ell^\times\).
+The finite free extension of valuation rings is flat, giving
+\((L_0/\mathcal O_0)\otimes\mathcal O_L=L/\mathcal O_L\).
+In a free \(\mathcal O_0\)-basis of \(\mathcal O_L\), each group of
+continuous cochains becomes the finite direct sum of its counterparts
+over \(\mathcal O_0\), with coordinatewise coboundaries and restrictions.
+The common kernel of the restriction maps is obtained coordinatewise,
+even for the conditions over all inertia subgroups. This proves the
+displayed isomorphism. Finite length is preserved and reflected since
+the extension is finite free and faithfully flat. Each elementary factor
+\(\mathcal O_0/(\pi_0^k)\) gives length \(k\,e(L/L_0)\) after extension.
+Dividing by \(e(L/\mathbf Q_\ell)=e(L/L_0)e(L_0/\mathbf Q_\ell)\)
+proves the length assertion.
+\end{proof}
+
+To see precisely what must be supplied by the deformation argument, let
+\(\mathcal O\) be a coefficient discrete valuation ring of ramification
+index \(a\) over \(\mathbf Z_\ell\) and write \(\lambda_j\) for the
+finite length over \(\mathcal O\) of the relevant strict Selmer group,
+divided by \(a\). This normalization makes length and \(v_\ell\)
+compatible under extension of coefficients. In the rank-three case the
+needed assertion gives, for each \(j\), a finite set of pairwise
+nonisomorphic admissible representations \(\rho\) with
+\[
+       \lambda_j\le
+          2\sum_\rho v_\ell\bigl(\operatorname{tr}
+                       \rho(\mathrm{Frob}_w^{-1})-t^0_j\bigr).
+\]
+It includes finiteness of the Selmer group. The trace-list theorem must
+classify these representations by distinct indices within each such set,
+identify their normalized inverse-Frobenius traces with the \(t_s\),
+and give \(|S|\le C_K(N(e+1))^{A_K}\) with constants independent of
+\(p,\ell,e,N,H\). When one character with kernel \(H\) exists over
+\(\mathcal O\), every other embedding of the cyclic image is a coprime
+power of that character, so the orbit used in the length sum is exactly
+the complex list \(J\). The lemma now gives
+\(\sum_j\lambda_j\le2v_\ell(C_p)\). It explains why one cannot replace
+the spectral list by an unlabelled set of different trace values.
+
+Choose another allowable prime \(p'\ne p\). For any finite set of
+allowable coefficient primes, sum the first estimate away from \(p\),
+and use \(p'\) only at \(p\). Prime factorization gives
+\[
+ \sum_{\ell}\log\ell\sum_j\lambda_j
+       \le 2\log|C_p|+2\log|C_{p'}|
+       \ll \varphi([(\mathbf Z/N)^\times:H])\,
+          |\operatorname{disc}K|^5 N^{18}e^7\log(pp').
+\]
+This bound for finite subsums also bounds the full nonnegative sum
+whenever the stated local hypotheses hold throughout it. For the
+classical lists Corollary~\ref{rk3:volume} and Lemma~\ref{rk3:purity}
+give the displayed exponents and the integral factors. The implied
+constant is absolute. For each fixed \(K\), this gives the
+polynomial dependence on \(N\) and \(e+1\) used in the rank-three
+window construction, with explicit dependence here on the discriminant.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/KatoUse.lean}{52}{The fixed-field bound used on the dependency path}.
+If two semisimple Galois representations are assigned the same full
+Hecke system, equality of traces at almost all Frobenius elements,
+Chebotarev and Brauer--Nesbitt make them isomorphic. For the reducible
+list, assigning the same rank-two system gives isomorphic restrictions
+and hence the same rank-three class. This supplies the injection on
+each pairwise nonisomorphic sublist. For classical cuspidal attachment
+and the stated local Galois conditions, Proposition~\ref{newgal:level}
+transfers the principal level, including at the coefficient prime.
+The outstanding requirement is a construction from every relevant strict
+Selmer group which gives the length inequality and produces such
+automorphic systems.
+It is this construction which makes the integer relevant to cohomology.
+
+\subsection{Quadratic restriction and the rank-four trace product}
+
+In the rank-four problem the automorphy hypothesis over \(\mathbf Q\)
+refers to continuous representations after restriction to imaginary
+quadratic fields where the restriction is irreducible. Here is how a
+bounded list over those fields can be used without choosing a
+cuspidal representation over \(\mathbf Q\).
+The following finite-list argument is an independent way to use this
+part of the stronger automorphy hypothesis on the active path.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AutQ0.lean}{20}{Forgetting the additional automorphy witnesses};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VWLevel.lean}{18}{Use of level, automorphy and polarization in rank four}.
+
+\begin{lemma}[Descent of the finite list]\label{rk4:quadratic}
+Fix \(n\ge2\) and \(n^2+3\) distinct imaginary quadratic fields of
+pairwise coprime discriminants. At a prime \(p\) discard the fields
+ramified at \(p\); in each remaining field \(K_i\) choose a place
+above \(p\), of residue degree \(f_i\in\{1,2\}\). Suppose finite lists
+\(S_i\), independent of the coefficient prime, are given, with each
+index \(s\) carrying an algebraic eigenvalue multiset \(B_{i,s}\)
+of size \(n\), stable as a list under Galois conjugation.
+For every \(\ell\ne p\), fix the coefficient embedding. Consider a
+family of absolutely irreducible \(n\)-dimensional representations of
+\(G_{\mathbf Q}\) unramified at \(p\). Whenever \(\ell\) is unramified
+in \(K_i\) and the restriction is irreducible, suppose \(S_i\)
+classifies the restrictions up to isomorphism and records their
+arithmetic Frobenius eigenvalues at the chosen place. Then there is a
+Galois-invariant list of at most \(2^{n+1}\sum_i|S_i|\) multiset
+entries classifying the original representations with their arithmetic
+Frobenius at \(p\). Here classification means an injective labelling
+of isomorphism classes; different labels may have the same eigenvalues.
+\end{lemma}
+\begin{proof}
+The prescribed fields can, for example, be obtained from distinct
+primes \(q_i\equiv3\bmod4\) by adjoining \(\sqrt{-q_i}\).
+For an irreducible representation \(r\), every quadratic self-twist
+\(\eta\) gives a nonzero operator in \(\operatorname{End}(r)\) on
+which conjugation acts by \(\eta\). Vectors belonging to distinct such
+characters are independent. Indeed, apply \(g-\eta(g)\) to a shortest
+nonzero relation, choosing \(g\) at which some other character differs
+from \(\eta\); a shorter nonzero relation would result. Thus there are
+at most \(n^2\) self-twists. For \(H=\ker\eta\) of index two, if
+\(r|_H\) is reducible, take a simple \(H\)-submodule \(U\).
+For \(g\notin H\), \(U+gU\) is stable under the whole group since
+\(g^2\in H\). Irreducibility and properness of \(U\) imply it is
+the direct sum \(U\oplus gU\). The operator acting by \(+1,-1\)
+on the summands intertwines \(r\) with \(r\otimes\eta\).
+At most one of the fields ramifies at \(p\), and at most one at
+\(\ell\), so at least one of the remaining restrictions is irreducible.
+
+If two extensions of an irreducible \(H\)-representation agree on \(H\)
+in a chosen basis, the quotient of their matrices at \(g\notin H\)
+commutes with \(r(H)\). Schur's lemma makes it scalar, and its square
+is one since their matrices at \(g^2\) agree. Thus there are at most
+two isomorphism classes of extensions. At the chosen place, arithmetic
+Frobenius restricts as the \(f_i\)-th power of Frobenius at \(p\)
+modulo inertia, up to conjugacy. Include for each \(i,s\) all multisets
+\(A\) whose entrywise \(f_i\)-th powers form \(B_{i,s}\).
+Ordering \(B_{i,s}\) temporarily shows there are at most
+\(f_i^n\le2^n\) possible multisets, including when some entries
+coincide. Give each two labels for the possible extensions. This is a
+conjugation-stable finite list. Assign each representation to the first
+eligible field in a fixed order, its restriction label, its actual
+multiset and one of the two extension labels. This assignment is
+injective for each fixed coefficient embedding. The whole list is
+independent of that embedding and of \(\ell\).
+\end{proof}
+
+\begin{corollary}[The integer in rank four]\label{rk4:integer}
+Take \(n=4\), \(p\ge5\), \(e\ge2\). Suppose, in the preceding lemma,
+that every member of \(B_{i,s}\) is an algebraic integer of absolute
+value \(p^{f_i(e+1)/2}\) in every complex embedding. Let \(S\) be
+the resulting list and \(t_s\) its entrywise traces. Fix
+\(z_1,z_2,z_3\in\mu_k\), \(k\ge1\). There is a nonzero rational
+integer \(I_p\) with
+\[
+ \log|I_p|\le\varphi(k)|S|\bigl((e+1)\log p+\log 2\bigr)
+\]
+which bounds the sum of the \(v_\ell\)'s of the trace differences for
+any pairwise nonisomorphic sublist at \(\ell\ne p\), for the comparison
+trace \(p^{e+1}z_1+p^e z_2+pz_3+1\).
+\end{corollary}
+\begin{proof}
+Every lifted eigenvalue is integral by the monic root equation,
+and its absolute value is \(p^{(e+1)/2}\). For each
+\(j\in(\mathbf Z/k)^\times\) put \(T_j=p^{e+1}z_1^j+p^ez_2^j+pz_3^j+1\);
+at \(k=1\) use the unique automorphism of the trivial root-of-unity
+group. Set \(P=p^{e+1}\). Since \((p^e+p+1)/P\le1/5+1/25+1/125<1/2\)
+and \(P^{1/2}\ge5^{3/2}>8\), we have
+\[
+ |T_j|>P/2,\qquad |t_s|\le4\sqrt P<P/2,\qquad |t_s-T_j|<2P.
+\]
+The product \(I_p=\prod_{s,j}(t_s-T_j)\) is a nonzero algebraic
+integer fixed by every Galois automorphism: the latter permutes the
+three powers \emph{simultaneously} through the indicated indices.
+This proves the size assertion. Every difference is integral at
+\(\ell\); keeping just the factors belonging to a chosen sublist at
+the identity automorphism gives the valuation bound.
+\end{proof}
+This gives the trace product in the arithmetic-Frobenius convention
+of rank four. If the quadratic lists have size polynomial in \(M(e+1)\),
+the bound has the required polynomial dependence, since only finitely
+many fields were fixed for the rank. To apply it to a particular
+Selmer group one needs the classical quadratic attachments of its
+deformation points with the stated levels, weights and purity.
+Section~\ref{spreal:section} identifies the branch on which an
+attachment follows from a known modularity theorem. \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AfStmt.lean}{34}{Rank-four comparison required of those deformations}.

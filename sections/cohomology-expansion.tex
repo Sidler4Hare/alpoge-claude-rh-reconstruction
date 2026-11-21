@@ -1,0 +1,1263 @@
+\subsection{Integral vanishing, cyclotomic descent and the number of exceptions}
+\label{newcoh:section}
+
+For a number field \(F\), let \(D_v,I_v\) denote absolute decomposition
+and inertia groups at finite places in a fixed algebraic closure. For a
+discrete \(\ell\)-primary \(G_F\)-module \(A\), write \(S_\ell(F,A)\)
+for the classes in continuous \(H^1(F,A)\) which restrict to zero on
+every \(I_v\) and on every \(D_v\) above \(\ell\). By conjugacy the
+definition is independent of the choices of prolongations. When \(A\)
+is unramified away from \(\ell\), this is exactly the kernel on
+\(H^1(G_{F,S},A)\) used in Section~\ref{sup:length}. Additional
+decomposition conditions at the primes of \(N\) define the subgroup
+used at level \(\ell N\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CharacterLevelBounds/ShaFamMono.lean}{17}{coefficient action and the two levels}.
+
+\begin{proposition}[The trivial-character integral vanishing]\label{newcoh:zero}
+Suppose \(\ell\ge5\) is prime, \(e\ge2\) is even and \(\ell-1\mid 2e\).
+Let \(O\) be the ring of integers in a finite extension of
+\(\mathbf Q_\ell\). For \(A=(O\otimes_{\mathbf Z_\ell}
+\mathbf Q_\ell/\mathbf Z_\ell)(-e)\) one has \(S_\ell(\mathbf Q,A)=0\).
+In particular its subgroup at level \(\ell N\) has length zero for
+every \(N\).
+\end{proposition}
+\begin{proof}
+Every continuous cocycle on an absolute Galois group takes only finitely
+many values in \(A\), by compactness. Its class is therefore killed by
+some power of \(\ell\). It suffices to show that a class \(x\) killed
+by \(\ell\) is zero. Fix a place above \(\ell\). Subtract a coboundary
+to obtain a representative \(z\) vanishing on \(D_\ell\). Write
+\(\ell z(g)=g b-b\). Then \(b\in A^{D_\ell}\). Every extension
+\(\mathbf Q_\ell(\mu_{\ell^n})/\mathbf Q_\ell\) is totally ramified
+of degree \(\varphi(\ell^n)\), as follows from the Eisenstein
+polynomial \(\Phi_{\ell^n}(1+X)\). Hence the local cyclotomic image is
+the full global image, so \(b\in A^{G_{\mathbf Q}}\). It follows that
+\(z\) actually has values in \(A[\ell]\).
+
+On \(A[\ell]\) the action is via the scalar character
+\(\bar\chi_\ell^{-e}\). Its order divides two. If it is trivial put
+\(K=\mathbf Q\). Otherwise \(e\) is an odd multiple of
+\((\ell-1)/2\). Since \(e\) is even, \(\ell\equiv1\bmod4\), and the
+quadratic Gauss sum identifies the fixed field of its kernel as
+\(K=\mathbf Q(\sqrt{\ell})\), of discriminant \(\ell\).
+Now \(z|_{G_K}\) is a homomorphism. It vanishes on inertia away from
+\(\ell\), where the action on all of \(A\) is trivial and the
+cohomology restriction of \(x\) is zero. At \(\ell\) it vanishes on
+\(D_\ell\cap G_K\) by normalization. For its conjugates use
+\[
+ z(hgh^{-1})=h z(g)+(1-hgh^{-1})z(h).
+\]
+The second term is zero for \(g\in G_K\), and the first term is zero
+when \(z(g)=0\). Real inertia has order two and cannot contribute.
+Global class field theory now makes this homomorphism factor through
+the ordinary ideal class group of \(K\).
+
+For \(K=\mathbf Q\) this group is trivial. For the quadratic field put
+\(y=\sqrt{\ell}\). Minkowski's bound supplies each class with an
+integral ideal of norm at most \(y\). There are at most \(\tau(n)\)
+ideals of norm \(n\), by the three quadratic splitting possibilities
+and unique ideal factorization. Hence
+\[
+ h_K\le\sum_{n\le y}\tau(n)=\sum_{a\le y}\lfloor y/a\rfloor
+ \le y(1+\log y)<y^2=\ell .
+\]
+Thus \(\ell\nmid h_K\), and the restriction vanishes in both cases.
+The cocycle factors through \(\operatorname{Gal}(K/\mathbf Q)\) with
+values in \(A[\ell]\). This quotient has order dividing two, which
+acts invertibly on \(A[\ell]\), so its first cohomology vanishes by
+averaging. This proves \(x=0\).
+\end{proof}
+The local normalization is what makes reduction to \(A[\ell]\)
+legitimate even in the residually trivial case. This gives a direct
+proof of the source's \(\mathrm{PropZ}\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/PropZ.lean}{11}{two residual characters},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/HQuad.lean}{11}{quadratic class bound}.
+
+\paragraph{The split unramified module.}
+Assume \(F\) contains \(\mu_\ell\) for odd \(\ell\) and \(\mu_4\) for
+\(\ell=2\). Put \(F_\infty=F(\mu_{\ell^\infty})\),
+\(\Gamma=\operatorname{Gal}(F_\infty/F)\) and \([F_m:F]=\ell^m\) in
+this tower. Let \(X\) be the Galois group of the maximal abelian
+pro-\(\ell\) extension of \(F_\infty\) unramified at every finite
+place in which every place above \(\ell\) splits completely. Equivalently
+it is the maximal abelian pro-\(\ell\) quotient of \(G_{F_\infty}\)
+which kills all finite inertia groups and all those decomposition
+groups. This definition also specifies what unramified means over the
+infinite field. Conjugation induces an action of \(\Gamma\).
+Choose a generator \(\gamma\) of \(\Gamma\simeq\mathbf Z_\ell\), write
+\(g\) for its action on \(X\), and put \(u=\chi_\ell(\gamma)\).
+With \(c=v_\ell(u-1)\) one has \(c\ge1\) and \(c\ge2\) at \(\ell=2\).
+The group \(\Gamma\) is an open subgroup of the principal units
+under the root-of-unity hypotheses.
+
+\begin{lemma}[Descent with the local conditions]\label{newcoh:desc}
+For \(e\ge1\), the Pontryagin dual of
+\(S_\ell(F_m,(\mathbf Q_\ell/\mathbf Z_\ell)(-e))\) is
+\[
+ X\big/\big((u^eg)^{\ell^m}-1\big)X .
+\]
+\end{lemma}
+\begin{proof}
+Put \(A_e=(\mathbf Q_\ell/\mathbf Z_\ell)(-e)\).
+The quotient \(\Gamma_m=\operatorname{Gal}(F_\infty/F_m)\) is
+procyclic with generator \(\gamma^{\ell^m}\). Its first cohomology on
+\(A_e\) is zero since \(u^{-e\ell^m}-1\ne0\) acts surjectively on
+\(\mathbf Q_\ell/\mathbf Z_\ell\). Its second cohomology is zero since
+\(\mathbf Z_\ell\) has \(\ell\)-cohomological dimension one.
+Inflation--restriction identifies \(H^1(F_m,A_e)\) with the
+\(\Gamma_m\)-invariant continuous homomorphisms from \(G_{F_\infty}\)
+to \(A_e\), on which \(G_{F_\infty}\) acts trivially.
+The tower is unramified away from \(\ell\), so the inertia subgroups
+there are unchanged. At \(w\mid\ell\) the local cyclotomic image is an
+open subgroup of \(\Gamma_m\), since \((F_m)_w/\mathbf Q_\ell\)
+is finite. The same procyclic first-cohomology calculation gives
+injectivity of local restriction. Thus the finite-level local
+conditions are exactly vanishing on the defining subgroups of \(X\).
+We obtain \(\operatorname{Hom}_{\rm cont}(X,\mathbf Q_\ell/
+\mathbf Z_\ell)(-e)^{\Gamma_m}\). Duality turns invariants into
+coinvariants, and the dual twist acts by \(u^e\). The image of the
+continuous endomorphism of the compact group \(X\) is closed, so its
+ordinary quotient gives those coinvariants.
+\end{proof}
+\noindent
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean}{90}{local conditions over the tower},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean}{26}{descent with the positive dual twist}.
+
+\begin{proposition}[Integral growth and centres]\label{newcoh:centres}
+Suppose \(X\) has at most \(R\ge1\) generators over \(\mathbf Z_\ell\)
+and \(g\) is unipotent on \(X/\ell X\). Set
+\(j=\lfloor\log_\ell R\rfloor+3\) and
+\(L_m(e)=\operatorname{length}_{\mathbf Z_\ell}
+\big(X/((u^eg)^{\ell^m}-1)X\big)\), allowing infinite length.
+There are \(R\) elements \(s_1,\ldots,s_R\in\mathbf Z_\ell\),
+independent of \(e,m\), such that
+\begin{align}
+ L_m(e)&\le L_j(e)+R(m-j)_+, \label{newcoh:growth}\\
+ L_m(e)&\le\sum_{i=1}^R
+ \left(\max(m,j)+c+v_\ell(e-s_i)\right). \label{newcoh:centreformula}
+\end{align}
+For each integer \(Z\ge1\), at most \(R\) values of \(1\le e\le Z\)
+need be removed to bound every \(v_\ell(e-s_i)\) by
+\(\lfloor\log_\ell Z\rfloor\) for the remaining \(e\).
+\end{proposition}
+\begin{proof}
+Write \(h=u^eg\) and \(k=\lfloor\log_\ell R\rfloor+1\).
+On \(X/\ell X\) the dimension is at most \(R\) and
+\((h-1)^R=0\). In characteristic \(\ell\),
+\(h^{\ell^k}-1=(h-1)^{\ell^k}=0\) there. Thus
+\((h^{\ell^k}-1)X\subseteq\ell X\). Raising this endomorphism
+plus the identity to the \(\ell\)-th power shows
+\((h^{\ell^{k+1}}-1)X\subseteq\ell^2X\) by binomial expansion.
+This inclusion persists at higher layers.
+
+For \(w=h^{\ell^n}\), \(n\ge j\), put \(P=1+w+\cdots+w^{\ell-1}\).
+Then \(Px\equiv\ell x\bmod\ell^2X\), whence \(PX\subseteq\ell X\)
+and \(PX+\ell^2X=\ell X\). Nakayama gives \(PX=\ell X\).
+Consequently
+\[
+ (w^\ell-1)X=\ell(w-1)X,\qquad
+ (w-1)X/(w^\ell-1)X=(w-1)X/\ell(w-1)X .
+\]
+The last module has dimension at most \(R\), since \((w-1)X\) is a
+quotient of \(X\). This proves the claimed one-step loss even when
+\(X\) has \(\ell\)-torsion. Addition of lengths proves
+\eqref{newcoh:growth} for \(m\ge j\). For \(m<j\) use the
+divisibility \(T^{\ell^m}-1\mid T^{\ell^j}-1\).
+
+Choose a surjection \(\mathbf Z_\ell^R\to X\) and lift the images of
+the generators under \(g^{\ell^j}\) to columns of an integral matrix
+\(C\). Put \(a=u^{\ell^j}\). Then \(X/((u^eg)^{\ell^j}-1)X\)
+is a quotient of \(\operatorname{coker}(a^eC-I)\). By Smith normal form
+the length of the latter equals \(v_\ell(\det(a^eC-I))\), with
+\(v_\ell(0)=+\infty\). Let \(z_i\) be the eigenvalues of \(C\)
+in a splitting field, counted with multiplicity. For a unit
+eigenvalue \(z\), choose \(s\in\mathbf Z_\ell\) minimizing
+\(\lvert a^s z-1\rvert_\ell\). Such \(s\) exists by compactness and
+the continuous extension of powers on the principal units. For
+integers \(e\ge0\), the ultrametric inequality gives
+\[
+ |a^e-a^s|_\ell\le\max(|a^e z-1|_\ell,|a^s z-1|_\ell)
+ = |a^e z-1|_\ell .
+\]
+The binomial valuation formula from Section~\ref{sup:length}, extended
+by continuity from integers, gives
+\(v_\ell(a^e-a^s)=j+c+v_\ell(e-s)\), including equality at infinity.
+For a nonunit eigenvalue \(|z|_\ell<1\) the valuation of \(a^e z-1\)
+is zero and any centre suffices. All eigenvalues are integral.
+Factoring the determinant proves the sum bound at \(j\), and
+\eqref{newcoh:growth} proves \eqref{newcoh:centreformula}. Finally
+integers with \(v_\ell(e-s_i)>\lfloor\log_\ell Z\rfloor\) form at
+most one residue class modulo \(\ell^{1+\lfloor\log_\ell Z\rfloor}>Z\);
+this class meets \([1,Z]\) at most once.
+\end{proof}
+In Lemma~\ref{newcoh:desc} the action on the finite vector space
+\(X/\ell X\) factors through a finite \(\ell\)-group, which gives
+the required unipotence. The centres are attached to a chosen base
+field. Only their number must be uniform as the auxiliary primes vary.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean}{19}{integral tower inequalities},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Exc.lean}{8}{exceptional set from centres}.
+
+\paragraph{Uniformity for the moving quadratic fields.}
+Let \(M/\mathbf Q\) be the fixed abelian target field, \(d_M=[M:\mathbf Q]\),
+and let \(q\equiv3\bmod8\), \(d\equiv7\bmod16\) be distinct primes
+coprime to \(2\) and to the chosen modulus of \(M\).
+Put \(B=M(\mu_{2^\infty})\). The unramified elementary
+two-characters of \(G_B\) have dimension at most a constant \(g_M\)
+depending only on \(M\). Indeed, Ferrero--Washington gives
+\(\mu=0\) for the fixed abelian base \(M(i)\). The cyclotomic
+Iwasawa structure theorem then gives a bound for the two-ranks of the
+class groups throughout this fixed tower. Class field theory gives
+the same bound on unramified two-characters in its finite layers.
+For the passage to the union, every finite collection of unramified
+characters at infinite level descends unramified to one finite level.
+To see this for one character, extend its locally constant function on
+the closed subgroup \(G_B\) to a function factoring through a finite
+quotient of \(G_{M(i)}\). On some finite layer its image subgroup in
+this finite quotient is already that of \(G_B\), so the extension
+there is a homomorphism. Only finitely many places of \(M(i)\) can
+ramify in that quotient. For each of them choose one absolute inertia
+group and its finitely many conjugates in the quotient. More precisely,
+apply stabilization inside each conjugate of the absolute inertia
+group to the descending compact intersections with the layer groups.
+Their images eventually equal the image of the intersection with
+\(G_B\). One representative per coset of the open normal kernel of
+the finite quotient suffices, since the finite layer groups are normal
+over \(M(i)\) and conjugation by that kernel acts trivially in the
+quotient. The extension is therefore unramified on a sufficiently
+high layer. Taking the maximum for a finite collection proves the
+bound at infinite level.
+See Ferrero--Washington, Ann. of Math. 109 (1979)~\cite{ferreroWashington}.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PublishedTheorems/FerreroWashington.lean}{7}{finite-layer rank formulation},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/LevUAnti.lean}{9}{passage to the union}.
+
+We compute explicitly how much this dimension can increase when
+adjoining \(\sqrt{-q},\sqrt{-d}\). In the full two-power cyclotomic
+tower over \(\mathbf Q\), the number of primes over an odd prime \(p\)
+is the index of the closed subgroup generated by \(p\) in
+\(\mathbf Z_2^\times\). For the two congruence classes at hand
+\(v_2(q^2-1)=3\), \(v_2(d^2-1)=4\). The even powers of each
+prime therefore generate \(1+2^3\mathbf Z_2\) and
+\(1+2^4\mathbf Z_2\), respectively, by the binomial valuation formula.
+Each prime itself is \(3\bmod4\), so adjoining its odd powers gives
+indices \(2\) and \(4\) in \(\mathbf Z_2^\times\). Base change to
+\(B\) multiplies the number of places by at most \(d_M\).
+Allowing ramification at \(q,d\) thus raises the dimension of
+two-characters by at most \(6d_M\). Indeed a character's restriction
+to each new inertia group is specified by one bit, since wild inertia
+has odd residue characteristic and the tame pro-two quotient is
+procyclic. The kernel of these evaluations is unramified everywhere.
+
+Each of the two quadratic adjunctions multiplies the resulting dimension
+by at most two. To see this, quotient the absolute group by the closed
+normal subgroup generated by inertia outside \(q,d\). Each adjunction
+is unramified there, so defines a subgroup \(U\) of index at most two
+in the resulting group \(V\). Normality of \(U\) and the use of all
+conjugate inertia groups ensure that the same quotient inside \(U\)
+imposes all the required inertia conditions. For index two let
+\(W=H^1(U,\mathbf F_2)\). The inflation--restriction sequence gives
+\(\dim W^{V/U}\le\dim H^1(V,\mathbf F_2)\), since the inflation kernel
+in degree one contributes one dimension and the transgression has
+target \(H^2(C_2,\mathbf F_2)\) of dimension one. On \(W\) the
+operator \(\sigma-1\) for the nonidentity coset satisfies
+\((\sigma-1)^2=0\), so \(\dim W\le2\dim W^{V/U}\).
+It follows that the split unramified \(X\) for
+\(M(i,\sqrt{-q},\sqrt{-d})\) has generator bound
+\[
+ R_2=4(g_M+6d_M).
+\]
+Indeed \((X/2X)^\vee\) is a subspace of the characters just counted,
+and lifts of any basis of \(X/2X\) generate the compact abelian
+pro-two group \(X\) over \(\mathbf Z_2\). The closed span of the
+lifts has zero quotient by compact Nakayama; it equals their algebraic
+\(\mathbf Z_2\)-span by compactness. The same fixed-field argument
+before the quadratic adjunctions applies at each of the finitely many
+fixed odd primes with its own abelian base containing \(\mu_\ell\).
+Consequently the cardinality bound used to choose the window precedes
+the choice of \(q,d\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean}{69}{moving two-rank and its exact constant},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean}{27}{sum of the uniform ranks}.
+
+\subsection{An independent bound for the low layer, including the small primes}
+\label{newcoh:ktheory}
+
+\begin{theorem}[Uniform order of the low-layer group]\label{newcoh:lemmaK}
+Let \(F\) be totally imaginary of degree \(n\), with absolute
+discriminant \(D\). Let \(E\ge1\) and let \(\ell\) satisfy the
+root-of-unity hypotheses of Section~\ref{sup:length}. With \(C=32\)
+one has
+\[
+ H^2(G_{F,S_\ell},\mathbf Z_\ell(E+1))\ \text{is finite},\qquad
+ \log\#H^2(G_{F,S_\ell},\mathbf Z_\ell(E+1))
+ \le (2D)^{(2En)^C}.
+\]
+\end{theorem}
+\begin{proof}
+Put \(m=2E\), \(N=2m+1\ge5\), \(U=\operatorname{Spec}
+\mathcal O_F[1/\ell]\), and \(A=K_m(\mathcal O_F)\{\ell\}\), where
+braces indicate the primary subgroup. Quillen's finite generation and
+Borel's rational rank formula imply that \(K_m(\mathcal O_F)\) is
+finite. The Quillen--Lichtenbaum comparison for number rings gives
+\[
+ A\simeq H^2_{\mathrm{\acute et}}(U,\mathbf Z_\ell(E+1)).
+\]
+Here \(E+1\ge2\). At the prime two all correction terms arising from
+real embeddings vanish. Inverting \(\ell\) in the \(K\)-group also
+gives the same primary group, since the finite residue fields above
+\(\ell\) have vanishing \(K_{2E}\) and \(K_{2E-1}\) of order
+\((\#k_v)^E-1\). These comparisons hold before taking orders.
+The rank calculation is Borel's Proposition~12.2~\cite{borelStable}.
+For the comparison see the norm-residue theorem~\cite{voevodskyNorm},
+Kahn's Theorem~1 at two~\cite{kahnTwo}, and Weibel, Chapter~VI,
+Theorems~8.2 and 8.4~\cite{weibelKbook}.
+
+For the desired upper bound an injection of Galois cohomology into
+this group suffices. For each finite locally constant coefficient sheaf
+on \(U\), the fundamental-group comparison in degree two is injective.
+Indeed degree one on the universal pro-finite-\'etale cover vanishes,
+because each torsor for a finite constant abelian group is trivialized
+on a finite \'etale cover. The five-term sequence of that cover gives
+the injection, and \(\pi_1(U)=G_{F,S_\ell}\). Apply this to
+\(\mu_{\ell^a}^{\otimes(E+1)}\) and take inverse limits. The finite
+degree-one groups on the number ring and its fundamental group satisfy
+the Mittag--Leffler condition, so no derived limit in degree one enters.
+Their finiteness also follows by trivializing the finite action in a
+finite extension and applying class field theory to extensions of
+bounded degree unramified outside \(S_\ell\).
+
+\emph{The number of generators at the small primes.}
+If \(r=\dim_{\mathbf F_\ell}A/\ell A\), reduction of the displayed
+\'etale cohomology injects \(A/\ell A\) into
+\(H^2_{\mathrm{\acute et}}(U,\mu_\ell^{\otimes(E+1)})\).
+Choosing a primitive \(\ell\)-th root over \(F\) identifies the latter
+coefficient sheaf with \(\mu_\ell\). By the Kummer sequence,
+\[
+ 0\longrightarrow\operatorname{Pic}(U)/\ell
+ \longrightarrow H^2_{\mathrm{\acute et}}(U,\mu_\ell)
+ \longrightarrow\operatorname{Br}(U)[\ell]\longrightarrow0 .
+\]
+The class group surjects onto \(\operatorname{Pic}(U)\). The local
+invariant sequence for the Brauer group embeds
+\(\operatorname{Br}(U)[\ell]\) in the \(\ell\)-torsion of the
+sum-zero subgroup of \(\bigoplus_{v\mid\ell}\mathbf Q/\mathbf Z\).
+All archimedean places are complex. In particular
+\[
+ r\log\ell\le\log h_F+(n-1)\log\ell .                 \tag{*}
+\]
+Minkowski supplies each ideal class with an integral ideal of norm at
+most \(2^n\sqrt D\). For \(y\ge1\) the number of such ideals of norm
+at most \(y\) is at most \(y^2\zeta_F(2)\le y^2\zeta(2)^n\), since
+each rational prime has at most \(n\) Euler factors of residue degree
+at least one. Thus \(\log h_F\le\log D+O(n)\). Also
+\(\ell\le n+1\). The constants introduced here are absolute.
+
+\emph{The integral Hurewicz map and transfer.}
+The identity component \(B\mathrm{GL}(\mathcal O_F)^+\) of the
+algebraic \(K\)-theory infinite loop space is connected. Apply Mathew's
+unstable Hurewicz theorem to this component in degree \(m\), with
+connectivity parameter one. Its \(\ell\)-primary kernel is killed by
+\(\ell^{m+3}\). Indeed his two bounds on the exponent of \(\ell\) are
+\(\lceil(m-1)/2\rceil+3\) at two and
+\(\lceil(m+2)/(2\ell-2)\rceil+1\) at odd primes. The plus
+construction preserves integral homology. By homological stability
+for the ring of integers (a Dedekind domain of stable rank at most
+two), \(H_m(\mathrm{GL}(\mathcal O_F),\mathbf Z)\) identifies with
+\(H_m(\Gamma,\mathbf Z)\) for
+\(\Gamma=\mathrm{GL}_N(\mathcal O_F)\) and \(N=2m+1\).
+See Mathew, Theorem~6.3~\cite{mathewHurewicz}, van der Kallen,
+Theorem~4.11~\cite{vanderKallen}, and Bayer-Fluckiger, Emery and
+Houriet, \S3.1~\cite{bayerEmeryHouriet}.
+
+Let \(\Gamma'\) be the kernel of reduction modulo \(3\) in \(\Gamma\)
+and \(I=[\Gamma:\Gamma']\le3^{nN^2}\). The group \(\Gamma'\) is
+torsion-free. In the action on the underlying integral lattice, a
+nonidentity element in it has the form \(1+3^tB\) for \(t\ge1\) and
+an integral matrix \(B\) nonzero modulo three. Raising to a prime
+exponent \(p\ne3\) leaves the first nonzero
+three-adic term at \(t\); cubing puts it exactly at \(t+1\), by the
+binomial formula. In particular there can be no element of prime order.
+Compose the Hurewicz map with transfer to
+\(H_m(\Gamma',\mathbf Z)\). If \(x\in A\) is in the kernel of this
+composite, the pushforward of its transfer gives \(Ih(x)=0\), so
+\(\ell^{m+3+v_\ell(I)}x=0\). A subgroup of a finite abelian
+\(\ell\)-group on \(r\) generators killed by \(\ell^a\) has at most
+\(\ell^{ar}\) elements, by the elementary divisors. We have proved
+\begin{equation}\label{newcoh:transfer}
+ \log\#A\le
+ (m+3+v_\ell(I))\,r\log\ell+
+ \log\# H_m(\Gamma',\mathbf Z)_{\mathrm{tors}} .
+\end{equation}
+This bounds the transfer loss also for primes dividing \(I\).
+
+\emph{Bounding the torsion of the congruence subgroup.}
+Use Ash's contractible well-rounded retract of the space of positive
+archimedean Hermitian forms on the free lattice \(\mathcal O_F^N\).
+Normalize the minimum to one. Each cell has finite stabilizer and is
+determined by the set of its minimal vectors \(v\), those with
+\(Q(v)=1\). For a specified minimal set the stratum is the relative
+interior of the convex face imposed by its equalities in the region
+\(Q(w)\ge1\) for every nonzero lattice vector \(w\). Its boundary
+adds minimal vectors. This polyhedral structure gives the subdivision
+by flags of faces, ordered by reverse inclusion of their minimal
+sets. Put
+\(b=nN^2\), which bounds the dimension of the real vector space of
+Hermitian forms. By Bayer-Fluckiger--Emery--Houriet there exists a
+finite \(\Phi\subset\mathcal O_F^N\) into which every one of these
+minimal sets can be moved by \(\Gamma\), with
+\[
+ |\Phi|\le N^{3N^2n^2} n^{5N^3n^4} D^{9N^3n^3}.
+\]
+Their result applies to free lattices, \(N\ge5\) and \(F\ne\mathbf Q\).
+These all hold, including for \(E=1\).
+See Bayer-Fluckiger--Emery--Houriet, Thm.~2.2 and Cor.~5.2~\cite{bayerEmeryHouriet}.
+
+Here is a count for the barycentric subdivision which allows redundant
+minimal-vector equations. In any flag move the minimal-vector set of
+its smallest face into \(\Phi\). Every other face in the flag then
+has its minimal-vector set in \(\Phi\). A single such set \(T\) is
+encoded by at most \(b+1\) elements of \(T\). Choose a basis for the
+span of the affine functions \(Q\mapsto Q(v)-1\), \(v\in T\), on
+the \(b\)-dimensional ambient space (or its actual smaller space).
+The equalities for this basis recover all minimal vectors at that
+face. In fact for the affine solution space of these equations, each
+vector in \(T\) has \(Q(v)=1\) identically, whereas for \(v\notin T\)
+the chosen interior point of the face has \(Q(v)>1\) when \(v\ne0\).
+Thus distinct faces cannot share the same encoding. A flag has at
+most \(b+1\) members. Encoding each choice as a padded list from
+\(\Phi\) with an extra termination symbol gives the bound
+\[
+ C_{\rm cell}=(|\Phi|+2)^{(b+2)^2}
+\]
+for the number of \(\Gamma\)-orbits of simplices in the subdivision.
+Consequently the quotient by \(\Gamma'\) has at most \(I C_{\rm cell}\)
+simplices in every degree. The free action on the contractible
+complex gives a classifying space for \(\Gamma'\).
+
+For the boundary in degree \(m+1\), each column has Euclidean norm
+at most \(m+2\), since there are \(m+2\) faces counted with sign;
+possible identifications in the quotient respect this upper bound.
+The torsion order of the cokernel of an integral matrix of rank \(s\)
+is the gcd of its full-rank minors. Hadamard bounds every such minor
+by the product of \(s\) column norms. The torsion in homology embeds
+in the torsion of this cokernel, so
+\[
+ \log\#H_m(\Gamma',\mathbf Z)_{\mathrm{tors}}
+ \le I C_{\rm cell}\log(m+2).
+\]
+Finally put \(P=2En\ge4\), \(Y=\log(2D)\ge\log2\).
+Then \(N=4E+1\le2P\), \(n,m\le P\), \(b\le P^4\), and
+\(\log I\le2P^4\). Using \(\log N\le2P,\ \log n\le P\),
+the displayed bound for \(\Phi\) gives
+\(\log|\Phi|\le24P^5+40P^8+72P^6Y\le P^{12}Y\).
+Thus \(\log C_{\rm cell}\le(2P^4)^2(2P^{12}Y)\le P^{22}Y\).
+By \((*)\), \(r\log\ell\le\log D+n\log(4\zeta(2))+n\log(n+1)
+\le 6P^2Y\), while \(m+3+v_\ell(I)\le5P^4\).
+Equation~\eqref{newcoh:transfer} now gives
+\[
+ \log\#A\le30P^6Y+\exp(2P^4+P^{22}Y)\log(m+2)
+ \le\exp(P^{32}Y).
+\]
+For the last inequality each summand is at most
+\(\exp(P^{24}Y)\), and \(2\exp(P^{24}Y)\le\exp(P^{32}Y)\)
+throughout \(P\ge4\). This proves the estimate.
+\end{proof}
+
+Theorem~\ref{newcoh:lemmaK} applies directly over the field at the
+fixed layer \(j\) in \eqref{newcoh:growth}. No enlargement of that
+field or uniformity loss in a cyclotomic descent is needed in this
+proof of the low-layer estimate. Poitou--Tate identifies the dual of
+the strict degree-one kernel with the kernel of the degree-two
+localization map, hence \(L_j(e)\le
+\operatorname{length}H^2(G_{F_j,S_\ell},\mathbf Z_\ell(e+1))\).
+Inserting the degree and discriminant bounds of Section~\ref{sup:length}
+therefore gives the exceptional contribution calculated there. The
+original proof reaches the same bound through the integral homology
+cycles in \eqref{sup:lengthcount}; the proof here uses a different
+set of classical theorems.
+
+\paragraph{The primitive homology count in the original argument.}
+One can also derive its factor \(q^{r_2}T_{2E+1}T_{2E}\) directly.
+Let \(d=2E+1\), \(q=\ell^\nu\), and take the stable integral homology of
+\(\mathrm{GL}(\mathcal O_{L'})\). A finite collection of mod-\(q\)
+cycles of varying matrix sizes can be moved into one stable matrix
+size, by stabilization followed by the natural map. Suppose their
+joint evaluation \(\Phi\) is a homomorphism on stable mod-\(q\)
+homology taking values in a \(\mathbf Z/q\)-module and satisfying
+\(\Phi\psi_b=b\Phi\), where \(\psi_b\) denotes the \(b\)-fold
+block-diagonal operation. These are precisely the boundary,
+stabilization and direct-sum requirements on the primitive families.
+Use integral stability in degrees \(d,d-1\) to write \(T_i\) for the
+torsion order in either stable homology or matrix size \(2d+4\).
+
+Consider \(P=\prod_{j=2}^{d}(\psi_\ell-\ell^j)\) on rational
+homology in degree \(d\), induced by its integral counterpart. Rational
+homology of the connected infinite loop space is the free graded
+commutative algebra on its rational homotopy under Hurewicz, by the
+rational Hurewicz theorem for connected homotopy-commutative
+\(H\)-spaces. The product is block sum; its \(b\)-fold power operation
+acts on a monomial of \(a\) positive-degree primitives by \(b^a\).
+Since \(a\le d\), the image of \(P\) is contained in the primitive
+subspace. For the totally imaginary field \(L'\), Borel's rank theorem
+gives dimension \(r_2(L')\) in this odd degree \(d\ge3\).
+Thus the integral image has rank at most \(r_2(L')\), and its torsion
+has order at most \(T_d\). For any integral class \(y\),
+\[
+ \Phi(\overline{Py})=
+ \ell^{d-1}\prod_{j=2}^{d}(1-\ell^{j-1})\,\Phi(\bar y).
+\]
+The product is a unit modulo \(q\). Hence the image of
+\(\ell^{d-1}\Phi\) on reductions of integral classes has size at most
+\(q^{r_2(L')}T_d\). The coefficient exact sequence identifies the
+quotient of \(H_d(-,\mathbf Z/q)\) by integral reductions with
+\(H_{d-1}(-,\mathbf Z)[q]\), of order at most \(T_{d-1}\).
+Evaluating on representatives for this quotient multiplies the number
+of possibilities by at most \(T_{d-1}\). Thus on \emph{all} mod-\(q\) cycles
+\[
+ \#\operatorname{im}\bigl(\ell^{d-1}\Phi\bigr)
+ \le q^{r_2(L')}T_dT_{d-1}.
+\]
+This includes cycles with nonzero Bockstein and applies to the joint
+product of residue evaluations used in \eqref{sup:lengthcount}. The
+scalar is essential when \(q=\ell\) and \(d\ge2\), for then every
+scaled evaluation is zero regardless of the unscaled image.
+See Borel, \S\S10.6 and 12.1--12.2~\cite{borelStable}.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SUpperOf.lean}{41}{scaled map on all cycles and count by Bockstein fibres}.
+
+The residual power test in that argument has a short field-theoretic
+proof. Let \(F/L\) be finite, \(\mu_q\subset F\), and
+\(\beta\in F^\times\). Suppose \(\beta\) is a \(q\)-th power in the
+residue fields at all but finitely many primes of \(F\) of relative
+residue degree one over \(L\). Then \(\beta\in F^{\times q}\).
+Indeed, if not, \(F(\beta^{1/q})/F\) is a nontrivial cyclic Kummer
+extension. Take the normal closure over \(L\) and an automorphism
+fixing \(F\) which induces a nonidentity element of the Kummer
+group. Chebotarev gives primes of \(L\) outside the exclusions and
+prolongations with exactly this Frobenius. The primes of \(F\) below
+these prolongations have residue degree one, since Frobenius fixes
+\(F\) pointwise. It multiplies any \(q\)-th root of \(\beta\) by the
+same nontrivial root of unity. Away from the primes of \(q\), \(\beta\)
+and its denominator, these roots remain distinct on reduction, so
+the residue polynomial has no root in the residue field of \(F\).
+This contradiction proves the assertion.
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SDetectCut.lean}{101}{residual power criterion}.
+
+The original route additionally constructs cycles whose evaluations
+encode twisted norms of actual divisors; the abstract evaluation-count
+inequality just proved requires such an encoding to bound class-group
+characters. Theorem~\ref{newcoh:lemmaK} yields the required cohomological
+conclusion independently of that construction. The higher-rank
+automorphic estimates enter elsewhere. For example, when \(N\) is
+the host modulus, \(\psi(-1)=(-1)^e\), \(2\le e<t\), and the
+prime-to-\(\ell\) part of \(\psi\) after deleting its local
+\(\ell\)-component has even order, case II applies if either
+\(\ell\) lies in the host's fixed exceptional prime set or
+\(\ell-1\mid2e\). At odd \(\ell\), for the admitted hosts the
+required estimate is finiteness of the strict length at level
+\(\ell N\) together with
+\[
+ \frac{\log\ell}{e(O/\mathbf Z_\ell)}
+ \operatorname{length}_O S_{\ell N}
+   \big(\mathbf Q,(\operatorname{Frac}O/O)(\psi^{-1}\chi_\ell^{-e})\big)
+ \le (\ell N e)^{C_\chi}.
+\]
+Here \(S_{\ell N}\) imposes zero on all inertia and on \(D_v\)
+for \(v\mid\ell N\), \(\psi\) occurs in the host character set,
+and \(C_\chi\) depends only on the fixed target. Case III requires the
+same inequality away from the exceptional prime set when
+\(\ell-1\mid2e\) and \(\psi\ne1\) has odd order, for the applicable
+positive twists. The cited proof uses the adjoint lifting theorem,
+the symplectic rank-four counting result, and the residual Bernoulli
+test. The low-layer theorem has a different dependence on \(e\) and
+\(N\). Propositions~\ref{famsel:hostinertia} and~\ref{famsel:splitray}
+prove vanishing in further cases at every congruence depth. The
+complementary budget in Section~\ref{famsel:complement} uses the
+cited polynomial bounds on the remaining entries.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{60}{quantified normalized bounds},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftingOfCohomology.lean}{33}{automorphic and residual inputs for cases II and III}.
+
+There is a parity obstruction to using the ordinary special value as
+the nonzero integer in this comparison. For either primitive inducer
+\(\varphi\) of \(\psi\) or \(\psi^{-1}\), let \(f\) be its conductor
+and \(m=e+1\). If \(f>1\), in the expression
+\[
+ B_{m,\varphi}=f^{m-1}\sum_{a=1}^{f}\varphi(a)B_m(a/f)
+\]
+the substitution \(a\mapsto f-a\) on units multiplies the sum by
+\(\varphi(-1)(-1)^m=-1\), since \(B_m(1-x)=(-1)^m B_m(x)\).
+Thus \(B_{m,\varphi}=0\). At \(f=1\), \(e\) is even and positive,
+so \(m\ge3\) is odd and \(B_m(1)=B_m(0)=0\), by the same reflection
+and \(B_m(1)-B_m(0)=0\) for \(m>1\). Hence \(L(-e,\varphi)=0\)
+in these branches. Valuations of this value supply no finite bound
+for the strict lengths. The trace products below require an actual
+nonzero integer.
+
+\begin{proposition}[Finiteness and prime support before the effective estimate]
+\label{newcoh:fullsupport}
+Fix \(N,e\ge1\), let \(F=\mathbf Q(\mu_{4N})\), \(n=[F:\mathbf Q]\),
+and put \(K_e=K_{2e}(\mathcal O_F)\). At each prime \(\ell\) choose
+any finite coefficient extension \(E_\ell/\mathbf Q_\ell\), with
+integers \(O_\ell\) and ramification index \(e_\ell\), and any
+\(O_\ell^\times\)-valued Dirichlet character \(\psi_\ell\) of
+modulus \(N\). Let \(S_\ell\) be the strict kernel with coefficients
+\((E_\ell/O_\ell)(\psi_\ell^{-1}\chi_\ell^{-e})\), trivial on every
+inertia group and locally trivial at the decomposition groups above
+\(\ell N\), in the sense of restriction of cohomology classes.
+Each \(S_\ell\) is finite. It vanishes when
+\(\ell\nmid n\,\#K_e\). Moreover
+\[
+ \sum_{\ell}\frac{\log\ell}{e_\ell}\operatorname{length}_{O_\ell}S_\ell
+ \ \le\ \log\#K_e+n\log(4Nne).
+\]
+If one sums over a family of at most \(\varphi(N)\) such characters
+at each prime, the right side is multiplied by \(\varphi(N)\).
+\end{proposition}
+\begin{proof}
+Over \(F\) each \(\psi_\ell\) is trivial. On inertia away from \(\ell\)
+the remaining cyclotomic twist also acts trivially. The restriction
+of a strict cocycle therefore vanishes on each such inertia group,
+since a coboundary there is zero. It factors through the quotient
+unramified outside \(\ell\), and its class restricts to zero on the
+decomposition groups at \(\ell\). There are no real places of \(F\).
+Choose a \(\mathbf Z_\ell\)-basis of \(O_\ell\) and put
+\(d_\ell=[E_\ell:\mathbf Q_\ell]\). The restricted coefficient module
+is a sum of \(d_\ell\) copies of \((\mathbf Q_\ell/\mathbf Z_\ell)(-e)\).
+Poitou--Tate identifies the dual of the strict kernel for one copy
+with the kernel of localization in
+\(H^2(G_{F,S(\ell)},\mathbf Z_\ell(e+1))\), where \(S(\ell)\)
+is the set of primes of \(F\) above \(\ell\).
+The degree-two injection, localization and Quillen--Lichtenbaum
+comparison at the start of the proof of Theorem~\ref{newcoh:lemmaK}
+embed this kernel in \(K_e\{\ell\}\). Those steps only require that
+\(F\) be totally imaginary and \(e\ge1\). Equivalently, the even
+case of Weibel's Theorem~VI.8.4 gives
+\(K_e\{\ell\}\simeq H^2_{\mathrm{et}}(\mathcal O_F[1/\ell],
+\mathbf Z_\ell(e+1))\), also for \(\ell=2\)~\cite{weibelKbook}.
+The root-of-unity assumption entered the subsequent generator count.
+Thus the order of the restriction image is at most
+\(\#(K_e\{\ell\})^{d_\ell}\).
+
+On the restriction kernel, restriction followed by corestriction
+gives multiplication by \(n\), so the kernel vanishes if
+\(\ell\nmid n\). For \(\ell\mid n\) write
+\(r=\max(1,v_\ell(4N))\); at two this is at least two.
+The image of \(G_F\) under \(\chi_\ell\) contains \(1+\ell^r\).
+Indeed a cyclotomic automorphism with that \(\ell\)-adic component
+and identity at every other prime fixes \(\mu_{4N}\), by the Chinese
+remainder theorem. The binomial valuation formula gives
+\(v_\ell((1+\ell^r)^e-1)=r+v_\ell(e)\), including at two since
+\(r\ge2\) there. The \(G_F\)-invariant subgroup of the original
+coefficient module therefore has order at most
+\(\ell^{d_\ell(r+v_\ell(e))}\).
+By inflation--restriction the remaining kernel injects into the
+first cohomology of \(\operatorname{Gal}(F/\mathbf Q)\) with these
+invariants. Counting all functions on that group bounds its order
+by the \(n\)-th power of the displayed bound. This proves the claimed
+finite support since \(K_e\) is finite.
+
+For any finite \(O_\ell\)-module \(M\),
+\(\log\#M/d_\ell=(\log\ell/e_\ell)\operatorname{length}_{O_\ell} M\).
+After this normalization the restriction image contributes at most
+\(\sum_\ell\log\#(K_e\{\ell\})=\log\#K_e\).
+The kernel contributes at most \(n\log(4Nne)\), since the product
+of the distinct primes dividing \(n\) divides \(n\), the product
+of their \(\ell^{v_\ell(4N)}\) divides \(4N\), and their
+\(\ell^{v_\ell(e)}\) have product at most \(e\). This estimate
+is independent of the character and the coefficient field.
+\end{proof}
+
+\begin{corollary}[Summing distinct characters before bounding their lengths]
+\label{newcoh:tamepool}
+Retain the notation of Proposition~\ref{newcoh:fullsupport}. Regard
+the characters at \(\ell\) as distinct characters of
+\((\mathbf Z/N\mathbf Z)^\times\) in one algebraic closure of
+\(\mathbf Q_\ell\). Put \(b_\ell=\ell^{v_\ell(\varphi(N))}\),
+\(a_\ell=\max(1,v_\ell(4N))+v_\ell(e)\), and let \(s_\ell\)
+be the least number of generators of the Sylow \(\ell\)-subgroup of
+\(G=\operatorname{Gal}(F/\mathbf Q)\), taking zero for the trivial
+subgroup. For any subset of these characters one has
+\[
+ \sum_{\psi}
+  \frac{\log\ell}{e_{\ell,\psi}}\,
+     \operatorname{length}_{O_{\ell,\psi}} S_{\ell,\psi}
+ \le b_\ell\bigl(\log\#K_e\{\ell\}
+                     +s_\ell a_\ell\log\ell\bigr).
+\]
+In particular, at every \(\ell\nmid [F:\mathbf Q]\) the sum over
+\emph{all} the characters costs at most \(\log\#K_e\{\ell\}\).
+\end{corollary}
+\begin{proof}
+Enlarge all coefficients to a common finite extension with integers
+\(O\), splitting the finite abelian group \(G\). A further extension
+of discrete valuation rings is finite free. Continuous cochains and
+the kernels of their restriction maps commute with this scalar
+extension: after choosing a module basis the underlying operation
+is a finite direct sum. The length in the larger integers is the
+old length times the relative ramification index, by a composition
+series. Thus the normalized lengths are unchanged.
+
+Write \(G=P_\ell\times H\), with \(P_\ell\) its Sylow \(\ell\)-subgroup
+and \(H\) of order prime to \(\ell\). Over \(F\) use the single strict
+kernel \(M\) with coefficients \((\mathbf Q_\ell/\mathbf Z_\ell)(-e)\)
+and localizations at \(\ell\), as in the preceding proof.
+It is a finite \(G\)-module of order at most \(\#K_e\{\ell\}\).
+Untwisting the restriction of \(S_{\ell,\psi}\) puts its image in
+the \(\psi|_H\)-part of \(M\otimes_{\mathbf Z_\ell}O\): the restricted
+class was invariant for the action twisted by \(\psi^{-1}\).
+These parts for different characters of \(H\) form a direct sum
+by the character projectors \( |H|^{-1}\sum_{h\in H}\eta(h)^{-1}h\).
+At most \(b_\ell\) of the original characters have a given restriction
+to \(H\), since \(G\) surjects onto \((\mathbf Z/N\mathbf Z)^\times\)
+and the characters of this quotient trivial on the image of \(H\)
+are its \(\ell\)-power order characters. Dividing log orders by
+\(d_\ell=[\operatorname{Frac}O:\mathbf Q_\ell]\), the total image
+contribution is at most \(b_\ell\log\#K_e\{\ell\}\).
+
+For the kernel put \(U=((\mathbf Q_\ell/\mathbf Z_\ell)(-e))^{G_F}\).
+It is cyclic of order at most \(\ell^{a_\ell}\) by the cyclotomic
+calculation above. If it is nonzero, \(H\) acts on it through one
+prime-to-\(\ell\) character. Indeed the kernel of reduction of the
+units of \(\mathbf Z/\ell^j\mathbf Z\) modulo \(\ell\) is an
+\(\ell\)-group, and the prime-to-\(\ell\) roots have unique lifts.
+Thus \((U\otimes O)(\psi^{-1})^H\), with invariants taken after
+twisting, is zero except for at most \(b_\ell\) of the characters.
+Inflation--restriction identifies the cohomology in degree one of
+\(G\) on this twisted module with that of \(P_\ell\) on its
+\(H\)-invariants, since \(|H|\) is invertible. A cocycle on \(P_\ell\)
+is determined by its \(s_\ell\) values on generators, by the cocycle
+identity. The normalized log order for each of the remaining kernels
+is therefore at most \(s_\ell a_\ell\log\ell\). Adding the two
+contributions proves the assertion. If \(\ell\nmid n\), then
+\(s_\ell=0\) and \(b_\ell=1\) since \(\varphi(N)\mid n\).
+\end{proof}
+
+This proves qualitative finiteness for every character under
+discussion. To get the required size in the moving windows by this
+route one would need a sufficiently sharp uniform bound as \(N,e\)
+vary. Finiteness of the single group \(K_e\) for each pair \(N,e\)
+alone provides no such rate. Theorem~\ref{famsel:rate} gives an explicit
+all-prime bound, and Corollary~\ref{famsel:subwindow} identifies the
+part of the required budget it covers.
+
+\subsection{Two vanishing ranges in case III and the integral cotangent inequality}
+\label{newcoh:oddbranch}
+
+In case III the conductor of the odd-order character \(\psi\) divides
+the fixed target conductor \(q\). Indeed, its component at \(2\) has
+both odd order and \(2\)-power order. At either auxiliary prime away
+from \(q\) the host condition says that the square of the component
+is trivial. At a prime dividing \(q\) the host allows no higher
+conductor there than the local factor of \(q\) (the auxiliary primes
+occur to exponent one). The Chinese remainder theorem proves the
+claim. Thus only finitely many primitive characters occur as the host
+varies. The following criterion applies before any conditions at the
+auxiliary level are imposed.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/HostOdd.lean}{70}{odd-order host characters}.
+
+\begin{proposition}\label{newcoh:oddzero}
+Let \(\psi\) have conductor \(f\), odd order \(m>1\), and fixed field
+\(K=\overline{\mathbf Q}^{\ker\psi}\). Let \(\ell\ge5\) be prime
+to \(mf\), let \(e>0\) be even with \(\ell-1\mid2e\), and set
+\(s=\operatorname{ord}_m(\ell)\). Let \(O\) be the ring of integers
+of a finite extension of \(\mathbf Q_\ell\) containing the values of
+\(\psi\), and put \(A=(\operatorname{Frac}O/O)(\psi^{-1}\chi_\ell^{-e})\).
+In either of the following situations \(S_\ell(\mathbf Q,A)=0\).
+\begin{enumerate}
+\item \(\ell-1\mid e\), \(\psi(\ell)\ne1\), and \(\ell^s\nmid h_K\).
+\item \(\ell-1\nmid e\) and \(\ell^s\nmid h_{K(\sqrt{\ell})}\).
+In particular this holds, for fixed \(K\), for all sufficiently large
+\(\ell\) with \(s>m/2\).
+\end{enumerate}
+Here \(h_L\) denotes the ordinary class number of \(L\).
+\end{proposition}
+\begin{proof}
+Write \(\theta=\psi^{-1}\chi_\ell^{-e}\), let \(\pi\) be a uniformizer,
+and set \(k=O/(\pi)\), \(\alpha=\bar\theta\) and
+\(L=\overline{\mathbf Q}^{\ker\alpha}\).
+Any nonzero strict group contains a nonzero class \(x\) killed by
+\(\pi\), by the finite-image argument in Proposition~\ref{newcoh:zero}.
+For a representative \(z\) we have \(\pi z=\delta b\). Divide \(b\)
+by \(\pi\) in the divisible module \(A\) and subtract the resulting
+coboundary from \(z\). This gives a representative valued in
+\(A[\pi]\simeq k(\alpha)\).
+
+In the first case \(\alpha\) is nontrivial on \(D_\ell\) by the
+Frobenius hypothesis. In the second it is nontrivial on inertia,
+since \(\psi\) is unramified there and the residual Tate character
+is quadratic. In both cases \(A^{D_\ell}=0\), since some element
+acts by a scalar whose difference from one is a unit. On \(D_\ell\)
+write \(z=\delta b_\ell\) by strictness. Then \(\pi b_\ell\) is
+invariant and \(b_\ell\in A[\pi]\). Consequently \(z\) vanishes on
+\(D_\ell\cap G_L\). For \(p\ne\ell\) the scalar on
+\(I_p\cap G_L\) is already one in \(O\), since the cyclotomic factor
+is unramified and reduction is injective on the \(m\)-th roots of
+unity. The inertia condition again gives \(z=0\) there. These
+conclusions hold at every prolongation, by the conjugation identity
+in Proposition~\ref{newcoh:zero}. The restriction to \(G_L\)
+therefore factors through \(\operatorname{Cl}(L)\), since real
+inertia has order at most two. It is nonzero by inflation--restriction,
+as \([L:\mathbf Q]\mid2m\) is prime to \(\ell\). Its image is an
+additive subgroup of \(k\) stable under \(\alpha(G_{\mathbf Q})\)
+by the cocycle identity. This cyclic scalar group contains the
+\(m\)-th roots of unity, since the two factors have coprime orders.
+The image is thus a nonzero vector space over
+\(\mathbf F_\ell(\mu_m)\), giving \(\ell^s\mid h_L\).
+
+In the first case \(L=K\). In the second, the residual quadratic
+factor cuts out \(\mathbf Q(\sqrt{\ell})\), since even \(e\) forces
+\(\ell\equiv1\bmod4\). Coprimality of the character orders gives
+\(L=K(\sqrt{\ell})\), of degree \(2m\). The tensor product of
+integral bases generates an order of discriminant
+\(|D_K|^2\ell^m\) in \(L\). Minkowski supplies an ideal in each
+class of norm at most \(y=2^m|D_K|\ell^{m/2}\).
+There are at most \(\tau_{2m}(n)\) ideals of norm \(n\), by comparison
+of each Euler factor with \((1-p^{-z})^{-2m}\) coefficientwise.
+Summing the divisor expansion, with the final variable counted by
+its upper bound, gives
+\[
+ h_L\le y(1+\log y)^{2m-1}.
+\]
+If \(s>m/2\), this is less than \(\ell^s\) for all sufficiently
+large \(\ell\), uniformly in \(e\). For example, cubic characters
+give the second range at primes \(\ell\equiv5\bmod12\).
+\end{proof}
+
+For the remaining prime and weight combinations the rank-four
+argument compares the strict group with integral derivations.
+We give the length inequality in the form needed for this comparison.
+Let \(O\) be the ring of integers of a finite extension of \(\mathbf Q_\ell\),
+\(B=\bigoplus_i B_i\) a graded \(O\)-algebra, and \(x:B\to O\)
+an \(O\)-point, \(J=\ker x\), and
+\(U=\{b\in B:\exists\,0\ne t\in O,\ tb\in J^2\}\).
+Fix \(j\) with \(x(B_j)=0\) and equations \(F_i\in B_j\).
+In \(B/U\) let \(C_j\) be the image of \(B_j\), and put
+\(Q_j=C_j/\langle\bar F_i\rangle_O\).
+
+\begin{lemma}\label{newcoh:cotangent}
+Suppose \(H\) is an \(O\)-module, \(0\ne a\in O\), and its elements
+index distinct \(O\)-linear maps \(D_h:B\to O/(a)\) killing all
+\(F_i\). Suppose each \(D_h\) lifts to an \(O\)-valued derivation
+at \(x\) vanishing on \(B_i\) for every \(i\ne j\). Then
+\(\operatorname{length}_O H\le\operatorname{length}_O Q_j\).
+\end{lemma}
+\begin{proof}
+The Leibniz rule kills \(J^2\) under an integral lift, and
+torsion-freeness of \(O\) then kills \(U\). Thus each \(D_h\)
+induces a functional \(Q_j\to O/(a)\). Its values on \(B_j\)
+determine its values on all of \(B\) by the weight assumption,
+so these functionals remain distinct. If \(Q_j\) has finite length,
+write its elementary divisors as \(O/(\pi^{b_i})\). The dual with
+values in \(O/(a)\) has length
+\(\sum_i\min(b_i,v_\pi(a))\). Comparing cardinalities now proves
+the inequality, since a finite \(O\)-module of length \(b\) has
+\(|k|^b\) elements. Infinite right-hand length gives the assertion
+automatically.
+\end{proof}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/Mprime.lean}{38}{the saturated integral cotangent inequality}.
+
+To apply this comparison let \(H\) be the strict group for the
+scalar \(\theta\). Fix \(b\ne0\) and work on its subgroup \(H[b]\).
+Suppose \(\theta(g_0)-1\) is a unit. Every class in this subgroup
+then has a unique representative \(z\) with \(z(g_0)=0\), obtained
+by subtracting \(\delta(z(g_0)/(\theta(g_0)-1))\).
+Uniqueness gives additivity and \(bz=0\) as a cocycle. On each of
+finitely many designated decomposition groups choose \(s_v\) with
+\(\theta(s_v)\ne1\). If \(z|_{D_v}=\delta u_v\), the equality
+\(bz(s_v)=0\) shows that \(b(\theta(s_v)-1)u_v=0\). Hence for
+\[
+ a=b\prod_v(\theta(s_v)-1)
+\]
+all representatives and all local witnesses have values in
+\(A[a]\simeq O/(a)\). This yields an additive injection of \(H[b]\)
+into finite-coefficient cocycles satisfying the prescribed local
+coboundary conditions. The denominator \(a\) may grow with \(b\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ShaCoc.lean}{112}{common denominator for the strict local witnesses}.
+
+Section~\ref{ct:section} constructs the two square-zero representations
+and, from the specified relative presentations, sends their cocycles to
+reductions of integral weight \(-1\) derivations killing the equations modulo \(a\).
+In the lower left matrix entry with indices \((3,1)\) in one-based
+notation the derivative recovers \(z(g)\) times a unit for each \(g\).
+This makes the assignment injective, so Lemma~\ref{newcoh:cotangent}
+bounds the length of \(H[b]\) by that of \(Q_{-1}\), independent
+of \(b\). The subsequent geometric inequality is
+\(\operatorname{length}_O Q_{-1}\le2\sum_\xi v_\pi(\xi(a_0))\),
+where \(\xi\) runs through a finite cover of the relevant orbits
+and \(a_0\) interpolates a trace difference. Applying it still
+requires the integral deformation model, rigidity of the relevant
+irreducible points, and simultaneous nonvanishing of that trace
+difference. In particular the extension groups characterized by
+Bella\"iche and Chenevier for a fixed Cayley--Hamilton quotient
+are the extensions realized by that quotient. Their theorem alone
+does not realize every strict class in this rank-four model.
+See Bella\"iche and Chenevier, Theorems 1.5.5--1.5.6~\cite{bellaicheChenevier}.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/MPrime.lean}{102}{weight minus one and the cocycle entry},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/GaloisRepIneqOfAllIrreducibleNonvanishing.lean}{152}{rigidity and the orbit valuation inequality}.
+
+\input{sections/cocycle-tangent}
+\input{sections/deformation-presentation}
+
+\subsection{Intersection of the weighted equations}
+\label{newcoh:orbitsection}
+
+We prove the geometric inequality used above. Let \(O\) be a complete
+discrete valuation ring with uniformizer \(\pi\) and fraction field \(E\)
+of characteristic zero. Let \(K\) be an algebraically closed extension
+of \(E\) with a real valuation extending the valuation \(v(\pi)=1\).
+Write \(A=\bigoplus_{j\in\mathbf Z}A_j\)
+and \(B=A_0\). Assume \(B\) is a complete Noetherian local
+\(O\)-algebra with the same residue field and local structure map,
+and \(A\) is generated over \(B\) by finitely many elements of
+weights \(-2,-1,1,2\). An \(O\)-point \(x\) kills all nonzero
+weights. Write \(J_x=\ker x\) and use the saturated cotangent module
+of Lemma~\ref{newcoh:cotangent}, taking in weight zero the image of
+\(J_x\cap B\).
+
+Suppose there is a weight-preserving formal chart
+\(A\to E[[X_1,\ldots,X_n]]\) with constant term \(x\), whose linear
+terms on \(J_x\) span all coordinate directions over \(E\) and have
+kernel the saturation of \(J_x^2\) there. The table gives the number
+of chart variables and of homogeneous equations defining an ideal \(I\).
+The neutral equations vanish at \(x\).
+\[
+\begin{array}{c|rrrrr}
+ \text{weight}&-1&-2&1&2&0\\ \hline
+ \text{variables}&r&s&r'+1&s'+1&m\\
+ \text{equations}&r+1&s&r'&s'&m\\
+ \text{names}&F&G&P&H&Z
+\end{array}
+\qquad r\ge1 .
+\]
+Assume the equations in weights \(-1,-2,0\) span the corresponding
+rational cotangent spaces. Set \(X=\operatorname{Spec}(A/I)\).
+A geometric point is called two-sided if some positive and some
+negative weight both have nonzero value. A positive or negative
+one-sided point has nonzero values on precisely one of the two signs.
+An invariant value of a point means its restriction to \(B\).
+
+\begin{theorem}[Integral degree of the two-sided orbits]
+\label{newcoh:orbitdegree}
+Suppose \(B/(I\cap B)\) is finite as an \(O\)-module. Assume every
+fixed \(K\)-point of \(X\) other than \(x_K\) has at most one sign of
+one-sided points with its invariant value, and the geometric tangent
+space of \(X_K\) at each two-sided point has dimension at most one.
+Let \(a\in B\) vanish at \(x\) and be nonzero at every two-sided point.
+There are finitely many two-sided \(K^\times\)-orbits, and for any finite
+set \(T\) of two-sided points meeting every such orbit,
+\[
+ \operatorname{length}_O Q_{-1}\ \le\ 2\sum_{\xi\in T}v(\xi(a)).
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{The chart and the three gradings.}
+Every \(A_j\) is finite over \(B\). Indeed, in a monomial in the
+chosen generators one may remove weight-zero submonomials until
+none remains. Among exponent vectors of fixed weight there are
+only finitely many minimal elements in the componentwise order
+by Dickson's lemma, and the removed factors belong to \(B\).
+The weight \(-1\) cotangent lattice is thus finite over \(O\)
+since \(B\) acts through \(x\) on it. It is torsion-free by
+saturation and has rank \(r\) by the chart. Apply Smith normal
+form to the map from the \(r+1\) equations to this lattice.
+After invertible \(O\)-linear changes of equations and lattice basis
+there are \(y_i\in A_{-1}\) and \(c_i\ge0\) such that, modulo
+the saturation of \(J_x^2\),
+\[
+ F_i=\pi^{c_i}y_i\quad(1\le i\le r),\qquad F_*=0,\qquad
+ \operatorname{length}_O Q_{-1}=\sum_i c_i .
+\]
+Here \(F_*\) denotes the last equation. In the formal chart replace
+the \(m\) neutral coordinates by the \(Z\)'s using their invertible
+linear part and the formal inverse function theorem. Setting those
+coordinates to zero gives a chart \(\phi\) with the four nonzero
+weights and the same linear coordinates in these weights. The inverse
+is weight-preserving by uniqueness of the formal inverse. We may
+arrange \(\phi(a)\ne0\). If its image is zero, add \(uF_i\) to \(a\),
+choosing \(u\in A_1\) and \(i\le r\) whose images have nonzero linear
+parts. The product has nonzero image in a power series domain and
+changes no value on \(X\).
+
+Form the following standard \(\mathbf N^3\)-graded subalgebra
+of \(A[t_0,t_1,t_2]\), with the ordinary weight in \(A\) kept
+separate from the three exponents of \(t\):
+\[
+ U=A_{-2},\qquad V=A_2,\qquad W=BF_*^2+U^2V,\qquad
+ R=B[Ut_0,Vt_1,Wt_2].
+\]
+Let \(R'\) be its image under the coefficient map \(\phi\), so
+\(a\) is a nonzerodivisor on \(R'\). Denote by \(\mathcal S\) the
+following list in \(R\) or any of its quotients:
+\[
+ (F_i^2t_0)_{i\le r},\quad (G_i t_0)_{i\le s},\quad
+ (P_i^2t_1)_{i\le r'},\quad (H_i t_1)_{i\le s'},\quad F_*^2t_2 .
+\]
+Put \(M=R'/(\mathcal S)\). We first determine its horizontal
+support, including at the boundary where one sign vanishes.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/ToDegInjective.lean}{187}{multigraded algebra and marked equations}.
+
+\emph{Support of high graded pieces.}
+Call a prime of \(R\) relevant if it misses some generator in each
+of the three standard directions. Let \(\mathfrak p\) be such a prime
+above the relations of \(M\), and \(\mathfrak b=\mathfrak p\cap B\).
+Choose surviving symbols \(ut_0,vt_1,wt_2\). Since \(W\subset U\),
+the identity \((F_*^2t_0)(wt_2)=(wt_0)(F_*^2t_2)\) puts
+\(F_*^2t_0\) in \(\mathfrak p\). We have \(I\cap B\subset\mathfrak b\).
+Indeed, for a marked coefficient \(h\) of weight \(-2\) and \(k\)
+of weight \(2\), multiply \(kh\) by the surviving product
+\((ut_0)(vt_1)\). The result is \((ht_0)(kuv t_1)\) in
+\(\mathfrak p\). The positive case interchanges the signs. For an
+equation of weight \(1\) or \(-1\) apply this argument to its square
+and to the square of its complementary coefficient. Neutral equations
+are already zero in \(R'\). Taking weight-zero parts of all
+multiples of the generators of \(I\) proves the inclusion.
+
+Put \(D=UV\subset B\). We claim that if \(D\subset\mathfrak b\)
+then \(\mathfrak b\) is the maximal ideal of \(B\). Otherwise,
+since \(B/(I\cap B)\) is finite over \(O\), the point is horizontal
+and \(B/\mathfrak b\) embeds in \(K\). We construct one-sided points
+of both signs with this invariant value. For \(n\ge1\),
+\(A_{2n}=V^n\) and \(A_{-2n}=U^n\). To see this, remove a positive
+generator of weight two or a pair of positive generators of weight
+one from a monomial of weight \(2n\) until the remaining weight is
+two. Negating the weights gives the other equality.
+On the even-weight subalgebra define a map to \(\kappa(\mathfrak p)\)
+by \(h\mapsto ht_1^n\bmod\mathfrak p\) for \(h\in A_{2n}\), \(n\ge0\),
+and send negative weights to zero. This is multiplicative. A mixed
+product with nonnegative weight and a negative factor has its
+coefficient in \(D V^n\) at weight \(2n\), by the two power
+identities. The map kills the appropriate marked even equations and
+squares, and takes \(v\) to a nonzero element. The full algebra is
+integral over the even-weight subalgebra, because the square of
+each odd homogeneous element belongs to it. Lying over extends the
+map to a field extension, where all original equations vanish.
+Over the invariant value under consideration these equations, the
+vanishing of the negative generators and \(v\ne0\) describe a
+nonempty finite-type locus over \(\kappa(\mathfrak b)\), hence they
+have a \(K\)-solution. The same construction with \(t_0\) gives the
+negative point. Taking the scaling limit of either point toward
+zero gives the same fixed point. Away from \(x_K\) this contradicts
+the hypothesis on the signs. Above \(x_K\) a negative point would
+give a curve through \(x_K\), taking \(h\in A_{-j}\) to
+\(\xi(h)T^j\), \(j>0\). Choose the least \(j\) occurring with a
+nonzero coefficient. Since \(A\) is generated in the stated weights,
+\(j=1\) or \(2\). All of \(J_x^2\), and hence its saturation, vanish
+to order at least \(2j\) on the curve. The \(F\)'s or \(G\)'s span
+the rational cotangent in weight \(-j\) and vanish identically on
+the curve, contradicting minimality. This proves the claim.
+
+Here and below \(d\gg0\) means all three components are sufficiently
+large. The two prime inclusions just proved give
+\[
+ (I\cap B)^n M_d=0,\qquad \pi^{n'}M_d\subset D M_d
+ \qquad(d\gg0)
+\]
+for some \(n,n'\). Indeed, multiply the respective ideals \(I\cap B\)
+and \((\pi)\) by the irrelevant ideal (the product of the three
+direction ideals). The products lie in the radicals of the defining
+ideals of \(M\) and \(M/DM\), respectively. Noetherianity gives
+powers, and sufficiently high graded pieces are generated by the
+corresponding powers of the irrelevant ideal times lower pieces.
+The first inclusion makes \(M_d\) finite over \(O\), by the finite
+filtration of \(B/(I\cap B)^n\) over \(B/(I\cap B)\). The second
+and Nakayama's lemma put its generic support where some
+\(u v\ne0\), \(u\in U,\ v\in V\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/SameDegreeZeroOfRestriction.lean}{17}{exclusion of the one-sided boundary}.
+
+\emph{The generic multiplicities.}
+After inverting \(uv\), \(u\) is a homogeneous unit in \(A\), and
+the three coefficient modules \(U,V,W\) are freely generated over
+the localized \(B\) by \(u,u^{-1},u\), respectively. If
+\(d=(i,j,k)\) with \(i,j,k\ge1\), taking coefficients identifies
+\(R_d\) there with \(A_{2(j-i-k)}\). Multiplication by a marked
+section is multiplication by its coefficient between the corresponding
+weight spaces. Hence \(M_d\) is a quotient of this weight space
+modulo the ideal \(I_2\) obtained from \(I\) by squaring the
+\(q=r+1+r'\) equations \(F,P\), and retaining \(G,H,Z\).
+Since any product of \(q+1\) generators of \(I\) contains either
+a retained equation or a repeated squared generator, \(I^{q+1}\subset I_2\).
+In particular all weight spaces occurring in the successive
+thickenings are modules over \(B/(I\cap B)^{q+1}\), which is finite
+over \(O\) by the same ideal-power filtration. After base change
+their local multiplicities may thus be computed over the local
+factors of a finite-dimensional \(K\)-algebra.
+
+Before squaring, each weight has geometric multiplicity at most
+one at an invariant point where \(uv\ne0\). In fact
+\(X_K[(uv)^{-1}]\) is of finite type by finiteness of the invariant
+algebra. More precisely, taking the degree-zero summand commutes
+with extension of scalars and with localization at the weight-zero
+element \(uv\), so its invariant ring is
+\(\big((B/(I\cap B))\otimes_O K\big)[1/(uv)]\).
+Each closed point of \(X_K[(uv)^{-1}]\) belongs to a one-dimensional
+torus orbit, and its tangent space has dimension at most one.
+Thus this open scheme is smooth of dimension one there. Its orbits
+are open in their components and every closed point lies in such an
+orbit, so each connected component is a single orbit. Equivalently,
+each orbit is closed here since the invertible coordinate \(u\)
+scales by weight \(-2\). The component idempotents are invariant,
+so they distinguish the components on the indicated invariant base.
+Each weight space on one orbit embeds by pullback into
+the corresponding weight space on \(K[t,t^{-1}]\), of dimension at
+most one. A finite collection of opens \(uv\ne0\) covers the
+two-sided locus, since nonzero weights can be witnessed by
+generators and weight-one generators can be squared. This also proves
+finiteness of its orbits.
+
+Replacing a homogeneous equation \(f\) of weight \(h\) by \(f^2\)
+at most doubles a bound valid for all weights. Indeed, the kernel of
+\((L/f^2L)_w\to(L/fL)_w\) is a quotient of \((L/fL)_{w-h}\)
+under multiplication by \(f\). Iterate after localizing at the given
+geometric invariant point. The multiplicity of \(M_d\otimes_O K\)
+at that point is at most \(2^{r+1+r'}\).
+On the finite \(O\)-module \(M_d\) put
+\(\theta(a,M_d)=\operatorname{length}_O(M_d/aM_d)
+-\operatorname{length}_O(M_d[a])\).
+Its torsion submodule contributes zero to this difference.
+On its free quotient the difference equals the valuation of the
+determinant of \(a\), by Smith normal form. Over \(K\) this
+determinant is the product of the values of \(a\) at invariant
+points counted with the above multiplicities, by decomposition of
+the finite-dimensional module into its generalized eigenspaces.
+These values are nonzero and integral over \(O\). It follows that
+\begin{equation}\label{newcoh:upperorbit}
+ \theta(a,M_d)\le 2^{r+1+r'}\sum_{\xi\in T} v(\xi(a)).
+\end{equation}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/TwoSigned.lean}{17}{multiplicity upper bound for the three gradings}.
+
+\emph{The component through the origin.}
+In a chart monomial let \(b_-,b_+\) count its negative and
+positive weights with absolute values, so its weight is \(b_+-b_-\).
+In degree \(d=(i,j,k)\) of \(R'\) keep the terms with
+\[
+ (b_-,b_+)=(2i+4k,\,2j+2k).
+\]
+These are the terms of least possible negative weight. The bounds
+for \(U,V\) follow from their weights. For \(W\), the term of
+bidegree \((1,0)\) in \(F_*\) is zero since \(F_*\) has zero linear
+part, giving \(b_-\ge4\) for its square. The same bound holds on
+\(U^2V\). Multiplication of lowest terms therefore defines a
+graded quotient \(C\) of \(R'\), retaining the three exponents to
+distinguish components. On \(C\) the ring \(B\) acts through
+\(x:B\to O\), so \(C\) is a quotient of \(R'/aR'\).
+Each \(C_d\) is a finite torsion-free \(O\)-module inside the
+polynomials of the indicated bidegree.
+
+Over \(E\) these polynomials all occur. The leading terms in
+weight \(-1\) contain all linear coordinates of that weight after
+extending scalars. Those from weight \(-2\) span its linear
+coordinates modulo quadratics in the weight \(-1\) coordinates.
+The quadratics themselves are products of the preceding lifts,
+so \(U\) supplies all pure monomials of negative weight two. The
+same argument applies to \(V\) on the positive side. A monomial
+with even total weight on either side splits into blocks of weight
+two, by pairing the weight-one variables. The required blocks form
+\(i\) factors from \(U\), \(j\) from \(V\), and \(k\) from
+\(U^2V\subset W\). Thus the length of \((C/\pi C)_d\) is
+\[
+ h(d)=N_{r,s}(i+2k)\,N_{r'+1,s'+1}(j+k),\qquad
+ N_{b,c}(z)=[t^{2z}](1-t)^{-b}(1-t^2)^{-c}.
+\]
+In \(C\) the first \(r\) marked sections are
+\(\pi^{2c_i}Y_i\), where \(Y_i\) is the marked leading term of
+\(y_i^2\). The Smith relations give this equality because any
+weight \(-1\) element in the saturated square has zero linear term.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/ReesGradedPieceSurjection.lean}{199}{Hilbert function of the leading terms}.
+
+\emph{Euler characteristics.}
+For a finite graded module \(L\) over \(R\), write
+\(\chi(\mathbf{s};L)_d\) for the alternating sum of the \(B\)-lengths
+of the degree \(d\) Koszul homology for a list of homogeneous
+sections. We use this when the high pieces of \(L/(\mathbf{s})L\)
+have finite length. Then the high pieces of the homology have finite
+length as well, since these finite graded modules are supported on
+the same closed locus. Equivalently, off the irrelevant locus all
+primes of this support lie over the closed point of \(B\). All
+lengths of finite-length \(B\)-modules here agree with their
+\(O\)-lengths because the residue fields agree.
+
+For completeness, \(\chi(\mathbf{s};L)_d\ge0\) for \(d\gg0\).
+Use induction on the list and a homogeneous prime filtration of \(L\),
+using additivity of Koszul Euler characteristics in short exact
+sequences. Irrelevant factors vanish in high degree. In a relevant
+domain factor, a nonzero first section is regular and the calculation
+passes to its quotient with one fewer section. If the first section
+vanishes, its two-term complex gives the difference of the Euler
+characteristics of the shorter list in degrees \(d\) and
+\(d-\deg s_1\). This difference is also the Euler characteristic
+of the shorter list on the quotient by any nonzero section of that
+degree, by the multiplication exact sequence. Such a section exists
+in a relevant domain by taking a product of surviving standard
+generators, or \(1\) in degree zero. The shorter list already has
+the required support in this case. This proves positivity and,
+by additivity, monotonicity on passing to a quotient whenever the
+original list has the stated support.
+
+The support condition holds for \((\mathcal S,a)\) on \(R'\) by
+the preceding description of \(M_d\) and the nonvanishing of \(a\)
+on its generic support. Koszul complexes are invariant up to
+isomorphism under permutation. Since \(a\) is regular on \(R'\),
+monotonicity and the one-section kernel--cokernel formula give
+\[
+ \chi(\mathcal S;C)_d
+ \le\chi(\mathcal S,a;R')_d
+ \le\chi(a;M)_d=\theta(a,M_d)\qquad(d\gg0).
+\]
+For the second inequality successively replace each of the first
+sections by its ordinary quotient. At each step the omitted term
+is the Euler characteristic of the remaining list on the shifted
+kernel of that multiplication and is nonnegative by the preceding
+argument.
+
+In \(C\), split each \(\pi^{2c_i}Y_i\) into its two factors using
+additivity of the one-section Koszul class for a product. In fact,
+writing \(e_0=(1,0,0)\), use the degree-preserving composite
+\[
+ C(-e_0)\xrightarrow{\,Y_i\,}C\xrightarrow{\,\pi^{2c_i}\,} C .
+\]
+The three mapping cones for the first map, the composite, and the
+second map form an exact triangle in that order. Tensor with the
+remaining Koszul complex, whose terms are graded free, and take
+degree \(d\). Taking Euler characteristics expresses the contribution
+of the composite as the sum of those of the two factors, with
+both summands taken in degree \(d\). The same triangle splits the
+degree-zero power into \(2c_i\) copies of the section \(\pi\).
+Each factor list has support contained in
+the original intersection. In each term with a single \(\pi\),
+regularity of \(\pi\) on \(C\) passes to \(C/\pi C\).
+Its terms already have finite length degree by degree, so the Euler
+characteristic is simply the alternating sum of the lengths of its
+terms, independent of the actual sections of the remaining degrees.
+Peeling off the powers successively leaves one final nonnegative
+Euler characteristic. With \(\Delta_i,\Delta_j,\Delta_k\) denoting
+unit backward differences in the indicated variable this gives
+\[
+ \chi(\mathcal S;C)_d\ge
+ 2\left(\sum_i c_i\right)
+ \Delta_i^{\,r+s-1}\Delta_j^{\,r'+s'}\Delta_k h(d).
+\]
+For \(b\ge1\), partial fractions at \(t=1,-1\) show that
+\(N_{b,c}(z)\) is eventually polynomial of degree \(b+c-1\)
+with leading coefficient \(2^{b-1}/(b+c-1)!\). Indeed the pole
+at \(1\) has order \(b+c\) and leading factor \(2^{-c}\);
+the pole at \(-1\) has order at most \(c\), of lower degree.
+The indicated \(i\)-difference therefore gives \(2^{r-1}\) on
+the first factor, and the \(j\)-difference gives a linear polynomial
+of slope \(2^{r'}\) in \(j+k\) on the second. Its \(k\)-difference
+is \(2^{r'}\). We have proved
+\[
+ 2^{r+r'}\sum_i c_i\le \theta(a,M_d)
+ \le 2^{r+1+r'}\sum_{\xi\in T}v(\xi(a))
+ \qquad(d\gg0).
+\]
+Dividing gives the theorem.
+\end{proof}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/AlgMemCoef.lean}{92}{comparison of the two Koszul calculations}.
+
+For the arithmetic application the valuation on a finite coefficient
+extension has \(v(z)=-e(O/\mathbf Z_\ell)\log|z|_\ell/\log\ell\).
+Thus Lemma~\ref{newcoh:cotangent} and Theorem~\ref{newcoh:orbitdegree}
+give the factor \(2\) in the normalized trace inequality once the
+rank-four deformation datum supplies the chart, equations, one-sided
+exclusion, infinitesimal rigidity and trace function with the stated
+nonvanishing. Establishing these hypotheses for all cases II and III
+and bounding the resulting automorphic family remain the global steps.
+ 

@@ -1,0 +1,167 @@
+\paragraph{An archimedean estimate on each complex theta fibre.}
+Fix a complex embedding \(\sigma\) of the coefficient field \(F\),
+of degree \(h\) over \(\mathbf Q\). Use the cubical metrics
+rigidified to have norm one at zero on the complex graph lines and
+Haar probability on each abelian variety. Put \(g=fr=\dim A\),
+\(m=gn\), \(d=\deg P\), and \(\Delta=|\operatorname{disc}E|\).
+Let \(\lambda>0\) be the shortest nonzero period of \(A\) in the
+positive Hermitian metric \(H\) of its principal polarization,
+normalized by the Riemann form \(\Im H\). Take an orthogonal Hodge
+eigenframe whose individual direction vectors have length at most
+\(U\), with \(U>0\). Use the row copies of that frame in \(A^n\).
+Let \(\|P^\sigma\|_1\) denote the sum of absolute values of its
+coefficients in these directions. The integer \(N\) and the self-dual
+Hermitian column lattice \(\Lambda\) can vary at this fixed frame.
+
+\begin{proposition}[A complex fibre bound independent of the auxiliary level]
+\label{intjet:arch}
+With the rescaling \(s\) chosen above by Minkowski's theorem, put
+\[
+ C=2fn\Delta,\qquad
+ R=\frac{\min(1,\lambda/C)}{4\sqrt m}.
+\]
+Then the cubically normalized value of the rescaled theta series satisfies
+\[
+ \frac{|\sigma(sy)(x_0)|}{\|s_0\|_2^n}
+ \le |\Delta_F|^{1/(2h)}e^{\pi/2}
+       \|P^\sigma\|_1\,d!\,(\sqrt2\,U)^d R^{-(d+m)}.
+\]
+This estimate is uniform in \(N,\Lambda\), the choice of division
+points and the level character.
+\end{proposition}
+\begin{proof}
+Use the isogeny \(a:B=A^n\to B_1=\Lambda\otimes_O A\) from
+Theorem~\ref{intjet:trace}; in rational column coordinates its
+differential is \(N\) times the identity. Both graph lines on
+\(B\) and \(B_1\) induce principal polarizations. For the latter
+this follows by tensoring the principal polarization of \(A\) with
+the isomorphism from \(\Lambda\) to its conjugate \(O\)-dual
+given by the unimodular Hermitian pairing. The equality
+\(a^*\mathcal L_1=[N]^*\mathcal L\) is isometric: the two
+curvature forms agree and the ratio of metrics on a compact complex
+torus is then constant, fixed at zero. A finite-order normalized
+translation lift is also an isometry, since the ratio is constant
+and a positive real number of finite multiplicative order is one.
+All the \(L^2\) pullbacks under isogenies preserve norms because
+the pushforward of Haar probability is Haar probability.
+
+Write \(v=[N]^*s_0^{\boxtimes n}\), and \(U_z\) for the normalized
+translation. The vectors \(U_zv\), \(z\in Z_\Lambda/K_0\), are
+pairwise orthogonal. Indeed \(v\) is fixed by the deck translations
+\(b\in B[N]\), and \(U_zv\) is then an eigenvector for each
+\(U_b\), with character given by the theta commutator with \(z\).
+The annihilator of \(B[N]\) inside \(B[N^2]\) for this commutator
+is \(B[N]\) itself. In a symplectic basis for the principal
+polarization, the pairing is the standard perfect alternating
+pairing modulo \(N^2\), and \(B[N]\) consists of all multiples of
+\(N\). Distinct classes modulo \(K_0=Z_\Lambda\cap B[N]\) therefore
+give distinct characters of commuting unitaries. The trace identity
+of Theorem~\ref{intjet:trace} gives
+\[
+ a^*T=\sum_{z\in Z_\Lambda/K_0}U_zv,\qquad
+ \|T\|_2= I^{r/2}\|s_0\|_2^n,\qquad I=[\Lambda:\Lambda_0].
+\]
+In particular \(\|\sigma(s)T\|_2\le
+|\Delta_F|^{1/(2h)}\|s_0\|_2^n\). This equality of squared norms
+uses the original order of the translations. The \(t_u\) act
+after this calculation.
+
+We bound the shortest period on \(B_1\). On \(\Lambda\) take the
+real trace norm \(\|v\|_{\rm tr}^2=
+\operatorname{Tr}_{E/\mathbf Q}\langle v,v\rangle\).
+For \(v\ne0\) its squared norm is at least one, since the trace
+is a positive rational integer. The trace-dual lattice equals
+\(\mathfrak D_E^{-1}\Lambda\), by \(O\)-duality and the definition
+of the codifferent. Multiplication by \(\Delta\) sends it into
+\(\Lambda\), so its minimum is at least \(1/\Delta\).
+Euclidean transference in dimension \(2fn\) gives \(2fn\) independent
+vectors of \(\Lambda\) of trace norm at most \(C\)
+\cite[Theorem 2.1]{banaszczyk}. Contractions with those vectors
+separate every nonzero \(x\in\Lambda\otimes_O\Pi\), where
+\(\Pi\) is the period lattice of \(A\): their rational span is the
+whole column space over \(\mathbf Q\), and the pairing is perfect
+over \(E\). Each contraction belongs to \(\Pi\). Its operator norm
+on the complex tangent space with product Hermitian norm is at
+most \(C\), by Cauchy--Schwarz on each eigenblock; on a given block
+the sum of the squared column coefficients is at most the squared
+trace norm. The positive form on \(B_1\) in rational column
+coordinates is this same product form by the isometry of pullbacks
+and \(da=N\,\mathrm{id}\). Thus every nonzero period on \(B_1\)
+has norm at least \(\lambda/C\).
+
+Use orthonormal eigen-coordinates on the universal cover of \(B_1\)
+centered at any prescribed point. The polydisc of coordinate radius
+\(R\) injects, by the period bound. In it a holomorphic line frame
+of squared norm \(\exp(-\pi\|z\|^2)\) exists and is unique up to
+unit phase. Indeed its prescribed logarithmic norm has the required
+curvature, and a real pluriharmonic discrepancy on the simply
+connected chart is the real part of a holomorphic function.
+The Euclidean covolume of the periods in these coordinates is one:
+the real volume form is \((\Im H_1)^m/m!\) up to orientation,
+and its period integral for a principal polarization is one.
+The same holds for any translate of the line and any choice of
+center. If \(G=\sum c_\alpha z^\alpha\) is the coefficient of a
+section of \(L^2\)-norm \(D\) in such a frame, then
+\[
+ |c_\alpha|^2\,
+ \frac{\pi^mR^{2|\alpha|+2m}}{\prod_i(\alpha_i+1)}
+ \le \int_{\{|z_i|<R\}}|G|^2\,dz\le e^\pi D^2 .
+\]
+The first inequality is angular orthogonality followed by radial
+integration. The second uses \(mR^2\le1\) and injectivity. Since
+\(\prod(\alpha_i+1)\le2^{|\alpha|}\), derivatives of degree \(d\)
+in the row frame are bounded by
+\(e^{\pi/2}D\,d!(\sqrt2 U)^d R^{-d-m}\).
+Here each row direction is a multiple of an orthonormal coordinate
+direction. Summing with \(P\) introduces \(\|P^\sigma\|_1\).
+
+To compare this local derivative with the harmonic jet, on the
+vector-space cover choose the holomorphic frame of the polarized
+biextension with squared norm
+\(\exp[-\pi(H(z,w)+H(w,z))]\), normalized at the origin.
+Its curvature is that of the polarized biextension, by taking the
+pullback under addition and dividing by the two projections.
+Addition in either variable and Rosati adjunction preserve this
+frame: their metric factors agree by sesquilinearity, and the ratio
+is holomorphic of unit modulus and is one on the axes. On the graph
+\(w=w_0z\) its squared norm is \(\exp(-\pi H(z,z))\) since
+\(w_0+w_0^\dagger=1\). Make this frame comparison first on the
+single factor \(A\times A\). Any permitted additive frame there
+differs by the exponential of a Rosati-compatible complex bilinear
+form, hence only couples conjugate types. On \(B=A^n\) the jet
+uses the exterior product of the same single-factor frame in all
+columns, followed by its \(N^2\)-th tensor power. Its graph correction
+is therefore a sum of scalar multiples of
+\(\sum_b z_{\tau i b}z_{\bar\tau j b}\). Each such sum disappears
+under the harmonic equations, as in Lemma~\ref{intjet:der}.
+For the final translation
+by \(t_u\), apply the centered frame at \(a(t_u)\) to the translated
+germ. Its pullback has squared frame norm
+\(\exp(-\pi N^2\|z\|^2)\); the isometry \(U_{t_u}\) identifies it
+with the frame at zero up to unit phase, by uniqueness. The derivative
+then gains precisely \(N^d\), which cancels the normalizing
+denominator in the series. Finally average over \(u\). Its Fourier
+weights have modulus one and the divisor is their number \(C_M\).
+This proves the inequality.
+\end{proof}
+
+Write \(S=d+m/2\) and \(Z_0=frL_0\). Suppose the frame satisfies
+\[
+ \max\{\log^+(\lambda^{-1}),\log^+ U,\log^+\|s_0\|_2\}\ll Z_0^2,
+ \qquad \log^+\|P^\sigma\|_1\ll Z_0^2S .
+\]
+Then the log of the absolute bound is \(O(Z_0^2 S)\) under the
+stage bounds above.
+Here \(\log^+x=\max(0,\log x)\) for \(x>0\); a zero polynomial is
+immediate. In fact \(m\le2S\), \(d\le S\),
+\(\log^+(d!)\le d\log(1+d)\), \(\log(2S)\ll L_0\),
+\(\log\Delta\le7fL_0\) and \(h^{-1}\log|\Delta_F|\ll Z_0^2\).
+These bound every factor in the displayed inequality, including
+\(\log(1/R)\ll Z_0^2\). To pass from this complex fibre estimate
+to the simultaneous section norms requires the normalized algebraic
+and analytic readings on every component, short polynomials spanning
+the actual space, and the indicated frame control at its half
+maxima. The normalized norm of the chosen generator matters when
+that generator is identified with a frame of the determinant line.
+\src{src/Development/AbelianVarietyTheory/Proofs/CuspFormEvaluations/NormalisedThetaValueBound.lean}{146}{Normalization on the tensor torus};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/NormRawThetaSeriesIndexBoundLeSqrt.lean}{18}{Square-root index in the archimedean estimate}.

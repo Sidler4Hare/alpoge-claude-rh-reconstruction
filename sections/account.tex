@@ -1,0 +1,150 @@
+\section{The remaining arithmetic estimate and the scope of the proof}\label{scope:account}
+
+The proof of Theorem~\ref{main:thm} has two logically different dependencies. On its analytic side, equations~\eqref{eq:centred} and \eqref{eq:window}, ordinary facts about Dirichlet \(L\)-functions at and to the right of one, and their functional equations suffice. The derivations of the polar part, concentration, isolation and final contradiction are given in full. Lemma~\ref{an:tails} has a different proof and choice of derivative order from the formal specialization. Its moment identity fixes the gamma shape at \(k+1\), so the probability estimate applies to the integral including its normalizing factor \((\sigma-a)^{-k-1}\). This factor is essential when the bound is compared to \(\sigma^{-k}\).
+
+For clarity, the following is a sufficient arithmetic statement which a reader could establish by a different method. Fix the primitive character and choose any sufficiently small \(\varepsilon>0\). Require that the retained characters give precisely \(\mathcal F_\psi\), with its weights, and that the excluded contribution obeys \(\Sigma\le4o\,x^{1/2+\varepsilon}\). For every lower bound \(Y_0\) one needs a \(Y\ge\max(1,Y_0)\) such that at \emph{each} \(Y\le x\le Y^{3/2}\) there are data as in Section~\ref{ar:section}. The hypotheses on coset shares, scales, auxiliary twists and ranks in Lemmas~\ref{ar:balance} and \ref{ar:extract} and Proposition~\ref{ar:four} must hold. Fix \(o\) from \(\psi\). The derivative constants and the constants in the retained and discarded logarithmic-derivative bounds of Lemma~\ref{ar:extract} must be uniform in \(Y\), in \(x\), and in the data chosen there. This gives one threshold in that lemma for the fixed \(\psi,\varepsilon\), so that an entire window can be placed beyond it. The field, scales and finite sets at \(x\) may depend on \(x\), but for \emph{every} translate \(u\in A_0\) of those same data one needs
+\begin{equation}\label{scope:missing}
+\begin{split}
+ D_u&=\sum_{t\in T}\sum_{j=1}^{m}
+       (\mathrm{ASK}_{u,t,j}-\mathrm{MAIN}_{u,t,j})\\
+ &\le x^{5\varepsilon}
+ \left(n_Ta_E+n_Ta_E\,m^2/k+2n m^2 b x^\varepsilon+
+               mb\,n_2 k x^{2\varepsilon}/n^2\right).
+\end{split}
+\end{equation}
+Here \(\mathrm{ASK}\) is the explicit finite prime-power sum in Lemma~\ref{ar:balance}, and \(\mathrm{MAIN}\) its centring term. The exponent \(5\) is \(2+0+3\) at the geometric specialization. Lemma~\ref{ar:extract} and Proposition~\ref{ar:four} give \(G_K\le x^{1/2+8\varepsilon}+\Sigma\). The excluded-character estimate in Section~\ref{ar:section} absorbs \(\Sigma\) at exponent \(1/2+9\varepsilon\) when \(x\) is sufficiently large, and \(G_K=G_{\mathcal F_\psi}\). This proves the claimed sufficiency before invoking the analytic argument. In the formal construction the two auxiliary primes are fixed on the initial interval, and the degree of the CM field can change from one scale to the next.
+
+Writing \(\mathcal D_x\) for the common data just specified and
+\(E_x(\mathcal D_x)\) for the right side, the order at fixed
+\(\psi,\varepsilon\) is
+\[
+\begin{gathered}
+ \forall\,Y_0\quad \exists\,Y\ge\max(1,Y_0)\quad
+ \forall\,x\in[Y,Y^{3/2}]\quad \exists\,\mathcal D_x\\
+ \forall\,u\in A_0(\mathcal D_x),\qquad
+           D_u(\mathcal D_x)\le E_x(\mathcal D_x).
+\end{gathered}
+\]
+There is a weaker sufficient condition for the paper implication.
+Keep this order through the choice of \(\mathcal D_x\), the same
+thresholds, and all its remaining conditions. Replace the last line by
+\begin{equation}\label{scope:average}
+     \frac{1}{|A_0(\mathcal D_x)|}
+       \sum_{u\in A_0(\mathcal D_x)}D_u(\mathcal D_x)
+                \le E_x(\mathcal D_x).
+\end{equation}
+Proposition~\ref{ar:mean} proves the extraction inequality under
+\eqref{scope:average}, so the proof of Theorem~\ref{main:conditional}
+applies unchanged thereafter. The same proposition evaluates the
+mean in terms of four primitive twists for each power of \(\psi\).
+Corollary~\ref{ar:meanhost} bounds the combined discarded contribution.
+Corollary~\ref{ar:squares} gives a discrete sufficient test: once
+the mean bound holds at the integer squares in these windows,
+continuity and an explicit slope bound for the retained function
+extend the analytic estimate to all real scales. The uniform upper
+bound at those squares remains an arithmetic hypothesis. Proposition~\ref{trmean:assembly} reduces it to a mean division estimate, one slope comparison and one signed loss. Corollary~\ref{trmean:reserve} gives the available margin for lattice defects at the original numerical scale.
+
+The following describes what the arithmetic proofs establish on the way to \eqref{scope:missing}.
+\begin{description}
+\item[Prime selection and the common field.] Theorem~\ref{pr:pair} treats the possible exceptional real zero and selects both primes for every required auxiliary twist and every real point in the interval. Proposition~\ref{host:art} identifies the retained and discarded characters. Lemma~\ref{host:different} constructs the lattice at finite places; Propositions~\ref{host:behrend} and \ref{host:thin} give the translated set and the uniform thin-coordinate estimate. These deductions use ordinary mathematics and the stated prime distribution theorems.
+\item[Galois representations.] Sections~\ref{tr:section} and \ref{newgal:section} realize the trace as a semisimple representation and give crystalline closure from simultaneous weighted trace congruences. The Frobenius index runs over every lift at a good prime. For a finite set of seed systems this produces a common dense set on which to interpolate. Proposition~\ref{famgal:rank} extracts the exact rank even for disconnected monodromy. Propositions~\ref{newgal:hodge} and \ref{newgal:phi} test the rectangular lattice maps on the integral period operators at the same precision as the trace congruence, allowing unbounded linear-combination coefficients. Applying those propositions at every singular intermediate weight still needs the geometric seed, simultaneous congruences and the two marked integral comparisons. Regular polarized cuspidal systems satisfying the stated local and irreducibility hypotheses have the level and adjoint Selmer conclusions of Propositions~\ref{newgal:level} and~\ref{newgal:adselmer}.
+\item[Global theta matching.] Theorem~\ref{tcr:global} proves nonzero proportionality of the two periods on every matched pair in the stated tower, including positive signature and the support restriction at the distinguished prime. Proposition~\ref{famtheta:plane} supplies a hyperbolic plane on the given lattice. Propositions~\ref{tcr:descend} and \ref{tcr:unique} compare the two descent maps on arbitrary smooth inert tests and real polynomial tests. The resulting recursions include the split Euler and ramified Gauss factors. For fixed adapted geometries, real quotient maps and measures, their constant is independent of the allowed finite characters, finite matching maps and compatible Weil actions. The period scalar for an individual system may depend on that system. This settles the period comparison required here. The reproducing identity for short algebraic sections on the covers involves a separate kernel.
+\item[Theta denominators and cover metrics.]
+Theorem~\ref{intjet:semi} clears the finite denominators on the integral
+semiabelian tests. Proposition~\ref{bfam:harm} gives short harmonic
+generators on every self-dual column lattice. Lemma~\ref{bfam:phase}
+and Corollary~\ref{bfam:mark} fix the finite test and its phase at the
+identity auxiliary level. On a polarized period chart the column
+factor in the reading is explicit in Proposition~\ref{bfam:unitread}.
+Propositions~\ref{dg:identity}, \ref{arrep:reproduce}
+and~\ref{munf:span} give the doubled graph identity, its positive real
+reproducing scalar and simultaneous generation on the marked period
+components. Lemma~\ref{crev:mode} shows how the finite mark kills
+the zero Fourier mode of each raw theta section on a rational
+isotropic row line. Proposition~\ref{crev:half} proves boundedness
+and a lower bound for the shortest vector at every half-maximum
+frame. Proposition~\ref{crev:mass} computes the flag volume and
+the probability measure on the selected analytic packet.
+Theorem~\ref{ctwist:semi} gives the integral theta key on the
+rigidified graph-line tests. On the indefinite marked rows of
+Lemma~\ref{cmeig:row}, Proposition~\ref{cmeig:degree} evaluates
+the ordinary Lie determinants at a product CM point, including
+the different at ramified primes. Theorem~\ref{cmeig:splitmodel}
+compares the vertical orders on the classical splitting models
+at each fixed finite place and embedding.
+Proposition~\ref{host:period} bounds the resulting scalar uniformly
+as the field and the weights vary. For a selected good cover the
+space of regular cusp rules is defined by its readings at the good
+embeddings. Corollary~\ref{crev:twist} treats those readings and the
+effect of both invertible weight changes on their cusp condition.
+Corollary~\ref{cmeig:final} supplies the integral spanning set in
+the final weight with its explicit bound on each such good
+indefinite cover at the stated stage sizes.
+Obtaining the compatible good covers throughout the design and
+identifying a separately constructed toroidal space of sections
+on the modified flags have their own geometric hypotheses.
+The integral restriction maps, short frames and compatible metrics
+for the modified flag spaces in the Hilbert--Samuel estimate are
+additional geometric inputs on the same components.
+\item[Integral cohomology and deformation rings.]
+Theorem~\ref{newcoh:lemmaK} gives the low-layer estimate with an absolute
+exponent \(32\). In \eqref{sup:lengthcount} the joint arithmetic tests
+inject into the image scaled by \(\ell^{d-1}\); the universal
+coefficient quotient costs at most the torsion order in degree
+\(d-1\). The construction and the prescribed evaluations of the
+arithmetic cycle used for this injection are stated with that formula.
+Theorem~\ref{famsel:unit} and Proposition~\ref{famsel:stick}
+prove the auxiliary Bernoulli unit and its residual vanishing in both
+higher-rank counts. Proposition~\ref{famsel:class} gives zero at
+all integral depths under its residual class-group test, including
+nontrivial even- and odd-order characters. Theorem~\ref{famsel:rate}
+bounds the strict lengths over all primes and characters by
+\(\exp((16Ne)^{102})\). Corollary~\ref{famsel:subwindow} gives the
+required exponential budget for the strict character contribution on
+\(16fe\le x^{\varepsilon/204}\), with \(f\) the primitive conductor.
+Propositions~\ref{famsel:hostinertia}--\ref{famsel:splitray} also
+treat specified conductors and congruence classes at arbitrarily
+large twists. For a cubic target modulo seven, every case III entry
+vanishes at \(\ell=29\) and for all sufficiently large coefficient
+primes in twelve of the twenty-four reduced classes modulo \(84\).
+For a target of two-power order, case III is empty, although case II
+already occurs for the zeta target (Corollary~\ref{famsel:hostdensity}). Section
+\ref{famsel:complement} sums the complementary contributions on the
+same host up to \(\lfloor v^{401}\rfloor\). That computation still
+uses the original polynomial bound \((\ell N e)^{C_\chi}\) on the
+remaining case II and III entries, the case I sum and the indicated
+field comparisons.
+
+The ternary endoscopic and odd orthogonal branches admit classical
+attachments. In the good quartic problem, Corollary~\ref{hr:imprimitive}
+gives cuspidal attachment and rational symplectic adjoint Selmer
+vanishing at every non-strongly-irreducible, absolutely irreducible
+characteristic-zero point. Proposition~\ref{hr:case3strong} forces
+strong irreducibility for absolutely irreducible tests in the third
+host case, in either characteristic. Such a restriction on a test
+still leaves the strongly irreducible curves to be controlled.
+Section~\ref{hr:tower} traces the ternary and quartic seeds,
+dimensions, markings and base changes; Lemma~\ref{hr:towerfin}
+controls the selected Hecke quotient. Covering every required test
+curve still uses the seed existence and the arithmetic transfers at
+the specialized points. The one-sided point exclusions also enter
+the full length estimate.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean}{30}{vanishing and counting in the window}.
+
+\end{description}
+
+To illustrate the finite-fibre issue, let \(O\) be a complete discrete valuation ring with uniformizer \(\pi\) and residue field \(k\). In \(R=O[[T]]/(\pi T)\) every characteristic-zero field point has \(T=0\), its generic fibre is the field \(\operatorname{Frac}O\), and \(R/(T)=O\) is finite. But \(R/\pi R=k[[T]]\) has a nonconstant curve. It follows already by reduction modulo \(\pi\) that \(R\) is infinite as an \(O\)-module. This example explains why checking characteristic-zero attachments and the quotient singled out by a Hecke ideal cannot on their own discharge the curve hypothesis in Lemma~\ref{dp:detect}.
+
+\paragraph{One use of a proof term inside the geometry.}
+In the family realization a local proof \(h_{\rm onto}\) is obtained from the theta-doubling theorem. The following line in the original uses tactic search to construct the family record. Reading the elaborated expression resolves which premise tactic search supplied. At the application of the row-data theorem the local proof appears once, at argument 21 counting implicit arguments from one. The resulting family record appears once, at argument 16 of the final application. In ordinary terms, for \(m=2n+2\) and a base row \(T\), surjectivity supplies a terminal vector whose descent to level zero equals \(T\). The source constructs the reachable pair of spaces, packages \(T\) into the initial stage, applies surjectivity, and takes underlying values to recover the desired equality. The independent valuation argument in Section~\ref{geo:engine} has its own inputs. The expression slice in the supplement reproduces this binder calculation on the original indices. \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremFromPublishedResultsAltAltAltAlt.lean}{25}{the two local proof bindings}, \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/FamAllQOfAllTrue.lean}{51}{surjectivity field}, \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/NotMemQBase.lean}{37}{row-space surjectivity} and \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkOntoOfOntoAll.lean}{49}{lifting a specified base row}.
+
+\paragraph{Mathematical review.}
+The review compared the displayed implications with the source at the points where sign, rank, normalization or quantifier order mattered. In the comparison of theta integrals, uniqueness of the scalar uses a test with nonzero integral \emph{and a matching test on the other side}; the matching step for this particular vector is now explicit in Proposition~\ref{geo:theta}. The integer clearing the terminal period denominator is divisible by the stabilizer orders in \emph{all} layers. It need not equal any one of them. The slope compression requires both a bound \(0\le\delta<1\) and a codomain of dimension \(D_0\ge(1-\delta)D\). The determinant calculation in Corollary~\ref{geo:shift-index} fixes the sign and factor of two. In the Poitou--Tate computation of Section~\ref{sup:length}, the discrete dual of \(\mathbf Z_\ell(E+1)\) has twist \(-E\), which fixes the local \(H^0\) term. \src{src/Formalism/GaloisCohomology/Statement.lean}{69}{cyclotomic action on the discrete module}. Other checks included common-factor positivity for complex residues, the strict radius gap in Lemma~\ref{an:isolate}, the power \(\lfloor v^{401}\rfloor\) preceding the cohomological rank cutoff and the family selection before the pointwise Fourier estimates. The accompanying tables record the proof status and the source locations. In particular the rank-four trace condition is checked against the variant actually used in the export, whose automorphy predicate includes additional comparison witnesses. Each source anchor is paired with an enclosing declaration and a path from the classical RH root or, for the distinct strip and restatement assertions, a path from the appropriate sibling root. These paths certify the presence of the declarations. They do not assign a separate theorem to every tactic line.
+
+The English argument proves the critical-line implication from
+\eqref{scope:missing} and also from \eqref{scope:average} with the
+specified common data. On the available paper arguments both uniform
+arithmetic estimates remain open, even when the target is zeta.
+The unresolved component, length and integral geometric inputs
+therefore prevent an independent paper proof of RH in this edition.
+Published kernel checks concern the original exported declarations.

@@ -1,0 +1,110 @@
+\subsection{Low-complexity cohomology and the exceptional twists}\label{sup:length}
+
+The exceptional indices in the window argument are handled by a bound on a fixed low cyclotomic layer. Let \(L\) be totally imaginary, \(n=[L:\mathbf Q]\), \(D=|\operatorname{disc} L|\), and \(\ell\) a prime. Assume that \(L\) contains \(\mu_\ell\) for odd \(\ell\) and \(\mu_4\) for \(\ell=2\). The bound called \code{LemmaK} asserts the existence of an absolute \(C_K>0\) such that, for every such \(L,\ell\), every choice of algebraic closure and local data, and every integer \(E\ge1\),
+\begin{equation}\label{sup:lemmaK}
+ H^2(G_{L,S},\mathbf Z_\ell(E+1))\ \text{is finite},\qquad
+ \log\#H^2(G_{L,S},\mathbf Z_\ell(E+1))
+ \le \exp\bigl((2En)^{C_K}\log(2D)\bigr).
+\end{equation}
+Theorem~\ref{newcoh:lemmaK} proves this bound with \(C_K=32\) using published results. The remainder of this subsection identifies the estimates in the alternative argument of the formalization. Here \(S\) consists of the finite places over \(\ell\), and the right-hand side bounds the logarithm of the order. The compact module has action \(\chi_\ell^{E+1}\). Its Tate dual is the discrete module \(A_E=(\mathbf Q_\ell/\mathbf Z_\ell)(-E)\), with action \(\chi_\ell^{-E}\). In particular the local invariant term below uses the same discrete module as the degree-one restriction kernel \(\Sha^1(A_E)\). The negative sign follows from \(1-(E+1)=-E\). \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/GeneratorCountTuples/LemmaK.lean}{9}{roots of unity and cardinality bound}
+\src{src/Formalism/GaloisCohomology/Statement.lean}{67}{two coefficient conventions}.
+
+\paragraph{Cyclotomic descent.}
+Take the layer \(L'/L\) of degree \(d=\ell^m\) with \(m=\lceil\log_\ell(4E+4)\rceil\). Let \(n'=nd\), and \(\ell^c\) be the highest order of an \(\ell\)-power root of unity in \(L'\). Then \(2E+1<\ell^c,r_2(L')\), \(d\le(n+1)(4E+4)\) and \(\ell^c\le 2n'\). Indeed \(\ell^{m-1}<4E+4\), \(\ell-1\le n\), and \(r_2(L')=n'/2\). The cyclotomic degree formula gives the last bound. The class-module descent supplies one common module and identifies the lengths after taking the cokernels of \(g-1\) and \(g^d-1\) on it, where \(g\) already includes the twist. Now
+\[
+ g^d-1=(g-1)\sum_{i=0}^{d-1}g^i,\qquad
+ \operatorname{coker}(g^d-1)\twoheadrightarrow\operatorname{coker}(g-1).
+\]
+Thus the higher layer bounds the original length, including when the latter is initially allowed to be infinite. This comparison uses the supplied class-module descent, and makes no injectivity assumption about restriction on global cohomology. For the discriminant, write \(X^N-1=P(X)Q(X)\) with \(P\) the minimal polynomial of a root \(\zeta\) generating \(L'/L\) and \(N\le\ell^c\). Differentiation gives \(N=\zeta P'(\zeta)Q(\zeta)\). The different contains \(P'(\zeta)\), hence contains \((N)\). Taking norms in the discriminant tower gives \(D'\le D^d(\ell^c)^{n'}\). These estimates keep the field growth polynomial in \(2En\) on the \(\log(2D)\) scale. \src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SLayerCut.lean}{11}{relative different}
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SLayerCut.lean}{40}{cokernel length comparison},
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SLayerCut.lean}{55}{choice of layer}.
+
+\paragraph{A count uniform in the remaining layer number.}
+Work over the enlarged base \(L'\), set \(M=2E+1,\ b=2E+M(c+M)\), and let \(q=\ell^\nu\) be the root order used for the finite-layer test. The finite-layer class-field injection and the arithmetic homology detector give the following bounds for the count of equivariant homomorphisms \(\mathrm{EqHom}\). Write \(T_j=\#\operatorname{tors}H_j(\mathrm{GL}_{4E+6}(\mathcal O_{L'}),\mathbf Z)\), and \(g_0=2n'+\lfloor\log_2 h_{L'}\rfloor+2\). If \(I\) is the image of the twisted norm test, then
+\begin{equation}\label{sup:lengthcount}
+\begin{aligned}
+ \#I&\le\#\operatorname{im}(\ell^{M-1}\Phi)\le q^{r_2(L')}T_{2E+1}T_{2E},\\
+ \#\mathrm{EqHom}\ q^{r_2(L')}
+ &\le \#I\,\ell^{(b+v_\ell(E))g_0+c+v_\ell(E)} .
+\end{aligned}
+\end{equation}
+Here is the first injection. Write \(F/L'\) for the finite cyclotomic test layer,
+\(\gamma\) for its generator acting on \(\mu_q\) by \(\kappa=1+\ell^c\),
+and \(a=\kappa^E\). Put \(\Delta\beta=\gamma^{-1}(\beta)\beta^{-a}\).
+Let \(U\subset F^\times\) consist of elements whose divisor has the form
+\((\mathfrak d_{\gamma P}-a\mathfrak d_P)_P\) for an integer-valued
+divisor \(\mathfrak d\). The test on the finite group
+\(W=U/(\Delta F^\times\,\mu(F))\) is
+\[
+ [\alpha]\longmapsto [(N_{\gamma,a}\alpha)^{\ell^b}]
+ \quad\text{in }F^\times/\big((F^\times)^q\mu(F)\big),\qquad
+ N_{\gamma,a}\alpha=\prod_{j=0}^{\operatorname{ord}(\gamma)-1}
+                       \gamma^j(\alpha)^{a^j}.
+\]
+For each \(z\in I\) choose a lift \(\alpha_z\) with a divisor
+\(\mathfrak d_z\) satisfying
+\(v_P(\alpha_z)=(\mathfrak d_z)_{\gamma P}-a(\mathfrak d_z)_P\).
+The arithmetic cycle theorem supplies a mod-\(q\) cycle \(y_z\)
+of degree \(M\) over \(\mathcal O_{L'}\) and a nonzero denominator in
+\(\mathcal O_F\). Exclude from the primes of \(F\) those dividing
+\(\ell\) or any of these finitely many denominators. At each remaining
+\(P\) of relative residue degree one choose a multiplicative index
+\(v_P^\times:k(P)^\times\to\mathbf Z/q\) with kernel \(k(P)^{\times q}\).
+Such an index exists because \(k(P)^\times\) is cyclic and reduction
+preserves the primitive \(q\)-th root. The residue evaluations
+\(\Phi_P\) provided by the source then satisfy
+\[
+ \Phi_P(y_z)=
+ \prod_{\substack{0\le i<M\\ i\ne E}}(\kappa^E-\kappa^i)\,
+ v_P^\times\!\left(\overline{N_{\gamma,a}\alpha_z}\right).
+\]
+The bar denotes reduction at \(P\). Each factor of the product has
+valuation \(c+v_\ell(|E-i|)\): removing a unit power of \(\kappa\)
+reduces this to the binomial valuation of \(\kappa^{|E-i|}-1\),
+with \(c\ge2\) at two. Since \(0<|E-i|<M\), the valuation of the
+product is at most \((M-1)(c+M)\). Hence it divides
+\(\ell^{M(c+M)}\) in \(\mathbf Z/q\).
+Thus equality of \(\ell^{M-1}\Phi_P(y_z)\) and
+\(\ell^{M-1}\Phi_P(y_{z'})\) forces the quotient of the two
+\(\ell^b\)-powered norms to be a \(q\)-th power in \(k(P)^\times\).
+If equality holds at every test place, the relative-degree-one power
+criterion in Section~\ref{newcoh:ktheory} makes that quotient a
+\(q\)-th power in \(F^\times\), so \(z=z'\).
+Consequently \(z\mapsto(\ell^{M-1}\Phi_P(y_z))_P\) is an injection
+of sets for any such choices. The product evaluation \(\Phi=(\Phi_P)_P\)
+is primitive. The scaled homology count in Section~\ref{newcoh:ktheory}
+bounds its image, with the exponent \(r_2(L')\) coming from the field
+over which the cycles live.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SelmerOrderCounts/ActUPow.lean}{37}{representatives of the test image},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/LemmaKOfSteps.lean}{86}{cycle evaluation on twisted norms},
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SFewOfCut.lean}{67}{divisibility of the evaluation coefficient}, and
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SFewOfCut.lean}{197}{product injection and scaled count}.
+
+For the second bound one may see the length loss via the \(\ell\)-power filtration of the norm-test kernel. If \(W\) is the finite source and its kernel is killed by \(\ell^s u\), \(\ell\nmid u\), its \(\ell\)-primary part is killed by \(\ell^s\). For every \(i\ge1\), multiplication by \(\ell^{i-1}\) embeds \(W[\ell^i]/W[\ell^{i-1}]\) into \(W[\ell]\). Hence its kernel has \(\ell\)-primary order at most \(\ell^{s g_0}\) when \(\#W[\ell]\le\ell^{g_0}\). The image contributes at most \(\#I\) by exactness. The twisted powers telescope to \(N_{\gamma,a}(\Delta\beta)=\gamma^{-1}(\beta)^{1-a^{\operatorname{ord}\gamma}}\), with \(a=(1+\ell^c)^E\). The valuation of the scalar is \(\nu+v_\ell(E)\), giving \(s=b+v_\ell(E)\) after removing the modulus \(q\). The unit-lattice order calculation gives the factor \(q^{r_2(L')}\) and the remaining factor of \(\ell^{c+v_\ell(E)}\). Thus the same power of \(q\) cancels and the bound is uniform in \(\nu\).
+\src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SFewOfCut.lean}{187}{joint detector},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SelmerOrderCounts/PCount.lean}{12}{finite primary filtration},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SelmerOrderCounts/KerFDelNm.lean}{20}{norm and difference},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SelmerOrderCounts/CardEQ.lean}{36}{unit-lattice order},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/NumThree.lean}{223}{cancellation and exponents}.
+
+The class-field injection and layer realization apply to any finite subset of the image of \(\Sha^1(A_E)\) in the infinite tower by taking one layer beyond the finitely many thresholds for its elements. This subset is bounded in cardinality by the right side of the cancelled inequality, independently of which layer was chosen. A larger finite subset would contradict that bound, so the whole image is finite. The homology torsion bound, obtained from an arithmetic face complex and orbit and stabilizer estimates, now applies to the two factors \(T_j\). Writing \(u=2En'\), \(Y=\log(2D')\), the remaining contribution \(((b+v_\ell(E))g_0+c+v_\ell(E))\log\ell\) is at most \(u^9Y\). Taking logarithms of the count and using the preceding discriminant and length comparisons gives \(\operatorname{length}_{\mathbf Z_\ell}\Sha^1(A_E)\log\ell\le \exp((2En)^C\log(2D))\) for an absolute \(C\). The face complex and the class-field injection are used here at their supplied scope.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/RingEquivalences/OrderOfOneAddPrimePowZmodPrimePow.lean}{454}{one finite layer for a finite subset},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HermiteNormalForms/Assembly.lean}{14}{arithmetic torsion input},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/NumThree.lean}{350}{uniform numerical absorption}.
+
+\paragraph{Duality and a local length calculation.}
+Put \(B=H^2(G_{L,S},\mathbf Z_\ell(E+1))\) and let \(\rho\) be its map into the product of the local \(H^2\)'s. Poitou--Tate identifies the length of \(\ker\rho\) with the length of \(\Sha^1(A_E)\) and the length of \(\operatorname{coker}\rho\) with that of \(H^0(G_{L,S},A_E)\). Local Tate duality gives the length of each local \(H^2\) as that of \(H^0(G_{L_w},A_E)\). The source obtains these claims from the finite-level dualities and finiteness through the cohomology limits. Additivity for the kernel, image and cokernel gives the equality with the global \(H^0\) term on the left, and therefore bounds \(\operatorname{length}B\) by \(\operatorname{length}\Sha^1(A_E)+\sum_{w\mid\ell}\operatorname{length}H^0(G_{L_w},A_E)\). Total imaginarity supplies the real-place hypothesis also at \(\ell=2\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/GaloisCohomologyLength/Formula.lean}{15}{finite-level dualities and limiting length formula}.
+
+For an explicit bound, let \(U_w\subseteq\mathbf Z_\ell^\times\) be the local cyclotomic image and \(a_w=[\mathbf Z_\ell^\times:U_w]\). The invariants in \(A_E\) are killed by \((1+\ell^2)^{Ea_w}-1\), since \((1+\ell^2)^{a_w}\in U_w\) and replacing its action by the inverse changes the difference from \(1\) by a unit. For \(r\ge2\), raising a unit \(1+\ell^r v\), \(\ell\nmid v\), to the \(\ell\)-th power increases \(r\) by exactly one by the binomial expansion. Raising it to an exponent prime to \(\ell\) leaves \(r\) unchanged. Thus the annihilator has valuation \(2+v_\ell(Ea_w)\), including at \(\ell=2\). The submodule of \(\mathbf Q_\ell/\mathbf Z_\ell\) killed by \(\ell^k\) is \(\ell^{-k}\mathbf Z_\ell/\mathbf Z_\ell\), of length \(k\). As \(a_w\le n\) by the inertia-image index bound and there are at most \(n\) local terms, this adds at most
+\[
+ n\bigl(2\log\ell+\log(nE)\bigr)
+\]
+to \(\operatorname{length}B\log\ell\). This bound is polynomially bounded in \(2En\) since \(\ell\le n+1\). Finite length gives order \(\ell^{\operatorname{length}B}\) by the composition factors, each of size \(\ell\). Increasing the absolute exponent proves the form \eqref{sup:lemmaK}. \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SFinal.lean}{35}{local test unit and inertia bound}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SFinal.lean}{100}{finite order and final comparison}.
+
+\paragraph{Return to the same window.}
+The active assembly passes the odd arithmetic input, the Poitou--Tate statement, local finiteness and local Tate duality to the class-counting proof of \code{lemmaK}. The resulting bound is one input in \code{vwin\_of\_hypotheses\_H\_E\_alt}. For an exceptional index \(E\) still below \(x^{C_t}\) in a good window, \(E\le x^{\varepsilon/(2C_K)}\). The fixed low layer used in the tower comparison has degree at most \(n_0\) and log discriminant at most \(c_0 x^{\varepsilon/4}\) in the form \(\log(2D)\). Consequently \((2En)^{C_K}\log(2D)\le (2n_0)^{C_K}c_0 x^{3\varepsilon/4}\). The length bound uses the factor \(2\), since \(1/\log\ell\le2\). The tower comparison adds at most \(R(m-j_0)\) in natural subtraction to the fixed-layer length, while nonexceptional indices use the linear tower bound directly. This puts the exceptional contribution below the final \(\exp(x^\varepsilon/2)\) scale for large \(x\). Indeed any fixed power of \(x\), and any fixed power of \(\log x\), multiplying \(\exp(C x^{3\varepsilon/4})\) can be absorbed at that scale by taking logarithms. The other ramification and parity cases in the \(\mathrm{VWin}\) assembly are separate bounds. \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LemmaKOfLitN.lean}{12}{instantiated duality and odd input}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean}{25}{actual window assembly},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ImportsAlt.lean}{9}{exceptional and ordinary tower bounds},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Klen.lean}{23}{order to length}.

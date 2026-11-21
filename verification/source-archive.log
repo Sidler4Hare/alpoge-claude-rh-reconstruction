@@ -1,0 +1,5 @@
+615 source citations, 431 distinct files, 1103 saved path nodes.
+Source-citation roles: {'reached': 609, 'exported_outside_classical_root': 5, 'source_only': 1}
+All saved path records match the full dependency walk.
+Archive SHA-256: 9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc
+175187 project Lean modules, 431 distinct cited files matched byte for byte.

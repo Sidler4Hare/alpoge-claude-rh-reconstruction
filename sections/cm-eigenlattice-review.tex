@@ -1,0 +1,499 @@
+\paragraph{A product CM point on each indefinite marked row.}
+For the fields of Proposition~\ref{host:art} there is another
+choice of evaluating point. Write \(k=\mathbb Q(\sqrt{-d_0})\),
+\(F_0=E^+\), \(O=O_E\), and \(\Phi\) for the embeddings inducing
+the chosen embedding of \(k\). For \(\tau\in\Phi\) write \(p,q\)
+for the Lie multiplicities at \(\tau,\bar\tau\), respectively.
+Write \(p_0\) for the number of positive Hermitian row directions.
+The selected period map conjugates the first \(p_0=q\) coordinates
+and is \(\tau\)-linear on the last \(r-p_0=p\) coordinates.
+Keep the period convention \(\Pi=\mathfrak a L\) of
+Lemma~\ref{bfam:minimum}, so \(L\) is Hermitian self-dual.
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/PetersonNormSubspace.lean}{67}{The conjugated positive block in the period map};
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/PetersonNormSubspace.lean}{75}{The positive row index on a good chart};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/FlagBasis.lean}{76}{The Lie multiplicities of the two embeddings}.
+
+\begin{lemma}\label{cmeig:row}
+If \(p,q\ge1\), every marked row in this family has, up to rational
+isometry, underlying lattice
+\[
+        J e_1\ \perp\ O e_2\ \perp\cdots\perp\ O e_r,\qquad
+        J\bar J=O,\qquad
+        h(e_i,e_i)=
+        \begin{cases}1&i\le p_0,\\-1&i>p_0.\end{cases}
+\]
+The transported mark need not split into marks of the summands.
+\end{lemma}
+\begin{proof}
+The two imaginary quadratic subfields of discriminants
+\(-d_0,-q_0\) in Proposition~\ref{host:art} have coprime
+discriminants (here \(q_0\) is the auxiliary prime). At each
+rational prime at least one of them is unramified. Its inertia
+restriction is trivial, whereas complex conjugation acts on it
+nontrivially. Thus \(E/F_0\) is split or unramified at every finite
+place, since relative inertia is the intersection with
+\(\operatorname{Gal}(E/F_0)\).
+
+At a split place a basis of the first factor and its pairing-dual
+in the second identify a self-dual lattice with the standard one.
+At an unramified quadratic place its reduction is a nondegenerate
+Hermitian space over the quadratic residue extension. There is a
+vector of nonzero norm: otherwise polarization of \(h(x+ay,x+ay)\)
+and the perfect residue trace pairing would give \(h=0\).
+Lifting gives a unit norm, which can be scaled to either sign,
+since the norm maps unramified units onto units (use the residue
+norm and lift successively with the residue trace). Its integral
+orthogonal complement is again self-dual. This gives the local
+orthogonal basis by induction, including in residue characteristic
+two. At infinity the signatures agree with the displayed form.
+For clarity, the rational isometry follows already from
+Hasse--Minkowski: the underlying quadratic form \(h(x,x)\)
+represents the prescribed first sign at every place, hence globally.
+For the latter implication apply isotropy to \(h(x,x)-a t^2\);
+if \(t=0\) gives a nonzero isotropic vector, the original quadratic
+space contains a hyperbolic plane and represents \(a\).
+Split off the Hermitian line of norm \(a\); by Witt cancellation its
+complement is locally isometric to the remaining diagonal form.
+Induction now identifies the two rational Hermitian spaces.
+
+Put \(L_0=\bigoplus O e_i\), \(G=U(h)\). Choose
+\(g\in G(\mathbb A_{F_0,f})\) carrying \(\widehat L_0\) onto
+\(\widehat L\) using the local isometries, choosing the identity
+where the two lattices coincide. Write \(t=\det g\) and
+\(d(t)=\operatorname{diag}(t,1,\dots,1)\). The determinant-one
+groups have strong approximation away from the infinite places:
+\(\mathrm{SU}(h)\) is simply connected, absolutely almost simple
+(\(r\ge2\)), and noncompact at a real place by \(p,q\ge1\).
+This is \href{https://www.mathnet.ru/links/02c4d3528af06a248862fb1aa3ba53f9/im2220_eng.pdf}
+{Platonov, Theorem A}. Thus the open set
+\(g K_0 d(t)^{-1}\cap\mathrm{SU}(h)(\mathbb A_{F_0,f})\)
+contains a rational element \(\gamma\): it contains
+\(g d(t)^{-1}\), and \(K_0\) is the open stabilizer of
+\(\widehat L_0\). Then \(\gamma^{-1}L\) has completion
+\(d(t)\widehat L_0\). Its first ideal is
+\(J=E\cap t\widehat O\); \(t\bar t=1\) gives \(J\bar J=O\).
+Transport the entire given finite marking by \(\gamma^{-1}\).
+The resulting polarized marked row is isomorphic to the one
+started with, as in Lemma~\ref{munf:marks}. No approximation to
+the identity of the marking, or change of its level, is needed.
+\end{proof}
+
+\begin{proposition}[The degree on the product point]\label{cmeig:degree}
+On each classical marked period component of
+Lemma~\ref{cmeig:row} there is a point over a finite extension of
+the coefficient field with everywhere good abelian reduction. For
+every \(\tau\in\Phi\) its two integral Lie determinants in the
+polarization metric of the cover satisfy
+\[
+ \widehat{\deg}T_+-\widehat{\deg}T_-=
+   \frac{p-q}{2}\left(\gamma_{\rm Eul}+
+     \log\frac{2\pi}{{\rm rd}(E)}
+       -\frac{L'(1,\chi)}{L(1,\chi)}\right).
+\]
+All finite places, including those ramified in \(E\), occur with
+their ordinary integral eigensublattices.
+\end{proposition}
+\begin{proof}
+In the representative of Lemma~\ref{cmeig:row} take the flag of
+the positive and negative coordinate axes. The period lattice
+is the orthogonal direct sum of the fractional ideals
+\(I_1=\mathfrak a J,\ I_i=\mathfrak a\ (i>1)\).
+The last \(p\) factors have CM type \(\Phi\), and the first \(q\)
+have its conjugate, by the period map above.
+Let \(C\) be the elliptic curve with complex lattice \(O_k\),
+with the indicated action (conjugate the action for the opposite
+type). It is defined with its endomorphisms over a number field
+and acquires good reduction everywhere after finite extension:
+its CM \(j\)-value is an algebraic integer, hence gives potential
+good reduction at the finitely many places of bad reduction.
+The Serre construction \(I_i\otimes_{O_k} C\) exists integrally
+since \(I_i\) is projective over \(O_k\): an idempotent on a
+finite direct power of \(C\) realizes it as a direct factor.
+Its periods at the chosen embedding are exactly the images of
+\(I_i\) at the extensions of that \(k\)-embedding. The alternating
+trace polarization on each factor is induced from a positive
+Hermitian form \(\operatorname{Tr}_{E/k}(\beta u\bar v)\).
+Indeed divide its purely imaginary trace coefficient (with the
+coordinate sign) by the coefficient of the standard principal
+elliptic polarization, a signed generator of
+\(\mathfrak D_{k/\mathbb Q}^{-1}\); the ratio \(\beta\in E^+\)
+is totally positive by the Riemann positivity condition.
+Perfection is exactly
+\[
+       (\beta)\,I_i\bar I_i\,\mathfrak D_{E/k}=O .
+\]
+This also follows by taking the trace-dual ideal. Hence the
+polarized product has exactly the required period lattice and
+polarization. For the polarized tensor construction see
+\href{https://arxiv.org/abs/1507.07607}{Amir-Khosravi, \S2}.
+The transported finite torsion marking is defined after another
+finite extension, irrespective of how it mixes factors. It is
+needed on the characteristic-zero point; the underlying product
+extends over the full ring of integers. In a classical PEL moduli
+chart this constructs the point of the prescribed component,
+including its canonical rigidified graph line. An additional
+finite étale marking cover is handled by lifting the point to
+the given component of the cover, whose map to the underlying
+connected component is finite étale and surjective.
+
+Here is the integral and metric calculation for a single factor
+with ideal \(I\) and tensor coefficient \(\beta\). Enlarge the
+number field \(K\) of definition to split \(E\), and put
+\(\mathfrak D=\mathfrak D_{E/k}\). In
+\(I\otimes_{O_k}O_K\), the intersection with the coordinate line
+at an active embedding \(\nu\) is \(\nu(I\mathfrak D)O_K\).
+In fact test membership in the lattice by its dual. The trace
+dual of \(I\) over \(O_k\) is \(I^{-1}\mathfrak D^{-1}\);
+this remains the dual after flat base change. On the split
+generic algebra the trace is the sum of coordinates. The vector
+supported at \(\nu\) with entry \(z\) thus pairs integrally
+exactly when \(z\nu(I^{-1}\mathfrak D^{-1})\subset O_K\), as
+asserted. Tensoring with the invertible \(O_K\)-module
+\(\operatorname{Lie} C\) gives the actual Lie eigenline of the
+abelian scheme, since taking Lie commutes with the idempotent
+defining the tensor construction.
+
+On that coordinate its squared metric at \(\sigma:K\to\mathbb C\)
+is the squared elliptic Lie metric multiplied by
+\(\sigma\nu(\beta)\): diagonalizing the trace Hermitian form in
+the embedding coordinates gives coefficients \(\sigma\nu(\beta)\);
+the polarization convention multiplies both Hermitian forms by
+the same \(\pi\). For \(e=[E:\mathbb Q]\), normalized ideal and
+metric degrees therefore give
+\[
+\begin{split}
+ 2\widehat{\deg}T_\nu(I)
+ &=2\widehat{\deg}\operatorname{Lie}C
+   -\frac{2\log N(I\mathfrak D)+\log|N_{E/\mathbb Q}\beta|}{e}\\
+ &=2\widehat{\deg}\operatorname{Lie}C-\frac{\log N\mathfrak D}{e}.
+\end{split}
+\]
+The second equality uses perfection, so even the fractional ideal
+on the first coordinate disappears. The norm is the absolute
+ideal norm and \(N\mathfrak D=|\Delta_E|/d_0^{e/2}\).
+
+For \(C(\mathbb C)=\mathbb C/\Pi_C\) with Euclidean period area
+\(a_C\), principal polarization gives the Hermitian coefficient
+\(1/a_C\). The tangent metric is \(\pi/a_C\), so its dual on
+\(dz\) is \(a_C/\pi=(i/2\pi)\int dz\wedge d\bar z\).
+Thus \(-\widehat{\deg}\operatorname{Lie}C\) is exactly the
+stable elliptic Faltings height with the normalization of
+\href{https://people.math.wisc.edu/~tonghaiyang/KRY2.pdf}
+{Kudla--Rapoport--Yang, (10.14)--(10.15), Proposition 10.10}.
+Their quadratic CM formula gives
+\[
+ 2\widehat{\deg}\operatorname{Lie}C
+ =\gamma_{\rm Eul}+\log(2\pi/\sqrt{d_0})
+                  - L'(1,\chi)/L(1,\chi).
+\]
+This applies to either elliptic orientation. Substitution gives
+the same \(2\widehat{\deg}T_\nu(I)=A_\chi\) on every active
+coordinate; orthogonality and the integral direct product give
+the two determinants by addition over \(p,q\) coordinates.
+\end{proof}
+
+In particular no comparison between a mixed isogeny image and
+its saturation is needed to evaluate this point. If the vertical
+orders on a selected component agree at all tests and its
+archimedean norm is constant, the degree is that of this point
+by the normalized base-change calculation preceding
+\eqref{ctwist:degree}.
+
+\paragraph{Vertical orders at hyperspecial places.}
+There is a direct good-reduction comparison for the ordinary Lie
+frames of the classical PEL problem. It also distinguishes a prime
+in the level from a prime ramified in the endomorphism algebra.
+
+\begin{proposition}\label{cmeig:hyperspecial}
+Suppose the characteristic-zero cover on the chosen component
+is a classical finite marking level for its principally polarized
+\(O_E\)-abelian scheme, and its finite tests use the integral Lie
+eigensublattices of connected semiabelian extensions of that same
+scheme. Let \(w\mid\ell\) in the splitting coefficient field \(F\),
+with \(\ell\nmid 2\Delta_E\). Each rational horizontal determinant
+generator has the same normalized order at all semiabelian DVR
+tests on the component above \(w\). If its marked level itself is
+hyperspecial at \(\ell\), this common order belongs to \(\mathbb Z\).
+\end{proposition}
+\begin{proof}
+First take a neat prime-to-\(\ell\) marking with full hyperspecial
+level at \(\ell\). The algebra is unramified at \(\ell\), its
+involution is of unitary type and the principal alternation is
+perfect. Thus this is a good reduction PEL problem. With smooth
+projective cone data it has a proper smooth toroidal model with
+universal semiabelian scheme by
+\href{https://www.kwlan.org/articles/cpt-PEL-type-thesis-revision-dense.pdf}
+{Lan, Theorems 6.4.1.1 and 7.3.3.4}.
+Base change to the completed coefficient DVR. The geometric
+components of a proper smooth family form a finite étale scheme;
+the selected geometrically connected generic component defined
+over the coefficient field extends to an open and closed component
+with geometrically connected special fibre. That fibre is smooth,
+so is reduced and irreducible. The split embedding idempotents of
+\(O_E\otimes_{\mathbb Z}O_{F,w}\) are integral. The indicated Lie
+determinant ratio is therefore a line bundle on the model.
+Its characteristic-zero horizontal generator extends as a unit at
+the toroidal boundary by the unipotent determinant calculation
+above Lemma~\ref{ctwist:vertical}. On the whole model its divisor
+is an integral multiple of the single reduced special fibre.
+
+Every test extends to the toroidal model by properness. The
+pullback of its connected semiabelian group is the given connected
+semiabelian extension by uniqueness over a trait (SGA~7 I, IX,
+Proposition 3.2). This is an isomorphism respecting the endomorphisms
+by generic-fibre uniqueness. Hence its Lie eigensummands, including
+those of a toric degeneration, are exactly the test lattices.
+Pulling back the divisor in an integral local generator gives the
+same normalized integer at every such test.
+
+For general finite marking choose another full neat level of order
+prime to \(\ell\) and a geometric connected component of the common
+refinement lying over the original component. Over a finite field
+extension it and both projection maps are defined. Fix one place
+of this field above \(w\). The common component is finite étale
+and surjective over each of its two characteristic-zero image
+components, as follows by forgetting finite torsion bases. Its two
+pulled-back determinant generators differ by a scalar in the
+field of definition: both are horizontal for the same connection,
+so their quotient has zero differential on the smooth geometrically
+connected component. On the auxiliary prime-to-\(\ell\) component
+the generator exists by determinant-one monodromy at its full neat
+level, as proved above Lemma~\ref{ctwist:vertical}. Any test on the
+original component first extends to the fixed base place and
+then lifts generically to the common component after a finite
+extension of its fraction field, by surjectivity. Connected
+semiabelian pullbacks agree by the same uniqueness. The order on
+the lifted test is the order on the auxiliary component plus the
+valuation of the fixed scalar, both independent of the test after
+normalization to \(F_w\). This proves the claim without requiring
+an integral level-\(\ell\) marking of a semiabelian group.
+\end{proof}
+
+\begin{theorem}[Integral determinant comparison at the ramified primes]
+\label{cmeig:splitmodel}
+For the fields of Proposition~\ref{host:art}, under the same
+classical moduli and test identifications as in
+Proposition~\ref{cmeig:hyperspecial}, the common normalized order
+exists at every finite place. For each indefinite component the
+uncorrected arithmetic degree of the elementary horizontal
+determinant is therefore \((p-q)A_\chi/2\).
+\end{theorem}
+\begin{proof}
+Fix \(w,\tau\), and use a neat marking away from its residue
+characteristic \(\ell\), with maximal level at \(\ell\) stabilizing
+the single self-dual lattice (and its periodic translates).
+As in Proposition~\ref{cmeig:hyperspecial} we can pass to this
+level and to a finite local splitting field. At every place of
+\(E^+\) above \(\ell\) the quadratic algebra is split or
+unramified by Lemma~\ref{cmeig:row}. These are exactly the
+unitary cases (AL) and (AU) of the Pappas--Rapoport splitting
+model. Its order \(O_E\) is maximal, and its alternating lattice
+has index one in its dual. These are the hypotheses at the
+maximal level of \href{https://stephane-bijakowski.perso.math.cnrs.fr/PRgeometry.pdf}
+{Bijakowski--Hernandez, \S2.4 and Theorem 2.30}, which gives a
+smooth splitting model in these cases. At two the imaginary
+quadratic subfield \(k\) already splits by Lemma~\ref{host:different},
+so only the linear case (AL) occurs there.
+
+Use the ordering of the \(E\)-embeddings in
+\href{https://www.kwlan.org/articles/cpt-spl.pdf}
+{Lan, Choices 2.3.1, Definition 2.3.3}: put \(\tau,\bar\tau\)
+first as a consecutive pair in their \(E^+\)-place, and order the
+other conjugate pairs consecutively. In the split case the pair
+is in distinct integral field factors. In the inert unramified
+quadratic case its restrictions to the maximal unramified subfield
+are distinct, so the two are again separated by integral
+idempotents over the splitting base. On these two different
+summands the first quotient of the decreasing Hodge filtration
+is labelled respectively by \(\tau,\bar\tau\).
+In Lan's interleaved ordering the intervening graded piece on
+the other summand is zero. In the increasing notation of
+Bijakowski--Hernandez these are the two \emph{last} quotients.
+Reversing the ordering within each list, with conjugate lists
+paired term by term, is permitted in their \S2.4.
+
+Here are the model comparisons used with the smoothness theorem.
+For the single periodic self-dual lattice the open splitting model
+parametrizes the polarized Hodge flags of the given ranks. Separating
+the unramified idempotents turns Lan's interleaved flags into
+the flags for the separate unramified embeddings; conversely they
+are interleaved by direct sum. The polarization conditions can
+also be compared on the common generic fibre, without identifying
+their scheme structures on nonflat thickenings. Indeed both flag
+problems are closed in the same relative product of flag varieties
+over the naive moduli problem, by the endomorphism and pairing
+conditions. They give the same unique flags on the generic fibre.
+The Bijakowski--Hernandez model is smooth, hence equals the flat
+closure of this generic fibre in that flag space, and is normal.
+Lan's normalized open model is the normalization of that closure
+on the selected generic components: the forgetful map of the
+normalized underlying moduli to the naive moduli is finite and
+generically open and closed at full lattice-stabilizer level
+(Proposition 2.2.11). Finiteness persists after pullback to the
+flag space and after normalization over the excellent base
+(Definition 2.4.5 and Proposition 2.3.10). Consequently the normalized
+open model on those components is the smooth one, by finite
+birationality over a normal scheme.
+
+Lan's Theorem 3.4.1 and Proposition 3.4.14 give a proper flat
+toroidal compactification with geometrically regular fibres for
+smooth cone data: geometric regularity of each fibre is
+equivalent to that of the open splitting model. It is thus smooth.
+By Proposition 3.1.2 and Definition 3.1.3 the extended filtration
+is a filtration by subbundles on the Hodge bundle of the
+semiabelian extension (identified with that of its dual by the
+principal polarization, with conjugate labels if using the
+dual-action convention). In particular the two locally free
+first quotients above exist along the whole boundary.
+
+For any trait write \(H\) for its integral invariant
+differentials in the relevant unramified summand. If \(H'\) is
+the kernel of its first quotient, then \(H'\) is saturated and
+its generic fibre is the sum of all the other eigenspaces in
+that summand. Hence
+\[
+   (H/H')^\vee=\{u\in H^\vee:u(H')=0\}
+           =H^\vee\cap (H^\vee_{\rm frac})_\tau .
+\]
+The identical argument on the conjugate summand gives the
+second test lattice. This uses the end quotient of the
+filtration: in general an intermediate graded piece has a
+different lattice. The determinant ratio of these dual quotients
+is therefore an invertible sheaf which gives exactly the
+ordinary test metric at \(\ell\). Its generic horizontal section
+is a unit across the characteristic-zero boundary, as before.
+Over the fixed geometric component the smooth proper model
+has a single reduced special fibre. Lemma~\ref{ctwist:vertical}
+and the common-refinement argument of
+Proposition~\ref{cmeig:hyperspecial} give equality of all orders,
+including on semiabelian tests. A different ordering or model
+can be used for a different pair \(\tau,\bar\tau\), since orders
+are calculated pairwise before multiplying sections.
+
+Finally compare with the CM point of Proposition~\ref{cmeig:degree}
+at each place and with its archimedean norm. Its finite extension
+preserves normalized arithmetic degrees. This gives the claimed
+global degree and hence the uncorrected product degree in
+\eqref{ctwist:degree}.
+\end{proof}
+
+\paragraph{The selected good cover.}
+The level condition on \(Y\) fixes its auxiliary marking to have
+order one. Its finite marking is the half-marking at the odd integer
+\(M\ge3\).
+The characteristic-zero comparison can be made from the moduli
+property. The universal object is proper and semiabelian, hence
+abelian. Its rigidified line is relatively ample and its
+polarization kernel is trivial, hence its polarization \(\lambda\)
+is principal. The adjunction property for its biextension gives
+the specified Rosati involution on \(O_E\). Conversely from these
+PEL data pull the normalized Poincar\'e bundle back along
+\((1,\lambda w_0)\). Its polarization is
+\(\lambda(w_0+\bar w_0)=\lambda\); the rigidification, symmetry
+and cube law are the canonical ones. Its biextension is the
+one for \(\lambda\). This reconstruction also recovers the
+original line from its graph condition. The rigidified isomorphism
+is unique: an automorphism is multiplication by a unit on the
+abelian scheme, which comes from the base by properness and
+geometric connectedness and equals one at the identity.
+
+Over the splitting field the determinant condition is precisely
+the \(p,q\) multiplicity condition. On a reduced
+characteristic-zero base the Hodge eigensummands are vector bundles
+and their ranks can be tested at geometric points. The mark kills
+\(\mathfrak m\) and on the complementary summand is the reduction
+of a polarized Tate marking. By CRT these restrictions determine
+it on the whole lattice. Its compatibility at all torsion orders
+in the definition of an object is a condition on the local
+lattice genus, not a choice of additional sections. More explicitly,
+in a connected complex PEL family the Betti lattice, its pairing,
+action and finite mark are locally constant; a compatible marked
+Tate isometry at one point transports to every point. Equivalently
+at a geometric point the reduction of a compatible tower is a
+point of the prescribed compact-open marking orbit. Conversely
+any representative of that orbit gives the required compatible
+reductions at all \(n\). To check the roots of unity, fix the
+primitive \(M\)-th root in the coefficient field and, at a geometric
+point, extend it to a compatible system \((\zeta'_n)\). Relative
+to the tower \((\zeta_n)\) of a Tate marking there is a unique
+\(u\in\widehat{\mathbb Z}^{\times}\) with \(\zeta'_n=\zeta_n^u\)
+for all \(n\ge1\). The reference lattice has an
+integral similitude of multiplier \(u\) fixing the half-mark.
+At \(\ell\mid M\), use \(1\) on the marked half and \(u_\ell\) on
+its pairing-dual half. At \(\ell\nmid M\), use a central scalar of
+norm \(u_\ell\) at each place of \(F_0\) over \(\ell\), using the
+surjectivity of split and unramified unit norms in Lemma~\ref{cmeig:row}.
+Precomposing a Tate marking by this similitude gives the prescribed
+tower with the same marked sections. At order \(M\) the Weil pairing
+with the marked basis and the fixed root then determines the basis
+on the opposite half uniquely. This construction works over the
+base at order \(M\) by perfect duality of finite étale groups. The
+higher towers occur only in the geometric-point existence test.
+This identifies the half-marking with the corresponding fine PEL
+level on the selected components. After finite extension the
+source moduli property gives a classifying map for the classical
+universal object on its reduced smooth base, and the classical
+moduli property gives the reverse map on the reduced smooth
+source base. The reconstructed universal objects are isomorphic,
+so both composites are the identity by uniqueness. The maps
+preserve the underlying group and polarization, also after
+restricting to a specified marked row.
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/TwoWeightEqOneAddRoot.lean}{131}{The compatible torsion isometries and primitive roots};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/TwoWeightEqOneAddRoot.lean}{144}{The two marks, signature and geometric-point existence condition};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/PushInvertible.lean}{29}{The universal object and its reduced-base moduli property};
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/NormNegCmConstantEqAtAllEmbeddings.lean}{187}{The selected level, period charts and polarization scale}.
+
+On a test DVR the definition supplies a semiabelian group whose
+generic fibre is cartesian over this universal group. Its fibres
+are geometrically connected. The test vectors form a basis for
+all integral eigenvectors at each labelled embedding, so they give
+exactly the intersections used in Theorem~\ref{cmeig:splitmodel}.
+Indeed the images of algebraic integers in the coefficient field
+belong to the valuation ring; the equality expressing the
+eigenvector property therefore holds integrally if and only if
+it holds over the fraction field, by torsion-freeness of the
+smooth Lie lattice. The theta generator in the test contributes
+no factor to the parallel character. At infinity the comparison
+uses the polarization metric \(\pi H\) on Lie vectors; this is
+the metric used in Proposition~\ref{cmeig:degree}. Thus the
+ordinary parallel determinant comparison follows on the selected
+principal family with its given period readings.
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/VAtVNeBot.lean}{53}{Cartesian semiabelian tests and the universal integral eigenbasis condition};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/SemiabelianSchemes/AbelianSchemeQuotients/IsAbelianScheme.lean}{41}{Connected geometric fibres of the semiabelian group};
+\src{src/Development/AbelianVarietyTheory/Definitions/CMLattices/IsDiffOf.lean}{101}{Polarization norm in the CM comparison}.
+
+\begin{corollary}[Short sections in the final weight on a good cover]
+\label{cmeig:final}
+Fix one good deep cover \(Y\) as in Corollary~\ref{crev:good}
+on a selected host, with \(p,q\ge1\). Take the admissible final
+weight \(\lambda\) and the level, denominator, field and bad-prime
+size bounds of Theorem~\ref{bfam:oncharts}.
+On each marked component \(Z\), its regular cusp rule space of
+weight \(\lambda\) is spanned over the coefficient field by
+integral sections \(s_i\) with
+\[
+     \log\|s_i\|_{\sigma}\le
+          C\bigl((frL)^3 W+(frL)^5\bigr),\qquad
+     W=\sum_{\tau,i}|\lambda_{\tau i}|,
+\]
+at every embedding in the theorem. The same constant works over
+these choices under the common stage bounds.
+\end{corollary}
+\begin{proof}
+Start with the integral generators of Corollary~\ref{crev:good}.
+Multiply by the key of Theorem~\ref{ctwist:semi} and by the
+product with exponents \(-j_\tau\) in \eqref{ctwist:degree}.
+Theorem~\ref{cmeig:splitmodel} computes the latter degree at the
+actual integral eigenlattices. Outside the excluded primes the
+level is hyperspecial, so the common order is integral by
+Proposition~\ref{cmeig:hyperspecial}. At the remaining primes
+round the product order once as in \eqref{bfam:flat}.
+Proposition~\ref{host:period} supplies the uniform numerical
+degree bound. Both unit sections and their inverses preserve the
+cusp condition by Corollary~\ref{crev:twist}. The final-weight
+estimate of Theorem~\ref{bfam:oncharts} now gives the claim.
+This argument starts with \(Y\) and the stated numerical bounds.
+Selecting such covers compatibly at all stages and identifying the
+restriction maps on the modified flags enter separately in the
+Hilbert--Samuel estimate.
+\end{proof}

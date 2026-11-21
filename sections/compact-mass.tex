@@ -1,0 +1,111 @@
+\paragraph{The compact real factor and the definite lattice mass.}
+Put \(n=[E:\mathbb Q]=2f\), and write \(O=O_E\). The two numerical
+factors in the preceding comparison have the following bounds.
+\begin{proposition}\label{bergvol:compactmass}
+For the real density specified below and the genus of the standard
+positive definite Hermitian \(O\)-lattice of rank \(r\ge1\),
+\[
+ c_r=\operatorname{vol}(U(r))
+     =\prod_{j=1}^r\frac{2\pi^j}{(j-1)!}\le13^{r^2},
+ \qquad
+ \operatorname{mass}_I
+     \le [3n^2r^2R_E^2]^{2nr^2}
+     \le[3n^2r^4R_E^2]^{3nr^2}.
+\]
+\end{proposition}
+\begin{proof}
+In the skew-Hermitian Lie algebra use the density \(dx\) given by
+the imaginary diagonal entries and the real and imaginary parts of
+the entries strictly below the diagonal. To compare it with the real
+measure of the tube calculation, let \(\lambda\) be the additive
+measure for which \((X,Y)\mapsto X+iY\) carries
+\(\lambda\otimes\lambda\) to entrywise Lebesgue measure on
+\(M_r(\mathbb C)\). Each diagonal block has absolute real determinant
+one. Each off-diagonal pair gives the two complex entries
+\(z+iw,-\bar z-i\bar w\), a block of absolute real determinant four.
+Hence \(\lambda=2^{\binom r2}dx\). The specified real Haar density
+at the identity, in exponential coordinates, is
+\(2^{-\binom r2}\lambda=dx\).
+\src{src/Formalism/LocalRingCardinality/DataCD.lean}{42}{Complexification measure on the real Lie algebra};
+\src{src/Formalism/LocalToGlobal/BesselHermitianTheta/MinfDensity.lean}{13}{Real density relative to complexification}.
+
+The map \(U(j)\to S^{2j-1}\), \(g\mapsto ge_1\), has fibre
+\(U(j-1)\). At the identity its differential selects the first
+column, whose independent coordinates give Euclidean tangent
+measure on the sphere at \(e_1\). The remaining coordinates give
+exactly the chosen density on \(U(j-1)\). By invariance the same
+quotient measure is Euclidean surface measure on the whole sphere.
+Starting with \(c_0=1\) gives the displayed product. For \(j\le r\)
+each factor is at most \(2\cdot4^r\le8^r\).
+In particular compact probability Haar has density
+\(2^{-\binom r2}/c_r\) relative to \(\lambda\). For a real form
+\(U(p,q)\), \(p+q=r\), the compact-dual convention prescribes this
+same scalar relative to its own complexification measure. Thus
+multiplication by \(c_r\) converts that convention to the specified
+real density at each place.
+\src{src/Formalism/LocalRingCardinality/DataCD.lean}{57}{Matching of the real density across signatures};
+\src{src/ReciprocityTheory/ReductiveGroups/DiscreteSeries/FormalDegree/VolUFactProdMulLe.lean}{14}{Compact real volume factor}.
+
+For the second assertion, every lattice \(L\) in the standard genus
+is Hermitian self-dual. Indeed this holds locally for \(O^r\), and
+localization commutes with the dual of a projective lattice. One may
+use the conjugation-stable semilocal rings at pairs
+\(\{\mathfrak p,\bar{\mathfrak p}\}\) here, including at split primes.
+We bound the number of isometry classes of all totally positive
+definite self-dual Hermitian \(O\)-lattices of rank \(r\).
+Give the underlying real space the scalar product
+\(\tfrac12\operatorname{Tr}_{E/\mathbb Q}h(x,y)\). Its squared norm
+is \(\sum_\tau h_\tau(x_\tau,x_\tau)\), with one summand per conjugate
+pair. For the absolute different \(\mathfrak D\) the Euclidean
+dual lattice is \(L^*=2\mathfrak D^{-1}L\). Indeed testing the
+pairing on all \(O\)-multiples of each lattice vector gives precisely
+the codifferent condition, and \(L\) is Hermitian self-dual.
+For \(0\ne y\in\mathfrak D^{-1}L\) we have
+\(h(y,y)\in\mathfrak D^{-1}\bar{\mathfrak D}^{-1}\), whence
+\(\lvert N_{E/\mathbb Q}h(y,y)\rvert\ge\Delta^{-2}\).
+The arithmetic-geometric mean inequality gives
+\(\|y\|^2\ge f\Delta^{-2/n}=fR_E^{-2}\).
+Thus \(\lambda_1(L^*)\ge 2\sqrt f/R_E\).
+By Banaszczyk's Euclidean transference theorem in dimension \(nr\),
+\(\lambda_{nr}(L)\lambda_1(L^*)\le nr\)
+\cite[Theorem~2.1]{banaszczyk}. Among real-linearly independent
+vectors realizing this last minimum we may choose an \(E\)-basis
+\(x_1,\ldots,x_r\) with \(\|x_i\|\le T=nrR_E\).
+
+Write \(G=(h(x_i,x_j))\) and \(L_0=\sum O x_i\). The entries of
+\(G\) are integral and have modulus at most \(T^2\) at every
+embedding. There are at most \((1+2T^2)^n\) choices per entry.
+Indeed the points of \(O\) in its Minkowski space have mutual sup distance
+at least one by the norm inequality, so open polydiscs of radius
+\(1/2\) around these points are disjoint. For a fixed \(G\) the marked
+rational Hermitian space and \(L_0\) are fixed up to isometry.
+The inclusions \(L_0\subseteq L\subseteq L_0^\#\), where \(\#\)
+denotes the Hermitian dual, locate \(L/L_0\) in a finite module
+\(A=L_0^\#/L_0\) of order \(\lvert N_{E/\mathbb Q}\det G\rvert
+\le T^{2nr}\). The last inequality follows by Gram's determinant
+inequality at every embedding.
+
+Each \(O\)-submodule of \(A\) has an ordered generating tuple of
+length \(r\). Locally at each prime in the support its inverse image
+in \((L_0^\#)_{\mathfrak p}\) is free of rank \(r\) over a discrete
+valuation ring, so its image has \(r\) generators. Combine these
+tuples coordinate by coordinate under the primary decomposition of
+the finite module. Consequently there are at most \(|A|^r\)
+intermediate lattices for the fixed Gram matrix. All isometry
+classes together number at most
+\[
+ (1+2T^2)^{nr^2}T^{2nr^2}\le (3T^2)^{2nr^2}.
+\]
+The definite standard mass is the sum of
+\(1/|\operatorname{Aut}_O(L,h)|\) over the classes in its genus.
+Each group is finite, since it is a discrete lattice stabilizer
+inside a compact real group. The class count therefore proves
+the required bound, including for nonfree \(L\).
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GapAtLeast.lean}{20}{Definition of the definite standard mass};
+\src{src/Formalism/HermitianLattices/StatementMass.lean}{11}{Reciprocal stabilizer weights}.
+\end{proof}
+
+These estimates give \(V\le V_*\) once the displayed adelic tube
+inequality holds. Applying that inequality to a different signature
+still requires the comparison of the adelic covolumes with their
+finite lattice stabilizers and the stated real densities.

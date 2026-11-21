@@ -1,0 +1,514 @@
+\paragraph{Finite denominators at abelian reduction.}
+\label{intjet:sec}
+Write \(d=\deg P=\sum a_{\tau i}\), \(\Delta=|\operatorname{disc}E|\),
+and \(v\) for the additive valuation of a mixed-characteristic
+discrete valuation ring \(R\). Valuations and all the inclusions below
+may be tested after finite extension. We retain the integral symmetric
+line, its rigidification, the section, the Hodge directions and the
+polarized biextension on an abelian scheme \(A/R\) as in
+Proposition~\ref{newtheta:goodjet}. The graph of \(w_0\in O_E\)
+in that biextension gives the line. In a semiabelian degeneration the
+generic abelian scheme need not extend in this form.
+
+\begin{lemma}[Integral Taylor derivatives of harmonic jets]\label{intjet:der}
+In the preceding formal chart take an integral raw coefficient,
+any nonnegative tensor power of the line, and an integral homogeneous
+harmonic polynomial of degree \(d\) at the standard lattice.
+Its evaluated jet belongs to \(\Delta^{-\lfloor d/2\rfloor}R\).
+The assertion holds in every residue characteristic.
+\end{lemma}
+\begin{proof}
+Work over the fraction field in logarithm coordinates. For a series
+\(F\) define its Taylor values to be the mixed derivatives
+\(\partial^\alpha F(0)\), with no division by \(\alpha!\).
+If \(F\) comes from an integral function on the formal group,
+on integral tangent vectors these values lie in \(R\). Indeed
+each vector extends by translation to an invariant integral
+derivation of the formal group ring. In logarithm coordinates it
+is the constant vector field, so applying a sequence of these
+derivations and evaluating at zero gives exactly the desired value.
+This argument works on a product and on any list of integral
+directions, whether or not they form an integral basis.
+
+Series with integral Taylor values form a ring by Leibniz's formula.
+An inverse with unit constant term has integral Taylor values by the
+same formula and induction. For \(g(0)=1\) and integral Taylor
+values, those of \(\log g\) are integral by
+\(\partial_i\log g=g^{-1}\partial_i g\). For \(h(0)=0\) with
+integral Taylor values, use
+\(\partial_i\exp h=(\exp h)\partial_i h\) and induction.
+These are identities over the fraction field and give integrality
+of derivatives without an estimate for any inverse factorial.
+
+Let \(h(X,Y)\) be the logarithmic correction of the biextension in
+the chosen frame. Its two additive defects and its \(O_E\)-adjunction
+defect are logarithms of integral units with constant term one, as
+in Proposition~\ref{newtheta:goodjet}. For an index \(\alpha\) of
+degree at least two write \(\alpha=\alpha'+e_j\), \(|\alpha'|>0\).
+Apply \(\partial_X^{\alpha'}\partial_{X'_j}\partial_Y^\beta\) to
+\(h(X,Y)+h(X',Y)-h(X+X',Y)\) at zero. The result is
+\(-\partial_X^\alpha\partial_Y^\beta h(0)\). This proves its
+integrality. Interchanging the two arguments treats \(|\beta|\ge2\).
+The two axes vanish. In bidegree \((1,1)\) write \(c_{\tau i,\nu j}\)
+for the derivative along eigenvectors of types \(\tau,\nu\).
+The adjunction defect gives
+\((\tau(a)-\nu(\bar a))c_{\tau i,\nu j}\in R\) for every \(a\in O_E\).
+If \(\tau\ne\bar\nu\), then \(\Delta c_{\tau i,\nu j}\in R\).
+Indeed choose an integral basis \(b_i\) and its trace-dual basis
+\(b_i^\vee\). The embedding matrices are inverse transposes, so
+\(\sum_i\tau(b_i^\vee)\sigma(b_i)\) is one for \(\sigma=\tau\)
+and zero otherwise. All \(\Delta b_i^\vee\) are integral by the
+adjugate of the trace matrix. Apply this equality to
+\(\sigma=\tau,\bar\nu\) and subtract.
+
+Thus the gauge on the eigen-directions is the sum of a series with
+integral Taylor values, a bilinear form with coefficients in
+\(\Delta^{-1}R\) on the nonconjugate pairs, and an unrestricted
+bilinear form on the conjugate pairs. On the graph of \(w_0\) these
+are quadratic terms, summed over the product factors. The last
+quadratics are killed by harmonicity as in
+Proposition~\ref{newtheta:goodjet}. In the exponential of the
+nonconjugate quadratic each derivative of order \(j\) at zero is
+a sum over partitions into pairs of the \(j\) labelled derivative
+positions. This follows by differentiating \(\partial_i\exp
+Q=(\exp Q)\partial_i Q\); a singleton has zero value and derivatives
+of \(Q\) of order greater than two vanish. Each summand costs at
+most \(\lfloor j/2\rfloor v(\Delta)\). Leibniz's formula for the
+remaining integral factors gives the claimed bound.
+\end{proof}
+
+\begin{proposition}[All abelian tests at a locally standard lattice]
+\label{intjet:standard}
+Suppose \(\Lambda_\ell=(O_E^n)_\ell\) and the integral abelian data
+above are given. For every allowed \(N\) and each pair of translation
+points in the original order one has
+\[
+ v(J_{P,N}(u,z))\ \ge\
+ d\bigl(v(N)-v(M)\bigr)-\lfloor d/2\rfloor v(\Delta).
+\]
+In particular \(D_M^2\) clears the rescaled sum at every such test,
+including the level primes, \(2\), and primes ramified in \(E\).
+\end{proposition}
+\begin{proof}
+Let \(N_0=\operatorname{lcm}(M,\exp(O_E^n/\Lambda_0))\) as before.
+Now \(v(N_0)=v(M)\). The identity
+\(J_{P,N}= (N/N_0)^d J_{P,N_0}\) on the generic fibre proved in
+Proposition~\ref{newtheta:goodjet} works whether or not \(\ell\mid N_0\).
+All torsion points of the smaller test extend after finite extension
+by properness. For \(t\in A[N_0^2]\) the line \(T_t^*L^{N_0^2}\)
+is integrally isomorphic to \(L^{N_0^2}\). The class of their
+ratio in the dual abelian scheme is zero since \(N_0^2t=0\),
+and an invertible module on the local base is free. Any integral
+translation lift has its \(N_0^2\)-th power in \(R^\times\).
+The generic scalar adjusting it to the normalized lift therefore
+has valuation zero. This applies to both translations in succession,
+also for torsion of residue-characteristic-power order.
+The smaller-level section has integral raw germ. Apply
+Lemma~\ref{intjet:der}. Local standardness makes \(P\) integral in
+the standard columns and \(s\) integral at this place. Sum after the
+index cancellation of Lemma~\ref{newtheta:index} and use
+\(D_M=C_M(M\Delta)^d\).
+\end{proof}
+
+\begin{theorem}[The trace at an arbitrary self-dual lattice at abelian reduction]
+\label{intjet:trace}
+Suppose the abelian data above extend integrally. Take any
+\(\Lambda,N,P,s\) in the rescaled series, with \(\Lambda\) standard
+at the primes of \(M\), and the prescribed level points \(t_u\).
+At a prime \(\ell\nmid M\),
+\[
+ v\left(s\sum_{\bar z\in Z_\Lambda/K_0}J_{P,N}(u,\bar z)\right)
+ \ \ge\ d\,v(N)-\lfloor d/2\rfloor v(\Delta)
+ \qquad(u\in\mathcal Q).
+\]
+Together with Proposition~\ref{intjet:standard}, this proves the
+finite denominator test at every residue characteristic on these
+abelian models.
+\end{theorem}
+\begin{proof}
+Let \(O=O_E\), \(B=A^n\), \(B_0=\Lambda_0\otimes_O A\) and
+\(B_1=\Lambda\otimes_O A\). A full lattice over the Dedekind
+ring \(O\) is finitely generated projective. Its tensor with \(A\)
+is obtained by splitting an idempotent on a product of copies of
+\(A\). This gives abelian schemes over \(R\). Their Lie algebras
+are obtained by taking the same tensor with \(\operatorname{Lie}A\).
+Consider the maps induced by
+\[
+ O^n\xrightarrow{\,N\,}\Lambda_0
+ \xrightarrow{\,i\,}\Lambda,\qquad
+ \Lambda_0\xrightarrow{\,j\,}O^n
+\]
+where \(i,j\) are inclusions. Write \(a_0,i,j\) also for the
+resulting isogenies, and \(a=i a_0\). Then \(j a_0=[N]\).
+These maps are isogenies on every fibre since suitable integer
+multiplications factor through them in both directions. They
+are finite flat by properness and flatness of a quasi-finite map
+between smooth schemes of the same relative dimension.
+
+Give each tensor scheme its rigidified line from the graph of
+\(w_0\) in the polarized biextension for the restricted Hermitian
+form. Denote the lines on \(B,B_1\) by \(\mathcal L,\mathcal L_1\).
+Then \(j^*\mathcal L=i^*\mathcal L_1\) and
+\(a^*\mathcal L_1=[N]^*\mathcal L=\mathcal L^{N^2}\)
+by rigidified identifications. To see the normalization, on free
+modules a matrix \(U\) pulls the biextension for a Hermitian
+matrix \(G\) back to that for \(U^\dagger G U\). Expand the
+biextension in its two arguments and move each first-argument
+entry across by Rosati adjunction. These identifications are
+the identity on the axes. Restriction to direct summands proves
+the assertion for projective modules as well. This construction
+uses the line on the graph, so no choice among symmetric lines
+inducing the same polarization is needed. See Amir-Khosravi,
+\S\S1.2--1.4~\cite{serreTensor}.
+
+On the geometric generic fibre, the period lattice calculation of
+Lemma~\ref{newtheta:index} gives \(\ker a=Z_\Lambda\) and
+\(\ker a_0=K_0\). The natural action of \(\ker a\) on the pullback
+line is exactly its normalized lift. It has \(N^2\)-th power one,
+and inversion on the symmetric pullback sends the lift to its
+inverse. These conditions determine the lift since \(N\) is odd.
+In particular they agree with the products of the individual
+normalized lifts on the \(n\) factors by the same uniqueness.
+Put \(t_0=j^*(s_0^{\boxtimes n})\), viewed as a section of
+\(i^*\mathcal L_1\). Before the level translation the sum of
+the \(|Z_\Lambda/K_0|\) translated sections on \(B\) is
+\[
+                 a^*\operatorname{Tr}_i(t_0).
+\]
+Indeed a finite étale isogeny on the generic fibre has trace
+equal, after pullback, to the sum over its kernel. The input
+on \(B\) was \(a_0^*t_0=[N]^*(s_0^{\boxtimes n})\).
+
+The determinant of \(di\) generates the ideal
+\(\mathfrak b R=\prod_\tau
+ (\tau(\det\Lambda_0\,\det\Lambda^{-1})R)^{m_\tau}\).
+Choose bases of the two lattices over the semilocal Dedekind
+ring \(O\otimes\mathbf Z_{(\ell)}\), where they are free.
+The determinant on each generic eigenspace is the indicated
+embedding of the determinant of the inclusion, repeated \(m_\tau\)
+times. The chosen bases give integral changes of basis on the
+Lie lattices, so this calculates their determinant ideal even
+when the eigenspaces do not split integrally.
+Translation of invariant differential frames carries this same
+different ideal to every point. For a finite flat map between smooth
+schemes of equal relative dimension the different is generated by
+the determinant of its differential. Locally in the finite
+algebra the trace functional is this generator times a generator
+of the dualizing module, by the complete intersection formula
+for the different~\cite{tateDifferent}. Trivializing \(\mathcal L_1\)
+shows that \(\operatorname{Tr}_i(t_0)\) is divisible by
+\(\mathfrak b R\) as a section. Thus \(S=s\operatorname{Tr}_i(t_0)\)
+is integral, including when \(v(s)<0\).
+
+It remains to apply the actual final translation. Its point
+\(t=t_u\) is killed by a power of the half-level ideal, hence by
+a power of \(M\); this extra condition is part of the evaluation
+rule. In particular its order \(h\) is prime to \(\ell\).
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean}{252}{The support of the prescribed division point}.
+Set \(b=a(t)\). Rigidify the line
+\(\mathcal D=T_b^*\mathcal L_1\otimes\mathcal L_1^{-1}\) at zero
+by choosing an integral generator of its fibre. It is an element
+of \(\operatorname{Pic}^0(B_1)[h]\), since \(b\mapsto
+T_b^*\mathcal L_1\otimes\mathcal L_1^{-1}\) is a homomorphism
+to the dual abelian scheme. Thus \(\mathcal D^h\) has an integral
+rigidified trivialization. On the formal neighborhood of zero
+there is a unique \(h\)-th root frame with prescribed value at
+zero and this trivialization as its \(h\)-th power. Coefficient
+recursion only divides by the unit \(h\).
+
+The normalized lift at \(t\) identifies the translation of
+\(a^*S\) with the pullback of \(T_b^*S\), followed by an
+isomorphism \(a^*\mathcal D\to\mathcal O_B\). This isomorphism
+is integral by the translation-lift argument of
+Proposition~\ref{intjet:standard}. Its \(h\)-th power and the
+pullback of the chosen trivialization differ by a global unit
+of the abelian scheme, hence by an element of \(R^\times\).
+It takes the pullback of the root frame to a constant unit:
+over the fraction field a formal unit whose \(h\)-th power is
+constant is constant. In particular, in the formal neighborhood
+the translated section is, up to a constant unit, \(a^*\) of
+an integral germ of \(\mathcal L_1\), obtained by dividing the
+germ \(T_b^*S\) by the root frame. This explains why the final
+translation does not change the trace divisibility.
+
+To compute the jet of this pullback, choose a split surjection
+\(U:O^t\to\Lambda\) with section \(V:\Lambda\to O^t\),
+extended rationally, and put \(G=U^\dagger U\). Its entries
+are integral by self-duality. View \(U\) as an \(n\)-by-\(t\)
+matrix in \(E^n\). Then \(UV=I_n\), \(V^\dagger G V=I_n\),
+and \(NV\) has integral entries. The map \(a\) factors as \(NV\)
+followed by \(U\). Pull the integral germ back by \(U\); its raw
+coefficient in an integral frame of the line for \(G\) is integral.
+In the corrected frame the chain rule for \(NV\) gives \(N^d\)
+times the differential operator \(P_V\) obtained from \(P\)
+by sending a column-direction \(v\) of type \(\tau\) to
+\(\tau(V)v\). Indeed in logarithm coordinates the map is
+linear on each eigenspace. The corrected biextension frame
+multiplies in both arguments and intertwines the adjoint
+\(O\)-actions by its defining identities. Expanding the matrix
+entries in these identities identifies its pullback with the
+corrected frame for \((NV)^\dagger G(NV)=N^2 I_n\).
+Thus the comparison differentiates the full section with the
+same correction as in the original jet.
+
+The coefficients of \(P_V\) are integral. The defining integral
+polynomial ring is generated by the linear directions from
+\(\Lambda\), and \(V\Lambda\subset O^t\).
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean}{235}{Integral polynomial directions of a nonstandard lattice}.
+For the Hermitian matrix \(G\) the quadratic ambiguity in the
+corrected log frame comes from summing
+\(h(X_j,w_0G_{jk}X_k)\) over its columns. For a conjugate pair
+of types its contraction on \(P_V\) uses the coefficients
+\(\bar\tau(G_{jk})\). By the ordinary chain rule and
+\(V^\dagger G V=I_n\), it is the image under \(V\) of the standard
+contraction on \(P\); hence it vanishes. All other terms obey
+Lemma~\ref{intjet:der} because the entries of \(G\) and \(w_0\)
+are integral. This costs at most \(\lfloor d/2\rfloor v(\Delta)\).
+The factor \(N^d\) proves the stated inequality.
+\end{proof}
+
+\paragraph{The norm of the generator at semiabelian reduction.}
+Let \(\mathcal A/R\) be the semiabelian model in an integral test,
+with abelian generic fibre \(A\), rigidified cubical line
+\(\mathcal L\), integral section \(s_0\), and integral tangent
+vectors. Its principal polarization is \(\lambda\). Write
+\(\mathcal P\) for the rigidified Poincaré line of \(A\times A^t\).
+In this test \(L=(1,\lambda w_0)^*\mathcal P\), with
+\(w_0+\bar w_0=1\) and \(\bar w_0\) the Rosati adjoint of \(w_0\).
+Indeed these are the graph-line and adjunction conditions of the
+datum. The graph identification can be made rigidified by its value
+at zero. A rigidified isomorphism of cubical lines on an abelian
+variety respects the cube structure by uniqueness.
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/TwoWeightEqOneAddRoot.lean}{82}{Graph-line condition};
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/VAtVNeBot.lean}{53}{The integral model, eigendirections and theta generator}.
+
+\begin{lemma}[The maximum of the canonical theta norm]\label{intjet:maximum}
+On the analytification over the completed algebraic closure, the
+canonical norm of \(s_0\) is at most one everywhere. Its maximum
+is attained at the point of the skeleton belonging to the identity
+component of the special fibre.
+\end{lemma}
+\begin{proof}
+Use the valuation \(v=-\log|\cdot|\) with normalized uniformizer.
+One may make a valued extension for this calculation. For the split
+Raynaud uniformization let \(Y\) be the period lattice,
+\(\Phi:Y\longrightarrow X\) its identification with the character
+lattice under the principal polarization, and \(b\) the positive
+definite monodromy form on \(Y_{\mathbb R}\).
+For any rigidified ample line \(H\) giving \(\lambda\) take its
+descent data on the Raynaud extension. Denote the constant of descent
+at \(u\in Y\) by \(c_H(u)\) and the period pairing by \(t\), using
+the convention
+\[
+ c_H(u+v)=c_H(u)c_H(v)t(u,\Phi v),\qquad
+ -\log\|t(u,\Phi v)\|=b(u,v).
+\]
+Products in this identity use the biextension identifications of
+the fibres. The Poincaré line pulled back by \(1\times\lambda\)
+is \(m^*H\otimes p_1^*H^{-1}\otimes p_2^*H^{-1}\), with its
+rigidification. Pulling back by the graph of \(w_0\) and taking
+the quotient of the three descent constants therefore gives
+\[
+ c_L(u)=\frac{c_H(u+w_0u)}{c_H(u)c_H(w_0u)}
+       =t(u,\Phi w_0u),\qquad
+ -\log\|c_L(u)\|=b(u,w_0u)=\tfrac12 b(u,u).
+\]
+The last equality uses \(b(w_0u,v)=b(u,\bar w_0v)\), by functoriality
+of the dual period pairing, and symmetry of \(b\).
+
+Here are the precise standard uniformization results used to pass
+from this computation to a metric. The balanced translate in
+de Jong--Shokrieh, Proposition~8.3, has descent valuation
+\(b(u,u)/2\). Translation by a point of tropical coordinate \(z\)
+adds \(b(u,z)\) to the descent valuation (Lemma~8.1).
+Thus the balancing point for the present triple has \(z=0\).
+It acts trivially on the skeleton. The symmetry of both lines makes
+its image a two-torsion point, since \(T_y^*L\simeq T_{-y}^*L\)
+implies \(\lambda(2y)=0\). Their canonical metrics correspond under
+translation up to a constant from rigidification (Lemma~5.1).
+For the balanced translate Proposition~9.1 and the tropical
+Riemann theta formula give on \(Y_{\mathbb R}/Y\)
+\[
+        -\log\|s_0(\nu)\|=\mathrm{constant}
+                      +\tfrac12\min_{u\in Y} b(u+\nu,u+\nu).
+\]
+Its minimum occurs at \(\nu=0\bmod Y\). Corollary~10.4 gives
+the same maximum of the norm over the whole analytification.
+Proposition~10.3 at the identity component identifies the negative
+log norm there with the order of the original section along that
+component in its cubical model. This order is nonnegative by
+integrality. This last application uses the original rigidification,
+so no unspecified metric constant enters the inequality.
+See de Jong and Shokrieh, \S\S6--11~\cite{deJongShokrieh}, and the
+Raynaud theta descent in Foster, Rabinoff, Shokrieh and Soto,
+\S\S3--4~\cite{fosterTheta}.
+\end{proof}
+
+\begin{lemma}[Integral traces on identity discs]\label{intjet:disc}
+Let \(i:C_0\to C_1\) be an isogeny of abelian generic fibres induced
+by an inclusion of full projective \(O_E\)-lattices tensored with
+\(\mathcal A\). Write \(\mathfrak d R\) for the determinant ideal
+of its differential on the integral Lie algebras. Let \(L_1\)
+be a symmetric cubical line on \(C_1\) with its canonical metric
+and integral cubical extension to the identity model. Suppose
+\(u\) is a section of \(i^*L_1\) bounded by one everywhere
+in the pullback metric. Write \(T=\operatorname{Tr}_i u\).
+Take \(b\in C_1[h]\), where \(h\) is odd and prime to the residue
+characteristic, choose \(c\) with \(hc=b\) and \(h^2c=0\),
+and suppose the normalized translation at \(c\) exists on
+\([h]^*L_1\). On the formal disc at zero the raw coefficient of
+\(\widetilde T_c[h]^*T\) in an integral frame of \([h]^*L_1\)
+is divisible by \(\mathfrak d R\).
+\end{lemma}
+\begin{proof}
+Extend the ground field finitely to contain the points of the
+relevant finite fibres. The homomorphism of completed identity
+discs of the two models is finite flat. For details, each smooth
+disc has ring \(R[[X_1,\ldots,X_g]]\). On special fibres the
+kernel of \(i\) is finite since an integer multiplication factors
+through \(i\) and acts as an isogeny of semiabelian varieties.
+Consequently the images of target parameters and a uniformizer
+generate an ideal primary to the maximal ideal of the source.
+Lifting a basis of the finite quotient by this ideal and iterating
+in the ideal gives finite generation over the complete target ring.
+These \(g+1\) parameters form a regular sequence in the regular
+local source. The local criterion for flatness, successively along
+the parameters, gives a finite free module. This finite, finitely
+presented flat map is a local complete intersection at the closed
+point: its closed fibre is cut out by the regular sequence of \(g\)
+specialized parameters in the smooth special-fibre disc. The complete
+intersection locus is open, hence contains the whole local spectrum.
+The finite module of relative differentials is computed by the
+formal Jacobian. Indeed derivations into finite modules are
+continuous for the maximal-ideal topology by the product rule and
+these modules are complete. In integral translation-invariant
+differential bases the Jacobian determinant has constant ideal
+\(\mathfrak d R\). Thus the trace of any power series in the source
+lies in \(\mathfrak d R[[Y]]\) by the different formula in
+Theorem~\ref{intjet:trace}.
+
+The rigid generic fibre of either completed local ring is its open
+unit polydisc. The disc map just constructed is surjective there:
+the finite free map has positive rank, and points lying above a
+point reducing to zero reduce to zero in this local map. More
+explicitly the primary-ideal identity gives, for some \(e\),
+\(X_j^e\in(\pi,i_1(X),\ldots,i_g(X))\); thus every point of the
+finite formal fibre above such a point has \(|X_j|<1\). Finite
+base change, or evaluation first on closed subdiscs, gives the
+analytic covering. It is étale in characteristic zero, and each
+fibre is a coset of the subgroup \(K^\circ\subset\ker i\) lying in
+the identity disc. The full preimage over that disc in the abelian
+generic fibre is the disjoint union of its translates indexed by
+\(\ker i/K^\circ\). Indeed choose a disc preimage of a given
+point. All other preimages differ by elements of \(\ker i\), and
+two translated discs meet precisely when their translates differ by
+an element of \(K^\circ\).
+
+An integral frame of a symmetric cubical line on the identity disc
+has canonical norm one. To see the metric comparison, on the generic
+fibre of the formal completion along the entire special fibre take
+the model metric. This domain is covered by finitely many compact
+affinoids and is stable under doubling. The rigidified cubical
+isomorphism for \([2]\) implies that the logarithm \(F\) of the
+ratio of canonical and model metrics satisfies \(F(2x)=4F(x)\).
+It is bounded on this domain, so iteration gives \(F=0\).
+An integral formal frame differing from a model frame by a power
+series with unit constant term has the same norm on the identity
+disc. The canonical metric is functorial for rigidified isogeny
+pullbacks by the same doubling argument on the compact generic
+fibre.
+
+A finite-order lift \(U\) of translation at any torsion point
+preserves the canonical metric on its symmetric line. Choose
+\(m>1\) congruent to one modulo the order of the point. Translation
+commutes with \([m]\); comparison of the two line isomorphisms
+on the proper connected generic fibre differs by a scalar.
+The continuous logarithmic distortion therefore satisfies
+\(F([m]x)=m^2F(x)+\mathrm{constant}\). Iteration on the compact
+space makes \(F\) constant, and the finite order of \(U\) makes it
+zero. This also applies to the normalized lift at \(c\).
+
+In the identity frame on the target, view the translated pullback
+as the trace above \(y\mapsto b+[h]y\), using that lift to identify
+the line. Multiplication by \(h\) is an isomorphism on either
+identity disc, by the integral formal inverse function theorem.
+For each class in \(i^{-1}(b)/K^\circ\), choose a representative
+\(x\). The preimages on its sheet are parametrized by
+\(x+[h]z\), with \(i(z)=y\). On this disc the coefficient of
+\(u(x+[h]z)\) in the pulled-back translated frame is analytic of
+absolute value at most one, by the metric calculation. Every such
+function on the open unit polydisc has an integral power series:
+apply the Gauss norm bound on closed polydiscs of radii tending to
+one, after a valued extension if needed. The coefficients already
+belong to the field of definition. The sum over this sheet is the
+trace of that power series under the finite free formal map \(i\).
+On geometric generic fibres this is the usual sum over the sheet,
+which identifies the two analytic traces. Each is divisible by
+\(\mathfrak d R\), so their finite sum has the same divisibility.
+\end{proof}
+
+\begin{theorem}[Finite denominators at semiabelian tests]\label{intjet:semi}
+At every integral test with the stated semiabelian, cubical and
+Hodge data, \(D_M^2\) clears the rescaled finite theta sum. The
+valuation inequalities of Proposition~\ref{intjet:standard} at
+locally standard lattices and of Theorem~\ref{intjet:trace} away
+from \(M\) hold also at semiabelian reduction.
+\end{theorem}
+\begin{proof}
+At a locally standard lattice use \(N_0\) and the generic-fibre
+identity of Proposition~\ref{intjet:standard}. The norm of the
+generator is at most one everywhere by Lemma~\ref{intjet:maximum}.
+Its normalized pullback by \([N_0]\) and its two finite-order
+translates have the same bound, by functoriality and the isometry
+proved in Lemma~\ref{intjet:disc}. In the integral formal frame
+at zero their raw germs therefore have integral coefficients by
+the polydisc argument. Lemma~\ref{intjet:der} applies on a smooth
+semiabelian formal group verbatim: it uses the formal group law,
+the integral tangent directions and the cubical adjunction.
+This proves the individual inequality, also when \(\ell\mid M\).
+
+For \(\ell\nmid M\) use the notations \(a_0,i,j,a\) in
+Theorem~\ref{intjet:trace}. The tensor models are direct summands
+of products of the smooth semiabelian scheme. An idempotent on a
+smooth group gives a product decomposition by its image and the
+image of its complement: these are the closed kernels of the
+opposite projections, and addition and the pair of projections
+are mutual inverses. Each factor is smooth by the lifting
+criterion and has semiabelian fibres as a direct factor of such a
+group. The graph-line construction on these models uses only the
+integral cubical biextension and its \(O_E\)-adjunction. On the
+generic fibre the identities of pullback lines and normalized
+translations give, after summing the first translation,
+\(a^*\operatorname{Tr}_i(j^*s_0^{\boxtimes n})\), as before.
+The section inside this trace has norm at most one everywhere,
+since the rigidified line identifications are isometries.
+
+The final point \(t\) has odd order \(h\) prime to \(\ell\).
+Take \(t'\) with \(ht'=t\), and set \(c=a(t')\), \(b=a(t)\).
+The normalized lift at \(c\) on \([h]^*\mathcal L_1\) exists:
+\(h^2c=0\) and \([h]^*\mathcal L_1=\mathcal L_1^{h^2}\).
+Set \(T=\operatorname{Tr}_i(j^*s_0^{\boxtimes n})\).
+The sections
+\[
+       [h]^*\widetilde T_t\,a^*T,\qquad
+           a^*\widetilde T_c\,[h]^*T
+\]
+agree up to a root of unity. Both arise from the same translation
+\(t'\) on \([h]^*a^*\mathcal L_1\), by pulling back the respective
+lifts and using \([h]T_{t'}=T_t[h]\) and \(aT_{t'}=T_ca\).
+These two lifts have finite order: a power divisible by the point
+order and the order of the original lift is the identity. Their
+ratio is a scalar on the proper generic fibre, hence is a root
+of unity. Lemma~\ref{intjet:disc} gives divisibility by
+\(\mathfrak b R\) for the section on the right before applying
+\(a^*\), since the determinant on integral Lie algebras has
+exactly the same ideal computed in Theorem~\ref{intjet:trace}.
+Multiplication by \(s\in\mathfrak b^{-1}\) gives an integral raw
+germ. Apply the integral polynomial and harmonic chain rule for
+\(a=U(NV)\) in that theorem. The extra pullback \([h]\) on the
+left multiplies a homogeneous corrected jet by \(h^d\), a unit.
+The factor \(N^d\) and the loss of at most
+\(\lfloor d/2\rfloor v(\Delta)\) follow as claimed. The index
+cancellation and the level factor \(D_M=C_M(M\Delta)^d\) finish
+the original finite-place test.
+\end{proof}

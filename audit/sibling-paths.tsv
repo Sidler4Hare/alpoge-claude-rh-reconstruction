@@ -1,0 +1,9 @@
+root	target	step	from_id	from	via	to_id	to
+riemannZeta_eq_zero_re	RiemannZetaZerosOnLine	1	14065057	riemannZeta_eq_zero_re	type	14065055	RiemannZetaZerosOnLine
+LFunction_eq_zero_re	Claim.strip	1	14065124	LFunction_eq_zero_re	value	14065123	claimAll
+LFunction_eq_zero_re	Claim.strip	2	14065123	claimAll	value	14065107	Claim.strip
+LFunction_eq_zero_re	Claim.prim_zero	1	14065124	LFunction_eq_zero_re	value	14065123	claimAll
+LFunction_eq_zero_re	Claim.prim_zero	2	14065123	claimAll	value	14065107	Claim.strip
+LFunction_eq_zero_re	Claim.prim_zero	3	14065107	Claim.strip	value	14065085	Claim.prim_zero
+LFunction_eq_zero_re_of_isPrimitive	Formalism.VW.critLine	1	14065146	LFunction_eq_zero_re_of_isPrimitive	value	14065138	critAll
+LFunction_eq_zero_re_of_isPrimitive	Formalism.VW.critLine	2	14065138	critAll	value	14065131	Formalism.VW.critLine

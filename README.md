@@ -1,86 +1,118 @@
 # From Theta Lifts to the Critical Line
 
-**Independent Paper Reconstruction & Audit of the Alpöge–Claude Argument for Dirichlet $L$-Functions**
+Independent paper reconstruction and audit of the Alpöge–Claude argument for Dirichlet $`L`$-functions. Revised 21 November 2026, 250 pages.
 
-> **Edition:** Revised 21 November 2026 (250 pp.) — **Conditional Paper Proof Complete (Theorem 1.3)**  
-> **Provenance:** Full end-to-end breakdown and initial paper reconstruction carried out by **GPT-6.2 Astra**, consuming approximately **70% of a single Pro 100 weekly quota**.  
-> **Active Focus:** Continuing work on the core arithmetic estimates **(15.1)** and **(15.2)**.
+[Read the paper (PDF)](./Arithmetic-reconstruction-after-review.pdf) · [Download the repository (ZIP)](https://github.com/Sidler4Hare/alpoge-claude-rh-reconstruction/archive/refs/heads/main.zip) · [LaTeX source](./main.tex) · [Proof status by theorem and page](./audit/paper-proof-status.tsv)
 
----
+Theorem 1.3 proves a **conditional critical-line theorem**. Either of two uniform arithmetic estimates on arbitrarily late windows implies the critical-line assertions for the Riemann zeta function and every Dirichlet $`L`$-function. Establishing one of the estimates on the whole arithmetic family remains open in this reconstruction, including for $`\psi=1`$. The two estimates are (15.1) on p. 243 and (15.2) on p. 244.
 
-## Overview
+The paper reconstructs the mathematical argument of the 20 November 2026 Lean 4 formalization announced by L. Alpöge with Claude. The upstream project used Lean 4.33.1 and contains 175,187 compiled modules, with approximately 1.48 million declarations in each root's dependency closure. The paper checks signs, normalizations, shared arithmetic data and the order of quantifiers. Section 14 distinguishes the published machine checks from the paper deductions. [Pinned upstream source](https://github.com/leanprover-community/riemann-hypothesis/tree/40e56bab026552e089d7afcfeff08d2defb9c005)
 
-This repository contains an independent, human-readable mathematical reconstruction and dependency audit of the 20 November 2026 Lean 4 formalization of the Riemann Hypothesis (RH) and Dirichlet Generalized Riemann Hypothesis (GRH) announced by L. Alpöge with Claude (pinned community mirror revision `40e56bab0265`, Lean `4.33.1`).
+## The two arithmetic estimates
 
-The 250-page exposition extracts the mathematical structure of the formal proof (~175,187 compiled modules; ~1.48M declarations per root closure), supplies self-contained paper proofs using standard literature where available, audits critical signs, normalizations, and quantifier orders, and isolates the exact arithmetic inequalities **(15.1)** and **(15.2)** that remain open on paper.
+### Pointwise translate estimate (15.1)
 
----
+Fix a primitive Dirichlet character $`\psi`$ and a sufficiently small positive $`\varepsilon`$. For every $`Y_0`$ there must be a $`Y\ge\max(1,Y_0)`$ such that at **every** $`x\in[Y,Y^{3/2}]`$ one can choose common host, frame and weight data $`\mathcal D_x`$. These must satisfy the scale, coset-share, rank and discarded-character hypotheses in Sections 10 and 15. With that choice fixed, (15.1) requires the following for **every** $`u\in A_0(\mathcal D_x)`$.
 
-## Core Targets: Equations (15.1) and (15.2)
+```math
+\begin{aligned}
+D_u(\mathcal D_x)
+  &=\sum_{t\in T}\sum_{j=1}^{m}
+       \bigl(\mathrm{ASK}_{u,t,j}-\mathrm{MAIN}_{u,t,j}\bigr)\\[2pt]
+  &\le E_x(\mathcal D_x).
+\end{aligned}
+```
 
-The manuscript proves **Theorem 1.3** unconditionally on paper: **all critical-line assertions for $\zeta(s)$ and every Dirichlet $L$-function $L(s,\chi)$ (Theorem 1.1)** follow from arbitrarily late window bounds on the weighted prime-power discrepancy, via either of two uniform arithmetic estimates.
+The common error budget is
 
-### 1. Pointwise Translate Estimate — (15.1)
+```math
+\begin{aligned}
+E_x(\mathcal D_x)
+ &= x^{5\varepsilon}\Bigl(n_T a_E+\frac{n_T a_E m^2}{k}\\[2pt]
+ &\qquad {}+2n m^2 b x^\varepsilon
+              +\frac{m b n_2 k x^{2\varepsilon}}{n^2}\Bigr).
+\end{aligned}
+```
 
-For every primitive Dirichlet character $\psi$, every sufficiently small $\varepsilon > 0$, and every $Y_0$, there exists $Y \ge \max(1, Y_0)$ such that at every scale $x \in [Y, Y^{3/2}]$ there are common host, frame, and weight data $\mathcal{D}_x$ satisfying the scale, coset-share, rank, and discarded-character hypotheses of Sections 10 and 15, and for **every** translate $u \in A_0(\mathcal{D}_x)$:
+### Signed translate mean (15.2)
 
-$$D_u = \sum_{t \in T} \sum_{j=1}^{m} \bigl(\mathrm{ASK}_{u,t,j} - \mathrm{MAIN}_{u,t,j}\bigr) \le x^{5\varepsilon}\!\left(n_T a_E + \frac{n_T a_E m^2}{k} + 2 n m^2 b x^\varepsilon + \frac{m b n_2 k x^{2\varepsilon}}{n^2}\right) =: E_x(\mathcal{D}_x). \tag{15.1}$$
+The same choice of window and common data suffices if the uniform **signed mean** over the translate subgroup satisfies
 
-### 2. Weaker Signed Translate-Average Estimate — (15.2)
+```math
+\frac{1}{\lvert A_0(\mathcal D_x)\rvert}
+\sum_{u\in A_0(\mathcal D_x)}D_u(\mathcal D_x)
+\le E_x(\mathcal D_x).
+```
 
-Theorem 1.3 also follows upon replacing the pointwise translate condition (15.1) with its **uniform average over the subgroup $A_0(\mathcal{D}_x)$**:
+**Four primitive twists.** Proposition 10.4 computes $`2\bar D/(B\delta)`$ with an explicit remainder. Each power of $`\psi`$ contributes the primitive inducers of $`\psi^a,\ \psi^aJ_q,\ \psi^aJ_d,\ \psi^aJ_qJ_d`$ with signs $`+,+,-,-`$. Corollary 10.5 bounds the three discarded twists using Theorem 6.4. For $`\psi=1`$, the main term is $`G[1]+G[J_q]-G[J_d]-G[J_qJ_d]`$. Corollary 10.6 shows that supplying the common arithmetic hypotheses and (15.2) at the **integer squares** in each window suffices for the critical-line implication. [Section 10](./sections/arithmetic.tex)
 
-$$\frac{1}{|A_0(\mathcal{D}_x)|} \sum_{u \in A_0(\mathcal{D}_x)} D_u(\mathcal{D}_x) \le E_x(\mathcal{D}_x). \tag{15.2}$$
+**One slope comparison.** Section 8.6 forms a direct sum over translates before composing the first operator. Each path keeps its translate label. Lemma 8.11 measures the finite denominator and archimedean norm costs, whose mean is $`\mathcal J`$. Theorem 8.12 and Corollary 8.13 compare slopes in a single normalized trace even when ranks and frame defects vary with $`u`$. The low target-slope tail contributes $`T_{\mathrm{out}}`$. [Section 8.6, pp. 104–107](./sections/translate-slopes.tex)
 
-Key reductions established on paper around **(15.2)**:
+**How much error the window permits.** Proposition 11.3 and Corollaries 11.4–11.5 apply the mean division bound (11.1) and the frame, variation and size hypotheses on one host. At $`e_{\mathrm{div}}\le2`$, $`e_{\mathrm{loss}}=0`$, put $`y=x^\varepsilon`$ and define
 
-- **Exact Four-Twist Evaluation (Proposition 10.4 & Corollary 10.5):** The normalized translate mean $\frac{2\bar{D}}{B\delta}$ is computed explicitly in terms of four primitive twists ($\psi^a$, $\psi^a J_q$, $\psi^a J_d$, $\psi^a J_q J_d$) for each power of $\psi$, with the three discarded twists bounded uniformly by Theorem 6.4. For $\psi = 1$ (ordinary $\zeta$), the main term reduces to four real functions: $G[1] + G[J_q] - G[J_d] - G[J_q J_d]$.
-- **Discrete Test at Integer Squares (Corollary 10.6):** For the critical-line implication, it suffices to supply the common data and **(15.2)** solely at the **integer squares** inside each window $[Y, Y^{3/2}]$.
-- **Single Translate-Averaged Slope Comparison (Section 8.6 & Section 11.1):** Forming a labelled direct sum across translates before composing the first edge yields a **single normalized trace/slope comparison** (**Theorem 8.12**, **Corollary 8.13**) that allows ranks and frame defects to vary with $u$ and tracks explicit subadditive lattice-denominator and archimedean repair costs $\mathcal{J}$ (**Lemma 8.11**) and exceptional target-slope tails $T_{\mathrm{out}}$.
-- **Reduction of (15.2) to One Mean Division, One Slope Comparison, and One Signed Loss (Proposition 11.3, Corollaries 11.4–11.5):** On the actual numerical scales ($e_{\mathrm{div}} \le 2$, $e_{\mathrm{loss}} = 0$), writing $\Delta = \mathbb{E}(\mathcal{A}_u - G_u + \kappa I_u) - (1+\kappa)L_P$, **(15.2)** follows from the mean division bound (11.1), the frame/variation hypotheses, and the explicit defect-reserve inequality (with no extra logarithmic loss in $|A_0|$):
-  $$\Delta + \frac{4\mathcal{J}}{1 - \delta_*} + T_{\mathrm{out}} \le (y^5 - y^3) P \qquad \bigl(y = x^\varepsilon\bigr). \tag{11.4}$$
-  When $\mathcal{J} = T_{\mathrm{out}} = 0$ and $\Delta \le 0$, this tightens the window bound directly to $G_{\mathcal{F}_\psi}(x) \le x^{1/2+7\varepsilon}$.
+```math
+\begin{aligned}
+P &= n_T a_E(1+m^2/k)+m(B_0+N_c),\\[2pt]
+\Delta &= \mathbb{E}_{u\in A_0}(\mathcal A_u-G_u+\kappa I_u)
+                -(1+\kappa)L_P.
+\end{aligned}
+```
 
-> **Scope Notice:** On the paper arguments available in this edition, both **(15.1)** and **(15.2)** remain open (including for $\psi = 1$). Full machine-checked verdicts apply to the pinned upstream Lean export.
+Under those hypotheses the following single inequality, numbered (11.4) in the paper, suffices for (15.2).
 
----
+```math
+\Delta+\frac{4\mathcal J}{1-\delta_*}+T_{\mathrm{out}}
+\le (y^5-y^3)P.
+```
 
-## Paper Coverage & Remaining Inputs Toward (15.1) and (15.2)
+This gives the window exponent $`1/2+9\varepsilon`$. If $`\mathcal J=T_{\mathrm{out}}=0`$ and $`\Delta\le0`$, the same argument gives $`G_{\mathcal F_\psi}(x)\le x^{1/2+7\varepsilon}`$. The arithmetic bounds must hold uniformly on the required windows. [Section 11.1, pp. 234–237](./sections/mean-assembly.tex)
 
-| Section(s) | Pages | Topic | Paper Status | Established on Paper | Remaining Arithmetic Inputs for (15.1) / (15.2) |
-| :--- | :---: | :--- | :---: | :--- | :--- |
-| **§1, §12, §13** | 2–3, 237–241 | One-sided window zero exclusion & critical-line deduction | **Complete** | Polar divisor (Prop 12.1), exponential concentration (Lemma 12.2), signed derivative bound & pole isolation (Lemmas 12.3–12.4, Thm 12.5), full GRH/RH deduction | None |
-| **§10** | 226–232 | Fourier extraction, translate mean & square test | **Complete** | Inertia-orthogonality discrepancy (Lemma 10.1), four-loss extraction (Prop 10.3), translate mean & discarded-twist bound (Prop 10.4, Cor 10.5), integer-square test (Cor 10.6) | None (reduces Theorem 1.1 to (15.1) or (15.2)) |
-| **§4.1–4.2, §6, §7** | 18–21, 87–95 | Auxiliary primes, CM host fields, orbits & thin scales | **Complete** | $O(Q^{1/4})$ auxiliary-box density (Lemma 4.1), Siegel-zero-safe selection of $(q,d)$ (Thm 6.4), cyclotomic CM host & half-different lattice (Prop 7.1, Lemma 7.2), rank fit (Lemma 7.3), orbit-avoiding set & biased top set (Prop 7.4, Lemma 7.5), thin-coordinate decay (Prop 7.6), CM scalar bound (Prop 7.8) | Simultaneous automorphic realization across translates (§11) |
-| **§2, §3** | 3–18 | Weighted-trace Galois representations & crystalline lattices | **Partial** | Trace interpolation & semisimple realization (Prop 2.1–2.2), lacunary rank extraction (Prop 3.2), crystalline closure via T. Liu (Thm 3.5), rectangular period comparisons (Prop 3.6–3.7), classical cuspidal local compatibility, principal level & adjoint Selmer vanishing (Prop 3.8–3.11) | Singular-weight geometric seeds & simultaneous Hecke congruences (2.1); independent construction of linked bounded-height integral period frames |
-| **§4.3–4.4, §5** | 21–87 | Integral cohomology, deformation rings & Selmer budgets | **Partial** | Low-layer $H^2$ bound $C_K=32$ (Thm 5.4), cyclotomic descent & moving two-rank $R_2$ (Prop 5.3), multigraded Koszul intersection bound (Thm 5.20), rank-3/4 trace products (Cor 5.22, 5.27), endoscopic, odd-orthogonal & imprimitive quartic attachments (Prop 5.30–5.39), two-power Bernoulli unit (Thm 5.45), all-depth vanishing families & Case III emptiness for two-power order targets including $\psi=1$ (Prop 5.47–5.50, Cor 5.51), all-prime Selmer budget on $16fe \le x^{\varepsilon/204}$ (Thm 5.52, Cor 5.53) | Coverage of remaining deformation components (even 2D block of Lemma 5.34, strongly irreducible rank-3/4 points & char-$\ell$ test curves, seed local vanishing, good-point component propagation, one-sided exclusions); complementary Selmer budget up to $t = \lfloor v^{401} \rfloor$ (§5.20) |
-| **§8, §11** | 95–107, 232–237 | Theta-chain arithmetic geometry, translate-mean slope comparison & family assembly | **Framework Complete** | Chain composition & period budgets (Prop 8.1, Lemma 8.2), shifted dual determinant cost (Prop 8.3, Cor 8.4), descended height & nearly tight frame coercivity (Lemmas 8.5–8.6), finite-layer HN bound (Thm 8.7), direct-sum lattice repair & single translate-averaged slope comparison (Lemma 8.11, Thm 8.12, Cor 8.13), mean reduction & defect reserve (Prop 11.3, Cor 11.4–11.5) | Concrete local chain valuation bounds, recorded gains on actual descended columns, archimedean frame/compression inputs, and family-level simultaneous realization (Formal input 11.2) |
-| **§9.1–9.5** | 107–157 | Global theta period matching & rank recursions | **Complete** | Split, inert, and real local matching quotients; global proportionality $I(\Phi) = c I'(\Phi')$ and both uniform rank recursions across all allowed signatures (Thm 9.38) | None |
-| **§9.6–9.9** | 157–226 | Theta denominators, Bergman bounds, CM degrees & arithmetic Hilbert–Samuel | **Near-Complete** | Semiabelian denominator clearing $D_M^2$ (Thm 9.54), short harmonic generators (Prop 9.61), doubled graph identity & spanning on marked period charts (Prop 9.69, 9.76–9.80), cusp/half-max/flag-volume & Bergman bound $\beta_*$ (Prop 9.72, 9.74, Cor 9.75), integral Moret–Bailly key (Thm 9.82), product CM & splitting-model vertical orders (Prop 9.85, Thm 9.87), final-weight integral spanning sections on good indefinite covers (Thm 9.70, Cor 9.88), normed-filtration degree bound (Prop 9.40–9.45, 9.89–9.90) | All-scale compatible existence of good deep covers `Y.Good(e,o)` / `Y.Match`; integral flag & toroidal subcanonical sheaf comparisons; uniform-threshold restriction, Chow-height & `MeanAll` comparisons |
+## Paper coverage and remaining inputs
 
----
+The entries give printed page numbers in the 250-page edition. The full register lists individual results, hypotheses and outstanding inputs. [Proof-status table](./audit/paper-proof-status.tsv)
 
-## Machine Verification & Local Artifacts (§14)
+**Critical-line deduction and Fourier extraction (§§1, 10, 12–13, pp. 2–3, 226–232, 237–241).** Lemma 10.1 proves the inertia and centring identity. Propositions 10.3–10.4 and Corollaries 10.5–10.6 give the four losses, signed mean, discarded-twist bound and square test. Given the arithmetic hypotheses, Proposition 12.1, Lemmas 12.2–12.4 and Theorem 12.5 isolate a pole and exclude it from the half-plane. Section 13 passes to arbitrary conductors and reflects across the critical line.
 
-Full independent replay of all 175,187 compiled upstream modules is reported externally (Sutherland / LUMI runs via Lean kernel, `nanoda`, `con-leche`, and `lean4lean`, using strictly `Classical.choice`, `propext`, and `Quot.sound`). This project additionally records local verification artifacts under `verification/`:
+**Auxiliary primes and the common field (§§4.1–4.2, 6–7, pp. 18–21, 87–95).** Lemma 4.1 proves the $`O(Q^{1/4})`$ auxiliary-box bound. Theorem 6.4 selects the primes $`q,d`$ while allowing an exceptional real zero. The results in §7 construct the cyclotomic CM host and half-different lattice (7.1–7.2), fit the rank, choose the orbit-avoiding and biased sets (7.3–7.5), and control the thin coordinates and CM scalar (7.6, 7.8). Simultaneous automorphic realization across the translates enters in §11.
 
-- **`verification/arithmetic-prefix-receipt.json`** — SHA-256 verification and export indices for a `1,539,032,259`-byte unmodified prefix (`140,192` raw declaration records; SHA-256 `dfabcd8e32844354b199a7f360c1f11ffe8d7c0bcf67ab6e04c7d36ddbedb08b`) covering `Formalism.VW.rh_of_every`, `Deduction.poleData`, `Deduction.landau_window`, `Deduction.ch_core`, `Deduction.ch_top`, and `UpperTheory.Comparison2.core_gm`, independently checked locally by **Nanoda 0.4.17** (`145,327` internal declarations, 0 errors) and **ConLeche** (`140,188` accepted declarations, `137,728` deferred checks).
-- **`verification/WindowBridge.lean`** — Standalone Lean `4.36.0` / Mathlib `v4.36.0` proof of the logarithmic exceptional-set window selection lemma ($J = 4(2C/\eta)^R$).
-- **`verification/CriticalLineBridge.lean`** — Standalone Mathlib verification of the Section 13 quantifier implication from arbitrarily late arithmetic windows to the zero-free half-plane $\operatorname{Re} s > 1/2$.
-- **`verification/TranslateMean.lean`** — Standalone Mathlib verification of the finite-group character projection and uniform error averaging underlying Proposition 10.4.
+**Galois representations and crystalline lattices (§§2–3, pp. 3–18).** The paper proves trace interpolation and semisimple realization (2.1–2.2), lacunary rank extraction (3.2), crystalline closure using T. Liu (3.5), rectangular period comparisons (3.6–3.7), and principal-level and adjoint Selmer consequences for the stated classical systems (3.8–3.11). Singular-weight geometric seeds, simultaneous Hecke congruences and linked bounded-height integral period frames remain inputs.
 
----
+**Integral cohomology, deformation rings and Selmer groups (§§4.3–4.4, 5, pp. 21–87).** The paper obtains cyclotomic descent and a moving two-rank (5.3), the low-layer $`H^2`$ bound $`C_K=32`$ (5.4), a multigraded Koszul intersection bound (5.20), and rank-three and rank-four trace products (5.22, 5.27). Results 5.30–5.39 treat specified endoscopic, odd-orthogonal and imprimitive quartic branches. Results 5.45 and 5.47–5.53 give the auxiliary two-power Bernoulli unit, all-depth vanishings, the empty Case III for two-power-order targets including $`\psi=1`$, and a summed Selmer estimate on $`16fe\le x^{\varepsilon/204}`$. The complementary sum up to $`t=\lfloor v^{401}\rfloor`$, remaining strongly irreducible branches, the even two-dimensional block, characteristic-$`\ell`$ test curves, component propagation and one-sided exclusions still require arithmetic input.
 
-## Compute & Development Log
+**Theta chains and family assembly (§§8, 11, pp. 95–107, 232–237).** Results 8.1–8.7 cover chain composition, integral shifts, determinant costs, descended heights, frame coercivity and the finite-layer Harder–Narasimhan estimate. Results 8.11–8.13 and 11.3–11.5 give the single translate-mean comparison above. Applying it throughout the family still needs actual local chain valuations, recorded gains for the descended columns, the archimedean frame bounds and the simultaneous data in Formal input 11.2.
 
-- **Initial Full Breakdown & Reconstruction:** Completed by **GPT-6.2 Astra** using ~**70% of a single Pro 100 weekly quota**, producing the end-to-end 250-page exposition, dependency audit, and the direct-sum translate-mean slope framework (§8.6, §11.1).
-- **Current Stage:** Ongoing work focused specifically on discharging the remaining arithmetic-geometric inputs for **(15.1)** and **(15.2)**.
+**Theta periods (§§9.1–9.5, pp. 107–157).** The paper treats split, inert and real local matching quotients. Theorem 9.38 gives global proportionality $`I(\Phi)=cI'(\Phi')`$ and both rank recursions for matched periods at the stated signatures.
 
----
+**Theta denominators and arithmetic Hilbert–Samuel (§§9.6–9.9, pp. 157–226).** The paper treats semiabelian denominators $`D_M^2`$ (9.54), short harmonic generators (9.61), the doubled graph and spanning on marked charts (9.69–9.70, 9.76–9.80), cusp, half-maximum and flag-volume estimates giving the Bergman bound $`\beta_*`$ (9.72–9.75), and the integral Moret–Bailly key (9.82). Results 9.85, 9.87 and 9.88 compare product CM degrees and vertical orders and produce bounded final-weight sections on a good indefinite cover. Results 9.40–9.45 and 9.89–9.90 give the normed-filtration degree estimates. Applying them throughout the family requires compatible good deep covers (`Y.Good(e,o)` and `Y.Match`), integral flag and toroidal subcanonical sheaf comparisons, and uniform restriction, Chow-height and `MeanAll` bounds.
 
-## Primary References
+## Building and verifying the paper
 
-- L. Alpöge, *Announcement of a proof of the Riemann hypothesis*, 20 November 2026.
-- L. Alpöge with Claude, *Lean formalization of RH and Dirichlet GRH*, pinned community mirror release of 20 November 2026 (`40e56bab0265`, Lean `4.33.1`).
-- A. V. Sutherland, *Verification files for the Lean proof of the Riemann Hypothesis* (`nanoda`, `con-leche`, `lean4lean`, kernel replay status).
-- Complete list of 74 cited mathematical works: see `References` (pp. 246–250 of the manuscript).
+From the repository root, build the manuscript with Tectonic. The output is `main.pdf`.
+
+```sh
+tectonic main.tex
+```
+
+Section 14 describes the external checks on the upstream export and the independent local checks on a prefix. The upstream record reports kernel replay of 175,187 compiled modules and checks with Nanoda, ConLeche and Lean4Lean. The classical root uses `Classical.choice`, `propext` and `Quot.sound`. [Upstream verification record](https://math.mit.edu/~drew/grh/)
+
+| Local evidence | What it checks |
+| --- | --- |
+| [Prefix digest and size](./verification/prefix-receipt.json) · [arithmetic declaration indices](./verification/arithmetic-prefix-receipt.json) | An unmodified prefix of 1,539,032,259 bytes and 140,192 raw declaration records, including `rh_of_every`, `poleData`, `landau_window`, `ch_core`, `ch_top` and `core_gm`. |
+| [Nanoda log](./verification/nanoda-prefix.log) · [ConLeche log](./verification/con-leche-prefix.log) | Nanoda 0.4.17 checked 145,327 internal declarations. ConLeche accepted 140,188 declarations and completed 137,728 deferred checks. |
+| [WindowBridge.lean](./verification/WindowBridge.lean) | The logarithmic exceptional-set window lemma, with $`J=4(2C/\eta)^R`$. |
+| [CriticalLineBridge.lean](./verification/CriticalLineBridge.lean) | The choice of exponents and the passage from arbitrarily late arithmetic windows to zero exclusion to the right of $`\operatorname{Re}s=1/2`$, under the stated analytic input. |
+| [TranslateMean.lean](./verification/TranslateMean.lean) | Finite-group character projection and uniform error averaging used in Proposition 10.4. |
+
+The three bridge files use Lean 4.36.0 and Mathlib v4.36.0. The verification guide gives the commands, pinned versions and scope of each check. [Verification guide](./verification/README.md) · [Manuscript build checks](./verification/manuscript-check.log)
+
+## Compute and development log
+
+The initial end-to-end breakdown and paper reconstruction used **GPT-6.2 Astra** and approximately **70% of a single Pro 100 weekly quota**, according to the project author's estimate. Current work focuses on the uniform arithmetic inputs for (15.1) and (15.2).
+
+## Primary references
+
+- L. Alpöge, *Announcement of a proof of the Riemann hypothesis*, 20 November 2026. [Author's release note](https://alpo.ge/remark.pdf)
+- L. Alpöge with Claude, *Lean formalization of RH and Dirichlet GRH*, Lean 4.33.1. [Pinned community mirror](https://github.com/leanprover-community/riemann-hypothesis/tree/40e56bab026552e089d7afcfeff08d2defb9c005)
+- A. V. Sutherland, *Verification files for the Lean proof of the Riemann Hypothesis*. [Verification archive](https://math.mit.edu/~drew/grh/)
+
+The paper's 74 bibliography entries appear on pp. 246–250. [Manuscript PDF](./Arithmetic-reconstruction-after-review.pdf)

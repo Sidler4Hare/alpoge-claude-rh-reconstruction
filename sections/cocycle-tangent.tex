@@ -1,0 +1,231 @@
+\subsection{Strict cocycles as integral tangent functionals}
+\label{ct:section}
+
+Let \(O\) be the integers in a finite extension of \(\mathbb Q_\ell\),
+\(0\ne a\in O\), \(M=O/aO\), and \(\Gamma=G_{\mathbb Q}\).
+Write \(O\ltimes M=O\oplus\epsilon M\), with \(\epsilon^2=0\).
+This is a complete local \(O\)-algebra. Its quotients
+\((O/\pi^h)\ltimes M\), \(h\ge v_\pi(a)\), are Artin rings and their
+inverse limit is \(O\ltimes M\). For a continuous augmented
+\(O\)-algebra \(B\xrightarrow{x}O\), a continuous map to this
+extension over \(x\) has the unique form \(x+\epsilon d\), with
+\(d(fg)=x(f)d(g)+x(g)d(f)\).
+
+Use one-based indices for matrix units. The two diagonal points
+\(r_0\), their infinitesimal directions \(X\), and the weights \(j\)
+of their nonzero entries are as follows:
+\[
+\begin{array}{c|c|c|c}
+ n&\text{matrix of }r_0& X& j\\ \hline
+ 3&\operatorname{diag}(\Psi,1,\Psi^{-1})&E_{21}-E_{32}&-1\\
+ 4&\operatorname{diag}(\alpha\Psi,\Psi,\alpha,1)&E_{31}+E_{42}&(0,-1).
+\end{array}
+\]
+In rank three one appends the sign character \(\eta\) to the matrix,
+in the semidirect product in which the negative sign acts by
+\(g\mapsto Jg^{-t}J\), \(J\) the antidiagonal matrix of ones. Its
+differential \(Y\mapsto-JY^tJ\) fixes \(X\).
+In rank four the symplectic adjoint sends \(X\) to \(-X\);
+the diagonal point has similitude \(\alpha\Psi\).
+In both ranks \(\operatorname{Ad}(r_0(g))X=\theta(g)X\) with
+\(\theta=\Psi^{-1}\). The rank-four bidegrees of the four basis
+vectors are \((1,1),(0,1),(1,0),(0,0)\).
+
+\begin{proposition}[The square-zero representation]\label{ct:point}
+Let \(z:\Gamma\to M\) be a continuous cocycle for \(\theta\).
+Then \(r_z(g)=(1+\epsilon z(g)X)r_0(g)\) is a continuous
+representation over \(O\ltimes M\) with the prescribed sign or
+similitude. If on a subgroup \(D\) one has
+\(z(g)=(\theta(g)-1)m\), the restriction is the reduction modulo \(a\)
+in the second coordinate of an integral dual-number conjugate of
+\(r_0|_D\).
+\end{proposition}
+\begin{proof}
+Multiplication adds the two square-zero coefficients as
+\(z(g)+\theta(g)z(h)=z(gh)\). In rank four the linear terms in the
+similitude cancel because the symplectic adjoint of \(X\) is \(-X\).
+Choose a lift \(\widetilde m\in O\) of \(m\). Conjugation by
+\(1-\epsilon\widetilde mX\) changes the left infinitesimal coefficient
+of \(r_0(g)\) to \(\widetilde m(\theta(g)-1)X\).
+The matrix entries are continuous in the adic topology since \(r_0\)
+is continuous and \(z\) is locally constant.
+\end{proof}
+
+For rank three take the normalized representative of each class in
+\(H[b]\), where \(H\) is the strict group and \(0\ne b\in O\). At the
+marked element \(g_1\) one has \(\Psi(g_1)^2-1\in O^\times\);
+subtracting a unique coboundary makes \(z(g_1)=0\). The normalized
+representative has values in \((\operatorname{Frac}(O)/O)[b]\simeq O/bO\).
+Here the local group at \(\ell\) contains \(s\) with
+\(\Psi(s)^2-1\in O^\times\), so its coboundary witness is also killed
+by \(b\). Take \(a=b\). At complex conjugation \(c\), the identities
+\(\theta(c)=1,\ c^2=1\) give \(2z(c)=0\), hence \(z(c)=0\) since
+\(\ell\ne2\). The cocycle identity then gives \(z(cg_1^{-1}c)=0\).
+Consequently the matrices at the three elements entering the two
+normalization equations agree with those of the base point.
+On the prescribed inertia elements away from \(\ell\) where the
+residual representation is trivial, the datum requires \(r_0(g)=1\).
+There \(\theta(g)=1\), so local strictness gives \(z(g)=0\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/ShaInjGen.lean}{145}{normalized rank-three cocycles and their root entries}.
+
+In rank three the local condition at \(\ell\) specifies particular
+components of a closed locus. Its first-order verification can be made
+directly. Let \(U\) represent unrestricted framed local lifts with the
+prescribed sign. Put \(H_L=\ker\eta\cap\ker\tau\), where
+\(\Psi|_{I_\ell}=\varepsilon_\ell^e\tau\), \(e\ge1\), with \(\tau\)
+of finite order. Let \(I_{\rm ord}\subset U\) be the ideal of the
+inertia characteristic-polynomial identities and the ordered products
+of three shifted matrices on \(H_L\cap I_\ell\), with successive
+characters \(\Psi,1,\Psi^{-1}\). Write \(\Delta=\ell d_1d_2\) for the
+product of the two consecutive Frobenius-gap equations used to saturate
+this ideal. Let \(I_t\) be the intersection of the minimal primes of
+\(\sqrt{I_{\rm ord}:\Delta^\infty}\) contained in the kernel of the
+diagonal point. The framed universal property makes this point unique.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/IsInertiaInfiniteCyclotomic.lean}{133}{the selected ordinary components}.
+
+\begin{lemma}\label{ct:local}
+For \(Y\in M_3(O)\), the local framed representation
+\((1+\epsilon Y)r_0(1+\epsilon Y)^{-1}\) over \(O[\epsilon]\),
+\(\epsilon^2=0\), kills \(I_t\).
+\end{lemma}
+\begin{proof}
+Let \(d:G_{\mathbb Q_\ell}\to\widehat{\mathbb Z}\to\mathbb Z_\ell\)
+be unramified degree, normalized on arithmetic Frobenius. The character
+\(u_T(g)=(1+T)^{d(g)}\) is continuous for the \((\pi,T)\)-adic
+topology by the binomial expansion. Over the domain \(O[[T,V]]\)
+use the diagonal point for \(\Psi u_T\), with the same sign as before,
+conjugated by \(1+VY\). The antidiagonal inverse-transpose involution
+fixes every matrix \(\operatorname{diag}(b,1,b^{-1})\), so this
+does define a representation of the full local group. On
+\(H_L\cap I_\ell\) the diagonal characters are unchanged. The ordered
+product of the three shifted diagonal matrices is zero since each
+diagonal entry has its own vanishing factor. Conjugation preserves this
+identity and the three characteristic coefficients.
+
+At the distinguished inertia element \(s_0\in H_L\) the three diagonal
+values \(\lambda_i\) are distinct: \(\varepsilon_\ell(s_0)\) has
+infinite order. Set \(c_i=\prod_{j\ne i}(\lambda_i-\lambda_j)\).
+The product of the other two shifted matrices is \(c_iE_{ii}\) in
+the diagonal basis. At the specified \(\phi\in H_L\) of nonzero
+unramified degree, put \(b=\Psi(\phi)(1+T)^{d(\phi)}\). Its three
+diagonal values \(b_i\) are \(b,1,b^{-1}\). The trace defining the
+\(i\)-th projected Frobenius value is \(c_i b_i\), and hence
+\[
+ d_i=c_i c_{i+1}\bigl(b_i-\varepsilon_\ell(\phi)b_{i+1}\bigr)
+ \qquad(i=1,2).
+\]
+These are invariant under the displayed conjugation since all the
+elements in the traces have positive sign. Both are nonzero: \(b\)
+has nonzero linear coefficient. Thus the map \(U\to O[[T,V]]\)
+kills \(I_{\rm ord}\) and its saturation and radical. Its prime kernel
+contains a minimal prime \(P\) of that radical. Evaluation at
+\(T=V=0\) is the diagonal point, so \(P\) occurs in the intersection
+defining \(I_t\). In particular the map kills \(I_t\). Specializing
+\(T=0,\ V=\epsilon\) proves the assertion, including when a gap
+vanishes at the original diagonal point.
+\end{proof}
+
+In rank four use the common denominator for the local witnesses as
+in Lemma~\ref{newcoh:cotangent} and the paragraph following it.
+At \(\ell\) the indicated ordinary equations prescribe the
+characteristic polynomial at \(s_0\), the vanishing of the forbidden
+entries between its polynomial projectors, and the prescribed diagonal
+inertia characters between equal projectors. These hold on the
+diagonal representation and survive symplectic conjugation, since a
+polynomial in a matrix transforms by the same conjugation. At
+\(p\in S_b=\{p\in S:p\ne\ell,\ \ell\mid\#\psi(I_p)\}\) the condition
+is fixed similitude and triviality on \(I_p\cap\ker\psi\); the diagonal
+datum has this property, and conjugation preserves it. At all of these
+places Proposition~\ref{ct:point} supplies an integral conjugate using
+the local witness. Away from \(T=\{\ell\}\cup S_b\), the datum has
+\(r_0(g)=1\) on inertia elements with trivial residual action, and the
+strict cocycle vanishes there. Thus the local lifts and global \(r_z\)
+agree after reduction, with every comparison frame equal to the identity.
+The representing framed global ring consequently gives a map into
+\(O\ltimes M\); its restriction to the local coefficient ring lifts
+to \(O[\epsilon]/(\epsilon^2)\). The same assertions hold for the
+normalized rank-three ring by Lemma~\ref{ct:local} and the checks above.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExistsLocalFirstOrderLifts.lean}{188}{integral local conjugates}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExistsQuotientDerivationOfShaCocycle.lean}{252}{the global framed point}.
+
+\begin{lemma}[Integral lift on a relative presentation]\label{ct:lift}
+Let \(L\) be an augmented complete local \(O\)-algebra with weighted
+coordinates at the augmentation, and \(P=L[[t_1,\ldots,t_s]]\) with
+homogeneous variables of augmentation zero. Suppose a map
+\(P\to O\ltimes M\) over the augmentation restricts on \(L\) to the
+reduction of an integral derivation of weight \(j\) in its second
+coordinate. Suppose its second coordinate on \(t_i\) is zero when
+\(\mathrm{wt}(t_i)\ne j\). Then its second coordinate lifts to an
+integral derivation of weight \(j\) on \(P\).
+\end{lemma}
+\begin{proof}
+Lift its value on each \(t_i\) to \(d_i\in O\), taking \(d_i=0\) in
+all other weights. If \(D_L\) is the given local lift and \(x_L\) is
+the augmentation of \(L\), the required map is
+\[
+ D\Bigl(\sum_\nu b_\nu t^\nu\Bigr)
+     =D_L(b_0)+\sum_i x_L(b_{e_i})d_i .
+\]
+Comparing constant and linear coefficients proves Leibniz and
+reduction. The augmentation is fixed by the grading, so this map
+vanishes on the other homogeneous pieces.
+\end{proof}
+
+Apply the lemma on the weighted presentation before the global
+relations. The presentation variables are shifted matrix entries or
+comparison-frame entries. Derivatives of the frames vanish, and the
+matrix derivatives are precisely the entries of \(z(g)Xr_0(g)\).
+The rank-three presentation also uses the inverse-transpose block:
+the derivative of inversion at a diagonal \(D\) is
+\(Y\mapsto-D^{-1}YD^{-1}\); transposition and reversal of the indices
+preserve the assigned block weight. Thus all these variables satisfy
+the hypothesis on the weights. The local matrix-entry derivatives of
+the integral conjugates have the same weight. More generally, suppose
+maps from the local representing ring into integral dual numbers are
+determined by the local matrix entries. For an integral torus unit
+\(t\), precompose the local map by the weight action of \(t\), or
+multiply its second coordinate by the character \(t^j\). The two maps
+agree on all matrix entries and hence everywhere. On a homogeneous
+element of weight \(i\) this gives \((t^i-t^j)d(f)=0\). For \(i\ne j\)
+one can separate the two weights using \(1+\ell\) in one torus
+coordinate. Since \(O\) is a domain this gives \(d(f)=0\). This
+argument verifies the weight condition on the whole local derivation.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/ModelOfPres.lean}{302}{the relative rank-three presentation}.
+
+In rank four the presentation is further cut by six homogeneous frame
+or matrix entries per distinguished place, each with nonzero first
+weight. The integral derivation of weight \((0,-1)\) kills them.
+In the resulting quotient \(P'\), the model next divides by the kernel
+of its characteristic-zero formal chart. The precise property needed
+here is that for \(f\) in this kernel some \(0\ne c\in O\) satisfies
+\(cf\in(\ker x_{P'})^2\). Then \(cD(f)=0\), so the integral derivation
+descends through the chart kernel. This is the cotangent injectivity
+condition of the chart after extension to \(\operatorname{Frac}(O)\).
+The other normalization equations involve the frames at \(S_b\) and
+off-diagonal entries of \(r(g_0)+\alpha(g_0)\Psi(g_0)r(g_0^{-1})\).
+Their derivatives vanish modulo \(a\) because the frames are constant
+and \(z(g_0)=z(g_0^{-1})=0\). All original global relations also vanish
+modulo \(a\), since \(r_z\) defines a point of the framed ring.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExModel.lean}{496}{passage to the normalized weighted quotient}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/ExistsSmoothQuotientByWeightedEquations.lean}{104}{the chart-kernel condition}.
+
+On the sum of homogeneous pieces used in Lemma~\ref{newcoh:cotangent},
+restrict the resulting derivation to weight \(-1\) (weight \((0,-1)\)
+before taking the first-weight-zero algebra in rank four). It kills
+the saturation of the square of the augmentation ideal because it
+is integral, and its reduction kills the indicated equations.
+The functional on \(Q_{-1}\) recovers \(z(g)\) from a homogeneous
+lift of matrix entry \((2,1)\) or \((3,1)\), respectively, by dividing
+by \(r_0(g)_{11}\in O^\times\). Distinct normalized cocycles therefore
+give distinct functionals. In rank three take \(a=b\). In rank four
+take \(a=b\prod_v(\theta(s_v)-1)\), as above, so that each local
+witness is represented at this denominator. In either rank the same
+\(Q_{-1}\) bounds the length of \(H[b]\) for every nonzero \(b\).
+Every continuous cocycle into the discrete torsion module has finite
+image by compactness, so \(H=\bigcup_hH[\pi^h]\). If \(Q_{-1}\)
+has finite length, this increasing sequence stabilizes since a strict
+inclusion would increase length. This proves finiteness and the
+length bound for \(H\) in both ranks. The following sections construct the weighted presentations, count their
+equations and prove cotangent injectivity at the rank-four cut.
+Finiteness of the invariant quotient and rigidity at the remaining
+global points are further requirements of Theorem~\ref{newcoh:orbitdegree}.

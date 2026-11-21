@@ -1,0 +1,36 @@
+{
+  "source_sha256": "61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381",
+  "source_bytes": 7699933588,
+  "prefix_sha256": "dfabcd8e32844354b199a7f360c1f11ffe8d7c0bcf67ab6e04c7d36ddbedb08b",
+  "prefix_bytes": 1539032259,
+  "prefix_declaration_records": 140192,
+  "theorems": {
+    "Formalism.VW.rh_of_every": {
+      "all": [
+        341189
+      ],
+      "levelParams": [],
+      "name": 341189,
+      "type": 6497237,
+      "value": 6497286
+    },
+    "Deduction.poleData": {
+      "all": [
+        868834
+      ],
+      "levelParams": [],
+      "name": 868834,
+      "type": 27091326,
+      "value": 27099969
+    },
+    "Deduction.landau_window": {
+      "all": [
+        869266
+      ],
+      "levelParams": [],
+      "name": 869266,
+      "type": 27173934,
+      "value": 27185394
+    }
+  }
+}

@@ -1,0 +1,24 @@
+\section{Deduction of the critical-line statements}\label{main:end}
+
+\begin{proof}[Deduction of Theorem~\ref{main:thm} from the arithmetic window]
+Suppose first that \(\psi\) is primitive and \(L(\rho,\psi)=0\) at a regular point with \(\beta=\Re\rho>1/2\). Put
+\[
+ \theta=\tfrac12+\tfrac12\min(\beta-\tfrac12,\tfrac12).
+\]
+Then \(1/2<\theta<\min(1,\beta)\). Choose
+\(0<\varepsilon<\min(\varepsilon_0,(\theta-1/2)/9)\). Since \(x\ge1\), Theorem~\ref{main:window} gives \(G_{\mathcal F_\psi}(x)\le x^\theta\) on arbitrarily late intervals of the prescribed type. This is the hypothesis of Theorem~\ref{an:zero} with \(\delta=1/2\). Because the cyclic family contains \(\psi\) with positive weight, the pole in Proposition~\ref{an:poles} would be detected, a contradiction. Both \(\varepsilon\) and \(\theta\) were fixed before invoking the existence of \(Y\). The analytic criterion needs neither an estimate for every \(x\) nor an effective procedure for locating the next \(Y\). \src{src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/TopWin.lean}{68}{formal choice of exponents} and \src{src/Development/AutomorphicArithmetic/PrimitiveCosets/Imports.lean}{8}{identification of the analytic family}.
+
+Let \(\chi\) modulo \(N\) be induced from the primitive \(\psi\) of conductor \(f\mid N\). By equality of Euler products followed by continuation,
+\[
+ L(s,\chi)=L(s,\psi)\prod_{p\mid N,\,p\nmid f}(1-\psi(p)p^{-s}).
+\]
+For \(\Re s>0\) we have \(|\psi(p)p^{-s}|\le p^{-\Re s}<1\) for every prime in the product. At \(s=1\) a nonprincipal \(\chi\) has a nonprincipal inducer, since the trivial character induces the principal character. Thus the product proves the required half-plane assertion with precisely the exclusion in Theorem~\ref{main:thm}. It also reduces every strip zero to one of a primitive character. \src{src/Development/AutomorphicArithmetic/CharacterBoxes/Imprimitive.lean}{5}{change of conductor} and \src{src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean}{23}{transfer of strip zeros}.
+
+Write \(\epsilon(\psi)\in\{0,1\}\) for the parity. In the open strip, the nonzero factor \(\Gamma_{\mathbb R}(s+\epsilon(\psi))\), together with any positive-conductor exponential in the chosen normalization, identifies zeros of \(L(s,\psi)\) with zeros of its completion. If a zero had \(\Re s<1/2\), the completed functional equation would give a zero of the completion for \(\bar\psi=\psi^{-1}\) at \(1-s\), whose real part exceeds \(1/2\). The gamma factor there is nonzero and the point is regular. This contradicts the half-plane result. This proves both strip statements. \src{src/Formalism/GammaFactorNonvanishing/CritLine.lean}{11}{primitive functional equation} and \src{src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean}{59}{all characters in the strip}.
+
+For the zeta assertion first take \(N=1\). If a remaining zero has \(\Re s<1/2\), handle \(s=0\) by \(\zeta(0)=-1/2\). Otherwise \(t=1-s\) has \(\Re t>1/2\), \(t\ne1\). The zeta functional equation in the normalization of the source reads
+\[
+ \zeta(s)=2(2\pi)^{-t}\Gamma(t)\cos(\pi t/2)\zeta(t).
+\]
+The exponential and \(\Gamma(t)\) are nonzero. A zero of the cosine would force \(t\) to be an odd integer, hence \(s\) an even integer. In the present half-plane \(s\) would then be zero or a negative even integer, already excluded. Since \(\zeta(t)\ne0\), this rules out the last possibility. It proves Mathlib's zeta statement, including points outside the open strip. \src{src/Formalism/GammaFactorNonvanishing/RhOfRight.lean}{5}{zeta reflection and exceptional points} and \src{src/Supplements/Kernels/MainTheorems.lean}{9}{specialization at modulus one}.
+\end{proof}

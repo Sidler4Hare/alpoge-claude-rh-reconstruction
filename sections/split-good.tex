@@ -1,0 +1,144 @@
+\begin{lemma}[The character at a totally split rational prime]\label{split:ray}
+Let \(\mathfrak w\) lie above a rational prime completely split in the
+Galois CM field \(E\). If its restriction to \(F\) is outside the
+ramification set \(S\) of the triple, then
+\(t=\nu_{\mathfrak w}(\pi)\) has infinite order, for either choice of
+the place above \(F\) and every uniformizer \(\pi\).
+\end{lemma}
+\begin{proof}
+Fix \(E\subset\mathbb C\). The chosen embeddings above the real places
+form a CM type \(\Phi\), and we can regard them as automorphisms of
+\(E\) by normality. Put \(m_\tau=m_\alpha(\tau)-m_\beta(\tau)>d\).
+The infinite component of \(\nu\) at \(x\in E^\times\) is
+\(\prod_{\tau\in\Phi}(\tau x/|\tau x|)^{m_\tau}\).
+Take a finite ray modulus for \(\nu\), prime to \(\mathfrak w\).
+By finiteness of the ray class group there are \(h>0\) and \(x\in
+E^\times\) such that \((x)=\mathfrak w^h\) and \(x\equiv1\) modulo
+this modulus. All ramified finite components are one at \(x\);
+at every other finite place except \(\mathfrak w\), \(x\) is a unit.
+The continuous Hecke character is trivial on diagonal \(E^\times\).
+Its value on \(x\), squared, therefore gives
+\[
+ t^{-2h}=\prod_{\tau\in\Phi}
+            \bigl(\tau x/\overline{\tau x}\bigr)^{m_\tau}.
+\]
+The principal fractional ideal on the right has exponents \(hm_\tau\)
+and \(-hm_\tau\) at \(\tau\mathfrak w\) and
+\(\bar\tau\mathfrak w\), respectively. These primes are all distinct
+because the decomposition group is trivial. The fractional ideal is
+nontrivial, whereas every root of unity generates the unit ideal.
+This proves the assertion. Unramifiedness gives independence of \(\pi\).
+\end{proof}
+\src{src/Development/AbelianVarietyTheory/Definitions/Foundations/NotIsSplitOfIsInertAt.lean}{266}{Continuity and triviality on the diagonal};
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean}{114}{Infinite character on ideles with trivial finite part};
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean}{374}{Local ramification and infinite exponents}.
+
+\begin{proposition}[The larger orbital transform at a good split place]
+\label{split:good}
+Suppose \(\nu\) is unramified and \(t=\nu(\pi)\) has infinite order.
+Set \(n=a\), \(s=d/2\). On every matrix test \(\Phi\), the larger
+transform in \eqref{newtheta:big}, initially integrated with exponent
+\(z\) for \(\Re z>n\), has a regular continuation at \(z=s\).
+This transform and the smaller transform \eqref{newtheta:small}
+have the same image on their whole test spaces, namely the induced
+representation in Proposition~\ref{newtheta:split}. The kernel on
+each side is the span of its source-action differences. For
+unramified \(\alpha,\beta\) their integral-matrix indicators can be
+normalized to have the same nonzero image.
+\end{proposition}
+\begin{proof}
+Fix a full-rank \(X\). The function \(H(g)=\Phi(gX)\) on \(M_n(k)\)
+is locally constant and compactly supported, since multiplying by a
+right inverse of \(X\) bounds its support. In additive matrix
+coordinates the integral is a constant times
+\[
+ Z_n(H,z)=\int_{M_n(k)} H(g)\nu(\det g)|\det g|^{z-n}\,dg .
+\]
+Assign the integrand value zero on singular matrices, a null set
+by successive one-variable polynomial testing and Fubini.
+For \(0\le j\le n\) use the same exponent \(z-n\) in \(Z_j\) on
+\(M_j(k)\), with \(Z_0\) evaluation at its single point.
+We show by induction that \(Z_j\) is rational in \(q^{-z}\) and
+its only possible poles for finite \(z\) satisfy
+\[
+           1-t^i q^{-i(z-n+i)}=0,\qquad 1\le i\le j .
+\]
+Away from a neighborhood of the zero matrix, a compact support has
+a finite disjoint compact open subdivision on each part of which a
+chosen nonzero pivot \(b\) has constant valuation. Permute rows and
+columns to make it the top left entry. For the other three blocks use
+coordinates \((B,C,D-Cb^{-1}B)\) instead of \((B,C,D)\). This
+preserves additive measure by translation in \(D\) and factors the
+determinant as \(b\det(D-Cb^{-1}B)\), up to a unit sign.
+In these coordinates a compactly supported locally constant test is
+a finite sum of products on compact open rectangles, by a finite
+refinement of a cover by rectangles of constancy. The pivot weight
+is a Laurent monomial times a constant. The remaining integrals thus
+have the asserted form by induction.
+
+Near zero subtract the constant value of the test times the
+indicator of a sufficiently small origin ball. Scalar dilation
+reduces that ball to \(M_j(\mathcal O)\) up to a Laurent monomial.
+In this unit ball the complement of \(\pi M_j(\mathcal O)\) is
+covered by the preceding pivot argument. The integral on the
+inner ball is \(t^j q^{-j^2-j(z-n)}\) times the unit-ball integral.
+Solving this identity in the half-plane of convergence introduces
+exactly the indicated possible denominator with \(i=j\). This
+proves rational continuation. For real \(z=s\), a zero of a
+denominator would force first \(s-n+i=0\) by \(|t|=1\), and then
+\(t^i=1\). Hence every test is regular there.
+
+Source equivariance holds first in the convergent half-plane by
+Haar substitution and hence at \(s\) by continuation. The same
+reasoning gives the displayed parabolic covariance of
+Proposition~\ref{newtheta:split} at \(s\); smoothness follows from
+the compact open stabilizer of the test. On full-rank tests the
+integrals are entire and the image and kernel were computed above.
+On the rank-\(r<n\) stratum the stabilizer test in
+Proposition~\ref{split:kernel} would require
+\[
+          |\det t_0|^r=\nu(\det t_0)|\det t_0|^s,\qquad
+          t_0=\operatorname{diag}(I_r,\pi I_{n-r}).
+\]
+The moduli differ for \(r\ne s\), and for \(r=s\) equality would
+give \(t^{n-r}=1\). Thus every singular stratum has zero quotient by
+source differences. The rank filtration and the full-rank kernel
+calculation prove the asserted kernel on all tests. The smaller
+side is Proposition~\ref{split:kernel}.
+
+In the convergent region the Hermite count in
+Proposition~\ref{split:kernel} gives the larger spherical value
+\(\prod_{j=0}^{n-1}(1-tq^{j-z})^{-1}\). Its continuation at \(s\)
+is finite and nonzero; the smaller value has the same formula
+with \(n=a'\). If \(\alpha,\beta\) are unramified both output
+functions are right \(K_d\)-invariant. Such an induced function is
+determined by its value at one since \(G_d=PK_d\), so dividing each
+map by its indicated value identifies the two spherical outputs.
+\end{proof}
+
+The covariance is \(\delta_P^{1/2}
+((\alpha\circ\det)\boxtimes(\beta\circ\det))\):
+\(\delta_P(A,D')=|\det A|^{a'}|\det D'|^{-a}\), from conjugation on
+the upper right block. The two determinant characters give an
+irreducible unitary representation of the Levi, since their external
+product is one-dimensional and unitary. Bernstein's irreducibility
+theorem for normalized induction of irreducible unitary representations
+of a Levi in \(\mathrm{GL}_d(k)\) therefore proves that this common
+image is irreducible, both here and in Corollary~\ref{split:ram}.
+Bernstein,
+\emph{P-invariant distributions on \(\mathrm{GL}(N)\) and the classification
+of unitary representations of \(\mathrm{GL}(N)\) (non-Archimedean case)},
+\S0.2, corollary, proved in \S8.2~\cite{bernsteinInvariant}.
+
+Lemma~\ref{split:ray} supplies the character hypothesis for every
+good totally split place of the triple, at either splitting.
+The construction here evaluates a rational continuation on unramified
+tests. For the integral-matrix indicator infinitely many Cartan shells
+have nonzero integral, so the finite-support sum defining the prescribed
+shell map cannot replace this continuation. The matching condition
+that specifies that shell map is imposed at \(S\), where the earlier
+ramified calculation applies. The results here concern the displayed
+matrix models. Passing to the given adelic Weil actions requires the
+identifications with these polarizations and their lattice vacua.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/RankEqCardIffExistsFrameMatrixFirstColumnBlock.lean}{707}{Finite-support Cartan sum in the prescribed map};
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean}{470}{Places at which equality with that map is required}.

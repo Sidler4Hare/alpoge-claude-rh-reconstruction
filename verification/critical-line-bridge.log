@@ -1,0 +1,7 @@
+Lean (version 4.36.0, x86_64-w64-windows-gnu, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+Mathlib commit: fc4f59e577feb1a4956671bc04ac18aaaf8cd842
+'PaperCertification.residueDominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperCertification.chooseWindowParameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperCertification.upperWindows_monoExponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperCertification.excludeRightOfHalf' depends on axioms: [propext, Classical.choice, Quot.sound]
+Process exit code: 0

@@ -1,0 +1,45 @@
+{
+  "Deduction.ch_core": {
+    "all": [
+      858797
+    ],
+    "levelParams": [],
+    "name": 858797,
+    "type": 26595072,
+    "value": 26614115
+  },
+  "Deduction.ch_top": {
+    "all": [
+      864812
+    ],
+    "levelParams": [],
+    "name": 864812,
+    "type": 26880769,
+    "value": 26883748
+  },
+  "Deduction.landau_window": {
+    "all": [
+      869266
+    ],
+    "levelParams": [],
+    "name": 869266,
+    "type": 27173934,
+    "value": 27185394
+  },
+  "Formalism.HermitianLattices.Ext.PrimitiveCharacterCasts.ZD.final_bound_of_assembly": null,
+  "Formalism.HermitianLattices.Ext.PrimitiveCharacterCasts.ZD.zero_density_box": null,
+  "QH.count_bad_core": null,
+  "UpperTheory.Comparison\u2082.core_gm": {
+    "all": [
+      864997
+    ],
+    "levelParams": [],
+    "name": 864997,
+    "type": 26895172,
+    "value": 26923856
+  },
+  "UpperTheory.Gal.Lim.exists_trace_limit": null,
+  "UpperTheory.Top.topDesWin": null,
+  "UpperTheory.V.Win.window": null,
+  "UpperTheory.V.Win.window1": null
+}

@@ -1,0 +1,271 @@
+\subsection{One slope comparison over the translate group}\label{geo:translate}
+
+Fix one good scale and one choice of the data of Formal input~\ref{red:design}.
+Write \(\mathbb E a=|A_0|^{-1}\sum_{u\in A_0}a_u\). The translate \(u\)
+and a word \(i\) at \(u\) are different indices. In a presentation with
+several points above \(u\), select one lift for each \(u\) and use it
+at every stage. We make this choice throughout. A probability mixture
+of lifts gives the same proof if each lift's two rank measures are
+multiplied by its conditional probability given \(u\).
+The tied weights, the integers \(a_t\) and the centre are the ones on
+these data. An identification of the points with translates in the
+character group supplies no identification of their lattices.
+
+The direct sum can be formed at the first edge. Retain the label \(u\)
+in every factor and compose maps of the same word. For composable
+layers \(C_{u,j}\), the identity
+\[
+ (\bigoplus_u C_{u,m})\cdots(\bigoplus_u C_{u,1})
+     =\bigoplus_u(C_{u,m}\cdots C_{u,1})
+\]
+follows by evaluation on each summand. Over different coefficient fields
+this is a tuple of maps over the product of those fields. The last two
+kernels of the theta chain use the same intermediate mark \(Y\) in
+each path. Treat their coupled sum as a single map whenever only that
+sum descends to the quotient. If the fibres are identified, a diagonal
+inclusion and a mean projection at the two \emph{ends} give the mean
+of the composites. Averaging the edges separately can change the
+answer even for integral isometries. On two rank-one blocks take \(+1\)
+and \(-1\) at each of two successive edges in the same order. The
+average composite is \(1\), whereas both average edges are zero.
+
+For integral matrices in common bases, \(h^{-1}\sum_{u}B_u\),
+\(h=|A_0|\), guarantees only the minimum entry valuation among the
+summands minus \(v_w(h)\). On the present host \(h\) is a power of
+two. Swapping the coordinates of \(\mathbb Z_2^2\) gives the
+invariant projector \(e_1\mapsto(1/2,1/2)\). If a terminal integral
+quotient \(q\) satisfies \(q\rho(u)=q\) for an integral group action
+\(\rho\), then \(q\sum_u\rho(u)=hq\), so the division cancels there.
+The construction below needs only the block maps. It divides real
+degrees and traces by \(h\). It also keeps the weights inside the
+local prime gains. For example, averaging \((2-w)_+\) at \(w=1,3\)
+gives \(1/2\), while substitution of the average weight gives zero.
+
+For word \(i\) write \(B_{ui}:S_{ui,K_u}\to R_{u,K_u}\) for the
+rational descended column in the prescribed divisor shifts.
+Here \(S_{ui},R_u\) are Hermitian lattices over a totally imaginary
+field \(K_u\). Omit zero-rank words and put \(r_{ui}=\operatorname{rk}S_{ui}\),
+\(r_u=\sum_i r_{ui}>0\), \(d_u=\operatorname{rk}R_u>0\). On the
+tied data \(R_u\) is the dual target lattice of the column pairing. Slopes
+are normalized as in Theorem~\ref{geo:hn}. A slope in word \(i\) has
+mass \(1/(h r_u)\), and a target slope has mass \(1/(h d_u)\).
+The ordinary slope of a direct sum over one field weights blocks by
+rank. Repeating both sides of each block \(m_u\) times would require
+both \(m_u r_u\) and \(m_u d_u\) to be constant to recover these
+two means. The ratio \(r_u/d_u\) need not be constant. We use the
+two normalized traces explicitly.
+
+\begin{lemma}[Cost of making the descended column integral]\label{trmean:graph}
+For one rational map \(B:S_K\to R_K\) fix real archimedean
+allowances \(h_v\) with normalized mean \(h_B\). Write
+\(\langle a_v\rangle_\infty=(2/[K:\mathbb Q])\sum_{v\mid\infty}a_v\)
+with one representative of each conjugate pair. Define
+\[
+\begin{aligned}
+ b_w(B)&=\operatorname{length}_{\mathcal O_{K,w}}
+              ((R_w+BS_w)/R_w),\\
+ p_v(B;h_v)&=\sum_a\log\max(1,e^{-h_v}\sigma_a(B_v)^2),\\
+ g(B)&=2\sum_{w\nmid\infty}\frac{\log Nw}{[K:\mathbb Q]}b_w(B)
+                    +\langle p_v(B;h_v)\rangle_\infty ,
+\end{aligned}
+\]
+where \(\sigma_a\) are singular values for the prescribed metrics
+and \(Nw\) is the residue field cardinality. There is a source
+\(S^\sharp\) with integral contractive inclusion in \(S\) such that
+\(B:S^\sharp\to R\) is integral and has height at most \(h_B\)
+when it is nonzero. Its mean slope satisfies
+\(\operatorname{rk}(S)(\mu(S)-\mu(S^\sharp))=g(B)\).
+For composable maps, each \(b_w\) is subadditive and each \(p_v\)
+is subadditive with additive allowances.
+\end{lemma}
+\begin{proof}
+Take \(S^\sharp=S\cap B^{-1}R\) at the finite places. The map \(B\)
+identifies \(S_w/S_w^\sharp\) with \((R_w+BS_w)/R_w\).
+In Smith coordinates of the actual shifted lattices,
+\(b_w=\sum_a(-\nu_{w,a})_+\) over the nonzero elementary divisors.
+Only finitely many places contribute. The matrix
+\(\operatorname{diag}(\pi^{-a},\pi^a)\) for \(a>0\) has determinant
+one and \(b_w=a\). At \(v\) give the source the Gram matrix
+\(\max(I,e^{-h_v}B_v^*B_v)\) in original orthonormal coordinates,
+using the spectral decomposition. It dominates \(I\) and
+\(e^{-h_v}B_v^*B_v\), proving the two norm bounds. Its log determinant
+is \(p_v\). The finite index changes the squared normalized
+covolume logarithm by \(2\sum_w b_w\log Nw/[K:\mathbb Q]\), and
+the metric contributes \(\langle p_v\rangle_\infty\). Subtracting
+the two normalized degrees proves the slope identity. Both changes
+are zero for the zero map.
+
+For \(X\xrightarrow{B}Y\xrightarrow{A}Z\) at a finite place,
+\((Z+AY+ABX)/(Z+AY)\) is a quotient of \((Y+BX)/Y\).
+The inclusion \(Z+ABX\subset Z+AY+ABX\) now gives
+\(b_w(AB)\le b_w(A)+b_w(B)\). At infinity,
+\[
+ p_v(B;h_v)=\log\max_{k\ge0}
+                 \|\textstyle\bigwedge^k(e^{-h_v/2}B_v)\|^2 .
+\]
+The term \(k=0\) equals one. The identity follows by ordering singular
+values. Submultiplicativity of each exterior norm proves the assertion.
+Thus positive costs may be accumulated from the first layer, before any
+HN comparison, using the same intermediate lattices and metrics on the
+two sides of each composition. In particular, if
+\(B_{ui}=C_{ui,m}\cdots C_{ui,1}\) and the local allowances add to
+those of the column, then
+\[
+ \mathbb E\,\frac{\sum_i g(B_{ui})}{r_u}
+ \le \sum_{j=1}^m\mathbb E\,\frac{\sum_i g(C_{ui,j})}{r_u}.
+\]
+Each layer on the right uses the \emph{initial} total source rank
+of its translate even when intermediate ranks differ. A coupled
+terminal map counts as one factor in this formula.
+\end{proof}
+
+At one chosen infinite place in each block, suppose the original
+source is \(V_{ui}\), with frame maps \(A_{ui}:V_{ui}\to\mathcal H_u\),
+\(n_u=\dim\mathcal H_u\). The target identifies isometrically with
+a subspace of dimension \(d_u\). Orthogonal projection of \(A_{ui}\)
+to it gives \(B_{ui}\) up to a nonzero scalar, as in
+Theorem~\ref{geo:hn}. Put \(Q_u=\sum_i A_{ui}A_{ui}^*\) and define
+\[
+\begin{aligned}
+ e&=\mathbb E\,\frac{\sum_i\|A_{ui}^*A_{ui}-I\|_{\rm HS}^2}{r_u},
+ &v&=\mathbb E\,\frac{\|(n_u/r_u)Q_u-I\|_{\rm HS}^2}{n_u},\\
+ \delta&=\mathbb E(1-d_u/n_u),
+ &\theta&=\min(1,\delta+\sqrt e+\sqrt v).
+\end{aligned}
+\]
+Write \(h_{ui}\) for the mean archimedean allowance of \(B_{ui}\).
+Let \(s_u=\sum_i r_{ui}(\mu(S_{ui})-h_{ui})/r_u\) and
+\(\mu_u=\mu(R_u)\). Choose \(u\) uniformly, then choose a source
+slope uniformly by rank in that block. Let \(S\) be its value
+minus \(h_{ui}+s_u\). Let \(S'\) use the repaired source with the
+\emph{same} centring constants. For the target let \(T\) be a
+rank-uniform target slope minus \(s_u\). These specify three finite
+probability laws. For such a law \(L\), \(L^\uparrow(p)\) denotes
+its increasing quantile, so integrating on \([0,1]\) gives its mean.
+
+\begin{theorem}[A single normalized trace comparison]\label{trmean:trace}
+With these data, put
+\(\mathcal J=\mathbb E\big(\sum_i g(B_{ui})/r_u\big)\). Then
+\begin{equation}\label{trmean:gap}
+ \mathbb E(s_u-\mu_u)\ \le\ \mathcal F,\qquad
+ \mathcal F=\mathcal J+\int_{1-\theta}^1 S^\uparrow(p)\,dp
+                         -\int_0^\theta T^\uparrow(p)\,dp .
+\end{equation}
+The two integrals use only the highest source fraction and the lowest
+target fraction, in their original metrics. All ranks and frame
+defects in this comparison may vary with the translate.
+\end{theorem}
+\begin{proof}
+The HN cutoff of an integral map of height \(\le h\) sends source
+slopes \(\ge a+h\) into the target cutoff at \(a\). Indeed, a nonzero
+map from this source part into the quotient by that target part
+would have an image which is a quotient of the former and whose
+saturation is a sublattice of the latter. The quotient with quotient
+metric has mean slope at least \(a+h\). The saturated image with
+induced metric has mean slope \(<a\). The determinant of the induced
+rank-\(k\) map lowers degree by at most \(kh\), since it is integral
+and its archimedean squared norm is bounded by the \(k\)-th power of
+the squared operator norm. This is a contradiction. This argument
+uses the defining extremal properties of the HN filtration with its
+subspace and quotient metrics. For the slope inequality and its
+filtration form see the proof of Proposition~2.2 in
+\href{https://arxiv.org/pdf/0803.2583}{H.~Chen, \emph{Positive degree and arithmetic bigness},
+\S2.5}. Applied to \(S^\sharp\hookrightarrow S\)
+at height zero it gives \(S'^\uparrow\le S^\uparrow\).
+Lemma~\ref{trmean:graph} gives the three means \(0,-\mathcal J\),
+and \(\mathbb E(\mu_u-s_u)\), respectively.
+
+Fix a real threshold \(t\). Let \(U_{ui}\) be the subspace of the
+repaired source above or at \(s_u+t+h_{ui}\), viewed in the original
+complex vector space. The change of metric preserves its dimension
+and its image as a subspace. Put \(q=\Pr(S'<t)\), let \(P_u\) project
+orthogonally onto \((\sum_i A_{ui}U_{ui})^\perp\), and put
+\(z=\mathbb E(\operatorname{tr}P_u/n_u)\). Then
+\[
+ z-\sqrt{zv}\ \le\ \mathbb E\,\frac{\operatorname{tr}(P_uQ_u)}{r_u}
+                     \ \le\ q+\sqrt{qe}.
+\]
+For the left inequality pair \(P_u\) with \((n_u/r_u)Q_u-I\) in
+the normalized Hilbert--Schmidt inner product, then apply
+Cauchy--Schwarz over the blocks. For the right inequality
+\(P_u A_{ui}\) vanishes on \(U_{ui}\). Sum the squared norms over
+an orthonormal basis of its complement in the original source metric.
+Pair its projection with \(A_{ui}^*A_{ui}-I\) and use the same
+inequality with weights \(1/(h r_u)\). The mean relative dimension
+of these complements is exactly \(q\).
+
+If the relative codimension of the projected images in the target
+is \(z_{0u}\), projection induces a surjection of the ambient
+quotient onto the target quotient. Hence
+\((d_u/n_u)z_{0u}\le\operatorname{tr}P_u/n_u\), so
+\(\mathbb E z_{0u}\le z+\delta\). By the cutoff property, all projected
+images lie in the target above or at \(s_u+t\).
+Since \(z,q\le1\), we have
+\(\Pr(T<t)\le\Pr(S'<t)+\theta\), including the case \(\theta=1\).
+For finite increasing quantiles this implies
+\(S'^\uparrow(p)\le T^\uparrow(p+\theta)\) for almost every
+\(0<p<1-\theta\). Indeed, a strict violation yields a threshold
+between the two values that contradicts the preceding count.
+Integrate on that interval and use \(S'^\uparrow\le S^\uparrow\)
+on the upper fraction. Substituting the three means gives
+\eqref{trmean:gap}, also at the endpoints \(\theta=0,1\).
+\end{proof}
+
+A slope tail is essential. Take one block with \(D-1\) orthogonal unit
+columns into the first \(D-1\) coordinates of a rank-\(D\) target,
+with \(D\ge2\). All sources have slope zero on a common shifted scale,
+and the target slopes are \(0,\ldots,0,-L\), obtained by changing
+only the last line metric. Here \(\mathcal J=e=\delta=0\) and
+\(v=1/(D-1)\), independent of \(L>0\). The mean gap is \(L/D\).
+Consequently even small trace defects leave a quantitative tail
+estimate to prove in the actual arithmetic family.
+
+\begin{corollary}[Comparison with the error budget of the chain]\label{trmean:budget}
+Suppose \(M_u=\operatorname{tr}Q_u\ge r_u/2\) and
+\(d_u/n_u\ge1-\delta_*>0\) for the chosen blocks. Set
+\[
+ \eta=\mathbb E\left(\frac{n_u\operatorname{tr}(Q_u^2)}{M_u^2}-1\right),
+ \qquad U=\mathbb E\max_{i,a}(\lambda_{ui,a}-h_{ui}-s_u),
+\]
+where \(\lambda_{ui,a}\) run over the original source slopes. For
+\(H>0\) put \(T_{\rm out}=\int_0^1(-H-T^\uparrow(p))_+\,dp\).
+Then \(U\ge0\) and
+\begin{equation}\label{trmean:budget-eq}
+ \mathbb E(s_u-\mu_u)\le T_{\rm out}+
+ \frac{(\eta+4\sqrt e)H+4\mathcal J+4U\log(1+H/U)}{1-\delta_*}.
+\end{equation}
+The last product in the numerator is zero when \(U=0\). Integral
+columns satisfying the prescribed global height bounds admit allowances
+with \(\mathcal J=0\).
+\end{corollary}
+\begin{proof}
+In the preceding trace proof normalize \(Q_u\) by \(M_u/n_u\). The
+mean squared normalized defect is exactly \(\eta\), by expansion of
+the square. The same projection test gives
+\[
+ z-\sqrt{z\eta}\le\mathbb E\,\operatorname{tr}(P_uQ_u)/M_u
+                       \le 2(q+\sqrt{qe}).
+\]
+Here the upper bound uses \(M_u\ge r_u/2\) and positivity.
+Since \(2\sqrt{z\eta}\le z+\eta\), the target fraction below the
+threshold is at most \((\eta+4q+4\sqrt e)/(1-\delta_*)\).
+At threshold \(-t\) the discarded source fraction is
+\(q=\Pr(S'<-t)\). Its integral on \(0<t<H\) exceeds the corresponding
+integral for \(S\) by at most \(\mathcal J\). Indeed the integrals
+give the expectations of \(\min(H,(-S')_+)\) and \(\min(H,(-S)_+)\).
+This function of the slope is decreasing and 1-Lipschitz, while the
+ordered quantiles decrease by total integral \(\mathcal J\).
+
+Write \(U_u=\max_{i,a}(\lambda_{ui,a}-h_{ui}-s_u)\). The centred
+source in block \(u\) has mean zero and maximum \(U_u\ge0\).
+For \(t>0\) its fraction below \(-t\) is at most \(U_u/(U_u+t)\).
+The function \(a\mapsto a/(a+t)\) is concave on \(a\ge0\), so
+\(\Pr(S<-t)\le U/(U+t)\). Integrating the three terms of the
+target fraction on \([0,H]\) and adding \(T_{\rm out}\) bounds
+the negative part of \(T\), which dominates \(-\mathbb E T\).
+This proves \eqref{trmean:budget-eq}. For a nonzero integral column
+of height \(\le h_{ui}\), choose \(h_v=\log\|B_v\|^2\) plus the
+nonnegative constant making its normalized mean \(h_{ui}\).
+Both terms of \(g(B)\) vanish. The zero column costs zero for any
+allowances with the prescribed mean.
+\end{proof}

@@ -1,0 +1,85 @@
+\section{Galois representations from simultaneous Hecke congruences}\label{tr:section}
+
+The supply of arithmetic windows uses a local--global compatibility theorem for Galois representations attached to automorphic data. We isolate the passage from congruences of Hecke eigenvalues to a continuous representation. It illustrates how a conditional existence theorem is discharged and why approximating individual coordinates would be insufficient. The geometrically constructed seed representations, the automorphic congruence theorem for the requisite weights and types, and the crystalline closure result used at places above \(\ell\) are cited inputs.
+
+\subsection{Extension of trace data}
+Let \(k=\overline{\mathbb Q}_\ell\) with its \(\ell\)-adic norm, let \(\Gamma\) be the profinite Galois group in the construction and \(x:J\to\Gamma\) its Frobenius coordinates. The target values \(\xi_j\) lie in one finite extension \(L/\mathbb Q_\ell\) inside \(k\). The seed representations \(r_i:\Gamma\to\mathrm{GL}_a(k)\) are continuous. Their systems \(\eta_i:J\to k\) need agree with \(t_i(x_j)=\operatorname{tr}r_i(x_j)\) only on sets \(D_i\subseteq J\). For each finite set \(S\) of indices, \(x(\bigcap_{i\in S}D_i)\) is dense. In the application Chebotarev density after exclusion of finitely many primes is combined with the intersection of the finitely many additional dense open conditions attached to the seeds. The congruence theorem supplies
+\begin{equation}\label{tr:approx}
+ \forall e>0\quad \exists S\ {\rm finite},\ (c_i)_{i\in S}\subset k\quad
+ \forall P\in\mathbb Z[X_j:j\in J],\qquad
+ \left|P(\xi)-\sum_{i\in S}c_iP(\eta_i)\right|_\ell\le e.
+\end{equation}
+In particular the coefficients \(c_i\) are independent of \(P\). The source also supplies this property for specified subfamilies carrying one prescribed finite set of places. \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{69}{families and joint coordinates} and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{91}{density for finite intersections}.
+
+\paragraph{The common good index in the arithmetic application.}
+The indices can be taken to be quadruples \((w,A,s,n)\), with \(w\nmid\ell\)
+split and spherical for the target, \(A\) a prolongation of \(w\) to the
+algebraic closure, \(s\) an arithmetic Frobenius lift at \(A\), and
+\(n\ge1\). Their group coordinate is \(s^{-n}\). In particular all
+prolongations and all lifts are allowed at exponent one.
+\src{src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/FrobOpsIdx.lean}{24}{The index set}
+and \src{src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/FrobOpsIdx.lean}{71}{the exponent-one witness}.
+
+Here is the density argument. Fix a nonempty open set \(W\subset G_E\) and
+a finite family \(I_0\) of seeds. For each such seed the attachment supplies
+a dense open \(V_i\subset G_E\) on which to test arithmetic Frobenius
+lifts and a finite set \(X_i\) of
+exceptional places. The open set \(W^{-1}\cap\bigcap_i V_i\) is nonempty
+and contains a coset of an open normal subgroup. In the corresponding
+finite Galois quotient, Chebotarev gives primes of \(E\) with the conjugacy
+class of that coset. We can take one unramified of absolute residue degree
+one, away from \(\ell\), the bad places of the target and those of all
+these seeds, also avoiding the primes below these finite sets in \(E^+\).
+Indeed a Chebotarev class has positive density among primes of \(E\),
+whereas primes of absolute degree at least two have density zero (their
+norms up to \(X\) lie over rational primes up to \(\sqrt X\)).
+Omit also the primes dividing \(2d\) and the rational primes
+ramified in \(E\). Then \(E_w=\mathbb Q_p\). Its local degree
+over \(E^+\) is one, so \(w\) splits over \(E^+\). The given
+embedding of \(\mathbb Q(\sqrt{-d})\) into \(E\) makes \(-d\)
+a square in \(\mathbb Q_p\), as the usable-place condition requires.
+Conjugating a prime above \(w\) in the finite Galois extension selects
+the desired element of the class. Prolong it to \(A\) and lift Frobenius
+there. The resulting \(s\) belongs to the prescribed coset. At this
+single \((w,A,s)\) each seed has its normalized characteristic polynomial
+and the level supplies a spherical local vector. The exponent-one Hecke
+operator therefore reads \(\eta_i(j)=\operatorname{tr}r_i(s^{-1})\)
+for every \(i\in I_0\) at the same \(j=(w,A,s,1)\). Thus
+\(x_j\in W\) and \(j\in\bigcap_iD_i\). This proves the asserted density
+even in a nonabelian finite quotient.
+\src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{101}{Finite exclusions and inversion}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{112}{simultaneous Hecke comparison}.
+
+\begin{proposition}[Trace interpolation]\label{tr:interpolation}
+Under the preceding hypotheses there is a continuous \(T:\Gamma\to L\). Whenever \((S,c,e)\) satisfies the inequality in \eqref{tr:approx}, it also satisfies
+\[
+  \left|Q(T)-\sum_{i\in S}c_iQ(t_i)\right|_\ell\le e
+    \qquad(Q\in\mathbb Z[X_g:g\in\Gamma]).
+\]
+If a subfamily still gives approximations to every precision and all its indices satisfy \(j\in D_i\) at a particular \(j\), then \(T(x_j)=\xi_j\).
+\end{proposition}
+\begin{proof}
+For each \(g\) use the filter on \(J\) whose basic sets consist of \(j\) such that \(x_j\) is in a prescribed neighborhood of \(g\) and \(j\) is good for a prescribed finite set of indices. Density makes this a proper filter. Given \(e>0\), take one approximant \(A=\sum_{i\in S}c_it_i\) from \eqref{tr:approx}. On the common good set for \(S\), substitution of \(P=X_j\) gives \(|\xi_j-A(x_j)|_\ell\le e\). Continuity of \(A\) gives \(|A(x_j)-A(g)|_\ell\le e\) on a smaller neighborhood. Thus the \(\xi_j\)'s are Cauchy along the filter for arbitrarily small \(e\). They take values in the complete \emph{finite extension} \(L\), giving a limit \(T(g)\). For any fixed approximant, continuity and passage to the limit give \(|T(g)-A(g)|_\ell\le e\) uniformly in \(g\). This proves continuity of \(T\) by uniform approximation. At the specified coordinate an approximant from the indicated subfamily also has \(|\xi_j-A(x_j)|_\ell\le e\). Sending \(e\) to zero proves the last assertion.
+
+For a polynomial \(Q\), list its finitely many group-coordinate variables. Approximate each pair \((g,T(g))\) independently by \((x_j,\xi_j)\) with \(j\in\bigcap_{i\in S}D_i\). Substitute those indices for the variables of \(Q\). This gives a polynomial in the \(J\)-variables, to which the \emph{same} \(S,c,e\) apply. On that set \(\eta_i(j)=t_i(x_j)\). The inequality survives passage to the product limit since the polynomial evaluations and \(t_i\) are continuous and the closed norm ball is closed. \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/ExistsTraceLimit.lean}{15}{filter construction} and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/ExistsTraceLimit.lean}{98}{transport of polynomial tests}.
+\end{proof}
+
+\subsection{Realization and recovery of local data}
+\begin{proposition}[Trace identities, continuity and inertia]\label{tr:realize}
+The trace in Proposition~\ref{tr:interpolation} is the trace of a continuous semisimple \(a\)-dimensional \(k\)-representation \(r\). If a subfamily still gives approximations at every precision for a specified place, and all its representations kill an inertia element \(s\), the resulting \(r\) kills \(s\) as well.
+\end{proposition}
+\begin{proof}
+An integral polynomial vanishing on every seed trace vanishes on \(T\) by Proposition~\ref{tr:interpolation} and \(e\downarrow0\). In particular \(T(1)=a\) and \(T(gh)=T(hg)\). For \(g_1,\ldots,g_{a+1}\) consider the alternating sum over permutations of the product, over cycles, of the trace of the cyclic word. For a representation on \(V=k^a\), this sum is the trace of the tensor product of its \(a+1\) matrices times the antisymmetrizer on \(V^{\otimes(a+1)}\). Indeed, expansion in a tensor basis contracts precisely the indices in each cycle. The antisymmetrizer is zero since \(\bigwedge^{a+1}V=0\). Hence the integral polynomial defining this sum vanishes on \(T\). These are the characteristic-zero pseudocharacter identities. \src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/IsPseudoCharacterOfApproximatedByTraces.lean}{29}{passage of trace identities}.
+
+Extend \(T\) by linearity to \(R=k[\Gamma]\). The alternating identity just proved is multilinear in its \(a+1\) arguments, since every argument occurs once in each permutation term. Expansion in the group basis therefore proves that identity throughout \(R\). Cyclicity extends by bilinearity. As \(k\) is a \(\mathbf Q\)-algebra, Chenevier's Proposition~1.27 gives a determinant \(D\) of dimension \(a\) whose trace is \(T\). Since \(k\) is algebraically closed, his Theorem~2.12 realizes \(D\) as the determinant of a unital semisimple \(R\)-module of dimension \(a\). Each \(g\in\Gamma\) acts invertibly with inverse the action of \(g^{-1}\), and the linear coefficient of \(D(1+tg)\) gives \(\operatorname{tr} r(g)=T(g)\). This proves algebraic realization over the specified field. \cite{chenevier}. The original construction uses the trace radical and the multiplicities of its matrix blocks. \src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/FiniteSemisimple.lean}{16}{Finite semisimplicity} and \src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/FiniteSemisimple.lean}{100}{block multiplicities}.
+
+The image algebra \(A=\operatorname{span}_k r(\Gamma)\) is a product of the blocks occurring in this realization. The pairing \((u,v)\mapsto\operatorname{tr}(uv)\) is nondegenerate on \(A\), since each occurring block carries a positive multiplicity in characteristic zero and the ordinary matrix trace pairing is nondegenerate. Choose \(r(h_1),\ldots,r(h_b)\) spanning \(A\). The linear map \(u\mapsto(\operatorname{tr}(ur(h_j)))_j\) has a \(k\)-linear left inverse on its image, extendible to \(k^b\). Its matrix entries are fixed elements of \(k\), so it is continuous. The coordinates of \(r(g)\) under this map are \(T(gh_j)\), continuous functions of \(g\). Both the entries of \(r(g)\) and those of its inverse \(r(g^{-1})\) are continuous. Finally, for an inertia element as in the statement, uniform approximation of \(T(sg)\) and \(T(g)\) by the same weighted traces gives \(T(sg)=T(g)\). Hence \(\operatorname{tr}((r(s)-1)r(g))=0\) for all \(g\). Since the \(r(g)\)'s span \(A\), nondegeneracy gives \(r(s)=1\). \src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/ContinuousOfContinuousTrace.lean}{23}{trace coordinates} and \src{src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/KerOfLinApprox.lean}{10}{inertia kernel transfer}.
+\end{proof}
+
+At a split spherical place \(w\nmid\ell\), outside the exceptional levels stipulated in the theorem, let \(B_w\) be its Satake multiset and \(q_w\) the residue norm. The Hecke operator for the \(n\)th power sum, \(n\ge1\), has rational coefficients of the form \(m/q_w^e\). The normalization is \(B_w^{\mathrm{alg}}=q_w^{(a-1)/2}B_w\). For a chosen Frobenius representative \(\sigma_w\) the coordinates correspond to \((\sigma_w^{-1})^n\). With the place included in the prescribed subfamily, Proposition~\ref{tr:interpolation} gives the power sums for the same \(r\). The Newton relations
+\[
+ j e_j=\sum_{h=1}^j(-1)^{h-1}e_{j-h}p_h,\qquad e_0=1
+\]
+recover all elementary symmetric coefficients from \(p_1,\ldots,p_a\), so after the chosen \(k\simeq\mathbb C\) the characteristic polynomial of \(r(\sigma_w^{-1})\) is \(\prod_{\alpha\in B_w^{\mathrm{alg}}}(X-\alpha)\). The argument uses traces of powers of the matrix and works for a nondiagonalizable Frobenius. At \(w\mid\ell\), the actual proof also invokes a theorem on closedness of the crystalline and de Rham conditions and uses joint normalized Frobenius coordinates. Semisimplicity by itself does not give these conclusions. \src{src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/FrobOpsIdx.lean}{20}{Frobenius indices}, \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{133}{recovery away from \(\ell\)} and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{166}{separate conditions at \(\ell\)}.
+
+In the active construction the odd-rank seed theorem and its weight-congruence theorem are themselves supplied by weight-one geometry and integral automorphic forms. The local--global row then uses the odd-rank limit with theta lifting, closedness of the Frobenius condition, descent off the selected set of places, and local compatibility at the remaining places. These last steps are cited for their original range of automorphic data. Proposition~\ref{tr:realize} explains the limit operation on this chain. The closed row at its end is what is supplied to the window and theta comparison branches. \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/GeometricFlagBases/GeometricRealizationOfWeightOne.lean}{25}{weight-one realization}, \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean}{20}{assembly through the odd-rank limit} and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/GaloisRepresentationsOfThetaLift.lean}{6}{instantiation of the geometric seed}.

@@ -1,0 +1,335 @@
+\section{Fourier extraction and a uniform arithmetic inequality}\label{ar:section}
+
+The geometric comparison enters this section through an upper bound for a scalar discrepancy. We retain its sign throughout. The reconstruction below uses only finite character orthogonality and elementary real inequalities once the discrepancy and size data are supplied. In particular, it does not estimate every character sum by its absolute value before averaging.
+
+\subsection{The exact discrepancy}
+
+Let \(H\) be a finite abelian group of order \(n\), let \(A_0\le H\), and put
+\[
+ \mathcal G=(\mathbb Z/2)^2\times H,\qquad
+ \Phi=\{(0,s,h):s\in\mathbb Z/2,\ h\in H\},\qquad f=|\Phi|=2n .
+\]
+Write \(c(r,s,h)=(-1)^r\) and \(P_t(g)=g+(1,1,t)\). The map \(P_t\) is a bijection from \(\mathcal G\setminus\Phi\) to \(\Phi\). At a rational prime \(p\), designate its inertia subgroup by \(I_p\) and a Frobenius representative by \(F_p\). For \(\chi\in\widehat{\mathcal G}\), put
+\[
+ v_\chi(p^j)=|I_p|^{-1}\sum_{h\in I_p}\chi(jF_p+h).
+\]
+Thus \(v_\chi\) at prime powers records the Euler factor of the primitive character, with zero value when its restriction to inertia is nontrivial. Let \(G_\chi(y)\) be the ramp sum with these coefficients, centred by \(y\ell_\chi\) if \(\chi\ne1\), and by \(-y\log y+(1+\gamma)y\) if \(\chi=1\). The active host realization identifies \(\ell_\chi\) with the logarithmic derivative at one in the nontrivial case. \src{src/Formalism/SizeWindowBrackets/FirstPrimeNeSecondPrime.lean}{61}{ramp and inertia average}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/PrimRead.lean}{48}{primitive character comparison}.
+
+\paragraph{Arithmetic signs and Fourier coordinates.}
+In Proposition~\ref{host:art} the signs are ordered as \(J_q,J_d\).
+Write \(\iota:H\longrightarrow H_e\) for the frame identification from
+additive to multiplicative coordinates. With \(\operatorname{bit}(+1)=0\)
+and \(\operatorname{bit}(-1)=1\), the map used here is
+\[
+  \beta(s_q,s_d,h)=
+       \big(\operatorname{bit}(s_d),\operatorname{bit}(s_q),\iota^{-1}(h)\big).
+\]
+It is a group isomorphism, since each factor map is an isomorphism and
+the two binary factors are interchanged. The three relevant images are
+\[
+\begin{array}{c|c|c}
+ &\text{arithmetic label}&\text{Fourier label}\\ \hline
+ d\text{-inertia generator}&(+1,-1,1)&(1,0,0)\\
+ \text{complex conjugation}&(-1,-1,1)&(1,1,0)\\
+ \text{translation by }t &(+1,+1,\iota(t))&(0,0,t).
+\end{array}
+\]
+The arithmetic CM type is cut out by \(s_d=+1\), hence its image is
+exactly \(\Phi\). In particular there is one element outside \(\Phi\)
+in each coset of \(I_d\). This identifies the summand at the ramified
+prime in Lemma~\ref{ar:balance}.
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/ToEBij.lean}{37}{CM type, inertia, conjugation and translations}.
+
+Here is the additional identity used for the weights. At fixed \(x\)
+the design of Section~\ref{main:assembly} assigns a geometric point
+\(i(u)\) to each required translate of the common frame. At that point
+the geometric CM-type labels \(\tau\) are in bijection with the
+arithmetic CM type. Write \(g_{i(u)}(\tau)\) for the arithmetic label.
+For each \(1\le j\le m\) set the Fourier weight to the value on the
+unique geometric label with the specified Fourier coordinate, and to
+one off the image. Uniqueness follows from injectivity of the label
+bijection and of \(\beta\). Thus the choice of a preimage gives
+\[
+ w_{u,j,\beta(g_{i(u)}(\tau))}
+                 = w^{\mathrm{geom}}_{i(u),j}(\tau)
+                 \qquad\text{for every }\tau .
+\]
+The integer \(a_t\) attached to \(t\) is likewise common to all these
+points. Substituting these identities term by term transports
+both the positive parts and the sum of logarithms in the centre.
+The source indexes the Fourier layers from zero, so its geometric
+layer at index \(j-1\) is \(j\).
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TieGlobal.lean}{42}{common ranks, levels and integer coefficients},
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/QuadraticLogDerivCongr.lean}{405}{construction on each matched geometric label} and
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TieGlobal.lean}{84}{pointwise weight compatibility}.
+
+\begin{lemma}[Inertia orthogonality and centring]\label{ar:balance}
+Suppose a designated set of split primes has \(F_p\in\Phi\) and \(I_p\subseteq\Phi\), and that the only other ramified prime is \(d\), with \(I_d=\{0,(1,0,0)\}\). Let \(a>0\), and let \(w_\rho>0\) for \(\rho\in\Phi\), with \(a/w_\rho\le N\). Form \(\mathrm{ASK}\) by summing the positive parts \((a/p^j-w_{P_t(g)})_+\) with coefficient \(2\log p\) on unramified inert odd powers \(g=jF_p\), and coefficient \(\log d\) for \(g\notin\Phi\) with \(g-jF_d\in I_d\). Every prime outside the designated split set and \(d\) is unramified, and such a prime is inert precisely when the first coordinate of \(F_p\) equals \(1\). The sum can be truncated to \(p^j\le N\), since \(a/w_\rho\le N\) makes every summand with \(p^j>N\) vanish. Equivalently one can bound the prime and exponent separately by \(N\), as in the source. Then
+\begin{align}
+ \mathrm{MAIN}
+ &=a\left(\log a-1-\gamma+\ell_c-f^{-1}\sum_{\rho\in\Phi}\log w_\rho\right),\nonumber\\
+ \mathrm{ASK}-\mathrm{MAIN}
+ &= \frac1f\sum_{g\notin\Phi}\sum_{\chi\in\widehat{\mathcal G}}
+     \overline{\chi(g)}\,w_{P_t(g)}G_\chi(a/w_{P_t(g)}).
+ \label{ar:balanceeq}
+\end{align}
+The host in the active application supplies the split set as the prime factors of \(q\,QS\).
+\end{lemma}
+\begin{proof}
+Interchange the inertia average and the sum over the dual group to get
+\[
+ f^{-1}\sum_\chi\overline{\chi(g)}v_\chi(p^j)
+ =2\,|I_p|^{-1}\mathbf1_{g-jF_p\in I_p}.
+\]
+For unramified \(p\), the first coordinate of \(jF_p\) restricts \(j\) to the odd integers when \(p\) is inert. On the split set the indicated coset stays in \(\Phi\). At \(d\) the factor \(2/|I_d|\) is one. Multiply by \(\log p\) and the positive part, and use the prime-power support of the von Mangoldt function. The truncation at \(N\) removes only zero summands. Factoring \(w\) out of \((a/p^j-w)_+\) gives the appropriate ramp at \(a/w\). The trivial character contributes \(a\log a-a\log w-(1+\gamma)a\). For a nontrivial character the remaining term is \(-a\ell_\chi\). The character sum over \(\mathcal G\setminus\Phi\) equals \(f\) for \(1\), \(-f\) for \(c\), and zero otherwise. Finally \(P_t\) reindexes \(\log w\) over \(\Phi\).
+\end{proof}
+\noindent
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/hostFactsS.lean}{127}{host split set}\quad
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChBalance.lean}{42}{local coefficients}\quad
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChBalance.lean}{200}{exact balance}.
+
+\subsection{Extraction from the signed discrepancy}
+
+Choose \(T\subset H\), \(T_2\subset A_0\), with sizes \(n_T,n_2\), and let \(\delta=n_2/n\). At each translate \(u\in A_0\) and layer \(j\in\{1,\dots,m\}\) use weights \(w_{u,j,\rho}\). For \(t\in T\) let \(|a_t/b-x|\le1\). The thick coordinates are \((0,1,s+u)\) for \(s\in T_2\), with weights in \([b,b+\eta+1]\). Other coordinates have weights at most \(2b'\). Assume \(b,b',X'>0\), \(b'X'\le xb\), \(\eta,\theta\ge0\), and suppose the following bounds hold for every character.
+\begin{align*}
+ |wG_\chi(a/w)-bG_\chi(a/b)|
+ &\le 3a|w-b|/\min(w,b),\\
+ |G_\chi(y)|&\le y\theta \quad (y\ge X'/3),\\
+ 6f(x+1)(\eta+1)&\le b/x,\qquad
+ 2f(x+1)\theta\le 1/x .
+\end{align*}
+All weights satisfy the positivity and truncation hypotheses of Lemma~\ref{ar:balance}. Lemma~\ref{host:variation} proves the weight Lipschitz estimate, and Proposition~\ref{host:thin} proves the thin-scale bound at the scales of the chosen field. The last two inequalities constrain its geometric parameters. \src{src/Formalism/SizeWindowBrackets/GrowthBoundGivesRiemannHypothesis.lean}{55}{Thin scales and Lipschitz}\quad
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/LipschitzWeightAndMinimum.lean}{957}{weight Lipschitz proof}\quad
+\src{src/Formalism/SizeWindowBrackets/SChain.lean}{50}{cost hypotheses}.
+
+Let \(\Psi\) be the characters annihilating \(\{(0,0,h):h\in A_0\}\), let \(o=[H:A_0]\), and let \(K\subset\Psi\) contain \(1\), with \(\chi(1,0,0)=1\) on \(K\). Given \(c_0=(3o+1)^{-1}\), set
+\[
+ \omega_\chi=\begin{cases}1&\chi|_H=1,\\c_0&\chi|_H\ne1,\end{cases}\qquad
+ G_K=\sum_{\chi\in K}\omega_\chi\Re G_\chi(x),\quad
+ \Sigma=\sum_{\chi\in\Psi\setminus K}|G_\chi(x)|.
+\]
+Suppose the counts of \(T\) in zero and nonzero cosets of \(H/A_0\) differ from \(4c_0 n_T\) and \(3c_0 n_T\), respectively, by at most \(n_Tx^{-1+\varepsilon}\). For fixed parameters, assume that the logarithmic derivatives are bounded on \(K\setminus\{1\}\) by a fixed constant, and by a fixed multiple of \(\log x\) on \(\Psi\setminus K\). In the active chapter \(o\) is fixed by \(\Lambda\). The scale derivative bounds used below are \(|G_1(y)-G_1(x)|\le C_d|y-x|\), and, when \(\chi\ne1\), \(|G_\chi(y)-G_\chi(x)|\le|y-x|(\log\max(y,x)+C_d+|\ell_\chi|)\) for \(x,y\ge1\). \src{src/Development/AutomorphicArithmetic/PrimitiveCosets/TopsSum.lean}{75}{coset shares}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/charsA.lean}{80}{character data}\quad
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/LipschitzWeightAndMinimum.lean}{966}{scale derivative estimate}.
+
+\begin{lemma}[Extracted inequality]\label{ar:extract}
+Assume the foregoing conditions and \(x\) sufficiently large in terms of the fixed constants and \(\varepsilon>0\). If for every \(u\in A_0\) the real discrepancy in \eqref{ar:balanceeq}, summed over \(t,j\), is at most \(E\), then
+\[
+ (n_Tmb)\frac{\delta}{2}\bigl(G_K-\Sigma-4x^{1/2+\varepsilon}\bigr)
+ \le E+2n_Tmb/x.
+ \tag{*}\label{ar:scaled}
+\]
+\end{lemma}
+\begin{proof}
+In the thick terms replace \(w\) by \(b\). Each term changes by at most \(3(x+1)(\eta+1)\). In the other terms \(a_t/w\ge (x-1)b/(2b')\ge X'/3\) for \(x\ge3\), so deleting them costs at most \((x+1)b\theta\) per term. The numerator has at most \(f\) classes and \(2f\) characters, with prefactor \(1/f\). The two cost hypotheses therefore give total error at most \(2b/x\) per \(t,j\).
+
+Put \(e_1(h)=(1,0,h)\). The preimage of a thick coordinate is \(e_1(s+u-t)\). For \(s\in A_0\),
+\[
+ |A_0|^{-1}\sum_{u\in A_0}\chi(-e_1(s+u-t))
+ =\mathbf1_{\chi\in\Psi}\chi(e_1(t)).
+\]
+Thus the thick sum averaged over \(u\) equals
+\(\frac{mb\delta}{2}\sum_{t\in T}\Re\sum_{\chi\in\Psi}\chi(e_1(t))G_\chi(a_t/b)\).
+In the average over \(T\), the regular coset contribution cancels for a nontrivial quotient character, and the excess share \(c_0\) at the zero coset survives. More precisely,
+\(\left|\sum_{t\in T}\chi(0,0,t)-\omega_\chi n_T\right|\le o n_T x^{-1+\varepsilon}\)
+on \(K\), with exact equality of main terms when the restriction is trivial. For each nontrivial character in \(K\), moving \(a_t/b\) to \(x\) costs \(O(\log x)\) per term by the scale derivative, while the phase discrepancy costs at most \(O(x^{-1+\varepsilon})|G_\chi(x)|=O(x^\varepsilon\log x)\) per term. Here integration from \(1\) gives \(|G_\chi(x)|\le x(\log x+C_d+|\ell_\chi|)\). The trivial character has bounded move cost. For an excluded character, retain the lower bound \(-|G_\chi(x)|\) and subtract its additional \(O(\log x)\) move cost. Since \(|\Psi|=4o\) is fixed, their combined move and phase errors per \(t\) are at most \(4x^{1/2+\varepsilon}\) for large \(x\). For a threshold uniform in the supplied data, one may use \(\log(x+1)\le5x^{1/4}\) and absorb the fixed coefficient times \(|\Psi|\) into another \(x^{1/4}\), as in the source. Summing gives \eqref{ar:scaled}.
+\end{proof}
+\noindent
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChCore.lean}{56}{annihilator projection}\quad
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChCore.lean}{75}{thick and thin error}\quad
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChCore.lean}{202}{one-character estimate}\quad
+\src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChCore.lean}{343}{uniform comparison}.
+
+\begin{proposition}[Four explicit losses]\label{ar:four}
+Let \(x\ge3,\varepsilon>0,C\ge0,b>0,a_E\ge0,n>0\), and assume
+\[
+ \begin{gathered}a_E\le2xb,\qquad x^{1/2-\varepsilon}\le m\le x^{1/2+\varepsilon/2},\\
+ xm\le k\le n^2x^{1/2-\varepsilon},\quad
+ n\le2n_Tx^{\varepsilon/8},\quad x^{-\varepsilon}\le n_2/n\le1 .\end{gathered}
+\]
+Suppose \eqref{ar:scaled} holds and
+\[
+ E\le x^{C\varepsilon}
+ \left(n_Ta_E+n_Ta_E\,m^2/k+2nm^2b\,x^\varepsilon+
+                         mb\,n_2 k x^{2\varepsilon}/n^2\right).
+\]
+If \(x^{3\varepsilon/8}\ge26\), then \(G_K\le x^{1/2+(C+3)\varepsilon}+\Sigma\).
+\end{proposition}
+\begin{proof}
+Write \(B=n_Tmb>0\) and \(U=x^{1/2+13\varepsilon/8}\). Divide the four bracket terms by \(B\). They are bounded, respectively, by
+\[
+ 2x/m\le2U,\quad 2xm/k\le2,\quad
+ 2(n/n_T)mx^\varepsilon\le4U,\quad
+ (n_2/n_T)x^{1/2+\varepsilon}\le2x^{1/2+9\varepsilon/8}\le2U .
+\]
+The fourth bound uses both \(n_2\le n\) and the upper bound for \(k\). Hence \(E/B\le10x^{C\varepsilon}U\). By \eqref{ar:scaled}, after multiplying by two the right side is at most \(22x^{C\varepsilon}U\). Divide by \(\delta\), using \(\delta^{-1}\le x^\varepsilon\), whenever \(G_K-\Sigma-4x^{1/2+\varepsilon}>0\). Otherwise the desired intermediate bound is immediate. Restoring the move error yields \(G_K-\Sigma\le26x^{1/2+(C+21/8)\varepsilon}\), and the numerical threshold absorbs 26.
+\end{proof}
+\noindent
+\src{src/Formalism/SizeWindowBrackets/ErrorFormsWeakWindowsFalse.lean}{133}{four-term bracket}\quad
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/LipschitzWeightAndMinimum.lean}{507}{explicit numerical bound}.
+
+\begin{proposition}[The translate mean and its four primitive twists]\label{ar:mean}
+Retain the host and scale assumptions of Lemma~\ref{ar:extract},
+including uniform derivative constants. Let \(D_u\) be its summed
+real discrepancy and set
+\[
+ \bar D=|A_0|^{-1}\sum_{u\in A_0}D_u,\qquad
+ B=n_Tmb,\qquad \delta=n_2/n>0 .
+\]
+Then \eqref{ar:scaled} also holds with \(E=\bar D\), without an
+upper bound on any individual translate. More precisely, for the
+cyclotomic host of Proposition~\ref{host:art}, write
+\(G[\xi]=G_{\xi^\ast}(x)\), where \(\xi^\ast\) is the primitive
+inducer, and put \(\omega_0=1,\ \omega_a=(3o+1)^{-1}\) for
+\(1\le a<o\). Then
+\[
+\begin{aligned}
+ \frac{2\bar D}{B\delta}
+  ={}&\sum_{a=0}^{o-1}\omega_a\Re\big(
+          G[\psi^a]+G[\psi^aJ_q]-G[\psi^aJ_d]
+                        -G[\psi^aJ_qJ_d]\big)+R_x,\\
+ |R_x|\le{}&C(1+x^\varepsilon)\log(2x)+\frac{4}{x\delta}.
+\end{aligned}
+\]
+The constant depends only on the fixed character order and the
+derivative bounds. It is independent of the window, the field
+degree, and the number of translates.
+\end{proposition}
+\begin{proof}
+In the proof of Lemma~\ref{ar:extract} the thick replacement and
+thin deletion change each \(D_u\) by at most \(2B/x\) in absolute
+value. The averaged thick expression displayed there, divided by
+\(B\delta/2\), is exactly
+\[
+ \frac{1}{n_T}\sum_{t\in T}\Re\sum_{\chi\in\Psi}
+                         \chi(1,0,t)\,G_\chi(a_t/b).
+\]
+All subsequent lower bounds in that proof apply directly to
+\(\bar D\), which proves the first assertion. For the two-sided
+formula replace \(a_t/b\) by \(x\). The derivative estimates and
+\(|a_t/b-x|\le1\) give a total error \(O_o(\log(2x))\), since there
+are \(4o\) characters and their derivatives at one satisfy the
+stated bounds. For each of them, average its restriction to \(H\)
+over \(T\). The average is exactly one for trivial restriction.
+Otherwise the sum over the regular cosets vanishes and the excess
+share at zero is \((3o+1)^{-1}\), with error at most
+\(o\,x^{-1+\varepsilon}\). In this case the Dirichlet character is
+nonprincipal and integration of the scale derivative gives
+\(|G_\chi(x)|\ll x\log(2x)\) with the same uniform constants.
+The error from the coset shares is therefore
+\(O_o(x^\varepsilon\log(2x))\).
+
+Finally the characters on this quotient have primitive inducers
+of \(\psi^a J_q^iJ_d^j\), with \(0\le a<o\), \(0\le i,j\le1\).
+Restriction to \(H\) is trivial exactly for \(a=0\). The factor
+\(\chi(1,0,0)=(-1)^j\) is evaluation on \(d\)-inertia by the
+coordinate computation above. These give the asserted signs and
+weights. The initial error \(2B/x\) becomes \(4/(x\delta)\).
+\end{proof}
+
+\begin{corollary}[Size of the discarded part of the mean]\label{ar:meanhost}
+On the hosts in Formal input~\ref{red:design}, the remainder in
+Proposition~\ref{ar:mean} satisfies
+\[
+ \left|\frac{2\bar D}{B\delta}-G_{\mathcal F_\psi}(x)-R_x\right|
+ \le \frac{12o}{3o+1}\,x^{1/2+\varepsilon}.
+\]
+In particular, at every sufficiently large such scale,
+\(G_{\mathcal F_\psi}(x)\le x^{1/2+4\varepsilon}\) already implies
+the mean version of \eqref{scope:missing}. Conversely the mean
+version and the remaining conditions of
+Theorem~\ref{main:conditional} give \eqref{eq:window}.
+\end{corollary}
+\begin{proof}
+For each retained power there are three discarded terms in the
+signed formula. Each has modulus at most \(x^{1/2+\varepsilon}\)
+by the choice of the two primes. Summing their weights gives
+\(3(1+(o-1)/(3o+1))=12o/(3o+1)<4\). At the actual scales
+\(a_E\ge xb\), \(m\le x^{1/2+\varepsilon/2}\) and
+\(x^{-\varepsilon}\le\delta\le1\). If \(E_x\) denotes the right
+side of \eqref{scope:missing}, its first nonnegative term gives
+\[
+   \frac{2E_x}{B\delta}\ge
+      \frac{2x^{5\varepsilon}a_E}{mb\delta}
+           \ge 2x^{1/2+9\varepsilon/2}.
+\]
+Under the indicated upper bound on the retained sum, the bound
+just proved and the estimate for \(R_x\) put \(2\bar D/(B\delta)\)
+below this threshold for large \(x\). In the other direction use
+Propositions~\ref{ar:mean} and~\ref{ar:four} as in
+Section~\ref{scope:account}. Both implications concern the same
+data at \(x\). The design assumption used for the numerical
+lower bound \(a_E\ge xb\) is in
+\src{src/Formalism/SizeWindowBrackets/ErrorFormsWeakWindowsFalse.lean}{30}{the scale restrictions}.
+\end{proof}
+For \(\psi=1\) the formula has the particularly simple main term
+\(G[1]+G[J_q]-G[J_d]-G[J_qJ_d]\); all four terms are real.
+The evaluation therefore retains the zeta ramp itself. Obtaining the
+required upper bound on the mean by arithmetic means remains an input.
+
+\begin{corollary}[Testing at squares]\label{ar:squares}
+For the critical-line implication it suffices to provide the
+finite-character, rank, scale and excluded-character hypotheses
+of Theorem~\ref{main:conditional}, together with \eqref{scope:average},
+at the integer squares in each required window. Conversely, suppose only
+the character and scale conditions of Corollary~\ref{ar:meanhost}
+are given at every real scale in these windows. If the retained
+sum satisfies \(G_{\mathcal F_\psi}(s)\le s^{1/2+3\varepsilon}\)
+at their integer squares, then \eqref{scope:average} holds for
+the specified data at every real scale of every sufficiently late
+such window.
+\end{corollary}
+\begin{proof}
+The constant terms defining \(G_{\mathcal F_\psi}\) depend only on
+the fixed powers of \(\psi\). Each ramp \((y/n-1)_+\) is continuous
+and piecewise linear, of slope at most \(1/n\). On \([x/2,2x]\),
+for \(x\ge 4\), the absolute slope bound for their sum, including
+the centring in \eqref{eq:centred}, is therefore
+\[
+ C_\psi\left(1+\log(2x)+
+                     \sum_{2\le n\le 2x}\frac{\log n}{n}\right)
+       \le C'_\psi\log^2(2x).
+\]
+There are finitely many breaks on this interval, so this is also
+a Lipschitz bound across them. For every \(x\in[Y,Y^{3/2}]\)
+choose \(s=\lfloor\sqrt{x}\rfloor^2\) if this lies in the window,
+and the next square otherwise. In the latter case the first square
+at least \(Y\) is at most \((\sqrt Y+1)^2\le Y^{3/2}\) for large
+\(Y\). Thus \(|s-x|\le 2\sqrt{x}+1\), and
+\[
+ |G_{\mathcal F_\psi}(s)-G_{\mathcal F_\psi}(x)|
+                    \ll_\psi\sqrt{x}\log^2(2x).
+\]
+For any fixed \(h>0\), an upper bound \(s^{1/2+h}\) at these
+squares now gives \(x^{1/2+h+\varepsilon}\) on the whole window
+after a uniform increase in its lower threshold. In the first
+assertion Corollary~\ref{ar:meanhost} gives \(h=9\varepsilon\)
+at the squares. Theorem~\ref{an:zero} applies because
+\(\varepsilon\) can be taken arbitrarily small. For the converse
+take \(h=3\varepsilon\) and apply Corollary~\ref{ar:meanhost}
+to the specified host at each real \(x\). Only the fixed retained
+function is interpolated; the hosts and their weights may change
+between squares.
+\end{proof}
+
+\subsection{Simultaneous transport and the exponent \(9\varepsilon\)}
+
+For fixed \(\Lambda\) and parameters, the active theorem \(\mathrm{core\_gm}\) first chooses \(x_1\), then quantifies over all \(x\ge x_1\), frames, and hosts with compatible \(\mathrm{EAtH}\) and \(\mathrm{CoreAtH}\) data. Its bound is
+\begin{equation}\label{ar:active}
+ \Lambda.Gm(x)\le x^{1/2+(e_D+e_L+7)\varepsilon}.
+\end{equation}
+Here the comparison for each translate is \(\mathrm{ch\_top}\) applied using the coverage map of \(\mathrm{CoreAtH}\). The latter ensures that the arithmetic discrepancy in \eqref{ar:balanceeq} and the geometric data share the same \(a_t\), \(w_{u,j,\rho}\), and the same centring term. The source defines \(C_{\mathrm{err}}=C.eDiv+C.eLoss+3\) and proves \(C_{\mathrm{err}}\le e_D+e_L+3\), so Proposition~\ref{ar:four} uses \(C=e_D+e_L+3\). The precise reindexing of retained characters gives \(G_K=\Lambda.Gm\). For excluded characters the host's separate twist estimate gives \(\Sigma\le4o\,x^{1/2+\varepsilon}\). Taking \(x^\varepsilon\ge1+4o\) absorbs this term and gives \eqref{ar:active}. The all-character bounds of the final theorem have not been used. In particular the bounds for the excluded twists are inputs, whereas the retained sum is the output. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChTop.lean}{37}{geometric discrepancy}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/GmAEq.lean}{61}{retained terms}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/SigALe.lean}{38}{excluded twists}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean}{12}{pointwise assembled estimate}.
+
+The active family construction is simultaneous in a specific order. A closure condition supplies a positive \(\varepsilon\)-threshold and, for each admissible \(\varepsilon\), a size requirement on a family. Its conjunction with a second condition uses the smaller threshold and the supremum of the size requirements. Only then does \(\mathrm{topDesWin}\) invoke design existence, selecting a single \(F_m\) with \(\mathrm{ChosenE}\), \(\mathrm{TuSize}\), and \(\mathrm{DGamSize}\). It uses \(\mathrm{LinkN}\), \(\mathrm{SmallLevelRankEq}\), and \(\mathrm{HypV}\) to obtain \(\mathrm{DIVinN}\), combines this with the division and rank data, and fits the five hypotheses of \(\mathrm{LinkGLOBAL}\) to that same family. The input list is \(\mathrm{LinkG}\), \(\mathrm{LinkS}\), \(\mathrm{LinkIRR}\), \(\mathrm{LinkDIV}\), and \(\mathrm{LinkMu}\). The output is one choice of constants, followed by \(\mathrm{ChainTied}\) for every sufficiently large \(x\) in \(F_m.\mathrm{Win}\). \src{src/Formalism/SharpRestriction/ParamsHeightRankConstant.lean}{160}{closure under conjunction}\quad
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean}{11}{single design choice}\quad
+\src{src/Formalism/SharpRestriction/GlobalTheoremInputs.lean}{158}{global input and output}.
+
+At each such \(x\), the witness contains a map from the entire translate group into the family's point index. The frame, \(m,f,q,d\), and vertex coding are tied across translates, while the local lattices are read from the corresponding point. The common \(T_2\) and the weights are tied by one arithmetic encoding. This is the reason that the pointwise \(\mathrm{ch\_top}\) estimates in Lemma~\ref{ar:extract} refer to the same Fourier data. The source instantiates \((C_{\rm abs},C_0,e_D,e_L)=(2,3,2,0)\), so \eqref{ar:active} reads \(x^{1/2+9\varepsilon}\) on the chosen family's good scales. The statement allows a different family for another \(\varepsilon\). It requires arbitrarily late complete windows for the family chosen at the current \(\varepsilon\). \src{src/Formalism/SharpRestriction/GlobalSchurBounds/TieGlobal.lean}{97}{translate witnesses and identities}\quad
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopShape.lean}{52}{active choice of constants}\quad
+\src{src/Development/AutomorphicArithmetic/PrimitiveCosets/WindowInequalityOfArtinInputs.lean}{17}{transport onto good scales}\quad
+\src{src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/TopWin.lean}{68}{choice of small exponent}.
+

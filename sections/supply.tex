@@ -1,0 +1,123 @@
+\section{Supplying the arithmetic family}\label{sup:section}
+
+We first select two primes for which every auxiliary twist in a fixed finite family is small. Theorem~\ref{pr:pair} proves the required uniform statement, using the density estimate below. The cohomological selection then requires an interval on which the strict Selmer groups have bounded total length for those very primes. Theorem~\ref{newcoh:lemmaK} and Proposition~\ref{newcoh:centres} handle the low layer and the tower. The further assumptions on nontrivial varying characters are stated in Sections~\ref{newcoh:section} and \ref{rk3:sec}.
+
+\subsection{A density bound in the auxiliary box}
+
+Write \(\sigma_0=399/400\). The object to be counted is a primitive character of conductor at most \(Q\) with at least one zero in \(\Re s>\sigma_0,\ |\Im s|\le Q\). We give the elementary mechanism of the density estimate, including the source of the large-sieve exponent. The classical analytic facts used here are nonvanishing for \(\Re s\ge1\) for nonprincipal characters, their Dirichlet series in \(\Re s>0\) by partial summation, and the divisor bound \(\tau(n)\ll_\alpha n^\alpha\). \src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/CountZAll.lean}{13}{density assembly}
+
+\begin{lemma}[Auxiliary-box density]\label{sup:density}
+For \(Q\ge3\), the number of such primitive characters is \(O(Q^{1/4})\), with an absolute implied constant.
+\end{lemma}
+\begin{proof}
+It suffices to work with large \(Q\). The smaller range has only finitely many possible conductors. Put \(B=\lceil Q\rceil\), \(V=B^4\), \(J=8(\lfloor\log_2B\rfloor+1)\), and \(N=2^J\). Ignore conductor \(1\), which contributes at most one character. Choose one zero \(\rho_\chi=\beta+it\) for each remaining character. For the partial sums \(A_\chi(u)=\sum_{n\le u}\chi(n)\), periodicity and vanishing of the sum over a period give \(|A_\chi(u)|\le Q\). Partial summation at a zero gives
+\[
+ \left|\sum_{n\le N}\chi(n)n^{-\rho_\chi}\right|
+ \le Q N^{-\beta}(1+|\rho_\chi|/\beta).
+\]
+The mollifier \(\sum_{a\le V}\mu(a)\chi(a)a^{-\rho_\chi}\) has modulus at most \(V\). Since \(N\ge B^8\) and \(\beta>399/400\), the product is \(O(B^{6-8\sigma_0})\) and thus at most \(1/2\) for large \(Q\). Multiplicativity expands this product into \(1+D\), where \(D\) is supported on \(V<n\le VN\), with coefficients
+\[
+ c_n=\sum_{\substack{ab=n\\a\le V,\ b\le N}}\mu(a).
+\]
+Indeed \(N\ge V\), so for \(1<n\le V\) all divisors are present and the coefficient vanishes. Consequently \(|D|\ge1/2\). Partition \((V,VN]\) into \(J\) intervals \((H,2H]\) with \(H=V2^j\), and assign the character to a block whose sum has modulus at least \(1/(2J)\).
+
+For a set \(T\) assigned to such a block put \(b_n=c_n n^{-\sigma_0}\) and \(v_\chi(n)=\chi(n)n^{-(\rho_\chi-\sigma_0)}\). The diagonal Gram entries of the vectors \(v_\chi\) are at most \(H\). For distinct primitive characters \(\chi,\chi'\), their product with one conjugated, viewed at the common product modulus, is nonprincipal. Otherwise uniqueness of the primitive inducer would identify them. Its sums over intervals have absolute value at most \(2Q^2\). Let \(w=\rho_\chi+\overline{\rho_{\chi'}}-2\sigma_0\), so \(\Re w\ge0\) and \(|w|\le2Q+2\). Partial summation on \((H,2H]\) bounds the corresponding Gram entry by
+\[
+ 2Q^2\left((2H)^{-\Re w}+|w|\int_H^{2H}u^{-1-\Re w}\,du\right)\ll Q^3 .
+\]
+This shows why one needs to count characters with a chosen zero, rather than impose separation among the heights of zeros for one character. The row-sum inequality for the Hermitian Gram matrix follows from \(2|z_i||z_j|\le |z_i|^2+|z_j|^2\). By duality,
+\[
+ \frac{|T|}{4J^2}\le \sum_{\chi\in T}\left|\sum_n b_n v_\chi(n)\right|^2
+ \le\bigl(H+C|T|Q^3\bigr)\sum_{H<n\le2H}|b_n|^2 .
+\]
+Use \(|c_n|\le\tau(n)\ll n^{1/200}\). Then \(\sum|b_n|^2\ll H^{1-2\sigma_0+1/100}=H^{-197/200}\). Uniformly in all blocks,
+\(J^2 Q^3 H^{-197/200}\ll(\log Q)^2 Q^{-47/50}\to0\).
+Thus the term proportional to \(|T|\) can be absorbed, leaving \(|T|\ll J^2H^{3/200}\). Summing over the blocks and using \(VN\ll Q^{12}\) gives \(O(J^3Q^{9/50})=O(Q^{1/4})\).
+\end{proof}
+\noindent
+The derivation uses the same block and exponents as the source, but the proof above uses an absolute \(O(Q^3)\) for the off-diagonal. The source gives the explicit row bound \(H+8|T|Q^3\) and handles the small \(Q\) range separately. \src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/CountZDefs.lean}{44}{coefficient exponent and block lengths}\quad
+\src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/CountZDetect.lean}{73}{detection from a selected zero}\quad
+\src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/CountZBlock.lean}{23}{explicit Gram bound}\quad
+\src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/CountZFinal.lean}{10}{density conclusion}.
+
+\subsection{Selecting auxiliary primes and retaining the same witnesses}
+
+The common selection lemma takes fixed \(0<\varepsilon\le1/4,\tau>0,K\ge1,\eta>0\) and a fixed upper bound \(R\) on the number of base characters. At sufficiently large \(Y\), it applies uniformly to
+\[
+ \begin{gathered}\mathcal P=\{p:\sqrt U<p\le U,\ p\equiv a_0\bmod m_0,\ p\text{ prime}\},
+ \\ 1\le F\le\sqrt U,\qquad Q=FU,\qquad Z=(Y^K)^{400}.\end{gathered}
+\]
+The base characters are primitive of conductor \(\le F\). The progression is reduced, \(8\mid m_0\), and
+\[
+ \tfrac14(\log Y)^2\log m_0\le\log U,\quad
+ Y^{\varepsilon/6}\le\log U\le Y^{\varepsilon/5}(\log Y)^2 .
+\]
+Primes dividing \(m_0\) are \(\le Y^{\varepsilon/5}\) or \(>Z\). The proved relative prime number theorem in progressions, with its possible exceptional term and the source's exceptional-zero lower bound, gives \(|\mathcal P|\ge U^{9/10}\). This uses a relative estimate in the specified range, not a uniform assertion of an exceptional-zero-free progression formula. \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/StagePow.lean}{41}{selection hypotheses}\quad
+\src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/MSqCount.lean}{346}{candidate count}\quad
+\src{src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/PNTFinal.lean}{22}{proved relative progression input}.
+
+For each fixed base character of conductor \(f\le F\), its twist by the quadratic character of \(p>\sqrt U\) is primitive of conductor \(fp\). Even if one chooses a different bad twist for each bad prime, the conductor uniquely recovers \(p\). Indeed the relation \(fp=f'p'\), with \(f'\le F<p\), forces \(p=p'\). Lemma~\ref{sup:density} thus gives \(O(Q^{1/4})=O(U^{3/8})\) first-kind bad primes, simultaneously for the full base list. Their fraction tends to zero as \(O(U^{-21/40})\). \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/CountBadCore.lean}{18}{injective conductor argument}
+
+For the second kind of bad prime, let
+\[
+ S_p(y)=\sum_{n\le Z}\Lambda(n)\min(1,y/n)\kappa(n)(n/p),\qquad |\kappa(n)|\le1.
+\]
+The source proves \(\sum_{p\in\mathcal P}|S_p(y)|^2\le C_1 y\log y\,|\mathcal P|\) on \([Y,Y^K]\). To obtain this, expand the square, use reciprocity at \(p>Z^2\) in the fixed progression, and apply the relative progression estimate to the odd squarefree kernel of \(nn'\) after removing primes of \(m_0\). Each nontrivial kernel gives cancellation of size \(Y^{-K-1}|\mathcal P|\), except at most one from the exceptional character. For the diagonal and the exception, the prime-power support of \(\Lambda\) allows a separate bound. The grouped coefficients by prime base have square sum \(O(y\log y)\) and maximum \(O(\log y)\), and the coefficients whose residual odd squarefree kernel is one have total mass \(O(\sqrt y+Y^{\varepsilon/5}\log y)\). The explicit decomposition therefore bounds both the diagonal and the single exception by \(O(y\log y)\) after normalizing by \(|\mathcal P|\). \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/twistK.lean}{148}{single exceptional reciprocity sum}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/MeanSqAbs.lean}{8}{diagonal and exceptional decomposition}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/meanSqK.lean}{51}{pointwise mean square}.
+
+To pass to all \(y\) for a single prime, differentiate the piecewise linear ramp away from its finitely many breakpoints. The derivative is the sum over \(n>y\) with coefficients \(\Lambda(n)\kappa(n)(n/p)/n\). Apply the same mean square to \(\kappa(n)\mathbf1_{n>y}\) to bound the sum of squared derivatives by \(C_1|\mathcal P|\log y/y\). For each dyadic block \([a,b]\), \(b\le2a\), and arbitrary \(w_p\in[a,b]\), the fundamental theorem of calculus and Cauchy--Schwarz give
+\[
+ \sum_p |S_p(w_p)|^2
+ \le 2\sum_p|S_p(a)|^2+2a\int_a^b\sum_p|S_p'(v)|^2\,dv
+ \le 4C_1a\log(2a)|\mathcal P|.
+\]
+Choose a witnessing bad point \(w_p\) when \(|S_p(y)|>y^{1/2+\tau}/2\) somewhere in the block. Chebyshev's inequality, the bound \(\log(2a)\ll_\tau a^\tau\), and a geometric sum give a bad proportion \(O_\tau(Y^{-\tau})\) for one \(\kappa\). Budget at most \(\eta/(2(R+1))\) for each base character and \(\eta/2\) for the zero boxes. This proves simultaneous goodness across the base list and the entire interval. The source supplies the uniform constant \(32C_1/(\tau(1-2^{-\tau}))\) in the bound for the number of bad primes divided by \(Y^{-\tau}|\mathcal P|\). \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/BadShare.lean}{146}{derivative bound}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/BadShare.lean}{251}{uniform bad proportion}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/StagePow.lean}{141}{combining the two bad sets}.
+
+For a good auxiliary twist at this stage, the source uses the exact splitting \(G_\chi(y)=-S_p(y)-y\,\mathrm{tailL}_\chi(Z)\). It proves \(Y^K|\mathrm{tailL}_\chi(Z)|\le Y^\varepsilon\) by using the finite-height zero box to move a contour. Together with the half-sized threshold for \(S_p\), this gives \(|G_\chi(y)|\le y^{1/2+\tau}\). A separate short truncation and Mertens bound yield \(1000\log\log Q+O(1)\) for the logarithmic derivative. In the final application \(\log Q\le3Y^{\varepsilon/5}(\log Y)^2\). Since \(200\varepsilon<50/13<4\), this gives \(\left|L'/L(1,\chi)\right|\le4\log Y\le4\log y\) eventually. \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/BoxOfS.lean}{28}{from the truncated ramp to the box}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/TailKExp.lean}{92}{finite-height contour}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/Kappa4Loglog.lean}{126}{active logarithmic derivative}.
+
+The first progression is \(q\equiv3\bmod8\) with \(U=e^z,\ z=Y^{\varepsilon/5}\), and the base list consists of the primitive representatives of characters modulo \(N_0\). The second fixes this \(q\), uses \(U=e^{z'}\), \(z(\log Y)^2\le z'\le K^2z(\log Y)^2\), and restricts \(d\equiv7\bmod16\) and \(d\equiv-1\) modulo \(q\) and every odd prime \(\le z\). The modulus is \(16q\prod_{p\le z,\ p\ {\rm odd\ prime}}p\). Its logarithm is at most \(4z\) eventually. Its large prime factor \(q\) exceeds \((Y^K)^{400}\). The base list now includes the old characters and their \(q\)-twists, at most \(2\varphi(N_0)\), with conductor bound \(F=N_0e^z\). The common selection is used with \(\varepsilon'=6\varepsilon/5\) in the second progression. These choices give the hypotheses just stated, with the admissible \(z'\) range and \(F\le\sqrt U\) holding eventually, uniformly in the selected \(q\). Taking \(\eta=1/2\) successively produces both primes. At the top, \(N_0=8M,\tau=\varepsilon/2\) and \(z'=z(\log Y)^2\), with \(M\) the conductor of the target character. The bounds concern the three nonempty binary twist patterns \(J_q,J_d,J_qJ_d\) and their specified primitive base characters, with no bound asserted here for the untwisted target. \src{src/Development/AutomorphicArithmetic/MeanSquareBounds/Stage1Succ.lean}{36}{first progression}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/CharOf.lean}{61}{second progression}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/PairShare.lean}{26}{nested good sets}\quad
+\src{src/Development/AutomorphicArithmetic/MeanSquareBounds/pairEx.lean}{112}{active parameters and final pair}.
+
+\subsection{Cohomological windows and compatibility with the host}
+
+We use the source's proved \(\mathrm{VWinAt}\) input in its actual quantifier order. For a fixed primitive target \(\psi\), \(0<\varepsilon<1/52\), and a page-index function \(e(v)\) with \(v^{2+8\varepsilon}\le 2^{e(v)}\le2v^{2+8\varepsilon}\) for \(v\ge1\), it provides \(J\ge1,X_0\). For every \(X\ge X_0\) and every pair meeting the prime conditions at \(Y=X^{1/J}\), it then gives \(W\ge Y\) with \(W^2\le X\). For all \(v\in[W,W^2]\) and every field \(E\) satisfying the corresponding \(\mathrm{IsChiField}\) relation,
+\[
+ \mathrm{VVle}\!\left(E,\lfloor v^{401}\rfloor,\exp(v^\varepsilon/2)\right)
+\]
+holds. Here, writing \(S_\ell\) for the places above \(\ell\), the kernel is the intersection of the kernels of restriction from \(H^1(G_{E,S_\ell},(\mathbb Q_\ell/\mathbb Z_\ell)(-j))\) to the local decomposition groups at \(w\mid\ell\). Its length is finite for every \(1\le j<t\). For every finite set of primes their lengths summed over twists and weighted by \(\log\ell\) are at most the \(\mathrm{VVle}\) budget. Equivalently, these nonnegative prime terms form a summable family within that budget. The assertion is uniform over the algebraic closures and local choices in the source. \src{src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean}{12}{prime-length budget}\quad
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean}{44}{cohomological window quantifiers}.
+
+The ingredients of the closed input should be distinguished from the selection we prove here. The source first bounds a finite number of exceptional twist indices uniformly in the auxiliary primes. A local \(\ell\)-adic centre can capture at most one integer \(1\le j\le U_0\) at distance strictly smaller than \(\ell^{-\lfloor\log_\ell U_0\rfloor}\). The difference of two would be divisible by \(\ell^{\lfloor\log_\ell U_0\rfloor+1}>U_0\). The ranks controlling the number of centres are uniform in the quadratic auxiliary primes. With \(R\) the sum of these rank bounds, remove the at most \(R\) troublesome cutoffs on the logarithmic scale. More explicitly, to make every surviving \(\alpha=\log j/C_t\) satisfy \(\alpha\le u\Rightarrow B_0\alpha\le u\) on an interval \(u\in[v,2v]\subseteq(0,\log X]\), with \(B_0=2C_KC_t/\varepsilon\ge1\), divide the current upper endpoint by \(2B_0\) whenever a bad cutoff is at most the current endpoint and strictly greater than that endpoint divided by \(2B_0\). That cutoff can never trigger the antecedent in the smaller interval. After at most \(R\) such steps take \(v\) half the remaining endpoint. Thus \(v\ge\log X/[2(2B_0)^R]\). The source allows \(J=2^{R+2}B_0^R\). Returning to the original scale forces a bad index still below \(x^{C_t}\) to be at most \(x^{\varepsilon/(2C_K)}\). This permits the coarser finite-layer estimate on those few indices. For the remaining indices the quantitative tower bounds apply without that reduction. \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Near1.lean}{6}{one exception per centre}\quad
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean}{27}{uniform rank and interval exponent}\quad
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean}{6}{logarithmic window argument}.
+
+Section~\ref{famsel:complement} gives the resulting inequality, including its dyadic, odd-prime minus and odd-prime plus terms. The assembled vanishing and length bounds use separate results for different parity and ramification cases, including estimates from automorphic Galois representations. For instance, the rank-three input produces a nonzero auxiliary integer with logarithmic size bounded polynomially in conductor and twist, and controls a whole orbit of character lengths by its valuations away from the test prime. Using two test primes removes the omission at the first one. For any finite prime set \(L\), away from the first prime sum \(\log\ell\,v_\ell\) against the first integer, using the second integer only at the first prime. Each such sum is at most the logarithm of the corresponding nonzero absolute integer. This gives a bound uniform in \(L\) without assuming a prime cutoff on those lengths. The global source uses the actual local--global representation input \(\mathrm{galoisLocalGlobalStrong\_recParameter}\) in the final character theorem, passes the corresponding row to the cohomology construction, and assembles the counts with global and local duality to obtain the window. We use these proved interfaces. This paper does not supply a substitute proof of automorphy, local--global compatibility, or the full prime-length classification. \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/CorGSumLog.lean}{37}{two-test-prime valuation bound}\quad
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean}{30}{vanishing cases to windows}\quad
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean}{4}{active row to window}\quad
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/MainConclusion.lean}{7}{actual choice of the row}.
+
+To use both selections together, first take \(X\) large enough that \(Y=X^{1/J}\) exceeds the pair threshold and any required lower scale. Choose \(q,d\) using the analytic pair theorem on \([Y,X]\), and only then use \(\mathrm{VWinAt}\) to get \(W\) for exactly those primes. The host frame has degree parameter \(c2^{e}\) for a fixed \(c\ge1\) depending on \(\psi\), and uses \(\kappa=c^{1/(2+8\varepsilon)}\). Taking \(W\ge\kappa^{400}\) suffices for
+\[
+ [\kappa W,(\kappa W)^{3/2}]\subseteq[W,W^2]\subseteq[Y,X].
+\]
+At \(x\) in that interval use the page of \(x/\kappa\). Multiplication by \(c\) gives \(x^{2+8\varepsilon}\le c2^{e(x/\kappa)}\le2x^{2+8\varepsilon}\). The scale identity \(x=\kappa v\) with \(v\ge W\ge\kappa^{400}\) gives \(x^{400}=\kappa^{400}v^{400}\le v^{401}\). The source first uses monotonicity to replace the cutoff \(\lfloor v^{401}\rfloor\) by \(\lfloor x^{400}\rfloor\), then applies the actual rank estimate \(t\le x^{400}\). On the rescaled window the stored budget is at most \(\sqrt b=\exp(x^\varepsilon/2)\). \src{src/Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean}{34}{same pair and common window}\quad
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean}{58}{page and cohomological rescaling}.
+
+For each point, \(\mathrm{fieldChi}\) carries this page and the same primes into the host and yields \(n=c2^e\), fixed \(o=\Lambda.o\), and \(QS\mid\operatorname{lcm}(2^{e+2},M)\). Thus the only possible odd divisors of \(QS\) are primes dividing \(M\). The geometry retains that host when adding the ranks and vertices, so the cohomological budget is for the very field used at that point, and the discarded-character estimates use the same pair. Write \(\delta_1=x^{-\varepsilon/8}\). The actual rank construction chooses even \(m,k\) in
+\[
+ [\sqrt{x\delta_1},2\sqrt{x\delta_1}]\quad\hbox{and}\quad
+ [x^{9/2+10\varepsilon},2x^{9/2+10\varepsilon}]
+\]
+by taking \(2\lceil A/2\rceil\) at the respective lower endpoints. It then defines \(t\) by the integer rank equation of \(\mathrm{RankVal}\). The eventual comparisons needed in Proposition~\ref{ar:four} follow directly: \(xm\le k\), \(m\in[x^{1/2-\varepsilon},x^{1/2+\varepsilon/2}]\), and \(k/(n^2x^{1/2-\varepsilon})\le 2x^{-5\varepsilon}\le1\). The source separately bounds \(t\le x^{400}\) eventually for the active small-\(\varepsilon\) range. The section on simultaneous transport then chooses the full translate map within the family at this \(x\). Choosing these ranks or local copies independently of the point's host would not suffice for that transport. \src{src/Development/AutomorphicArithmetic/CharacterBoxes/FieldChi.lean}{20}{fixed host field and ramification}\quad
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/ExistsRanksRankValFrame.lean}{45}{rank construction}\quad
+\src{src/Development/AutomorphicArithmetic/CharacterBoxes/EventuallyRankLeRpowOfLtOneDivFiftytwo.lean}{6}{rank bounded by the cohomology cutoff}\quad
+\src{src/Development/AutomorphicArithmetic/ShortNorms/supplyOfAdmOf.lean}{93}{same-host supply and budget}.
+
+

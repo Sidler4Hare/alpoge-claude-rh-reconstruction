@@ -1,0 +1,928 @@
+\subsection{Orthogonal ternary points and quadratic induction in degree four}
+\label{hr:section}
+
+Work with the marked representations in Propositions~\ref{spreal:strong},
+\ref{spreal:four} and~\ref{dp:curvebranches}. The coefficient field \(E\)
+below is a finite extension of \(\mathbb Q_\ell\) for an integral
+arithmetic point, or the fraction field of a normalized test curve in
+characteristic \(\ell\). Its residue field is finite. We allow finite
+extensions of \(E\). Statements about classical attachment use
+geometric Frobenius and the normalization
+\(\operatorname{rec}(\pi_v|\det|^{(1-n)/2})\) in degree \(n\).
+
+\begin{proposition}[The odd orthogonal ternary branch]\label{hr:orth}
+Suppose that \(\rho\) on \(G_K\) is absolutely irreducible and is
+isomorphic to its own dual. Let \(S\) be its invariant bilinear form
+and \(J_3\) the antidiagonal unit matrix in the marked basis. The
+projective class of \(J_3S\) has a unique representative \(C\) in
+\(\mathrm{SO}(S)\). Suppose \(C\ne1\). In equal characteristic
+such a point cannot occur. In characteristic zero there is a
+regular algebraic, conjugate self-dual cuspidal representation
+\(\Pi\) of \(\mathrm{GL}_3(\mathbb A_K)\) whose associated
+representation is \(\rho\varepsilon^{-1}\).
+\end{proposition}
+\begin{proof}
+The form is unique up to scalar, nondegenerate and symmetric by
+irreducibility and odd dimension. The determinant of \(\rho\)
+squares to one and reduces to one, so is one. The marked polarization
+is \(\rho(chc^{-1})=J_3\rho(h)^{-t}J_3\). Consequently \(D=J_3S\)
+implements conjugation by \(c\), \(D^2\) is scalar and
+\(D^t S D=\mu S\). Since \((\det D)^2=\mu^3\), the required
+representative is \(C=(\mu/\det D)D\), which is independent of the
+scale of \(S\). Its square is a scalar in \(\mathrm{SO}_3\), hence
+is one. This extends \(\rho\) continuously to \(G_{\mathbb Q}\)
+in \(\mathrm{SO}(S)\) by sending \(c\) to \(C\).
+
+Split \(S\) over a finite extension. Identify its special orthogonal
+group with \(\mathrm{PGL}_2\) on trace-zero matrices, with quadratic
+form their determinant. Indeed its isotropic conic consists of the
+nilpotent lines indexed by their kernels in \(\mathbb P^1\).
+Conjugation by \(\mathrm{PGL}_2\) induces every automorphism of this
+conic, and a linear isometry fixing it pointwise is projectively
+scalar, hence is the identity in \(\mathrm{SO}_3\). Write \(P\) for
+the resulting projective representation.
+
+We construct a linear lift over a DVR. After adjoining square roots
+of representatives of \(E^\times/(E^\times)^2\), the compact image
+of \(P\) lifts setwise to \(\mathrm{SL}_2\). The square-class
+group is finite by Hensel's lemma and odd residue characteristic.
+The inverse image of the compact group under this finite morphism
+is a compact group: local sections are obtained by fixing one
+nonzero entry of a matrix representative and taking a continuous
+square root of its determinant near a given lift. A compact group
+of matrices preserves a lattice, by taking the integral span of
+the translates of one lattice. In particular we can reduce \(P\)
+projectively on this lattice.
+
+The normal subgroup \(H=\ker(\bar\Psi|_{G_K})\) has pro-\(\ell\)
+image in the original ternary matrices, since all its matrices
+reduce to the identity. Its projective reduction is a normal
+\(\ell\)-subgroup. If nontrivial, it fixes a unique line over the
+algebraic closure of the residue field (use the upper unitriangular
+Sylow subgroup of \(\mathrm{PGL}_2\) over a finite field).
+If trivial, the residual projective image is abelian, since
+\(G_{\mathbb Q}/H\) embeds in the product of the images of \(\eta\)
+and \(\bar\Psi\). Some inertia element has residual eigenvalue
+ratio of order \(>2\): its adjoint characteristic polynomial on
+the original lattice has roots \(1,z,z^{-1}\) with
+\(z=\bar\Psi(s)\), and \(\bar\Psi^2|_{I_\ell}\ne1\).
+Characteristic polynomials of the adjoint are independent of
+lattice. The centralizer of this projective residual element is a
+torus. In both cases the projective reduction is triangular after
+a finite residue extension.
+
+It can be made diagonal. In an upper triangular residual basis,
+extend ramification by adjoining a square root \(u\) of the
+uniformizer and conjugate by \(\operatorname{diag}(u,1)\).
+The lower left entries were divisible by \(u^2\). Write
+\(\bar\lambda\) for the residual diagonal ratio. The nontrivial
+involution \(P(c)\) cannot be in the pro-\(\ell\) congruence
+kernel, so \(\bar\lambda(c)=-1\). In equal characteristic take the
+constant character \(\lambda=\bar\lambda\). In characteristic zero
+take
+\[
+ \lambda=\widetilde{\bar\lambda}
+                 (\varepsilon/\widetilde{\bar\varepsilon})^e,
+\]
+where the tilde denotes Teichm\"uller lift. For each \(g\) there is
+exactly one representative \(W(g)\) with determinant \(\lambda(g)\)
+and reduction \(\operatorname{diag}(\bar\lambda(g),1)\). Indeed
+first arrange the specified reduction by scalar multiplication,
+then correct the determinant by the unique square root in the
+principal units. Uniqueness gives multiplicativity, and the same
+construction on coordinate neighborhoods gives continuity. The lift
+is odd and unramified outside finitely many places: where the
+projectivization, determinant and residual characters are
+unramified, its inertia is scalar, squares to one and reduces to
+one. We have \(\operatorname{Ad}^0W|_{G_K}\simeq\rho\).
+
+In equal characteristic the flag of Proposition~\ref{dp:curvebranches}
+triangularizes inertia on \(\rho\). The inertia subgroup with all
+diagonal entries one consists precisely of its unipotent elements.
+It is therefore normal under the whole decomposition group, acting
+through the extended ternary representation. Its image under \(P\)
+consists of projective unipotents. If nontrivial they fix a unique
+common line. Indeed two with distinct fixed lines have lifts
+\(\left(\begin{smallmatrix}1&b\\0&1\end{smallmatrix}\right)\) and
+\(\left(\begin{smallmatrix}1&0\\d&1\end{smallmatrix}\right)\)
+with \(bd\ne0\) in the basis of those lines. The product of the
+first and the \(j\)-th power of the second has trace \(2+jbd\),
+which for some \(j\) differs from both \(2\) and \(-2\).
+Normality then gives a decomposition-group line. If the subgroup
+has trivial image, inertia is finite abelian by the finite
+diagonal characters on the flag and faithfulness of the adjoint
+action on \(\mathrm{PGL}_2\). It preserves the two eigenspaces of
+the inertia element with residual ratio of order \(>2\). They
+reduce to distinct lines in the diagonal residual basis, so the
+decomposition group, which normalizes inertia and preserves each
+residual line, cannot interchange them. The inertia eigenvalue
+ratios have finite order at every place, as do the determinants,
+so both inertia eigencharacters have finite image. Lemma~\ref{dp:pan}
+now makes \(W\) geometrically reducible; its adjoint on \(G_K\)
+would preserve the nilpotent line associated to an invariant line.
+
+In characteristic zero the eigenline of the adjoint with inertia
+character \(\varepsilon^e\) on \(I_\ell\cap\ker\psi_\ell\) is
+unique by Lemma~\ref{spreal:flag}. It is preserved by the full
+decomposition group since the character is conjugation invariant.
+Its elements are nilpotent: their determinant is fixed by
+conjugation and is multiplied by \(\varepsilon^{2e}\) under the
+specified scaling. The kernel of any nonzero element therefore
+gives a decomposition-group line of \(W\). The ratio of the
+subcharacter to the quotient character on this open inertia
+subgroup is \(\varepsilon^e\). After further finite restriction
+the determinant there is \(\varepsilon^e\), so the ordered
+characters there are \((\varepsilon^e,1)\). Both local characters
+are de Rham, the upper one of strictly smaller Hodge--Tate weight
+in the convention \(\mathrm{HT}(\varepsilon)=-1\). The residual
+ratio is nontrivial on inertia. The distinguished ordinary
+modularity theorem of Pan applies over \(\mathbb Q\) with the
+specified odd determinant, to the maximal ideal defined by \(W\)
+in the pseudocharacter ring with \(\ell\) inverted. It is maximal
+because the integral image is a submodule of the finite coefficient
+DVR over \(\mathbb Z_\ell\), and its localization is a field.
+Irreducibility follows from that of the adjoint on \(G_K\).
+If Pan writes \(W=W_f\otimes\theta\), its upper character and
+the character of the same stable line in the de Rham representation
+\(W_f\) are de Rham, so their ratio \(\theta_\ell\) is de Rham.
+It is a cyclotomic integer power on open inertia. Away from
+\(\ell\), the determinant identity shows that \(\theta^2\), hence
+\(\theta\), has finite inertia. Dividing by the cyclotomic power
+leaves a finite-order character by global class field theory.
+Thus \(W\) is classical with its algebraic normalization.
+\cite[Theorem~5.1.1(2)]{panFM}
+
+Let \(\pi\) be its cuspidal representation of \(\mathrm{GL}_2\).
+Its quadratic base change to \(K\) is cuspidal, since the
+alternative gives a quadratic self-twist, hence reducibility of
+\(W|_{G_K}\) by the two eigenspaces of the twist intertwiner.
+The base change itself has no nontrivial self-twist: one would be
+quadratic by the central character and split \(W\) on its open
+kernel, contrary to strong irreducibility of the adjoint
+(Proposition~\ref{spreal:strong}). These implications use equality
+of unramified Frobenius polynomials and Chebotarev. Apply
+Gelbart--Jacquet to the unitary normalization of this base change;
+the adjoint parameter is unaffected by any common scalar twist.
+The resulting cuspidal
+adjoint lift is self-dual and invariant under
+\(\operatorname{Gal}(K/\mathbb Q)\). Its archimedean parameter has
+three distinct exponents \(e,0,-e\). At unramified places its
+Satake parameters are the eigenvalues of \(\operatorname{Ad}^0W\):
+the common scalar in the degree-two normalization cancels. The
+degree-three arithmetic normalization multiplies them by
+\(|\cdot|^{-1}\), giving \(\rho\varepsilon^{-1}\) as claimed.
+\cite[Chapter~III, Theorems~4.2 and~5.1]{arthurClozelBC}
+\cite[Theorem~9.3]{gelbartJacquetAdj}
+\end{proof}
+
+\begin{corollary}[Essential self-duality]\label{hr:ess}
+For a strongly irreducible ternary point, an isomorphism
+\(\rho^\vee\simeq\rho\otimes\gamma\) on \(G_K\) already implies
+\(\gamma=1\). If its orthogonal extension has \(C=1\), it too has
+a linear adjoint lift over \(\mathbb Q\), this time with scalar
+complex conjugation, and with the same ordinary local description
+as in Proposition~\ref{hr:orth}.
+\end{corollary}
+\begin{proof}
+In characteristic zero the determinant of \(\rho\) is one by the
+determinant calculation in Proposition~\ref{spreal:end}, which
+uses the local flag, the residual inertia kernels and
+\(\ell\nmid h_K\) without any use of the block decomposition.
+In equal characteristic it follows directly from the finite inertia
+character argument and its trivial reduction. Taking determinants
+therefore gives \(\gamma^3=1\). Applying \(c\) to
+\(\rho^\vee\simeq\rho\otimes\gamma\) and using
+\(\rho^c\simeq\rho^\vee\) shows that \(\gamma\gamma^c\)
+is a self-twist. Every finite-order self-twist of a strongly
+irreducible representation is trivial: its intertwiner is scalar
+on the open kernel by Schur's lemma. Hence \(\gamma^c=\gamma^{-1}\).
+The residual characters of \(\rho\) are
+\(1,\bar\Psi,\bar\Psi^{-1}\); comparison of the two residual
+multisets forces \(\bar\gamma\) to be one of them. All three are
+fixed by \(c\). Thus \(\bar\gamma^2=1\) and \(\gamma=1\), since
+reduction is injective on the cube roots for \(\ell\ge5\).
+If \(C=1\), the construction of \(P,W,\lambda\) and their local
+flags is unchanged, with \(\bar\lambda(c)=1\) and \(W(c)=1\).
+This reduces that case to an even two-dimensional problem;
+the odd-determinant theorem of Pan used above does not settle it.
+\end{proof}
+
+\begin{proposition}[A real quadratic self-twist in degree four]\label{hr:ind}
+Let \(R\) be an absolutely irreducible point of the good rank-four
+problem admitting a nontrivial even quadratic self-twist \(\delta\).
+Put \(a=\bar\alpha=\bar\xi\) and \(b=\bar\Psi\). Then \(b=\bar\delta\)
+and the inducing field \(M\) is the real quadratic field cut out by
+\(b\). In equal characteristic such a point cannot occur if
+\(\ell\) is unramified in \(M\). In characteristic zero \(\ell\)
+necessarily splits in \(M\), and \(R\) has a regular cuspidal
+attachment on \(\mathrm{GL}_4/\mathbb Q\). Its base change to any
+imaginary quadratic field on which \(R\) remains irreducible is
+cuspidal and has the restricted Frobenius parameters.
+\end{proposition}
+\begin{proof}
+A self-twist intertwiner has scalar square. After scaling it to
+square one, its two eigenspaces are preserved by \(G_M\) and
+interchanged by the other coset, so both have dimension two. Thus
+\(R=\operatorname{Ind}_{G_M}^{G_{\mathbb Q}}U\), with \(U\)
+irreducible. Conversely any such quadratic induction admits this
+self-twist. On residual semisimplifications multiplication by
+\(\bar\delta\) preserves the multiset \(\{1,a,b,ab\}\).
+The only possibilities for the image of the trivial character are
+the even entries \(1,b\); the quadratic character survives
+reduction since \(\ell\) is odd. Over \(G_M\) the residual multiset
+is consequently \(1,1,a,a\). The two conjugate blocks have
+identical residual semisimplifications: their characters are
+chosen from \(1,a|_{G_M}\), both fixed by conjugation from
+\(G_{\mathbb Q}\). This follows by reducing lattices in their
+direct sum and using independence of the residual semisimplification.
+Thus each block has residual characters \(1,a|_{G_M}\).
+They have opposite signs at both real places of \(M\).
+
+Intersections of the ordinary local flag with the plane of \(U\)
+give a full flag after omitting repeated subspaces. This applies
+at either place of \(M\) over \(\ell\) by using both conjugate
+planes. In equal characteristic the inertial eigencharacters are
+finite at every finite place. The determinant of \(U\) is therefore
+the constant character \(a|_{G_M}\), by the character argument
+preceding Lemma~\ref{dp:pan}. Apply the proof of that lemma over
+\(M\). This is an abelian totally real field unramified at
+\(\ell\), the residual ratio extends to \(G_{\mathbb Q}\), and
+the set of places may contain every ramified place and those over
+\(\ell\). At the places over \(\ell\) the residual ratio is either
+nontrivial at all of them or trivial at all, since it is the
+restriction of a character of \(G_{\mathbb Q}\) and \(M\) is
+Galois. In the latter case use the actual upper character at each
+place in the character-labelled ring. The map from the ordinary
+weight algebra kills \(\ell\) and each local pro-\(\ell\) inertia
+augmentation, including when a place has residue degree two.
+Finiteness over this algebra therefore makes every
+characteristic-polynomial coefficient constant. Brauer--Nesbitt
+contradicts irreducibility of \(U\).
+\cite[Theorems~5.1.1(1) and~6.1.1(1)]{panFM}
+
+In characteristic zero the four distinct exponents of \(R\) on
+an open subgroup of inertia are \(e+1,e,1,0\), in descending
+order. On a common open subgroup of \(I_\ell\cap G_M\) the two
+planes have disjoint pairs of exponents. A decomposition element
+interchanging them would preserve these exponents, since
+\(\varepsilon\) is a global character. Thus \(\ell\) splits in
+\(M\). The exponents of \(\det U\) at its two places above \(\ell\)
+are the sums of the two respective pairs. Global reciprocity on a
+power of a nontrivial totally positive norm-one unit of \(M\)
+equates these sums, by the calculation in Lemma~\ref{spreal:even}.
+Their common value is \(e+1\), and the pairs are
+\(\{0,e+1\},\{1,e\}\). The character \(\det U/\varepsilon^{e+1}\)
+has finite inertia at all places and is unramified outside finitely
+many. A common power is everywhere unramified and factors through
+the finite narrow class group; hence this character has finite
+image.
+
+The local upper character of \(U\) has the larger cyclotomic
+exponent in each pair and hence strictly smaller Hodge--Tate
+weight than the quotient. Both characters are de Rham, since
+they have the indicated powers on open inertia. The residual
+ratio \(a\) is distinguished there: the chosen Frobenius lift
+\(\sigma_\ell\) has \(a(\sigma_\ell)=\bar\xi(\sigma_\ell)\ne1\)
+by the good-datum hypothesis and the splitting of \(\ell\).
+The ordinary theorem now makes \(U\) Hilbert modular over \(M\),
+up to the standard algebraic twist. The coefficient map gives a
+maximal ideal after inverting \(\ell\), as in
+Proposition~\ref{hr:orth}. To absorb the twist in \(U=W_f\otimes\theta\),
+compare the upper character of \(U\) at each place above \(\ell\)
+with that of the same line in the de Rham \(W_f\). Their ratio
+\(\theta_v\) is de Rham and hence a cyclotomic integer power on
+open inertia at the split place. The determinant identity gives
+finite inertia for \(\theta\) at all other finite places.
+The same norm-one unit argument equates the two exponents; dividing
+by their common cyclotomic power leaves a finite-order character.
+Both twists thus have algebraic automorphic counterparts.
+\cite[Theorem~5.1.1(2)]{panFM}
+
+Write \(\pi_M\) for the corresponding cuspidal representation in
+the normalization giving \(U\). Its Galois conjugate has the other
+pair of exponents at the first place above \(\ell\), so the two
+are inequivalent. Cyclic automorphic induction gives a cuspidal
+representation, and the arithmetic normalization in degree four
+is obtained by taking
+\(\Pi=\operatorname{AI}_{M/\mathbb Q}(\pi_M)|\det|\).
+Indeed \(1-3/2=-1/2\), the shift used for \(U\) in degree two.
+The unramified parameters therefore give \(R\). At the real place
+the parameter is the sum of those at the two real places of
+\(M\), with the same shift of normalization; its four arithmetic
+exponents are \(0,1,e,e+1\), giving regular algebraicity.
+If quadratic base change to \(K\) failed to be cuspidal,
+\(\Pi\) would admit its quadratic self-twist. The unramified
+polynomials would give the same self-twist of \(R\) and split
+\(R|_{G_K}\) by the intertwiner argument above.
+\cite[Chapter~III, Theorems~4.2, 5.1 and~6.2, Corollary~6.5]{arthurClozelBC}
+\end{proof}
+
+\begin{corollary}[Imprimitive quartic points]\label{hr:imprimitive}
+Every absolutely irreducible characteristic-zero point of the good
+quartic problem which fails strong irreducibility is induced from a
+plane over the real quadratic field cut out by \(b=\bar\Psi\).
+It has the cuspidal attachment of Proposition~\ref{hr:ind} and
+its finite symplectic adjoint Selmer group over \(\mathbb Q\)
+vanishes. No such point permutes a system of four lines.
+\end{corollary}
+\begin{proof}
+First consider any self-twist \(R\simeq R\otimes\delta\).
+Determinants give \(\delta^4=1\). Over the decomposition group
+at \(\ell\) the flag of Proposition~\ref{spreal:four} has
+characters \(\kappa_i\). On an open subgroup of inertia in
+\(\ker\delta\) they are four distinct cyclotomic powers.
+Thus the permutation matching \(\{\kappa_i\delta\}\) with
+\(\{\kappa_i\}\) fixes each character, and
+\(\delta|_{G_{\mathbb Q_\ell}}=1\).
+The image of the trivial residual constituent under twisting gives
+\(\bar\delta\in\{1,a,b,ab\}\). The specified element \(s_\ell\)
+of this decomposition group satisfies
+\(a(s_\ell)b(s_\ell)^i\ne1\) for all integers \(i\). This
+eliminates \(a,ab\). Reduction is injective on the fourth roots of
+unity, so the self-twist group has order at most two, and its sole
+possible nonidentity element is even quadratic with reduction \(b\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/DecompSigmaOrd.lean}{114}{The local character condition of the good datum}.
+
+For four permuted lines choose the direct sum of their intersections
+with a stable lattice. The nonzero entries of the resulting monomial
+matrices are units, so their permutation quotient \(P\) survives
+reduction. Independence of residual semisimplification gives an
+invariant residual flag with one-dimensional quotients. The derived
+group of the finite residual image is therefore an \(\ell\)-group,
+as it is contained in the upper unitriangular matrices. Hence
+\(P'\) is a normal \(\ell\)-group in the transitive group \(P\).
+Its orbits on the four lines all have the same size, a divisor
+of four and a power of \(\ell\). Thus it fixes every line and is
+trivial as a permutation group. This holds also for \(\ell=3\).
+The faithful transitive abelian group \(P\) is regular of order
+four. Index the lines by \(P\). Multiplying the line indexed by
+\(g\) by \(\chi(g)\) gives a self-twist for each character
+\(\chi\) of \(P\). These four distinct twists contradict the
+bound of two.
+
+Now restrict to an open normal subgroup
+\(H\) on which the representation is reducible. The translates
+of any simple \(H\)-subspace span \(R\), so the restriction is
+semisimple and its isotypic subspaces are transitively permuted.
+Every simple constituent has multiplicity one, because some
+element of \(I_\ell\cap H\) has four distinct eigenvalues by the
+four distinct cyclotomic exponents on open inertia. Thus the
+remaining alternative is two inequivalent planes. Their permutation
+gives the quadratic self-twist just identified, so
+Proposition~\ref{hr:ind} applies. Choose an imaginary quadratic
+\(K\) unramified at \(\ell\) with irreducible restriction by
+Lemma~\ref{rk4:quadratic}. Its cyclotomic-kernel irreducibility
+follows from Lemma~\ref{spreal:twists}, since the ordinary characters
+remain distinct on open inertia and inertia surjects onto the
+cyclotomic quotient. The cuspidal base change supplied by
+Proposition~\ref{hr:ind} and the given similitude pairing now
+satisfy Proposition~\ref{newgal:adselmer}(2). Its symplectic
+direct summand has zero finite Selmer group. In particular every
+tangent of Proposition~\ref{spreal:four} is a coboundary there.
+\end{proof}
+
+\begin{proposition}[Strong irreducibility on the quartic test curves]
+\label{hr:case3strong}
+For the original good quartic datum in its third host character case,
+every absolutely irreducible point in either characteristic remains
+absolutely irreducible over every finite number-field extension.
+In the second host case an absolutely irreducible equal-characteristic
+curve failing this condition requires \(b\) to cut out a real
+quadratic field ramified at \(\ell\).
+\end{proposition}
+\begin{proof}
+Write \(N\) for the host level and \(a=\bar\xi\),
+\(b=\bar\varepsilon^e\bar\psi\). For a self-twist, determinants
+give \(\delta^4=1\) in either characteristic. Its reduction is one
+of \(1,a,b,ab\). We check the orders of these characters on the
+original group.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/AutomorphicCases/SymplecticGSp4.lean}{15}{The conductor factors of the auxiliary character}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{221}{The exponents in the two host cases}.
+
+In case three, \(m=\operatorname{ord}(\psi)>1\) is odd and prime to
+\(\ell\). The auxiliary odd prime \(p_1\) divides neither \(N\)
+nor \(\ell\), and \(\ell\nmid N\). The character \(\xi\) is the
+product of a character of two-power conductor and a character of
+order \(m\) modulo \(p_1\). Thus on inertia at \(p_1\) the
+characters \(a,ab\) both have order \(m\): inertia surjects
+onto \(\operatorname{Gal}(\mathbb Q(\mu_{p_1})/\mathbb Q)\),
+and reduction preserves its prime-to-\(\ell\) character values.
+Also the image of \(b\) on \(\ker\bar\varepsilon\) contains the
+image of \(\bar\psi\), by the Chinese remainder theorem at
+\(N,\ell\). None of these three characters has fourth power one.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/BchiFacts.lean}{8}{The coprime conductors in case three}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/DirichletGroupPowers/DirGPowOne.lean}{77}{The order prime to the coefficient prime}.
+
+In case two \(\xi\) is primitive of conductor \(2^n\). Put
+\(u=v_2(N)\ge2\). By construction \(2^n\ge\ell N\);
+the odd part of \(N\) contains an odd host prime, so \(n\ge u+3\).
+The subgroup \(1+2^u\mathbb Z_2\) modulo \(2^n\) is cyclic
+of order \(2^{n-u}\). Its order-two subgroup is the kernel of
+reduction modulo \(2^{n-1}\), where primitivity makes \(\xi\)
+nontrivial. Thus \(a\) is faithful on that cyclic subgroup.
+On the corresponding inertia at two, \(b=1\), since \(\psi\)
+has level \(N\) and \(\ell\) is odd. Consequently neither
+\(a\) nor \(ab\) has fourth power one. Reduction is injective
+on the fourth roots of unity, so the self-twist group has size at
+most two, and any nontrivial twist is the even quadratic lift of
+\(b\). In case three it is trivial. Corollary~\ref{hr:imprimitive}
+now gives the characteristic-zero assertion.
+
+In equal characteristic let \(H\) be an open normal subgroup of
+\(G_{\mathbb Q}\) on which the representation becomes reducible
+over an algebraic closure of the coefficient field. Its restriction
+is semisimple by the sum-of-translates argument above. Thus the
+commutant of \(H\) has dimension greater than one, and its trace-zero
+part \(W\) is nonzero. Conjugation on \(W\) has finite image since
+\(H\) acts trivially. In any stable lattice the residual
+semisimplification is a sum of characters. Triangularize its
+residual action. The preimage of the upper unitriangular subgroup
+in the integral image is pro-\(\ell\), by the successive congruence
+quotients, and its quotient is diagonal and abelian. Hence
+the finite group acting on \(W\) has a normal \(\ell\)-subgroup
+with abelian quotient. A finite \(\ell\)-group acting in characteristic
+\(\ell\) has nonzero invariants: use a central element of order
+\(\ell\), take its fixed space, and induct on the quotient.
+The abelian quotient has a common eigenline in that invariant space.
+A nonzero endomorphism on this line intertwines the original
+representation with a character twist and is invertible by
+irreducibility. The character is nontrivial, since a scalar
+endomorphism of trace zero is zero for odd \(\ell\) in dimension
+four. This excludes the curve in case three. In case two it forces
+the quadratic self-twist of \(b\); Proposition~\ref{hr:ind}
+excludes it whenever \(\ell\) is unramified in the inducing field.
+\end{proof}
+
+There is a matrix criterion for this induction argument. Suppose
+the absolutely irreducible \(R\), already symplectic with multiplier
+\(\mu\), also preserves a symmetric form up to a character \(\tau\).
+Comparing the two identifications with the dual gives a self-twist
+\(\delta=\tau/\mu\). It is nontrivial by Schur's lemma since one
+form is symmetric and the other alternating. For the two original
+host cases the character calculation in
+Proposition~\ref{hr:case3strong} forces case two and the real
+quadratic character lifting \(b\). Thus the characteristic-zero
+point is covered by Proposition~\ref{hr:ind}, and an
+equal-characteristic point requires ramification of \(\ell\) in
+that quadratic field.
+In particular a genuine tensor product \(R=X\otimes Y\) of two
+degree-two representations has a symmetric form with
+\(\tau=(\det X)(\det Y)\), by tensoring their alternating determinant
+pairings. Here \(\tau^2=\det R=\mu^2\), so the self-twist is
+quadratic. These criteria concern the representation on the
+original group; the existence of an auxiliary tensor-factor
+tower alone supplies no such form there.
+
+The automorphy assertions here concern classical cuspidal objects
+and their unramified arithmetic parameters. The rank-four source
+predicate also asks for a witness in its specified automorphic
+model for every qualifying quadratic CM restriction.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/AutomorphyLifting/IsAutCsdA.lean}{16}{The two clauses of the quadratic-restriction predicate}.
+
+\begin{lemma}[An unramified test on the residual field]\label{hr:class}
+In either rank let \(F_0\) be the field of the kernel of the actual
+diagonal residual representation (on \(G_K\) in rank three).
+Suppose the \(\ell\)-part of the narrow class group of \(F_0\) is
+cyclic. Every equal-characteristic test curve unramified at all finite
+places on \(G_{F_0}\) has constant characteristic polynomials.
+It suffices that the curve be tame above \(\ell\) over \(F_0\)
+and have inertia image of order prime to \(\ell\) at the remaining
+finite places over the allowed ramified primes.
+\end{lemma}
+\begin{proof}
+The image of \(G_{F_0}\) lies in the first congruence group and is
+pro-\(\ell\). Tame inertia alone can still have an \(\ell\)-part
+away from \(\ell\); at those places the defining inertia kernels
+must also kill that part. In rank three they kill the kernel of the
+residual action. In rank four, at a prime away from \(\ell\) where
+the prescribed condition only kills the kernel of \(\psi\), require
+in addition that the order of its allowed inertia quotient be
+prime to \(\ell\), or directly that the image on \(G_{F_0}\) be
+trivial. At places over \(\ell\) tame inertia has pro-prime-to-\(\ell\)
+order. Under these local conditions the pro-\(\ell\) image is
+everywhere unramified. Any finite quotient is an \(\ell\)-group
+whose abelianization is a quotient of the cyclic \(\ell\)-class
+group, so is cyclic by the Frattini criterion. Its order is bounded
+by the same class number. Passing to the inverse limit gives
+finite image, also over the original number field since \(F_0\)
+has finite degree. Every eigenvalue of every matrix has finite
+order and is thus constant over the algebraic closure of the finite
+residue field. Reduction recovers each characteristic polynomial.
+\end{proof}
+
+\subsection{Which ideal the tower controls}\label{hr:tower}
+
+Write \(F\) for the real field of a fit, deep rank-four tower and
+\(L/F\) for its quadratic CM extension. Let \(X.A\) be its framed
+ring and \(X.B\hookrightarrow X.A\) the coefficient ring of the
+characteristic polynomials and the ordered local characters. The
+following finite-fibre calculation isolates the use of an ordinary
+Hecke algebra in the source.
+
+\begin{lemma}\label{hr:towerfin}
+Suppose an auxiliary link supplies an ordinary determinant ring
+\(D_1\) over its weight algebra \(\Lambda_1\), an ideal \(J_1\)
+such that \(D_1/J_1\) is finite over \(\Lambda_1\), and the link
+map \(f_1:D_1\to X.B\). This map identifies the determinant on
+\(G_L\) and its local characters with the restricted ones twisted
+by the link character \(\kappa\). Put \(O=c'.O\) and
+\[
+ U_{\mathrm{in}}=(\psi_{v,i}(s)-1\mid v\mid\ell,\ 
+                   1\le i\le4,\ s\in I_v)\subset X.B .
+\]
+Then for some \(m\),
+\[
+ \mathfrak m_{X.B}^{m}
+       \subset f_1(J_1)X.B+\mathfrak m_O X.B+U_{\mathrm{in}}.
+\]
+\end{lemma}
+\begin{proof}
+Pass to the quotient by any prime containing the right hand side.
+It is a local domain of characteristic \(\ell\) with the fixed
+finite residue field. The inertia weight generators of \(\Lambda_1\)
+map to constants: after the fixed link twist the remaining ordered
+inertia characters are one. The local units of \(O\), including
+the values of the link twist, map to their residues. By the
+universal property of the weight algebra its map is the residual
+one, since that map has the same labelled characters. Finiteness
+therefore makes the image of \(D_1/J_1\) integral over the finite
+residue field. In a local domain with residue field \(k\), any
+element integral over the coefficient field \(k\) belongs to \(k\):
+the subalgebra it generates is a field and reduction embeds that
+field into \(k\) over \(k\).
+
+Hence the characteristic coefficients on \(G_L\) are constant
+after removal of the scalar twist. For \(g\in G_F\), use
+\(g^2\in G_L\). Each elementary symmetric polynomial in four
+variables \(x_i\) is integral over the symmetric polynomials in
+\(x_i^2\), since each \(x_i\) satisfies
+\(\prod_j(T^2-x_j^2)=0\). The resulting monic identities with
+integral symmetric coefficients hold on every matrix by the
+characteristic polynomial, hence in \(X.B\) by its injection
+into the framed ring. They survive the prime quotient without
+any lifting of its prime to \(X.A\). Thus the characteristic
+coefficients for \(g\) are constant there. Each marked decomposition
+group lifts to the one on \(L\) by the splitting at these places;
+the corresponding labelled characters, after division by the link
+twist, are constant as well. These data topologically generate
+\(X.B\), so the prime is its maximal ideal. In the noetherian ring
+\(X.B\), the radical inclusion gives the asserted power.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TPmFin.lean}{126}{The prime-by-prime calculation for one link}.
+\end{proof}
+
+The ideal actually used is
+\[
+ J=f_1(J_1)X.B+f_2(J_2)X.B .
+\]
+The two links have the same twisting character \(\kappa\) and
+distinct auxiliary primes. Lemma~\ref{hr:towerfin} needs only
+the first link. The two links give separate local vanishing
+statements at a seed and at the prescribed curve points. The
+characteristic-zero automorphy assertions away from the separate
+auxiliary primes are combined using their distinctness and the
+common twist. The actual quantifier chooses a lower coefficient
+extension for the tower, then provides such an ideal for every
+larger coefficient DVR and every representing space \(X\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LinkTwo.lean}{13}{Two links with a common twist};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PmTwo.lean}{21}{Sum of the two extended ideals}.
+
+On the unitary side \(J_i\) is the unit ideal when the specified
+ordinary module vanishes. Otherwise it is the kernel of a
+surjection of the universal ordinary determinant ring onto the
+localized Hecke algebra: the interpolated determinant gives the
+map, the unramified Hecke polynomials and the ordinary uniformizer
+eigencharacters recover the Hecke generators, and the map agrees
+on the weight algebra. Finiteness of this Hecke algebra over the
+weight algebra then proves finiteness of the quotient. Construction
+of the interpolated determinant uses separation by arithmetic
+points with ordinary Galois attachments. The additional hypotheses
+in the modular ideal include density, the point theorem,
+purity and classicality at the indicated points, twist compatibility
+and the two component assertions.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ExistsHeckeIdeal.lean}{28}{The zero-module case and the Hecke kernel};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TJRing.lean}{172}{Transfer of ordinary Hecke finiteness};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/THidaU.lean}{38}{Assembly of the unitary ideal properties}.
+
+For a given curve the required extra assertion is that after
+the specified finite base changes and an integral choice of
+lattice there is \(y:X.A\to\mathcal O_{\rm curve}\) cutting out
+its restricted representation, killing \(J\), and giving the
+original labelled inertia characters. On a fit tower those
+characters reduce to one on the marked inertia subgroups. The
+lemma kills \(\mathfrak m_{X.B}\) under \(y\) since the target is
+a domain. All characteristic polynomials on \(G_F\) are then the
+residual ones. For every \(g\in G_{\mathbb Q}\) some positive
+power belongs to \(G_F\). Every eigenvalue of \(g\) is thus a
+root of unity, hence constant in equal characteristic; reduction
+again gives the specified polynomial. This excludes every such
+curve with a higher-dimensional simple constituent by
+Brauer--Nesbitt. On the marked model the projectors used in
+Proposition~\ref{dp:curvebranches} then give constancy of the
+weight-zero entry monomials themselves.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PotentialModularityTower.lean}{39}{The finite-fibre, seed and component requirements};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ContradictionStarPromodular.lean}{135}{Recovering the residual characteristic polynomial over the tower}.
+
+In the rank-four case-three construction, local vanishing at a
+characteristic-zero seed gives inclusion on some component at its
+residual point. A chain of linked residual frames carries this
+to the residual point of the proposed test. At each good residual
+point a separate component theorem promotes inclusion on some
+component to inclusion on all of them. Only the latter conclusion
+gives \(y(J)=0\) for the chosen lift. The source chooses a layer
+with threshold \(30(C+1)^2\), where \(C\) is supplied by its
+cohomology bound, and requires a seed over that layer and a
+descending chain for the specific residual lattice. Its seed
+local-vanishing proof also uses adjoint lifting. Merely producing
+the ideal, or one characteristic-zero point of its zero set,
+does not yield this quantifier over curves.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PromodularityCaseThreeOfLemmas.lean}{131}{The choice of layer, seed and chain};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/BirthPm.lean}{28}{Adjoint lifting at a seed}.
+
+In the rank-three construction there are separate ordinary
+determinant ideals in degrees two and three. For each degree
+the input supplies realizations with an auxiliary prime avoiding
+any prescribed nonzero integer, and a seed specializing into
+each ideal satisfying the point theorem. Component propagation
+first treats degree two; degree three also uses the splitting
+condition from the third component property and the degree-two
+conclusion. It produces the degree-three finite-point assertion.
+A second choice of auxiliary prime in each degree removes the
+exceptional place from the two automorphy assertions.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PrLinkedEnd.lean}{22}{Specialization and the two modular ideals};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/AbsMain.lean}{12}{Propagation in the two degrees};
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TwoRuns.lean}{80}{The two realizations and change of auxiliary prime}.
+
+\paragraph{The ternary seed on the linked CM field.}
+Here \(L\) is the CM field already chosen for the test. Write
+\(\varepsilon\) for the cyclotomic character,
+\(\Phi=\varepsilon^j\chi'\) for the prescribed lift of the residual
+character and \(\eta\) for the auxiliary quadratic character. The
+seed theorem requires \(\chi'\ne\eta\), \(M\ne0,\ 2\ell\mid M\),
+the extension \(L/L^+\) unramified at every finite place and split
+at all places dividing \(M\),
+and triviality of \(\chi'|_{G_L}\) on inertia away from \(M\).
+The linked field and character conditions include \(K\subseteq L\)
+for the imaginary quadratic field of \(\eta\), \(L/\mathbb Q\) abelian,
+and triviality of the auxiliary character \(\theta\) on \(G_L\).
+In the seed datum the positive auxiliary conductor \(N'\) is prime to
+the odd prime \(\ell\). The prime \(w\nmid N'\) acts trivially through
+both \(\eta\) and \(\chi'\) on \(\mathbb Q(\mu_{N'})\), through which
+they factor. The character \(\theta\) has order \(\ell\) and factors
+through \(\mathbb Q(\mu_w)\). Also \(\chi'(c)=(-1)^j\) for complex
+conjugation and \(\bar\Phi^2|_{G_L}\ne1\). The link and the congruence with
+the prescribed level character give the two local hypotheses at
+the point of use. For every lower bound \(b\) the theorem produces
+\(m\ge b,\ m\equiv j\bmod(\ell-1)\), and a characteristic-zero
+representation of \(G_L\) irreducible on open subgroups, with residual
+characters \((\bar\Phi,1,\bar\Phi^{-1})|_{G_L}\), away-from-\(\ell\)
+inertial types \((\chi',1,(\chi')^{-1})|_{G_L}\), ordered ordinary
+exponents \((m,0,-m)\), a conjugate-dual pairing and automorphic
+attachment after twisting by \(\varepsilon^{-1}|_{G_L}\).
+Here one takes \(b=2\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/IdeleGenerators/SlopeTestRemainingChoices.lean}{136}{Field and character conditions},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/SymUse.lean}{27}{Ternary seed theorem}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LinkedEndE.lean}{51}{Its use on the linked field}.
+
+In the construction this is \(\operatorname{Ad}^{0}(\rho)|_{G_L}\)
+for an auxiliary degree-two Eisenstein congruence. An upper triangular
+action on a plane with diagonal \(a,b'\) induces on its traceless
+endomorphisms a flag with diagonal \(a/b',1,b'/a\): take first the
+strictly upper triangular endomorphisms, then all upper triangular
+traceless endomorphisms. This proves the claimed exponents from
+the difference \(m\) of the two ordinary exponents. The auxiliary
+\(\eta,\theta\) disappear on \(G_L\). The trace pairing on traceless
+endomorphisms is symmetric and invariant in characteristic zero.
+Open irreducibility, existence of \(\rho\) and automorphic attachment
+of its twisted adjoint are arithmetic inputs to this calculation.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftFromEisensteinSeedOfHyps.lean}{184}{Inputs and construction}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftFromEisensteinSeedOfHyps.lean}{250}{Restriction of the adjoint and its local conditions}.
+
+For either degree \(n=2,3\) the seed specialization is taken after
+the link twist \(\kappa\). The integral comparison characters are
+\(\Psi^{w_i}|_{G_L}\kappa\), with \(w_i=(1,-1)\) or \((1,0,-1)\)
+and \(\Psi\) the original integral character. Their reductions are
+the labelled residual characters in the determinant problem.
+Away from \(\ell\) an inertial eigenvalue in the required kernel is
+a root of unity \(u\) of order dividing a number \(h\) prime to \(\ell\),
+with \(u\equiv1\) in the residue field. Since
+\(1+u+\cdots+u^{h-1}\equiv h\ne0\), the identity \(u^h=1\)
+gives \(u=1\). Diagonality on that inertia subgroup kills the
+whole action there. Above \(\ell\) scalar twisting multiplies each
+graded character by \(\kappa\) in the same flag, preserving their
+order. Thus the representation and its labelled characters give a
+point of the ordinary determinant ring. The cited arithmetic
+point theorem puts this particular point in \(V(J)\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PrSeedPtOf.lean}{132}{Integral comparison characters},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PrSeedPtOf.lean}{198}{Inertia and flags}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PrSeedPtOf.lean}{219}{Application of the point theorem}.
+
+Write \(B\) for this determinant ring and choose a minimal prime \(Z\)
+of \(J\) below the kernel of the seed point. Put \(C=B/Z\). If the
+ordinary quotient is finite torsion-free over
+\(\Lambda\simeq\mathcal O[[X_1,\ldots,X_{nd}]]\), every nonzero
+element of \(\Lambda\) is a nonzerodivisor on \(B/J\) and therefore
+misses its minimal primes. Hence \(\Lambda\hookrightarrow C\) is
+integral, and lying over, going up and incomparability give
+\(\dim C=1+nd\). Absolute irreducibility persists at the generic
+point. Choose \(n^2\) group matrices spanning the full matrix algebra
+at the seed. Their trace Gram determinant is nonzero there, since
+the matrix trace pairing is nondegenerate. Its value for the
+universal determinant is consequently nonzero in \(C\).
+Over the algebraic closure of \(\operatorname{Frac} C\), the
+determinant realization and untwisting theorem gives the framed
+point. It uses the condition that the determinant kills the specified
+auxiliary inertia modulo \(J\). The Gram determinant shows its
+image algebra has dimension \(n^2\).
+The reverse map from the framed coefficient ring to \(C\) composed
+with the determinant link is \(B\twoheadrightarrow C\), by uniqueness
+on the determinant and ordered local characters. It is surjective,
+so its kernel has quotient dimension \(1+nd\) and lies under the
+framed generic point. This is the seed dimension needed for curve
+selection. In the actual frame \(d=\sum_v d_v>3C_0+7\) and every
+\(d_v>5\), with \(C_0\) the cohomological bound in its hypotheses.
+The arithmetic transfers at separated curves are invoked in degree
+two first and then in degree three, where the additional exceptional-chain
+transfer is used.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/SeedOf.lean}{501}{The chosen minimal prime and untwisting},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/SeedOf.lean}{525}{The framed point and quotient dimension},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/FrobeniusSmoothVectors/ContinuousCoboundaries2.lean}{212}{The strict degree inequalities}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/AbsMain.lean}{21}{The arithmetic transfers}.
+
+\paragraph{The quartic seed and the four links.}
+In the rank-four case-three tower, the input is a good host datum
+with \(0<e<t\) in its third character case. The integral test
+\((r,u)\) has the prescribed residual matrices and similitude,
+the stated global ramification bound and kernel on inertia away
+from \(\ell\), and a symplectic flag matrix \(u\) above \(\ell\).
+Its ordered diagonal characters agree with the prescribed
+characters on inertia and reduce to them on the decomposition
+group. The test is defined over a small coefficient ring.
+On the fraction field the case under consideration is either
+irreducible or the specified nonsplit block extension with full
+two-dimensional block algebra. These are the hypotheses on the
+test to which the propagation is applied.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/NearSplit.lean}{59}{Host and integral test}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/RedIdeal.lean}{65}{The block-extension alternative}.
+
+Start with its actual lattice shape on the first tensor-factor tower \(T_0\).
+The seed theorem supplies a rational prime \(w\) split in the
+specified tower sense and a residual framed point \(s_0\), initially
+allowing \(w\) in its ramification set. Its assertion at higher
+levels is universal. For every allowable \(T\ge T_0\) at which
+all continuous order-\(\ell\) characters of \(G_{\mathbb Q}\)
+unramified away from \(w\) become trivial on \(G_{F_T}\), it
+supplies an integral pair \(Q_T\) over a finite coefficient DVR.
+Its reduction lies over \(s_0\), has the specified root-entry
+nonvanishings, and obeys the frame with the auxiliary set now empty.
+Its generic fibre is irreducible on the designated subgroup.
+After restriction to the CM field of \(T\) and a specified scalar
+twist it is attached to a regular algebraic cuspidal degree-four
+representation. Its consecutive weight differences are \(2n_i\),
+\(n_i\ge2\). The source uses a tensor product of two planes. It
+chooses \(1\le j\le9\), a positive \(m\), and \(k\ge2(9m)+3\).
+The three half-gaps in this construction are
+\(2mj,\ k-1-2mj,\ 2mj\), all at least two. The restriction
+condition at \(w\) kills the auxiliary character on \(G_{F_T}\),
+which is where the integral pairing without the extra allowed prime
+is checked.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/NearSplit.lean}{175}{Condition at the auxiliary prime},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/BirthSeedIV.lean}{34}{Tensor seed and size of the gaps},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/BirthSeedIV.lean}{48}{Residual and integral pair on each allowed layer}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/SeedOf4P.lean}{50}{Weights and regular cuspidal attachment}.
+
+For the given test lattice the cohomological construction chooses a
+finite set of split auxiliary primes containing \(w\) and then
+\(T_1\ge T_0\) killing all the indicated order-\(\ell\) characters
+for each auxiliary prime separately. This condition
+persists under further restriction of Galois groups. The cohomology
+bound supplies \(C\) over the resulting tame tower, before the choice
+of a deep layer \(T\ge T_1\) with \([F_T:\mathbb Q]\ge30(C+1)^2\).
+The seed theorem consequently applies at this very layer. Local
+conditions on the restricted test can be checked in coordinates.
+For a selected \(v\mid\ell\) choose \(g_v\) carrying the two chosen
+prolongations into agreement. In the transported flag the \(i\)th
+character at \(s\in I_v\) is the earlier \(i\)th character at
+\(g_v^{-1}s g_v\) (using restriction when viewing \(s\) over
+\(\mathbb Q\)). This equals the prescribed global character
+\(\psi_i(s)\), since a character is invariant under conjugation.
+To see why the flag has an integral normalized basis, put
+\(Y=r(g_v)n_0\) in the small local coefficient ring, with \(n_0\)
+the original lower unipotent flag matrix. The prescribed residual
+support gives \(\bar Y_{11}=\bar r(g_v)_{11}\),
+\(\bar Y_{12}=0\) and \(\bar Y_{22}=\bar r(g_v)_{22}\) in one-based
+indices. Both leading principal minors of orders one and two are
+therefore units. The similitude multiplier \(\mu\) is a unit.
+The third leading minor is \(\det(Y)(Y^{-1})_{44}\), a unit because
+\((Y^{-1})_{44}=Y_{11}/\mu\) in the chosen antidiagonal
+symplectic basis. Gaussian elimination over the local ring now
+gives \(Y=NU\) with \(N\) lower unipotent and \(U\) upper triangular
+invertible. Let \(X^\dagger\) denote the symplectic adjoint.
+The automorphism \(X\mapsto(X^\dagger)^{-1}\) preserves lower
+unipotent and upper triangular matrices and takes \(Y\) to
+\(\mu^{-1}Y\). Uniqueness of triangular factorization gives
+\((N^\dagger)^{-1}=N\), so the new flag basis is symplectic as
+required. Restricting the multiplier identity and the
+specified inertia kernels then gives the framed pair on \(T\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/RootsOfUnityShapes/ShapeQ.lean}{6}{The residual pivots},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/CompactIntegralFields/RestrQ.lean}{77}{Transport and integral normalization of the flag}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PromodularityCaseThreeOfLemmas.lean}{138}{Choice of lattice, cohomology bound, layer and seed}.
+
+At that layer the explicit residual chain, in the notation of the
+construction, is
+\[
+ q_0\ \longleftrightarrow\ q_3\ \longleftrightarrow\ q_4\
+ \longleftrightarrow\ q_2\ \longleftrightarrow\ \overline Q_T .
+\]
+The first vertex is the restricted test, identified by uniqueness
+over its chosen lattice shape. The four edges alternate between
+two splittings into pairs of coordinate planes, with indices
+\((1,3)\mid(2,4)\) on the first and third edges and
+\((1,2)\mid(3,4)\) on the second and fourth. Here is the
+reason they give actual lines in the representation scheme.
+In the indicated order the two endpoint matrices are block lower
+triangular with identical diagonal blocks. The same property
+holds for their local flag matrices. Put
+\(X(t)=X_0+t(X_1-X_0)\), with \(t\) an indeterminate. For two
+such pairs, \((X_1-X_0)(Y_1-Y_0)=0\), since each difference has
+only a lower left block. Expansion gives
+\[
+ X(t)Y(t)=X_0Y_0+t(X_1Y_1-X_0Y_0).
+\]
+The product pair again has the same diagonal blocks. The
+symplectic adjoint is linear and preserves this block condition
+in both orders. The formula consequently interpolates the group
+law, the similitude identity and the conjugated flag matrices.
+Equal diagonal entries, prescribed zeros and the inertia kernels
+persist along the line. Evaluating at \(t=0,1\) recovers the
+two framed endpoints in one irreducible image.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/CompactIntegralFields/AffSmulOne.lean}{43}{First block decomposition}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/CompactIntegralFields/GlobalTheory.lean}{131}{Second block decomposition and flag matrices}.
+
+In fact each nonconstant link is a closed affine line in the framed
+special fibre. Write \(A=X.A\), \(B=X.B\) and \(k\) for the
+residue field of the common coefficient DVR. The representing map
+\(A\to k[t]\) kills \(\mathfrak m_B A\) by the line clause of
+the representing space. If the framed endpoints differ, some
+matrix or flag entry maps to \(c+dt\), \(d\ne0\). The coefficient
+DVR maps onto \(k\), so the image contains \(t\). Thus the map is
+surjective and its kernel lies below both point ideals. Every proper
+coefficient ideal, including \(J\), vanishes scheme-theoretically
+on all four links and on their formal arcs. A minimal prime of
+\(A\) below the kernel supplies one ambient component through both
+endpoints. This gives the transfer from \emph{all} components at
+one end to \emph{some} component at the other.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/RedIdeal.lean}{233}{The representing map for the residual line}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/WeakShimuraTheory/CompactIntegralFields/AlgHomResUnique.lean}{56}{The two directions of component transfer}.
+
+Even seed local vanishing and a finite weight fibre do not by
+themselves extend this conclusion to a chosen test curve. For an
+explicit calculation over a complete DVR \(O\) of uniformizer
+\(\pi\) and residue field \(k\), take
+\[
+ B=O[[u,v]]/(uv),\qquad A=B[t]/(ut),\qquad J=(u).
+\]
+With weight parameter \(v\), the fibre \(B/(J,\pi,v)=k\).
+The integral seed \((u,v,t)=(0,\pi,1)\) satisfies the stated
+coefficient local vanishing at its generic point: every prime
+below its kernel misses \(v\), hence contains \(u\). Its reduction
+and \((0,0,0)\) lie on the closed line \(A/\mathfrak m_B A=k[t]\).
+However the equal-characteristic test
+\((u,v,t)=(z,0,0)\) in \(k[[z]]\) specializes to the latter
+endpoint and pulls \(J\) back to \((z)\). The two minimal primes
+of \(A\) there are \((u)\) and \((v,t)\); only the first contains
+\(J\). This identifies the precise additional conclusion required
+at a vertex with more than one component.
+
+The root-entry and support tests at the five vertices verify the
+good-point hypotheses of the component theorem. Enlarge the coefficient
+DVR once to contain the seed coefficients and realize the residual
+chain, a ring of definition of the test, and the lower coefficient
+extension for the tower ideal over a common coefficient base.
+The universal lifts now give points of one representing space. Local
+vanishing at the generic seed puts some component at
+\(\overline Q_T\) in \(V(J)\). The good-point component theorem at this
+vertex gives all components there. The last line then gives some
+component at \(q_2\), and the same theorem gives all components
+there. Repeating backwards along the three remaining lines gives all
+components at \(q_0\). Thus the specific generization representing
+the test kills \(J\). This argument uses the cited arithmetic
+construction of the lines, the seed local-vanishing theorem and
+the good-point component theorem for the case-three hypotheses.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CuPChainIV.lean}{25}{Enlargement killing the auxiliary primes},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CuPChainIV.lean}{64}{The five good vertices and the four lines},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PromodularityCaseThreeOfLemmas.lean}{59}{Common coefficient extension}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PromodularityCaseThreeOfLemmas.lean}{117}{Application to the chosen generization}.
+
+The marked ternary polarization alone gives
+\(\rho^c\simeq\rho^\vee\); it does not supply the invariant form
+or the nontrivial projective involution in
+Proposition~\ref{hr:orth}. In degree four
+Proposition~\ref{hr:ind} requires a real quadratic self-twist,
+and in equal characteristic it also requires the unramified
+condition there. In characteristic zero Corollary~\ref{hr:imprimitive}
+leaves the strongly irreducible quartic points. In equal
+characteristic Proposition~\ref{hr:case3strong} also leaves those
+points, together with the possible ramified real quadratic induction
+in the second host case. The even two-dimensional block of
+Lemma~\ref{spreal:even} and the complementary ternary cases also
+remain in the general result.

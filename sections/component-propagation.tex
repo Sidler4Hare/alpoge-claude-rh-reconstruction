@@ -1,0 +1,158 @@
+\subsection{Propagation between components in degrees two and three}
+
+In the ordinary deformation argument the closed set to be propagated
+is \(V(J)\), the inverse image of the specified Hecke ideal.
+Here are the component and curve arguments with their dimension and
+point hypotheses visible.
+
+\begin{lemma}\label{cprop:curve}
+Let \((R,\mathfrak n)\) be a Noetherian local ring, \(\pi\in\mathfrak n\),
+\(b\ge1\), and \(I,H_1,\ldots,H_t\) ideals. Suppose
+\(\dim R/I\ge b+1\) and \(\dim R/H_i<b\) for each \(i\).
+There is a prime \(\mathfrak p\supset I+(\pi)\) with
+\(\dim R/\mathfrak p=1\) containing none of the \(H_i\).
+\end{lemma}
+\begin{proof}
+In \(R/I\) a system of parameters modulo \(\pi\), together with
+\(\pi\), generates an ideal primary to the maximal ideal.
+Krull's height theorem gives \(\dim R/(I+(\pi))\ge b\). Take a
+minimal prime \(Q\) of this quotient of dimension at least \(b\),
+viewed as a prime of \(R\). Each \(H_i\) contains an element
+\(a_i\notin Q\), by the strict inequality of dimensions.
+Choose \(u\in\mathfrak n\setminus Q\) and put \(z=u\prod_i a_i\).
+Choose a prime \(\mathfrak p\) maximal among primes containing \(Q\)
+and avoiding \(z\). In the local domain \(D=R/\mathfrak p\), the
+image of \(z\) is a nonzero nonunit belonging to every nonzero prime.
+If \(\dim D\ge2\), the height-one primes containing \(z\) are the
+finitely many minimal primes over \((z)\), by the principal ideal
+theorem. Prime avoidance gives a nonunit in the maximal ideal
+outside all of them. A minimal prime over that nonzero element
+has height one and also contains \(z\), a contradiction. Thus
+\(\dim D=1\), and the choice of \(z\) excludes every \(H_i\).
+\end{proof}
+For the source chart of rank \(n=2,3\) and layer degree parameter
+\(d\), take \(b=nd\). The forbidden ideals are the opposite triangular
+ideal and, for \(i\ne j\) at each marked \(v\), the sum of the Hecke
+ideal, the coefficient maximal ideal and the ideal of all differences
+\(\psi_{vi}(g)-\psi_{vj}(g)\) on the specified inertia subgroup.
+If the first triangular ideal already generates the unit ideal on
+the chart and each forbidden quotient has dimension \(<nd\), the
+lemma produces a characteristic-\(\ell\) curve off both triangular
+loci, with all pairs of marked characters distinct there. For
+the difference ideals this uses that the initial prime contains
+the Hecke ideal and that the curve contains \(\pi\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/NicePrimeEx.lean}{87}{The one-dimensional prime} and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/ExistsNicePrimeAboveOfLargeDim.lean}{7}{the exceptional ideals in the chart}.
+
+\paragraph{The path through a local chart.}
+Write \(U\) for the open locus off both triangular ideals and, in
+rank three, off the ideal of matrix entries of odd weight difference.
+Write \(E_0\) for the part off both triangular ideals where that
+third ideal does vanish. In degree two \(E_0\) is empty. Call a prime
+\emph{selected} when it is a one-dimensional-quotient prime as just
+described (including the separation and characteristic conditions).
+It has type \(U\) or \(E_0\). In the next lemma a designated subset
+of component primes of a chart ideal is allowed to carry the
+exceptional links of the rank-three construction. Set \(D=nd+1\)
+and \(d(P)=\dim R/P\).
+
+\begin{lemma}\label{cprop:local}
+Let \(J\) define the closed Hecke locus in a Noetherian chart.
+Let \(\mathcal P\) be the minimal primes of a specified chart ideal,
+including every minimal prime of \(R\) lying in \(U\). Assume each
+vertex of \(\mathcal P\) is either in \(U\) or designated exceptional.
+Join \(P,Q\in\mathcal P\) when \(\dim R/(P+Q)\ge D\), and assume
+this graph is connected. Suppose the following point assertions hold.
+\begin{enumerate}
+\item Every prime over \(J\) of quotient dimension at least \(D\)
+has a selected specialization. Above any designated exceptional
+vertex, every prime of that dimension has a selected specialization
+of type \(E_0\).
+\item At a selected \(p\in U\) with \(J\subset p\), every prime
+below \(p\) contains \(J\).
+\item Link selected \(E_0\)-primes when they share a designated
+exceptional vertex below them. If \(p_0\) has a \(U\)-prime
+containing \(J\) below it, every \(U\)-prime below every selected
+\(E_0\)-prime linked by a finite path to \(p_0\) contains \(J\).
+Paths of length zero are included.
+\end{enumerate}
+If one \(U\)-prime \(I\) contains \(J\) and \(d(I)\ge D\), every
+minimal prime of \(R\) in \(U\) contains \(J\).
+\end{lemma}
+\begin{proof}
+At any selected \(p\) above a \(U\)-prime containing \(J\), all
+\(U\)-primes below \(p\) contain \(J\): use assertion 2 or the
+length-zero case of assertion 3. Choose a minimal prime \(P_0\)
+below \(I\); openness gives \(P_0\in U\). Applying assertion 1
+at \(I\) and the preceding observation gives \(J\subset P_0\).
+
+Travel along a path in \(\mathcal P\) from \(P_0\). At a \(U\)-vertex
+retain the conclusion that it contains \(J\). At any vertex outside
+\(U\) retain a selected \(E_0\)-prime above it reachable from a
+selected \(p_0\in E_0\) above some \(U\)-prime containing \(J\).
+For an edge \(P,Q\) take a prime \(M\supset P+Q\) with \(d(M)\ge D\),
+from a maximal-dimensional component of \(R/(P+Q)\).
+If \(Q\in U\) and \(P\in U\), assertion 1 at \(M\supset J\)
+and the observation give \(J\subset Q\).
+If \(Q\in U\) and \(P\notin U\), select an \(E_0\)-prime above
+\(M\) by assertion 1 at the designated vertex \(P\). The retained
+path extends to it through \(P\). Assertion 3 gives \(J\subset Q\).
+If \(Q\notin U\), select an \(E_0\)-prime above \(M\) using \(Q\).
+For \(P\in U\) it starts a path with witness \(P\). For \(P\notin U\)
+it extends the retained path through \(P\). This proves the claimed
+induction. Every minimal prime in \(U\) is a vertex of the connected graph.
+\end{proof}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/LocProp.lean}{17}{Local propagation}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/PropagationTheoremGL2.lean}{32}{the two prime-transfer hypotheses}.
+
+\begin{lemma}\label{cprop:global}
+Let \(X\) be Noetherian, \(U\subset X\) open and \(V(J)\) closed.
+Call an irreducible component eligible if it meets \(U\).
+Let \(B\subset X\) be connected and let \(T\subset B\) be test points
+such that each closed set meeting \(B\) meets \(T\).
+Suppose every eligible component meets \(B\), their union contains
+a dense subset of \(B\), and at any \(t\in T\), containment in
+\(V(J)\) passes between eligible components through \(t\).
+If one eligible component lies in \(V(J)\), then \(U\subset V(J)\).
+\end{lemma}
+\begin{proof}
+Form the unions of the eligible components contained in \(V(J)\)
+and of the others. Both unions are closed by finiteness. Together
+they cover \(B\) by the density assumption. If the second group
+exists, both groups meet \(B\), so connectedness gives an intersection
+over \(B\). The intersection is closed, hence contains a point of
+\(T\). The asserted transfer there contradicts membership of a
+component in the second group. Every point of \(U\) lies on an
+eligible component, proving the result.
+\end{proof}
+
+For clarity, transfer at \(t\) follows from Lemma~\ref{cprop:local}
+on a flat local chart if each eligible component through \(t\)
+has a chart minimal prime mapping to its generic point, of quotient
+dimension at least \(D\). Indeed openness pulls the generic point
+into \(U\). The first component supplies a \(J\)-containing prime,
+the local lemma puts the other preimage prime over \(J\), and closure
+gives the other whole component. For an affine flat local chart
+centered at \(t\) the required lifting of generic points follows by
+going down from its closed point to each minimal prime under \(t\),
+and then taking a minimal prime below the lift. The contraction is
+still the same minimal prime. The dimension inequality is additional.
+In the global argument \(B\) is the connected locus used to test the
+deformations, \(T\) its specified maximal points, and the density
+required here is obtained in the source away from the closed
+odd-weight-entry locus. When \(n=3\) the exceptional vertices also
+use a finite ideal obtained from degree two. If the Hecke ideal \(J\)
+works on \(U\) and the exceptional ideal \(I_3\) on \(E_0\),
+then \(J\cap I_3\) works on their union. Finiteness of its fibre follows
+from the radical test: any prime over a sum of the weight maximal ideal
+and \(J\cap I_3\) contains \(J\) or \(I_3\), since \(JI_3\subset J\cap I_3\).
+Thus the closed fibre in the Noetherian local ring is zero-dimensional,
+hence Artinian. Its composition factors are its residue field, finite
+over the coefficient residue field in the ordinary deformation chart.
+This gives finite dimension over that coefficient field.
+This makes explicit the use of both ranks. It still requires the
+dimension and connectedness inputs, a seed on the actual tower and
+the two arithmetic point-transfer assertions in the local lemma.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/GlobProp.lean}{3}{Global propagation},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/GlobOfCharts.lean}{4}{passage through flat charts} and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CurveDVRSpecialization/AbsMain.lean}{12}{the order of the two rank arguments}.

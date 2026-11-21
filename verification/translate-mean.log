@@ -1,0 +1,2 @@
+'PaperCertification.translateProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaperCertification.meanError' depends on axioms: [propext, Classical.choice, Quot.sound]

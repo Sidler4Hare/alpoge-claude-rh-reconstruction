@@ -1,0 +1,125 @@
+\begin{proposition}[The whole kernel on the smaller split side]\label{split:kernel}
+Put \(n=a'<a\) and \(s=d/2>n\), and set
+\(\lambda(g)=\nu(\det g)|\det g|^s\) on \(G=\mathrm{GL}_n(k)\).
+On all locally constant compactly supported functions on \(M_{n,d}(k)\),
+the integral \eqref{newtheta:small} converges absolutely and its kernel
+is precisely the span of
+\[
+        \Phi(g\,\cdot)-\lambda(g)^{-1}\Phi,\qquad g\in G .
+\]
+For unramified \(\nu\), the value at the identity of the standard integral
+matrix indicator is \(\prod_{j=0}^{n-1}(1-\nu(\pi)q^{j-s})^{-1}\ne0\),
+where \(q=|\mathcal O/\pi|\).
+\end{proposition}
+\begin{proof}
+For any full-rank \(X\), boundedness of \(gX\) bounds \(g\) by a right
+inverse of \(X\). On that bounded set the absolute integration density
+is a constant times \(|\det g|^{s-n}\) in additive matrix coordinates.
+It is bounded, so the integral converges. Haar substitution shows that
+the displayed differences have zero integral.
+
+On the full-rank open set the map taking the row span is a principal
+\(G\)-bundle over a Grassmannian, trivial on each pivot chart by
+row reduction. Subdivide the projection of a compact support into
+finitely many disjoint compact open subsets of such charts. In chart
+coordinates each test is a finite sum of products of a base test and
+a test on \(G\). This follows by covering its compact support by
+compact open rectangles of constancy and taking a common refinement.
+On the fibre \(G\) the quotient by the displayed differences is
+one-dimensional, detected by integration against \(\lambda(g)\,dg\).
+In fact, for any finite list of tests take a compact open subgroup
+\(J\subseteq\ker\lambda\) fixing all of them on the right. Modulo
+differences \(1_{tJ}\) equals \(\lambda(t)1_J\); its integral is
+\(\lambda(t)\operatorname{vol}(J)\). This proves the assertion on one
+fibre. A base refinement where the base factors are constant gives the
+same kernel description throughout the full-rank open set. All its
+row spaces are tested by \(Y_0h\) as \(h\) varies.
+
+We show that rank \(r<n\) adds no classes to this quotient. Over
+a pivot chart of the row-span Grassmannian the rank \(r\) stratum has
+fibre the space of injective \(n\)-by-\(r\) matrices. Here a basis of
+the row space identifies the original matrix with its matrix of row
+coefficients. The source group acts transitively on this fibre by left
+multiplication. Suppose a linear functional \(D\) there satisfies
+\(D(f(g\,\cdot))=\lambda(g)^{-1}D(f)\).
+Around \(X_r=(I_r,0)^t\), take
+\(V=X_r+\pi^t M_{n,r}(\mathcal O)\) for \(t\ge1\) sufficiently large
+that \(\nu\) is trivial on \(1+\pi^t\mathcal O\). The congruence
+subgroup \(K_n(t)\) acts transitively on \(V\), by completing its
+first \(r\) columns, and preserves additive volume on \(V\).
+Its invariant functionals on tests supported in \(V\) are multiples of
+that volume: averaging any such test over the compact group gives the
+constant average on \(V\), and is a finite average by smoothness.
+Take \(t_0=\operatorname{diag}(I_r,\pi I_{n-r})\), which fixes \(X_r\)
+and sends \(V\) into \(V\). On the one hand
+\(D(1_{t_0V})=|\det t_0|^r D(1_V)\), by additive volume columnwise.
+On the other hand equivariance gives \(\lambda(t_0)D(1_V)\).
+Since \(|\lambda(t_0)|=|\det t_0|^s\) and \(r<s\), we have \(D(1_V)=0\).
+The translates of \(V\) cover the fibre, so \(D=0\). For \(r=0\)
+the fibre is a point and the same character test gives zero directly.
+Testing products with each base indicator proves vanishing of every
+equivariant functional on the stratum. Its quotient by differences
+is zero since linear functionals separate points of any vector space.
+
+Filter the closed rank-deficient locus by the finitely many closed
+sets \(\{\operatorname{rank}\le r\}\). Restriction of tests to a closed
+subset is onto: a compact open subset of it can be extended to a finite
+union of compact open neighborhoods in the ambient space, chosen to
+avoid its closed complement within the subset. The kernel consists of
+tests compactly supported on the open complement. Taking quotients by
+differences is right exact. Induction therefore gives zero quotient for
+the whole rank-deficient locus. Consequently each test on the matrix
+space is congruent modulo differences to one supported on the full-rank
+open set. Their orbital integrals agree, so the full-rank calculation
+proves the asserted equality of kernels.
+
+Finally the integral at the identity for the spherical indicator is over
+the integral nonsingular matrices. Its right \(K_n\)-cosets correspond
+to the finite-index sublattices of \(\mathcal O^n\) and have volume one.
+For unramified \(\nu\), the weight of an index \(q^b\) lattice is
+\((\nu(\pi)q^{-s})^b\). In upper triangular column Hermite form with
+diagonal \(\pi^{b_i}\), the entries in row \(i\) above the diagonal
+are taken modulo \(\pi^{b_i}\). There are
+\(\prod_i q^{(n-i)b_i}\) choices and \(b=\sum b_i\).
+Summing the \(n\) convergent geometric series gives the displayed product.
+\end{proof}
+\begin{corollary}[Both orbital maps on ramified split tests]\label{split:ram}
+If \(\nu|_{\mathcal O^\times}\ne1\), the larger-side shell prescription
+has kernel the corresponding span of source-action differences on
+\emph{all} tests. Both full test spaces have the common image of
+Proposition~\ref{newtheta:split}.
+\end{corollary}
+\begin{proof}
+In the larger integral first replace \(d/2\) in the integration weight
+by \(z\) with \(\Re z>a\). Then it is absolutely convergent by the
+bounded-density argument above, and change of variables under every
+source translation is valid. For fixed \(\Phi,X\), the additive-period
+argument of Lemma~\ref{newtheta:shell} kills all but finitely many
+Cartan shells, independently of \(z\), since the determinant norm is
+constant on each shell. Their sum is a Laurent polynomial in \(q^{-z}\).
+The identity for a given translate, including its factor
+\(\nu(\det g)^{-1}|\det g|^{-z}\), consequently holds at \(z=d/2\)
+as well. The same change of variables gives parabolic covariance at
+that parameter. A compact open subgroup fixes the test on the right
+in the target action, which gives smoothness of its orbital function.
+
+The rank argument in Proposition~\ref{split:kernel} applies with
+\(n=a\); whenever \(r\ne d/2\), the absolute values in the test
+still differ. For \(r=d/2<a\) fix \(u\in\mathcal O^\times\) with
+\(\nu(u)\ne1\) and use \(\operatorname{diag}(I_r,u,1,\ldots,1)\)
+in the stabilizer. This preserves the compact open ball \(V\) and
+changes the functional on its indicator by the factor \(\nu(u)\).
+It must therefore vanish there and on all translates. Thus every
+singular stratum has zero quotient by differences. The full-rank
+kernel calculation and the shell transform on the entire space finish
+the proof exactly as on the smaller side.
+\end{proof}
+In particular every \(\lambda^{-1}\)-equivariant functional for the written
+translations on the smaller split model factors through its orbital integral; the same statement applies on
+the larger side at the indicated ramified places. Full-rank tests span
+both indicated images. For the larger unramified side when \(\nu=1\)
+and \(r=d/2\), the stabilizer test gives equality for every determinant.
+The next lemma shows that the infinite type excludes this resonance
+at the good places of the global construction.
+
+\input{sections/split-good}

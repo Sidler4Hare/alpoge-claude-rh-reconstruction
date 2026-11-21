@@ -1,0 +1,294 @@
+\subsection{The graph terms of the doubled marked family}
+\label{dg:section}
+
+We compute the graph functional in the rational symplectic basis in
+which the undoubled sections are defined. Write $g=r|\Psi|$,
+$\Omega_x$ for the Siegel period matrix, $Y_x=\operatorname{Im}\Omega_x$,
+and $h_x$ for the inverse of the first period matrix. Thus a real
+period vector with symplectic coordinates $(u,v)$ has normalized
+complex period $u+\Omega_x v$. Use Lebesgue measure on the $ng$ real
+position coordinates and mass one for their integral finite lattice.
+For one row the Gaussian, apart from the determinant, is
+\[
+ q_{x,z}(s)=\exp\!\left(\pi i\,s^t\Omega_xs+
+          2\pi i\,s^t h_xz+\tfrac{\pi}{2}
+                   z^t h_x^tY_x^{-1}h_xz\right).
+\]
+Put $Q_{x,z}=(\det h_x)^{n/2}\prod_{k=1}^nq_{x,z_k}(s_k)$
+and $Q_{x,P}=P(\partial_z)Q_{x,z}|_{z=0}$. These give exactly
+the rational theta sums defining $\theta_P(\phi;x)$ with finite
+test $\phi$. We use inner products linear in their first variable.
+
+\begin{lemma}\label{dg:gaussian}
+For the family and weight of Proposition~\ref{arrep:reproduce},
+\[
+ \sum_j\langle Q_{x,P_j},Q_{y,P_j}\rangle_\infty
+ =c_\infty K(x,y),\qquad
+ c_\infty=2^{-ng/2}\prod_{\tau\in\Psi}
+     \bigl(|\det G_\tau|\,[-\operatorname{Im}\tau(\kappa_0)]^r
+                                                        \bigr)^{n/2}.
+\]
+This factor is independent of the weight, the polynomials, and both
+frames.
+\end{lemma}
+\begin{proof}
+First we show that $Q_{x,P}$ is holomorphic in $x$ with values in
+Schwartz space. The physical period map at $\tau$ has components
+$\langle x_i,s\rangle$ for $i\le p$ and $(x^{-1}s)_i$ for $i>p$.
+Thus $h_x,\Omega_x$ are holomorphic. For the remaining quadratic put
+$C=h_x^tY_x^{-1}h_x$. Choose a purely imaginary $\theta\in E$
+which generates $E/\mathbf Q$. Such elements exist: writing the
+purely imaginary subspace as $\eta E^+$ for any nonzero imaginary
+$\eta$, distinct embeddings have distinct restrictions to this
+subspace (evaluate first on $\eta$, then on its multiples).
+Finitely many proper rational linear subspaces therefore suffice to
+exclude all coincidences. Multiplication by $\theta$ in physical
+period coordinates is diagonal $D$, with entries $\bar\tau(\theta)$
+on the positive rows and $\tau(\theta)$ on the negative rows.
+Write its rational blocks in the symplectic basis as
+$\left(\begin{smallmatrix}a&b\\ c&d\end{smallmatrix}\right)$.
+Applying it to first periods gives $h_xD=(a+\Omega_xc)h_x$.
+Multiplication by $\theta$ is skew-adjoint for the alternating trace
+pairing and complex-linear on the normalized periods. Hence it is
+skew-adjoint for their Hermitian form with matrix $Y_x^{-1}$: the
+imaginary part is the alternating pairing, and replacing one argument
+by $i$ times that argument recovers the real part. With $A=a+\Omega_xc$,
+this gives $A^tY_x^{-1}+Y_x^{-1}\bar A=0$. Consequently
+\[
+                  D^t C+C D=2i h_x^t c h_x .
+\]
+Whenever $D_i+D_j\ne0$, $C_{ij}$ is holomorphic by division.
+The remaining pairs are exactly the opposite signs at the same
+place. Their terms in the product exponential multiply the other
+terms by exponentials of mixed row contractions. They disappear
+under $P(\partial_z)$ by the mixed Laplacian, as in
+Proposition~\ref{arrep:reproduce}. On each compact subset of
+$\mathcal D$, $Y_x$ is bounded below by a positive matrix, so the
+resulting polynomial Gaussians and their derivatives have locally
+uniform Schwartz bounds. This proves holomorphy and hence
+sesquiholomorphy of the displayed pairing.
+
+On replacing $x$ by $xb$, with triangular diagonal blocks $A_0,D_0$,
+the physical period map acquires left factor $A_0^t\oplus D_0^{-1}$.
+Thus $\Omega_x$ is unchanged, and $h_x$ gains right factor
+$A_0^{-t}\oplus D_0$. Ordinary differentiation and the row-highest
+law give $Q_{xb,P}=\chi_\lambda(b)Q_{x,P}$. It suffices to compare
+the two kernels on the diagonal of orthoframes and then on the full
+diagonal by triangular equivariance.
+
+For an orthoframe $x$, put $d_\tau=-\operatorname{Im}\tau(\kappa_0)$.
+In its basis the physical periods of a vector $s$ are the conjugates
+of its positive coefficients and its negative coefficients themselves.
+The imaginary part of the Hermitian pairing with diagonal entries
+$d_\tau$ in these coordinates is therefore the original alternating
+form $\operatorname{Tr}_{E/\mathbf Q}(-\kappa_0\langle s,s'\rangle/2)$.
+In normalized period coordinates the same form is
+$\operatorname{Im}((u+\Omega_x v)^tY_x^{-1}
+\overline{(u'+\Omega_x v')})=v^tu'-u^tv'$. Equality of imaginary
+parts gives
+$h_x^tY_x^{-1}\bar h_x=\operatorname{diag}(d_\tau 1_r)_\tau$.
+Completing the real Gaussian square now gives
+\[
+ \langle Q_{x,z},Q_{x,\bar w}\rangle_\infty
+ = |\det h_x|^n\det(2Y_x)^{-n/2}
+          \exp\!\left(\pi\sum_{\tau,i,k} d_\tau z_{\tau ik}w_{\tau ik}\right).
+\]
+This is the orthoframe Gaussian of Proposition~\ref{arrep:reproduce}
+times $c_\infty$, since $|\det x_\tau|^2=|\det G_\tau|^{-1}$.
+Differentiate and use triangular equivariance. Sesquiholomorphic
+kernels equal on the full diagonal are equal everywhere: the power
+series of their difference at each diagonal point has coefficients
+detected by independent Wirtinger derivatives on the diagonal,
+and $\mathcal D$ is connected.
+\end{proof}
+
+\begin{proposition}\label{dg:identity}
+Use the marked family in Lemmas~\ref{bfam:genus} and~\ref{bfam:phase},
+even $n>4r$, and the column-invariant polynomial family of
+Proposition~\ref{arrep:reproduce}. Let $\sum_\Lambda w_\Lambda$
+denote the finite genus sum with reciprocal stabilizer weights.
+Write $\phi_{L,\Lambda}$ for the marked vector on row $L$,
+$\Delta$ for its prescribed rational row group, and
+$w(\gamma)\phi_{L,\Lambda}=\mu(\gamma,L)\phi_{\gamma L,\Lambda}$.
+For all permissible rows $L_1,L_2$ and all $x,y\in\mathcal D$,
+\[
+\begin{split}
+ &\sum_\Lambda w_\Lambda\sum_j
+    \theta_{P_j}(\phi_{L_1,\Lambda};x)
+           \overline{\theta_{P_j}(\phi_{L_2,\Lambda};y)}\\
+ &\quad=c_\infty\sum_{\gamma\in\Delta}\overline{\mu(\gamma,L_2)}
+               K(x,\gamma y)
+       \sum_\Lambda w_\Lambda
+       \langle\phi_{L_1,\Lambda},\phi_{\gamma L_2,\Lambda}\rangle_f .
+\end{split}
+\]
+The graph sum is absolutely convergent. This is the kernel identity
+for this genus, including the phase of each marked row.
+\end{proposition}
+\begin{proof}
+In the doubled oscillator use the rational diagonal polarization.
+For a pure tensor $u\otimes\bar v$ the change to this polarization
+takes difference and midpoint of the two position coordinates,
+followed by Fourier transform in the midpoint. Evaluation at the
+origin is therefore $\langle u,v\rangle$ in the self-dual position
+measure, both at infinity and at the finite places. In the source
+orientation the coordinate function is $W_{u,v}(-s)$ as in
+Lemma~\ref{bfam:phase}. The product of the two rational theta sums
+is the rational theta sum after this change: the rational pairs of
+positions are in bijection with their rational differences and
+midpoints, and Poisson summation in the latter variable replaces
+it by its rational dual. This proof works for arbitrary Schwartz
+inputs. In particular there is no primitivity restriction on the
+rational differences. A common rescaling of the finite intertwiner
+and the inverse rescaling of the archimedean intertwiner leave the
+global evaluations unchanged.
+
+Here it matters that the inserted archimedean test
+$\sum_j Q_{x,P_j}\otimes\overline{Q_{y,P_j}}$ is invariant under the
+compact column group in the doubled model. In physical period
+coordinates a column unitary $u_\tau$ acts by $u_\tau$ in negative
+rows and by $\bar u_\tau$ in positive rows. It preserves the
+polarization, so its oscillator action fixes the Gaussian vacuum
+line at each frame. One can see this by the first-order Gaussian
+equations $(\partial_s-2\pi i\Omega_xs)q_{x,0}=0$: the operators
+are the positive-polarization annihilators and their common solution
+line is spanned by this Gaussian. Its unit multiplier is the same
+at any two frames. Indeed their vacuum pairing is nonzero by the
+Gaussian integral with matrix $-i(\Omega_x-\bar\Omega_y)$ of
+positive real part. To check the action on the inserted vectors,
+the Weyl translate of the vacuum with shift $v$ and modulation $u$
+is $q_{x,z}\exp(-\pi\zeta^tY_x^{-1}\bar\zeta/2)$, where
+$\zeta=u+\Omega_xv=h_xz$. This follows by replacing $s$ with $s+v$
+and multiplying by $\exp(2\pi i u^t(s+v/2))$. The column action
+preserves the Hermitian norm in this formula. Thus it transforms
+the coherent parameters by the stated linear substitutions and the
+common unit multiplier. The multipliers cancel between the two
+copies, and column invariance of the sum of differential symbols
+proves the assertion (the transposes in differentiation are again
+paired unitary substitutions).
+
+Apply Lemma~\ref{bfam:genus} to this invariant Schwartz test.
+At the Siegel--Weil point the section for a Schwartz function $\Phi$
+is $g\mapsto(\omega(g)\Phi)(0)$. Here the doubled group has split
+rank $r$, the positive definite column space has dimension $n$ and
+the parameter is $s_0=(n-r)/2$. The theta integral uses Haar
+probability, giving coefficient one. Multiplying back by the
+total mass gives the same weights on both sides.
+The splitting character on the Siegel Levi can be taken trivial:
+its restriction to $\mathbb A_{E^+}^\times$ is required to be the
+$n$-th power of the quadratic extension character, and $n$ is even.
+In this splitting the diagonal column group acts by substitution.
+The same reference gives the doubled tensor intertwiner and its
+value at zero; its general second-factor twist by the splitting
+character is trivial here.
+\cite[\S\S2.8, 3.1, 11.3 and Theorem~7.1]{ganQiuTakeda}
+
+We specify the graph convention. Label the graph by the rational
+row isometry $\gamma$ acting on the second member of the tensor to
+give the diagonal functional. Thus for the seed graph one evaluates
+at zero, and for this graph one first translates that member by
+$\gamma$. In row coordinates a representative is the conjugate of
+$\operatorname{diag}(1,\gamma^{-t})$ by the rational change of
+polarization with blocks
+$\left(\begin{smallmatrix}1&\kappa_0G/4\\-1&\kappa_0G/4\end{smallmatrix}\right)$.
+Equivalently the action on the second undoubled theta test is the
+rational oscillator action carrying its frame $y$ to $\gamma y$.
+To check the scalar, let
+$\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$ be
+the induced Siegel transformation in the symplectic period basis,
+$U=c\Omega_y+d$, $\Omega'=(a\Omega_y+b)U^{-1}$.
+The equality of the period maps on $\gamma s$ at $\gamma y$ and on
+$s$ at $y$ gives $h_{\gamma y}=U^{-t}h_y$,
+$\Omega_{\gamma y}=\Omega'$. The Gaussian action sends
+$Q_{y,z}$ to $Q_{\gamma y,z}$ up to a constant phase independent
+of $y,z$. Indeed under a real linear coordinate change this follows
+by substitution, and under adding a real symmetric matrix to the
+period it follows by multiplying by the corresponding quadratic
+phase. Under Fourier inversion use the Gaussian integral
+\[
+ \int_{\mathbb R^g}e^{\pi i s^t\Omega s+2\pi i s^t t}\,ds
+       =\det(-i\Omega)^{-1/2}e^{-\pi i t^t\Omega^{-1}t}.
+\]
+For the Fourier generator $\Omega'=-\Omega^{-1}$, the factor
+$e^{-\pi i\zeta^t\Omega^{-1}\zeta}$ combines with the original
+quadratic correction to give the one at
+$\zeta'=\Omega^{-t}\zeta$, since
+$\zeta'^tY'^{-1}\zeta'=\zeta^tY^{-1}\zeta-
+2i\zeta^t\Omega^{-1}\zeta$. The determinant in $Q$ absorbs the
+period-dependent determinant after taking $n$ rows. These generators
+generate the rational symplectic group by symplectic elimination.
+Choose the reciprocal scalar on the finite operator. Its action
+$w(\gamma)$ is then exactly the one characterized by
+$\theta(w(\gamma)\phi;\gamma y,z)=\theta(\phi;y,z)$: for the
+Fourier generator this is rational Poisson summation, for rational
+linear changes it is reindexing with the product formula, and for
+the shear it is cancellation of the rational quadratic phases.
+This characterization determines the finite operator, since at
+fixed $y$ the distinct rational position frequencies of the theta
+series can be separated by Fourier coefficients in $h_yz$ after
+removing the common nonzero Gaussian prefactor.
+
+These are also the normalizations of the graph section. Indeed the
+diagonal-polarization change intertwines the rational row actions
+with their conjugates in the doubled group. For the linear changes,
+quadratic phases and Fourier generators this is just covariance
+of Weyl translations under these operations. Any scalar ambiguity
+between the two intertwiners is independent of the test by
+irreducibility of the Schrödinger representation; its global value
+is one since both rational actions preserve the nonzero rational
+theta distribution by Poisson summation. The choice of another
+rational Siegel-parabolic representative likewise preserves the
+global evaluation, by the product formula on its determinant and
+triviality of its unipotent character at zero. The term on the
+graph consequently is precisely
+\[
+ \langle\phi_{L_1,\Lambda},w(\gamma)\phi_{L_2,\Lambda}\rangle_f\,
+          \sum_j\langle Q_{x,P_j},Q_{\gamma y,P_j}\rangle_\infty .
+\]
+Graphs outside $\Delta$ vanish by the marked support condition.
+For $\gamma\in\Delta$ the inner product in the second variable
+contributes $\overline{\mu(\gamma,L_2)}$.
+
+For a nongraph there is a nonzero rational isotropic row line
+$E\xi$ in the intersection of its maximal isotropic with the first
+copy. Indeed either projection being singular forces the other to
+be singular by orthogonality and dimension. For every $v\in E^n$
+the finite Weyl translation on the first input by $v\otimes\xi$ acts,
+after passage to this polarization, by a pure modulation. It takes
+value one at the origin: in difference and dual coordinates the
+action is $\phi(t-d)\psi_f(\langle b,t-d/2\rangle)$ with $d=0$.
+There is no residual scalar, since linear symplectic covariance
+preserves the symmetric Weyl operators including their half
+pairings. The resulting finite evaluation $\ell$ thus satisfies
+$\ell(\rho(v\otimes\xi)\phi_1,\phi_2)=\ell(\phi_1,\phi_2)$.
+The marked isotropic relation has finite coefficients $a_v$ with
+$\sum a_v\ne0$ and $\sum a_v\rho(v\otimes\xi)\phi_1=0$.
+It gives $(\sum a_v)\ell(\phi_1,\phi_2)=0$ before any
+archimedean evaluation. This accounts for every nongraph.
+
+Finally the polynomial differentiations are legitimate in this
+expansion. On compact sets of complex $z,w$ the archimedean
+Gaussians, with every fixed parameter derivative, are bounded in
+Schwartz space, by completion of the square and $Y_x,Y_y>0$.
+The same holds after the fixed partial Fourier transform.
+For a Siegel representative with Iwasawa decomposition $pk$ and
+Levi block $a_p$, evaluation is bounded by
+$|\det a_p|_{\mathbb A_E}^{n/2}
+\sup_k|(\omega(k)\Phi)(0)|$; the supremum is uniform on these
+bounded test families by continuity and compactness. The finite
+tests lie in finitely many compact orbits under the maximal compact
+subgroup (each smooth test has open stabilizer there).
+The scalar Siegel Eisenstein majorant converges absolutely for
+$\operatorname{Re}s>r/2$, which contains $s_0$ since $n>4r$.
+Thus either Cauchy's formula on a slightly larger parameter
+polydisc or direct Schwartz differentiation permits the fixed
+finite insertions under the sum. The genus formula above was only
+needed for the invariant sum of inserted vectors. Gaussian theta
+series on the left also converge normally since the finite test
+restricts rational positions to a fixed fractional lattice.
+Combining the surviving graph evaluations with Lemma~\ref{dg:gaussian}
+proves the identity.
+\end{proof}
+
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/EisensteinSeriesTermUnitaryGraph.lean}{33}{The graph representative and both translated tests};
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/KernelIdentity.lean}{181}{The class-weighted differentiated graph identity}.

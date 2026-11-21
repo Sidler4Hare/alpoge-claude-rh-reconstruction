@@ -1,0 +1,1685 @@
+Fix the tower, measures and matching data of \S\ref{newtheta:global}.
+Theorem~\ref{tcr:global} constructs a supported test with nonzero
+primed period and proves \(I(\Phi)=cI'(\Phi')\) for every matched
+pair, at every allowed real signature. The scalar \(c\ne0\) belongs
+to the chosen data. In its two rank recursions the comparison scalar
+\(C\) is uniform in the admissible finite data once the adapted
+upper and lower geometries, real matching maps and measures are
+fixed. The proof includes the inert finite and real local comparisons.
+The evaluation lattice used in Section~\ref{main:assembly} requires
+more than proportionality of these two linear functionals. On
+marked components the doubled kernel gives spanning over the
+coefficient field (Propositions~\ref{dg:identity} and~\ref{munf:span}).
+Theorem~\ref{bfam:oncharts} controls the finite denominators and
+Petersson norms of spanning sections under its chart and cusp
+hypotheses. The final change of weight also involves the integral
+determinants of two conjugate Hodge eigenspaces. On the indefinite
+selected family their common local orders and the CM evaluation
+in Theorem~\ref{cmeig:splitmodel} give this change at every weight.
+
+\subsection{Local matching in split matrix coordinates}\label{newtheta:local}
+
+We compute the two local functionals used at a selected split place. This
+also gives test vectors on which the functions agree at \emph{every} group
+element. Let \(k\) be a nonarchimedean local field, \(\mathcal O\) its
+valuation ring, \(\pi\) a uniformizer, and \(|\pi|=|\mathcal O/\pi|^{-1}\).
+Put \(d=a+a'\), with \(a,a'>0\), \(G_j=\mathrm{GL}_j(k)\),
+\(K_j=\mathrm{GL}_j(\mathcal O)\), and give \(G_j\) Haar measure
+such that \(K_j\) has volume one. Use the row matrices
+\(X_0=[I_a\;0]\) and \(Y_0=[0\;I_{a'}]\).
+The characters \(\alpha,\beta:k^\times\to\mathbb C^\times\) are smooth
+and unitary, and \(\nu=\alpha/\beta\). In the two polarizations the
+orbital functions, on locally constant functions compactly supported in
+the respective full-row-rank sets, are
+\begin{align}
+ B_\Phi(h)&=\beta(\det h)|\det h|^{-a/2}
+ \int_{G_a}\Phi(gX_0h^{-t})\,\nu(\det g)|\det g|^{d/2}\,dg ,
+ \label{newtheta:big}\\
+ S_\Psi(h)&=\alpha(\det h)|\det h|^{a'/2}
+ \int_{G_{a'}}\Psi(gY_0h)\,\nu(\det g)|\det g|^{d/2}\,dg .
+ \label{newtheta:small}
+\end{align}
+Here \(h^{-t}=(h^{-1})^t\). For any fixed full-rank \(X\) the map
+\(g\mapsto gX\) is a homeomorphism onto the full-rank matrices with
+the same row space as \(X\). The image is closed in the full-rank set,
+since having rows in a fixed subspace is closed. The inverse is right
+multiplication by any right inverse of \(X\). Thus the integrals here
+have compact support in \(g\). The large-side definition in the original
+model is a sum of integrals over Cartan double cosets. A compact subset of
+\(G_a\) meets only finitely many of its disjoint open double cosets, so
+the two definitions agree in this case.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/RankEqCardIffExistsFrameMatrixFirstColumnBlock.lean}{703}{The two orbital functions and their determinant factors}.
+
+\begin{proposition}[The common image of full-rank split tests]\label{newtheta:split}
+Let \(P\subset G_d\) be the block upper triangular parabolic with
+diagonal blocks of sizes \(a,a'\). The image of each of
+\eqref{newtheta:big} and \eqref{newtheta:small} on these test spaces is
+the full space of smooth functions \(f:G_d\to\mathbb C\) satisfying
+\[
+ f\left(\begin{pmatrix}A&*\\0&D'\end{pmatrix}h\right)
+ =\alpha(\det A)\beta(\det D')|\det A|^{a'/2}
+             |\det D'|^{-a/2}f(h).
+\]
+In particular there are matched tests with value one at the identity.
+\end{proposition}
+\begin{proof}
+For \(p\in P\), \(X_0p^{-t}=A^{-t}X_0\) and \(Y_0p=D'Y_0\).
+In the first integral substitute \(gA^{-t}\) for \(g\), and in the
+second \(gD'\) for \(g\). Right translations preserve Haar measure on
+\(G_j\), as is also seen from its density
+\(|\det g|^{-j}\prod_{i,l}dg_{il}\) in additive matrix coordinates.
+Using \(\alpha=\nu\beta\) gives the displayed character in both cases.
+Right translation of the output is obtained by the corresponding linear
+substitution in the test times its determinant prefactor. Compact support
+and local constancy give invariance under some open subgroup on the right.
+
+Let \(K_j(e)\) be the kernel of reduction modulo \(\pi^e\). Take
+\(e\ge1\) so large that both characters are trivial on
+\(1+\pi^e\mathcal O\). For \(\Phi_e,\Psi_e\) take the indicators of
+\(X_0+\pi^eM_{a,d}(\mathcal O)\), \(Y_0+\pi^eM_{a',d}(\mathcal O)\)
+divided by the volumes of \(K_a(e)\), \(K_{a'}(e)\), respectively.
+Both supports are compact and have full row rank. For \(h\in K_d\),
+the integrality and full rank modulo \(\pi\) of \(gX_0h^{-t}\) on
+the first support force \(g\in K_a\), by multiplying on the right by
+\(h^t\). The same argument with \(h^{-1}\) gives \(g\in K_{a'}\)
+on the second support. Modulo \(\pi^e\), the equations become
+\([g\;0]=X_0h^t\) and \([0\;g]h=Y_0\), respectively.
+Each has solutions precisely when the lower left block of \(h\)
+is zero modulo \(\pi^e\). In this case the diagonal blocks \(A,D'\)
+are invertible modulo \(\pi^e\). The solutions are one congruence
+coset, given by \(g\equiv A^t\) or \(g\equiv (D')^{-1}\).
+The two normalized values are consequently
+\(\beta(\det h)\nu(\det A)\) and
+\(\alpha(\det h)\nu(\det D')^{-1}\). They agree because
+\(\det h\equiv\det A\det D'\pmod{\pi^e}\).
+In particular the common function is one at \(h=1\).
+
+Write \(K=K_d\) and \(U=(P\cap K)K_d(e)\). This is the inverse image
+of the block upper triangular subgroup modulo \(\pi^e\): one lifts
+the two invertible diagonal blocks and the upper right block to obtain
+an element of \(P\cap K\). Our common function on \(K\) is supported
+on \(U\) and is right \(K_d(e)\)-invariant. Also \(G_d=PK\). Indeed
+the intersection of any \(a'\)-dimensional row space with \(\mathcal O^d\)
+is a saturated free summand of rank \(a'\) by the elementary divisor
+theorem. Extending an integral basis of that summand gives a matrix of
+\(K\) with the same last-row space as the given matrix of \(G_d\).
+Their quotient belongs to \(P\).
+
+For any smooth \(f\) with the stated covariance choose \(e\) still
+larger so that \(f|_K\) is right \(K_d(e)\)-invariant, possible by
+compactness. On the finitely many cosets \(U k_j\) in \(K\), the
+restrictions of \(f\) are determined by \(f(k_j)\). In fact \(K_d(e)\)
+is normal in \(K\), so \(f(uk_j)\) transforms by the prescribed
+character on \(P\cap K\) and trivially on the congruence kernel.
+The right translates \(h\mapsto B_{\Phi_e}(hk_j^{-1})
+=S_{\Psi_e}(hk_j^{-1})\) have exactly these transformation laws,
+disjoint supports on \(K\), and value one at \(k_j\). Their linear
+combination with coefficients \(f(k_j)\) agrees with \(f\) first on
+\(K\) and then on \(PK\). Each translate comes from a test of the
+same allowed kind. This proves surjectivity on both sides.
+\end{proof}
+
+The ramified split condition asks for a large-side value even on
+tests meeting the singular locus. There is a direct justification for
+the finite shell prescription in this case.
+\begin{lemma}[Cancellation near the singular strata]\label{newtheta:shell}
+Suppose \(\nu\) is nontrivial on \(\mathcal O^\times\). For every
+locally constant compactly supported \(\Phi\) on \(M_{a,d}(k)\) and
+every fixed full-rank \(X\), only finitely many double cosets
+\(K_a\operatorname{diag}(\pi^{m_i})K_a\) have a nonzero integral of
+\(\Phi(gX)\nu(\det g)|\det g|^{d/2}\).
+\end{lemma}
+\begin{proof}
+Choose a right inverse \(X^\dagger\). The identity
+\(g=(gX)X^\dagger\) and compact support give a common lower bound for
+the valuations of the entries of all contributing \(g\). Multiplication
+by \(K_a\) preserves the supremum norm of matrix entries in either
+direction, so the bound applies to each \(m_i\). Choose \(u\in
+\mathcal O^\times\) with \(\nu(u)\ne1\). Compact support and local
+constancy give a common additive period lattice
+\(\pi^tM_{a,d}(\mathcal O)\) for \(\Phi\), by covering its compact
+support by finitely many balls of constancy. If \(m_i\) is large,
+replacing \(k_1\) by \(k_1\operatorname{diag}(1,\ldots,u,\ldots,1)\)
+in \(g=k_1\operatorname{diag}(\pi^{m_j})k_2\), with \(u\) at
+position \(i\), changes \(gX\) by an element of this period lattice
+uniformly in \(k_1,k_2\in K_a\). The determinant character is
+multiplied by \(\nu(u)\), while its absolute value is unchanged.
+The normalized measure on a double coset is the pushforward of product
+probability Haar measure on \(K_a^2\): both measures are invariant
+under its transitive left and right \(K_a\) actions. Averaging over
+\(k_1\) thus makes this shell integral zero. With all \(m_i\) bounded
+above and below, only finitely many integer tuples remain.
+\end{proof}
+
+\input{sections/split-kernel}
+
+\begin{lemma}[The finite epsilon factors in a descent]\label{newtheta:gauss}
+Let \(q=|\mathcal O/\pi|\) and let the additive character \(\psi\)
+have conductor \(\mathcal O\). Suppose the unitary character \(\nu\)
+has conductor exponent \(c\ge1\). Put
+\[
+ G=\sum_{y\in(\mathcal O/\pi^c)^\times}
+          \nu(y)^{-1}\psi(y/\pi^c).
+\]
+Then \(|G|^2=q^c\). In particular
+\(q^{-cs}G\,\nu(\pi)^c\ne0\) for every integer \(s\).
+\end{lemma}
+\begin{proof}
+The two characters on units in the sum do not depend on the chosen
+lifts. Write \(R=\mathcal O/\pi^c\) and \(\Psi(x)=\psi(x/\pi^c)\).
+The additive pairing \((t,x)\mapsto\Psi(tx)\) on \(R\) is perfect
+by the conductor assumption. Extend \(\nu^{-1}\) by zero to the
+nonunits. Its unnormalized Fourier transform at \(t\in R^\times\)
+is \(\nu(t)G\) by changing \(y\) to \(ty\). For \(t\in\pi R\)
+choose a unit \(v\equiv1\bmod\pi^{c-1}\) with \(\nu(v)\ne1\),
+using primitivity (for \(c=1\) choose any such unit). Then \(tv=t\)
+in \(R\), and multiplication of the summation variable by \(v\)
+forces that Fourier coefficient to vanish. Summing the squared
+moduli of all Fourier coefficients gives \(q^c|R^\times|\) by
+expanding and applying additive orthogonality. The same sum is
+\(|R^\times|\,|G|^2\), proving the claim.
+\end{proof}
+
+\subsection{The global comparison required of the local maps}\label{newtheta:global}
+
+In the global triple, \(E/F\) is CM quadratic, \(E/\mathbb Q\) is
+Galois, and \(E/F\) is unramified at finite primes. The additive
+character on \(\mathbb A_F/F\) has infinite component
+\(\exp(-2\pi i\operatorname{Tr}(x))\). It has conductor \(\mathcal O_v\)
+at the designated split places and at each inert place, where the residue
+characteristic is odd and the residue cardinality is greater than three.
+The three spaces have dimensions \(a,a',d=a+a'\) and signatures
+\((a-p,p),(q,a'-q),(d-p-q,p+q)\) at each real place, using \(i\)
+times the skew-Hermitian form on the third space. The integral structures
+are self-dual for the specified pairings (the skew lattice uses the
+trace dual). Each comes with a Cartan involution and the selected local
+bases. The rank and weight restrictions are
+\[
+\begin{gathered}
+a'<a,\qquad d\equiv0\pmod2,\qquad 2(p+q)+1<\min\{(a-a')/2,a'\},\\
+m_\alpha(w)-m_\beta(w)>d\qquad(w\mid\infty).
+\end{gathered}
+\]
+The unitary Hecke characters \(\alpha,\beta\) of \(E\) have these
+infinite exponents in the chosen embeddings, and restrict to
+\(\eta_{E/F}^{\,a'},\eta_{E/F}^{\,a}\) on \(\mathbb A_F^\times\).
+They are unramified outside the primes above \(S=S_0\sqcup Q\), a
+subset of the designated finite places with a chosen splitting
+\(E\hookrightarrow F_v\). Their quotient \(\nu\) is ramified at
+every prime above \(S\). A further place \(v_1\notin S\) has
+underlying rational prime totally split in \(E\), with a choice of
+splitting at \(v_1\). The Weil actions use respectively the pairs
+\((\beta,\beta/\alpha)\) and \((\alpha,\alpha/\beta)\) in their
+prescribed polarizations. The local vacua belong to the prescribed
+lattice eigenlines and are standard characteristic functions almost
+everywhere.
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean}{388}{Base, signatures, characters and Weil actions}.
+
+In these models the missing global assertion has three parts.
+The first is the simultaneous construction of nonzero irreducible
+quotients at infinity and each finite place, as in
+Proposition~\ref{geo:theta}. The maps kill the infinitesimal and compact
+source actions at infinity (derivatives map to zero and compact actions
+preserve the image of each vector) and kill the span of source-action
+differences at finite places. Target Lie and compact actions, or target
+group actions at finite places, preserve matching. The two vacua have
+the same nonzero image at every \(v\notin S\). At \(v\in S\) equality
+of images must be equivalent, for \emph{all} Schwartz--Bruhat inputs,
+to equality of the two orbital functions, in the coordinates taking the
+vacuum to the integral-matrix indicator. At good places (outside \(S\)
+and above a totally split rational prime), the kernel on Schwartz tests
+must be exactly the span of the source-action differences. Full-rank
+primed tests in the conjugate polarization at either splitting there
+must still surject. Proposition~\ref{newtheta:split} proves the
+full-rank image calculation in split coordinates. Corollary~\ref{split:ram}
+and Proposition~\ref{split:good} determine the whole split kernels at
+the specified ramified and good places. Section~\ref{threal:main}
+establishes convergence for the two adelic kernels and constructs the
+remaining local quotients, including all real signatures.
+
+The second assertion is global convergence and proportionality. On the
+unprimed side every adelic Schwartz input must give an absolutely
+integrable theta kernel in \(g\) for each \(h\). On the primed side
+use the span of factorizable inputs whose factor at \(v_1\) vanishes
+on rank-deficient matrices in the indicated polarization. This space
+must be stable under the Weil action. For each such input and each
+integer \(N\ge0\), there must be \(C,k\) such that
+\[
+ |\Theta_{\omega'}(g,h;\Phi')|\,H_{[U(V')]}(g)^N
+                 \le C H_{U(W)}(h)^k .
+\]
+Here the quotient height is the infimum of the matrix height over
+rational left translates. The primed integral must also converge and
+have moderate growth. For \emph{every} choice of matching maps, one
+nonzero scalar must compare the two integrals for all matched pairs,
+including the limits specified in Proposition~\ref{geo:theta}, and
+at least one matched pair must have a nonzero value.
+
+The third assertion controls how these scalars vary when passing to
+smaller spaces. Write \(k=(a-a')/2\). In the primed descent \(q>0\)
+the dimensions drop from \((a,a',d)\) to \((a,a'-2,d-2)\).
+In the unprimed descent \(q=0<p\) they drop to \((a-2,a',d-2)\).
+The upper and lower models use adapted integral hyperbolic planes
+in both changing spaces. If their fractional ideals along the first
+isotropic lines are \(\mathfrak b,\mathfrak c\), set
+\[
+ F_X(j)=\nu(\mathfrak b)^{e_1}\nu(\mathfrak c)^{e_2}
+    \prod_{v\in S}\nu_v(s)\,
+       q_v^{-c_v j}G(\nu_v,\psi_v)\nu_v(\pi_v)^{c_v}.
+\]
+The ideal evaluations use the fixed local uniformizer values. Each
+branch has one triple of signs \(e_1,e_2,s\in\{1,-1\}\) valid across
+the fields and all admissible descents in that branch. For fixed
+base, spaces, planes and real matching maps a further \(C\ne0\) must
+work for \emph{all} allowed characters, Weil actions and finite
+matching maps. For upper and lower constants \(c,c_1\), the relations are
+\[
+ cL^{S_0}(\nu,k+1)=\frac{c_1}{CF_X(-k)}
+       \quad(q>0),\qquad
+ c=CF_X(1-k)L^{S_0}(\nu,k)c_1\quad(q=0<p).
+\]
+Lemma~\ref{newtheta:gauss} proves nonvanishing of the finite factors.
+For \(u=k,k+1\) one has \(u>1\), and the corresponding partial
+Euler product over \(E\) is nonzero. Indeed each logarithmic factor
+is bounded in absolute value by
+\(\sum_{j\ge1}N\mathfrak p^{-ju}/j\).
+There are at most \([E:\mathbb Q]\) primes above each rational
+prime \(l\), all of norm at least \(l\), and
+\(\sum_l l^{-u}<\infty\). This proves absolute convergence of the
+sum of logarithms. These arguments justify division by the displayed
+factors. Theorem~\ref{tcr:global} proves the common-constant assertion and the
+identities comparing the automorphic functions through the descent.
+In particular equality of a constant term detects a difference only up
+to the kernel of that constant-term operator.
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean}{552}{Quantifiers and the two scalar recursions}.
+
+\paragraph{A published comparison at the anisotropic base.}
+Let \(A\) have dimension \(m\ge1\) and be definite at a real place.
+Any \(F\)-rational isotropic vector would stay isotropic under that
+embedding, so \(A\) has Witt index zero over \(F\). For the doubled
+space \(Y\oplus(-Y)\) with \(\dim_EY=n\ge1\), the diagonal copy of
+\(Y\) is isotropic of dimension \(n\), half the total dimension.
+In the standard Schr\"odinger model let \(\Phi\) be a Schwartz test,
+\(\ell\) evaluation at zero, \(\omega\) the split Weil action, and
+\(f_{\Phi,s}\) the standard flat Siegel section through
+\(x\mapsto\ell(\omega(x)\Phi)\) at \(s_0=(m-n)/2\).
+The restriction of its splitting character to \(\mathbb A_F^\times\)
+is \(\eta_{E/F}^{\,m}\). For this section the Eisenstein series is
+holomorphic at \(s_0\), and its value is
+\[
+ E(x,s_0,f_{\Phi,s_0})=
+ \begin{cases}1&m>n,\\2&m\le n\end{cases}
+ \int_{[U(A)]}\Theta(g,x;\Phi)\,d\bar g ,
+ \qquad \operatorname{vol}_{d\bar g}([U(A)])=1.
+\]
+This is the unitary specialization of Gan--Qiu--Takeda, Theorem 7.1.
+In their notation \(r=0\), \(d(n)=n\) and
+\(\tau(U(A))/[E:F]=1\). Their integral in \S3.1 has probability
+measure, which agrees with the average over the fundamental domain in
+the doubled formula for any choice of Haar measure. These facts fix
+both the sign of the critical parameter and the value at \(m=n\).
+Gan, Qiu and Takeda, \S\S3.1 and 7.1~\cite{ganQiuTakeda}.
+
+To apply this identity to an arbitrary doubled presentation one must
+intertwine its Darboux coordinates, actions and functional with this
+standard model, preserving the rational lattice sum. The defining
+identities require that the functional be invariant under the
+diagonal Lagrangian translations and the source group, and that its
+translates along the opposite rational coordinates sum to the theta
+distribution. The separate meromorphic continuation input for a
+continuous \(K\)-finite section of the doubled group uses the Siegel
+law \(\chi(\det t)|\det t|_{\mathbb A_E}^{\,s+n/2}\).
+At each \(s_0\) it requires one pole order and a common neighborhood
+on which the pole-cleared family is weakly holomorphic for every
+functional bounded on each polynomial-growth unit ball. An independent
+application of continuation must identify this topology as well as the
+section. The next two subsections construct a supported nonzero
+undoubled primed period when \(q=0\), compare both periods when
+\(p=q=0\), and calculate the constant terms needed to pass between
+ranks. The normalization of the smaller matching maps enters at
+that last step.
+\src{src/Development/WeilBound/ThetaLifts/LatticeBasics/Hypotheses2.lean}{63}{Doubled actions and summation identity};
+\src{src/Development/WeilBound/ThetaLifts/LatticeBasics/HypothesesE.lean}{46}{Growth-functional continuation};
+\src{src/Development/WeilBound/ThetaLifts/LatticeBasics/HypothesesS.lean}{11}{Doubled normalized value}.
+
+\input{sections/theta-global-realization}
+\input{sections/theta-primed-descent}
+\input{sections/integral-plane}
+\input{sections/theta-cross-rank-continuation}
+
+\subsection{The geometric degree share and its arithmetic cost}\label{newtheta:HS}
+
+Fix one component \(Z\) of a good deep cover and write \(D\) for the
+dimension of its flag space, \(T>D\) for the final weight index,
+\(\delta\) for the positive geometric degree of its birational image,
+\(h\) for its normalized Chow height, \(d_0\) for the rank of the
+terminal cusp lattice, and \(g\) for its arithmetic degree before the
+associated-bundle transfer. The coefficient field is totally complex.
+The fraction \(\binom{T-1}{D}\delta/d_0\) has a geometric meaning.
+
+\begin{lemma}[Independent columns on a transverse section]\label{newtheta:filtration}
+Over an infinite splitting field \(L\), let \(y_1,\ldots,y_\delta\)
+be nonzero homogeneous-coordinate vectors in \(L^N\) for the points
+of a transverse section by \(D\ge1\) hyperplanes \(s_1,\ldots,s_D\).
+Let the terminal section space have dimension \(d_0\), and let
+\(U_0\supset\cdots\supset U_{T-D}\) be a filtration by subspaces of
+it. Suppose that degree-zero sections surject by restriction onto
+\(L^\delta\), and that for \(0\le j<T-D\) the symbol on \(U_j\)
+has kernel \(U_{j+1}\) and entries indexed by pairs \((\gamma,p)\)
+with \(\gamma\in\mathbb N^D,\ |\gamma|=j,\ 1\le p\le\delta\).
+For a degree-zero section \(m\), a linear form \(l\), and each such
+\(\gamma\), suppose \(s^\gamma l^{T-j}m\in U_j\) and its symbol at
+\((\gamma',p)\) is
+\(\mathbf1_{\gamma=\gamma'}l(y_p)^{T-j}m(y_p)\). Then
+\[
+ d_0\ \ge\ B:=\delta\binom{T-1}{D}.
+\]
+There are \(B\) independent terminal columns of this kind. On the
+associated graded their determinant in the point and monomial
+coordinates is, up to ordering of the bases,
+\[
+ \left(\prod_{p=1}^{\delta}l(y_p)\right)^{
+       \sum_{j=0}^{T-D-1}\binom{j+D-1}{D-1}(T-j)} .
+\]
+\end{lemma}
+\begin{proof}
+Choose \(l\) avoiding the finitely many proper hyperplanes
+\(l(y_p)=0\), possible over an infinite field. Lift the standard
+coordinate vectors of \(L^\delta\) to \(m_1,\ldots,m_\delta\).
+For fixed \(j,\gamma,p\), the symbol of
+\(s^\gamma l^{T-j}m_p\) has just one nonzero entry,
+\(l(y_p)^{T-j}\). These symbols form a basis of the indicated
+coordinate space. A relation between all the chosen columns, inspected
+at the least \(j\) with a nonzero coefficient, would therefore give
+a nontrivial relation between these independent symbols. The number
+of \(\gamma\) at level \(j\) is \(\binom{j+D-1}{D-1}\), by placing
+\(D-1\) separators in a row of \(j\) equal marks. Summing from \(0\)
+to \(T-D-1\) gives \(\binom{T-1}{D}\) by Pascal's identity.
+Multiplication of the displayed diagonal entries gives the determinant.
+\end{proof}
+
+This computation takes place over a field. In the integral problem one
+needs the dimensions, determinants \emph{and} the norms of the columns.
+In the original argument a nonzero polynomial \(Q\) in the \(DN\)
+hyperplane coefficients selects transverse sections. On \(Q(s)\ne0\)
+the specialized Chow form is a nonzero scalar times
+\(\prod_p l(y_p)\) after passing to a splitting field. Degree-zero
+restriction, the kernel of the symbol at each level, its action on
+monomials, and generation of \(U_{T-D}\) by the images \(s^\gamma V_D\)
+for \(|\gamma|=T-D\) all enter. Here \(V_j\) is the space of
+weight-\(j\) sections in the chosen path of weights. The geometric
+proof uses nefness and bigness of both line bundles and coherent
+restriction and vanishing on the modified flag space. A rational
+choice of lifts for the symbol bases alone gives no upper bound for
+their norms or denominators.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/HermSysHypOneLeLambdaZero.lean}{199}{Filtration, residue and multiplication hypotheses};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/HilbertSamuelFiltrationAtGoodSections.lean}{51}{Geometric construction of the filtration}.
+
+\paragraph{Finite-degree estimate still needed.}
+For the same cover, level, weight path and component, the numerical
+statement at the point of use is the following. Put \(P_0\ge1\) for
+the family size parameter and \(\kappa\ge0\) for its weight parameter.
+There must be \(n,\Lambda,\beta,\Lambda_D,\Lambda_T\ge1\) and \(J\in
+\mathbb R\) such that
+\begin{align}
+ \max(\log n,\log\beta,\log\delta)&\le P_0,&
+ \log\Lambda&\le P_0(1+\kappa/T),\nonumber\\
+ \max(\log\Lambda_D,\log\Lambda_T)&\le P_0\kappa,&
+ J&\le 4DP_0(1+\kappa/T)+4TP_0+2DP_0\kappa/T .
+ \label{newtheta:budgets}
+\end{align}
+Define
+\[
+ u=1-B/d_0,\qquad
+ L_h=\log\Lambda+26\log\!\big(nD\delta(2+|h|+\log\Lambda)\big),
+ \qquad G=\tfrac{D+1}{2}(\log n+1)+1 .
+\]
+The required estimate is \(0\le u\le1\) and
+\begin{align}
+ \frac{g}{d_0}
+ &\ge(1-u)\big[Th-3(D+1)|h|-J-26D^2(L_h+\log T)
+          \nonumber\\[-2pt]
+ &\hspace{39mm}-(T+D+1)\log\beta-(T+D^2)(G+2)\big]
+ \nonumber\\
+ &\hspace{5mm}-u\big[T(\log2+L_h+\tfrac12\log\beta)
+                    +\log\Lambda_D+\log\Lambda_T\big].
+ \label{newtheta:finiteHS}
+\end{align}
+Here \(d_0>0\). The choice of auxiliary parameters may depend on \(Z\).
+For each fixed admissible family and accuracy, the threshold in its
+scale \(x\) must work simultaneously for all its late admissible
+scales, indices, points, stages, good covers under consideration and
+components. In particular the exponent budgets and constants in
+\eqref{newtheta:budgets} are common. The subsequent comparisons also
+require \((1-z)d_0\le B\) and a transfer cost \(c\ge0\) such that
+the degree \(g_M\) at the weight of the actual bundle is at least
+\(g-d_0c\).
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefiniteTree/RealCubicMeans/LogMeanShares/LogMeanStatements/HSClaim.lean}{16}{Exact finite-degree inequality};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ExistsDegreeParametersBound.lean}{34}{Family quantifiers and budgets}.
+
+In the construction, \(n\) counts columns of an integral cusp frame
+at the first weight, \(\Lambda\) bounds every column norm at every
+embedding, and \(\beta\) bounds the Bergman kernel on every eligible
+frame of the component. Both auxiliary weights must define
+birational linear systems there. Multiplication by an integral frame
+column must preserve integral lattices in all consecutive degrees.
+At each embedding, multiplying a complex section by coefficients
+\(v\) must have norm at most \(\sqrt\beta\|v\|_{\rm frame}\) times
+the section norm. Integral sections spanning the spaces over the
+coefficient field must be available with norms bounded at every
+embedding by \(\exp(DP_0(1+\kappa/T))\) in degree zero and by
+\(\exp(P_0\kappa)\) along the path through \(T\). The latter choice
+works for both \(\Lambda_D,\Lambda_T\). The former gives
+\(J=DP_0(1+\kappa/T)\). One also needs the normalized height of the
+birational image in exactly the frame used for the multiplication
+norms. The argument behind \eqref{newtheta:finiteHS} then estimates
+the height of a determinant polynomial off the exceptional locus
+\(Q=0\) and transports its slope bound back to the component
+lattice. We give that argument below. Its geometric hypotheses must
+still be realized uniformly on the actual covers; a fixed-variety
+Hilbert polynomial specifies no bounds for the multiplication norms.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsDegreeParametersBound.lean}{33}{Simultaneous frame, birational and short-section hypotheses};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExplicitArithmeticHilbertSamuelBound.lean}{26}{Determinant and Chow-height steps}.
+
+\paragraph{Construction of the common determinant.}
+We can in fact derive \eqref{newtheta:finiteHS} from the geometric
+restriction, multiplication and metric conditions just identified.
+Here are the exact hypotheses for this derivation. Over a number
+field \(K\), let \(V_j\) be finite-dimensional section spaces with
+full \(\mathcal O_K\)-lattices \(M_j\) and Hermitian norms at every
+embedding. Let \(K^N\) act by commuting linear multiplication operators
+of degree one. Assume a spanning frame \(w_1,\ldots,w_n\) of \(K^N\)
+has norms at most \(\Lambda\) at each embedding and its multiplications
+send \(M_j\) to \(M_{j+1}\) for \(0\le j<T\).
+In complex coordinates let the input norm be
+\(\|v\|_\sigma=\|A_\sigma^{-1}v\|_2\), \(A_\sigma\in\mathrm{GL}_N(\mathbb C)\).
+The operator for \(v\) must have norm at most
+\(\sqrt\beta\|v\|_\sigma\) in each of these degrees. For \(j=0,D,T\)
+assume \(V_j\) has a \(K\)-basis contained in \(M_j\) with all
+embedding norms bounded respectively by \(\Lambda_0,\Lambda_D,\Lambda_T\),
+each at least one.
+
+Let \(f(s,l)\) be the irreducible Chow polynomial in \(D+1\)
+blocks of \(N\) variables, of degree \(\delta\ge1\) in each block.
+For every rational \(s=(s_1,\ldots,s_D)\) outside a fixed hypersurface
+\(Q(s)=0\), \(Q\ne0\), require the filtration and symbol rules of
+Lemma~\ref{newtheta:filtration} after scalar extension, with
+\(f(s,l)\) a nonzero constant times \(\prod_p l(y_p)\). The scalar
+extension must preserve independence of rational sections in \(V_T\);
+the deepest space is generated by \(s^\gamma V_D\) for
+\(|\gamma|=T-D\). These conditions involve every good rational
+specialization. The norm and lattice conditions involve the original
+field and do not require norm control on the splitting fields.
+
+\begin{proposition}[The filtration on the adjoint model]\label{newtheta:koszul}
+Let \(X/K\) be a smooth geometrically integral projective variety of
+dimension \(D\) over a number field, \(L\) a globally generated line
+bundle with generating coordinates \(b_1,\ldots,b_N\), and \(A,B_2\)
+nef and big line bundles. Choose a section
+\(\xi\in H^0(X,A\otimes(B_2\otimes L^D)^{-1})\) which is invertible
+on a nonempty open \(X^\circ\). Write
+\[
+ W_j=H^0(X,\omega_X\otimes A\otimes L^j),\qquad
+ W_j\subset V_j\subset H^0(X^\circ,\omega_X\otimes A\otimes L^j).
+\]
+Assume \(V_0=W_0\), the \(V_j\) are stable under multiplication by the
+coordinates through degree \(T\), and these inclusions persist after
+the field extensions used to split the sections. Let \(D\) linear
+combinations \(s_i\) of the \(b_j\) cut out a finite reduced transverse
+complete intersection \(Y\subset X^\circ\) of degree \(\delta\).
+Then the filtration and residue assertions of
+Lemma~\ref{newtheta:filtration}, including deepest-space generation as
+used in Lemma~\ref{newtheta:power}, hold over any splitting field of \(Y\).
+\end{proposition}
+\begin{proof}
+For \(M=A\) or \(B_2\), and \(k\ge0\), \(M\otimes L^k\) is nef and
+big. Multiplication by a fixed nonzero section of \(L^k\), raised to
+the \(n\)th power, embeds \(H^0(X,M^n)\) into
+\(H^0(X,(M\otimes L^k)^n)\) for every \(n\), proving bigness.
+Kawamata--Viehweg vanishing gives
+\(H^i(X,\omega_X\otimes M\otimes L^k)=0\) for \(i>0\). Its smooth
+projective characteristic-zero hypotheses hold after embedding \(K\)
+into \(\mathbb C\), and coherent cohomology commutes with field extension.
+This proves the same vanishing over \(K\) and its finite extensions.
+Kawamata, \emph{A generalization of Kodaira--Ramanujam's vanishing theorem}, 1982~\cite{kawamataVanishing}.
+
+Let \(\mathcal I\) be the ideal sheaf generated by the \(s_i\) in
+local trivializations of \(L\). The Koszul resolution of
+\(\mathcal O_Y\) has terms \((L^{-i})^{\binom Di}\). Twisting it by
+\(\omega_X\otimes B_2\otimes L^D\) gives terms with exponents
+\(D-i\ge0\), all acyclic for global sections by the preceding
+vanishing. The global sections of this complex thus compute the
+cohomology on \(Y\), in particular the restriction to \(Y\) is
+surjective. Multiplication by \(\xi\) identifies the two bundles
+over \(Y\), so the restriction of \(W_0\) is surjective there too.
+Similarly, twisting by \(\omega_X\otimes A\otimes L^k\) for \(k\ge D\)
+gives exactness at the penultimate term:
+\[
+ \ker\big(W_k\longrightarrow H^0(Y,(\omega_X A L^k)|_Y)\big)
+           =\sum_{i=1}^{D}s_i W_{k-1}.
+\]
+Here juxtaposition of line bundles denotes tensor product.
+
+Work over a splitting field. At a point of \(Y\), the local equations
+of the \(s_i\) form a regular system of parameters by transversality.
+Thus the associated graded of the local ring is the polynomial ring
+in their initial forms over the residue field. Equivalently, monomials
+of total degree \(j\) in the \(s_i\) give the coordinates of the
+degree-\(j\) Taylor term. This follows also by passing to the completion,
+a formal power series ring in these parameters at a smooth rational
+point. Trivialize the line bundles compatibly at each point. The kernel
+of this Taylor term on sections vanishing to order \(j\) consists of
+those vanishing to order \(j+1\), and the symbol of a product is the
+product of its initial forms. This gives the diagonal symbol formula
+of Lemma~\ref{newtheta:filtration} with \(y_p\) the vector
+of the \(b_i(p)\) in the chosen trivialization.
+
+For \(k-j\ge D\), any section in \(W_k\) vanishing to order \(j\)
+on \(Y\) belongs to \(\sum_{|\gamma|=j}s^\gamma W_{k-j}\).
+Induct on \(j\), the claim for \(j=0\) being immediate. At the next
+step represent the section by
+\(\sum_{|\gamma|=j}s^\gamma m_\gamma\) using induction. Vanishing
+of its degree-\(j\) Taylor term implies \(m_\gamma|_Y=0\) for
+every \(\gamma\), by the independence of the monomials at every
+point. The kernel formula expresses \(m_\gamma\) as
+\(\sum_i s_i m_{\gamma,i}\). Collecting equal monomials gives the
+assertion in degree \(j+1\). The degree used in the kernel formula
+is \(k-j\ge D\) throughout.
+
+Set \(k_0=T-D\) and
+\(V_*=\sum_{|\gamma|=k_0}s^\gamma V_D\subset V_T\).
+Filter \(W_T+V_*\) by order of vanishing along \(Y\), with
+\(U_j\) the subspace of sections of order at least \(j\).
+Since \(V_*\) vanishes to order \(k_0\), every
+\(w+v\in U_{k_0}\) with \(w\in W_T,\ v\in V_*\) has \(w\) vanishing
+to that order. The preceding generation formula puts \(w\) in
+\(\sum s^\gamma W_D\subset V_*\). It follows that \(U_{k_0}=V_*\).
+The degree-zero vectors and their products occurring in the symbol
+formula lie in \(W_T\), since \(V_0=W_0\). This verifies the
+required symbol and deepest-space relations.
+\end{proof}
+The two adjoint bundles in the family have exactly the powers \(j\)
+and \(j+D\) used here. The section \(\xi\) is required to stay
+invertible on the chosen open.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/HasBoundedPolesGlobalData.lean}{207}{Adjoint models and canonical multiplier};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/VanishesToOneOfStalkMap.lean}{133}{Surjectivity for the second bundle};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RestrictedSectionChartCoords.lean}{180}{First-order kernel for the first bundle}.
+
+\begin{proposition}[Boundary vanishing and the adjoint inclusion]\label{newtheta:modified}
+Let \(\bar X\) be a smooth integral projective variety over a number
+field, \(B\) a reduced effective Cartier divisor, \(U=\bar X-B\),
+and \(D=\dim\bar X\). Let \(M_1,M_2,C\) be line bundles on \(\bar X\).
+Assume the canonical comparison on \(U\) extends to an isomorphism
+\(C\simeq\omega_{\bar X}(B)\). For \(0\le j\le T\), set
+\(N_j=M_2 M_1^{D+j}\), and assume that the given space of cusp forms
+in weight \(j\), as a space of sections on \(U\), is exactly the
+restriction of \(H^0(\bar X,CN_j(-B))\).
+Let \(W_i'\subset H^0(\bar X,M_i)\) be finite-dimensional systems
+with no base points on \(U\). Let \(\pi:X\to\bar X\) be a proper
+birational morphism from a smooth variety, an isomorphism over \(U\),
+on which both base ideals become invertible ideals
+\(\mathcal O_X(-E_i)\). Put \(L=\pi^*M_1(-E_1)\),
+\(B_2=\pi^*M_2(-E_2)\), \(A=\pi^*(M_2M_1^D)\).
+Then \(L,B_2\) are globally generated. There is a section
+\(\xi\) of \(A(B_2L^D)^{-1}\) invertible on \(U\).
+In the adjoint coordinates on \(U\), the cusp spaces satisfy
+\[
+ V_j=H^0(X,\omega_X A L^j(jE_1))\big|_U,\qquad
+ W_j=H^0(X,\omega_X A L^j)\big|_U\ \subset V_j,\qquad W_0=V_0 .
+\]
+\end{proposition}
+\begin{proof}
+The local coefficients of \(W_i'\) generate the base ideal.
+After pullback, division by a local generator of that invertible
+ideal produces functions generating the unit ideal. These functions
+are the local coefficients of sections generating the moving part.
+The \(E_i\) are supported over \(B\). The canonical section of
+\(\mathcal O_X(E_2+DE_1)=A(B_2L^D)^{-1}\) therefore gives \(\xi\).
+
+Under \(C\simeq\omega_{\bar X}(B)\) the cusp space is
+\(H^0(\bar X,\omega_{\bar X}N_j)\) on \(U\). For any line bundle \(N\)
+on \(\bar X\), rational pullback identifies
+\[
+ H^0(\bar X,\omega_{\bar X}N)=H^0(X,\omega_X\pi^*N).
+\]
+Indeed, pullback of a regular top differential is regular by the
+map on differentials. Conversely a top form regular on \(X\) defines
+a rational top form on \(\bar X\), since the function fields agree.
+At each codimension-one point \(y\) the inverse rational map to \(X\)
+extends to \(\operatorname{Spec}\mathcal O_{\bar X,y}\) by properness.
+Pulling the form back along this morphism puts it in
+\((\omega_{\bar X}N)_y\), as differentials commute with localization.
+A rational section of a line bundle on a normal variety regular at
+all codimension-one points is regular everywhere, by the intersection
+description of a normal noetherian domain inside its fraction field.
+This proves the equality. Now \(\pi^*N_j=A L^j(jE_1)\).
+Multiplication by the canonical section of \(\mathcal O_X(jE_1)\)
+is an inclusion and is invertible over \(U\). It is the identity for
+\(j=0\). Using this section to identify the two open bundles gives
+the displayed comparisons.
+\end{proof}
+
+On the toroidal flag component the first hypothesis above requires
+the determinant of the Kodaira--Spencer comparison to have local
+coefficient \(u/t\), where \(t\) cuts out the \emph{reduced}
+boundary and \(u\) is a unit. In smooth toroidal coordinates where
+the boundary is \(x_1\cdots x_b=0\), a basis of logarithmic
+differentials is \(dx_i/x_i\) for \(i\le b\) and \(dx_i\) for
+\(i>b\). Wedging proves the pole formula if the automorphic
+comparison matrix in this basis has unit determinant. A comparison
+known only on \(U\) does not give that last unit condition. In one
+variable, multiplication by \(x\) is invertible on \(x\ne0\) and
+changes the boundary order by one. The second hypothesis identifies
+\emph{every} form vanishing on the boundary with an automorphic cusp
+form of the specified weight and conversely. These two hypotheses
+give the inclusion for every \(j\) on the same modification without
+any estimate involving \(j\). Generation of the two systems on \(U\),
+bigness of their moving parts where used, and nefness and bigness of
+\(A\) in Proposition~\ref{newtheta:koszul} require geometric input.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsWeightHodgeBundleGenerated.lean}{30}{Both base systems and the common modification};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsSimpleLogPoleAlongBoundary.lean}{38}{Logarithmic Kodaira--Spencer determinant at the boundary};
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/ExistsResolProjSpace.lean}{203}{Fixed divisors and the moving adjoint coordinates}.
+
+There is a primary comparison theorem that supplies the unit condition
+on the standard PEL model. On the characteristic-zero fiber of a
+neat unitary PEL moduli space with a compatible admissible smooth
+projective cone decomposition, write \(S\) for its smooth toroidal
+compactification and \(B_S\) for the reduced boundary. For the
+universal semiabelian family the polarized, endomorphism-balanced
+Kodaira--Spencer sheaf is isomorphic by its extended Kodaira--Spencer
+morphism to \(\Omega^1_S(\log B_S)\). The reduced normal crossings
+boundary and the isomorphism are parts (3) and (4) of the same
+theorem. Lan,
+\emph{Toroidal compactifications of PEL-type Kuga families},
+Definition 1.40 and Theorem 1.41~\cite{lanToroidal}.
+
+Here is the determinant on the flag bundle for a CM field action
+with conjugation as Rosati involution. Work over a splitting field
+for this action and use the polarization isogeny to identify the two
+Hodge bundles over the characteristic-zero base. Write \(H_\tau\)
+for the dual of the \(\tau\)-part of the Lie bundle, of rank \(m_\tau\).
+In Lan's balanced tensor quotient, the relation for an element
+\(a\) of the CM field kills the tensor of the \(\tau\) and
+\(\nu\) parts unless \(\nu=\bar\tau\), since some \(a\) has
+\(\bar\tau(a)\ne\nu(a)\) otherwise. The polarization symmetry
+identifies each surviving ordered pair with its transposed pair.
+As \(\tau\ne\bar\tau\), the quotient has precisely one summand
+\(H_\tau\otimes H_{\bar\tau}\) per unordered pair. This also follows
+by taking the projection onto that summand on one ordering and its
+transpose on the other, giving an explicit inverse to the inclusion.
+
+Let \(p:\bar X\to S\) be the bundle of complete increasing flags
+in the Lie eigenbundles. Let \(Q_{\tau,i}\) denote the
+\emph{dual} of the \(i\)-th graded Lie line, numbered
+\(0\le i<m_\tau\). The smooth projection gives an exact sequence
+for logarithmic cotangents with terms \(p^*\Omega^1_S(\log B_S)\)
+and \(\Omega^1_{\bar X/S}\), as is seen on a trivializing flag
+chart by adding the flag coordinates to local coordinates on \(S\).
+In the determinant the first term contributes \(m_{\bar\tau}\) to
+the exponent of every \(Q_{\tau,i}\), by the tensor determinant
+formula above. For the relative tangent the graded factors are
+\(\operatorname{Hom}(Q_{\tau,i}^{\vee},Q_{\tau,j}^{\vee})\),
+\(i<j\): an infinitesimal deformation of a flag is an
+endomorphism modulo those preserving its filtration.
+The determinant of the relative \emph{cotangent} thus contributes
+\(i-(m_\tau-1-i)=2i+1-m_\tau\). Consequently
+\[
+ \omega_{\bar X}(p^{-1}B_S)
+ \simeq\bigotimes_{\tau,i}
+ Q_{\tau,i}^{\,m_{\bar\tau}+2i+1-m_\tau}.
+\]
+This is the character called \(\mathrm{detTanEx}\) in the source;
+the central exponent is zero. Thus when the flag and line bundles
+in Proposition~\ref{newtheta:modified} are the indicated PEL bundles
+and their canonical comparison on the interior is the determinant
+of this map up to a nonzero constant, the required boundary order
+follows. Checking this comparison uses the identification of the
+original framed moduli problem, flags and character rule with this
+model. Multiplication by a varying invertible function on the open
+would require a separate calculation of its boundary orders.
+No metric constant enters this calculation.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/ExistsUniqueIsTanFrameOfIsEmpty.lean}{276}{Canonical weight and determinant exponents}.
+
+On the same standard model, let \(\mathcal L\) be the line bundle of
+a flag character and set \(\mathcal W=p_*\mathcal L\). Over a
+trivialization of the Hodge bundles this direct image is the constant
+bundle with fiber the sections of the character line on the product
+of flag varieties: formation of \(H^0\) commutes with the flat base
+change from the coefficient field. Its gluing is exactly the change
+of Hodge frame in that representation. By the projection formula
+\[
+ H^0(\bar X,\mathcal L(-p^{-1}B_S))
+       = H^0(S,\mathcal W(-B_S)).
+\]
+Thus the cusp comparison reduces to identifying the coefficient
+space with the rational form of the usual holomorphic cusp space in
+this representation. Over \(\mathbb C\), the latter has the standard
+description by sections of the subcanonical bundle
+\(\mathcal W(-B_S)\). Over \(K\), equality of two \(K\)-subspaces
+in a common space follows from equality after \(K\hookrightarrow\mathbb C\)
+by faithful flatness. This last assertion requires both embeddings
+of the spaces in the same ambient space of sections on the open.
+It gives no comparison of integral lattices or of Petersson norms.
+Lan and Stroh,
+\emph{Relative cohomology of cuspidal forms on PEL-type Shimura varieties},
+introduction preceding Theorem 1.1~\cite{lanStroh}.
+
+\begin{lemma}[One open set of pencils]\label{newtheta:pencil}
+In Proposition~\ref{newtheta:koszul}, suppose further that the \(b_i\)
+define a birational morphism \(X\to Z\subset\mathbb P^{N-1}\), and
+let \(f\) be the Chow form of the geometrically integral image \(Z\)
+of degree \(\delta\). There is a nonzero polynomial \(Q(s)\) over
+\(K\) such that at every \(s\) with \(Q(s)\ne0\) the required transverse
+section lies in \(X^\circ\) and its Chow specialization is a scalar
+times \(\prod_p l(y_p)\) over a splitting field.
+\end{lemma}
+\begin{proof}
+There is a dense smooth open of \(Z\) on which the morphism is an
+isomorphism. Shrink it to avoid the image of \(X\setminus X^\circ\);
+this image is closed by properness and has dimension at most \(D-1\).
+In the affine parameter space of \(D\) hyperplane coefficient vectors
+the condition that all hyperplanes pass through a fixed point imposes
+\(D\) independent equations. Thus the incidence over the excluded
+locus has dimension at most \(DN-1\). Over the retained smooth locus,
+the hyperplanes through a fixed point induce arbitrary covectors on
+its tangent space, since it is embedded in projective space. Linear
+dependence of their \(D\) covectors imposes one further nontrivial
+determinant equation. The incidence of nontransversality likewise has
+dimension at most \(DN-1\). The closures of their parameter images
+are therefore proper closed sets. On the remaining open intersect also
+the open of proper linear sections of degree \(\delta\) from the
+definition of projective degree. It contains a principal open \(Q\ne0\)
+defined over \(K\), since all the conditions descend to \(K\).
+Each such section has \(\delta\) distinct geometric points and the
+same inverse image on \(X\). For fixed \(s\), the defining incidence
+property of the Chow form says exactly that \(f(s,l)=0\) when the
+last hyperplane passes through one of these points. The resulting
+linear forms in \(l\) are pairwise nonproportional. Each divides the
+nonzero polynomial \(f(s,l)\), whose degree in \(l\) is \(\delta\).
+Their product therefore equals it up to a nonzero scalar. The points
+and scalar lie in a finite extension.
+\end{proof}
+
+\begin{lemma}[One determinant divisible by a specified Chow power]\label{newtheta:power}
+Set \(R_0=\binom{T-1}{D}\), \(B=R_0\delta\), and
+\[
+ b_*=\sum_{j=0}^{T-D-1}\binom{j+D-1}{D-1}(T-j)
+     =R_0\frac{T+D(D+1)}{D+1}.
+\]
+There are \(0\le y\le d_0-B\) and a single nonzero determinant
+polynomial \(\Delta=f^{b_*}H\) over \(K\). Its columns comprise
+\(B\) degree-zero short vectors multiplied \(T\) times,
+\(y\) degree-\(D\) short vectors multiplied \(T-D\) times,
+and \(d_0-B-y\) degree-\(T\) short vectors. The cofactor \(H\)
+is multihomogeneous of total degree
+\[
+ e=BT+y(T-D)-b_*(D+1)\delta\le T(d_0-B).
+\]
+\end{lemma}
+\begin{proof}
+The first equality for \(b_*\) counts the exponent in
+Lemma~\ref{newtheta:filtration}. Write \(T-j=D+(T-D-j)\).
+Summing the latter factor by counting one copy of each term for
+every \(j\le i<T-D\) gives \(\sum_{i=0}^{T-D-1}\binom{i+D}{D}
+=\binom{T}{D+1}\). Thus \(b_*=D R_0+\binom{T}{D+1}\),
+which gives the stated expression.
+
+Choose a rational \(s^0\) outside \(Q=0\) maximizing the rank \(y\)
+of the deepest space. Such a point exists since \(K\) is infinite
+and the ranks form a nonempty finite set. At \(s^0\), choose
+\(\delta\) vectors \(m_r\) from the short degree-zero basis whose
+residues form a basis, and \(y\) monomials \((s^0)^\eta m\),
+\(|\eta|=T-D\), with \(m\) in the short degree-\(D\) basis,
+that span the deepest space. This is possible since the proposed
+generators span after base change. Use all the columns
+\(s^\gamma l^{T-j}m_r\), \(|\gamma|=j<T-D\), together with
+the selected \(s^\eta m\). At \(s=s^0\) choose a rational \(l\)
+with all \(l(y_p)\ne0\); finitely many nonzero linear forms over
+an extension cannot vanish everywhere on \(K^N\). The jet symbols
+and the deepest columns give \(B+y\) independent vectors by
+Lemma~\ref{newtheta:filtration}. Complete them using the short
+degree-\(T\) basis. With the choices of short vectors and exponents
+now fixed, take the determinant in an arbitrary \(K\)-basis of
+\(V_T\). Its specialization just constructed is nonzero.
+
+At any other good \(s\) the \(y\) selected deepest columns are
+dependent or span the deepest space, by maximality of \(y\). In
+the former case the specialized determinant is identically zero.
+In the latter take coordinates adapted to the filtration and complete
+them by a basis modulo \(U_0\). The matrix is block triangular in
+the successive symbol bases, with the deepest block and the block
+modulo \(U_0\) independent of \(l\). For each \(j,\gamma\) the
+diagonal symbol block is
+\(\operatorname{diag}(l(y_p)^{T-j})_{p}\,(m_r(y_p))_{p,r}\).
+The symbol rule and surjectivity of restriction show that each graded
+piece has exactly the indicated size. Taking determinants gives
+\(\Delta(s,l)=c_s f(s,l)^{b_*}\), allowing \(c_s=0\) and working
+over the splitting field.
+
+Choose \(l_0\in K^N\) such that \(f(s,l_0)\) is a nonzero
+polynomial in \(s\). Clearing the two specialized identities gives
+\(\Delta(s,l) f(s,l_0)^{b_*}=f(s,l)^{b_*}\Delta(s,l_0)\)
+on \(Q(s)\ne0\), hence identically by polynomial density over the
+infinite field. Since \(f\) is irreducible and has positive
+\(l\)-degree, it is coprime to \(f(s,l_0)\). Unique factorization
+gives \(f^{b_*}\mid\Delta\). Each column has fixed multidegree, so
+the determinant has their sum as multidegree, and the quotient by
+a nonzero multihomogeneous factor is multihomogeneous. Total
+degrees give the stated \(e\): in particular \(e=y(T-D)-BD(D+1)\)
+and \(y\le d_0-B\).
+\end{proof}
+
+\paragraph{Height of the determinant.}
+For a multiform \(P\ne0\) put \(r=[K:\mathbb Q]\) and define
+\[
+ \mathcal H(P)=\frac{1}{r}\left[
+ \sum_{\mathfrak p}\log\|P(w\cdot)\|_{\mathfrak p,\mathrm{Gauss}}+
+ \sum_{\sigma:K\hookrightarrow\mathbb C}
+ \int\log|P^\sigma(A_\sigma z)|\,dm(z)\right].
+\]
+The substitution \(w\) sends an \(n\)-tuple to \(\sum_i w_i t_i\)
+in each input block. The finite norm is the maximum coefficient
+absolute value with \(|x|_{\mathfrak p}=N\mathfrak p^{-v_{\mathfrak p}(x)}\).
+The integral uses independent uniform unit vectors in \(\mathbb C^N\)
+in all the blocks. At a finite prime the Gauss norm is multiplicative:
+divide each polynomial by a coefficient of largest absolute value and
+reduce modulo the prime, where products of nonzero polynomials are
+nonzero. At infinity logarithms add, so \(\mathcal H\) is additive
+on products. The normalized component height used below satisfies
+\[
+ h=\frac{\mathcal H(f)}{(D+1)\delta}+\tfrac12 H_{N-1},
+ \qquad H_j=\sum_{i=1}^{j}\frac1i,\quad H_0=0.
+\]
+This is the Chow-height normalization for the \emph{same} integral
+frame and Hermitian matrices. Identifying the given component height
+with this expression requires its birational presentation.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/PointHeight.lean}{30}{Frame-substituted Chow height}.
+
+\begin{lemma}[Multiform and determinant height bounds]\label{newtheta:heights}
+Write \(C=\log(n\Lambda)+(\log n+1)/2\). For every nonzero
+multiform \(P\) of total degree \(v\),
+\(\mathcal H(P)\ge-Cv\). For the polynomial of
+Lemma~\ref{newtheta:power},
+\[
+ g\ge\mathcal H(\Delta)
+ -B\log(\beta^{T/2}\Lambda_0)
+ -y\log(\beta^{(T-D)/2}\Lambda_D)
+ -(d_0-B-y)\log\Lambda_T .
+\]
+\end{lemma}
+\begin{proof}
+For a homogeneous polynomial \(p\) of degree \(v\) and a unit vector
+\(x\), its sphere mean satisfies
+\(\int\log|p(z)|\,dm(z)\ge\log|p(x)|-vH_{N-1}/2\) whenever
+\(p(x)\ne0\). Rotate coordinates so \(x\) is the first coordinate vector.
+Condition on \(z_1\) and average the common phase of the orthogonal
+coordinates. Jensen's inequality for the logarithm of the modulus of
+a holomorphic polynomial on a disk gives a lower bound
+\(\log|z_1^v p(x)|\). For \(N>1\), \(|z_1|^2\) has density
+\((N-1)(1-t)^{N-2}\) on \(0<t<1\): a normalized vector of independent
+standard complex Gaussians is uniform on the sphere and its squared
+coordinates before normalization are independent exponential variables.
+Thus \(-\mathbb E\log |z_1|^2=\int_0^1[1-(1-t)^{N-1}]\,dt/t
+=H_{N-1}\). For \(N=1\) the cost is zero. Applying the same phase
+averages blockwise gives the assertion for multiforms with \(v\) the
+sum of the block degrees. The logarithm is bounded above on the
+compact product of spheres, and the lower bound starting at any
+nonzero value makes its negative part integrable.
+
+The frame spans, so \(P(w\cdot)\ne0\). Choose any nonzero coefficient
+\(c\) of it. At finite places \(|c|_{\mathfrak p}\le
+\|P(w\cdot)\|_{\mathfrak p,\mathrm{Gauss}}\). At infinity, Cauchy's
+formula bounds \(|\sigma c|\) by the supremum of \(|P^\sigma|\)
+on tuples of frame combinations with coefficients of modulus at most
+one. Each combination has frame norm at most \(n\Lambda\). By the
+sphere estimate and homogeneity its logarithm is at most the sphere
+mean plus \(v(\log(n\Lambda)+H_{N-1}/2)\). The product formula for
+\(c\) and \(H_{N-1}\le1+\log n\) (as \(N\le n\)) give the first
+bound.
+
+Fix a rational basis of \(V_T\), and let \(I\) be its determinant
+fractional ideal for \(M_T\), generated by determinants of integral
+columns. At every finite prime the coefficients of each constructed
+column after frame substitution lie in \(M_T\), by multinomial expansion
+and stability under the \(w_i\). All coefficients of \(\Delta(w\cdot)\)
+therefore lie in \(I\). Its finite log-norm sum is at most
+\(-\log N(I)\). At infinity let \(G_\sigma\) be the positive definite
+Gram matrix in the same basis. Hadamard's inequality bounds the volume
+\(|\Delta^\sigma|\sqrt{\det G_\sigma}\) by the product of the column
+norms. Evaluating with each input on its unit sphere, iterating the
+multiplication estimate gives the three norm bounds in the statement.
+Integrate the logarithm and sum over embeddings. In this basis the
+normalized arithmetic degree is
+\(g=-r^{-1}(\log N(I)+\tfrac12\sum_\sigma\log\det G_\sigma)\):
+the finite contribution is the local determinant ideal and the infinite
+contribution is the logarithmic volume of this basis, with a minus
+sign. The formula is basis-independent by the product formula. It
+yields the second inequality.
+\end{proof}
+
+\begin{corollary}[The effective inequality from the normed filtration]\label{newtheta:effective}
+Under the common-determinant hypotheses and height identification above,
+\eqref{newtheta:finiteHS} holds with \(J=\log\Lambda_0\).
+\end{corollary}
+\begin{proof}
+Put \(h'=\mathcal H(f)/((D+1)\delta)\). By
+Lemma~\ref{newtheta:heights}, \(h'\ge-C\) and
+\(\mathcal H(H)\ge-Ce\ge-CT(d_0-B)\).
+Also \(b_*\mathcal H(f)=B(T+D(D+1))h'\).
+Add these estimates in \(\mathcal H(\Delta)\) and insert the
+three column costs in the same lemma. Since \(y\le d_0-B\), all
+the costs are nonnegative, and \(u=1-B/d_0\), this gives
+\begin{align*}
+ \frac{g}{d_0}&\ge(1-u)
+ [Th'-D(D+1)C-J-\tfrac T2\log\beta]\\
+ &\hspace{8mm}-u[TC+\tfrac T2\log\beta
+                        +\log\Lambda_D+\log\Lambda_T].
+\end{align*}
+Here \(0\le u\le1\) by Lemma~\ref{newtheta:filtration}.
+The height normalization gives \(h'\ge h-(1+\log n)/2\).
+Since \(n,D,\Lambda,\delta\ge1\),
+\(L_h\ge\log\Lambda+26\log(2n)\ge C\).
+Thus \(D(D+1)C\le26D^2(L_h+\log T)\), and
+\(T(1+\log n)/2\le(T+D^2)(G+2)\).
+Enlarging the nonnegative costs, including the term
+\(3(D+1)|h|\) in the first bracket, now gives
+\eqref{newtheta:finiteHS} term by term. The dependence on \(T,D,n\)
+is explicit, so the proof applies simultaneously to all components
+carrying the stated inputs.
+\end{proof}
+
+In particular, this derivation removes a separate appeal to an effective
+Hilbert--Samuel estimate \emph{after} the normed filtration and Chow
+height have been identified. No bound on \(s^0\) or on its splitting
+field enters Lemma~\ref{newtheta:power}. The controlled norms belong
+to the short coefficient vectors of a polynomial in variable \(s,l\).
+The unproved geometric step here is producing, on each actual modified
+flag component at the common family threshold, the restriction
+surjectivity at degree zero, the successive symbols and deepest-space
+generation on the complement of \(Q=0\), the stated short bases and
+multiplication operator norms, and the same-frame Chow-height
+identification. Propositions~\ref{newtheta:koszul} and
+Lemma~\ref{newtheta:pencil} give the restriction, symbol and generation
+statements once the smooth projective model, adjoint inclusions,
+nef and big bundles, nonvanishing multiplier, and birational
+pencil are realized there. The numerical estimates on \(P_0,\kappa\)
+are needed at that threshold. For example, surjectivity of restriction after
+tensoring with the coefficient field does not bound the norms of a
+basis of the original integral lattice. The rational filtration and
+the metric hypotheses address different necessary parts of this step.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SlopeLowerBoundTopLatticeOffHypersurface.lean}{123}{Choice of a maximal-rank section and common determinant};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/MultiformHeightLowerBound.lean}{115}{Multiform cost};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LatticeDegreeGeHeightPolynomialVectorsDet.lean}{91}{Determinant ideal and degree}.
+
+The required uniformity of the first frame can be expressed one level
+earlier. At an admissible stage write \(Z_0=f_0r_0L_0\) for the
+product of the host parameter, rank parameter and scale, and
+\(m_1=\sum_{\tau,k}|u_1(\tau,k)|\) for its first weight size.
+The short-generator comparison and the uniform Bergman estimate
+require fixed \(C_s,C_b\ge0\), independent of the component and the
+late stage, for which
+\[
+ \log n\le C_s Z_0^3,\quad
+ \log\Lambda\le C_s(Z_0^3m_1+Z_0^5),\quad
+ \sup_{\text{eligible frames}}\operatorname{Berg}(u_1)
+                         \le e^{C_bZ_0^3}.
+\]
+Here the short generators must span the integral frame lattice with
+the recorded embedding norms; the logarithmic estimate for
+\(\Lambda\) allows enlarging it to at least one.
+At the same stage the size bounds give \(Z_0^{12}\le P_0\) and
+\(m_1\le Z_0^2(1+\kappa/T)\).
+Consequently, as soon as \(Z_0\ge2C_s+C_b+1\),
+\(\log n,\log\beta\le P_0\) with \(\beta=e^{C_bZ_0^3}\),
+and \(\log\Lambda\le2C_sZ_0^5(1+\kappa/T)\le
+P_0(1+\kappa/T)\). This proves the claimed uniform absorption of
+these three costs using a single threshold. The existence of the short
+generators with that dependence and the componentwise supremum bound
+are the upstream metric estimates. A pointwise bound for any fixed
+level with an unspecified level-dependent constant cannot provide the
+single threshold.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/HilbertSamuelBergmanFrameBound.lean}{137}{Short frame and uniform cubic and quintic costs}.
+
+\begin{lemma}[From field-spanning sections to integral generators]\label{newtheta:short}
+Let \(K\) be a number field of degree \(d\) and absolute
+discriminant \(\Delta\). Let \(V\) be an \(R\)-dimensional \(K\)-space
+and \(M\subset V\) a finitely generated \(\mathcal O_K\)-module.
+At each embedding \(\sigma\), give \(V\) a seminorm \(N_\sigma\)
+with \(N_\sigma(ax)=|\sigma(a)|N_\sigma(x)\).
+Assume a subset of \(M\) spans \(V\) over \(K\) and all its elements
+satisfy \(N_\sigma(x)\le H\) for every \(\sigma\), where \(H\ge0\).
+Then \(M\) has at most \(2dR\) generators over \(\mathcal O_K\), all
+with every seminorm at most \(\max(1,d^4R\Delta^{1/d}H)\).
+\end{lemma}
+\begin{proof}
+Use the Euclidean structure
+\(\|z\|^2=\sum_\sigma|z_\sigma|^2\) on the real subspace of
+\(\mathbb C^d\) where \(z_{\bar\sigma}=\overline{z_\sigma}\).
+The dual to the embedded lattice \(\mathcal O_K\) consists of the
+coordinatewise conjugates of the images of the inverse different
+\(\mathfrak D^{-1}\). Indeed its pairing with \(a\in\mathcal O_K\)
+then equals \(\operatorname{Tr}_{K/\mathbb Q}(ay)\); the trace
+pairing is nondegenerate, and the integral-valued linear functionals
+on the full lattice are rational on its rational span.
+For \(0\ne y\in\mathfrak D^{-1}\), the ideal \(y\mathfrak D\)
+is integral, so \(|N_{K/\mathbb Q}(y)|\Delta\ge1\).
+Arithmetic--geometric mean on the \(d\) squared absolute values gives
+\(\|y\|\ge\sqrt d\,\Delta^{-1/d}\).
+The Euclidean transference theorem
+\(\lambda_d(\Gamma)\lambda_1(\Gamma^*)\le d\), applied to this
+full real lattice with this dual, now gives \(d\) independent integers
+\(\omega_i\) with \(|\sigma(\omega_i)|\le\sqrt d\,\Delta^{1/d}\)
+at every embedding. Here \(\lambda_i\) denotes the least radius
+of a closed Euclidean ball containing \(i\) independent lattice vectors.
+Banaszczyk,
+\emph{New bounds in some transference theorems in the geometry of numbers}, Theorem 2.1~\cite{banaszczyk}.
+
+If \(R=0\) the empty set suffices. Otherwise choose a \(K\)-basis
+\(b_j\) from the spanning sections. Then \(e_{ij}=\omega_i b_j\)
+are in \(M\), form a rational basis of \(V\), and all their
+seminorms are at most \(\sqrt d\,\Delta^{1/d}H\).
+As an abelian group \(M\) is finitely generated and torsion free
+of rank \(dR\). For each element \(v\) of an integral basis of \(M\),
+write \(v=\sum q_{ij}e_{ij}\), \(q_{ij}\in\mathbb Q\), and take
+\(v'=v-\sum\lfloor q_{ij}\rfloor e_{ij}\).
+The triangle inequality gives
+\(N_\sigma(v')\le dR\sqrt d\,\Delta^{1/d}H\).
+The \(e_{ij}\) and all these \(v'\) generate \(M\) over \(\mathbb Z\),
+hence over \(\mathcal O_K\). Their count and the asserted weaker
+fourth-power bound follow.
+\end{proof}
+
+Let \(R>0\) be the component rank. Suppose
+\[
+ \log d,\ \log(\Delta^{1/d})\le391 Z_0^2,\qquad \log R\le C_b Z_0^3.
+\]
+Let \(H=\exp(C_2(Z_0^3m_1+Z_0^5))\) bound the integral
+field-spanning sections, with \(C_2\ge0\).
+Lemma~\ref{newtheta:short} gives the required count and height of
+integral generators with \(C_s=2000+C_b+C_2\). Indeed
+\(\log(2dR)\le\log 2+391 Z_0^2+C_bZ_0^3\), and
+\(\log(d^4R\Delta^{1/d}H)\le1955 Z_0^2+C_bZ_0^3+\log H\),
+where \(Z_0\ge1\). This removes the need to bound an integral change
+of basis for the cusp lattice.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsShortGeneratorsOfShortSpanningFamily.lean}{13}{Totally bounded generators of the whole module};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ShortGeneratorNormComparison.lean}{25}{Uniform field and rank costs}.
+
+The remaining field-spanning assertion concerns the actual deep
+cover, coefficient field, integral lattice and Petersson norm on
+each component. In the source the weight \(\lambda\) is decreasing
+at every embedding, its gap between the last of the \(p\) coordinates
+and the first of the \(q\) coordinates is at least \(8f_0r_0+10\),
+\(p,q\ge1\), and \(\log\sum_{\tau,k}|\lambda_{\tau,k}|\le10L_0\).
+The auxiliary even theta rank used for this conversion is
+\(n_\theta=8(f_0r_0+1)\). The span at that even rank is obtained
+from three assertions about a common family of theta series:
+field-spanning at the given level, an archimedean bound at
+\emph{all} embeddings and components, and a positive integer
+clearing the finite denominators of the specified rescaled series.
+The costs in the logarithms of the archimedean bound and of the
+integer must each be at most a fixed constant times
+\(Z_0^2\,\mathrm{sizeK}\), where \(\mathrm{sizeK}\) is the
+theta weight size
+\(\sum_{\tau}\sum_{0\le i<m_\tau}a_{\tau,i}
+ +f_0r_0 n_\theta/2\) for the nonnegative polynomial weights
+\(a_{\tau,i}\) of the series. The conversion to \(\lambda\) additionally
+uses two twisting sections integral at all finite places, with
+controlled archimedean norms, whose product induces the prescribed
+change of weights. Qualitative generation over the coefficient field
+does not bound either cost. For instance, the lattice
+\(\mathbb Z\subset\mathbb Q\) is spanned over \(\mathbb Q\) by
+\(1/m\), and its least integer denominator is \(m\), arbitrarily
+large even with the usual norm at most one. For the actual theta
+family Theorem~\ref{intjet:semi} supplies a common finite multiplier,
+and Proposition~\ref{intjet:arch} gives a complex estimate in terms
+of the shortest period and the norms of the generator, directions
+and polynomial. Proposition~\ref{bfam:harm} provides short data for the polynomial span and
+Corollary~\ref{bfam:metric} gives the normalized metric bound under its
+stated analytic hypotheses. The final identification of their image
+with cusp sections on the given charts follows from Propositions~\ref{bfam:unitread}, \ref{dg:identity} and~\ref{munf:span}. In the final weights one must in addition bound the parallel determinant twist of \eqref{ctwist:degree} uniformly on the actual integral components.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsGoodCoverAtMinimalLevel.lean}{25}{Three theta-family inputs for a single even weight};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ShortSpanCompositionClosed.lean}{50}{Change of weight and controlled twisting sections}.
+
+\paragraph{Cancellation of the lattice index in a rescaled series.}
+Here the auxiliary integer \(N\) can be arbitrarily large for a
+fixed level. Write \(O=\mathcal O_E\), \([E:\mathbb Q]=2f\),
+\(r=p+q\), \(M\) for the positive integer level, and
+\(\Lambda\subset E^n\) for the self-dual lattice for
+\(\langle a,b\rangle=\sum\bar a_i b_i\).
+The construction takes \(N\) odd, \(M\mid N\),
+\(NO^n\subset\Lambda_0=\Lambda\cap O^n\). On a geometric
+characteristic-zero PEL fiber let \(A\) be the abelian variety with
+symmetric polarizing line \(L\) and theta section \(s_0\).
+Its period lattice \(\Pi\) is projective of rank \(r\) over \(O\).
+Put \(d_P=\deg P\) for a nonzero polynomial in the integral harmonic
+space of the series. Write \(\mathcal Q\) for the \(n\)-fold level
+quotient and \(C_M=|\mathcal Q|=M^{frn}\). In fact the datum's
+projective lattice of rank \(r\) is reduced modulo the half-level
+ideal \(\mathfrak m\), with \(\mathfrak m\bar{\mathfrak m}=(M)\).
+Hence \(\mathrm N\mathfrak m=M^f\), and local freeness, prime by
+prime, gives the asserted cardinality. The Fourier weight
+\(\omega_{x_0}(u)=\zeta_M^{\langle x_0,u\rangle_M}\) is a unit at
+every finite place. Here the exponent is the integral level pairing.
+
+The torsion set \(Z_\Lambda\subset A[N^2]^n\) consists of the
+tuples \(z\) satisfying \((N\mu)z=0\) for all rows
+\(\mu\in\operatorname{Hom}_O(\Lambda,O)\subset E^{1\times n}\).
+The entries of \(N\mu\) are integral. For \(u\in\mathcal Q\), fix the
+specified \(N\)-division point \(t_u\in A[N^2]^n\) of its level
+point. Form the pullback of \(s_0^{\boxtimes n}\) by multiplication
+by \(N\) on \(A^n\), then translate by the normalized theta lift of
+\(z\), then by that of \(t_u\). Denote by \(J_P(u,z)\) the jet
+evaluation of this section in the given Hodge frame. Explicitly,
+for the individual translated sections \(F_b\) in the \(n\) factors
+it is
+\[
+ J_P(u,z)=\sum_{\mathbf k} P_{\mathbf k}
+       \prod_{b=1}^{n}\nabla_{\mathbf k_b}F_b .
+\]
+Here \(\mathbf k_b\) is the column of the monomial's multi-index at
+\(b\); \(\nabla_{\mathbf k_b}\) is the prescribed linear theta
+jet in that frame. The expression is multilinear in the factors,
+hence depends on their tensor. For the raw theta section \(y\)
+and the chosen scalar \(s\), the actual finite sum is
+\[
+ (s y)(x_0)=\frac{s}{C_M\,m_\Lambda N^{d_P}}
+     \sum_{u\in\mathcal Q}\omega_{x_0}(u)
+                      \sum_{z\in Z_\Lambda}J_P(u,z),\qquad
+ m_\Lambda=[\Lambda_0:NO^n]^r .
+\]
+The notation suppresses the geometric point and Hodge frame. The
+auxiliary determinant scalar \(\beta_H\) in the short evaluation
+of \(\beta_H^{-1}y\) cancels when one returns to \(y\).
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean}{244}{Finite torsion evaluation with all three denominators};
+\src{src/Development/AbelianVarietyTheory/Definitions/PlaceAdaptation/AdaptStd.lean}{107}{Harmonic evaluation on translated sections}.
+
+\begin{lemma}[Exact cancellation on every level class]\label{newtheta:index}
+Put \(K_0=Z_\Lambda\cap A[N]^n\). Then \(|K_0|=m_\Lambda\) and
+\(J_P(u,z+v)=J_P(u,z)\) for every \(v\in K_0\). In particular
+\(m_\Lambda^{-1}\sum_{z\in Z_\Lambda}J_P(u,z)\) is precisely
+the sum over \(Z_\Lambda/K_0\), for each \(u\) separately.
+\end{lemma}
+\begin{proof}
+Work first over \(\mathbb C\). Write \(z=x/N\bmod\Pi^n\).
+The defining conditions say that \(\mu x\in\Pi\) for all these
+rows, that is, \(x\in\Lambda\otimes_O\Pi\) inside
+\((E\otimes_O\Pi)^n\). This last equality can be checked after
+localizing at every prime of \(O\), where both lattices are free
+and evaluation against the dual basis recovers all coordinates.
+Self-duality and \(NO^n\subset\Lambda\) give
+\(\Lambda\subset N^{-1}O^n\), so \(N^2z=0\) already holds.
+The additional condition \(Nz=0\) is \(x\in\Pi^n\).
+Since \(\Pi\) is locally free of rank \(r\), this identifies \(K_0\)
+with \((\Lambda_0/NO^n)\otimes_O\Pi\), whose order is \(m_\Lambda\).
+
+Let \(E_L\) be the integral alternating Riemann form of the
+polarization, extended rationally. For \(x/N,x'/N\) in this
+description the commutator of the two translations on
+\((L^{\boxtimes n})^{N^2}\) is
+\(\exp(\pm2\pi i\sum_i E_L(x_i,x'_i))\), by the Weil pairing
+formula for the Riemann form. For \(x_i=a_i h,\ x'_i=b_i h'\),
+with \(a,b\in\Lambda,\ h,h'\in\Pi\), the exponent before
+\(\pm2\pi i\) is \(E_L(h,\langle a,b\rangle h')\) by the
+Rosati involution. This is integral by self-duality; bilinearity
+gives the same result for sums of tensors. Hence the lifts commute
+on \(Z_\Lambda\).
+
+For clarity, on odd \(N^2\)-torsion the normalized lift has
+\(N^2\)-th power one and inversion sends it to its inverse.
+Two such lifts at the same point differ by a scalar \(c\) with
+\(c^{N^2}=c^2=1\), hence coincide. On a commuting subgroup the
+product satisfies both normalizations, so the normalized lift there
+is multiplicative. On \(A[N]^n\), use the canonical identification
+of the pullback by \([N]\) with \((L^{\boxtimes n})^{N^2}\).
+Translation by \(v\in A[N]^n\) on the pullback lifts by the
+identity on the fiber at \([N]x=[N](x+v)\). This lift is
+normalized, as its powers and inversion are the corresponding
+translations on a pullback. It fixes the pulled-back section.
+Consequently translation by \(z+v\) has exactly the same effect
+as translation by \(z\) on that section. The subsequent translation
+by \(t_u\) and the linear jet evaluation preserve equality.
+The identities descend to arbitrary characteristic-zero geometric
+fibers by defining the abelian variety, the finitely many points,
+the line, the sections and the required finite jets over a finitely
+generated subfield of characteristic zero and embedding it into
+\(\mathbb C\). Mumford,
+\emph{On the equations defining abelian varieties I}, \S1~\cite{mumfordEquations}.
+\end{proof}
+
+The scalar \(s\) in the same formula also admits a simultaneous
+choice at the finite and infinite places. Write
+\(I=[\Lambda:\Lambda_0]\), let \(F\) be the totally imaginary
+coefficient field of degree \(h\) containing the coefficient
+embeddings \(\tau:E\to F\), and set
+\(\mathfrak a=\det(\Lambda_0)\det(\Lambda)^{-1}\), using the
+fractional determinant ideals in \(E\). Then
+\(\mathfrak a\subset O\) and \(\mathrm N\mathfrak a=I\):
+over each discrete valuation ring the inclusion has elementary
+divisors and both statements follow by multiplying those divisors.
+Put
+\[
+ \mathfrak b=\prod_\tau
+       \big(\tau(\mathfrak a)\mathcal O_F\big)^{m_\tau}.
+\]
+The finite scalar condition is \(s\in\mathfrak b^{-1}\), since
+the quotient of the two type norms of determinants is exactly
+\(\mathfrak b\). Each extended ideal in the product has norm
+\(I^{h/[E:\mathbb Q]}\), by the residue-degree and ramification
+identity above each prime. Since \(\sum m_\tau=fr\), we have
+\(\mathrm N\mathfrak b=I^{hr/2}\).
+The image of \(\mathfrak b^{-1}\) in \(\mathbb C^{h/2}\) has real
+covolume \(2^{-h/2}\sqrt{|\Delta_F|}/\mathrm N\mathfrak b\),
+by the discriminant determinant for an integral basis and the
+fractional ideal index. Take the product of closed disks of common
+radius \(R_s=|\Delta_F|^{1/(2h)} I^{-r/2}\). Its volume
+\(\pi^{h/2}R_s^h\) exceeds \(2^h\) times that covolume because
+\(\pi>2\). Minkowski's convex body theorem supplies a single nonzero
+\(s\in\mathfrak b^{-1}\) with \(|\sigma(s)|\le R_s\) at every
+embedding, including the conjugates. At every level prime
+\(\ell\mid M\), local standardness of \(\Lambda\) gives
+\((\Lambda_0)_\ell=\Lambda_\ell\); hence \(\mathfrak b\) is a unit
+at all primes over \(\ell\), and this same \(s\) is integral there.
+This proves the determinant rescaling bound on the actual family,
+including its index dependence. It applies before the jet estimates.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsSmallScalarReflexIdealSelfDualLattice.lean}{29}{Single rescaling scalar for all embeddings and the determinant ideals}.
+
+In fact \(|Z_\Lambda/K_0|=I^r\) by the same locally free tensor
+calculation. Cauchy--Schwarz on the \(C_M I^r\) remaining terms
+and \(|\sigma(\omega_{x_0}(u))|=1\) thus give at that frame
+\[
+ |\sigma(sy)(x_0)|^2
+ \le \frac{|\Delta_F|^{1/h}}{C_M N^{2d_P}}
+       \sum_{u,\,\bar z}|J_{P^\sigma}(u,\bar z)|^2 .
+\]
+The right side uses the conjugate geometric data at \(\sigma\).
+In particular no separate factor \(I^r\) is lost in estimating the
+sum by the squared jet values.
+
+There is an exact test for the finite denominator.
+Write \(w=\sum_{\tau,i}a_{\tau,i}\),
+\(\delta_E=|\operatorname{disc}E|\), \(S=w+frn/2\), and
+\[
+ D_M=C_M(M\delta_E)^w.
+\]
+This is the positive integer \(\mathrm{intZ}\) of the construction,
+whose proposed common multiplier is \(D_M^2\).
+For any valuation \(v\) of an integral framed test, extended to the
+finite torsion field, put
+\[
+ T_{x_0}=s\sum_{u\in\mathcal Q}\omega_{x_0}(u)
+                   \sum_{\bar z\in Z_\Lambda/K_0}J_P(u,\bar z).
+\]
+At that test the desired integrality is \emph{equivalent} to
+\[
+ v(T_{x_0})\ge d_P v(N)+v(C_M)-2v(D_M).
+\]
+Thus at a prime over \(\ell\mid N\) with
+\(\ell\nmid M\delta_E\), the required divisibility is by
+\(N^{d_P}\) locally, even though \(\ell\) need not divide the level.
+At a level prime the allowable loss is exactly
+\(2v(D_M)-v(C_M)\) relative to \(d_Pv(N)\).
+Integrality of the roots of unity and the geometric coset
+cancellation impose no such divisibility on the harmonic jets.
+Checking all these tests is stronger than checking an expansion at
+one cusp unless a corresponding integral expansion principle for
+the chosen lattice is supplied.
+
+\begin{proposition}[The auxiliary integer at good abelian reduction]
+\label{newtheta:goodjet}
+Let \(\ell>\max(2,d_P)\), \(\ell\nmid M\delta_E\), and
+\(\Lambda\otimes\mathbb Z_\ell=O^n\otimes\mathbb Z_\ell\).
+At a mixed-characteristic discrete valuation ring \(R\) of residue
+characteristic \(\ell\), take a framed test extending to an abelian
+scheme equipped integrally with the rigidified symmetric line,
+theta section, integral Hodge directions, polarized biextension
+and its rigidified identification with \(L\) on the graph of the
+specified endomorphism \(w_0\). Then for every allowed \(N\),
+every \(u,z\), and the actual translated sections,
+\[
+                 v(J_P(u,z))\ \ge\ d_P v(N).
+\]
+The valuation may be extended to define the torsion points.
+This proves the preceding denominator test at these places.
+\end{proposition}
+\begin{proof}
+Put \(N_0=\operatorname{lcm}(M,\exp(O^n/\Lambda_0))\), taking
+the exponent of the trivial group to be one. Then \(N_0\mid N\),
+\(\ell\nmid N_0\), and \(k=N/N_0\) sends \(t_u,z\) to \(kt_u,kz\).
+The first maps under \(N_0\) to the same level point. The second
+belongs to \(Z_{\Lambda,N_0}\) by the description \(z=x/N\)
+in Lemma~\ref{newtheta:index}. Both images are killed by \(N_0^2\).
+For either translation by \(t\), lift translation by \(kt\) on
+\(L^{N_0^2}\) and pull its line isomorphism back along \([k]\),
+using \([k]\circ T_t=T_{kt}\circ[k]\).
+The resulting lift at \(t\) is symmetric. Its \(N^2\)-th power is
+the identity, since \(N^2t=0\) and \(N_0^2\mid N^2\).
+By uniqueness of the normalized odd lift this is precisely the
+one used in the test. The rigidified identifications for successive
+multiplications compose, so both translations, in their prescribed
+order, carry the pullback of \([N_0]^*s_0\) to the pullback of
+the corresponding translated section.
+
+Here is the jet calculation, including the frame correction.
+In formal coordinates write \(e(x,y)\) for a normalized frame of
+the polarized biextension. Its logarithmic correction \(h(x,y)\)
+vanishes on the axes. The frame \(e\exp(-h)\) multiplies exactly
+in each argument, since the two multiplication factors of \(e\)
+are the exponentials of the respective additive defects of \(h\).
+Pulling this corrected frame to \((x,w_0x)\) yields the frame in
+which the jet of a section of \(L^m\) with raw coefficient \(f\)
+is obtained by differentiating \(f\exp(mh(x,w_0x))\).
+In changing the raw biextension frame to \(e b\), one can take
+\(h+\log b\) for the correction; the raw coefficient changes to
+\(f b(x,w_0x)^{-m}\), leaving the corrected germ unchanged.
+Any further choice differs by a biadditive Rosati-compatible term,
+whose contribution to the harmonic jet vanishes as shown below.
+Biadditivity identifies the corrected frame at \((kx,kw_0x)\)
+with the \(k^2\)-th tensor power of that at \((x,w_0x)\).
+The induced isomorphism of lines is the rigidified one: it is
+constructed by iterating the two global biextension laws and is
+the identity in the rigidification at zero. In formal logarithm
+coordinates \(x\), multiplication by \(k\) is \(x\mapsto kx\).
+Each homogeneous derivative of degree \(j\) therefore gains \(k^j\).
+The prescribed row sums of every monomial of \(P\) give the same total
+degree \(d_P=\sum_{\tau,i}a_{\tau,i}\).
+Suppressing \(u\) and displaying both translation points gives the
+exact equality on the generic fiber
+\[
+       J_{P,N}(t_u,z)=k^{d_P} J_{P,N_0}(kt_u,kz).
+\]
+
+It remains to check the smaller-level jet over \(R\). All translations
+now have order prime to \(\ell\). After finite extension their points
+extend by properness. Each translated line is isomorphic to the
+original line over \(R\): their quotient represents zero in the
+relative Picard scheme by the polarization and \(N_0^2\)-torsion,
+and a line from the local base is free. Any integral lift has
+\(N_0^2\)-th power a unit. The scalar that changes it to the
+normalized lift likewise has valuation zero, by taking that power.
+Thus each of the smaller-level sections has integral raw germ in
+an integral frame.
+
+Work through total degree \(d_P\). The formal logarithm and its
+inverse are integral to this order: integrating the closed invariant
+differentials term by term divides each homogeneous component only
+by its positive total degree (contract the form with the Euler
+vector field), and inversion of a series with identity linear term
+requires no division. In these coordinates the group law is
+addition. Restrict both arguments \(X,Y\) to the linear combinations
+of the integral eigen-directions of the frame, with variables
+indexed by \((\tau,i)\). Write \(h\) also for this restriction.
+The three series
+\[
+ \begin{split}
+ h(X,Y)+h(X',Y)-h(X+X',Y),\qquad&
+ h(X,Y)+h(X,Y')-h(X,Y+Y'),\\
+ &h(aX,Y)-h(X,\bar aY)\qquad (a\in O)
+ \end{split}
+\]
+are integral through that order. Indeed they are the logarithms
+of the integral multiplication and Rosati adjunction factors of the
+biextension frame, each of constant coefficient one; the truncated
+logarithm has unit denominators. For a coefficient of \(X^\alpha
+Y^\gamma\) with \(|\alpha|\ge2\), split off one variable \(X'_j\)
+with \(\alpha_j>0\) in the first defect. Its coefficient is
+\(-\alpha_j\) times the one sought, with \(\alpha_j\) a unit.
+The second defect handles \(|\gamma|\ge2\). The axes vanish.
+In bidegree \((1,1)\), the last defect multiplies the coefficient
+in types \((\tau,\nu)\) by \(\tau(a)-\nu(\bar a)\).
+For \(\tau\ne\bar\nu\) some \(a\in O\) makes this a unit:
+since \(\ell\nmid\delta_E\), the distinct embeddings have distinct
+reductions in the common splitting residue field. Thus, to this
+order, \(h\) is integral up to a bilinear form supported on
+the conjugate pairs.
+
+Write \(X_b\) for the variables in factor \(b\).
+After evaluation at \((X_b,w_0X_b)\) and summation over \(b\),
+the possible nonintegral part is a linear combination \(Q\) of
+\(\sum_b X_{\tau i b}X_{\bar\tau j b}\).
+Under the pairing \(P(\partial)F(0)\), multiplication by such a
+quadratic is adjoint to \(\sum_b\partial_{\tau i b}
+\partial_{\bar\tau j b}\) on \(P\), by the monomial factorial formula.
+These operators annihilate \(P\) by its defining harmonic equations.
+Consequently the factor \(\exp(N_0^2 Q)\) contributes only its
+constant term. The remaining exponentials, raw germs and coefficients
+of \(P\) are integral through degree \(d_P\). For the coefficients
+of \(P\) this uses local standardness of \(\Lambda\) in the
+integral linear generators of its polynomial ring.
+We obtain \(v(J_{P,N_0})\ge0\), and \(v(k)=v(N)\).
+The same local standardness makes \(\mathfrak b\) a unit at this
+place, so \(s\) is integral as well.
+\end{proof}
+For the standard lattice this works at every such good test with
+\(N_0=M\), even when \(\ell\) divides \(N\) to arbitrary order.
+We next remove the restrictions on the residue characteristic and
+the local lattice at abelian reduction. The archimedean norm
+of the smaller-level sections is a separate estimate.
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/RowDeg.lean}{43}{Harmonic trace equations with identity column matrix};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/BirationalGeometry/ToroidalCompactification/CocycleRightZeroThd.lean}{174}{The two biextension defects and the adjunction factor};
+\src{src/Development/AbelianVarietyTheory/Proofs/JetHarmonics/HarmonicValueNormalisedPullbackChainRule.lean}{516}{Normalized isogeny on harmonic evaluations}.
+
+\input{sections/theta-integral-tests}
+
+The size of the multiplier itself is unconditional under the stage
+bounds \(\log M\le30L_0,\ \log\delta_E\le7fL_0\),
+\(f,r,L_0\ge1\). Indeed \(frn+w\le2S,\ w\le S\), so
+\[
+ \log D_M^2
+ =2(frn+w)\log M+2w\log\delta_E
+ \le134 f L_0 S\le134(frL_0)^2 S .
+\]
+This bound is independent of \(N,\Lambda,P,x_0\) for the fixed
+weight and level. Theorem~\ref{intjet:semi} supplies the valuation
+test for the jets with the scalar \(s\) allowed by the determinant
+ideals. In the source the proof uses valuations of theta
+derivatives in integral semiabelian charts and a local isogeny on
+the primary torsion subgroup.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LogShortThetaSeriesDenominatorBoundLe.lean}{102}{Size of the common clearing integer};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SmulIntZSqNonnegOfSqDvd.lean}{71}{Normalized jet sum at a square divisor of the level};
+\src{src/Development/AbelianVarietyTheory/Proofs/RingsOfIntegers/SumHvPrimaryKernel.lean}{221}{Local isogeny and integral formal theta jets}.
+
+\input{sections/theta-archimedean-test}
+
+\input{sections/bergman-volume}
+\input{sections/bounded-family-continuation}
+\input{sections/archimedean-reproduction}
+\input{sections/doubled-graph}
+\input{sections/marked-unfolding}
+\input{sections/component-twists}
+
+Once \(\beta\) is known, the required archimedean multiplication
+estimate has no further dimension factor. For the shared Petersson
+measure on the component, let \(B(y)\) be the supremum of
+\(|u(y)|^2/\|u\|_2^2\) over nonzero sections of the first frame space,
+using the fiber norm of its weight. Suppose \(B(y)\le\beta\) on the
+support of the measure, and the fiber metric on a product is the
+tensor product of the fiber metrics. For any frame section \(u\)
+and higher weight section \(v\), pointwise multiplication and
+integration give
+\[
+ \|uv\|_2^2=\int |u(y)|^2|v(y)|^2\,d\mu(y)
+       \le \beta\|u\|_2^2\|v\|_2^2.
+\]
+Using the original frame norm for \(\|u\|_2\) gives the operator
+bound in the determinant argument. This requires the quotient
+measure and fiber normalizations for the three weights to agree
+under tensor product. A bound for the kernel relative to a
+separately rescaled measure does not imply the same \(\beta\).
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/PeterssonNormMulLeSqrtBergmanMulComponent.lean}{79}{Component product estimate}.
+
+\begin{proposition}[Absorption of the component errors]\label{newtheta:absorption}
+Assume \eqref{newtheta:budgets} and \eqref{newtheta:finiteHS},
+\(1\le D,\ 3D+5\le T,\ \delta\ge1\), and
+\[
+ b\ge1,\quad \log b\le P_0,\quad TP_0\le\sqrt b,\quad
+ z=7(D^2/T+D\rho)\le\tfrac12,\quad \rho\ge0,\quad
+ zP_0\kappa\le b .
+\]
+If \((1-z)d_0\le B\) and \(g_M\ge g-d_0c\), \(c\ge0\), then
+\[
+ g_M\ge B\big[Th-3(D+1)|h|
+       -26(26D^2+2zT)\log(2+|h|)-4000b-2c\big].
+\]
+\end{proposition}
+\begin{proof}
+Write \(P=P_0,\ v=\kappa/T\) and \(L_*=27Pv+92P\). Then
+\(TP\le b,\ (TP)^2\le b,\ \log D\le\log T\le P/2\).
+The expression \(2+|h|+\log\Lambda\) is at most
+\((2+|h|)(1+\log\Lambda)\). Since
+\(\log(1+\log\Lambda)\le\log\Lambda\), \eqref{newtheta:budgets}
+gives \(L_h\le L_*+26\log(2+|h|)\). Specifically, the terms free
+of \(h\) are at most \(27P(v+1)+26(P+P/2+P)=L_*\).
+The rank comparisons give \(0\le u\le z\le1/2\),
+\(d_0(1-u)=B\), and \(d_0u/B=u/(1-u)\le2z\).
+The bracket multiplied by \(u\) is nonnegative. Substitution in
+\eqref{newtheta:finiteHS} leaves the claimed height coefficient
+and the following upper bound on the error independent of \(h\):
+\begin{align*}
+ J+26D^2(L_*+\log T)&+(T+D+1)\log\beta+(T+D^2)(G+2)\\
+ &+2z\big[T(\log2+L_*+\tfrac12\log\beta)
+                   +\log\Lambda_D+\log\Lambda_T\big].
+\end{align*}
+For explicit bounds use
+\[
+ D^2P\le b/14,\qquad D^2Pv\le b/7,\qquad zTPv\le b .
+\]
+Indeed \(D^2\le zT/7\le T/14\); the last inequality displayed
+is \(zP\kappa\le b\). Since \(D\le D^2\) and \(DP\le TP\le b\),
+the first cost \(J\) is at most \(6b/7+8b<9b\).
+The second is at most \(26(27/7+92.5/14)b<300b\).
+The third is at most \(2TP\le2b\). For the fourth,
+\(G+2\le5DP\) by \(D,P\ge1\), and \(T+D^2\le2T\);
+hence it is at most \(10TDP\le10(TP)^2\le10b\).
+Finally \(zT\log2\le b/2,\ zT L_*\le27b+46b,\)
+\(zT\log\beta/2\le b/4\), and
+\(z(\log\Lambda_D+\log\Lambda_T)\le2b\).
+Thus the last cost is less than \(200b\). Their sum is bounded by
+\(4000b\). Since \(d_0\le2B\), the transfer costs at most \(2Bc\).
+The argument nowhere requires a sign for \(h\).
+\end{proof}
+
+\begin{proposition}[Summing the component degrees]\label{newtheta:aggregate}
+Let \(I\) be a finite nonempty set of components. For \(i\in I\) let
+\(d_i>0\) be its rank, \(h_i,\ell_i,g_i\) its height, comparison
+slope, and transferred degree, and \(B_i>0\) its degree share.
+Let \(0\le \rho<1,\ z\ge0,\ D\ge0,\ T\ge3D+5,\ A>0,\ R\ge0\).
+Assume for some \(b_0>0\), \(b_0\le B_i\le b_0/(1-\rho)\) and
+\(B_i\le d_i\). Suppose
+\[
+ g_i\ge B_i[Th_i-3(D+1)|h_i|-A\log(2+|h_i|)-R],
+ \qquad 2\sum_i g_i/\sum_i d_i\le\mu .
+\]
+If \(s,c,X\ge0\) satisfy
+\[
+ h_i+s\ge0,\qquad
+ (1-\rho)(\ell_i+s)_+\le h_i+s+c,\qquad
+ |I|^{-1}\sum_i\ell_i\ge-X ,
+\]
+and for \(E\ge1,\ C_1,C_2\ge0\)
+\[
+ \max\{TX,Tc,s(6D+10+T(z+2\rho))\}\le C_1E,\qquad
+ A\log\max(A,1)+R\le C_2E ,
+\]
+then \(\mu\ge-2(3C_1+C_2+4)E\).
+\end{proposition}
+\begin{proof}
+Set \(K=3D+4\), \(U=T-K>0\), \(B_\Sigma=\sum_i B_i\).
+For \(v\ge0\), \(\log t\le t-1\) at \(t=(2+v)/A\) gives
+\(A\log(2+v)\le v+2+A\log\max(A,1)\).
+Since \(|h_i|\le h_i+2s\), the bracket in the component bound is
+at least \(U(h_i+s)-(T+K)s-2-C_2E\).
+Using nonnegativity of the positive parts and their unweighted mean,
+\[
+ \frac{\sum_i B_i(\ell_i+s)_+}{B_\Sigma}
+ \ge(1-\rho)|I|^{-1}\sum_i(\ell_i+s)_+
+ \ge(1-\rho)(s-X)_+ .
+\]
+Consequently the weighted average of \(h_i+s\) is at least
+\((1-\rho)^2(s-X)_+-c\ge(1-2\rho)s-X-c\).
+The last inequality follows from \((s-X)_+\ge s-X\),
+\((1-\rho)^2\ge1-2\rho\), and \((1-\rho)^2\le1\).
+It follows that
+\[
+ \frac{\sum_i g_i}{B_\Sigma}
+ \ge-[2K+2\rho U]s-U(X+c)-2-C_2E
+ \ge-(3C_1+C_2+2)E .
+\]
+Indeed \(2K+2\rho U\le6D+10+T(z+2\rho)\) and \(U\le T\).
+As \(B_\Sigma\le\sum_i d_i\) and the last bound is nonpositive,
+the same lower bound holds with \(\sum_i d_i\) in the denominator.
+Multiplication by two proves the assertion, including the stated
+slightly larger constant.
+\end{proof}
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/UniformLowerBoundOfSums.lean}{16}{Component shares and covering slope}.
+
+\paragraph{The geometric hypotheses on the family used in Section~\ref{main:assembly}.}
+Fix one selected scale, a stage in the prescribed range and its
+deep cover \(Y\) with coefficient field \(F\), level \(M\), and
+component \(Z\). Its auxiliary marking has order \(A=1\) by the
+selected good-level condition. In the indefinite short-section
+step one has \(p,q\ge1\), \([E:\mathbb Q]/2>2\), \(p+q=r\).
+In the notation of the source, the stage hypothesis is
+\(Y.\mathrm{Good}(e,o)\), with
+\(\log M\le30L\), field size at most \(3L\), \(\log(fr)\le L\)
+and \(o\le391(frL)^2\). The dominant final weight has its block
+gap at least \(8fr+10\) and logarithmic size at most \(10L\).
+The following applications on this same \(Y,Z\) distinguish the
+points where the paper uses geometric theorems of the original proof.
+
+\begin{enumerate}
+\item On this \(Y\), Corollary~\ref{crev:good} identifies the
+principal framed charts with their marked periods at each good
+embedding. The identity Fourier mark kills the zero transvection
+mode, and Proposition~\ref{crev:half} places the positive half
+maximum on the thick part for the same self-dual row. The theta
+line has Haar mean square one. Proposition~\ref{crev:mass}
+computes the total flag volume and the density \(1/V\) of adelic
+probability, giving the conditional Petersson measure and the
+normalized Bergman bound on each component. These are deductions
+on the selected good cover. The construction of such covers
+with their field-size bounds is the separate existence step
+specified after Corollary~\ref{crev:good}.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsGoodCoverAtMinimalLevel.lean}{29}{The field-spanning family and its two metric estimates};
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/FundamentalDomains/MaxBoundPf.lean}{12}{Cusp bound};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/FirstMinAtHalfMax.lean}{111}{Minimum at a positive half maximum on the same component};
+\src{src/Development/WeilBound/RepresentationTheoryGL/TubeMeasures/DisjointTubes/MeasureSumBounds/SumMuFLe.lean}{110}{Mass in the chosen normalization}.
+
+\item Use the rigidified cubical graph line on the semiabelian tests
+of Theorem~\ref{ctwist:semi}. For the other line the relevant lattice
+is the determinant ratio for the two integral Lie eigenspaces.
+Theorem~\ref{cmeig:splitmodel} gives the local comparison for every
+test on \(Z\), separately for each \(w,\tau\), and evaluates the
+degree on its marked product CM point. For each \(w\)
+outside the primes dividing \(2d_0|\Delta_E|\operatorname{lcm}(M,A)\),
+the source supplies on this \(Z\) an unramified test, hence a test
+taking integral values on nonzero evaluations. At those places
+the integral order also follows from the single reduced fibre
+in Proposition~\ref{cmeig:hyperspecial}. At the bad primes the
+single rounding of the product costs at most \(\sum_{\ell\in B}\log
+\ell\). The source then applies the component CM degree formula,
+the key and the product to the same spanning set. For the
+characteristic-zero rule spaces Corollary~\ref{crev:twist} proves
+cusp compatibility in both directions for these constant-norm
+units.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/MulSmulIdemMem.lean}{264}{Exact excluded primes and integral-valued test};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/UnramifiedPointsAtDeepLevel.lean}{11}{Unramified CM tests on this cover};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ShortSpanCompositionClosed.lean}{74}{Twists on the chosen component}.
+
+\item For the Hilbert--Samuel step take the modified toroidal flag
+component for \(Z\) and the two birational weights of its weight
+path. Restriction in degree zero must be surjective for the
+transverse flags, and the successive symbols and deepest-space
+generators must be those of the same restriction. The short integral
+generators and column norms of the first frame, the Bergman bound
+\(\beta\), the short sections in the subsequent weights, and the
+multiplication bound \(\sqrt\beta\|v\|_{\rm frame}\) use that
+component's metric. The paper derives the finite-degree inequality
+from these hypotheses in Corollary~\ref{newtheta:effective}.
+Their simultaneous realization for the family is invoked at the
+following source steps.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsWeightHodgeBundleGenerated.lean}{22}{Toroidal flag and modified bundles on \(Z\)};
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/HilbertSamuelFiltrationAtGoodSections.lean}{51}{Restriction and filtration};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ShortVectorsSpanCuspLattice.lean}{33}{Short vectors at the family weights};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/HilbertSamuelBergmanFrameBound.lean}{26}{Frame and kernel bounds at the family stage};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsDegreeParametersBound.lean}{33}{Combination on a common cover and component}.
+\end{enumerate}

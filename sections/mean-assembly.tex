@@ -1,0 +1,262 @@
+\subsection{Using the translate mean in the window construction}\label{red:translate}
+
+Fix the character, \(\varepsilon\), the common host at \(x\), and the
+weights and dimensions in part 2 of Formal input~\ref{red:design}.
+Write \(\mathcal A_u=\sum_{t,j}\mathrm{ASK}_{u,t,j}\),
+\(\mathcal M_u=\sum_{t,j}\mathrm{MAIN}_{u,t,j}\),
+\(D_u=\mathcal A_u-\mathcal M_u\). The expectation throughout this
+subsection is uniform on the subgroup \(A_0\) in
+Proposition~\ref{ar:mean}. The original design \code{topDesWin} selects
+one family. Its later application in \code{ch\_top} bounds each tied translate. To apply a finite mean lemma, first restrict the tied data on the host group to \(A_0\).
+The source file also gives a
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/LevelOfCongruence.lean}{199}{mean form of the slope comparison}.
+This alternative takes two mean loss bounds. Its proof first obtains
+a geometric inequality for every translate separately. Its text is
+present in the pinned source, while the saved classical dependency
+walk uses the pointwise declaration on line 175. We give the scalar
+deduction and then replace those separate HN comparisons by
+Corollary~\ref{trmean:budget}. When the host group is larger than
+\(A_0\), a bound for its whole-group mean alone gives no bound for
+the mean over this particular subgroup.
+
+Let \(G_u\) be the recorded divisibility gain and \(I_u\) the
+irreducibility loss (the quantities \(\mathrm{Ga}\) and \(\mathrm{IO}\)
+in the slope comparison). Let \(T_{ui}>0\) be the word level.
+Use \(a_E,\mathcal L_a,\mathcal L,b',X''\) for the numerical
+parameters \(a,L_a,L,b',X''\) of the common comparison and
+\(c_s=c_{\mathrm{Sl1}}\ge0\). Put \(A=\sum_t a_t\) and
+\[
+\begin{aligned}
+ C_N&=c_{\rm count}(\mathcal L_a+m^2\mathcal L_a/k),&
+ C_M&=c_{\rm slope} n_Ta_E\mathcal L_a(1+m/k),\\
+ E_{\rm div}&=c_{\rm div}\big(n_Ta_E\mathcal L_a+
+                       m(B_0+N_c)x^{e_{\rm div}\varepsilon}\big),&
+ K_0&=A C_N+E_{\rm div}+mc_EB_0+C_M.
+\end{aligned}
+\]
+The word loss and its rank mean are
+\[
+ \ell_{ui}=c_s I_u+c_s n_Tm(a_E/k+b')\log T_{ui}+c_sX''+1,
+ \qquad \ell_u=\sum_i r_{ui}\ell_{ui}/r_u .
+\]
+The counting bound \(\log T_{ui}\le c_{\rm count}m\mathcal L\) gives
+\(\ell_u\le c_s I_u+K_7\), where
+\(K_7=c_s n_Tm(a_E/k+b')c_{\rm count}m\mathcal L+c_sX''+1\).
+Here and below the size parameters multiplying this counting bound
+are nonnegative.
+
+\begin{proposition}[A sufficient mean comparison at one scale]\label{trmean:assembly}
+Retain the identification of the descended columns, their original
+shifted-source slopes and the target slopes of Section~\ref{geo:translate}
+with the data just chosen. Suppose the division and lower slope
+comparisons on these data give
+\begin{equation}\label{trmean:lower}
+ \mathbb E(G_u-\mathcal M_u)
+       \le \mathbb E(s_u-\mu_u)+K_0+\mathbb E\ell_u .
+\end{equation}
+If \(F_x\) is either right side of \eqref{trmean:gap} or
+\eqref{trmean:budget-eq} under its stated hypotheses, then
+\begin{equation}\label{trmean:test}
+ \mathbb E D_u\le K_0+K_7+F_x+
+                  \mathbb E(\mathcal A_u-G_u+c_s I_u).
+\end{equation}
+In particular, bounding this right side by \(E_x(\mathcal D_x)\) in
+Section~\ref{scope:account} proves \eqref{scope:average} at that scale.
+\end{proposition}
+\begin{proof}
+To see precisely what supplies \eqref{trmean:lower} in the original
+word estimates, write \(W_u=\sum_j f^{-1}\sum_\rho\log w_{u,j,\rho}\)
+and \(\mathcal M_u=S_0-AW_u\) by the definition of the centre.
+Here \(S_0\) is independent of \(u\). Write \(v_0>0\) for the
+archimedean scale in the count and \(\ell_g\) for its additive height
+parameter. Set
+\[
+ S_D=S_0-mA\log(\pi/v_0),\qquad
+ \Lambda_u=W_u+m\log(v_0/\pi)+m\ell_g-C_N .
+\]
+Expansion gives \(S_D-A\Lambda_u+mA\ell_g=\mathcal M_u+AC_N\).
+For a word let \(F_u^{\,0}\) be the recorded shift common to its
+translate, \(E_{ui}\) the sum of its local exponent corrections,
+and \(\mu^M_{ui}\) its base lattice slope. The input inequalities are
+\[
+\begin{aligned}
+ \mu_u+h_{ui}-F_u^{\,0}
+    &\le S_D-A\log T_{ui}+E_{\rm div},&
+ \log T_{ui}&\ge\Lambda_u,\\
+ \mu(S_{ui})&\ge\mu^M_{ui}+G_u+F_u^{\,0}-E_{ui}-\ell_{ui},&
+ \mu^M_{ui}&\ge-C_M,\\
+ E_{ui}&\le m(A\ell_g+c_EB_0).&&
+\end{aligned}
+\]
+Insert the lower bound on \(F_u^{\,0}-h_{ui}\) from the first line
+into the second. Since \(A\ge0\), one may replace \(A\log T_{ui}\)
+by \(A\Lambda_u\) in the resulting lower bound. The displayed identity
+then gives \(G_u-\mathcal M_u\le\mu(S_{ui})-h_{ui}-\mu_u+
+K_0+\ell_{ui}\). Averaging by word rank and then by translate proves
+\eqref{trmean:lower}. An independent proof of just its mean would
+also suffice. Finally use
+\(D_u=(\mathcal A_u-G_u)+(G_u-\mathcal M_u)\), the word counting
+bound, and the single slope comparison. This gives \eqref{trmean:test}.
+\end{proof}
+
+\begin{corollary}[The original bracket from one signed loss]\label{trmean:loss}
+Use the common numerical parameters \((\delta_*,\eta_*,e_*)\) of
+the original error bracket, including its large-\(x\) size and
+error-window hypotheses. Assume the mass and compression bounds of
+Corollary~\ref{trmean:budget} with this \(\delta_*\) and the mean
+frame bounds \(e\le e_*,\ \eta\le\eta_*\). Write \(X=x^{c_{\rm HH}}\),
+\(H=Xb\), \(b>0\). Suppose \(\mathcal J=T_{\rm out}=0\) and
+\(U\le K_3+\mathbb E\ell_u\), with \(K_3\) the variation bound below.
+In addition to \eqref{trmean:lower} assume
+\begin{equation}\label{trmean:signed}
+ \mathbb E(\mathcal A_u-G_u+\kappa I_u)\le(1+\kappa)L_P,\qquad
+ \kappa=(1+C_\phi)c_s,\quad
+ C_\phi=\frac{4\log(1+X)}{1-\delta_*},
+\end{equation}
+where \(L_P=c_{\rm loss}n_Tmb\,x^{e_{\rm loss}\varepsilon}\).
+Then the original numerical mean bracket bounds \(\mathbb E D_u\).
+In particular the same numerical size hypotheses as in Formal
+input~\ref{red:design} give the right side of \eqref{scope:average}.
+\end{corollary}
+\begin{proof}
+For \(a\ge0\), \(a\log(1+Xb/a)\le(a+b)\log(1+X)\), with value
+zero at \(a=0\). For \(a\ge b\) bound the logarithm directly.
+For \(0<a<b\), the left side increases with \(a\), since
+\(\log(1+t)\ge t/(1+t)\) for \(t\ge0\). Apply this at \(a=U\).
+Combine \eqref{trmean:budget-eq} with \eqref{trmean:lower} and
+substitute \(U\le K_3+\mathbb E\ell_u\). The coefficient of
+\(\mathbb E\ell_u\) is \(1+C_\phi\). The word counting bound and
+\eqref{trmean:signed} now give
+\[
+ \mathbb E D_u\le K_0+(1+C_\phi)K_7+C_\phi(K_3+b)
+           +\frac{(\eta_*+4\sqrt{e_*})H}{1-\delta_*}
+           +(1+\kappa)L_P .
+\]
+The source budget adds the nonnegative term
+\(\mathbb E\log|\{i:i\text{ is a word at }u\}|\) for nonempty word
+sets. This is the only translate-dependent summand in its final error
+bracket. We verify its numerical absorption below.
+The two sufficient loss assumptions
+in the source are \(\mathbb E(\mathcal A_u-G_u)\le L_P\) and
+\(\mathbb E I_u\le L_P\). Multiplying the second by \(\kappa\ge0\)
+and adding gives \eqref{trmean:signed}.
+
+For comparison with the geometric hypotheses, the frame bound
+\(\sum_i\|A_{ui}^*A_{ui}-I\|_{\rm HS}^2\le r_u/4\) gives
+\(|M_u-r_u|\le r_u/2\) by Cauchy--Schwarz. The original target
+minimum implies \(T_{\rm out}=0\), and integral columns with their
+height budgets give \(\mathcal J=0\). For the source variation put
+\[
+\begin{aligned}
+ V_0&=2mc_EB_0+c_H(n_Ta_E\mathcal L_a+mB_0)+Ac_{\rm count}\log k,\\
+ K_3&=c_{\rm slope}n_Ta_E\mathcal L_a(2+m/k)+V_0+c_s mB_0 .
+\end{aligned}
+\]
+The exponent, height and count comparisons give
+\(|(E_{ui}+h_{ui})-(E_{ui'}+h_{ui'})|\le V_0\).
+Indeed the exponent differences cost \(2mc_EB_0\), the differences
+of \(h_{ui}+A\log T_{ui}\) cost the term with \(c_H\), and the
+log-level differences cost \(Ac_{\rm count}\log k\).
+Subtract the lower word-slope estimate in the preceding proof at
+\(i'\) from the upper estimate
+\(\lambda^{\max}_{ui}\le\lambda^{M,\max}_{ui}+G_u+F_u^{\,0}
+-E_{ui}+c_smB_0\) at \(i\). Use
+\(\lambda^{M,\max}_{ui}\le c_{\rm slope}n_Ta_E\mathcal L_a\)
+and \(\mu^M_{ui'}\ge-C_M\).
+This bounds \(\lambda^{\max}_{ui}-h_{ui}-
+(\mu(S_{ui'})-h_{ui'})\) by \(K_3+\ell_{ui'}\).
+Average first over \(i'\), maximize over \(i\), and take the
+translate mean. This gives exactly the asserted bound on \(U\).
+
+For the numerical absorption put \(y=x^\varepsilon\),
+\(y_D=y^{e_{\rm div}},\ y_L=y^{e_{\rm loss}}\), and
+\(P=n_Ta_E(1+m^2/k)+m(B_0+N_c)\). Here \(y,y_D,y_L\ge1\).
+Let \(K\) bound the seven nonnegative coefficients
+\(c_{\rm div},c_E,c_H,c_{\rm count},c_{\rm slope},c_s,c_{\rm loss}\).
+The scalar size assumptions imply
+\[
+\begin{gathered}
+ 1\le n_T,\quad 1\le b\le a_E,\quad mb\le a_E,\quad
+ m\le k,\quad 1\le k\le\min(a_E,x^{e_K}),\\
+ A\le2n_Ta_E,\quad kb'\le a_E,\quad X''\le a_E,\quad
+ 0\le\mathcal L,\mathcal L_a\le2y,\quad B_0,N_c\ge0 .
+\end{gathered}
+\]
+In particular \(mb\le a_E\) follows from \(m\le x^{(1+\varepsilon)/2}
+\le x\) and \(xb\le a_E\). Also
+\(\delta_*\le1/2,\ (\eta_*+4\sqrt{e_*})H\le Kyn_Ta_E\),
+\(\log|\{i\}|\le(k-3)\log2\le a_E\) in each block, and
+\(\log x\le y\). Put \(K'=1+K,\ h'=1+c_{\rm HH},\ g'=1+e_K\),
+with \(c_{\rm HH},e_K\ge0\). From \(P\ge n_Ta_E\ge1\),
+\(\log k\le e_K y\), and the displayed formulas one obtains
+\[
+\begin{aligned}
+ K_0&\le12K y y_D P,&
+ K_7&\le5(K')^2yP,&
+ K_3+b&\le13K'g'yP,\\
+ C_\phi&\le8h'y,& L_P&\le K y_L P.&
+\end{aligned}
+\]
+For \(K_0\), the four terms cost at most
+\(4KyP,(2y+y_D)KP,KP,4KyP\), respectively.
+For \(K_7\), its term containing the word count is at most
+\(4K^2y\,n_Ta_E m^2/k\), and \(c_sX''+1\le K'P\).
+For \(K_3\) the base slope costs \(6KyP\), the variation costs
+\((5+2e_K)KyP\), and \(c_s mB_0+b\le K'P\).
+The estimate for \(C_\phi\) uses \(\log(1+x^{c_{\rm HH}})\le h'y\).
+Thus, in units of \((K')^2h'g'y^2y_Dy_LP\), the five terms in the
+displayed bound on \(\mathbb E D_u\) and the extra log word count
+cost at most \(12,45,104,2,10,1\), respectively.
+Their sum is \(174\). The common threshold \(y\ge200(K')^2h'g'\)
+therefore gives \(\mathbb E D_u\le y^{3+e_{\rm div}+e_{\rm loss}}P\).
+Substituting \(B_0\le2nmbx^\varepsilon\),
+\(N_c\le n_2kb x^{2\varepsilon}/n^2\) and the specialized exponents
+proves \eqref{scope:average}.
+\end{proof}
+
+\begin{corollary}[Room for lattice defects on the actual scales]\label{trmean:reserve}
+Retain the arithmetic identifications, \eqref{trmean:lower}, the mass,
+frame, variation and numerical bounds of Corollary~\ref{trmean:loss}.
+Take \(e_{\rm div}\le2,\ e_{\rm loss}=0\). Allow arbitrary
+\(\mathcal J,T_{\rm out}\) and write
+\(\Delta=\mathbb E(\mathcal A_u-G_u+\kappa I_u)-(1+\kappa)L_P\).
+At the same threshold \(\mathbb E D_u\le y^3P+
+\Delta+4\mathcal J/(1-\delta_*)+T_{\rm out}\). In particular,
+\begin{equation}\label{trmean:reserve-eq}
+ \Delta+\frac{4\mathcal J}{1-\delta_*}+T_{\rm out}
+                 \le (y^5-y^3)P
+\end{equation}
+suffices for \eqref{scope:average}. If \(\mathcal J=T_{\rm out}=0\)
+and \(\Delta\le0\), the same window and character hypotheses yield
+\(G_{\mathcal F_\psi}(x)\le x^{1/2+7\varepsilon}\) for large \(x\).
+\end{corollary}
+\begin{proof}
+In the preceding proof replace \(12Kyy_DP\) by
+\(12K\max(y,y_D)P\), using its four separate estimates. With
+\(y_D\le y^2\) and \(y_L=1\), the same six coefficients now bound
+the costs in units of \((K')^2h'g'y^2P\). The threshold absorbs
+their sum into \(y^3P\). Keeping the actual signed loss in place
+of its cap adds exactly \(\Delta\) to the upper bound.
+Equation~\eqref{trmean:budget-eq} adds the two indicated nonnegative
+terms. The variation bound still concerns the original source. Under
+\eqref{trmean:reserve-eq} the resulting bound is \(y^5P\), and the
+same bounds on \(B_0,N_c\) give \eqref{scope:average}. Under the last
+assumptions use \(y^3P\) directly. Propositions~\ref{ar:mean} and
+\ref{ar:four} with \(C=3\) give \(G_K\le x^{1/2+6\varepsilon}+\Sigma\).
+The excluded twists satisfy \(\Sigma\le4o\,x^{1/2+\varepsilon}\).
+Taking \(y\ge1+4o\) proves the stated window bound.
+\end{proof}
+
+The more general
+Proposition~\ref{trmean:assembly} also allows the quantile bound
+without a uniform lower bound on \(d_u/n_u\).
+In both cases the order of selection remains that of
+Section~\ref{scope:account}. For each prescribed late window
+threshold one needs one complete window, then at every required
+scale a single host with tied data and the stated mean bounds.
+Proposition~\ref{ar:mean} then performs the four-twist extraction.
+The reserve test \eqref{trmean:reserve-eq} gives the original window
+exponent \(1/2+9\varepsilon\).
+The group size incurs no extra logarithm. The uniform arithmetic
+premises, including the recorded gains on the actual descended
+columns, remain to be established on that family.

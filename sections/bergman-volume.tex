@@ -1,0 +1,363 @@
+\paragraph{The component Bergman bound and its volume normalization.}
+Fix one good complex embedding of the coefficient field. Write
+\(f=[E:\mathbb Q]/2\), \(\Delta=|\operatorname{disc}E|\),
+\(R_E=\Delta^{1/(2f)}\), \(r\ge2\) for the Hermitian rank,
+\(d\) for the positive host integer and \(M\) for the deep level.
+Let \(w\ge1\) bound the sum, over the CM type, of the spreads
+\(\max_i\lambda_{\tau i}-\min_i\lambda_{\tau i}\) of the flag weights.
+The complex dimension of the product of full flag domains is
+\(b=fr(r-1)/2\). The constants in the component estimate are
+\begin{align*}
+ \rho&=[200r^3(w+f)]^{-1},&
+ \varepsilon&=\min\{1,\pi/[2M\sqrt d\,(fw+2)\log2]\},\\
+ A&=(1+2(2fr)^2\Delta/\varepsilon)^{2fr^2},&
+ V_*&=(15M)^{2fr^2}[3(2f)^2r^4R_E^2]^{6fr^2},\\
+ C_{\rm loc}&=\frac{8\,b!}{(\pi\rho^2)^b}\,A,&
+ \beta_*&=C_{\rm loc}V_* .
+\end{align*}
+Here \(V_*\) is the upper bound called \(\mathrm{massLev2}\) in
+the Tamagawa comparison. The normalizing mass itself is the sum
+of the volumes of the chosen arithmetic fundamental sets.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/UnifOfSpaceEq.lean}{103}{Flag radius, return bound and local factor};
+\src{src/Development/WeilBound/RepresentationTheoryGL/TubeMeasures/DisjointTubes/MassLev2.lean}{13}{Level-dependent total mass bound};
+\src{src/Development/WeilBound/RepresentationTheoryGL/TubeMeasures/DisjointTubes/ConstantSupremum/SupremumConstantLogBound.lean}{14}{Product defining the normalized supremum constant}.
+
+\begin{lemma}[Evaluation on a flag ball]\label{bergvol:local}
+At an orthonormal frame \(x\), let \(B_x\) be the lower unipotent
+flag chart of Euclidean radius \(\rho\). Write \(d\mu\) for the flag
+measure specified below. For every holomorphic flag section \(P\),
+\[
+        |P(x)|_{\rm Pet}^2\le
+        \frac{2b!}{(\pi\rho^2)^b}\int_{B_x}|P|_{\rm Pet}^2\,d\mu .
+\]
+\end{lemma}
+\begin{proof}
+In the frame \(x\) each factor has a diagonal Hermitian matrix
+\(J\), with the positive signs first and the negative signs last.
+Write the chart matrix as \(U=I+Z\) with \(Z\) strictly lower
+triangular; the entries over all factors are the Euclidean coordinates.
+In particular \(\|Z\|_{\rm op}\le\|Z\|_{\rm HS}\le\rho\).
+Let \(D_{\tau i}\) be the absolute determinant of the leading
+\(i\)-by-\(i\) Gram block of \(U^*JU\). The endpoint determinants
+\(D_{\tau0},D_{\tau r}\) equal one. On the chart the squared norm
+and invariant measure in question are
+\[
+ |P|_{\rm Pet}^2=|P(xU)|^2
+ \prod_{\tau}\prod_{i=0}^{r-1} (D_{\tau,i+1}/D_{\tau i})^{-\lambda_{\tau i}},
+ \qquad
+ d\mu=\left(\prod_{\tau}\prod_{i=0}^{r-1}D_{\tau i}^{-2}\right)dV .
+\]
+The difference of each Gram block from the corresponding sign matrix
+has operator norm at most \(2\rho+\rho^2\le3\rho\). Its singular
+values therefore lie in \([1-3\rho,1+3\rho]\), and the block has
+the required inertia by continuity. Thus the whole ball belongs to
+the flag domain and \(|\log D_{\tau i}|\le6r\rho\).
+Subtract the midpoint of the extreme weights from each row of
+weights at \(\tau\). This leaves the logarithm of the norm factor
+unchanged by telescoping the endpoint determinants. Its absolute value
+is at most \(6r^2\rho w\le1/20\); the absolute logarithm of the
+density is at most \(12fr^2\rho\le1/10\). At the origin both
+factors equal one. The holomorphic mean-value inequality on the
+Euclidean ball gives the assertion since its volume is
+\((\pi\rho^2)^b/b!\) and \(\exp(1/20+1/10)<2\).
+\end{proof}
+
+\begin{lemma}[Overlaps at a frame with no short lattice vector]\label{bergvol:returns}
+Suppose the arithmetic group preserves a Hermitian \(O_E\)-lattice
+\(\Lambda'\subset E^r\) self-dual for the \(O_E\)-valued form.
+Let \(\|v\|_x^2\) be the sum of the positive majorants of that form
+over the fixed CM type, obtained by changing the negative signs to
+positive in \(x\). If its minimum on \(\Lambda'\setminus\{0\}\)
+is at least \(\varepsilon\), at most \(A\) arithmetic elements
+return \(B_x\) to itself, meaning \(\gamma B_x\cap B_x\ne\varnothing\).
+\end{lemma}
+\begin{proof}
+Set \(m=2fr\), the real lattice dimension. The Euclidean dual of the
+embedded lattice is \(2J\) times its dual for
+\(\operatorname{Tr}_{E/\mathbb Q}h\), since that trace is twice
+the real inner product after applying the sign involution \(J\).
+The trace dual lies in \(\Delta^{-1}\Lambda'\): testing against
+\(O_E\Lambda'\) puts each Hermitian pairing in the codifferent,
+which is carried into \(O_E\) by \(\Delta\), as seen by inverting
+the integral trace matrix. Hence the Euclidean dual minimum in length
+is at least \(2\sqrt\varepsilon/\Delta\).
+The Euclidean transference inequality
+\(\lambda_m(L)\lambda_1(L^*)\le m\) applies to this full rank lattice.
+It gives \(m\) independent vectors of length at most
+\(m\Delta/(2\sqrt\varepsilon)\). They span \(E^r\) over \(E\):
+otherwise their real span would have dimension less than \(m\).
+Select an \(E\)-basis from them.
+Banaszczyk,
+\emph{New bounds in some transference theorems in the geometry of numbers},
+\S2~\cite{banaszczyk}.
+
+In the chart the positive subspace is the graph of a matrix \(T\)
+with \(\|T\|\le\rho/(1-\rho)\), by inverting its upper block.
+Its majorant is between one half and twice the central squared norm.
+Indeed singular value decomposition reduces its change to independent
+positive-negative planes with graph slope \(t\le\|T\|\); the
+eigenvalues of the new majorant there are
+\((1+t)/(1-t)\) and its inverse, by using the orthogonal lines
+spanned by \((1,t)\) and \((t,1)\). Unpaired directions retain
+eigenvalue one. A returning \(\gamma\) carries one chart majorant
+isometrically onto another; hence \(\|\gamma v\|_x\le2\|v\|_x\).
+All images of the selected basis vectors have length at most
+\(m^2\Delta/\sqrt\varepsilon\), allowing the extra factor \(m\ge1\).
+Lattice points in a ball of radius \(T_0\) number at most
+\((1+2T_0/\sqrt\varepsilon)^m\), by packing disjoint open balls of
+radius \(\sqrt\varepsilon/2\). The \(r\) basis images determine
+\(\gamma\). Taking the \(r\)-th power of this count yields \(A\).
+\end{proof}
+
+\begin{proposition}[From cusp and mass data to a normalized kernel]\label{bergvol:global}
+Assume the following on every analytic flag component at the chosen
+embedding.
+\begin{enumerate}
+\item The automorphic sections under consideration are bounded in
+Petersson norm. For each nonzero such cusp section there is an
+orthonormal frame \(x\) where its norm is at least half the component
+supremum and the minimum in Lemma~\ref{bergvol:returns} is at least
+\(\varepsilon\), for the same \(\Gamma\)-stable self-dual lattice.
+\item There are invariant flag measures in the chart normalization
+of Lemma~\ref{bergvol:local} and measurable arithmetic fundamental
+sets \(F_j\). With \(V=\sum_j\mu_j(F_j)\), assume \(0<V\le V_*\).
+The pushforward of the adelic probability measure on arithmetic
+and frame-invariant functions is \(\sum_j d\mu_j|_{F_j}/V\).
+\end{enumerate}
+Then for each cusp section under consideration the global squared supremum
+is bounded by \(\beta_*\) times its squared Petersson norm for that probability. On any nonempty
+algebraic component \(Z\) which corresponds to a union of these
+analytic components of positive mass, the same bound holds with
+the conditional probability on \(Z\). In particular the scalar
+evaluation Bergman kernel on \(Z\) is at most \(\beta_*\).
+\end{proposition}
+\begin{proof}
+At the chosen half-maximum frame, project the flag ball onto the
+arithmetic quotient. Each fiber in the ball has at most \(A\)
+points, since mapping one of them to the others requires elements
+which return the ball. Equivalently, cut a measurable fundamental
+domain into its arithmetic translates and integrate its invariant
+integrand there; the number of copies of a point in the ball is
+bounded by the return count, including stabilizers if needed.
+Lemma~\ref{bergvol:local} and the half-maximum then give
+\(\sup_{x\in F_j}|P(x)|_{\rm Pet}^2\le C_{\rm loc}
+\int_{F_j}|P|_{\rm Pet}^2\,d\mu_j\).
+Adding the nonnegative integrals and inserting \(V\) proves the
+global result. For \(Z\) use the identical calculation summing only
+over its analytic components and multiplying the conditional
+integral by \(V_Z=\sum_{j\subset Z}\mu_j(F_j)\le V_*\).
+Taking the supremum of the evaluation ratio over sections gives
+the Bergman bound. Its integral against the conditional probability
+bounds the rank as well: in any finite orthonormal system the sum
+of the squared pointwise norms equals the squared norm of scalar
+evaluation on its span, and each summand integrates to one.
+\end{proof}
+
+For clarity, the half-maximum hypothesis admits a quantitative test
+which isolates the cusp input. Put \(H=2M\sqrt d\). If at a
+half-maximum frame a lattice vector satisfies \(\|v\|_x^2<
+\varepsilon\le1\), every conjugate of the algebraic integer
+\(h(v,v)\) has absolute value less than one, since it is bounded
+by the corresponding majorant. Thus \(h(v,v)=0\) by its norm.
+For each such isotropic vector use the flow parameter scaled by
+\(k_0=2|\tau(\xi_0)|\), independent of \(\tau\).
+In this parameter the input needed is a transvection
+period \(0<H'\le H\), acting with trivial scalar multiplier, and its
+holomorphic one-variable cusp restriction \(G(\zeta)\). In the
+normalization with scalar metric factor one at the center it
+suffices that \(G(0)=P(x)\), that \(G\) be \(H'\)-periodic and
+holomorphic on a neighborhood of \(\Im\zeta\ge-t\) for
+\(t=1/(2\varepsilon)\), and that it tend uniformly to zero as
+\(\Im\zeta\to+\infty\). The flag metric on the flow gives
+\[
+       |G(\zeta)|\le 2\cdot 2^{w/2}|G(0)|
+                     \qquad(\Im\zeta=-t).
+\]
+To verify the metric assertion, write \(u\) for the coordinates of
+\(\tau v\) at the orthonormal central frame, with positive columns
+first. Since \(\tau\kappa_0=-i k_0\) on the chosen CM type, the
+flow in the scaled parameter is \(U=I-i\zeta uu^*J\).
+Isotropy gives \(u^*Ju=0\) and
+\(U^*JU=J+2\Im\zeta\,Juu^*J\).
+For \(S_i=\sum_{a=1}^i J_{aa}|u_a|^2\), the rank-one determinant
+formula on each leading block now gives
+\(D_{\tau i}=|1+2\Im\zeta\, S_i|\).
+The \(S_i\) increase from zero to \(\|u\|^2/2\), then decrease to
+zero, since the total positive and negative sums coincide.
+Here \(\|u\|^2\) is the local majorant, less than
+\(\varepsilon\) by hypothesis. All signed determinants retain their
+central signs for \(\Im\zeta>-1/\varepsilon\). Thus the flow stays
+inside the flag domain in this entire half-plane and the restriction
+of a holomorphic section is holomorphic there.
+At \(\Im\zeta=-1/(2\varepsilon)\), the \(D_{\tau i}\) decrease from
+one to a number greater than \(1/2\), then increase to one.
+The total variation of \(\log D_{\tau i}\) is at most \(2\log2\).
+Centering the weights at their midrange in the squared metric formula
+of Lemma~\ref{bergvol:local} bounds its absolute logarithm by
+\(\sum_\tau\operatorname{spread}(\lambda_\tau)\log2\le w\log2\).
+The boundary raw coefficient is therefore bounded by \(2^{w/2}\)
+times its Petersson norm, which itself is at most \(2|G(0)|\).
+
+For \(y=\Im\zeta\ge0\), the same variation argument gives a raw
+coefficient of size at most \(2|G(0)|(1+\varepsilon y)^{w/2}\).
+Thus for \(q=\exp(2\pi i\zeta/H')\) the growth is at most a polynomial
+in \(\log(1/|q|)\). By Cauchy's estimate on circles shrinking to
+zero, every negative Laurent coefficient vanishes. It suffices to
+show that the constant Laurent coefficient vanishes, equivalently
+that the average of this restriction along one real period is zero
+at any fixed height.
+
+For the analytic cusp space of this construction the constant is
+indeed zero. Its definition imposes bounded Petersson norm and,
+for every nonzero isotropic \(\xi\in\Lambda\) and every frame,
+zero average of the coefficient on the following \(f\)-dimensional
+real torus. Put \(F=E^+\); its period lattice in the raw flow
+parameters is \(L=m e_\chi\,\iota(O_F)\), where \(\iota\) is the
+real embedding vector, \(m\) is the integer transvection period of
+the flag datum and \(e_\chi\) kills its finite order multiplier.
+This is a full lattice by the nonzero discriminant of \(F\).
+The real period in direction \(\iota(a)\) follows from the
+rational transvection for \(a\in O_F\) and the multiplier is
+trivial after its \(e_\chi\)-th power. Both boundedness and
+zero average persist under complex linear combinations, so they
+hold on the full span used for the analytic Bergman kernel.
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/FundamentalDomains/ModerateCoefficientPositivity.lean}{58}{Definition of the analytic cusp space and its zero Fourier coefficient}.
+
+Choose an integer \(c_1>0\) with \(\xi=c_1v\in\Lambda\), possible
+since \(\Lambda\) is a full lattice in the rational vector space
+underlying \(E^r\). Apply the flow in independent raw
+parameters \(z_\tau\) to \(\xi\), and call the resulting holomorphic
+coefficient \(A(z)\). For \(y_\tau=\Im z_\tau\ge0\), the same
+principal minors are \(1+2 k_0 y_\tau S_i\), now with \(S_i\)
+computed for \(\tau\xi\). Their variation and bounded Petersson norm
+give
+\[
+ |A(t+iy)|\le C_P\prod_\tau
+ (1+k_0 y_\tau\|\tau\xi\|_x^2)^{\operatorname{spread}(\lambda_\tau)/2}
+ \qquad(t\in\mathbb R^f).
+\]
+Here the norm is the single-place majorant. In particular growth is
+at most polynomial when one imaginary coordinate tends to infinity
+and the others stay zero. For \(\eta\in L^*\) let \(a_\eta(y)\)
+be the Fourier coefficient of \(t\mapsto A(t+iy)\) using
+\(\exp(-2\pi i\eta\cdot t)\) and probability Haar measure on the
+real torus. Holomorphy and integration by parts on this torus give
+\(\partial_{y_j}a_\eta=-2\pi\eta_j a_\eta\), hence
+\(a_\eta(y)=e^{-2\pi\eta\cdot y}a_\eta(0)\).
+The polynomial bound implies \(a_\eta(0)=0\) if any \(\eta_j<0\).
+The defining cusp average gives \(a_0(0)=0\).
+
+The smooth periodic function at \(y=0\) has absolutely summable
+Fourier coefficients: repeated integration by parts with
+\(1-\sum_j\partial_{t_j}^2\) bounds them by
+\(C_N(1+|\eta|^2)^{-N}\) for every \(N\).
+At each \(y\ge0\) the resulting series represents \(A(t+iy)\)
+by Fourier uniqueness. On the diagonal ray its nonzero modes
+therefore tend uniformly to zero as the height tends to infinity,
+by dominated convergence since \(\sum_j\eta_j>0\) on their support.
+Finally \(G(\zeta)=A((\zeta/(k_0c_1^2))_\tau)\), since the
+rank-one operator of \(c_1v\) is \(c_1^2\) times that of \(v\).
+This proves the required uniform vanishing and the claimed
+one-variable constant-term identity.
+
+This exponential identifies the half-plane above
+the boundary modulo
+periods with a punctured disk up to radius \(e^{2\pi t/H'}\).
+The induced function extends with value zero at \(q=0\). Apply
+the maximum principle to its quotient by \(q\) and evaluate at
+\(q=1\). This would give
+\[
+  1\le 2^{1+w/2}\exp(-2\pi t/H')
+       \le 2^{1+w/2-(fw+2)}<1 .
+\]
+Thus the cusp test implies the required minimum. Its application
+on the actual deep covers needs the same period bound on every
+component for the lattice used in the return count.
+
+The period has a direct lattice calculation once the integral model
+is identified. In the host normalization put
+\(c=\mathrm N(\mathfrak c_K)>0\); the purely imaginary \(\xi_0\)
+satisfies \(|\tau(\xi_0)|=1/(c\sqrt d)\), and the transvection
+coefficient \(\kappa_0=\pm2\xi_0\) satisfies
+\((cd\kappa_0)^2=-4d\). Thus \(cd\kappa_0\) is integral. Suppose
+the principal level is imposed on the lattice
+\(\Lambda=\mathfrak a\Lambda'\), as in the actual comparison, with
+\(\Lambda'\) Hermitian self-dual. For \(v\in\Lambda'\) isotropic
+and \(y\in\Lambda\), \(h(y,v)v\in\Lambda\), using the convention
+that \(h\) is linear in its first argument. The transvection
+\[
+        y\longmapsto y+Mcd\kappa_0\,h(y,v)v
+\]
+therefore preserves \(\Lambda\) and is the identity modulo \(M\).
+It is unitary by \(\bar\kappa_0=-\kappa_0\) and \(h(v,v)=0\);
+its inverse is obtained by changing the sign. Its raw period is
+\(Mcd\), and scaling by \(k_0=2/(c\sqrt d)\) gives precisely
+\(H=2M\sqrt d\). The same rational transformation realizes the
+period simultaneously at every \(\tau\), since the imaginary
+coefficient has the same negative imaginary part \(-k_0\) there.
+For the even model weights the required arithmetic
+character on these transvections must be trivial. The identification
+of these lattices with the actual congruence groups on every deep
+component, and the identification of the sections under test with
+the stated analytic cusp space, remain necessary for this application.
+\src{src/Development/AbelianVarietyTheory/Proofs/CubicalLineBundles/IsIntegralLevelMulKappa.lean}{35}{Integral transvection in the principal congruence subgroup}.
+
+In the total mass comparison, the more precise intermediate upper
+bound has the form
+\[
+   V\le 16^{fr^2} M^{2fr^2}\operatorname{vol}(U(r))^f
+                            \operatorname{mass}_I .
+\]
+Here the compact group volume uses the real normalization in the
+adelic tube comparison and \(\operatorname{mass}_I\) is the
+definite standard lattice mass for the host. A bound
+\(\operatorname{vol}(U(r))\le13^{r^2}\) and
+\(\operatorname{mass}_I\le[3(2f)^2r^4R_E^2]^{6fr^2}\)
+give \(V\le V_*\) since \(16\cdot13\le15^2\).
+The principal-level index factor \(M^{2fr^2}\) itself follows by
+reducing integral lattice automorphisms modulo \(M\). Their image
+lies in the endomorphism ring of \(\Lambda/M\Lambda\), of order
+\(M^{2fr^2}\) by local freeness of rank \(r\) over \(O_E\).
+It remains to compare the adelic component tubes, with their disjointness
+and volumes, and to identify the pushforward probability in the second
+hypothesis. We calculate the compact factor and the definite mass below.
+\src{src/ReciprocityTheory/ReductiveGroups/ArithmeticGeometry/FundamentalDomains/MaxBoundPf.lean}{12}{Isotropic flow and periodic cusp restriction};
+\src{src/Development/WeilBound/RepresentationTheoryGL/TubeMeasures/DisjointTubes/MeasureSumBounds/SumMuFLe.lean}{110}{Principal level tube comparison for all components};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/FockModels/TamagawaPeterssonLambdaSqNonneg.lean}{371}{Restriction to normalized algebraic components}.
+
+\input{sections/compact-mass}
+
+\begin{corollary}[Size of the component bound]\label{bergvol:size}
+Suppose \(L\ge1,\ \log(fr)\le L,\ \log M\le30L,\ \log R_E\le3L,\)
+\(d^f\le\Delta\), and \(\log w\le25L\). Then
+\[
+  1\le\beta_*,\qquad \log\beta_*\le 400 f^2 r^2 L
+          \le4000(frL)^3 .
+\]
+\end{corollary}
+\begin{proof}
+We have \(\log d\le6L\), \(\log\Delta\le6fL\),
+\(\rho^{-1}\le e^{35L}\), and \(\varepsilon^{-1}\le
+3fwM\sqrt d\le e^{61L}\). The radius estimate uses
+\(\log(w+f)\le\log2+25L\); the bound on \(\varepsilon^{-1}\)
+uses \(fw+2\le3fw\) and \(2\log2\le\pi\).
+Since \(1\le b\le fr^2/2\) and \(\log b\le2L\), the logarithm
+of \(8b!/(\pi\rho^2)^b\) is at most \(3L+36fr^2L\).
+The logarithm of the base in \(A\) is at most
+\(\log16+2\log(fr)+\log\Delta+\log(\varepsilon^{-1})
+\le(66+6f)L\).
+In \(V_*\), the first factor contributes at most \(66fr^2L\);
+the logarithm of the base of its second factor is bounded by
+\(\log3+2\log(2f)+4\log r+2\log R_E\le16L\).
+Adding gives \(\log\beta_*\le400 f^2r^2L\). Each factor in
+\(\beta_*\) is at least one, in particular \(\pi\rho^2<1\).
+The final inequality uses \(f,r,L\ge1\).
+\end{proof}
+For the cover weight take \(w=2[E:\mathbb Q]\sum_{\tau,i}
+|\lambda_{\tau i}|+1\). If the weight sum is zero then \(w=1\).
+Otherwise it is an integer at least one; if its logarithm is at
+most \(20L\) and \(\log[E:\mathbb Q]\le3L\), then
+\(\log w\le\log3+23L\le25L\). The stage's field size
+\(\log[E:\mathbb Q]+\log R_E\le3L\) implies both field estimates.
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/FockModels/TamagawaPeterssonLambdaSqNonneg.lean}{458}{Cubic cost with the host discriminant bound};
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/IntegralCuspSlopePowerBound.lean}{137}{Use of the same bound for the component kernel}.

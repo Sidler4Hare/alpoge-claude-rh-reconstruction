@@ -1,0 +1,658 @@
+\subsection{The residual Bernoulli test in the higher-rank argument}
+
+The auxiliary character used in the deformation argument is odd. Its
+first Bernoulli number can be a unit even when the target value
+\(L(-e,\psi)\) vanishes by parity. We give the auxiliary unit with
+the precise conductor threshold, and the resulting cohomological
+implication in both character directions.
+
+\begin{theorem}[Unit for the auxiliary two-power twist]\label{famsel:unit}
+Let \(\ell\) be prime, \(d\ge1\), \(Q=\ell^d\), and
+\(a=v_2(Q-1)\ge2\). Let \(f\) be odd, \(\phi\) primitive of conductor
+\(f\) and order dividing \(Q-1\), and \(\xi\) primitive of conductor
+\(M=2^n\). Take the character values in \(\overline{\mathbf Q}_\ell\).
+If \(M\ge f\,4^a\) and \(\phi(-1)\xi(-1)=-1\), then
+\(B_{1,\phi\xi}\) is an \(\ell\)-adic unit. This includes \(\ell\mid f\).
+\end{theorem}
+\begin{proof}
+Put \(m=n-a\) and \(s=f2^a\). Then \(m\ge a\ge2\) and
+\(1<s\le2^m\). Extend characters by zero at nonunits of their modulus.
+For \(u\in\mathbf Z/M\mathbf Z\) set
+\[
+ A(u)=\sum_{\substack{0\le b<fM\\ b\equiv u\bmod M}} b\phi(b),
+ \qquad S=\sum_{b\bmod f}\phi(b),\qquad
+ g(u)=\frac{A(u)-A(0)}{fM}.
+\]
+The sum of the unweighted \(\phi(b)\) in each progression is \(S\),
+since \(M\) is coprime to \(f\). If \(t\ge0\), shifting the letters
+of this progression by \(ft\) gives
+\[
+ g(u)-g(u-ft)=tS/M-
+       \sum_{\substack{0\le b<ft\\b\equiv u\bmod M}}\phi(b)
+       \qquad(0\le ft\le fM).
+\]
+Indeed the terms which wrap past \(fM\) lose \(fM\) in the weighted
+sum, and \(\phi\) has period \(f\). Choose \(0\le t<M\) with
+\(ft\equiv u\bmod M\). This formula proves \(g(u)\) integral at \(\ell\)
+and \(\overline{g(u)}\in\mathbf F_Q\), since \(g(0)=0\), \(\ell\)
+is odd and the nonzero values of \(\phi\) reduce to \(\mathbf F_Q\).
+In particular no division by \(f\) is needed on reduction.
+Write \([u]\) for the least nonnegative representative. At \(t=2^a\)
+we obtain
+\[
+ \bar g(u)-\bar g(u-s)=c-{\bf1}_{[u]<s}\,\bar\phi([u]),
+ \qquad c=\overline{2^a S/M}.
+\]
+The character \(\xi\) has sum zero. Grouping the defining first
+Bernoulli sum by progressions gives
+\(B_{1,\phi\xi}=\sum_u\xi(u)g(u)\), as \(\phi\xi\) is nontrivial.
+
+Suppose the reduction of this last sum vanishes. For every unit \(y\)
+we also have \(\sum_u\bar\xi(u)\bar g(uy)=0\), by the substitution
+\(uy=v\). Apply normalized finite-field trace from
+\(\mathbf F_Q(\mu_{2^n})\) to \(\mathbf F_Q\). Its degree is a power
+of two, invertible in characteristic \(\ell\). The trace fixes roots
+of order dividing \(2^a\) and kills every root of order \(2^j\)
+with \(j>a\). Indeed \(Q^{2^{j-a-1}}\equiv1+2^{j-1}\pmod{2^j}\)
+by successive squaring of \(Q\equiv1\bmod4\). The corresponding
+Frobenius automorphism takes such a root to its negative. Thus
+\[
+ \sum_{u\in D}\bar\xi(u)\bar g(uy)=0,\qquad
+ D=\{u\in(\mathbf Z/M\mathbf Z)^\times:\bar\xi(u)^{2^a}=1\}.
+\]
+Every \(u\in D\) is congruent to \(1\) or \(-1\) modulo \(2^m\).
+In fact the units are \(\{\pm1\}\times\langle5\rangle\) with
+\(5\) of order \(2^{n-2}\), by \(v_2(5^{2^j}-1)=j+2\).
+Primitivity gives \(\bar\xi(1+M/2)=-1\), so \(\bar\xi\) is faithful
+on \(\langle5\rangle\). Writing \(u=\pm5^i\), we have
+\(2^{m-2}\mid i\), which gives the claimed congruence.
+Let \(\epsilon(u)=1\) on the first congruence class and \(-1\)
+on the second. Multiplying by \(1+M/2\) preserves the two classes
+and \(D\) and negates \(\bar\xi\). Hence
+\(\sum_D\epsilon(u)\bar\xi(u)=0\).
+
+Subtract the identities for \(y=1-s\) and \(y=1\), taking the latter
+minus the former. Since \(2^a\mid s\), we have \(u(1-s)=u-s\)
+in the positive class and \(u(1-s)=u+s\) in the negative class.
+In the first class the only boundary contribution \([u]<s\) occurs
+at \(u=1\), where it contributes \(-1\). In the second class use the
+shift formula at \(u+s\). The inequality \([u+s]<s\) forces
+\([u+s]=s-1\), because \(s\le2^m\) and \(u+s\equiv s-1\bmod 2^m\).
+Here \(u=-1\), and its contribution is
+\(\bar\xi(-1)\bar\phi(s-1)=-1\). Both exceptional units belong to
+\(D\). The resulting equality is
+\(0=c\sum_D\epsilon(u)\bar\xi(u)-2=-2\), impossible at odd \(\ell\).
+\end{proof}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/LxPartial.lean}{15}{progression difference},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/LxCore.lean}{65}{two boundary contributions}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/LemmaX.lean}{78}{exact conductor threshold}.
+
+At the threshold itself take \(\ell=5,\ d=f=1,\ M=16\), and the
+primitive character with \(\xi(5)=i,\ \xi(-1)=-1\).
+Pairing the residues \(b=1,5,9,13\) with \(16-b\) gives
+\[
+ 16B_{1,\xi}=(2-16)+(10-16)i-(18-16)-(26-16)i=-16(1+i).
+\]
+The norm of \(B_{1,\xi}\) is \(2\), a unit at either place over five.
+
+\begin{proposition}[The residual classes annihilated by the unit]\label{famsel:stick}
+Let \(\eta\ne1\) be an integral Dirichlet character modulo \(D_0\),
+of order prime to an odd prime \(\ell\). Set \(\gamma=\bar\eta\)
+as a Galois character and suppose it differs from the mod-\(\ell\)
+cyclotomic character. If \(B_{1,\eta^{-1}}\) is a unit at \(\ell\),
+every continuous cocycle \(z:G_{\mathbf Q}\to k(\gamma)\), for a
+discrete residue field \(k\) containing its values, is a coboundary
+under the following local condition. On the intersection of each
+finite inertia group with \(\ker\gamma\), the cocycle vanishes on a
+subgroup of finite index prime to \(\ell\).
+In Theorem~\ref{famsel:unit} this applies to both
+\(\eta=\phi\xi\) and \(\eta=(\phi\xi)^{-1}\).
+\end{proposition}
+\begin{proof}
+On \(\ker\gamma\) the cocycle is an additive homomorphism, so the
+local vanishing extends to the whole inertia intersection: a nonzero
+finite image would have order divisible by \(\ell\), dividing the
+given index. On \(G_L\), \(L=\mathbf Q(\mu_{D_0})\), it therefore
+factors through \(\mathrm{Cl}(L)\) by global class field theory.
+Real inertia has order at most two and is killed as well. If
+\(\sigma_b(\zeta)=\zeta^b\), conjugating a group element in \(G_L\)
+by a lift of \(\sigma_b\) multiplies the restricted homomorphism by
+\(\bar\eta(b)\), by the cocycle identity and equivariance of reciprocity.
+
+Choose a positive odd integer \(c\) prime to \(D_0\) with
+\(c-\eta(c)\) a unit at \(\ell\). Indeed choose a Galois element on
+which \(\gamma\) and the residual cyclotomic character differ and
+lift its unit class modulo \(\operatorname{lcm}(2,\ell,D_0)\).
+The classical Stickelberger theorem says that
+\[
+ (c-\sigma_c)\Theta\in\mathbf Z[\operatorname{Gal}(L/\mathbf Q)]
+ \quad\text{annihilates }\mathrm{Cl}(L),\qquad
+ \Theta=D_0^{-1}\!\!\sum_{b\in(\mathbf Z/D_0\mathbf Z)^\times}
+                  [b]\,\sigma_b^{-1}.
+\]
+This is the integral annihilator for the full cyclotomic field
+\cite{stickelberger1890}. Evaluating the integral group-ring element
+at \(\eta\) in characteristic zero gives
+\((c-\eta(c))B_{1,\eta^{-1}}\), since \(\eta^{-1}\ne1\).
+Reduction of this scalar is nonzero even if \(\ell\mid D_0\).
+Thus the restricted homomorphism is zero. The cocycle descends to
+the abelian group \(\operatorname{Gal}(L/\mathbf Q)\). Choose \(h\)
+with \(\gamma(h)\ne1\), possible since reduction is faithful on the
+prime-to-\(\ell\) roots. Comparing \(z(hg)\) and \(z(gh)\) gives
+\(z(g)=(\gamma(g)-1)z(h)/(\gamma(h)-1)\).
+
+In the application the character and its inverse both have odd parity
+and order prime to \(\ell\). Primitivity gives \(\xi(1+M/2)=-1\).
+Choose a unit congruent to \(1+M/2\) modulo \(M\) and to \(1\) modulo
+\(\ell f\), using coprimality. On a Galois lift both residual characters
+equal \(-1\), whereas the cyclotomic character is \(1\).
+Theorem~\ref{famsel:unit} applies to the inverse pair of characters
+as well. This proves both instances.
+\end{proof}
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/ResidualBernoulliNonvanishing.lean}{174}{residual cocycle criterion},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/LevelCohomology/ChrInvNeg.lean}{197}{both auxiliary characters}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ConductorAtMapInjectiveCoeff.lean}{132}{use in the two higher-rank counts}.
+These two statements discharge the residual Bernoulli premise of the
+rank-four counting theorem. Its other premises include integral
+deformation finiteness, rigidity and an automorphic count. The cocycles
+in Proposition~\ref{famsel:stick} have residual coefficients in an
+auxiliary odd character, whereas the required lengths count all
+congruence depths in the original coefficient module.
+
+\subsection{Integral vanishing for varying nontrivial characters}
+
+\begin{proposition}\label{famsel:class}
+Let \(\ell\) be odd, \(O\) a coefficient DVR finite over
+\(\mathbf Z_\ell\), with uniformizer \(\pi\), and \(\psi\) a Dirichlet
+character of order prime to \(\ell\) valued in \(O^\times\).
+Put \(\alpha=\psi^{-1}\chi_\ell^{-e}\),
+\(A=(\operatorname{Frac}O/O)(\alpha)\) and
+\(K=\overline{\mathbf Q}^{\ker\bar\alpha}\), where the bar denotes
+reduction modulo \(\pi\). Suppose \(\bar\alpha(D_\ell)\ne1\).
+Put \(s=[\mathbf F_\ell(\bar\alpha(G_{\mathbf Q})):\mathbf F_\ell]\).
+If the order of the group
+\[
+        \operatorname{Cl}(K)/\langle[\mathfrak l]:\mathfrak l\mid\ell\rangle
+\]
+is not divisible by \(\ell^s\), the entire strict group
+\(S_\ell(\mathbf Q,A)\) is zero. Its normalized length at every host
+level \(\ell N\) is then zero.
+\end{proposition}
+\begin{proof}
+Each continuous cocycle into the discrete module \(A\) has finite
+image, so each class is killed by a power of \(\pi\). Take a strict
+class killed by \(\pi\), and subtract a coboundary so that its
+representative \(z\) vanishes on \(D_\ell\).
+We have \(\pi z(g)=g b-b\) for some \(b\in A\). Thus
+\(b\in A^{D_\ell}=0\), since some element acts by a scalar whose
+difference from one is a unit. The values of \(z\) lie in \(A[\pi]\),
+so its restriction to \(G_K\) is a homomorphism. It vanishes on
+every decomposition group above \(\ell\) in \(G_K\), by the cocycle
+conjugation formula and the trivial residual action of \(G_K\).
+For \(p\ne\ell\), inertia acts trivially through \(\chi_\ell\) and
+reduction is injective on the prime-to-\(\ell\) image of \(\psi\).
+Thus \(I_p\cap G_K\) acts trivially on the full \(A\). On that
+subgroup the restriction of \(z\) is a coboundary by strictness,
+hence is zero. Inertia at infinity has order at most two and has no
+image in \(A[\pi]\). By global reciprocity this homomorphism
+factors through the displayed quotient of the ordinary ideal class
+group. Its image in \(A[\pi]\) is stable under every residual scalar,
+by the cocycle conjugation formula. It is an additive subgroup of
+the residue field, hence a vector space over the field generated by
+these scalars. A nonzero image would have order divisible by \(\ell^s\).
+Thus it vanishes. Inflation--restriction leaves a class of
+\(\operatorname{Gal}(K/\mathbf Q)\) in \(A[\pi]\). This Galois
+group has order dividing \(\#(O/\pi)^\times\), so averaging kills
+the class. Vanishing of the \(\pi\)-torsion proves the claim at every depth.
+\end{proof}
+
+In particular, let the primitive conductor \(f\) be prime to \(\ell\),
+let \(\psi\) be even and nontrivial, and take any positive multiple
+\(e\) of \(\ell-1\). If \(\psi(\ell)\ne1\), the local hypothesis holds.
+The field \(K\) is the totally real field cut out by \(\psi\), independent
+of \(e\). Writing \(d=\operatorname{ord}(\psi)\), one explicit sufficient
+condition for vanishing, uniform in the character and the twist, is
+\[
+        \ell^{\operatorname{ord}_d(\ell)}>
+              f^{d/2}\bigl(1+\tfrac d2\log f\bigr)^{d-1}.
+\]
+Indeed \(|\Delta_K|\le f^d\), by the discriminant formula in the tower
+\(\mathbf Q(\mu_f)/K/\mathbf Q\) and the elementary cyclotomic bound
+\(|\Delta_{\mathbf Q(\mu_f)}|\le f^{\varphi(f)}\).
+Minkowski puts a representative of every ideal class at norm at most
+\(B=\sqrt{|\Delta_K|}\). At a rational prime \(p\) the coefficients of
+the Euler factor for counting ideals are bounded by those of
+\((1-p^{-s})^{-d}\), since there are at most \(d\) prime ideals and
+their residue degrees are positive. Counting ordered products of \(d\)
+positive integers with product at most \(B\) therefore bounds \(h_K\)
+by \(B(1+\log B)^{d-1}\), using the harmonic sum \(d-1\) times.
+Here the residual character still has order \(d\), so the stated
+inequality gives \(h_K<\ell^s\). This extends the odd-order test of
+Proposition~\ref{newcoh:oddzero} to either parity of the character
+order and accounts for the required splitting above \(\ell\).
+
+Apply the class-group criterion of Proposition~\ref{famsel:class} directly. The quadratic character modulo \(5\) at \(\ell=7\)
+gives zero for every \(e=6j\), and either order-three character
+modulo \(7\) at \(\ell=5\) gives zero for every \(e=4j\), \(j\ge1\).
+The Frobenius residues are \(2\bmod5\) and \(5\not\equiv\pm1\bmod7\).
+The first field is \(\mathbf Q(\sqrt5)\), with Minkowski bound
+\(\sqrt5/2<2\). The second is \(\mathbf Q(\mu_7)^+\).
+The polynomial \(X^3+X^2-2X-1\) of \(\zeta_7+\zeta_7^{-1}\)
+has discriminant \(49\), so its Minkowski bound is at most
+\(6\cdot7/27<2\). Both class groups are trivial.
+Whenever these criteria hold for an admitted host character in case II
+or III, they give the required polynomial inequality at all the indicated
+twists. Characters whose residual action is locally trivial at \(\ell\),
+and those for which the class-group test fails, still enter the counts.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{65}{Case II}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{67}{case III}.
+
+\begin{proposition}[A host-level class test allowing \(\ell\)-power inertia]
+\label{famsel:hostinertia}
+Let \(\ell\) be odd, \(N\) a host modulus, and \(\psi\) any character
+modulo \(N\) with values in \(O^\times\). Use \(A,\bar\alpha,K,s\)
+as in Proposition~\ref{famsel:class}. Let
+\[
+ T=\{p\mid\ell N:\bar\alpha(D_p)\ne1\}.
+\]
+Suppose \(\ell\in T\), and every \(p\ne\ell\) with
+\(\ell\mid\#\psi(I_p)\) belongs to \(T\).
+If \(\ell^s\) does not divide the order of
+\(\operatorname{Cl}(K)/\langle[\mathfrak p]:\mathfrak p\mid p,\ p\in T\rangle\),
+the full strict group at level \(\ell N\) vanishes.
+\end{proposition}
+\begin{proof}
+Normalize a \(\pi\)-torsion class to a cocycle \(z\) vanishing on
+\(D_\ell\) as in Proposition~\ref{famsel:class}. Then
+\(z\) takes values in \(A[\pi]\). For \(p\in T\), the host condition
+gives \(z|_{D_p}=\delta b_p\) in \(A\). Since \(\pi z=0\),
+\(\pi b_p\in A^{D_p}=0\). Thus \(b_p\in A[\pi]\) and
+\(z|_{D_p\cap G_K}=0\). At every other \(p\ne\ell\), the order of
+\(\psi(I_p)\) is prime to \(\ell\), so reduction is injective on
+that group, and \(I_p\cap G_K\) acts trivially on \(A\). Strictness
+on inertia again makes \(z\) zero there. The homomorphism
+\(z|_{G_K}\) factors through the displayed quotient by reciprocity.
+The image-size and inflation--restriction arguments of
+Proposition~\ref{famsel:class} apply verbatim, since
+\(\operatorname{Gal}(K/\mathbf Q)\) has order prime to \(\ell\)
+regardless of the order of the original \(\psi\).
+\end{proof}
+
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CharacterLevelBounds/ShaFamMono.lean}{30}{strict length at level \(\ell N\)} and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/ConjStableShaFam.lean}{94}{decomposition conditions at the primes of the level}.
+
+For a fixed exceptional prime, take \(\ell=3\) and either primitive
+order-six character \(\psi\) modulo \(7\). Let \(7\mid N\) and inflate
+\(\psi\) to \(N\). For every positive odd \(e\) its reduction after
+the inverse Tate twist is the product of the quadratic characters of
+discriminants \(-7\) and \(-3\): reduction kills the cubic part,
+and inversion fixes both quadratic factors. Hence
+\(K=\mathbf Q(\sqrt{21})\); its residual character is nontrivial on
+inertia at both \(3\) and \(7\). The only prime away from \(3\)
+where \(\psi\) has inertia of order divisible by \(3\) is \(7\).
+Minkowski puts each ideal class at norm at most \(\sqrt{21}/2<3\).
+The integer \((1+\sqrt{21})/2\) has polynomial \(X^2-X-5\),
+irreducible modulo \(2\), so \(2\) is inert and no ideal has norm
+two. Thus \(h_K=1\), and Proposition~\ref{famsel:hostinertia} gives
+zero at every congruence depth. With either sextic character as the
+fixed target, its inflation occurs on each of its hosts at all odd
+twists, by the defining kernel of the host. For odd \(e\ge3\) these
+are case II: \(3\) is exceptional and the prime-to-\(3\) part away
+from \(3\) has order two. This includes arbitrarily high twists with
+\(3\mid\operatorname{ord}(\psi)\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{179}{host kernel and parity test},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{212}{case II}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/StmtFields.lean}{66}{the fixed exceptional set}.
+
+\begin{proposition}[Characters of prime-power conductor]\label{famsel:primary}
+Let \(\ell\) be odd and suppose \(\ell\nmid h_{\mathbf Q(\zeta_\ell)^+}\).
+For every Dirichlet character \(\psi\) of conductor dividing a power
+of \(\ell\) and every \(e\ge1\) with \(\psi(-1)=(-1)^e\), the strict
+group \(S_\ell(\mathbf Q,A)\) vanishes, also on every host to which
+\(\psi\) inflates.
+\end{proposition}
+\begin{proof}
+The full scalar \(\alpha\) factors through the \(\ell\)-power
+cyclotomic tower. This tower is totally ramified at \(\ell\), so
+\(\alpha(D_\ell)=\alpha(G_{\mathbf Q})\). For a class killed by
+\(\pi\), normalize \(z|_{D_\ell}=0\) and write \(\pi z=\delta b\).
+Then \(b\in A^{D_\ell}=A^{G_{\mathbf Q}}\), hence \(\pi z=0\);
+this works even when \(\bar\alpha=1\).
+The prime-to-\(\ell\) character \(\bar\alpha\) factors through
+\((\mathbf Z/\ell)^\times\), and parity makes its field \(K\)
+a subfield of \(L=\mathbf Q(\zeta_\ell)^+\).
+Extension of ideals embeds the \(\ell\)-part of \(\mathrm{Cl}(K)\)
+in \(\mathrm{Cl}(L)\), since its composite with norm is raising to
+\([L:K]\), a unit at \(\ell\).
+The homomorphism \(z|_{G_K}\) is zero on inertia away from \(\ell\)
+by strictness and is zero on decomposition groups over \(\ell\)
+by normalization and conjugation. Ordinary class field theory now
+kills it, since \(\ell\nmid h_K\). Inflation--restriction and
+\(\ell\nmid[K:\mathbf Q]\) kill the original class. As before,
+vanishing of the \(\pi\)-torsion suffices.
+\end{proof}
+
+In fact, for the sextic target modulo \(7\), every power of the
+target has zero strict group at both exceptional primes \(3\) and
+\(7\), at all twists of its admitted parity. At \(7\) this follows
+from Proposition~\ref{famsel:primary} and \(h_{\mathbf Q(\zeta_7)^+}=1\).
+At \(3\) the odd powers, including the quadratic character, all
+have the residual field \(\mathbf Q(\sqrt{21})\) at odd twists, so
+Proposition~\ref{famsel:hostinertia} applies as above. For an even
+power and an even twist, \(\bar\alpha=1\). Inertia at \(3\) maps
+onto the full \(3\)-adic cyclotomic image, and a Frobenius at \(3\)
+generates the image of the unramified character \(\psi\) of order
+one or three, since \(3\not\equiv\pm1\bmod7\). Thus
+\(\alpha(D_3)=\alpha(G_{\mathbf Q})\), and the normalization just
+proved makes \(z\) a homomorphism of exponent dividing three, zero
+on \(D_3\). It is unramified away from \(7\) by strictness and
+is tame at \(7\) by its exponent. By reciprocity it factors through
+the ordinary ray group modulo \(7\) of \(\mathbf Q\), which is
+\((\mathbf Z/7)^\times/\{\pm1\}\). The class of \(3\) generates
+this group and maps to zero, proving the claim. This treats the
+inflated target powers on each host. Other host characters can have
+additional conductor factors.
+
+\begin{proposition}[A unit test at a completely split prime]\label{famsel:splitray}
+Let \(\psi\) be a nontrivial even character of order prime to an odd
+prime \(\ell\). Suppose \(\ell\) splits completely in its character
+field \(K=\overline{\mathbf Q}^{\ker\psi}\), and \(\ell\nmid h_K\).
+At the embeddings \(w:K\hookrightarrow\mathbf Q_\ell\) put
+\[
+ q_w(u)=\frac{w(u)^{\ell-1}-1}{\ell}\pmod\ell
+ \qquad(u\in\mathcal O_K^\times).
+\]
+If the vectors \((q_w(u))_w\) span the coordinate-sum-zero hyperplane
+over \(\mathbf F_\ell\), then \(S_\ell(\mathbf Q,A)=0\) for every
+positive multiple \(e\) of \(\ell-1\), also after imposing any host
+conditions. Here \(\bar\alpha\) is trivial on \(D_\ell\).
+\end{proposition}
+\begin{proof}
+A strict class killed by \(\pi\) lifts to a cocycle \(z\) in
+\(A[\pi]\) by the exact sequence for multiplication by \(\pi\);
+no local condition on this lift at \(\ell\) is needed. The residual
+action is \(\bar\psi^{-1}\). On \(G_K\) the lift is a homomorphism
+unramified away from \(\ell\), since every such inertia group there
+acts trivially on \(A\). Its image has exponent \(\ell\). At each
+\(w\mid\ell\), local reciprocity therefore kills
+\(1+\ell^2\mathbf Z_\ell=(1+\ell\mathbf Z_\ell)^\ell\), by the
+\(\ell\)-adic logarithm. Real inertia has order two. Thus the
+homomorphism factors through the ray class group of modulus
+\(\ell^2\mathcal O_K\) modulo \(\ell\)-th powers.
+
+The ray class exact sequence and \(\ell\nmid h_K\) identify this
+quotient with a quotient of
+\((\mathcal O_K/\ell^2)^\times/
+((\mathcal O_K/\ell^2)^\times)^\ell\simeq\bigoplus_w\mathbf F_\ell\)
+by the unit vectors above. The displayed isomorphism is the
+coordinatewise Fermat quotient. Its kernel is the subgroup of
+\(\ell\)-th powers, and it is surjective on each factor, as is seen
+on \(1+\ell a\). The vectors sum to zero since the norm of a unit is
+\(\pm1\). Under the span hypothesis the ray class quotient has trivial
+Galois action: the coordinate-sum map is invariant under permutation.
+The restriction of \(z\) is equivariant with target of nontrivial
+scalar character \(\bar\psi^{-1}\), hence must vanish. Finally
+\([K:\mathbf Q]=\operatorname{ord}(\psi)\) is invertible on \(A[\pi]\),
+so inflation--restriction kills the class there and in \(A\).
+Every cohomology class with coefficients in \(A\) is killed by a power of \(\pi\), which proves the assertion.
+For the ray class sequence see
+\href{https://math.mit.edu/classes/18.785/2021fa/LectureNotes21.pdf\#page=5}{Sutherland, Theorem 21.8}.
+\end{proof}
+
+\paragraph{A full case III progression, including the split local action.}
+For either cubic character modulo \(7\) and \(\ell=29\), the strict
+group vanishes for \emph{every} positive \(e\) with \(28\mid2e\).
+First take \(28\mid e\). The field \(K=\mathbf Q(\zeta_7)^+\) has
+class number one by the Minkowski computation above, and \(29\equiv1\bmod7\)
+splits completely. The unit \(u=\zeta_7+\zeta_7^{-1}\) has polynomial
+\(X^3+X^2-2X-1\); \(u^2-2\) is a conjugate. Modulo \(29^2=841\)
+the three roots, ordered cyclically under \(r\mapsto r^2-2\), are
+\(409,761,511\). Direct exponentiation gives
+\[
+ (q_w(u))_w=(20,16,22),\qquad (q_w(u^2-2))_w=(16,22,20).
+\]
+Both vectors have coordinate sum \(0\bmod29\), and their first
+two columns have determinant \(20\cdot22-16^2\equiv10\bmod29\).
+Proposition~\ref{famsel:splitray} applies at every multiple of \(28\).
+
+For \(e\equiv14\bmod28\), Proposition~\ref{newcoh:oddzero}(2)
+reduces the question to \(29^2\nmid h_{K(\sqrt{29})}\), since
+\(\operatorname{ord}_3(29)=2\). The compositum is totally real of
+degree six and discriminant at most \(49^2\,29^3\), by the order
+obtained by tensoring integral bases. Its Minkowski bound is
+at most \((6!/6^6)49\,29^{3/2}<120\).
+The primes \(2,3,5\) all have degree three in \(K\), by their
+classes modulo \(7\) up to sign. Also \(2\) is inert in
+\(\mathbf Q(\sqrt{29})\), so its degree in the compositum is six.
+Consequently no prime ideal has norm below seven and the only ones
+of norm at most ten lie over \(7\). There are at most two of these,
+since \(7\) is totally ramified in \(K\).
+Every ideal of norm \(<120\) is the unit ideal, a prime ideal, or a
+product of two prime ideals. There are at most \(6\cdot60\) prime
+ideals of norm \(<120\), since at most 60 rational primes are below
+120. In a product the smaller norm is at most ten and the other is
+at most \(120/7<18\), giving at most \(2\cdot6\cdot17\) products.
+Hence \(h_{K(\sqrt{29})}\le1+360+204<29^2\), as required.
+
+Taking a cubic character modulo \(7\) as the target gives
+\(p_K=11,\ p_1=13\) in the exceptional set defined below. The class
+number of \(\mathbf Q(\sqrt{-11})\) is one: its Minkowski bound
+\((2/\pi)\sqrt{11}<3\) and \(2\) is inert. Thus \(29\notin B_\chi\).
+The characters inflate to every host for this target. The two
+computations exhaust the twists in case III at this prime, uniformly
+in their size and in the host.
+
+\begin{corollary}[Case III on two families of targets]\label{famsel:hostdensity}
+For every target of two-power order, including the zeta target,
+case III is empty on every one of its hosts. For either primitive
+cubic target modulo \(7\), there is an explicit set of coefficient
+primes of relative natural density \(1/2\) among primes on which
+every case III strict group vanishes for all sufficiently large
+primes in the set, simultaneously in the host and the twist.
+\end{corollary}
+\begin{proof}
+In the host group of Proposition~\ref{host:art}, the kernel of
+the projection to the cyclic target image is a two-group. Every
+odd-order character is therefore inflated from that cyclic image.
+If the target order is a power of two, only the trivial character
+is possible, whereas case III requires a nontrivial one. This
+applies in particular to \(\psi=1\). There are still case II tests
+on the zeta hosts: for \(\ell=3\) and each odd \(e\ge3\) in the
+window take \(J_d\), where \(d>3\) is the auxiliary prime.
+It is a host character, is odd since \(d\equiv3\bmod4\), and its
+prime-to-three part away from three has order two.
+
+For a cubic target the only nontrivial odd-order host characters
+are the two cubic characters modulo \(7\). Their common field is
+\(K=\mathbf Q(\zeta_7)^+\), of class number one. Take primes
+\[
+    \ell\bmod 7\in\{2,3,4,5\},\qquad
+    \ell\bmod 12\in\{5,7,11\}.
+\]
+Both characters are nontrivial at \(\ell\). If \(\ell-1\mid e\),
+Proposition~\ref{newcoh:oddzero}(1) gives vanishing. For
+\(\ell\equiv3\bmod4\), admissible \(e\) is even, so
+\(\ell-1\mid 2e\) already gives \(\ell-1\mid e\).
+In the only remaining residue class, \(\ell\equiv5\bmod12\),
+the order of \(\ell\) modulo three is \(2>3/2\).
+Proposition~\ref{newcoh:oddzero}(2) gives vanishing for the other
+twists for all sufficiently large such \(\ell\), with a threshold
+depending only on \(K\). Imposing the further host local conditions
+preserves zero. There are \(4\cdot3=12\) such reduced classes
+out of \(\varphi(84)=24\) by the Chinese remainder theorem.
+The prime number theorem for this fixed modulus gives their
+relative natural density. Omitting the finitely many exceptional
+or small primes preserves that density.
+\end{proof}
+
+\subsection{An effective bound simultaneous in the conductor, twist and prime}
+
+\begin{theorem}\label{famsel:rate}
+For \(N,e\ge1\), sum the normalized strict lengths of
+Proposition~\ref{newcoh:fullsupport} over every prime and any set of
+distinct characters of modulus \(N\) at each prime. The coefficient
+fields may vary. With \(P=16Ne\) one has
+\[
+ \sum_{\ell,\psi}\frac{\log\ell}{e_{\ell,\psi}}
+       \operatorname{length}_{O_{\ell,\psi}}S_{\ell,\psi}
+       \ \le\ \exp(P^{102}).
+\]
+\end{theorem}
+\begin{proof}
+Put \(M=4N,\ F=\mathbf Q(\mu_M),\ d=[F:\mathbf Q],\ j=2e\)
+and \(H=\max(d+1,2j+2)\). The group \(K_j(\mathcal O_F)\) is finite.
+For its primary parts with \(\ell>H\), Bayer-Fluckiger, Emery
+and Houriet's Theorem~1.1~\cite{bayerEmeryHouriet} bounds the sum of
+their log orders by
+\[
+ B=(2j+1)^{71j^4d^3}\, d^{293j^5d^5}\,
+             |\operatorname{disc}F|^{528j^5d^4}.
+\]
+Indeed the subgroup generated by elements of order at most \(H\)
+has zero projection to these primary parts. We only use the
+large-prime consequence of their theorem.
+
+For \(\ell\le H\), let \(F'=F(\mu_\ell)\).
+Its degree over \(F\) divides \(\ell-1\). The extension of the two
+integer schemes after inverting \(\ell\) is finite \'{e}tale:
+adjoining \(\mu_\ell\) is unramified outside \(\ell\).
+On \'{e}tale \(H^2\) with the Tate twist \(e+1\), trace composed
+with pullback is multiplication by \([F':F]\). It is invertible
+at \(\ell\), by the finite-level trace identity and passage to the
+inverse limit. Via the even Quillen--Lichtenbaum comparison in
+Theorem~\ref{newcoh:lemmaK}, the primary group over \(F\) thus embeds
+in the one over \(F'\). The proof of that theorem bounds the order of
+the entire primary \(K\)-group, by \eqref{newcoh:transfer} and its
+subsequent estimates. The hypotheses on roots of unity hold over
+\(F'\) also at two, since \(4\mid M\). We have \(d'=[F':\mathbf Q]\le dH\)
+and \(|\operatorname{disc}F'|\le(MH)^{d'}\).
+Indeed \(F'\) has conductor dividing \(\operatorname{lcm}(M,\ell)\);
+the derivative of \(X^c-1\) at a primitive \(c\)-th root is divisible
+in the integers by \(\Phi_c'\) there. Taking norms gives the usual
+discriminant bound \(c^{\varphi(c)}\) for the cyclotomic field,
+using \(\mathbf Z[\zeta_c]=\mathcal O_{\mathbf Q(\mu_c)}\).
+It follows that
+\[
+ \log\#K_j(\mathcal O_F)
+ \le B+H\exp\!\left((jdH)^{32}(1+dH)\log(2MH)\right).
+\]
+Here \(d,j,H,M\le P\), \(2j+1\le P\), and
+\(\log|\operatorname{disc}F|\le d\log M\). Consequently
+\(\log B\le 892 P^{10}\log P\). The exponent in the second term
+is at most \(6P^{98}\log P\), using \(P\ge16\).
+Each term on the right is at most \(\exp(P^{100})\), including
+the factor \(H\). Thus \(\log\#K_j(\mathcal O_F)\le\exp(P^{101})\).
+Proposition~\ref{newcoh:fullsupport} now bounds the required sum by
+\(\varphi(N)(\exp(P^{101})+d\log(4Nde))\le\exp(P^{102})\).
+\end{proof}
+
+\begin{corollary}[Part of the window budget]\label{famsel:subwindow}
+Fix \(\varepsilon>0\). At a common host level \(N\), retain, for each
+positive integer twist \(e\), any distinct characters of primitive
+conductor \(f\) satisfying \(16fe\le x^{\varepsilon/204}\).
+At all sufficiently large \(x\), their total normalized strict length
+at level \(\ell N\), summed over the primes, twists and characters,
+is at most \(\exp(x^\varepsilon/2)\). The threshold depends only on
+\(\varepsilon\), independently of the host and coefficient fields.
+\end{corollary}
+\begin{proof}
+At fixed \(N\) an inducer modulo \(f\mid N\) has a unique inflation.
+A strict class at level \(\ell N\) satisfies in particular all the
+conditions at level \(\ell f\). Group by \(f,e\) and apply
+Theorem~\ref{famsel:rate} at \(f\). Each pair contributes at most
+\(\exp(x^{\varepsilon/2})\). Bounding each coordinate separately gives
+at most \(x^{\varepsilon/102}\) pairs. The sum is therefore at most
+\(x^{\varepsilon/102}\exp(x^{\varepsilon/2})\), whose logarithm
+\(x^{\varepsilon/2}+(\varepsilon/102)\log x\) is at most
+\(x^\varepsilon/2\) for sufficiently large \(x\).
+\end{proof}
+
+\subsection{The complementary twists and the field budget}\label{famsel:complement}
+Use \(v\) for the page scale, \(t=\lfloor v^{401}\rfloor\), and \(N\)
+for its host conductor. The scale of the final comparison is
+\(x=\kappa v\) with \(\kappa\) fixed. Already \(f=1,\ e=\lfloor v\rfloor\)
+eventually violates \(16fe\le v^{\varepsilon/204}\) in the active range
+\(0<\varepsilon<1/52\). We record which additional estimates enter
+at that same host.
+
+Fix the primitive target \(\chi\), of order \(o\) and conductor \(m\).
+Let \(p_K\) be the least prime \(p\ge7\), \(p\equiv3\bmod4\), prime
+to \(m\), let \(h_* = h_{\mathbf Q(\sqrt{-p_K})}\), and let \(p_1\)
+be the least prime congruent to \(1\) modulo the odd part of \(o\)
+and prime to \(2mp_K\). The fixed exceptional set is
+\[
+ B_\chi=\{3\}\cup\{\ell\text{ odd prime}:\ell\mid om p_K h_*p_1\}.
+\]
+At odd \(\ell\) use the host characters \(\psi\) with
+\(\psi(-1)=(-1)^e\), \(1\le e<t\). Case II requires \(e\ge2\), even
+order of the prime-to-\(\ell\) part of \(\psi\) with its local
+\(\ell\)-component removed, and
+\(\ell\in B_\chi\) or \(\ell-1\mid2e\). Case III requires
+\(\ell\notin B_\chi,\ \ell-1\mid2e\), and nontrivial \(\psi\) of
+odd order. On every host whose two auxiliary primes exceed \(2t+1\)
+and \(m,o,p_K,h_*,p_1\), the imported counts give a finite normalized
+length \(w_{\ell,e,\psi}=(\log\ell)\operatorname{length}_O
+S_{\ell N}(\mathbf Q,A)/e(O/\mathbf Z_\ell)\) at most
+\((\ell N e)^{C}\) in both cases. One exponent \(C\), the larger of
+the two source exponents, works for every such host and choice of
+coefficient rings for this target.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/StmtFields.lean}{59}{auxiliaries and exceptional primes},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{185}{host size and six cases}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{60}{uniform character bounds}.
+
+Let \(\mathcal S\) consist of all character entries with
+\(16fe\le v^{\varepsilon/204}\), and \(\mathcal R\) of the cases II
+and III outside \(\mathcal S\), deleting any entries proved zero
+above. For \(L=\max(2t,\max B_\chi)\), every entry of \(\mathcal R\)
+has \(\ell\le L\), since \(\ell-1\mid2e\) implies \(\ell\le2t-1\).
+There are at most \(N\) characters per prime and twist. Applying the
+explicit estimate in the proof of Corollary~\ref{famsel:subwindow}
+only to the first sum therefore gives
+\[
+ \sum_{\mathcal S}w_{\ell,e,\psi}+\sum_{\mathcal R}w_{\ell,e,\psi}
+ \le v^{\varepsilon/102}\exp(v^{\varepsilon/2})
+       + LNt\,(LNt)^{C}.
+\]
+On the admitted page \(\log(Nt)\le 2v^{\varepsilon/4}\).
+Since \(t\le v^{401}\), the logarithm of each summand is
+\(o(v^\varepsilon)\), uniformly on these hosts. The sum fits in
+\(\exp(v^\varepsilon/2)\) for sufficiently large \(v\).
+Only the second summand uses the imported bounds in cases II and III.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean}{167}{related finite-prime count outside the exceptional set} and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CMFieldExponentialBounds/LogConductorMulHeightLeOfPageN.lean}{6}{uniform conductor bound}.
+
+For clarity, the full sum over the CM field \(E\) has further terms.
+Away from \(B_\chi\) and two the remaining cases are I
+(\(\ell-1\nmid2e\)) and Z (the trivial character with
+\(\ell-1\mid2e\)). For I the imported estimate sums over any finite
+set of its primes \emph{before} bounding by \((Nt)^{C_1}\) for each
+\(e\), once both auxiliary primes exceed two additional test primes
+depending only on \(\chi\). Proposition~\ref{newcoh:zero} gives Z.
+Inside \(B_\chi\), case IV handles \(e\ge2\) with the indicated
+prime-to-\(\ell\) part of odd order via the fixed cyclotomic layer,
+and the two estimates for case V handle \(e=1\).
+Using the field-to-character comparison and the fixed-layer bounds,
+the source obtains the odd-prime plus contribution
+\((Nt)^{C'}+C'B\), where \(B=\exp(v^{4\varepsilon/5})\).
+The same window bounds the \(2\)-part by \(B\log2\); the odd-prime
+minus estimate is at most \(K\exp(8v^{\varepsilon/4})\).
+Consequently for every finite prime set \(S\), on that field,
+\[
+ \begin{aligned}
+ &\sum_{\ell\in S}\log\ell\sum_{1\le e<t}
+      \operatorname{length}_{\mathbf Z_\ell}
+      S_\ell(E,(\mathbf Q_\ell/\mathbf Z_\ell)(-e))\\
+ &\qquad\le B\log2+K\exp(8v^{\varepsilon/4})+(Nt)^{C'}+C'B
+       \le \exp(v^\varepsilon/2).
+ \end{aligned}
+\]
+Here \(C',K\) are independent of \(v\) and of the admitted host for
+fixed \(\chi\). The last inequality follows by taking logarithms
+and using the bound on \(\log(Nt)\). The comparisons on \(E\), the
+case I sum and the remaining nontrivial character bounds are used at
+the indicated source theorems. The preceding character inequality
+identifies the part of their input supplied by the independent estimates.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{53}{case I with both test primes},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/LayerLe.lean}{16}{fixed layer and field comparisons},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean}{16}{assembly of the counts}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CMFieldExponentialBounds/AdmissibleOfPageN.lean}{110}{dyadic, minus and plus contributions on one field}.

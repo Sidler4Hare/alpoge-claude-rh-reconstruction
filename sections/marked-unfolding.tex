@@ -1,0 +1,152 @@
+\subsection{Marked period components and absolute unfolding}
+
+Fix a rational Hermitian space \(W\) over \(E/F\), \(F=E^+\), its
+polarizing trace form and CM type. Take the identity auxiliary cover
+and its principal odd level \(M\), with
+\((M)=\mathfrak m\bar{\mathfrak m}\) and
+\(\mathfrak m+\bar{\mathfrak m}=O_E\).
+In the period description a component has a self-dual row lattice
+\(L\subset W\), the polarized half-level mark and the connected flag
+domain of its prescribed signature. A marking on one half of \(L/ML\)
+can equally be specified by its dual basis on the opposite half,
+using the fixed primitive \(M\)-th root for the Weil pairing.
+
+\begin{lemma}\label{munf:marks}
+Fix a reference row \(L_*\) with a basis of \(L_*/\mathfrak mL_*\).
+Every such marked period lattice in \(W\) can be carried by a rational
+isometry to a row equal to \(L_*\) at the primes of \(M\), with the
+specified basis on the \(\mathfrak m\)-half. Write \(\Delta\) for the
+rational unitary elements integral there and acting identically on this
+marked half of \(L_*\). Two transported rows lie in the same
+\(\Delta\)-orbit exactly when their polarized marked period lattices
+are isometric. The stabilizer of each row is its principal-level
+arithmetic group.
+\end{lemma}
+\begin{proof}
+Every place \(v\) of \(F\) above the level splits in \(E\), since a
+prime fixed by conjugation could not divide the product of the
+coprime conjugate halves. The polarization pairs the two summands of
+\(L/ML\) perfectly: the CRT idempotents are interchanged by the
+adjoint involution, so each summand is isotropic and is the dual of the
+other. This proves the equivalence of the two ways of specifying
+the marking, including at a prime power. Locally \(U(W)(F_v)\) is
+\(\mathrm{GL}_r(F_v)\) on the first factor, acting by the inverse
+adjoint on the second. Lift the indicated residue bases in both
+first-factor lattices to bases over the DVR. The matrix carrying one
+basis to the other carries the lattices onto one another. Its inverse
+adjoint carries the second lattices and the dual marks, by perfection.
+
+The resulting conditions on the tuple of local isometries form a
+nonempty open set. Rational isometries meet it. Indeed the Cayley
+map \(X\mapsto(1-X)(1+X)^{-1}\) identifies an open of the
+\(F\)-vector space of skew-adjoint endomorphisms with the unitary
+open where \(1+g\) is invertible. Every selected local open meets
+this chart: multiply its matrix by a norm-one scalar arbitrarily
+close to one, avoiding the finitely many prohibited eigenvalues.
+At these split places such scalars are \((t,t^{-1})\).
+Weak approximation on the vector space, in a fixed \(F\)-basis,
+now gives a single rational isometry. The transported lattices agree
+with \(L_*\) at the whole level. Globally, this is equivalent to the
+existence of a common denominator prime to the level in the two
+lattice inclusions: localize the finite torsion modules
+\((L+L_*)/L\) and \((L+L_*)/L_*\), then choose an annihilator
+congruent to one at those primes by CRT.
+
+An element of \(\Delta\) carrying one transported lattice to another
+preserves the mark on the first half, hence on the dual half.
+Conversely a marked isometry between the lattices extends uniquely
+by \(E\)-linearity to \(W\); its local action belongs to \(\Delta\).
+When the two rows agree this gives precisely the integral isometries
+acting identically modulo \(M\). To see the component statement in
+period coordinates, a complex framed polarized torus has a period
+lattice on its tangent space. An isomorphism lifts uniquely to its
+complex-linear derivative on the universal covers, so it induces
+the preceding integral isometry. Conversely transporting the
+complex structure and flag by an isometry gives isomorphic marked
+complex tori. For a fixed marked lattice the positive-plane domains
+are matrix balls with connected compact flag fibres; their product
+is connected. In a family of complex abelian varieties the integral
+homology, its trace pairing and the finite marking are locally
+constant in a topological trivialization. This gives exactly the
+isometry classes as component indices in the marked period model.
+\end{proof}
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/ExistsMoveMarked.lean}{133}{Rational transport of the marked basis},
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/ComponentEqOfMatchedLatticesMarkings.lean}{74}{identification of marked indices} and
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/ExistsComponentsLatticesMovedToLevelFamily.lean}{162}{distinct orbits after simultaneous transport}.
+
+\begin{proposition}[Unfolding the finite span]\label{munf:span}
+On the countable set of admissible rows let \(C\) be the equivariant
+matrix of Lemma~\ref{bfam:gram} and \(K\) the kernel of
+Proposition~\ref{arrep:reproduce}. Suppose the marked periodized
+kernel is the finite sum of paired theta series for the indicated
+column genus, with a single nonzero normalization. Then every
+bounded family of holomorphic forms of the prescribed weight and
+unitary multiplier on these row orbits lies in the span of those
+theta series. The conclusion also holds simultaneously on any finite
+collection of distinct row orbits.
+\end{proposition}
+\begin{proof}
+Write the input as \(F\) and put \(V=C^{-1}F\). Use the norm given
+by the supremum over all rows and orthoframes. The Neumann series
+converges in this norm and preserves the weight and multiplier,
+since \(C\) commutes with the action. It converges locally uniformly
+on the full domain by triangular equivariance and Gram--Schmidt,
+so \(V\) is holomorphic there. Its absolute value is bounded on all
+rows of the slab by one constant \(B\), by the compactness of the
+triangular factors in the proof of Proposition~\ref{arrep:reproduce}.
+For a fixed output \(a=(L,x)\) put
+\[
+          f_a(L',y)=C_{LL'}K(x,y)V_{L'}(y).
+\]
+On rows times the slab we have
+\[
+ \sum_{L'}\int_{S_\delta}|f_a(L',y)|\,dy
+       \le B\sum_{L'}|C_{LL'}|\int_{S_\delta}|K(x,y)|\,dy<\infty .
+\]
+Thus we may unfold under the countable diagonal action on this
+product with its counting and Lebesgue measures. The action
+preserves both measures.
+
+Here is an explicit reason a measurable fundamental set exists.
+Choose one \(L'\) in each row orbit. Its stabilizer is discrete in
+the real unitary group: on an integral basis of the underlying
+rank-\(2fr\) lattice it has integral matrix entries. It acts freely
+on the invertible frames and properly, since the isometries carrying
+one compact set of frames into another form a subset with compact
+closure (write \(g=y'y^{-1}\)). Cover the slab by countably many
+open patches disjoint from their nonidentity stabilizer translates.
+Keep in each patch the complement of the translates of all earlier
+patches. Their union meets every stabilizer orbit once and is Borel.
+The union on the representative rows is a diagonal fundamental set
+\(\mathcal D_0\). Absolute integrability and Tonelli now give
+\[
+ \sum_{L'}\int_{S_\delta}f_a(L',y)\,dy
+       =\int_{\mathcal D_0}\sum_{\gamma\in\Delta}
+                           f_a(\gamma L',\gamma y)\,d(L',y).
+\]
+The left side is \(\rho_\delta(CV)_L(x)=\rho_\delta F_L(x)\).
+On the right the multiplier law for \(V\) and the given periodized
+identity express the inner sum as \(\sum_{j=1}^s q_j(a)h_j(L',y)\),
+where the \(q_j\) form a basis selected from the finitely many theta
+series. The functions \(h_j\) are integrable even if a single
+uncombined term in the original genus expression has no known
+integral. Indeed choose \(s\) evaluations \(a_i\) for which
+\((q_j(a_i))\) is invertible: all evaluation vectors span
+\(\mathbf C^s\) by independence of the functions. The sums at these
+\(s\) points are integrable by the preceding absolute estimate, and
+matrix inversion expresses each \(h_j\) as their linear combination.
+The zero-dimensional span gives zero directly. Divide by the
+positive \(\rho_\delta\) to obtain the asserted finite expansion.
+For a collection of orbits extend the families by the equivariant
+law from each representative and by zero on the complement. The
+stabilizer law makes the extension well-defined and the unitary
+multiplier preserves its bound.
+\end{proof}
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/ExistsFundamentalDomain.lean}{138}{A fundamental set on lattice--frame pairs} and
+\src{src/Development/AbelianVarietyTheory/Proofs/SiegelThetaTransformation/HermitianThetaSeriesSpanBoundedForms.lean}{22}{finite rank after absolute unfolding}.
+
+For the rows of Lemma~\ref{munf:marks} in their common rational
+Hermitian space, use the graph sum of Proposition~\ref{dg:identity}.
+The passage to algebraic cusp sections then uses \eqref{bfam:reading}
+on that space with its marked multiplier.
+

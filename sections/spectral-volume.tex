@@ -1,0 +1,103 @@
+\begin{corollary}[Discriminant and level in the rank-three count]\label{rk3:volume}
+Let \(D=|\operatorname{disc}K|\) for an imaginary quadratic field \(K\).
+Let \(S\) consist of the two classical lists of
+Proposition~\ref{rk3:count}, at principal levels \(N\) over \(K\)
+and \(ND\) over \(\mathbf Q\), respectively, with one entry per
+system. For integers \(N,e\ge1\),
+\[
+ |S|\ll h_K D^4 N^{18}e^6+(ND)^4e
+       \ll D^5N^{18}e^6 .
+\]
+The constants are absolute. Consequently the integer of
+Lemma~\ref{rk3:integer}, under its trace hypotheses, satisfies
+\[
+ \log|C_p|\ll |J|D^5N^{18}e^7\log p .
+\]
+\end{corollary}
+\begin{proof}
+Put \(L=3N\) and \(X=\mathrm{SL}_3(\mathbf C)/\mathrm{SU}(3)\)
+with a fixed invariant Riemannian metric. As in
+Proposition~\ref{rk3:count}, pass to principal level \(L\) and
+divide out the real split centre. At infinity
+\(\mathrm{GL}_3(\mathbf C)/(\mathbf R_{>0}\mathrm U(3))\simeq X\).
+Determinant and strong approximation for \(\mathrm{SL}_3\) identify
+the connected components with the finite ray class group modulo
+\(L\mathcal O_K\). In fact the determinant image of the principal
+compact open is the subgroup of finite integral idelic units
+congruent to one at that modulus, as is seen on diagonal matrices.
+The map to the ordinary class group has kernel a quotient of
+\((\mathcal O_K/L\mathcal O_K)^\times\). There are thus at
+most \(h_K L^2\) components.
+
+For a finite adelic representative \(g\) of a component put
+\(\Lambda_v=g_v\mathcal O_{K_v}^3\). A member of its arithmetic
+stabilizer preserves these lattices and acts trivially modulo \(L\).
+Its determinant is a unit \(\epsilon\in\mathcal O_K^\times\) with
+\(\epsilon\equiv1\bmod L\). If \(\epsilon\ne1\), then
+\(0<|\operatorname{N}_{K/\mathbf Q}(\epsilon-1)|\le4\), whereas
+divisibility by \(3\) makes that norm divisible by \(9\).
+Hence the stabilizer is the level-\(L\) subgroup of
+\[
+ \Gamma_g^1=\mathrm{SL}_3(K)\cap
+          \prod_{v<\infty}\operatorname{Stab}_{\mathrm{SL}_3(K_v)}
+                                     (\Lambda_v).
+\]
+Its index in \(\Gamma_g^1\) is at most \(L^{16}\). Indeed, in a
+basis of each \(\Lambda_v\) the image of reduction at
+\(\mathfrak p_v^b\Vert L\mathcal O_K\) has size at most
+\[
+ |\mathrm{SL}_3(\mathcal O_{K_v}/\mathfrak p_v^b)|
+ =q_v^{8(b-1)}|\mathrm{SL}_3(\mathbf F_{q_v})|\le q_v^{8b}.
+\]
+Reduction is surjective, since a lift with unit determinant can be
+corrected by scaling one row. Each successive kernel is the additive
+space of trace-zero matrices over the residue field. Multiplication
+over \(v\) gives \(\operatorname{N}(L\mathcal O_K)^8=L^{16}\).
+
+Prasad's covolume formula applies to the split simply connected
+\(K\)-group \(\mathrm{SL}_3\). For every \(g\) each local stabilizer
+is hyperspecial, with integral model \(\mathrm{SL}(\Lambda_v)\)
+and reductive special fibre \(\mathrm{SL}_3\). They form a coherent
+collection, equal to the standard one almost everywhere. Strong
+approximation at the noncompact complex place gives the principal
+arithmetic group appearing in the formula. Its Haar covolume in
+\(\mathrm{SL}_3(\mathbf C)\) is
+\[
+ c_\infty D^{8/2}\prod_{v<\infty}
+   \frac{q_v^8}{|\mathrm{SL}_3(\mathbf F_{q_v})|}
+ =c_\infty D^4\zeta_K(2)\zeta_K(3).
+\]
+Here the Tamagawa number is one and the archimedean constant is
+fixed for the single complex place and the chosen Haar measure.
+In particular there is no dependence on the ideal class of \(g\).
+The local zeta factors give \(\zeta_K(j)\le\zeta(j)^2\) for \(j>1\).
+Prasad,
+\emph{Volumes of \(S\)-arithmetic quotients of semi-simple groups},
+\S\S3.3, 3.7 and 3.11~\cite{prasadVolume}.
+
+The level-\(L\) subgroup acts faithfully and without torsion, by
+its action on the underlying integral lattice modulo three. Its
+quotient of \(X\) is noncompact since \(\mathrm{SL}_3\) is \(K\)-split
+of positive rank. Its Riemannian volume is at most a fixed constant
+times \(D^4L^{16}\), by the covolume and index bounds. Gelander's
+theorem gives a homotopy-equivalent simplicial complex with at most
+a fixed multiple of this volume in vertices and uniformly bounded
+vertex degree. A vertex of degree \(b\) belongs to at most \(2^b\)
+simplices, so the same linear bound holds for all simplices.
+Local-coefficient cochains contribute at most \(e^6\) dimensions per
+simplex. Summing over the \(h_K L^2\) possible components and
+using cuspidal cohomology as in Proposition~\ref{rk3:count} proves
+the first term. The second follows from the same proposition over
+the fixed field \(\mathbf Q\) in rank two with \(M=ND\) and
+coefficient dimension \(2e\).
+Gelander,
+\emph{Homotopy type and volume of locally symmetric manifolds},
+Theorem 1.5(1)~\cite{gelanderVolume}.
+
+Minkowski supplies each ideal class with an integral ideal of norm
+at most \(\sqrt D\). There are at most \(\tau(m)\) ideals of norm
+\(m\), by the quadratic prime splitting possibilities. Consequently
+\(h_K\le\sqrt D(1+\log\sqrt D)\le D\).
+Finally \(q\le p^2\), so the per-factor logarithmic cost
+\(2e\log q+1\) of Lemma~\ref{rk3:integer} is \(O(e\log p)\).
+\end{proof}

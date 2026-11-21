@@ -1,0 +1,482 @@
+\subsection{Which ordinary points give classical spectra?}\label{spreal:section}
+
+Write \(k=\overline{\mathbb Q}_\ell\) and
+\(\varepsilon=\varepsilon_\ell\). A representation is called strongly
+irreducible if its restriction to every open subgroup is absolutely
+irreducible. We work with continuous representations at actual
+characteristic-zero points. They and their invariant lines can be defined
+over a finite coefficient extension, by Lemma~\ref{newgal:coeff} and
+extension of the coefficients of a finite basis.
+
+\begin{lemma}[Finite self-twists at an ordinary place]\label{spreal:twists}
+Let \(V\) be an irreducible representation of \(G_F\) of dimension \(n\).
+Suppose the semisimplification on inertia at one place \(v\mid\ell\)
+is a sum of characters \(\lambda_i\) whose restrictions to an open
+subgroup of inertia are \(\varepsilon^{m_i}\) for distinct integers \(m_i\).
+Every finite-order self-twist of \(V\) is unramified at \(v\).
+If \(\varepsilon(I_v)=\varepsilon(G_F)\), then
+\(V|_{G_{F(\mu_{\ell^\infty})}}\) is irreducible.
+\end{lemma}
+\begin{proof}
+If \(V\simeq V\otimes\nu\), then multiplication by \(\nu|_{I_v}\)
+permutes the \(\lambda_i\). On an open subgroup killing \(\nu\) the
+characters remain distinct, since the cyclotomic image there is
+infinite. The permutation is the identity, so \(\nu|_{I_v}=1\).
+Put \(H=\ker\varepsilon\). The restriction to \(H\) is semisimple:
+the sum of its simple submodules is nonzero and \(G_F\)-stable.
+If it were reducible, its commutant would contain a nonzero traceless
+endomorphism, obtained by subtracting a scalar from an equivariant
+projection. The abelian quotient \(G_F/H\) acts on the space of such
+endomorphisms by commuting operators. A common eigenvector \(T\ne0\)
+gives an intertwiner with a character twist. Its kernel is
+\(G_F\)-stable, so \(T\) is invertible. Schur's lemma and
+\(\operatorname{tr}T=0\) exclude the trivial character. Taking
+determinants shows that the character has order dividing \(n\).
+It is continuous from its action on the line \(kT\). Triviality on
+\(I_v\) and surjectivity onto the cyclotomic quotient give a contradiction.
+\end{proof}
+
+For the rank-three datum let \(K/\mathbb Q\) be the imaginary quadratic
+field, \(\eta\) its character, and \(\Psi=\psi\varepsilon^e\).
+Use the prime and character hypotheses in Section~\ref{rk3:sec}.
+In particular \(\ell\nmid D_K h_K\operatorname{ord}(\psi)\),
+\(\psi_\ell^2=1\), and \(\ell-1\nmid2e\). Thus \(\ell\ge5\).
+The normalized matrix at complex conjugation is the identity with
+negative sign. On \(G_K\) the residual matrices are diagonal with
+characters \(\bar\Psi,1,\bar\Psi^{-1}\). Away from \(\ell\) the
+prescribed inertia kernel kills elements with trivial residual action.
+At \(\ell\) put \(J=I_\ell\cap\ker\psi_\ell\); here \(I_\ell\subset G_K\).
+The ordinary equations of Section~\ref{ct:section} apply on \(J\).
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeGroups/RhoKApply.lean}{76}{Defining equations for a characteristic-zero point}.
+
+\begin{lemma}[The inertia flag]\label{spreal:flag}
+On \(J\) the ordinary equations give an upper triangular flag with
+ordered diagonal \((\varepsilon^e,1,\varepsilon^{-e})\). This holds
+over \(k\) and over \(k[\delta]/(\delta^2)\) at deformations of such
+a point. The flag is stable under every positive-sign element of the
+decomposition group. Its graded inertia characters on \(I_\ell\)
+are the indicated powers times characters of \(I_\ell/J\).
+\end{lemma}
+\begin{proof}
+Choose \(s\in J\) with infinite cyclotomic value. The prescribed
+characteristic polynomial has three distinct constant roots at \(s\).
+Its Lagrange projectors split the free module into three free lines,
+also over the dual numbers. In the ordered product of three shifted
+matrices, put \(g\in J\) in position \(a\) and \(s\) in the other
+two. In the eigenbasis the \((i,j)\) entry for \(i\ge a\ge j\)
+is the corresponding entry of the \(a\)-th shifted matrix times
+a unit. Taking \(a=j\) annihilates all lower entries and imposes
+the stated diagonal. The common \(\varepsilon^e\)-eigenline is
+uniquely specified by its eigenvalue at \(s\). The same description
+in the quotient gives the next line. As \(J\) is normal and these
+characters are conjugation invariant, the flag is preserved.
+The extra inertia factors on the graded lines are trivial on \(J\).
+\end{proof}
+
+\begin{proposition}[The endoscopic block]\label{spreal:end}
+Suppose the normalized rank-three point is of type II: on \(G_K\) it
+preserves the middle coordinate and the outer coordinate plane,
+and its action on the latter is irreducible. There is an odd
+representation \(W\) of \(G_{\mathbb Q}\), with determinant \(\eta\),
+such that the point restricts to \(1\oplus W|_{G_K}\). This \(W\)
+is the normalized representation of a classical cuspidal newform
+of weight \(2e+1\). Its automorphic representation has invariants
+at principal level \(N|D_K|\).
+\end{proposition}
+\begin{proof}
+On \(G_K\) denote by \(m\) the middle character and by \(d\) the
+determinant of the whole representation. Both reduce to one. On \(J\)
+the determinant is one by Lemma~\ref{spreal:flag}, and \(m\) is one
+of its three constituents. The reduction of \(\varepsilon^e\) is
+nontrivial on \(J\): otherwise the image of
+\(\bar\varepsilon^e(I_\ell)\) has order at most two, contrary to
+\(\ell-1\nmid2e\). Here \(\bar\varepsilon(I_\ell)=\mathbb F_\ell^\times\).
+It follows that \(m|_J=1\). Since \([I_\ell:J]\le2\), reduction
+detects both characters on \(I_\ell\). The argument holds at every
+place of \(K\) over \(\ell\): conjugating from the marked place
+either conjugates the matrices or takes their conjugate inverse
+transposes, reversing and negating the three exponents together.
+At primes away from \(\ell\), the inertia action on \(G_K\) factors
+through its residual image by the kernel condition. This image has
+order dividing \(\operatorname{ord}(\psi)\), prime to \(\ell\).
+Thus \(m,d\) are unramified globally, and their images in the group
+of principal units factor through \(\operatorname{Cl}(K)\). Since
+\(\ell\nmid h_K\), both are trivial.
+
+Let \(B(h)\in\mathrm{SL}_2(k)\) be the outer block for \(h\in G_K\).
+Take \(W(h)=B(h)\) and \(W(c)=D=\operatorname{diag}(-1,1)\) at
+complex conjugation. With \(J_2\) the antidiagonal unit matrix,
+\(J_2B^{-t}J_2=DBD^{-1}\) whenever \(\det B=1\).
+This is the action of \(c\) on the corner, and \(c^2=1\), giving the
+claimed extension, determinant and oddness. It is continuous on the
+two cosets and irreducible already on \(G_K\).
+
+On \(J\) the highest inertia line of Lemma~\ref{spreal:flag} belongs
+to the outer plane, since the middle character is one. In \(W\) it
+is the unique common \(\varepsilon^e\)-eigenline, so normality of
+\(J\) makes it stable under the full decomposition group. The two
+graded characters on inertia have powers \(e,-e\) with finite parts
+trivial on \(J\). Over the finite local extension killing the finite
+parts the two characters are crystalline. Their ratio \(U\), upper
+line divided by quotient, is an unramified twist of \(\varepsilon^{2e}\).
+Over that local field \(L\) both \(H^0(L,U)\) and \(H^0(L,U^*(1))\)
+vanish since \(2e\ge2\). The local Euler characteristic formula gives
+\(\dim H^1(L,U)=[L:\mathbb Q_\ell]\) over the coefficient field.
+The Bloch--Kato dimension formula gives the same dimension for
+\(H^1_f(L,U)\), since \(\operatorname{Fil}^0 D_{\rm dR}(U)=0\).
+The extension is therefore crystalline over \(L\) and de Rham over
+\(\mathbb Q_\ell\), with distinct jumps \(\{-e,e\}\).
+
+The representation is unramified outside \(\ell N D_K\).
+Pan's regular Fontaine--Mazur theorem now gives a cuspidal eigenform
+up to twist. Its weight is one plus the difference of the two jumps.
+In the geometric Frobenius convention of Section~\ref{rk3:sec}, the
+cohomological representation is \(W\varepsilon^{-e}\), with jumps
+\(0,2e\). A finite character twist is absorbed into the newform.
+Pan's only extra regular-case restriction for odd primes concerns
+\(\ell=3\), already excluded here.
+See \cite[Theorem 1.0.4]{panFM}.
+
+For \(v\nmid\ell\), \(I_v\cap G_{K(\mu_N)}\) acts trivially by the
+residual kernel condition. Thus inertia acts through a subgroup of
+the finite abelian group \(\operatorname{Gal}(K(\mu_N)/\mathbb Q)\),
+and its characters extend to that group. At \(\ell\), the finite
+inertia characters are trivial on \(J\), hence are either trivial
+or the prescribed quadratic local component, which likewise extends
+with modulus dividing \(N\). Since \(K\subset\mathbb Q(\mu_{|D_K|})\),
+Proposition~\ref{newgal:level} gives the claimed level. In particular
+the classical trace and its nonvanishing comparison in
+Lemmas~\ref{rk3:purity} and~\ref{rk3:integer} apply to every such block.
+\end{proof}
+
+\begin{proposition}[Strong irreducibility at the rank-three points]\label{spreal:strong}
+The representation on \(G_K\) at every type I point and the outer
+two-dimensional constituent at every type II point are strongly
+irreducible. Both remain irreducible on \(G_{K(\mu_{\ell^\infty})}\).
+\end{proposition}
+\begin{proof}
+Call the relevant irreducible representation \(V\) and put
+\(d=\dim V\in\{2,3\}\). The inertia characters of
+Lemma~\ref{spreal:twists} occur by Lemma~\ref{spreal:flag} and
+Proposition~\ref{spreal:end}. As \(K\) is unramified at \(\ell\),
+its local inertia already surjects onto \(\mathbb Z_\ell^\times\),
+by total ramification of the local cyclotomic tower. This proves
+the second assertion.
+
+Suppose restriction to an open subgroup is reducible, and replace
+that subgroup by its normal core \(H\). As in Lemma~\ref{spreal:twists},
+the restriction to \(H\) is semisimple. Conjugation permutes its
+isotypic spaces transitively, so their number times their common
+multiplicity times the dimension of a simple constituent is \(d\).
+Primality of \(d\) leaves two possibilities. A scalar restriction
+to \(H\) contradicts the distinct characters on \(H\cap J\).
+Otherwise there are \(d\) distinct lines permuted transitively.
+Choose a stable lattice and replace it by the direct sum of its
+intersections with these lines, enlarging coefficients if necessary.
+In generators of these rank-one lattices the matrices are monomial
+with unit coefficients. Their reduction has order prime to \(\ell\):
+its diagonal subgroup lies in a product of finite residue-field
+multiplicative groups and its permutation quotient has order
+dividing \(d!\). Thus the reduction is semisimple. Independence of
+residual semisimplification from the lattice now identifies it with
+a sum of the given global characters. Its image is abelian, and
+its permutation quotient, unchanged by reduction of the units, is
+transitive abelian of prime degree. It is cyclic of order \(d\).
+
+Let \(\nu\) be a faithful character of that quotient. The operator
+which multiplies the successive lines in cyclic order by successive
+powers of a primitive \(d\)-th root intertwines \(V\) with the
+corresponding twist (up to replacing \(\nu\) by its inverse).
+Lemma~\ref{spreal:twists} gives \(\nu|_{I_\ell}=1\). Its reduction
+has order \(d\), and twisting must permute the residual constituents.
+In dimension three those constituents are
+\(1,\bar\Psi,\bar\Psi^{-1}\), so the orbit of \(1\) consists of all
+three powers of \(\bar\nu\). In dimension two the two constituents
+are \(\bar\Psi,\bar\Psi^{-1}\), so \(\bar\nu=\bar\Psi^2\).
+In either case \(\bar\Psi^2|_{I_\ell}=1\), contrary to
+\(\bar\Psi^2|_{I_\ell}=\bar\varepsilon^{2e}|_{I_\ell}\ne1\).
+\end{proof}
+
+\begin{corollary}[The polarized adjoint at an endoscopic point]\label{spreal:endrig}
+For the characteristic-zero coefficient space \(A=M_3(k)\) with
+the polarized adjoint action of a type II point,
+\(H^1_f(\mathbb Q,A)=0\).
+\end{corollary}
+\begin{proof}
+Decompose matrices into the outer endomorphism block, the middle
+scalar, and the two off-diagonal rectangles taken together. All
+three spaces are stable, since \(c\) acts by negative reversed
+transpose. The outer block is the polarized adjoint of \(W|_{G_K}\).
+Indeed its polarization matrix for this action is \(J_2\), the
+product of the alternating determinant pairing
+\(\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\)
+and \(W(c)^{-1}\). Cyclic base change of the modular form to \(K\)
+is cuspidal: a noncuspidal quadratic base change is induced from a
+character of \(K\), which would give reducible restriction to
+\(G_K\). The normalized Tate twist does not affect the adjoint.
+Propositions~\ref{spreal:strong} and~\ref{newgal:adselmer} give its
+Selmer vanishing. For the other summands restriction to \(K\) is
+injective on rational cohomology by restriction and corestriction
+and takes finite classes to finite classes. Over \(K\) the scalar
+is trivial. A finite local class in \(H^1(K_v,k)\) at \(v\mid\ell\)
+is unramified: the unramified line is crystalline and exhausts the
+finite subspace by its dimension. A global everywhere unramified
+additive character of \(G_K\) vanishes by class field theory.
+
+The off-diagonal part over \(K\) is \(W|_{G_K}\oplus W^*|_{G_K}\).
+These two representations are isomorphic since \(\det W|_{G_K}=1\).
+For the weight \(k_0=2e+1\) newform just obtained, denote its
+cohomological representation by \(V_f\). In Kato's convention
+\(W=V_f(e)\). Here \(1\le e\le k_0-1\) and \(2e\ne k_0\).
+Kato's Theorem~14.2(1) over the finite abelian extension \(K/\mathbb Q\)
+gives finiteness of the discrete Bloch--Kato group for any stable
+lattice in this twist. To pass to rational coefficients, the image of
+the vector-space Selmer group under reduction in the discrete group
+is divisible and hence zero. Its kernel is contained in the image
+of integral \(H^1(G_{K,S},T)\), a finitely generated lattice module
+for a finite \(S\) containing the ramification and \(\ell\).
+A vector space contained in such an image is zero. This argument
+may be made over the original finite coefficient field and then
+extended to \(k\) as in Proposition~\ref{newgal:adselmer}.
+See \cite[\S14.1 and Theorem 14.2(1)]{katoZeta}.
+\end{proof}
+
+The fixed ordinary equations place every continuous tangent cocycle
+at this point in \(H^1_f\).
+At a prime away from \(\ell\) its restriction to inertia factors
+through a finite group, both for the point and the lift, by the
+fixed kernel condition. Finite-group cohomology over \(k\) vanishes
+in positive degree. At \(\ell\) pass to a finite local extension
+inside the positive-sign subgroup killing the finite graded inertia
+characters. By Lemma~\ref{spreal:flag} the lift over the dual numbers
+has a stable ordered flag. Each rank-one graded module, regarded as
+a two-dimensional representation over the coefficient field, is an
+unramified representation tensored with its fixed cyclotomic power
+and is crystalline. Successive extensions, taken in the order of the
+flag, are crystalline as well. Indeed the Hom from a later graded
+piece to the already constructed part has a filtration with factors
+unramified characters times \(\varepsilon^s\) for \(s\ge e\ge1\).
+It is crystalline and its de Rham filtration in degree zero vanishes.
+When \(e\ge2\), distinct exponents alone imply that its dual twist
+has no invariants. For \(e=1\) we use the modular block at the
+coefficient prime. Its normalized Weil--Deligne parameter has zero
+monodromy by potential crystallinity in Proposition~\ref{spreal:end}.
+The full comparison at \(\ell\) in Proposition~\ref{newgal:level}
+identifies it in the weight-zero normalization with the local
+parameter of the unitary newform. This parameter is tempered by
+Blasius's Theorem~1 for holomorphic forms of weight at least two.
+With zero monodromy its Weil Frobenius eigenvalues have magnitude
+one, also after finite local restriction. The middle character is one.
+Every ratio of two graded characters after setting \(\delta=0\)
+thus has Weil Frobenius eigenvalue of magnitude one, whereas
+\(\varepsilon\) gives \(q_L^{-1}\) on geometric Frobenius.
+No such ratio is \(\varepsilon\), so the dual twist has no invariants
+in this case either.
+See \cite[Theorem 1]{blasiusRam}.
+The same local dimension
+calculation as in Proposition~\ref{spreal:end} gives \(H_f^1=H^1\).
+The lifted representation and its reduction being crystalline there,
+their extension class becomes a coboundary over \(B_{\rm cris}\).
+Restriction on cohomology with these period coefficients is injective
+for finite local extensions by corestriction. The global tangent
+class is therefore finite. Corollary~\ref{spreal:endrig} makes it a
+coboundary, giving infinitesimal rigidity modulo conjugation at
+these endoscopic points.
+
+\begin{proposition}[Finite tangent classes on the rank-four component]\label{spreal:four}
+For the good rank-four datum, at every actual characteristic-zero
+point every tangent arising from the specified component gives a
+finite local extension class in the adjoint at every finite prime.
+\end{proposition}
+\begin{proof}
+Put \((\theta_i)=(\alpha\Psi,\Psi,\alpha,1)\). The ordinary
+equations in Proposition~\ref{dp:local} give a flag with graded inertia
+characters \(\theta_i\), also over the dual numbers. The proof with
+projectors there applies at any point: the distinguished inertia
+matrix has the same four distinct eigenvalues \(d_i=\theta_i(s_0)\).
+After killing the finite inertia factors the four powers of
+\(\varepsilon\) are \(e+1,e,1,0\). Denote the characteristic-zero
+graded characters on the full decomposition group by \(\kappa_i\).
+
+Let \(\sigma=s_\ell\) be the specified Frobenius lift with
+\(\varepsilon(\sigma)=1\). We claim
+\(\overline{\kappa_i(\sigma)}=\overline{\theta_i(\sigma)}\)
+with the indicated labels, even if some residual eigenvalues coincide.
+The component hypothesis provides a complete local domain \(B\)
+with an ordinary matrix family \(R\), specializing to the diagonal
+point and to the given point. Invert the nonzero constant
+\(a=\prod_{i<j}(d_i-d_j)\). On \(B[1/a]\) the projectors
+\(P_i\) of \(R(s_0)\) have rank one. Indeed their ranks are locally
+constant on this connected spectrum and are one at the diagonal
+specialization. The triangular equations make
+\(b_i=\operatorname{tr}(P_iR(\sigma))\) the scalar on the
+corresponding flag quotient, so that \(b_i\) is a root of the
+characteristic polynomial of \(R(\sigma)\).
+Over the Henselian ring \(B\) that polynomial splits into monic
+factors \(F_u\), one for each distinct residual eigenvalue \(u\),
+with \(\bar F_u=(X-u)^{n_u}\). In the domain \(B[1/a]\)
+exactly one \(F_u(b_i)\) vanishes, by coprimality. The diagonal
+specialization shows that its label is
+\(u=\overline{\theta_i(\sigma)}\). At the other specialization
+the same factor vanishes, proving the claim. In this argument any
+\(O\)-algebra specialization \(B\to\overline{\mathbb Q}_\ell\)
+is integral and reduces to the given residual map. Indeed an
+element of negative valuation has a polynomial relation over
+\(O\) with constant term one and all higher coefficients in
+\(\mathfrak m_O\), by using the minimal polynomial of its inverse
+over \(E\). Such a relation gives a unit in \(B\). For an element
+of \(\mathfrak m_B\) mapping to a unit, its image has monic
+minimal polynomial with unit constant term, again impossible.
+
+Let \(I_0=I_\ell\cap\ker\psi\cap\ker\omega\). In the quotient of
+the local group by \(I_0\) take the closed subgroup generated by
+\(\sigma\) and call its preimage \(G_L\). The generated procyclic
+subgroup maps isomorphically to \(\widehat{\mathbb Z}\), since its
+generator maps to a Frobenius generator there. Thus \(L\) is finite,
+\(G_L\cap I_\ell=I_0\), and \(\sigma\in G_L\).
+For any higher and lower graded characters, their ratio differs from
+\(\varepsilon\) on this group. If their exponents do not differ
+by one this follows on \(I_0\). The ratios with exponent difference
+one are those with underlying diagonal ratio \(\alpha\), or
+\(\Psi/\alpha\) if \(e=2\). Since \(\bar\alpha(\sigma)=
+\bar\xi(\sigma)\), the good-datum condition
+\(\bar\xi(\sigma)\bar\Psi(\sigma)^i\ne1\) for \(i=0,-1\)
+proves the assertion by the labeled congruence.
+
+The dual-number flag reduces modulo \(\delta\) to this same flag,
+by the distinct labeled eigenvalues at \(s_0\). On \(G_L\) its
+graded pieces are unramified two-dimensional representations times
+their cyclotomic powers. For successive extensions from a later
+piece to the already constructed part, the Hom has strictly positive
+cyclotomic exponents and its dual twist has no invariants by the
+preceding test. As in the rank-three calculation the local Euler
+and Bloch--Kato formulas give \(H^1=H^1_f\), inductively giving
+crystallinity over \(L\) and finiteness of the extension class over
+\(\mathbb Q_\ell\). At every other prime the point and its tangent
+kill a common finite-index subgroup of inertia by the prescribed
+kernel conditions. Averaging over the finite quotient gives the
+unramified cohomology condition.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/DecompSigmaOrd.lean}{27}{The domain and the two specializations},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/PadicHodgeTheory/SplAdjUnit.lean}{264}{the labeled Frobenius congruence}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/TbTriDiag.lean}{310}{the local nonresonance test}.
+\end{proof}
+
+For each irreducible point choose an imaginary quadratic \(K\)
+unramified at \(\ell\) with irreducible restriction as in
+Lemma~\ref{rk4:quadratic}. Its local inertia has full cyclotomic
+image. Thus Lemma~\ref{spreal:twists} verifies the cyclotomic
+irreducibility needed by Proposition~\ref{newgal:adselmer}.
+A regular polarized cuspidal attachment over this \(K\) therefore
+suffices for rank-four rigidity by Proposition~\ref{spreal:four}
+and the symplectic projection of
+Section~\ref{newgal:section}.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/SymplecticGSp4/MapRepApply.lean}{99}{Polynomial projectors in the ordinary local deformation condition}.
+
+\begin{lemma}[The excluded rank-four block]\label{spreal:even}
+Suppose a rank-four point preserves the two coordinate planes of
+the block condition. If its representation \(V\) on coordinates
+\(1,3\) (one-based indices) is irreducible, it is strongly
+irreducible, potentially crystalline with distinct weights at
+\(\ell\), and even. Its residual semisimplification is
+\(\bar\alpha\bar\Psi\oplus\bar\alpha\).
+\end{lemma}
+\begin{proof}
+The integral specialization gives the asserted residual characters.
+At complex conjugation their common value is \(-1\), since
+\(\Psi(c)=1\), \(\xi(c)=-1\) and \(\bar\omega=\bar\varepsilon\).
+An involution reducing to \(-I\) is itself \(-I\) in odd residual
+characteristic, by the idempotent \((1+c)/2\). The block inherits
+potential crystallinity from Proposition~\ref{spreal:four}'s
+local argument. Intersecting its plane with the full flag gives
+two distinct exponents on open inertia, since all four are distinct.
+The image of inertia is finite away from \(\ell\).
+
+If \(V\) becomes reducible on an open subgroup, pass to its normal core.
+The scalar case is excluded by the exponents. The other possibility,
+by the isotypic decomposition in Proposition~\ref{spreal:strong},
+is induction of a character \(\lambda\) from a quadratic field \(L\).
+This field is real since \(c\) fixes both lines. If \(\ell\) is
+nonsplit in \(L\), its decomposition group exchanges the two lines.
+Their characters on a common open inertia subgroup then have the
+same cyclotomic exponent, as conjugation preserves the cyclotomic
+character. If \(\ell\) splits, write \(m_1,m_2\) for the exponents
+of \(\lambda\) at the two places. Take a nontrivial totally positive
+unit \(u\) of norm one in \(L\). Replacing it by a power kills its
+image under the finite inertia characters at every other ramified
+place, and puts it in the open unit subgroups with the specified
+cyclotomic powers at the two places over \(\ell\). Global reciprocity
+on the principal idele of \(u\) gives
+\(\iota_1(u)^{m_1}\iota_2(u)^{m_2}=1\), up to simultaneous
+inversion according to the reciprocity convention. As
+\(\iota_1(u)\iota_2(u)=1\) and \(u\) has infinite order, this gives
+\(m_1=m_2\), again impossible. This proves strong irreducibility.
+\end{proof}
+
+The rank-four block exclusion would therefore follow from the even
+two-dimensional Fontaine--Mazur assertion for these ordinary, residually
+split representations. The oddness in Pan's theorem fails precisely
+on this block. Calegari's ordinary theorem assumes
+\(\ell>7\) and residual image containing \(\mathrm{SL}_2(\mathbb F_\ell)\).
+The displayed residual semisimplification rules out this image for
+every choice of lattice. See \cite[Theorem 1.2]{calegariEven}.
+
+The missing higher-rank assertion is cuspidal attachment for every
+relevant characteristic-zero irreducible point. For example, the
+residually reducible lifting theorem of Allen, Newton and Thorne
+requires in its Theorem~1.1(4) that the distinct residual constituents
+be individually conjugate self-dual with the same multiplier.
+After a common twist the actual rank-three constituents have ratios
+\(\bar\Psi,\bar\Psi^{-1}\) to the middle character, both pulled back
+from \(\mathbb Q\). Individual polarization would make each ratio
+self-inverse, thereby identifying the two outer characters, contrary
+to the distinctness hypothesis. This obstruction persists under
+restriction to a CM extension and any common character twist:
+either the square remains nontrivial or the outer characters coincide.
+In rank four the residual characters up to twist are
+\(1,a,b,ab\), with \(a=\bar\alpha\) and \(b=\bar\Psi\), again
+restricted from \(\mathbb Q\). If condition (4) holds, \(a,b\)
+are independent quadratic characters. For \(H=\ker a\) the sum
+of these four characters is \(\operatorname{Ind}_{H}^{G_F}(1\oplus b|_H)\),
+contradicting the residual primitivity in (7). This is also invariant
+under common twisting and applies after any CM restriction.
+Conditions (5)--(6) of the same theorem independently require a place
+away from \(\ell\) with consecutive unramified cyclotomic twists in
+the characteristic-zero local semisimplification, and an ordinary
+congruent cuspidal seed which is a Steinberg twist there.
+See \cite[Theorem 1.1]{antLifting}.
+
+The precise rank-three statement used by the source gives a conjugate
+self-dual cuspidal attachment of \(r|_{G_K}\varepsilon^{-1}\) for
+every ordinary point over a finite coefficient DVR whose restriction
+to every open subgroup of \(G_K\) is irreducible. Proposition
+\ref{spreal:strong} supplies this last hypothesis. The proposed passage
+uses an auxiliary CM frame, arbitrarily large weights in a prescribed
+residue class supporting adjoints of rank-two seeds, propagation in the
+ordinary determinant space to the specified point, and descent to
+\(K\). To reach the given point one must show its restriction lies
+on the automorphic quotient and then descend the attachment. Existence
+of a seed at each high weight supplies only points on the seed locus.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AutEnd3AltAlt.lean}{20}{The ordinary-point assertion},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/SymUse.lean}{27}{the cofinal-weight seed assertion}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/GdEndOf.lean}{22}{the linked-point and descent inputs}.
+
+For rank four the asserted output gives, for every imaginary quadratic
+\(K\) on which the restriction stays irreducible, the cuspidal
+representation and the prescribed comparison witness. On a sufficiently
+deep auxiliary tower the proposed proof constructs an ideal \(J\)
+in a universal determinant algebra. Specializations killing \(J\)
+at the prescribed weights must be pure and, in the irreducible
+case, automorphic after descent. To use these implications at the
+given point one also needs a specialization killing \(J\) which
+realizes its restriction, up to conjugacy, with the labeled inertia
+characters. In the case with four seed characters the chain assertion
+upgrades membership of some component over a residual specialization
+to membership of all components after the stated dimension bound
+\(30(C+1)^2\le d\). Establishing the existence of \(J\) with those
+arithmetic properties and the coverage of the specific point remains
+necessary to convert the finite orbit estimate into a comparison for
+the entire Selmer module.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/AutomorphyLifting/IsAutCsdA.lean}{16}{The quantifier over quadratic restrictions},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PotentialModularityTower.lean}{63}{the ideal and its required specialization},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PromodularityCaseThree.lean}{26}{the component propagation}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ModularityRankFourOfPromodularity.lean}{20}{the implication to finiteness, block exclusion, and automorphy}.

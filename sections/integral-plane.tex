@@ -1,0 +1,78 @@
+\paragraph{Removing a hyperbolic plane on the given lattice.}
+The integral part of the change of model admits the following direct
+construction. It will allow the local descent to use a rational plane
+while retaining the lattice at every finite place.
+
+\begin{proposition}\label{famtheta:plane}
+Let \(E/F\) be the CM extension in the theta tower, unramified at
+every finite place. Let \(L\) be a lattice in an \(E\)-space of
+dimension \(n\ge3\), with nondegenerate Hermitian or skew-Hermitian
+form \(b\), linear in its first argument. Suppose \(L\) is self-dual
+for an invertible conjugation-stable fractional ideal \(\mathfrak d\)
+and the form has both signs at each infinite place (after multiplication
+by an imaginary scalar in the skew case). There are rational isotropic
+vectors \(x,y\) with \(b(x,y)=1\) for which
+\[
+ L=(L\cap Ex)\ \oplus\ (L\cap Ey)\ \perp\ L_0 .
+\]
+Here the first two lines are paired perfectly with values in
+\(\mathfrak d\), and \(L_0\) is self-dual for \(\mathfrak d\).
+At any prescribed finite set of split places where
+\(\mathfrak d_w=\mathcal O_{E,w}\) on both sides, the two vectors
+may simultaneously be taken as local generators of their lines.
+\end{proposition}
+\begin{proof}
+In the skew case multiply \(b\) temporarily by a nonzero element
+negated by conjugation. The associated \(F\)-quadratic form
+\(v\mapsto b(v,v)\) for the resulting Hermitian space is nondegenerate
+of dimension \(2n\). It is indefinite at every real place and isotropic
+at every finite place, since quadratic forms over a finite extension
+of \(\mathbf Q_p\) of dimension at least five are isotropic (also for
+\(p=2\)). Hasse--Minkowski supplies a rational isotropic \(E\)-line
+\(U\) for the original form. The intersection \(I=L\cap U\) is
+saturated and of rank one. Both \(I\) and \(L/I\) are torsion-free
+finite modules over the Dedekind ring \(\mathcal O_E\), hence projective.
+In particular \(I\) is a direct summand as a module.
+
+Put \(J=\operatorname{Hom}_{\mathcal O_E}(\bar I,\mathfrak d)\),
+where the bar denotes the conjugate module. Self-duality identifies
+\(L\) with \(\operatorname{Hom}(\bar L,\mathfrak d)\) by the pairing.
+Restriction to \(\bar I\) is onto by the direct summand property.
+Choose an integral section \(s:J\to L\) of this restriction,
+using projectivity of \(J\). The pairing of \(sJ\) and \(I\)
+is perfect in both directions, by biduality of the invertible modules
+and conjugation stability of \(\mathfrak d\).
+Choose \(\theta\in\mathcal O_E\) of trace one. Indeed the trace ideal
+is the unit ideal locally at every finite prime: at a split prime
+this is addition, and in an unramified quadratic extension it follows
+by reduction from the surjective residue-field trace. This argument
+also covers residue characteristic two.
+There is a unique linear map \(C:J\to I\) with
+\[
+ b(Cj,sj')=\theta\, b(sj,sj')\qquad (j,j'\in J)
+\]
+by the perfect pairing. Hermitian symmetry with its given sign implies
+\(b(sj,Cj')=\bar\theta b(sj,sj')\). Since \(b(I,I)=0\), the map
+\(s'=s-C\) is another section and \(b(s'J,s'J)=0\).
+The Gram pairing on \(I\oplus s'J\) has zero diagonal blocks and
+perfect off-diagonal blocks. It is self-dual for \(\mathfrak d\).
+For any \(z\in L\), its pairing functional on this submodule is thus
+realized by a unique vector inside it. Subtracting that vector gives
+the orthogonal projection to \(L_0\). This proves the integral
+decomposition and self-duality of the complement. The two summands
+of the plane are precisely the full lattice intersections with their
+rational spans.
+
+Choose a rational generator \(x\) of \(I\otimes E\); by weak
+approximation scale it to generate \(I\) at all the indicated primes.
+There is a unique \(y\in(s'J)\otimes E\) with \(b(x,y)=1\). Perfection
+and \(\mathfrak d_w=\mathcal O_{E,w}\) make it a generator at the
+same places, including the conjugate primes. Complete these two vectors
+by bases of \(L_0\) at the split places and put them in the designated
+columns. At each real place the plane has signature \((1,1)\);
+choosing a Cartan involution on it and on its orthogonal complement
+gives the adapted marking. The lower signatures lose one of each sign.
+\end{proof}
+\src{src/Development/WeilBound/ThetaLifts/TowerModels/PlaneMain.lean}{47}{rational isotropy and integral trace one},
+\src{src/Development/WeilBound/ThetaLifts/TowerModels/PlaneSkew.lean}{18}{skew form and codifferent}, and
+\src{src/Development/WeilBound/ThetaLifts/TowerModels/TowerCodimensionTwoOf.lean}{32}{marked planes for the two towers}.

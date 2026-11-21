@@ -1,0 +1,172 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=27mm,top=24mm,bottom=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,xcolor}
+\usepackage[unicode,colorlinks=true,linkcolor=black,citecolor=blue!45!black,urlcolor=blue!48!black]{hyperref}
+\usepackage{microtype}
+\definecolor{sourceblue}{RGB}{32,75,105}
+\hypersetup{pdftitle={From theta lifts to the critical line},pdfauthor={Codex, an independent exposition of work by Levent Alpöge with Claude},pdfsubject={A source-based reconstruction of the Lean proof of RH for Dirichlet L-functions}}
+\urlstyle{same}
+\newcommand{\src}[3]{\href{https://github.com/leanprover-community/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/\detokenize{#1}\#L#2}{\textcolor{sourceblue}{#3}}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\Sha}{\operatorname{Sha}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{formalinput}[theorem]{Formal input}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\setlength{\emergencystretch}{2em}
+\title{\textbf{From theta lifts to the critical line}\\[4pt]
+\large Arithmetic reconstruction of the Alpöge--Claude argument for Dirichlet \(L\)-functions}
+\author{Codex\\[-1pt]\small Independent exposition of the November 2026 formalization}
+\date{Revised 21 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Alpöge with Claude deduce the critical-line theorem for Dirichlet
+\(L\)-functions from one-sided bounds for weighted prime-power sums
+on arbitrarily late intervals \([Y,Y^{3/2}]\). We give a paper proof
+of this deduction and compute the signed average over translates
+as four explicit twists of each retained character. A direct sum indexed by translates gives a single slope comparison with explicit costs for lattice denominators and exceptional target slopes. In the
+arithmetic construction we extract the prescribed rank from a
+geometric witness and give classical cuspidal attachments on
+specified ternary and quaternary branches. We bound the sum of
+strict Selmer lengths over all primes on a subrange of conductors
+and twists, and prove vanishing at all congruence depths for
+additional infinite progressions. We prove both recursions for
+the theta periods at the allowed signatures, and use the doubled
+theta kernel to span the bounded forms on the marked period charts.
+For the final weight we compute the two integral Lie determinants
+at a product CM point and compare their finite orders on the
+indefinite marked components. This gives bounded integral spanning
+sections in the final weight on each selected good cover satisfying
+the stated stage bounds. The conclusion for the whole family
+remains conditional. Its arithmetic inputs include geometric
+congruences at singular weights, coverage of the remaining
+deformation components, the complementary Selmer budget and the
+integral flag comparisons.
+\end{abstract}
+\tableofcontents
+
+\section{The theorem and its arithmetic content}\label{intro:main}
+In the proof announced by Alpöge with Claude \cite{announce}, the length of a chain of theta lifts is chosen at approximately square-root scale. This becomes a statement about primes only after comparing integral lattices, passing to finite Fourier coefficients and estimating the terms removed by averaging. The final analytic step must work with a signed sum on disjoint windows. It has no assumption on the gap between consecutive windows.
+
+\begin{theorem}[Alpöge with Claude, in the published formalization]\label{main:thm}
+Let \(N\ge1\) and let \(\chi\) be a Dirichlet character modulo \(N\). If \(\Re s>1/2\) and \((\chi\ne1\lor s\ne1)\), then \(L(s,\chi)\ne0\). Every zero with \(0<\Re s<1\) has real part \(1/2\). Every zero of \(\zeta\) other than \(-2,-4,\ldots\), with \(s\ne1\), has real part \(1/2\).
+\end{theorem}
+The exclusion at \(s=1\) accommodates the total-function convention of the formal statement at a principal pole. The five declarations in the submission give Mathlib's RH, a second spelling of the same zeta statement, the half-plane for every character, the strip for every character, and the strip for primitive characters. The final proof in Section~\ref{main:end} treats their classical content. \src{src/Main.lean}{4}{Five exported declarations}, \src{src/Statements.lean}{3}{submission statements} and \cite{mathlib}.
+
+Write \(\Lambda(n)\) for the von Mangoldt function, \(t_+=\max(t,0)\), and let \(1\) in the following family always denote the character of modulus one. For \(y\ge1\) put \(P_\chi(y)=\sum_{1\le n\le y}\Lambda(n)\chi(n)(y/n-1)_+\). Our centred functions and their signed real combination are
+\begin{equation}\label{eq:centred}
+\begin{aligned}
+ G_1(y)&=P_1(y)-y\log y+(1+\gamma)y,\\
+ G_\chi(y)&=P_\chi(y)+y\frac{L'(1,\chi)}{L(1,\chi)}
+                     &&(\chi\text{ nonprincipal}),\\
+ G_{\mathcal F}(y)&=\sum_{i\in J}a_i\,\Re G_{\chi_i}(y),
+                     && |J|<\infty,\quad a_i>0 .
+\end{aligned}
+\end{equation}
+Here \(\gamma\) is Euler's constant. A family is admissible if every principal character in it has modulus one. For a primitive \(\psi\), let \(o\) be the order of the cyclic group generated by \(\psi\) among characters of its modulus. Take the primitive inducer of each power. The resulting finite set contains \(\psi\) and the trivial character. Its trivial weight is one and each other weight is \((3o+1)^{-1}\). Denote this family by \(\mathcal F_\psi\). Raising characters at a fixed modulus then taking primitive inducers produces no duplicates among distinct characters, since each inducer has a unique lift to that modulus. This identifies the precise family in the subsequent analytic transform. \src{src/Development/AutomorphicArithmetic/DedekindLFunctions/CharFamily.lean}{15}{centred functions}, \src{src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean}{36}{weights}, \src{src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean}{105}{cyclic level} and \src{src/Development/AutomorphicArithmetic/PrimitiveCosets/PrimInj.lean}{6}{injectivity at fixed host}.
+
+\begin{theorem}[Arithmetic window extracted from the formalization]\label{main:window}
+For each primitive \(\psi\) there is \(\varepsilon_0>0\) such that, for each \(0<\varepsilon<\varepsilon_0\) and each \(Y_0\), there exists \(Y\ge\max(Y_0,1)\) with
+\begin{equation}\label{eq:window}
+  G_{\mathcal F_\psi}(x)\le x^{1/2+9\varepsilon}
+  \qquad\text{for all }Y\le x\le Y^{3/2}.
+\end{equation}
+\end{theorem}
+The source for this edition is the 20 November release at revision
+\texttt{40e56bab0265} of the community mirror~\cite{source}.
+The arithmetic result cited for Theorem~\ref{main:window} is stated
+as Formal input~\ref{red:design}. At fixed \(\psi,\varepsilon\) it
+chooses one family with arbitrarily late complete windows. The
+cohomological budget and the character bounds hold on the same hosts.
+At each good \(x\) the geometric comparison supplies a single set of
+scales, ranks and weights for all its translates. Substitution of
+its two geometric budgets gives \eqref{scope:missing}. Section~\ref{main:assembly}
+gives the selection order and the three inequalities used in that
+substitution. When \(\psi=1\) the left side of \eqref{eq:window} is a
+single real function, although the construction still uses three
+quadratic twists. Section~\ref{an:section} shows why a zero to the right
+would force a positive excursion in every sufficiently late window.
+
+\begin{theorem}[Conditional conclusion of this paper]\label{main:conditional}
+Suppose that, for every primitive \(\psi\) and every sufficiently small
+\(\varepsilon>0\), there are arbitrarily large \(Y\) with the following
+property. At every \(x\in[Y,Y^{3/2}]\) there are data satisfying the
+finite-character, rank, scale and excluded-character hypotheses stated
+with \eqref{scope:missing}, with the indicated constants uniform in
+\(x\) and \(Y\), and \eqref{scope:missing} holds for every
+translate of those data. Then all three assertions of
+Theorem~\ref{main:thm} hold.
+\end{theorem}
+\begin{proof}
+The finite Fourier identity and its four error estimates in
+Section~\ref{ar:section} give \eqref{eq:window} at each such \(x\).
+Theorem~\ref{an:zero} applies to these intervals at every exponent
+strictly between \(1/2\) and \(1\), by choosing \(\varepsilon\) small
+enough. Section~\ref{main:end} applies this to each primitive character,
+passes to arbitrary conductors and reflects the resulting zero-free
+half-plane across the critical line.
+\end{proof}
+
+Theorem~\ref{main:conditional} also follows from the weaker signed
+average \eqref{scope:average}. Sections~\ref{geo:translate} and~\ref{red:translate} give a single slope comparison for this average and state its arithmetic costs. Proposition~\ref{ar:mean} computes
+that average and Corollary~\ref{ar:meanhost} bounds its three
+auxiliary twists. Section~\ref{an:section} then excludes a zero
+by its contribution to the signed Mellin transform. On the
+arithmetic side Proposition~\ref{famgal:rank} extracts the seed
+rank. Corollary~\ref{hr:imprimitive} treats the imprimitive
+quartic branch, and Lemma~\ref{hr:towerfin} identifies the finite
+Hecke quotient. Section~\ref{famsel:complement} sums the Selmer
+estimates over the required range and specifies the terms still
+imported. Theorem~\ref{tcr:global} proves both theta recursions.
+Propositions~\ref{dg:identity} and~\ref{munf:span} give the doubled
+kernel and its spanning consequence. Proposition~\ref{cmeig:degree}
+computes the integral CM degree used in the final weights.
+Section~\ref{scope:account} records the scope of each application
+to the family. Source links refer to the fixed release~\cite{source}.
+
+\input{sections/trace}
+\input{sections/galois-expansion}
+\input{sections/supply}
+\input{sections/length}
+\section{Integral cohomology and Frobenius congruences}
+\input{sections/cohomology-expansion}
+\input{sections/congruence-number}
+\input{sections/spectral-realization}
+\input{sections/high-rank-continuation}
+\input{sections/component-propagation}
+\input{sections/selmer-uniform-continuation}
+\input{sections/prime-expansion}
+\input{sections/host-expansion}
+\input{sections/geometry}
+\input{sections/translate-slopes}
+\section{Theta matching and the arithmetic Hilbert--Samuel estimate}
+\input{sections/theta-expansion}
+\input{sections/arithmetic}
+\input{sections/reduction}
+\input{sections/mean-assembly}
+\input{sections/analytic}
+\input{sections/conclusion}
+\input{sections/certification}
+\input{sections/account}
+
+\phantomsection\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+\bibitem{announce} L. Alpöge, \emph{Announcement of a proof of the Riemann hypothesis}, 20 November 2026. \href{https://alpo.ge/remark.pdf}{Author's release note}.
+\bibitem{source} L. Alpöge with Claude, \emph{Lean formalization of RH and Dirichlet GRH}, source distribution of 20 November 2026, Lean 4.33.1. \href{https://github.com/leanprover-community/riemann-hypothesis/tree/40e56bab026552e089d7afcfeff08d2defb9c005}{Pinned community mirror}.
+\bibitem{mathlib} The Mathlib Community, \emph{Riemann zeta function}, L-series library at the revision imported by the submission. \href{https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/NumberTheory/LSeries/RiemannZeta.lean\#L162}{Definition of \texttt{RiemannHypothesis}}.
+\bibitem{mit} A. V. Sutherland, \emph{Verification files for the Lean proof of the Riemann Hypothesis}, status at 09:30 UTC on 21 November 2026. \href{https://math.mit.edu/~drew/grh/}{Verification records, binaries and exports}.
+\bibitem{lumi} \texttt{aapolipponen}, \emph{Independent verification of Alpöge's Lean formalization of RH/GRH, run on LUMI}, November 2026. \href{https://github.com/aapolipponen/rh-lean-check-lumi/tree/82d91dbbd04d71f2cb45c3f2898f421b91c1c9d7}{Pinned report and numerical dependency audit}.
+\bibitem{chenevier} G. Chenevier, \emph{The \(p\)-adic analytic space of pseudocharacters of a profinite group and pseudorepresentations over arbitrary rings}, §§1.26 and 2. \href{https://arxiv.org/pdf/0809.0415}{Proposition 1.27 and Theorem 2.12}.
+\bibitem{maynard} J. Maynard, \emph{On the Brun--Titchmarsh theorem}, Acta Arith. 157 (2013), 249--296. \href{https://doi.org/10.4064/aa157-3-3}{Theorem 3.2}.
+\bibitem{tz} J. Thorner and A. Zaman, \emph{Refinements to the prime number theorem for arithmetic progressions}, Math. Z. 306 (2024), article 54. \href{https://arxiv.org/pdf/2108.10878}{Corollary 1.4 and Remark 1.5}.
+\input{sections/literature}
+\end{thebibliography}
+\end{document}
