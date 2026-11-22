@@ -1,0 +1,35 @@
+Lean 4.33.1 (x86_64-w64-windows-gnu), commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Built against the pinned original modules. Both companion modules compiled with exit code 0 and passed LeanChecker.replayFromImports with exit code 0.
+
+PeriodWitnessChain.lean source SHA-256 371a558063266525cf791de9b17d9da67613f95c3f4d53e8eabd69f1f304fd7b
+PeriodWitnessChain.olean module SHA-256 999afff0e85965f5ab684c9a31264fd19810fd20d992dd76e1a4276466e6cf98
+RamifiedOrbitPeriod.lean source SHA-256 b1a0628c45b0aa508d36936680e7a1b900c6225038ac8b6792baad3d8dbdf150
+RamifiedOrbitPeriod.olean module SHA-256 addc638de878a79492eec944fa0aafec5331b6dd0ef7e3194c9db83d6f3f4316
+
+Axiom check on the final two modules (lean --stdin), exit code 0
+'Levent151.periodNonzero_of_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodWitness_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodWitness_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodWitness_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodWitnessChain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.orbitWeight_mem_Mram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.descended_basis_of_ramified_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.descended_basis_of_orbit_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.orbitWeight_test_ne_zero_of_not_mem_span_multiple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.descended_basis_of_orbit_span_nondivisibility' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The tower theorem assumes the six original admissibility conditions. The integral-span theorem tests the actual delta periods of a supplied word, orbit and lift of the prescribed row.
+
+Level-prime supply
+Lean 4.33.1 native compile of LevelPrimeOrbitSupply.lean
+Exit code: 0
+Source SHA-256: F327F9DB8FA2D88583B9B08C2B48C00D4F3C44CBEB9995EF2320B20CD118C794
+Module SHA-256: 6B31336FE4BE68A3054223BF05C363A4203A1EF48AB4E51D3C1FA69DE1258F9C
+Original dependencies selected from D:/tmp/levent151/root/lib.
+Kernel replay completed for LevelPrimeOrbitSupply
+Exit code: 0
+'Levent151.mem_levelPrimeOrbitCandidates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.levelPrimeOrbitCardLower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.exists_levelPrimeOrbitCandidate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+Exit code: 0
+The growing prime-power modulus and the eventual asymptotic count are calculated in the manuscript from the certified finite bound.

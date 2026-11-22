@@ -1,0 +1,41 @@
+theorem Levent15_1_pointwise_export (K eK φ H TT U0 i0 tr W i4 i5 Top i6 m f Dd Cc Xpp : Real)
+  (ell : AddChar (Prod Formalism.D5.E0 (Formalism.HC.Frame.A φ)) Complex → Complex) (N : Nat)
+  (T2 : Finset (Formalism.HC.Frame.A φ)) (a : Formalism.HC.Frame.A φ → Real)
+  (w : Formalism.HC.Frame.A φ → Fin m → Prod Formalism.D5.E0 (Formalism.HC.Frame.A φ) → Real)
+  (eT : Equiv Top (Subtype (fun (x : Formalism.HC.Frame.A φ) => Membership.mem TT x)))
+  (eP :
+    Equiv (Fin f)
+      (Subtype (fun (x : Prod Formalism.D5.E0 (Formalism.HC.Frame.A φ)) => Membership.mem Formalism.D5.PhiSet x)))
+  (heD : LE.le (Formalism.RankGapBounds.WeightedMeanData.Consts.eDiv Cc) (OfNat.ofNat 2))
+  (heL : LE.le (Formalism.RankGapBounds.WeightedMeanData.Consts.eLoss Cc) (OfNat.ofNat 0))
+  (hcov :
+    (forall (s : Formalism.HC.Frame.A φ),
+    Membership.mem (Formalism.HC.Frame.A0 φ) s → Exists (fun (u : U0) => Eq (tr u) s)))
+  (hId :
+    Deduction.CH.IdentU Dd tr (UpperTheory.Comparison₂.arith (Formalism.HC.HostAx.toHostRaw H)) N ell TT a w eT eP)
+  (hLed : Formalism.LFunctionChainParameters.LChain.SizeData₂ Dd Cc Xpp)
+  (hWin : Formalism.LFunctionChainParameters.LErr.ErrWindows Dd Cc Xpp eK K) (hBN : Deduction.CH.BNBoundsU Dd T2)
+  (hLX' :
+    Formalism.LFunctionChainParameters.LErr.LargeX (Formalism.RankGapBounds.WeightedMeanData.Data.x Dd)
+      (Formalism.RankGapBounds.WeightedMeanData.Data.ε Dd) K (Formalism.RankGapBounds.WeightedMeanData.Consts.cHH Cc)
+      eK) (u : Formalism.HC.Frame.A φ) (hu : Membership.mem (Formalism.HC.Frame.A0 φ) u) :
+  LE.le (Deduction.CH.gapA (UpperTheory.Comparison₂.arith (Formalism.HC.HostAx.toHostRaw H)) N ell TT a w u)
+    (HMul.hMul
+      (HPow.hPow (Formalism.RankGapBounds.WeightedMeanData.Data.x Dd)
+        (HMul.hMul (HAdd.hAdd (HAdd.hAdd (OfNat.ofNat 2) (OfNat.ofNat 0)) (OfNat.ofNat 3))
+          (Formalism.RankGapBounds.WeightedMeanData.Data.ε Dd)))
+      (Formalism.LFunctionChainParameters.LErr.errorBracketSizeWindows
+        (Formalism.RankGapBounds.WeightedMeanData.Data.x Dd) (Formalism.RankGapBounds.WeightedMeanData.Data.ε Dd)
+        (Fintype.card (Formalism.HC.Frame.A φ)) (Finset.card TT) (Finset.card T2) m
+        (Formalism.RankGapBounds.WeightedMeanData.Data.b Dd) (Formalism.RankGapBounds.WeightedMeanData.Data.k Dd)
+        (Formalism.RankGapBounds.WeightedMeanData.Data.a Dd))) :=
+  _
+
+axiom propext {a b : Sort 0} : Iff a b → Eq a b
+
+axiom Quot.sound.{u} {α : Sort u} {r : α → α → Sort 0} {a b : α} : r a b → Eq (Quot.mk r a) (Quot.mk r b)
+
+axiom Classical.choice.{u} {α : Sort u} : Nonempty α → α
+
+Checked 145328 declarations with no errors
+Process exit code: 0

@@ -1,0 +1,225 @@
+\subsection{The odd-prime field budgets for a general target}\label{addo:field}
+
+Fix a primitive target \(\psi\) of order \(o\) and a host of
+Proposition~\ref{host:art}. Write \(E\subset\mathbf Q(\mu_N)\) for
+its CM field, \(G=\operatorname{Gal}(E/\mathbf Q)\), \(D=|G|\), and
+\(c\in G\) for complex conjugation. The exact sequence for \(H_e\) in
+that proposition shows that \(D/o\) is a power of two. For an odd
+prime \(\ell\), a twist \(e\ge1\), and \(s\in\{1,-1\}\), put
+\[
+ M_{\ell,e}=S_\ell(E,(\mathbf Q_\ell/\mathbf Z_\ell)(-e)),\qquad
+ b_s=(1+sc)/2,\qquad
+ h_{\ell,e}^s=\operatorname{length}_{\mathbf Z_\ell} b_s M_{\ell,e}.
+\]
+Here \(c\) has its natural action on cohomology with the indicated
+twist. Use the character weights \(w_{\ell,e,\xi}\) of
+Section~\ref{famsel:complement}, with the same definition for either
+sign. Write \(F/\mathbf Q_\ell\) for a splitting field for \(G\),
+\(O\) for its ring of integers, and \(a_O=e(O/\mathbf Z_\ell)\).
+
+\begin{proposition}[Comparison on each sign]\label{addo:compare}
+For either sign and every odd prime,
+\[
+ (\log\ell)h_{\ell,e}^s
+ \ \le\ \sum_{\xi(c)=s} w_{\ell,e,\xi}
+       + C_\psi v_\ell(o)(\log\ell)D(1+\log(2N)).
+\]
+If \(\ell\nmid o\), restriction gives equality with the character sum.
+The total error on any finite set of odd primes and all \(1\le e<t\)
+is \(O_\psi(tD(1+\log(2N)))\).
+\end{proposition}
+
+\begin{proof}
+Put \(n=e+1\), \(U=\operatorname{Spec}\mathcal O_E[1/(N\ell)]\), and
+\(H=H^2_{\rm et}(U,\mathbf Z_\ell(n))\). At every finite
+\(w\nmid\ell\), an unramified local class with the field coefficients
+is zero. Indeed its group is the quotient of the divisible coefficient
+module by the image of \((\mathrm Nw)^{-e}-1\), a nonzero scalar.
+At \(w\mid\ell\) local vanishing is imposed. Thus the strict field
+group is the kernel of localization for the restricted Galois group
+with the primes over \(N\ell\) allowed. Poitou--Tate duality and the
+degree-two comparison in the proof of Theorem~\ref{newcoh:lemmaK}
+give a \(G\)-equivariant injection \(M_{\ell,e}^{\vee}\hookrightarrow H\).
+The group \(H\) is finite. Over \(\mathcal O_E[1/\ell]\) this follows
+from the even Quillen--Lichtenbaum comparison and finiteness of
+\(K_{2e}(\mathcal O_E)\) as in Proposition~\ref{newcoh:fullsupport}.
+Further localization adds subquotients of
+\(H^1(k_w,\mathbf Z_\ell(e))\), finite since \((\mathrm Nw)^e\ne1\).
+The character groups are finite by Proposition~\ref{newcoh:fullsupport}.
+
+For \(\ell\mid o\) we need a bound for the number of generators,
+uniform in the twist. The coefficient exact sequence injects
+\(H/\ell H\) into \(H^2_{\rm et}(U,\mu_\ell^{\otimes n})\). Restrict
+to \(L=E(\mu_\ell)\), writing \(d_L=[L:\mathbf Q]\) and
+\(U_L=\operatorname{Spec}\mathcal O_L[1/(N\ell)]\). This restriction
+is injective since the cover is finite \'etale of degree dividing
+\(\ell-1\) and trace composes with restriction to multiplication by its
+degree. A primitive \(\ell\)-th root identifies the coefficient sheaf
+on \(U_L\) with \(\mu_\ell\). The Kummer sequence gives
+\[
+ \dim_{\mathbf F_\ell} H/\ell H
+ \le \dim_{\mathbf F_\ell}\operatorname{Pic}(U_L)/\ell
+       +\dim_{\mathbf F_\ell}\operatorname{Br}(U_L)[\ell].
+\]
+The first term is at most \(\log h_L/\log\ell\), where \(h_L\) is
+the class number. Minkowski gives each ideal class an integral ideal
+of norm at most \(2^{d_L}|\Delta_L|^{1/2}\). The number of ideals
+of norm at most \(y\) is at most \(y^2\zeta_L(2)\le y^2\zeta(2)^{d_L}\).
+Hence \(\log h_L\ll d_L+\log|\Delta_L|\). The cyclotomic discriminant
+bound and the discriminant formula in towers give
+\(\log|\Delta_L|\le d_L\log(\ell N)\), since \(L\subset\mathbf Q(\mu_{\ell N})\).
+By local invariants the Brauer term is at most the number of places
+of \(L\) over \(N\ell\), which is at most \(d_L(1+\omega(N))\).
+Here \(L\) is totally imaginary, and \(\omega(N)\) counts the distinct
+prime divisors of \(N\). Since \(d_L\le(\ell-1)D\) and \(\ell\mid o\),
+we obtain
+\[
+ r_\ell:=\dim_{\mathbf F_\ell} H/\ell H
+       \ll_\psi D(1+\log(2N)).
+\]
+Taking \(\ell\)-torsion in the injection of \(M_{\ell,e}^{\vee}\)
+and using the invariant factors of the finite group \(H\) shows that
+\(M_{\ell,e}\), and hence each direct summand \(b_s M_{\ell,e}\),
+has at most \(r_\ell\) generators.
+
+Let \(M_O=M_{\ell,e}\otimes_{\mathbf Z_\ell}O\). For a host character
+\(\xi\) put \(T_\xi=\sum_{g\in G}\xi(g)^{-1}g\in O[G]\).
+A class in \(M_O\) can be viewed over \(E\) with coefficients
+\(A_\xi=(F/O)(\xi^{-1}\chi_\ell^{-e})\), since \(\xi\) is trivial on
+\(G_E\). Finite free extension of scalars commutes with the cochains
+and the local kernels. The class vanishes locally at every finite
+place of \(E\), so its corestriction vanishes locally at every finite
+place of \(\mathbf Q\) by the local restriction--corestriction formula.
+In particular this corestriction lies in \(S_{\ell N}(\mathbf Q,A_\xi)\).
+After untwisting over \(E\), its restriction is \(T_\xi\) applied to
+the original class. Thus \(T_\xi M_O\) lies in the restriction image
+of that strict character group. Character orthogonality gives the
+integral identity \(\sum_{\xi(c)=s}T_\xi=D b_s\). Consequently the
+length of \(D b_s M_O\) is bounded by the sum of the character lengths
+of sign \(s\). At \(\ell\mid o\) the quotient \(b_s M_O/D b_s M_O\)
+has length at most \(a_Ov_\ell(D)r_\ell\). Dividing by \(a_O\) and
+multiplying by \(\log\ell\) proves the stated inequality. At
+\(\ell\nmid o\) the exact restriction descent of
+Proposition~\ref{zetafield:descent} applies verbatim, since its
+averaging and local restriction arguments require only \(\ell\nmid D\).
+Finally \(\sum_{\ell\mid o}v_\ell(o)\log\ell\le\log o\).
+\end{proof}
+
+\begin{theorem}[Uniform opposite-parity field sum]\label{addo:opposite}
+For every finite set \(P\) of odd primes and every integer \(t\ge2\),
+\[
+ \sum_{\ell\in P}(\log\ell)\sum_{1\le e<t} h_{\ell,e}^{(-1)^{e+1}}
+     \ \ll\ D t^2\bigl(D+\log(2Nt)\bigr)
+\]
+with an absolute constant.
+\end{theorem}
+
+\begin{proof}
+Retain \(n=e+1\), \(U\), and \(H\) from the preceding proof. Set
+\(b=b_{(-1)^n}\), \(R=b\mathbf Z_\ell[G]\), and let \(\Sigma\) contain
+the infinite place and precisely the finite primes dividing \(N\).
+By the refined Coates--Sinnott theorem
+\cite[Theorem~6.11 and Lemma~6.12]{greitherPopescuCS},
+the \(b\)-part of the zeroth Fitting ideal of \(H\) is the
+annihilator of \(H^1_{\rm et}(U,\mathbf Z_\ell(n))_{\rm tors}\)
+times the equivariant value \(\Theta_\Sigma(1-n)\). Here \(E/\mathbf Q\)
+is abelian CM, \(\ell\) is odd, and \(\Sigma\) contains all ramified
+primes. The required cyclotomic \(\mu\)-invariant vanishes by
+Ferrero--Washington~\cite{ferreroWashington} for the abelian field
+\(E(\mu_\ell)\). The cited lemma permits \(\ell\notin\Sigma\).
+As in Theorem~\ref{zetafield:minus},
+\[
+ W_n=(3^{Dn}-1)(5^{Dn}-1),\qquad C_n=nN(n+1)!.
+\]
+The first integer annihilates the torsion in that \(H^1\). By the
+coefficient exact sequence the torsion classes come from the
+invariants of \((\mathbf Q_\ell/\mathbf Z_\ell)(n)\),
+on which Frobenius over \(p\in\{3,5\}\), \(p\ne\ell\), acts by
+\(p^{f_wn}\) with \(f_w\mid D\). In particular
+\[
+ x=C_nW_n b\Theta_\Sigma(1-n)\ \in\ \operatorname{Fitt}_R(bH).
+\]
+For every character of sign \((-1)^n\) its value is
+\(x_\xi=C_nW_n L_\Sigma(1-n,\xi^{-1})\). These values are nonzero
+by the functional equation and the nonvanishing of the removed Euler
+factors. The generalized Bernoulli formula at modulus \(N\) gives
+\(C_n L_\Sigma(1-n,\xi^{-1})\) integral and
+\(\lvert L_\Sigma(1-n,\xi^{-1})\rvert\le 4n!N^n\) at every complex
+embedding, exactly as in the proof of Theorem~\ref{zetafield:minus}.
+Consequently their Galois-stable product satisfies
+\[
+ P_n=\prod_{\xi(c)=(-1)^n} x_\xi\in\mathbf Z\setminus\{0\},
+ \qquad \log|P_n|\ll Dn\bigl(D+\log(2Nn)\bigr).
+\]
+
+We show directly that \(\operatorname{length}_{\mathbf Z_\ell} bH
+\le v_\ell(P_n)\), including at \(\ell\mid D\). Take an \(R\)-presentation
+\(R^m\xrightarrow{A}R^k\to bH\to0\). We may suppose \(k>0\).
+Since \(bH\) is finite, each character matrix \(A_\xi\) of this sign
+has full row rank in \(F\), so \(m\ge k\). With \(v_O\) the normalized
+valuation and \(J\) ranging over the \(k\)-element column sets, put
+\(u_\xi=\min_J v_O(\det A_{\xi,J})\). The Fitting ideal is generated
+by the maximal minors, so \(u_\xi\le v_O(x_\xi)\).
+
+For an \(m\)-by-\(k\) matrix of indeterminates \(Y\), Cauchy--Binet
+shows that \(\pi_O^{-u_\xi}\det(A_\xi Y)\) is integral and has nonzero
+reduction. Indeed the monomials in \(\det Y_J\) use exactly the rows
+in \(J\), and at least one such minor has a unit coefficient after
+normalization. The product of these finitely many reduced polynomials
+is nonzero over an algebraic closure of the residue field. Choose a
+point at which it is nonzero and lift its coordinates to a finite
+unramified extension \(O'/O\). The resulting single scalar matrix
+\(Y\) satisfies \(v_{O'}(\det(A_\xi Y))=u_\xi\) for every \(\xi\).
+Let \(R'=R\otimes_{\mathbf Z_\ell}O'\). The cokernel of
+\(AY:(R')^k\to(R')^k\) surjects onto \(bH\otimes_{\mathbf Z_\ell}O'\).
+The module \(R'\) is finite free over \(O'\), and over its fraction
+field the sign algebra splits as one copy for every \(\xi(c)=(-1)^n\).
+The determinant of \(AY\) as an \(O'\)-linear endomorphism is therefore
+\(\prod_\xi\det(A_\xi Y)\). Taking lengths gives
+\[
+ a_O\operatorname{length}_{\mathbf Z_\ell} bH
+ \le \sum_\xi u_\xi\le \sum_\xi v_O(x_\xi)=a_Ov_\ell(P_n).
+\]
+Duality preserves the sign of the involution \(c\), so the injection
+\(M_{\ell,e}^{\vee}\hookrightarrow H\) gives the same upper bound for
+\(h_{\ell,e}^{(-1)^n}\). Summing the prime valuations costs at most
+\(\log|P_n|\), and summing over \(2\le n\le t\) proves the estimate.
+\end{proof}
+
+\begin{corollary}[The residual Selmer sum]\label{addo:remainder}
+Fix the target and \(\varepsilon\) as in Theorem~\ref{adds:dyadic-window}.
+On its jointly selected late interval, take \(N,E,t=t(v)\) at the
+same page. For any finite set \(S\) of primes, start with the triples
+\((\ell,e,\xi)\) with \(\ell\in S\) odd, \(1\le e<t\), and
+\(\xi(c)=(-1)^e\). Delete Cases IV and Z, the conductor range of
+Corollary~\ref{famsel:subwindow}, and the three order ranges of
+Proposition~\ref{adds:order}. Denote the rest by \(\mathcal R(S,v)\).
+Then
+\[
+ \sum_{\ell\in S}(\log\ell)\sum_{1\le e<t} h_\ell(E,e)
+ \ \le\ \sum_{(\ell,e,\xi)\in\mathcal R(S,v)}w_{\ell,e,\xi}
+        +O_{\psi,\varepsilon}\!\left(\exp(v^{4\varepsilon/5})\right).
+\]
+One may also delete entries proved zero by
+Propositions~\ref{famsel:class}, \ref{famsel:primary} and~\ref{famsel:splitray}.
+A bound \(o(v^\varepsilon)\) for the logarithm
+of two plus the residual sum, uniform in \(S,v\) on these windows, suffices
+for the entire field-length budget of Formal input~\ref{red:design}.
+\end{corollary}
+\begin{proof}
+Prescribe the fixed fields of Corollary~\ref{adds:fixed-char} in
+Theorem~\ref{adds:dyadic-window} when choosing the common interval.
+The latter theorem bounds the term at two. Apply Theorem~\ref{addo:opposite}
+to the opposite sign and Proposition~\ref{addo:compare} to the matching
+sign. Their field bound and total comparison error are polynomial in
+\(D,t,\log(2Nt)\), with \(D\le N\) and \(\log(Nt)\le 2v^{\varepsilon/4}\).
+The fixed fields bound Case IV. Case Z vanishes by
+Proposition~\ref{newcoh:zero} since \(3\in B_\psi\).
+In the small-conductor range the proof of Corollary~\ref{famsel:subwindow}
+gives \(v^{\varepsilon/102}\exp(v^{\varepsilon/2})\).
+Proposition~\ref{adds:order} bounds the union of the three order
+ranges. The weights are nonnegative, so overlaps in these upper bounds
+cost no more than their sum. The asserted logarithmic condition now
+makes the full sum at most \(\exp(v^\varepsilon/2)\) eventually.
+The rescaling in Section~\ref{sup:section} keeps these same hosts.
+\end{proof}

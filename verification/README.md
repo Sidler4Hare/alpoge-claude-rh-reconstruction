@@ -5,8 +5,12 @@ section gives two sufficient arithmetic estimates, the pointwise bound
 (15.1) and the signed translate mean (15.2). The
 [proof-status table](../audit/paper-proof-status.tsv) records the inputs
 to the new arguments and the parts that still use the published formalization.
-The kernel logs below concern the original export or the named Mathlib bridge
-files. They give no kernel verdict for the new English derivations.
+The [selected prime-loss checks](../lean-15-1/selected-prime-loss-verification.log),
+[exceptional row comparison](../lean-15-1/exceptional-degree-verification.log)
+and [height-budget checks](../lean-15-1/recorded-height-verification.log)
+identify the new Lean declarations and their axioms. The signed CM
+comparison, the sparse moment and the bounded-conductor intervals have
+their proofs in the English manuscript.
 
 For a paper-only verification, read Theorem 1.3, the finite sum in Section 10,
 the signed Mellin transform in Section 12, and the deduction in Section 13.
@@ -14,8 +18,7 @@ Equation (15.1) fixes the common arithmetic hypothesis with its quantifiers.
 Sections 2 and 3 specify the common Frobenius lifts and the marked
 comparisons needed at one precision. Section 5 follows the seeds on the
 actual towers, treats classical imprimitive quartic points, and gives
-strict Selmer vanishings through all depths on specified families. It
-sums the remaining imported estimates over the full twist range.
+strict Selmer vanishings through all depths on specified families. On a jointly selected window, Corollary 5.70 reduces the full field-length budget to the remaining matching-parity sums in Cases I, II, III and V.
 Section 9 computes the integral determinants at a marked CM point,
 the cusp zero mode, the half-maximum bound and the principal packet
 measure. Section 10 gives a signed four-twist formula and a test at
@@ -28,6 +31,24 @@ English text. The [referee response](../audit/referee-response.md)
 locates the individual corrections and qualifications. The final column of the
 proof-status table gives the printed statement numbers and pages, and its
 preceding column identifies the assumptions needed at each step.
+
+The 22 November revision separates the generic deformation counts from
+the arithmetic at the trivial target. Run the exact integer calculation
+for the positive Case II length with
+```sh
+python verification/check_zeta_jd_example.py
+```
+
+The calculation enumerates 332 reduced ideals in three cycles and
+checks the specialized rank-four level. The all-depth class-group
+formula, the odd-prime opposite-parity bound, and the field and flag
+calculations have their proofs in Sections 5 and 9.
+
+Extract the [original proof-value records](zeta-count-trace.zip) to
+an empty directory and run `python verify.py` there to replay the
+99 serialized expression paths across 2,935 original records. Its README gives the commands for
+checking the full RH dependency tree, the source files, the 99
+references in 24 original compiled modules, and the original export.
 
 The source project pins Lean 4.33.1 and Mathlib commit
 `0df444a360eaa60ab8c11dca51a86af692955474`. The independent export checker
@@ -102,7 +123,22 @@ lake env lean "$verification/TranslateMean.lean"
 
 The local results are in [the finite averaging log](translate-mean.log), [the critical-line log](critical-line-bridge.log), [the finite-window log](window-bridge.log), [the Nanoda log](nanoda-prefix.log) and [the ConLeche log](con-leche-prefix.log). Section 15 specifies the deep arithmetic statements still imported from the pinned development.
 
-The `audit/source-witnesses.tsv` table binds every manuscript citation to a source file hash, one-based line and owning declaration. `audit/root-paths.tsv` holds the corresponding edges of the classical RH dependency tree. `audit/sibling-paths.tsv` records paths for the source declarations belonging to the other advertised roots. The mean-bound declaration at line 199 of `LevelOfCongruence.lean` is marked `source_only`. With the full tree argument the checker also verifies its absence from that root's dependency walk. The original source distribution is available from the [verification archive](https://math.mit.edu/~drew/grh/). From the root of the unpacked English source bundle run the following, adjusting the path to your copy of the original project.
+The arithmetic supplements use the original Lean 4.33.1 project. From the repository root, save the path to its verification files, then change to a built checkout of the pinned upstream project. The example uses a sibling directory named `lean`.
+
+~~~powershell
+$verification = (Resolve-Path ./verification).Path
+$supplements = (Resolve-Path ./lean-15-1).Path
+Set-Location ../lean
+lake env python "$supplements/check_lean.py"
+lake env lean "$verification/LargePrimePrecision.lean"
+~~~
+
+The [local pairing and Gram-window checks](large-prime-precision.log)
+include the one-lattice test for the original rank-loss predicate and the
+root counts and row divisibility used in the paper. The Smith formula
+and its application to the weight-box budget are distinguished in Section 15.
+
+The `audit/source-witnesses.tsv` table binds every manuscript citation to a source file hash, one-based line and owning declaration. `audit/root-paths.tsv` holds the corresponding edges of the classical RH dependency tree. `audit/sibling-paths.tsv` records paths for the source declarations belonging to the other advertised roots. Entries marked `source_only` point to an original declaration header, including the mean bound at line 199 of `LevelOfCongruence.lean` and several inputs to the period and slope comparisons. With the full tree argument the checker verifies their absence from the classical root's dependency walk. The original source distribution is available from the [verification archive](https://math.mit.edu/~drew/grh/). From the root of the unpacked English source bundle run the following, adjusting the path to your copy of the original project.
 
 ~~~powershell
 python -X utf8 verification/check_citations.py --source ../lean --tree evidence/rh-dependency-tree.tsv.gz --archive ../lean.tar.gz
@@ -122,3 +158,10 @@ python report_five.py full evidence/five.tsv
 The file `verification/hOnto-proof-slice.zip` contains the term slice and its checker. Extract it and run `python verify.py` in that directory. Passing `--export` followed by the original compressed export also compares the records against their original bytes. The local binder result is in [binder.log](binder.log).
 
 Build the article with `tectonic main.tex` from the directory containing its main source. The build reads the section files and needs no Lean installation.
+
+The fixed-target test in Section 15 has an outward-rounded certificate
+for every real point of the quartic conductor-15 window from 10,000 to
+1,000,000. Run `python -X utf8 verification/prime_prefix_window.py`
+from the English source directory. The script certifies the prime-only
+majorant and the original retained ramp independently with their respective
+centres. [Recorded bounds](prime-prefix-window.log)

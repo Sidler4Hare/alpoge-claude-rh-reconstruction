@@ -1,0 +1,391 @@
+\subsection{The dyadic field contribution and characters of small order}
+\label{adds:field-budget}
+
+Fix a primitive target \(\psi\), write \(K\) for its abelian
+field, and put \(t(v)=\lfloor v^{401}\rfloor\). For a prime \(p\)
+and a number field \(L\) write
+\[
+ h_p(L,e)=\operatorname{length}_{\mathbf Z_p}
+ S_p(L,(\mathbf Q_p/\mathbf Z_p)(-e)).
+\]
+The strict conditions here are those of Section~\ref{newcoh:section}.
+They are invariant under changes of algebraic closure and prolongation.
+
+\begin{theorem}[One window for the dyadic field and the fixed odd layers]
+\label{adds:dyadic-window}
+Fix \(0<\varepsilon<1/52\) and a nonnegative integer \(s\).
+At finitely many fixed odd primes \(p\), prescribe abelian base fields
+\(B_p/\mathbf Q\) containing \(\mu_p\), and fixed nonnegative layer
+indices \(m_p\). Write \(B_{p,m_p}\) for the corresponding degree
+\(p^{m_p}\) cyclotomic layer. There are \(J\ge1\) and \(X_0\),
+depending only on these fixed choices and the target, with the
+following property. For \(X\ge X_0\) put \(H=X^{1/J}\). Take any
+distinct primes \(q\equiv3\bmod8,\ d\equiv7\bmod16\), coprime to
+the target conductor, with \(\log(qd)\le H^{\varepsilon/4}\).
+Allow any additional set \(\mathcal E_*\) of at most \(s\) positive
+integers, chosen even after \(q,d\).
+
+There is a \(W\ge H\), \(W^2\le X\), such that for every
+\(v\in[W,W^2]\) and every page index \(r\) with
+\(v^{2+8\varepsilon}\le2^r\le2v^{2+8\varepsilon}\), the actual field
+\[
+ E=K\mathbf Q(\mu_{2^{r+2}})^+(\sqrt{-q},\sqrt{-d})
+\]
+of Proposition~\ref{host:art} satisfies
+\[
+ \sum_{1\le e<t(v)} h_2(E,e)\le \exp(v^{4\varepsilon/5}),
+ \qquad
+ \sum_{1\le e<t(v)}h_p(B_{p,m_p},e)\le\exp(v^{4\varepsilon/5})
+ \quad\text{for each prescribed }p .
+\]
+All these lengths are finite. On the same interval every
+\(e\in\mathcal E_*\) with \(e\le v^{401}\) satisfies
+\(e\le v^{\varepsilon/64}\).
+\end{theorem}
+\begin{proof}
+Put \(F_0=K(i,\sqrt{-q},\sqrt{-d})\) and
+\(F_\infty=F_0(\mu_{2^\infty})\). The moving-field argument in
+Section~\ref{newcoh:section} bounds the number of \(\mathbf Z_2\)
+generators of the split unramified module by
+\(R_2=4(g_K+6[K:\mathbf Q])\), uniformly in \(q,d\).
+Indeed the two primes have respectively \(2\) and \(4\) places in
+\(\mathbf Q(\mu_{2^\infty})\), since
+\(v_2(q^2-1)=3,\ v_2(d^2-1)=4\).
+The fixed base change multiplies these numbers by at most
+\([K:\mathbf Q]\). Each newly allowed inertia group contributes
+at most one mod-two character, and passing to each quadratic
+adjunction multiplies the dimension bound by at most two.
+At each prescribed odd prime choose a generator bound \(R_p\ge1\)
+for the split unramified module over \(B_p(\mu_{p^\infty})\).
+These bounds follow from the fixed abelian \(\mu=0\) theorem and the
+class-field argument in the same section~\cite{ferreroWashington}.
+
+At any of these primes let \(j_p=\lfloor\log_p R_p\rfloor+3\).
+For \(p=2\), the cyclotomic image over \(F_0\) is
+\(1+2^c\mathbf Z_2\) for some \(c\ge2\), since \(i\in F_0\).
+It follows that \(\mathbf Q(\mu_{2^c})\subset F_0\) and
+\(2^{c-1}\le[F_0:\mathbf Q]\le8[K:\mathbf Q]\).
+The layer \(F_m=F_0(\mu_{2^{c+m}})\) has degree \(2^m\) over \(F_0\).
+In particular \(E(i)=F_m\) with \(m=\max(0,r+2-c)=O(1+\log v)\).
+The field \(F_{j_2}\) has bounded degree and lies in the cyclotomic
+field of modulus \(2^{c+j_2}qd\operatorname{cond}(K)\). The
+cyclotomic discriminant bound and the tower discriminant formula give
+\[
+ \log(2|\operatorname{disc}F_{j_2}|)\ll_K 1+\log(qd)\ll_K v^{\varepsilon/4}
+ \qquad(H\le v\le X).
+\]
+At the odd primes the layers \(B_{p,j_p}\) are fixed.
+
+Set \(R=R_2+\sum_p R_p+s,\ \eta=\varepsilon/64\), where the sum
+here ranges over the prescribed odd primes. Take \(J=4(802/\eta)^R\).
+Apply Proposition~\ref{newcoh:centres} in each tower with
+\(Z=\lfloor X^{401}\rfloor\). For each prime it gives at most \(R_p\)
+exceptional positive indices in \([1,Z]\). Apply the finite-window
+argument of Section~\ref{sup:section} to the union of all these
+sets and \(\mathcal E_*\). With this \(J\) it gives one \(W\) as in
+the statement for which every member of the union at most \(v^{401}\)
+is at most \(v^\eta\).
+
+By Lemma~\ref{newcoh:desc} the tower lengths are exactly the
+coinvariant lengths in Proposition~\ref{newcoh:centres}.
+A nonexceptional \(e<t(v)\) at its prime consequently costs
+\(O(1+\log v)\) at the required layer, since
+\(\log Z\le401J\log v\). The constants are uniform in the pair.
+For an exceptional \(e<t(v)\), apply Theorem~\ref{newcoh:lemmaK}
+at the low layer \(j_p\). It is totally imaginary and contains the
+required roots of unity. By Poitou--Tate the dual of its strict
+group embeds in the indicated \(H^2\). Its length is therefore at
+most \(2\exp(Cv^{3\varepsilon/4})\): the degree is bounded,
+\(e^{32}\le v^{\varepsilon/2}\), and the log discriminant costs
+\(O(v^{\varepsilon/4})\). The growth inequality
+\eqref{newcoh:growth} adds at most \(R_p(m-j_p)_+\) on passing to
+the required layer, with \(m=m_p\) at the odd primes.
+
+For descent from \(E(i)\) to the actual field \(E\), restriction
+preserves strictness. If the extension is quadratic, its
+restriction kernel on \(H^1\) is
+\(H^1(C_2,A^{G_{E(i)}})\), where \(A=(\mathbf Q_2/\mathbf Z_2)(-e)\).
+The invariants are finite cyclic since the cyclotomic image is open
+and \(e>0\). Evaluation at the nonidentity element makes this
+cohomology a subquotient of a cyclic group, and restriction followed
+by corestriction shows it is killed by two. Thus the loss in length
+is at most one per twist. There is zero loss if \(E(i)=E\).
+Summing the preceding estimates for fewer than \(v^{401}\) twists
+gives the claimed bounds, since \(3\varepsilon/4<4\varepsilon/5\).
+\end{proof}
+
+For the prime selection in Theorem~\ref{pr:pair}, first fix this
+\(J\), then use initial scale \(H\) and interval exponent \(J\).
+The selected pair has
+\(\log(qd)\le H^{\varepsilon/5}(1+\log^2 H)\le H^{\varepsilon/4}\)
+eventually. Its discarded-character bounds hold on \([H,X]\),
+which contains the entire selected interval. The rescaling in
+Section~\ref{sup:section} uses the same pair. In particular
+the dyadic term in Section~\ref{famsel:complement} costs
+\((\log 2)\exp(v^{4\varepsilon/5})\), and the fixed odd layers
+may be chosen to be those for the exceptional primes of that section.
+Corollary~\ref{adds:fixed-char} uses them for every Case IV character.
+Proposition~\ref{addo:compare} controls passage to the field at odd primes.
+
+\begin{corollary}[The dyadic restriction on a zeta host]
+\label{adds:zeta-injection}
+For the trivial target one can take \(R_2=24,\ j_2=7\).
+Restriction of strict groups from \(E\) to \(E(i)\) is injective
+at every positive twist.
+\end{corollary}
+\begin{proof}
+Every \(\mathbf Q(\mu_{2^a})\), \(a\ge2\), has odd class number.
+Start with the Gaussian integers. In a quadratic step \(L/K'\) of
+this tower the unique dyadic prime is totally ramified. If \(L\) has
+a nonzero unramified quadratic character then its space of such
+characters has a nonzero invariant under the involution, since
+\((\sigma-1)^2=0\) in characteristic two. Its fixed character defines
+an unramified quadratic extension of \(L\) which is Galois of degree
+four over \(K'\). This group is abelian and the inertia at the unique
+dyadic prime has order two. Its fixed field gives an everywhere
+unramified quadratic extension of \(K'\), contradicting the induction
+hypothesis. The finite-layer descent in Section~\ref{newcoh:section}
+then gives \(g_{\mathbf Q}=0\).
+
+Globally \(\mathbf Q(\mu_{2^\infty})\cap
+\mathbf Q(i,\sqrt{-q},\sqrt{-d})=\mathbf Q(i)\):
+inertia at \(q\) and \(d\) flips the corresponding square root
+independently, and the cyclotomic two-tower is unramified there.
+Locally \(-q\equiv5\bmod8\) gives the unramified quadratic extension
+of \(\mathbf Q_2\), while \(-d\equiv1\bmod8\) is a square.
+Thus, at any dyadic place \(w\), the completion of \(E(i)\) is the
+compositum of \(\mathbf Q_2(\mu_{2^{r+2}})\) and this unramified
+quadratic field. The completion of \(E\) uses the subfield fixed
+by inversion in the same cyclotomic field. Their local extension
+has degree two. Since each higher cyclotomic layer is totally
+ramified, the cyclotomic images of \(G_{E(i)}\) and
+\(G_{E(i)_w}\) are both \(1+2^{r+2}\mathbf Z_2\).
+The restriction kernels in global and local degree one are
+therefore inflations from the very same \(C_2\) acting on the
+same invariant subgroup of \(A\). Local inflation is injective.
+A strict global class restricts to zero at the dyadic place,
+so its restriction to \(E(i)\) detects the class.
+\end{proof}
+
+\begin{proposition}[An all-prime budget in terms of character order]
+\label{adds:order}
+On any sufficiently late page of Section~\ref{famsel:complement},
+sum over distinct host characters \(\xi\) at each coefficient
+prime \(\ell\), with \(1\le e<t(v)\). Write
+\(a=\operatorname{ord}(\xi)\) and \(U=ea\). Include every entry
+satisfying at least one of
+\[
+ \begin{gathered}
+ U\le v^{\varepsilon/128},\qquad \ell U\le v^{\varepsilon/64},
+ \qquad
+ U\le v^{\varepsilon/10}\ \text{ and }\
+                  \ell>\max(2a+1,4e+2).
+ \end{gathered}
+\]
+For every finite choice of coefficient primes the sum of their
+normalized strict weights \(w_{\ell,e,\xi}\) is at most
+\(\exp(v^{4\varepsilon/5})\). The estimate is uniform in the
+primitive conductors of the characters on that page.
+\end{proposition}
+\begin{proof}
+For a fixed kernel of a host character let \(K_\xi\) be its cyclic
+field of degree \(a=\operatorname{ord}(\xi)\). Set \(F=K_\xi(i)\),
+\(n=[F:\mathbf Q]\le2a\), and \(M=4N\), so that
+\(F\subset\mathbf Q(\mu_M)\). Grouping characters by kernel is
+independent of the coefficient prime. For each of them, restriction
+to \(F\), Poitou--Tate, and the even Quillen--Lichtenbaum comparison
+in Proposition~\ref{newcoh:fullsupport} bound the normalized log
+order of the image by \(\log\# K_{2e}(\mathcal O_F)\{\ell\}\).
+The restriction kernel vanishes for \(\ell\nmid n\). Otherwise
+put \(u_\ell=\max(1,v_\ell(M))+v_\ell(e)\).
+Since \(F\subset\mathbf Q(\mu_M)\), its cyclotomic image contains
+\(1+\ell^{\max(1,v_\ell(M))}\) as a unit (at two \(4\mid M\)).
+The coefficient invariants over \(F\) have normalized log order
+at most \(u_\ell\log\ell\). Inflation--restriction and the bound
+by all functions on a group of order \(n\) cost at most
+\(n u_\ell\log\ell\) for the kernel. Summing this cost uses
+\(\sum_{\ell\mid n}u_\ell\log\ell\le\log(Mne)\).
+At fixed character kernel there are
+at most \(\varphi(a)\) characters at any \(\ell\). Summing yields
+\[
+ \sum_{\ell,\ \ker\xi\ {\rm fixed}} w_{\ell,e,\xi}
+ \le\varphi(a)
+       \bigl(\log\#K_{2e}(\mathcal O_F)+n\log(Mne)\bigr).
+\]
+
+For clarity, the degree-sensitive estimate for the \(K\)-group
+follows from the two parts of the proof of Theorem~\ref{famsel:rate}.
+Put \(j=2e,\ H_0=\max(n+1,2j+2)\). For \(\ell>H_0\),
+\cite[Theorem 1.1]{bayerEmeryHouriet} bounds the sum of the
+primary log orders by
+\[
+ B=(2j+1)^{71j^4 n^3}\,n^{293j^5 n^5}
+          |\operatorname{disc}F|^{528j^5 n^4}.
+\]
+For \(\ell\le H_0\), adjoining \(\mu_\ell\) costs degree at
+most \(H_0\) prime to \(\ell\) at that individual prime. Pullback
+on the primary \(K\)-group is injective by the trace identity in
+the same proof. The new field has degree at most \(nH_0\),
+conductor at most \(MH_0\), and contains the required roots of
+unity. The bound for the full primary \(K\)-group in the proof
+of Theorem~\ref{newcoh:lemmaK} gives
+\[
+ \log\#K_{2e}(\mathcal O_F)
+ \le B+H_0\exp\bigl((jnH_0)^{32}(1+nH_0)\log(2MH_0)\bigr).
+\]
+These bounds apply to the totally imaginary field \(F\) of
+degree at least two. Write \(U=ea\ge1\). Then \(jn\le4U\),
+\(H_0\le6U\), \(nH_0\le12U^2\) and
+\(\log|\operatorname{disc}F|\le n\log M\).
+Taking logarithms of the positive bounds on the right gives
+\[
+ \log\bigl(1+\log\#K_{2e}(\mathcal O_F)\bigr)
+       \ll U^{66}\log(2MU)
+\]
+with an absolute constant. On a page, \(\log(Nt)\le2v^{\varepsilon/4}\).
+Thus for \(U\le v^{\varepsilon/128}\) the last display is
+\(O(v^{49\varepsilon/64})\). The sum of the multiplicities
+\(\varphi(a)\) over the cyclic quotients that occur is at most
+the number of host characters, at most
+\(4[K:\mathbf Q]\,2^r\ll_\psi v^4\).
+In the second range apply the same restriction bound separately
+at \(\ell\) with \(F'=F(\mu_\ell)\). The exponent in the
+small-prime estimate is now at most
+\(C(\ell U)^{33}\log(2M\ell U)=O(v^{49\varepsilon/64})\):
+here \(j[F':\mathbf Q]\le4\ell U\) and
+\([F':\mathbf Q]\le2\ell U\). There are at most
+\(v^{\varepsilon/64}\) primes to sum in this range. The restriction
+kernel cost \(n\log(Mne)\) per character is also absorbed.
+In the third range \(\ell>H_0\) and \(\ell\nmid n\), so the sum over
+these primes costs at most \(\varphi(a)B\) for the kernel orbit.
+In every factor defining \(B\), including the discriminant term,
+\(\log B\ll U^5\log(2MU)=O(v^{3\varepsilon/4})\).
+Multiplication by the polynomial counts of characters, twists and,
+in the second range, primes is absorbed in \(\exp(v^{4\varepsilon/5})\),
+since \(49/64<4/5\).
+\end{proof}
+
+At the zeta target this includes every quadratic host character
+at every coefficient prime for \(2e\le v^{\varepsilon/128}\).
+In particular the bound applies to \(J_d\) at three with the
+moving discriminant \(-d\) independently of the exponent of
+\(\operatorname{Cl}(\mathbf Q(\sqrt{3d}))[3^\infty]\). For
+Case~V it includes every character of order at most
+\(v^{\varepsilon/128}\), and also those of order at most
+\(v^{\varepsilon/64}/\ell\), since \(e=1\) there. Entries outside
+the three ranges still require the other estimates of
+Section~\ref{famsel:complement}.
+
+\begin{corollary}[Inducing fields on the quartic zeta tests]
+\label{adds:quartic}
+On a sufficiently late zeta host let \((\ell,e,\xi)\) be in Case II
+and consider an absolutely irreducible point of the good quartic
+problem in equal characteristic. If it becomes reducible over a
+finite extension, then \(\xi\) is quadratic,
+\(\ell-1\mid 2e\), and \(\ell-1\nmid e\). Writing \(\Delta_\xi\)
+for the fundamental discriminant of \(\xi\), the point is induced
+from a strongly irreducible plane over the real quadratic field
+of discriminant
+\[
+            D=\Delta_\xi\,(-1)^{(\ell-1)/2}\ell .
+\]
+This same field is the base of the strict Selmer calculation:
+Proposition~\ref{famsel:quadraticlayers} computes the initial layers
+there, and Proposition~\ref{famsel:alltower} computes deeper layers
+over its indicated cyclotomic extensions.
+The number of possible input triples with \(2\le e<t\) is
+\(O(t\log\log(3t))\), uniformly in the host. Among them the total
+weight of those with
+\(\exp\operatorname{Cl}(\mathbf Q(\sqrt D))[\ell^\infty]\mid
+\ell^{v_\ell(e)}\) is \(O(t\log\log(3t)\log(2Nt))\).
+\end{corollary}
+\begin{proof}
+The Case II primes are odd. The fixed exceptional ones are \(3,7\)
+and the others satisfy \(\ell-1\mid2e\). Hence none equals the two
+odd level primes \(q,d>\max(2t+1,7)\). The factor of the residual
+character \(b=\bar\varepsilon_\ell^{\,e}\bar\xi\) at \(\ell\)
+and its factor of level \(N\) thus have independent images by the
+Chinese remainder theorem. Proposition~\ref{hr:case3strong} forces
+\(b\) to be quadratic and ramified at \(\ell\). Its cyclotomic factor
+therefore has order exactly two, giving both divisibility claims.
+The host character has two-power order, which reduction at the odd
+prime preserves. Case II requires its order to be even. It must
+therefore be quadratic as well. The two primitive discriminants
+are coprime, and their product is positive by the parity of the
+input. This gives the stated \(D\) and identifies the field with
+the first field in Proposition~\ref{famsel:quadraticlayers}.
+
+The quadratic intertwiner splits into two planes over this field,
+as in Proposition~\ref{hr:ind}. Each has residual semisimplification
+a sum of characters. Suppose one plane \(U\) becomes reducible on
+an open subgroup. On an open normal subgroup of \(G_{\mathbf Q(\sqrt D)}\)
+contained in it, the restriction is semisimple: the translates of
+an invariant line span the irreducible plane. It is thus a sum of
+two characters. At every finite place their inertial images are
+finite by the equal-characteristic inertia conditions in the proof
+of Proposition~\ref{hr:ind}. Only finitely many places ramify.
+A common power of each character is everywhere unramified and
+factors through a finite narrow class group. Both characters have
+finite image. Passing to powers in the finite coset quotient now
+makes all eigenvalues of \(U(g)\) roots of unity for every \(g\).
+In equal characteristic they are constants and reduce injectively.
+The characteristic polynomials consequently agree with those of
+the constant lifts of the two residual characters. Brauer--Nesbitt
+contradicts the irreducibility of \(U\).
+
+There are at most four quadratic host characters of each parity,
+as in Corollary~\ref{famsel:zetasubsum}. For a fixed \(\ell\) at
+most \(2t/(\ell-1)\) positive twists qualify.
+For \(y=2t+1\) set \(s=1+1/\log y\). The Euler product gives
+\(\sum_{p\le y}p^{-1}\le\mathrm e\log\zeta(s)
+\le\mathrm e\log(1+\log y)\). This proves the claimed count.
+Under the exponent condition Proposition~\ref{famsel:quadraticlayers}
+gives weight \(\log|\operatorname{Cl}(\mathbf Q(\sqrt D))[\ell^\infty]|\),
+at most \(\log(2Nt)\) by the ideal bound of
+Corollary~\ref{famsel:zetasubsum}. Summing proves the last assertion.
+\end{proof}
+
+\begin{corollary}[The full Case IV character sum]\label{adds:fixed-char}
+Let the primitive target have conductor \(M\), and fix any finite set
+\(P\) of odd coefficient primes containing its exceptional primes
+\(B_\psi\). The interval in Theorem~\ref{adds:dyadic-window} can
+be chosen so that the sum of \(w_{\ell,e,\xi}\) over
+\(\ell\in P\), \(1\le e<t(v)\), and all host characters of primitive
+conductor dividing \(M\), is \(O_{\psi,P}(\exp(v^{4\varepsilon/5}))\).
+In particular this bounds the entire Case IV contribution.
+\end{corollary}
+\begin{proof}
+For each \(\ell\in P\), prescribe the fixed field
+\(B_\ell=\mathbf Q(\mu_{4M\ell})\) and its base layer \(m_\ell=0\)
+in Theorem~\ref{adds:dyadic-window}. A character of conductor dividing
+\(M\) is trivial over \(B_\ell\). Restriction takes its strict group
+into the strict group there after scalar extension. At the places of
+the host level the class restricts to zero, and unramified classes
+at the other primes away from \(\ell\) stay unramified. The kernel
+bound in the proof of Proposition~\ref{newcoh:fullsupport}, applied
+to this fixed field, gives
+\[
+ w_{\ell,e,\xi}\ \le\ (\log\ell)h_\ell(B_\ell,e)
+                   +O_{\psi,P}(1+\log e).
+\]
+Indeed the group of the extension has bounded order, and the
+cyclotomic image contains \(1+\ell^{v_\ell(4M\ell)}\). Its action
+kills the coefficient invariants by
+\(\ell^{v_\ell(4M\ell)+v_\ell(e)}\), so counting cocycles of the
+finite quotient gives the asserted normalized kernel loss.
+There are at most \(\varphi(M)\) distinct lifts at each prime.
+Summing on the jointly selected interval proves the bound.
+
+On a late host the primes \(q,d\) lie outside \(B_\psi\) and are
+prime to \(2M\). Their local character factors have order at most
+two by Proposition~\ref{host:art}; the local factor at two has
+two-power order. Taking the prime-to-\(\ell\) part for odd \(\ell\)
+preserves each such factor. Removing the local factor at
+\(\ell\in B_\psi\) leaves them all in \(\chi_P\), which by Case IV
+has odd order. They are consequently trivial. At each remaining
+prime the conductor exponent is at most that of \(M\), since
+the host conductor divides \(\operatorname{lcm}(2^{r+2},M)qd\).
+Every Case IV character therefore occurs in the preceding sum.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{86}{removing the local factor}
+and \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{217}{the Case IV order condition}.
+\end{proof}

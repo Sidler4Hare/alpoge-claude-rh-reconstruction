@@ -24,7 +24,7 @@
 \title{\textbf{From theta lifts to the critical line}\\[4pt]
 \large Arithmetic reconstruction of the Alpöge--Claude argument for Dirichlet \(L\)-functions}
 \author{Codex\\[-1pt]\small Independent exposition of the November 2026 formalization}
-\date{Revised 21 November 2026}
+\date{Revised 22 November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -33,23 +33,37 @@ Alpöge with Claude deduce the critical-line theorem for Dirichlet
 on arbitrarily late intervals \([Y,Y^{3/2}]\). We give a paper proof
 of this deduction and compute the signed average over translates
 as four explicit twists of each retained character. A direct sum indexed by translates gives a single slope comparison with explicit costs for lattice denominators and exceptional target slopes. In the
-arithmetic construction we extract the prescribed rank from a
-geometric witness and give classical cuspidal attachments on
-specified ternary and quaternary branches. We bound the sum of
-strict Selmer lengths over all primes on a subrange of conductors
-and twists, and prove vanishing at all congruence depths for
-additional infinite progressions. We prove both recursions for
+arithmetic construction we attach Galois representations to the
+standard definite-unitary systems and construct integral cycles
+detecting the twisted norms of divisors. We give classical cuspidal
+attachments on specified ternary and quartic branches. For each
+fixed target we bound the entire dyadic field contribution on a
+jointly selected interval and the opposite-parity contribution at
+all odd primes. The remaining Selmer budget reduces to a sum of
+matching-parity character lengths. We bound three ranges in terms
+of order and twist and all of Case IV. For the zeta target we compute
+finite quadratic layers and exhibit a positive Case II length. We prove both recursions for
 the theta periods at the allowed signatures, and use the doubled
 theta kernel to span the bounded forms on the marked period charts.
 For the final weight we compute the two integral Lie determinants
 at a product CM point and compare their finite orders on the
-indefinite marked components. This gives bounded integral spanning
-sections in the final weight on each selected good cover satisfying
-the stated stage bounds. The conclusion for the whole family
-remains conditional. Its arithmetic inputs include geometric
-congruences at singular weights, coverage of the remaining
-deformation components, the complementary Selmer budget and the
-integral flag comparisons.
+indefinite marked components. This gives bounded spanning sections
+on each good cover satisfying the stage bounds. Over the field
+constructed for the deep level we realize the principal marked components
+and their level maps, and identify the unmodified lattices at good primes in central weight zero.
+For the signed mean we give a test using only primes up to the window
+endpoint and verify one complete window for a quartic character.
+We compute the finite corrections to the relative determinant and
+compare the recorded and mixed component volumes. A rank test on one
+target quotient suffices. We bound the slope cost of a missed line.
+The local rank input bounds both prime losses. For any fixed
+\(r\ge1\), one signed relative determinant at one translate for
+all but a power-saving fraction of the integer \(r\)-th powers in
+arbitrarily late fixed-ratio intervals suffices for both estimates
+at the original exponent. For every primitive target of conductor
+at most \(400\,000\), both estimates hold on a subinterval of each
+sufficiently late such interval inside a supplied window. The
+full cofinal signed estimate remains open.
 \end{abstract}
 \tableofcontents
 
@@ -121,11 +135,16 @@ that average and Corollary~\ref{ar:meanhost} bounds its three
 auxiliary twists. Section~\ref{an:section} then excludes a zero
 by its contribution to the signed Mellin transform. On the
 arithmetic side Proposition~\ref{famgal:rank} extracts the seed
-rank. Corollary~\ref{hr:imprimitive} treats the imprimitive
+rank. Proposition~\ref{addg:unitary} supplies the classical attachment
+on the standard definite unitary group. Theorem~\ref{addc:cycle} constructs
+the homology classes for the twisted-norm count.
+Corollary~\ref{hr:imprimitive} treats the imprimitive
 quartic branch, and Lemma~\ref{hr:towerfin} identifies the finite
 Hecke quotient. Section~\ref{famsel:complement} sums the Selmer
-estimates over the required range and specifies the terms still
-imported. Theorem~\ref{tcr:global} proves both theta recursions.
+estimates over the required range. Corollary~\ref{addo:remainder}
+gives a single residual character sum after the dyadic field term,
+the opposite parity and the proved character ranges have been bounded.
+Theorem~\ref{tcr:global} proves both theta recursions.
 Propositions~\ref{dg:identity} and~\ref{munf:span} give the doubled
 kernel and its spanning consequence. Proposition~\ref{cmeig:degree}
 computes the integral CM degree used in the final weights.
@@ -134,8 +153,10 @@ to the family. Source links refer to the fixed release~\cite{source}.
 
 \input{sections/trace}
 \input{sections/galois-expansion}
+\input{sections/galois-supplement}
 \input{sections/supply}
 \input{sections/length}
+\input{sections/twisted-norm-cycles}
 \section{Integral cohomology and Frobenius congruences}
 \input{sections/cohomology-expansion}
 \input{sections/congruence-number}
@@ -143,12 +164,15 @@ to the family. Source links refer to the fixed release~\cite{source}.
 \input{sections/high-rank-continuation}
 \input{sections/component-propagation}
 \input{sections/selmer-uniform-continuation}
+\input{sections/selmer-supplement}
+\input{sections/odd-field-supplement}
 \input{sections/prime-expansion}
 \input{sections/host-expansion}
 \input{sections/geometry}
 \input{sections/translate-slopes}
 \section{Theta matching and the arithmetic Hilbert--Samuel estimate}
 \input{sections/theta-expansion}
+\input{sections/geometry-supplement}
 \input{sections/arithmetic}
 \input{sections/reduction}
 \input{sections/mean-assembly}

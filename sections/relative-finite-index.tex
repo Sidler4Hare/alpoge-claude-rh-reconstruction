@@ -1,0 +1,128 @@
+\subsection{Finite-place cancellation in the relative determinant}
+\label{geom:relative-finite-index}
+
+Fix a word \(i\) at a translate \(u\), with the original arithmetic
+record \(D,L\). Let \(M_{ui}\) be the base lattice, \(M^{\rm ram}_{ui}\)
+its pullback to the descended vector space, \(N^0_{ui}\) the lattice
+before the fractional-ideal shift, and \(N_{ui}\) the shifted lattice.
+In the source these are the base \code{lat 0}, \code{MramL},
+\code{NuLat}, and the descended \code{Nu}. The comparison
+assumes the original commensurability, finite-support and local
+length identifications, and the level-prime comparison
+\code{adm26}. Write \(r_{ui}>0\) for the common rank of
+\(N_{ui},N^0_{ui},M^{\rm ram}_{ui}\), and retain \(d^M_{ui}\) for the
+rank of \(M_{ui}\). With the original full lattice and word rank
+identifications, the two ranks have the relation
+\(r_{ui}=d^M_{ui}(1-1/(T_{ui}-1))^f\), where \(T_{ui}>2\) is the
+word level and \(f\) is the number of weight coordinates.
+\src{src/Formalism/LocalRingCardinality/DataDIVDefs.lean}{12}{the pullback and shifted lattice}
+\src{src/Formalism/LocalToGlobal/GlobalTheory/PlacesP.lean}{124}{the descended rank}
+\src{src/Formalism/SharpRestriction/Divisibility/LocalQuadraticParts.lean}{621}{the level-prime comparison}.
+
+For a finite place \(w\) of \(K_u\), let \(e_w\) denote its ramification
+index and put \(\lambda_w=\log N\mathfrak p_w/[K_u:\mathbf Q]\).
+Use \(g_{jw},F_{jw},E_{uijw}\) for the recorded gain, shift and
+exponent correction at lift \(j\). In particular \(g_{jw}\) is zero
+on the dropped primes. Set
+\[
+ s_{uiw}=\sum_j(g_{jw}+F_{jw}-E_{uijw}),\qquad
+ \xi_{uiw}=e_ws_{uiw}-\lfloor e_ws_{uiw}\rfloor.
+\]
+Let \(\ell^{\rm ind}_{uiw}\) be the local length of
+\(M^{\rm ram}_{ui}/N^0_{ui}\), divided by \(e_w\), and let
+\(\tau_w\) be the original gain correction at \(w\).
+The field-normalized slope formula gives the exact identity
+\begin{align}
+ \mu^N_{ui}-\mu^M_{ui}+E_{ui}-F_u^{\,0}
+    &=G_u-\Diamond_{ui},\label{geom:finite-cancel}\\
+ \Diamond_{ui}
+   &=
+   \frac{f\log(T_{ui}-1)}{T_{ui}-2}
+     +2\sum_{w\in\mathrm{supp}}\lambda_w\xi_{uiw}
+     +2\sum_{w\in\mathrm{supp}}\lambda_we_w
+          \left(\frac{\ell^{\rm ind}_{uiw}}{r_{ui}}-\tau_w\right).
+   \label{geom:finite-diamond}
+\end{align}
+Here \(E_{ui}=2\sum_{j,w}\lambda_we_w E_{uijw}\),
+\(F_u^{\,0}=2\sum_{j,w}\lambda_we_w F_{jw}\), and
+\(G_u=2\sum_w\lambda_we_w(\sum_jg_{jw}-\tau_w)\). All sums are over
+the original finite place support and lift set.
+\src{src/Formalism/LocalToGlobal/GlobalTheory/PlacesP.lean}{129}{the exact slope identity}
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{1489}{the factor of two and the three sums}.
+
+Indeed the shift multiplies \(N^0_{ui}\) by
+\(\prod_w\mathfrak p_w^{-\lfloor e_ws_{uiw}\rfloor}\), which adds
+\(2\sum_w\lambda_w\lfloor e_ws_{uiw}\rfloor\) to the slope.
+The finite index from \(N^0_{ui}\subseteq M^{\rm ram}_{ui}\)
+subtracts \(2\sum_w\lambda_we_w\ell^{\rm ind}_{uiw}/r_{ui}\).
+Both comparisons use the same descended vector space and its
+determinant metric, so common different factors cancel in the
+same-rank ratios. The comparison with \(M_{ui}\) uses the separate
+level-prime slope correction in \eqref{geom:finite-diamond}. This
+keeps the actual descended rank in the finite index denominator.
+Substituting \(\lfloor e_ws_{uiw}\rfloor=e_ws_{uiw}-\xi_{uiw}\)
+cancels \(E_{ui}\) and \(F_u^{\,0}\) with the indicated signs.
+\src{src/Formalism/SharpRestriction/AdmissibleParameterJoins/SumLogPrimeFactorsLe.lean}{358}{the fractional-ideal norm}
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/ExistsNsmulMem.lean}{238}{the same-rank index ratio}.
+
+\paragraph{The sign of the remaining local index.}
+Use the original \code{LocLe} comparison off the word-level
+prime and the integral values of \(\tau_w\ge0\) that enter its
+construction. In the DVR \(\mathcal O_{K_u,\mathfrak p_w}\), these
+give
+\((N^0_{ui})_w\subseteq\mathfrak p_w^{e_w\tau_w}
+(M^{\rm ram}_{ui})_w\). The localized pullback lattice is free of
+rank \(r_{ui}\). The quotient by \((N^0_{ui})_w\) therefore maps onto
+a direct sum of \(r_{ui}\) copies of
+\(\mathcal O_{K_u,\mathfrak p_w}/\mathfrak p_w^{e_w\tau_w}\),
+of total length \(r_{ui}e_w\tau_w\). Dividing by \(r_{ui}e_w\)
+gives \(\ell^{\rm ind}_{uiw}/r_{ui}\ge\tau_w\).
+At the word level \(\tau_w=0\) and the length is nonnegative.
+Writing \(c_{T_{ui}}=f\log(T_{ui}-1)/(T_{ui}-2)\), we obtain
+\(\Diamond_{ui}\ge c_{T_{ui}}\ge0\) for the original \(T_{ui}>2\).
+\src{src/Formalism/LocalRingCardinality/DataDIVDefs.lean}{32}{local inclusion}
+\src{src/Formalism/LocalToGlobal/GlobalTheory/PlacesP.lean}{297}{the inputs for the original place comparison}
+The original proof gives
+\src{src/Formalism/LocalToGlobal/GlobalTheory/PlacesP.lean}{521}{integrality of the correction}
+and uses it in \code{PlacesP.lean}, lines 729--736.
+
+With the same \(P_{ui}=\mu^N_{ui}-\mu^M_{ui}+E_{ui}
+-F_u^{\,0}-\mathcal M_u\) and \(\ell_{ui}\) as above, the lower
+quotient slope bound now gives
+\[
+ G_u-\mathcal M_u=P_{ui}+\Diamond_{ui},\qquad
+ P_{ui}+c_{T_{ui}}\le G_u-\mathcal M_u\le P_{ui}+\ell_{ui}.
+\]
+The term \(\Diamond_{ui}\) enters the signed discrepancy with a
+positive sign. For any one chosen word \(i\) at \(u\) one has
+\(D_u=(\mathcal A_u-G_u)+P_{ui}+\Diamond_{ui}\).
+This permits a test with one actual word per translate and does not
+require a separate maximum-slope variation bound. It still requires
+an upper estimate for the actual relative determinant term.
+\src{src/Formalism/SizeWindowBrackets/QuotientSlopeBoundsWith.lean}{19}{the word loss and lower quotient slope}.
+
+\paragraph{Integral denominator contributions.}
+Rounding occurs only at places with \(e_ws_{uiw}\notin\mathbf Z\).
+Consider a place in the support above a rational prime
+\(p>X''\), with \(p\) different from the word level, the two generator
+primes and the discriminant prime. Assume \(p\) is dropped and is
+outside the generator types. The original definitions then give
+\(g_{jw}=F_{jw}=0\) and \(E_{uijw}=v_p(D_{\rm Gam})\). The last
+quantity can be nonzero, but \(e_ws_{uiw}=-e_wm v_p(D_{\rm Gam})\)
+is an integer and contributes no rounding. If \(\tau_w=0\), the
+original local equality at a dropped, non-level prime also gives
+zero index. This removes these denominator places from the defect
+even when they remain in the support of the individual exponents.
+\src{src/Formalism/LocalRingCardinality/DataForced.lean}{126}{the prime branches for the shift}
+\src{src/Formalism/LocalRingCardinality/DataErr.lean}{159}{the denominator valuation in the exponent}
+\src{src/Formalism/LocalRingCardinality/DataDIVDefs.lean}{48}{local equality at a dropped prime}.
+
+The Lean module \code{RelativeFinitePart.lean} checks
+\eqref{geom:finite-cancel}, the support bound for the rounding loss,
+and the vanishing index at a dropped non-level prime with zero
+correction. It derives the nonnegative local excess from the original
+local containment, the recorded local length, and the two correction
+conditions above, using the existing DVR index theorem. Its resulting
+signed slope bound retains \(c_{T_{ui}}\).
+The DVR inequality used here is proved in
+\code{DvIdxCalcMain.lean}, line 95.

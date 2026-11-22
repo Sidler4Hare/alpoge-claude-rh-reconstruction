@@ -1,0 +1,47 @@
+compressed SHA-256 61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381
+decompressed SHA-256 5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e (61570595788 bytes)
+Family.lean original inputs and projections: 34
+All axiom declarations: Classical.choice, Quot.sound, propext
+All quotient primitives: Quot, Quot.ind, Quot.lift, Quot.mk
+kind	name	name_id	type_root	type_tag	value_root	value_tag
+thm	And.left	1803	8488	forallE	8492	lam
+thm	And.right	1801	8468	forallE	8472	lam
+axiom	Classical.choice	4988	39114	forallE	-	-
+thm	GlobalTheory.Fc.S0.UnitaryGroupThirdPlaceHypotheses.greenRegularCharacters	1551045	80617365	forallE	80617367	lam
+thm	GlobalTheory.Fc.S0.UnitaryGroupThirdPlaceHypotheses.nLink	7587637	618674897	forallE	618674899	lam
+thm	GlobalTheory.GreenBridge.green_of_regular	1551004	80611232	forallE	80617364	lam
+def	GlobalTheory.Mem.Top.Bl.parametersOfDependence	1571814	82083402	forallE	82083416	lam
+thm	PositivityTheory.Pf1.HilbertSamuelMoriwaki.hsUse_outright	10478173	827010972	const	827019170	app
+thm	PositivityTheory.Pf1.HilbertSamuelMoriwaki.moriwakiBig_outright	10478212	769399153	const	827019255	app
+quot	Quot	15	43	forallE	-	-
+quot	Quot.ind	23	86	forallE	-	-
+quot	Quot.lift	18	69	forallE	-	-
+quot	Quot.mk	17	49	forallE	-	-
+axiom	Quot.sound	3046	15910	forallE	-	-
+thm	SelfIntersectionVolumeEstimates.topCovolSlim2_use_alt_alt	10381795	820593818	forallE	820593903	lam
+thm	UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter	14065050	1004086662	app	1065212054	app
+thm	UpperTheory.Lit.nonempty_hyps_definite_side_of_closed_bound	8026822	657233646	forallE	657234138	lam
+induct	UpperTheory.LiteratureTheorems.OpenLiteratureStatements	550020	3	sort	-	-
+ctor	UpperTheory.LiteratureTheorems.OpenLiteratureStatements.mk	550021	12992048	forallE	-	-
+thm	UpperTheory.LiteratureTheorems.ar_degree_of_literature	11148669	881158255	forallE	881158265	lam
+thm	UpperTheory.LiteratureTheorems.fargues_exact_of_literature	10523616	830046289	forallE	830046291	lam
+thm	UpperTheory.LiteratureTheorems.grothendieck_deformation_of_literature	11274889	891403524	forallE	891403532	lam
+thm	UpperTheory.LiteratureTheorems.local_langlands_gl_recT_exists_of_literature	8477096	659472477	forallE	685292519	lam
+thm	UpperTheory.LiteratureTheorems.nef_rr_of_literature	10575871	834571273	forallE	834571275	lam
+thm	UpperTheory.LiteratureTheorems.poincare_lelong_inv_of_literature	10419805	823320422	forallE	823320424	lam
+thm	UpperTheory.LiteratureTheorems.point_separation_pair_of_literature	11134501	880263869	forallE	880263871	lam
+thm	UpperTheory.LiteratureTheorems.principalisation_char_zero_of_literature	10383261	820678521	forallE	820678523	lam
+thm	UpperTheory.LiteratureTheorems.published_results_arithmetic	11298207	893073753	forallE	893073822	lam
+thm	UpperTheory.LiteratureTheorems.published_results_eigen	8728574	703725854	forallE	703725979	lam
+thm	UpperTheory.LiteratureTheorems.published_results_first	8797770	707740886	forallE	707741004	lam
+thm	UpperTheory.LiteratureTheorems.resolution_char_zero_of_literature	10381888	820595519	forallE	820595521	lam
+thm	UpperTheory.LiteratureTheorems.semi_abelian_lie_seminegative_of_literature	11090272	877519162	forallE	877519164	lam
+thm	UpperTheory.LiteratureTheorems.siegel_toroidal_integral_of_literature	10951735	864667348	forallE	864667350	lam
+thm	UpperTheory.LiteratureTheorems.theta_integrals_agree_and_local_matching_of_literature	9013533	723055135	forallE	723055143	lam
+thm	UpperTheory.LiteratureTheorems.toroidal_for_fan_ks_of_literature	11080156	876986371	forallE	876986373	lam
+thm	UpperTheory.LiteratureTheorems.zarhin_statement	10575034	834517564	forallE	834517569	lam
+thm	UpperTheory.N.boundAtTwoThree_linked_of_recT	8026883	657234167	forallE	657234179	lam
+thm	UpperTheory.One.vwin_of_row	13125899	997980684	forallE	997980689	lam
+thm	UpperTheory.Top.supplyChi	1550728	80597423	forallE	80597570	lam
+thm	UpperTheory.Zero.LLC.recTExists	11307205	12992044	const	893652340	lam
+axiom	propext	2661	13681	forallE	-	-

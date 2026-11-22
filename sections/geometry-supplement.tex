@@ -1,0 +1,231 @@
+\subsection{Marked components over the ray class field and their good-prime lattices}
+\label{addh:section}
+
+Write \(k=\mathbf Q(\sqrt{-d})\), \(m=g_0g_1 15^u\) and
+\(F=F_0R\) as in Proposition~\ref{zetageo:field}, with \(R\)
+the ray class field of \(k\) modulo \(mO_k\). Use the chosen embedding
+of \(F\) in \(\mathbf C\). The selected stages have \(d\ge7\), \(m\ge3\)
+and, for the deep level, \(u\ge1\). Consider the principal marked PEL
+packet of Lemma~\ref{munf:marks}, with trivial auxiliary mark and
+indefinite signature \(p,q\ge1\).
+
+\begin{proposition}[A rational CM point on each marked component]
+\label{addh:constants}
+Every geometric component of this packet contains a product CM point
+defined over \(F\) with its prescribed mark. When \(15\mid m\), its
+underlying abelian variety has good reduction at every finite place
+of \(F\). Every component descends to a geometrically integral
+\(F\)-component. The algebraic closure of \(F\) in its function
+field, and in the function field of its complete Hodge flag bundle,
+is \(F\). The same \(F\) works for all rows, with the size bound of
+Proposition~\ref{zetageo:field}.
+\end{proposition}
+\begin{proof}
+Choose an elliptic curve \(C_0/F\) with \(j=j(O_k)\) and fix a complex
+identification with \(\mathbf C/O_k\). All its endomorphisms are
+defined over \(F\). Indeed their actions on the tangent line give an
+injective homomorphism in characteristic zero, and their scalars lie
+in \(k\subset F\). As \(O_k^\times=\{\pm1\}\), its normalized Weber
+function is a degree-two quotient by sign. It is defined over \(F\):
+in short Weierstrass coordinates its formula is a nonzero rational
+constant times \(g_2g_3 x/(g_2^3-27g_3^2)\), invariant under a
+change of scale. Here \(j\ne0,1728\).
+
+Let \(P\) correspond to \(1/m\bmod O_k\). Its Weber value is in
+\(R\) by the second main theorem of complex multiplication
+\cite[Theorem 11.39]{coxCM}. Every \(\sigma\in\operatorname{Gal}(\bar F/F)\)
+therefore sends \(P\) to \(\epsilon(\sigma)P\) with a unique
+\(\epsilon(\sigma)\in\{\pm1\}\). The signs define a continuous
+character, since \(P\) has order \(m>2\). As \(P\) generates
+\(C_0[m]\) over \(O_k/mO_k\), the action on the whole group is that
+same sign. Twist \(C_0\) by this character using the automorphism
+\([-1]\). On the resulting \(C/F\) the CM action still descends and
+every \(m\)-torsion point is \(F\)-rational.
+
+The integral \(j\)-invariant gives potential good reduction at every
+finite place \(v\). When \(15\mid m\), choose \(l\in\{3,5\}\)
+different from the residue characteristic at \(v\). Inertia has finite
+image on \(T_lC\), and its image lies in \(1+lM_2(\mathbf Z_l)\)
+by rationality of \(C[l]\). This kernel is torsion-free: if
+\(U=1+l^aB\) with \(a\ge1\) and \(B\not\equiv0\bmod l\),
+raising \(U\) to a positive exponent \(b\) prime to \(l\) preserves
+its depth \(a\), and taking the \(l\)-th power raises that depth
+by exactly one, by the binomial theorem for odd \(l\).
+Inertia is therefore trivial. The
+\href{https://wstein.org/papers/bib/Serre-Tate-Good_Reduction_of_Abelian_Varieties.pdf}
+{N\'eron--Ogg--Shafarevich criterion, Serre--Tate, Theorem 1},
+gives good reduction over \(F_v\).
+
+For the given marked row, use the rational isometry of
+Lemma~\ref{cmeig:row} and the axis point of
+Proposition~\ref{cmeig:degree}. Its factors are
+\(I_i\otimes_{O_k} C\), with the conjugated action on the
+opposite-type factors. Each \(I_i\) is finite projective over
+\(O_k\). Its idempotent on a power of \(C\), the multiplication
+action of \(O_E\), and the polarized trace pairing used in that
+proposition are all defined over \(F\). For the pairing one may
+use the principal elliptic polarization to identify the dual
+powers: every matrix entry in their homomorphisms is a CM
+endomorphism of \(C\). The rigidified graph line of the polarization
+is obtained by pullback of the normalized Poincar\'e bundle.
+The product has constant \(m\)-torsion since it is a direct factor
+of a product of curves with constant \(m\)-torsion. Thus the
+transported mark is defined over \(F\), including marks mixing
+the different factors. Good reduction of \(C\) also gives good
+reduction of these factors, either by their integral idempotents
+or by the same Tate-module criterion. For the tensor construction
+see \cite[\S2]{serreTensor}.
+
+In the marked period classification this point lies on the
+prescribed geometric component. The classification of the
+half-mark by the dual basis uses the root \(\zeta_m\in F\), and
+the rigidified graph line and its inverse reconstruction commute
+with base change. Consequently the fine moduli comparison preceding
+Corollary~\ref{cmeig:final} descends to \(F\): after a finite Galois
+extension each conjugate classifying map represents the same
+functorial operation, so equals the original map by uniqueness.
+Smooth geometric components are disjoint. The unique component
+through this \(F\)-point is fixed by \(\operatorname{Gal}(\bar F/F)\)
+and descends. For its function field \(K_Z\), geometric integrality
+implies that \(K_Z\otimes_F\bar F\) is a domain. A nontrivial
+finite extension of \(F\) inside \(K_Z\) would yield nontrivial
+idempotents after this scalar extension, since \(F\) has
+characteristic zero. The flag bundle has a dense affine cell over
+\(K_Z\), so its function field is purely transcendental over \(K_Z\)
+and has the same algebraic constants. This is the flag field in
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/IsGenFrGenFr.lean}{33}{the generic flag variables}
+and the condition used in
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsGoodCoverOverSizedField.lean}{143}{the algebraic constants at the marked level}.
+\end{proof}
+
+\begin{proposition}[The split half-level map and its metrics]
+\label{addh:level}
+Over \(F\), start at a fine base level \(m_0=g_0g_1\ge3\) prime to
+\(n=15^u\), \(u\ge1\), in the same classical PEL packet.
+Write \(I\bar I=nO_E\) for the coprime halves in
+Proposition~\ref{zetageo:field}, extended to \(O_E\), choosing \(I\)
+as the annihilator of the new marked half. Forgetting the refinement
+from level \(m_0n\) to \(m_0\) is finite \'etale and surjective.
+On the full inverse image of the packet its degree is
+\(\lvert\mathrm{GL}_r(O_E/I)\rvert\), where \(r=p+q\).
+On each complex component above a base component, pullback preserves
+the supremum norm and the Petersson \(L^2\)-norm formed with the
+component probability measure.
+\end{proposition}
+\begin{proof}
+On the fine base the universal abelian scheme has finite \'etale
+\(n\)-torsion. The Chinese remainder idempotents split it as
+\(A[I]\oplus A[\bar I]\). Both summands are isotropic and paired
+perfectly with each other, since the polarization interchanges the
+two idempotents under its adjoint. The first is \'etale locally a
+free \(O_E/I\)-module of rank \(r\), as follows on geometric fibers
+from the prescribed projective period lattice. A basis of this
+summand and \(\zeta_n\) uniquely determine the dual mark. The
+prime-to-\(n\) marking is retained: in the equation taking the
+\(n\)-multiple of a refined torsion section to its old value,
+multiplication by \(n\) is invertible on \(A[m_0]\).
+Conversely every such basis extends the old level condition. At
+each new local factor one lifts its matrix modulo \(I\) to an
+invertible integral matrix and uses the inverse adjoint on the
+conjugate factor. This supplies the compatible polarized Tate
+markings at geometric points. The representing scheme is thus
+the basis torsor under the indicated constant finite group.
+The map on marks agrees with
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/HalfLatticeTypes.lean}{115}{the prescribed map of levels}.
+
+The projection keeps the polarized abelian variety, tangent frame
+and flag. The pointwise norm of a pulled-back section is unchanged.
+On each complex component the projection is a finite covering
+of its image component, and the invariant flag density of
+Proposition~\ref{crev:mass} pulls back locally to the same density.
+Integration multiplies by the sheet number, as does total component
+volume. Division by that volume gives the claimed equality. The
+supremum is unchanged by surjectivity.
+\end{proof}
+
+\begin{proposition}[Testing the subcanonical lattice at a good prime]
+\label{addh:good-lattice}
+Fix such a marked component, a place \(v\mid l\) of the splitting
+coefficient field with \(l\nmid 2m\Delta_E\), and a smooth projective
+toroidal model at its hyperspecial level there. Let \(\mathcal X\)
+be its complete Hodge flag bundle over \(O_{F_v}\), \(B\) the
+inverse image of the reduced toroidal boundary, and \(\mathcal L\)
+the character line of an integral flag weight with central exponent
+zero. Take a rational cusp rule whose evaluation on the generic
+flag is a section \(s\) of \(\mathcal L(-B)_{F_v}\). Then \(s\)
+belongs to \(H^0(\mathcal X,\mathcal L(-B))\) if and only if it
+passes all the recorded integral-frame tests over \(v\) on this
+component. It suffices to test abelian points over finite unramified
+extensions of \(F_v\).
+\end{proposition}
+\begin{proof}
+The smooth toroidal model with its universal semiabelian scheme
+and relative normal crossings boundary is the good-reduction
+model used in Proposition~\ref{cmeig:hyperspecial}. Its flag bundle
+is smooth and proper and its interior is dense in each special
+fiber component. The embedding idempotents of \(O_E\) split
+integrally at \(v\). For a recorded test, extend its generic PEL
+point to the toroidal model by properness. The connected
+semiabelian extension agrees with the one in the test by
+\href{https://grothendiecksga.com/read/sga7/en/9-3.html}
+{SGA~7 I, Expos\'e IX, Proposition 3.2}. Its integral Lie
+eigensummands therefore agree as well. The test bases give the
+extension of the generic flag, since their successive spans are
+direct summands over the test DVR. Evaluating an integral section
+of \(\mathcal L(-B)\) in this frame first uses its inclusion into
+\(\mathcal L\) and then an integral trivialization. This gives
+an integral value, also at a degenerating test. The central
+exponent zero removes the scalar theta generator from the value.
+
+Conversely the regular model is normal, and \(s\), as a section of
+\(\mathcal L(-B)\), is regular at every horizontal prime divisor
+by the generic-fiber hypothesis. If \(s\) fails to extend, it has
+order \(-a<0\) along a vertical prime divisor. The special fiber
+is reduced, so for a uniformizer \(\pi\) the section \(\pi^a s\)
+is a unit in a trivialization near its generic point. Choose a
+closed point in this open set lying over the abelian interior.
+Its residue field is finite. Smoothness and Hensel lifting give
+a point over the unramified complete DVR with that residue field,
+reducing to the chosen point. The eigenflags there admit adapted
+integral bases. For its abelian scheme the principal polarization
+line has a generator of its module of sections over this DVR:
+on every fiber its space of sections has dimension one and higher
+cohomology vanishes, so cohomology and base change apply.
+These choices supply the framed abelian test. Its generic frame
+is defined over a reduced finitely generated \(F\)-algebra, by
+taking affine coordinates in the finite-type framed moduli space,
+as required for evaluating a rule. The value of \(\pi^a s\) is a
+unit, giving a test of negative valuation for \(s\). This proves
+both assertions.
+\end{proof}
+
+Thus on a common rational cusp space with the indicated generic
+realization, the recorded and toroidal subcanonical lattices
+contribute zero local index in Lemma~\ref{zetageo:lattice} at
+these primes. The test convention is the one in
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/VAtVNeBot.lean}{53}{the semiabelian model and its integral eigenframes}.
+
+In particular let \(\pi:Z'\to Z\) be one of the marked component
+maps of Proposition~\ref{addh:level}. For a common rational cusp
+space \(V\) on \(Z\) and its pullbacks on \(Z'\), the recorded
+lattices over \(v\) satisfy
+\[
+       \pi^* V\ \cap\ L_{{\rm rec},v}(Z')
+                    =\pi^*\bigl(V\cap L_{{\rm rec},v}(Z)\bigr).
+\]
+Indeed a deep test forgets to a base test of the same value.
+Conversely, an abelian test detecting a negative valuation at the
+base lifts to the chosen geometric component after a finite extension:
+that component maps finitely and surjectively onto \(Z\). This extension
+can be chosen unramified. The scheme of possible new marks over the
+test DVR is the basis torsor of the direct summand \(A[I]\) of its
+finite \'etale \(n\)-torsion, because \(l\nmid n\). Its generic
+points split over a finite unramified extension. The lifted abelian
+frame therefore detects the same negative valuation. This proves
+integral descent on pullbacks even when \(l\) divides the degree
+of the level map.
+
+The comparison uses the unmodified flag line.
+Exceptional divisors of the moving linear systems, the places
+dividing \(2m\Delta_E\), and the final signed component height in
+Corollary~\ref{recheight:period-degree} retain their own estimates.

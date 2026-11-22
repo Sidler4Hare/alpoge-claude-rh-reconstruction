@@ -540,10 +540,10 @@ the residue polynomial has no root in the residue field of \(F\).
 This contradiction proves the assertion.
 \src{src/Development/EtaleCohomology/CyclotomicDiscriminants/SDetectCut.lean}{101}{residual power criterion}.
 
-The original route additionally constructs cycles whose evaluations
-encode twisted norms of actual divisors; the abstract evaluation-count
-inequality just proved requires such an encoding to bound class-group
-characters. Theorem~\ref{newcoh:lemmaK} yields the required cohomological
+Theorem~\ref{addc:cycle} constructs cycles whose evaluations encode
+the twisted norms of actual divisors. This supplies the arithmetic
+input to the evaluation-count inequality for class-group characters
+in \eqref{sup:lengthcount}. Theorem~\ref{newcoh:lemmaK} yields the required cohomological
 conclusion independently of that construction. The higher-rank
 automorphic estimates enter elsewhere. For example, when \(N\) is
 the host modulus, \(\psi(-1)=(-1)^e\), \(2\le e<t\), and the

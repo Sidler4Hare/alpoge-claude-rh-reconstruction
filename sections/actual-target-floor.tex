@@ -1,0 +1,352 @@
+\subsection{The target slope floor in the original comparison}
+\label{geom:actual-target-floor}
+
+Fix an actual translate and write \(R_0=RR\) for its row lattice,
+\(R=RR^\vee\) for the target, and
+\(s=s_{\rm Frame}=\langle\mu(N'_i)-h_i\rangle\) for the original
+rank-weighted source centre. The formal data set
+\(\mu_{\min,CC}=\mu_{\min}(R)\) and \(HH=x^{C_H}b\).
+The exact dual-slope identity turns the required floor into
+\[
+ s-\mu_{\min}(R)=s+\mu_{\max}(R_0)\le x^{C_H}b.
+\]
+The duality statement uses the same field and the original dual norm.
+\src{src/Formalism/LocalRingCardinality/DataArith.lean}{102}{the minimum of the dual lattice}
+\src{src/Formalism/LocalRingCardinality/RankBoundMonotoneInDimension.lean}{993}{the exact dual-slope identity}
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/QuadraticLogDerivCongr.lean}{714}{transfer into the rank-gap inputs}.
+
+\paragraph{An auxiliary family of tests on all rows.}
+The source obtains the floor by constructing a map out of the
+\emph{primal} row space on the base level using the auxiliary height tests. In the original
+\code{Separates} statement every nonzero row \(t\) in the specified
+\(\mathrm{EEat}\) space has a nonzero pairing with some auxiliary form
+\(\Psi_{\rm test}\) and some Schwartz datum \(\Phi\) in the grid model.
+The quantifiers first choose the real vector and covector for the
+given multiplicity vector. The witness then varies with \(t\).
+The original separation theorem uses the real branching period,
+definite-level theta surjectivity, Bessel ascent, and level-tower
+convergence and gap conditions.
+\src{src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/LevelPlusSubgroup.lean}{65}{auxiliary row-separation quantifiers}
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/RealFunctionalsSeparateOfHypothesis.lean}{15}{proof from the local theta and real inputs}.
+
+The fitted grid replaces these tests by jointly injective coordinates
+\(\psi_K\). The base-row map \(v_{\mu_0}\) has kernel
+\(\ker P_q(\mu_0)\). Indeed the formula for each fitted coordinate
+compares it with \(\psi_K\) of the theta image, with nonzero scalar
+factors. The theta image itself is zero precisely when the base
+quotient coordinate \(P_q(\mu_0)\) is zero. The formal proof uses the
+surjectivity of \(P_q(\mu_0)\) and one nonzero row to certify the
+common scalar before comparing kernels. The fitted maps also give
+\[
+ \Psi\,\iota_tP_q(t)=
+          \left(\prod_{i,j}r_q(t)_{ij}\right)^{-1}v_t
+\]
+at the base tuple and every tuple occurring at a finite place, with
+the factor equal to one at the base. It follows that \(\Psi\) is
+injective. For if \(\Psi z=0\), lift \(z\) to
+\(\iota_{\mu_0}P_q(\mu_0)y\). Then \(v_{\mu_0}y=0\), so
+\(P_q(\mu_0)y=0\) and \(z=0\). These are auxiliary fitted tests on rows.
+The construction provides the target floor without a rank assertion
+about the actual word columns \(B_i\).
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/FittedFunctionAtZeroClose.lean}{51}{use of row separation in the fitted function}
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/KerEqOfFormula.lean}{20}{kernel of the fitted matrix}
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefiniteTree/FunctionalLowerBoundOfConditionsNumeric.lean}{917}{injectivity of the induced row map}.
+
+\paragraph{Local and infinite costs of the same map.}
+Write \(R_{\mathrm b}\) for the base row lattice and \(M_{\mathrm{aux}}\)
+for the auxiliary target of \(\Psi\). The finite-place comparison uses
+the actual glued lattice
+\(
+R_{\mathrm b}=\operatorname{glue}_w
+(\iota_{\mu(w)}\,\mathrm{abelian}_2(\mu(w)))
+\).
+The fitted local inclusion, with the correction \(d_F(w)\), gives
+\[
+ \Psi(R_{\mathrm b})_w\ \subseteq\
+ \mathfrak p_w^{-a_w}(M_{\mathrm{aux}})_w,\qquad
+ a_w=v_w\!\left(\prod_{i,j}r_q(\mu(w))_{ij}\right)+d_F(w).
+\]
+The support is the union of the nonbase-tuple places and the support
+of \(d_F\). Local-to-global inclusion therefore gives
+\(\Psi(R_{\mathrm b})\subseteq (\prod_w\mathfrak p_w^{-a_w})
+M_{\mathrm{aux}}\). At infinity the source first rescales the row
+frame by \(\kappa^{-1}\) via \(\code{scaleFrame}\), with its original
+squared-norm convention. The resulting source maximum slope is
+\(\mu_{\max}(R_{\mathrm b})+\operatorname{mean}\log\kappa\).
+The archimedean operator height in this metric is bounded by
+\(b_{\rm IP}\). The injective-map slope inequality and ideal scaling
+then give the signed estimate
+\begin{equation}\label{geom:auxiliary-row-height}
+ \mu_{\max}(R_{\mathrm b})+\operatorname{mean}\log\kappa
+ \le \mu_{\max}(M_{\mathrm{aux}})+b_{\rm IP}
+                         +2\sum_w\lambda_wa_w,
+ \qquad
+ \lambda_w=\frac{\log N\mathfrak p_w}{[K:\mathbf Q]},
+\end{equation}
+where \(K\) is the number field of the lattices. The sign follows
+from the negative power of \(\mathfrak p_w\) in the containing ideal.
+There is no additional row-dimension multiplier. The original
+exponent-grid bound charges the last sum to the grid and fixed-point
+budgets. Together with the auxiliary lattice bound and
+\(b_{\rm IP}\), it gives the input denoted \(\code{FUN}\).
+The base-to-sharp passage adds \(14\lambda_0\) to that maximum-slope
+bound, with \(\lambda_0\) the original logarithmic group-size term.
+The metric and row-lattice ties identify the sharp maximum slope
+with that of \(RR\).
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefSide.lean}{281}{glued row lattice}
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefiniteTree/FunctionalLowerBoundOfConditionsNumeric.lean}{973}{local-to-global inclusion and infinite-place estimate}
+\src{src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean}{405}{slope inequality with fractional-ideal denominators}
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/HefunPointB.lean}{32}{transport from the base to the actual sharp row lattice}.
+
+\paragraph{The common normalization and the extreme tail.}
+The normalization term \(\operatorname{mean}\log\kappa\) cancels
+against the negative of that term in the word heights \(h_i\).
+The other source terms are bounded through the upper source
+maximum-slope comparison, the base column maximum slope, the gauge
+combination \(G+F^0-E_i\), and the remaining height and rank budgets.
+The rank-weighted average gives the required bound on \(s+\mu_{\max}(RR)\).
+These bounds give a fixed polynomial exponent \(C_H\) carried into
+the frame construction. They do not estimate the target floor on
+the scale of the final error bracket by itself.
+\src{src/Formalism/LocalRingCardinality/KernelPlaceMeanBound.lean}{25}{row scalar in the word height}
+\src{src/Formalism/SharpRestriction/Divisibility/SlopeExcess/HeightBoundOfComponentBounds.lean}{13}{rank-weighted averaging of the source bounds}
+\src{src/Formalism/SharpRestriction/Divisibility/SlopeExcess/HeightBoundOfComponentBounds.lean}{80}{assembly of component bounds}.
+
+The frame estimate concerns the same word maps, the same row
+lattice, and the same exponent. At the chosen infinite place the
+full maps are compressed by isometries, and their retained rows
+are the actual \(B_i\) in the row and column metric frames. The
+source uses \(\sigma=x^{-C_H}\), a compression loss \(d_e\) and a
+diagonal defect majorant \(e_B\) with
+\[
+ (3\sqrt{d_e}+4\sqrt{e_B})x^{C_H}\le1,\qquad
+ \eta\le 5x^{-C_H}+3\sqrt{d_e},\qquad e\le e_B .
+\]
+Consequently, by monotonicity of the square root,
+\[
+       (\eta+4\sqrt e)x^{C_H}\le6,\qquad
+       (\eta+4\sqrt e)HH\le6b .
+\]
+The tail-counting argument bounds the fraction below \(s-t\) by
+\((1-\delta_{\rm row})^{-1}(\eta+4\sqrt e+4U/(U+t))\), where \(U\)
+is the upper source deviation and \(\delta_{\rm row}\) is the
+missing ambient-row proportion. The floor cuts this integral off
+at \(HH\). The last fraction integrates to
+\(4U\log(1+HH/U)\), taken as zero when \(U=0\). For \(t\ge HH\)
+the original floor makes the strict lower tail empty. This is how
+the target minimum, including on small quotients, enters the
+original mean-slope estimate.
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{519}{same full and descended word maps}
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{639}{the matched exponent in the frame bound}
+\src{src/Formalism/HarderNarasimhan/HarderNarasimhanProofs/TheoremFSharp.lean}{308}{integration of the target tail}.
+
+
+The ramified comparison gives two conclusions after the same
+compression calculation. Its first conclusion includes
+\(\log|\mathrm{Word}|\) in the mean-slope loss. Its second conclusion
+omits that term by applying the sharp lattice theorem.
+The adapter \code{joint\_a\_ramified\_holds} selects the first
+conclusion. Selecting the second gives the sharper bound at the
+same target floor and on the same matrices.
+\src{src/Formalism/SizeWindowBrackets/ChainSlopeWindows/JointDModelAppliesUnitLattice.lean}{236}{the two conclusions and the choice of the first}.
+
+The explicit exponents distinguish the target height from the
+frame errors. In the original component comparison put
+\(M_0=\max(C_t,5)+3\). The source has
+\(E_d=9M_0+1\), the gauge majorant has exponent
+\(E_c=9M_0+2\), and the final exponent is at least
+\(1+\max(E_b,E_c,C_{F0},E_d)\). In particular this choice is at
+least \(75\). The raw matrix estimates give square-root bounds
+\(\sqrt{d_e},\sqrt{e_0}\le\exp(-x^{\varepsilon/8})\)
+before replacing them by the polynomial majorants. The factor
+\(x^{C_H}\) in the height bound therefore pairs with
+\(x^{-C_H}\) in the assembled frame transfer. The raw bounds control the square roots directly.
+\src{src/Formalism/SharpRestriction/Divisibility/SlopeExcess/HeightBoundOfComponentBounds.lean}{73}{the component exponents}
+\src{src/Formalism/SharpRestriction/Divisibility/HookProducts/GaugeFormBoundOfUniformSize.lean}{39}{the gauge exponent}
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{740}{the raw estimates before the polynomial weakening}.
+
+
+
+The code-size condition uses this exponent too. With full word
+rank \(r_f\), the original word-size bounds yield
+\(D_*/\sigma\le r_f\) from
+\(C_0\Gamma^2x^{C_H}\le|\mathrm{Word}|\).
+Thus increasing \(C_H\) to accommodate a different floor also
+requires checking the code size at that exponent.
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/Chosen.lean}{56}{code size at the frame exponent}
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{549}{full rank from the code size and word ranks}.
+
+The elementary part of the source-side budget can be isolated.
+The original \code{ga\_pow} and \code{fo\_pow} apply on the
+actual filled host, before the row separation or the
+complement-two bound on \(-E_i\). They use the local cutoff,
+the prescribed exponents, the Mertens bound, and the family size
+bounds. They give \(G\le x^{4M_0+1}b\) and
+\(F^0\le x^{9M_0+1}b\). Since \(x\ge2\) and \(M_0\ge8\), addition
+gives \(G+F^0\le x^{9M_0+2}b\). It remains to bound the
+signed \( -E_i\) contribution and the other source terms when
+applying this estimate in a replacement for the full height proof.
+\src{src/Formalism/SharpRestriction/Divisibility/HookProducts/CardLiftsEq.lean}{272}{the gain bound on the filled host}
+\src{src/Formalism/SharpRestriction/Divisibility/HookProducts/LwPNonneg.lean}{250}{the forced-exponent bound}.
+
+\paragraph{What the height comparison would need from other tests.}
+The displayed implications also give a sufficient replacement
+criterion independent of the exponent-grid proof. Suppose there is
+an injective \(K\)-linear map \(\Psi\) on the primal row space, a
+finite fractional ideal ledger with
+\(\Psi(R_{\mathrm b})\subseteq (\prod_w\mathfrak p_w^{-a_w})
+ M_{\mathrm{aux}}\), and an operator-height estimate in the
+\(\kappa\)-normalized source metric. By
+\eqref{geom:auxiliary-row-height} it suffices to bound the sum of the
+auxiliary maximum slope, the operator height and the finite ideal
+cost by \(x^A b\) for some fixed \(A\), with the original source and
+passage bounds. For example a single positive rational integer
+\(q_{\mathrm{den}}\) clearing the entire image into
+\(M_{\mathrm{aux}}\) permits the finite cost \(2\log q_{\mathrm{den}}\):
+the valuation of \(q_{\mathrm{den}}\mathcal O_K\) gives
+\(\sum_w\lambda_wv_w(q_{\mathrm{den}})=\log q_{\mathrm{den}}\).
+This deduction uses elementary ideal norms and the slope
+inequality. The original source certifies its actual auxiliary
+map through the fitted-grid and row-tower inputs above.
+Producing a bounded such map on a new host from its elementary
+host data alone is an additional geometric assertion.
+
+\paragraph{A restricted test after the change of level.}
+The stated \code{Passage} bounds the maximum and mean slopes. To
+control an individual sharp-level subspace one can instead use
+the common ambient lattice in the proof of that passage. Let
+\(\Lambda\) denote this \(G\)-stable lattice and let \(e_0,e_1\)
+be the base and sharp idempotents. Let \(h_0,h_1\) be their
+subgroup orders. The embeddings
+\(\iota_b,\iota_s\) into the ambient representation identify
+the two row fibres with \(\operatorname{im}e_0,\operatorname{im}e_1\).
+Their squared norms use the ambient metric divided by \(h_0,h_1\),
+respectively. The same \(\kappa\) normalization on the two row
+fibres preserves this ratio. The original sandwich gives
+\[
+ \iota_s(R_0)\subseteq\Lambda,\qquad
+ h_0(\Lambda\cap\operatorname{im}e_0)\subseteq\iota_b(R_{\mathrm b}).
+\]
+Write \(\rho\) for the ambient group action and put
+\(p_g=\iota_b^{-1}e_0\rho(g)\iota_s\). The maps \(p_g\) jointly
+separate the entire sharp row fibre. Indeed the common kernel of
+\(e_0\rho(g)\) in the ambient representation is \(G\)-stable. A
+nonzero such kernel would contain an irreducible constituent.
+The good projector is the identity and the base character
+occurs once in each good irreducible. Thus \(e_0\) acts nontrivially
+on that constituent, contradicting the \(g=1\) kernel condition.
+These are the hypotheses used in the original level transfer.
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefSide.lean}{339}{scope of the stated passage}
+\src{src/Formalism/LocalToGlobal/GlobalTheory/DivPassage.lean}{70}{ambient metric and lattice sandwich}
+\src{src/Formalism/LocalToGlobal/IndefiniteReal/LevelAmbTransfer.lean}{13}{the good projector and the base multiplicity}.
+
+For a nonzero rational sharp row subspace \(A\) of rank \(a\)
+choose a set \(C\subseteq G\) of at most \(a\) elements for which the
+\(p_g|_A\) jointly separate \(A\). To construct it, start with the
+whole \(A\) as kernel and add a \(g\) nonzero on the current
+kernel until its dimension is zero. Set
+\(A_b=\sum_{g\in C}p_g(A)\), so \(\dim A_b\le a^2\).
+Suppose one has a fitted test \(\Psi_b\) injective on \(A_b\), with
+finite containing ideal \(J\) for \(\Psi_b(R_{\mathrm b}\cap A_b)\)
+in \(M_{\mathrm{aux}}\), and operator height at most \(h_\infty\)
+on \(A_b\) in the normalized base metric. Define
+\[
+          J_A(y)=(\Psi_b p_g(y))_{g\in C}.
+\]
+This is injective on \(A\). Since \(h_0e_0\) is an integral group sum and \(\Lambda\) is \(G\)-stable,
+\(h_0p_g\) maps \(R_0\cap A\) to the inverse image of
+\(\Lambda\cap\operatorname{im}e_0\). The sandwich supplies the
+second factor \(h_0\), so
+\[
+ h_0^2J_A(R_0\cap A)\subseteq
+                  J\,M_{\mathrm{aux}}^{\oplus C}.
+\]
+At infinity \(e_0\) is a contraction, as it is an average of
+unitary operators with unit-modulus coefficients. Each \(p_g\)
+therefore has norm at most \(\sqrt{h_1/h_0}\). Taking the orthogonal
+sum gives a squared operator cost of at most \(|C|h_1/h_0\) times
+the squared cost of the base test. The extra height and ideal
+allowance together are consequently
+\[
+       \log|C|+\log h_1+3\log h_0.
+\]
+For the top exterior line of \(A\) the allowance is at most \(a\)
+times this amount. The auxiliary maximum slope of the orthogonal
+sum is the same as that of \(M_{\mathrm{aux}}\).
+This argument is a direct restriction of the underlying arithmetic
+representation. It provides a test route for the designated
+subspace without using any identification of base and sharp HN
+cutoffs. To improve on the whole-space height bound, the actual
+restricted operator or finite ideal cost still has to improve.
+\src{src/Formalism/LocalToGlobal/IndefiniteReal/TransferStatement.lean}{30}{the integral multiple of the base projector}
+The maximum-slope assertion for an orthogonal sum also follows
+by filtering any sublattice by its successive coordinate kernels.
+Each successive quotient maps integrally and contractively into
+one coordinate lattice. Its slope is at most that coordinate's
+maximum slope by the determinant inequality. Adding their
+degrees gives the assertion.
+
+\paragraph{The test lattice and the restricted infinite-place bound.}
+The target of the fitted test has a separate elementary estimate.
+The original \code{IsTestLat} uses the dual of the orthogonal
+sum of the canonical class-representative coefficient lattices,
+with the inverse-transpose Gram form. For this lattice
+\code{leafMM\_of\_test} gives
+\[
+ \mu_{\max}(M_{\mathrm{aux}})
+     \le 4f\,n_pR_p\log(n_pR_p),\qquad
+ R_p=(m+1)(g_a+1)+L_c+n_p .
+\]
+The argument uses the self-dual lattices at the class
+representatives and the coefficient-weight spread. It uses no
+nonvanishing property of the fitted functional. On the actual
+sizes \(f,k,m,t\) are bounded by a fixed power of \(x\);
+\(n_p\) and the auxiliary rank \(N\) are polynomial expressions
+in these ranks. Also \(L_c\) is the recorded cloud length, at
+most \(\mathrm{Sc}\le xb/5\). The largest term in \(g_a\) involving
+\(L_c\) is a polynomial in the ranks times \(\sqrt{L_c}\).
+It follows that the displayed bound is
+\(O(x^B\sqrt b)=o(b)\) for a fixed \(B\), because
+\(b=\exp(x^\varepsilon)\). This last estimate is a consequence
+of the numerical formulas and applies equally on the canonical
+trivial-character host.
+\src{src/Development/AbelianVarietyTheory/Definitions/Divisors/GridTestLatticeLargestSlopeBound.lean}{116}{the actual auxiliary lattice and metric}
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/MultiplicityAtFittedPoints.lean}{94}{the bound for the canonical test lattice}
+\src{src/Development/AbelianVarietyTheory/Statements/PlaceShiftStatements/SetAtOfSizeAt.lean}{60}{the cloud-length bound}
+\src{src/Formalism/LocalRingCardinality/ColumnWeightSpreadOffTop.lean}{73}{the scale bound on the spread}.
+
+The other infinite-place input has two steps. The fitted
+\code{InfAt} estimate bounds the height of the ambient evaluation
+map in the test metric. The quotient coisometry preserves its
+operator norm on passage to the base quotient. Finally
+\code{ip\_first} uses the lower type factors \(\lambda_j\) to
+pass from that quotient metric to the normalized row metric.
+In the squared-norm convention, if \(g(v)\) is a common lower
+bound for \(\sum_j\log\lambda_j\) on the active types, then the
+quotient operator bound gives the normalized row bound with
+correction \(-\operatorname{mean}_v g(v)\).
+
+This last comparison can be restricted explicitly to \(A_b\).
+At each infinite place let \(Q_A=\iota_{\mu_0}^{-1}A_b\) in
+base quotient coordinates and let \(g_A(v)\) be the minimum
+of \(\sum_j\log\lambda_j\) over only the orthogonal types whose
+projection of \(Q_A\) is nonzero. For \(q\in Q_A\), the norm
+comparisons on each type and the orthogonal decomposition give
+\[
+ \|\iota_{\mu_0}q\|_{\kappa\text{-normalized},v}^{\,2}
+       \ge e^{g_A(v)}\|q\|_{Q,v}^{\,2}.
+\]
+Applying the same calculation as for the full operator bounds
+the restricted height by the height in the quotient metric
+on \(Q_A\), minus \(\operatorname{mean}_v g_A(v)\).
+This permits a better \(\lambda_j\) penalty if the selected
+subspace avoids the worst types. The construction of the fitted
+affine coordinates and the bound on their actual evaluation
+operator remain necessary to make that improvement quantitative.
+The trivial Dirichlet character in the final prime comparison
+does not fix these automorphic types or their theta-test
+normalizations.
+\src{src/Development/AbelianVarietyTheory/Statements/PlaceShiftStatements/InfClassAt.lean}{176}{height of the fitted ambient evaluation operator}
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/IpaTie.lean}{22}{coisometry and the fitted height bound}
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefiniteTree/FunctionalLowerBoundOfConditionsNumeric.lean}{826}{norm comparison using the lower type factors}.
+

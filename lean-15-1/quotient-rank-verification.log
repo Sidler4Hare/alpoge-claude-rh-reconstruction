@@ -1,0 +1,14 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+RankTailTransfer.lean compiled against the pinned Mathlib with exit code 0.
+replaying RankTailTransfer
+leanchecker -v RankTailTransfer exit 0
+'Levent151.levelRankMultiplicity' depends on axioms: [propext, Quot.sound]
+'Levent151.projectedWordRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.spanningWordRanks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.fullFrameRankLoss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.wideQuotientRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.clippedSourceChord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.meanTarget_of_rankCutoffs' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean --stdin exit 0.
+Finite check of the paper example: p=41, k=3. All 1640 pairs of leading nonzero quadratic and linear coefficients give squared Gauss sum 41 modulo Phi_41. There are 1722 rank-three maps into dimension 124 and one common zero row.
+The nonzero minor on the cofinal arithmetic family is a separate open condition.

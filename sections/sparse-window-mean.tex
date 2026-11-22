@@ -1,0 +1,303 @@
+\subsection{How many arithmetic tests may fail in a complete window}
+\label{scope:sparse-window}
+
+Fix the exponent, the retained family and the full page, Behrend
+and Fourier hypotheses of Proposition~\ref{scope:fixed-powers}.
+Put \(\beta=1/2+97\varepsilon/16\) and fix an integer \(r\ge1\).
+In a complete window write \(Z=Y^{3/2}\) and
+\(\mathcal N_Y=\{m\in\mathbf Z_{>0}:Y\le m^r\le Z\}\).
+At \(x=m^r\) let \(Q(x)=\bar D(x)/E_x\) on the input mean hosts.
+On the realized overlap hosts one may equally take
+\(Q(x)=D_{u(x)}(x)/E_x\) for any selection of translates, including
+a minimizing or maximizing translate chosen at each \(x\).
+All estimates below are uniform in that choice.
+
+\begin{lemma}[Detecting a signed excursion in a fixed multiplicative interval]
+\label{scope:fixed-ratio}
+There is a finite \(C=C_{\psi,\beta}>1\) with the following property.
+If \(\Theta>\beta\), then for every \(\beta<\theta<\Theta\) and
+all sufficiently large \(X\) there is a \(t\) in \([X,CX]\) with
+\(F(t)>t^\theta\). One may keep both ends of this interval a fixed
+positive logarithmic distance from \(t\). If the real parts of all
+real zeros are strictly below \(\Theta\), the same assertion holds
+with \(F(t)<-t^\theta\), at a possibly different point.
+\end{lemma}
+\begin{proof}
+We use the positive measure construction in the project's
+\emph{Zeta positive-part sieve}, \S\S2--3, for the full retained
+Dirichlet family, taking account of real poles. Fix
+\(\beta\le\sigma<\Theta\), initially \(\sigma=\beta\).
+Among the distinct poles \(\rho=b_\rho+i\gamma_\rho\) of
+Proposition~\ref{an:poles}, take those with \(b_\rho>\sigma\) and
+\(\gamma_\rho>0\). Then \(L=\sum_\rho\pi/\gamma_\rho<\infty\).
+Indeed, for the fixed finite family Montgomery's density theorem
+bounds their count up to height \(T\ge2\) by
+\(O_{\psi,\sigma}(T^{3(1-\sigma)/(2-\sigma)}\log^{K}(2T))\)
+for an absolute \(K\).
+The exponent is less than one for \(\sigma>1/2\), so partial
+summation proves convergence. See
+\href{https://link.springer.com/book/10.1007/BFb0060851}{H.~L. Montgomery,
+\emph{Topics in Multiplicative Number Theory}, Chapter 12}.
+
+Write \(z_\rho=\rho-\beta\), \(l_\rho=\pi/\gamma_\rho\). Take the
+sum of independent variables with the following two-point laws:
+\[
+   \frac{e^{(b_\rho-\beta)l_\rho}\delta_0+\delta_{l_\rho}}
+        {1+e^{(b_\rho-\beta)l_\rho}} .
+\]
+The resulting probability measure \(\nu\) is supported on \([0,L]\).
+Its entire transform \(M(z)=\int e^{zv}\,d\nu(v)\) vanishes at
+every \(z_\rho,\overline{z_\rho}\) on this list by independence,
+and is strictly positive on the real axis. Convolve \(\nu\) with
+uniform probability on \([-D,D]\), where \(D=L+1\). The density
+\(B\) so obtained is supported on \([-D,L+D]\) and equals
+\(1/(2D)\) almost everywhere on \([0,L]\).
+
+For \(g(u)=e^{-\beta u}F(e^u)\), the Hadamard expansion in
+Proposition~\ref{scope:fixed-powers} has an absolutely summable
+coefficient for each nontrivial zero, given by \eqref{eq:residue}.
+The constant, zero at the origin and negative trivial zeros contribute
+\(O_\psi((1+u)e^{-\beta u})\) for \(u\ge1\). Consequently
+\(\int B(v)g(u+v)\,dv\) is the sum of the terms of the real poles
+to the right of \(\sigma\), each with strictly positive coefficient
+and exponent \(\rho-\beta\), plus \(O(e^{(\sigma-\beta)u})\).
+If a real pole has real part \(\Theta\), this proves the required
+positive excursion by taking \(\sigma=\beta\).
+
+Otherwise choose a nonreal \(\rho_*\) with real part \(b_*>\theta\)
+larger than \(\sigma\) and the real parts of all real poles. Such a
+choice exists since the real poles in \([\beta,1]\) are finite.
+Use the pole with positive imaginary part. Let \(m\) be the order
+of the zero of \(M\) at \(z_*=\rho_*-\beta\). The transform of the
+bounded complex density
+\[
+ J(v)=\mathbf1_{[0,L]}(v)\int_{[v,L]}
+      \frac{(w-v)^{m-1}}{(m-1)!}e^{z_*(w-v)}\,d\nu(w)
+\]
+is \(M(z)/(z-z_*)^m\), by the integral Taylor remainder for
+\(e^{zw}\) at \(z_*\) and \(M^{(j)}(z_*)=0\) for \(j<m\).
+It takes a nonzero value at \(z_*\).
+Thus \(\int J(v)g(u+v)\,dv\) equals a nonzero constant times
+\(e^{z_*u}\), up to \(o(e^{(b_*-\beta)u})\), since the real
+terms and those with real part at most \(\sigma\) have smaller
+exponents. Termwise integration is justified by absolute convergence
+on the fixed support. Also \(|J|\ll_* B\). The integral of
+\(B|g|\) is therefore \(\gg_*e^{(b_*-\beta)u}\), whereas the
+signed integral of \(Bg\) is \(o(e^{(b_*-\beta)u})\). Each sign
+has a point of the required size there. Taking \(u=\log X+D+1\)
+and \(C=\exp(2D+L+2)\) leaves unit logarithmic margins.
+
+If \(\Theta>\beta\) is unattained, the same assertions hold for
+every prescribed \(C>1\). As \(\sigma\uparrow\Theta\), the sum
+defining \(L\) decreases to zero by dominated convergence at
+\(\sigma=\beta\). Choose \(D>L\) and positive margins so small
+that the resulting support with its margins fits in \([0,\log C]\).
+Then choose \(b_*>\max(\sigma,\theta)\) as above.
+\end{proof}
+
+\begin{theorem}[A moment of the actual arithmetic tests]\label{scope:sparse-moment}
+For any fixed \(p>0\), along any cofinal sequence of the specified
+complete windows, or on \([Y,Z]=[X,CX]\) contained in those
+windows with \(C\) from Lemma~\ref{scope:fixed-ratio} and \(X\to\infty\),
+\[
+ \lim_{Y\to\infty}
+ \frac{1}{p\log Z}\log\!\left(
+       \frac1{|\mathcal N_Y|}
+       \sum_{m\in\mathcal N_Y}
+                  \big(1+\max(Q(m^r),0)\big)^p\right)
+       =\max(\Theta-\beta,0).
+\]
+The same limit holds using \(Q(x)=W_Z(x)/x^\beta\) with the ordinary
+prime prefix of Proposition~\ref{pref:powers}; this version requires
+only the fixed character. If \(\Theta>\beta\), then for every
+\(a>0\) the proportion of indices with \(Q(m^r)>1\) exceeds
+\(Z^{-a}\) in every sufficiently late such window.
+\end{theorem}
+\begin{proof}
+For the geometric quantities let \(d(x)\) be the discrepancy
+normalized by \(2/(|T|mb\delta_x)\), with \(m\) here the rank
+parameter of the host, and let \(W(x)>0\) be the budget in the
+same normalization. Then \(Q=d/W\). The discarded-twist bound,
+the mean Fourier comparison and, for individual translates, the
+overlap estimate give
+\[
+   |d(x)-F(x)|\ll_\psi x^{1/2+\varepsilon}.
+\]
+The page upper bound of Corollary~\ref{pref:scale} and the
+\(A_3\) term in the budget in
+Proposition~\ref{scope:reselection} give
+\(2x^\beta/\delta_x\le W(x)\ll x^\beta/\delta_x\).
+Here \(\delta_x^{-1}=x^{o(1)}\) uniformly. For the prime-prefix
+version take \(d=W_Z,\ W=x^\beta\); the absolute error is
+\(O(\sqrt{x})\). Thus in either case \(W\gg x^\beta\) and for
+every fixed \(\xi>0\), \(W\ll_\xi x^{\beta+\xi}\).
+The Hadamard bound \(|F(x)|\ll_\psi x^\Theta\) gives the upper
+limit in the formula. When \(\Theta\le\beta\) the lower limit is
+at least zero because each summand is at least one.
+
+Suppose \(\Theta>\beta\). Fix \(0<\nu<\min(1,1/r)\). Choose
+\(\max(\beta,\Theta-\nu/2)<\theta<\Theta\).
+For all sufficiently large \(Z\), Lemma~\ref{scope:fixed-ratio}
+gives \(t\asymp Z\) with \(F(t)>t^\theta\) in the interior of
+\([Z/C,Z]\), a subinterval of either testing window.
+The local variation bound in
+Proposition~\ref{scope:fixed-powers} costs
+\(O_\psi(t^{\Theta-\nu/2})=o(t^\theta)\) on
+\([t-t^{1-\nu},t+t^{1-\nu}]\). This interval lies inside \([Y,Z]\)
+eventually. Throughout it \(d(x)\gg t^\theta\), since
+\(\theta>\beta>1/2+\varepsilon\), and hence
+\(Q(x)\gg_\xi t^{\theta-\beta-\xi}\) for \(0<\xi<\theta-\beta\).
+This lower bound holds simultaneously for every translate on the
+overlap hosts.
+
+Taking \(r\)-th roots of the two ends gives an interval of length
+\(\asymp_r t^{1/r-\nu}\), which tends to infinity. It contains
+\(\gg_r t^{1/r-\nu}\) integers, while
+\(|\mathcal N_Y|\asymp_r Z^{1/r}\). The moment in parentheses is
+therefore at least a constant times
+\(Z^{-\nu+p(\theta-\beta-\xi)}\).
+Let \(\nu,\xi\) tend to zero and \(\theta\) tend to
+\(\Theta\) subject to the stated strict inequalities. This proves
+the lower limit. For the final assertion each of those same indices
+has \(Q>1\) eventually. Its proportion is bounded below by a
+constant times \(Z^{-\nu}\), with \(\nu<a\) permissible.
+\end{proof}
+
+\begin{corollary}[Full estimates from tests with a sparse exceptional set]\label{scope:sparse-transfer}
+Keep the common host hypotheses above. Suppose that on arbitrarily
+late windows of either size all but \(O(Z^{-c}|\mathcal N_Y|)\) of the tested
+powers satisfy \eqref{scope:average}, for some fixed \(c>0\).
+Alternatively, on the overlap hosts it suffices that at the same
+number of powers at least one actual word at one translate passes
+the signed test of Corollary~\ref{scope:one-word}.
+Then both \eqref{scope:average} and \eqref{scope:missing} hold for
+all translates at every sufficiently late real scale of the
+realized overlap family. The exponent and coefficient are the ones
+in the two original displays. The same conclusion follows from
+a subpower upper bound \(Z^{o(1)}\) for any one of the moments
+in Theorem~\ref{scope:sparse-moment} on a cofinal subsequence.
+\end{corollary}
+\begin{proof}
+A passing word gives \(D_u/E_x\le1\) at its translate by
+\eqref{geom:finite-cancel} and the upper word loss. In this case
+take \(Q=\min_u D_u/E_x\); for the mean take \(Q=\bar D/E_x\).
+If \(\Theta>\beta\), the failing proportion exceeds \(Z^{-c/2}\)
+eventually, contradicting the assumed estimate. The moment version
+uses the positive limit when \(\Theta>\beta\).
+Proposition~\ref{scope:fixed-powers} now applies at \(\Theta\le\beta\).
+At every late scale on the overlap family it gives
+\(\max_u D_u/E_x\le O_\psi(\delta_x)+o(1)\), which tends to zero
+because \(4L_{w,x}|T_{2,x}|\le n_x/o\) and \(L_{w,x}\to\infty\).
+In particular there is a uniform threshold for coefficient one.
+\end{proof}
+
+\begin{corollary}[Only the relative determinant in the word test]
+\label{scope:signed-word-alone}
+On the selected overlap kits satisfying Proposition~\ref{orb:selected},
+use the local length and upper quotient comparison in
+Section~\ref{geom:relative-finite-index} and the original size bounds.
+For each positive-rank word on each translate one has
+\[
+        \frac{D_u}{E_x}\le\frac{P_{ui}}{E_x}
+                  +O(x^{-4\varepsilon}+x^{-\beta}).
+\]
+Thus it suffices to bound \(P_{ui}/E_x\) by a fixed constant for
+one actual word at one translate at all but a proportion \(O(Z^{-c})\)
+of the powers in an arbitrarily late sequence of the specified
+fixed-ratio intervals. These signed determinant tests imply both
+original bounds on the full realized windows.
+\end{corollary}
+\begin{proof}
+Put \(y=x^\varepsilon\), \(B=n_Tmb\), and use \(P\) of
+Corollary~\ref{trmean:loss} for the nonnegative numerical bracket.
+On the original ranks \(E_x\ge y^5 P\). Since the normalized
+budget is \(W=2E_x/(B\delta_x)\ge 2x^\beta/\delta_x\), also
+\(B/E_x\le x^{-\beta}\).
+The local upper estimate is
+\(D_u\le P_{ui}+(\mathcal A_u-G_u)+\ell_{ui}\).
+Proposition~\ref{orb:selected} gives
+\(\mathcal A_u-G_u\le CB,\ I_u\le Bx^{-8}\).
+The level count bounds \(\ell_{ui}\le c_s I_u+K_7\) and
+\(K_7\ll yP\) by the proof of Corollary~\ref{trmean:loss}.
+Divide by \(E_x\) to obtain the displayed estimate. If
+\(\Theta>\beta\), the lower-bound interval in the proof of
+Theorem~\ref{scope:sparse-moment} has all translates above a fixed
+positive power of \(Z\) and occupies more than a proportion
+\(Z^{-c/2}\) of the tested powers for large \(Z\).
+At least one of these powers lies outside the exceptional set,
+contradicting its one-word bound. Apply Proposition~\ref{scope:fixed-powers}.
+The original word loss is used only as an upper bound. The signed
+relative determinant test on these intervals remains to be proved.
+\end{proof}
+
+\begin{corollary}[Intervals of actual points for bounded conductors]
+\label{scope:bounded-conductor-intervals}
+Fix a primitive target of conductor at most \(400\,000\), including
+zeta, and fix \(0<\nu<1\). Take the same supplied hosts and realized
+points with the uniform overlap and page estimates as above.
+There is a finite \(C=C_{\psi,\varepsilon}>1\) such that every
+sufficiently late \([X,CX]\) contained in one of their complete
+windows contains a closed interval
+\[
+        [t-t^{1-\nu},\,t+t^{1-\nu}]
+\]
+on which \eqref{scope:average} and \eqref{scope:missing} both hold.
+This conclusion uses no signed inequality on a word or translate.
+\end{corollary}
+\begin{proof}
+Each primitive inducer of a power of \(\psi\) has conductor dividing
+the conductor of \(\psi\). For the nonprincipal inducers the
+finite-height verification of
+\href{https://research-information.bris.ac.uk/files/67056136/platt_grh3.0.pdf}
+{D.~J. Platt, \emph{Numerical computations concerning the GRH},
+Theorem 9.1 in the author's manuscript} excludes real zeros in
+\((1/2,1)\): such a zero would have ordinate zero. For \(\zeta\)
+one can use the alternating series directly. If \(\Theta\le\beta\)
+Proposition~\ref{scope:fixed-powers} covers every sufficiently
+late tested scale and every intervening real scale on the hosts.
+Otherwise choose \(\max(\beta,\Theta-\nu/2)<\theta<\Theta\).
+Lemma~\ref{scope:fixed-ratio} supplies the negative excursion
+in the interior of every specified \([X,CX]\).
+The local variation bound makes \(F(x)<0\) throughout the stated
+interval. Uniformly for the actual translates, the normalized
+discrepancy is then at most \(O_\psi(x^{1/2+\varepsilon})\),
+which their own normalized budget \(W(x)\gg x^\beta\) absorbs.
+Both original estimates follow at the same points.
+\end{proof}
+
+\begin{corollary}[When a fixed fraction of a cell can pass]
+\label{scope:relative-length}
+Use the same bounded-conductor hypotheses and \(C\). In each such
+cell \([X,CX]\), let \(H_X\) be the supremum of lengths of intervals
+on which both estimates hold for every translate. If
+\(\Theta\le\beta\), then \(H_X=(C-1)X\) eventually. If
+\(\Theta>\beta\) and a retained zero has real part \(\Theta\), then
+\(H_X\gg_{\psi,\varepsilon}X\) eventually. If \(\Theta>\beta\) and
+the supremum is unattained, \(H_X/X\to0\) along the supplied cells.
+\end{corollary}
+\begin{proof}
+The first case is Proposition~\ref{scope:fixed-powers}.
+In the second case the zero attaining \(\Theta\) is nonreal, by the
+real-zero exclusion in Corollary~\ref{scope:bounded-conductor-intervals}.
+Use that zero as \(\rho_*\) in Lemma~\ref{scope:fixed-ratio}.
+The isolated term has absolute size a constant times
+\(e^{(\Theta-\beta)u}\), while the signed average against \(B\)
+is \(o(e^{(\Theta-\beta)u})\). Thus at an interior point \(t\)
+one has \(F(t)\le-c t^\Theta\) with \(c>0\) fixed. The variation
+estimate \(\lvert F(t(1+v))-F(t)\rvert\ll_\psi t^\Theta\sqrt{|v|}\)
+keeps \(F\) negative on a fixed relative neighborhood of \(t\).
+Shrinking it to fit the logarithmic margins preserves length
+\(\gg X\). The previous corollary's budget comparison applies there.
+
+In the last case fix \(0<\kappa<C-1\). Any interval of length
+\(\kappa X\) inside the cell contains a closed multiplicative
+interval with ratio \(1+\kappa/(2C)\). The last assertion of
+Lemma~\ref{scope:fixed-ratio} applies at this prescribed ratio.
+For fixed \(\beta<\theta<\Theta\), it supplies a point \(t\) with
+\(F(t)>t^\theta\) at all sufficiently large starting scales.
+On the actual hosts the normalization error is
+\(O_\psi(t^{1/2+\varepsilon})\) and the budget is at most
+\(t^{\beta+o(1)}\), uniformly in the translate. Consequently
+every translate exceeds its budget at that point. Letting
+\(\kappa\) decrease to zero proves the limit.
+\end{proof}

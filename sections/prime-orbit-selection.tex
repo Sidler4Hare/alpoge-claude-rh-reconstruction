@@ -1,0 +1,428 @@
+\subsection{One top set for all large-order orbits}\label{orb:section}
+
+Fix \(0<\varepsilon<1/52\) and a positive integer \(o\). Put
+\[
+ h=2+8\varepsilon,\qquad \gamma=\varepsilon/8,\qquad p=x^{-\gamma}.
+\]
+Let \(H\) be a finite abelian group of order \(n\asymp x^h\), with a
+subgroup \(A_0\) of index \(o\). Fix \(T_2\subset A_0\) before choosing
+the tops, and assume \(n_2=|T_2|\ge c n x^{-\varepsilon}\) for a
+fixed \(c>0\). A thick set satisfying the reciprocal subpower bound of
+Proposition~\ref{host:behrend} also satisfies this inequality after division
+of its cardinality by any fixed positive constant, for all sufficiently
+large \(x\).
+
+The original orbit predicate uses the integers
+\[
+\begin{gathered}
+ K=\lceil(h+2)/\gamma\rceil,\quad r=K+1,\quad k_0=6r+1,\quad
+ U=\lceil1/p\rceil,\\
+ \ell=k_0 U,\quad M=\lceil (h+3)10^{k_0}\log x\rceil,\quad
+ G'=(M+5)\ell,\\
+ N_1=\left\lceil\max\{6\exp(1)G'p,(h+3)\log_2 x\}\right\rceil+1 .
+\end{gathered}
+\]
+Let \(L_2\) be a nonnegative integer with \(L_2=O_\varepsilon(\log x)\).
+On a page of rank \(k\), one may take any upper bound for the original
+\(L_2=2\sup_q\lceil\log_q((k x^{26})^4)\rceil\), where \(q\) runs
+over the inert primes. Indeed \(q\ge2\) and \(k\le2x^{9/2+10\varepsilon}\).
+
+For \(g\in H\) of order \(d\) and an origin \(a\in H\), label
+\(a+ig\) by \(i=0,\ldots,d-1\). A cyclic window of length \(L\) starts
+at \(i\) and consists of \(i,i+1,\ldots,i+L-1\bmod d\). The complete
+tiles are the consecutive intervals of length \(\ell\) in
+\([0,\lfloor d/\ell\rfloor\ell)\). In each tile number its \(k_0\)
+consecutive cells of length \(U\) starting at one. A tile is marked
+when its odd-numbered cells are empty and each even-numbered cell
+contains exactly one top, at an even coordinate \(i\).
+
+\begin{proposition}[Simultaneous orbit and overlap selection]\label{orb:selection}
+For all sufficiently large \(x\) there is one set \(T\subset H\)
+such that, for every \(g\) of order \(d\ge x^{2\gamma}\) and every
+origin \(a\), all three assertions hold.
+\begin{enumerate}
+\item Every cyclic \(L_2\)-window contains at most \(K\) tops.
+\item Starting at any complete tile, one of the next \(M+1\) complete
+tiles, counting the starting tile, is marked. Here the tile indices
+are taken modulo \(\lfloor d/\ell\rfloor\).
+\item Every cyclic \(G'\)-window contains at most \(N_1\) tops.
+\end{enumerate}
+Write \(n_T=|T|\), let \(p_z=p\) on \(A_0\) and \(p_z=3p/4\) on
+the other cosets, and put \(\lambda_C=(3+\mathbf{1}_{C=A_0})/(3o+1)\).
+The same choice satisfies
+\begin{align}
+  pn/2\le n_T\le 2pn,\qquad
+  \big||T\cap C|-\lambda_C n_T\big|
+      &\le n_T x^{-1+\varepsilon} \quad(C\in H/A_0), \label{orb:cosets}\\
+ \big||T\cap(z+T_2)|-p_z n_2\big|
+      &\le (pn_2)^{1/2} x^{4\varepsilon}\quad(z\in H).
+       \label{orb:overlap-count}
+\end{align}
+The threshold may depend on the constants in the size bounds for
+\(n,n_2,L_2\), on \(o\), and on \(\varepsilon\).
+\end{proposition}
+
+\begin{proof}
+Select the points of \(H\) independently, with inclusion probabilities
+\(p_z\). For each qualifying direction \(g\) and each \(z\in H\),
+make an event for excess occupancy in the \(L_2\)-window starting at
+\(z\), and another for excess occupancy in the \(G'\)-window starting
+there. For each of the two possible parities make one more event as
+follows. Read \(\lfloor M/2\rfloor\) consecutive length-\(\ell\) tiles
+starting at \(z\) in direction \(g\), in the physical group. Use the
+specified parity for the acceptable local offsets from \(z\). The event
+is that every tile in this string fails to be marked. There are at most
+\(4n^2\) events. Each uses at most \(G'=O_\varepsilon(x^\gamma\log x)\)
+different coordinates. Indeed \(L_2\le G'\) and \(G'<x^{2\gamma}\)
+eventually. In particular every string used in the probability estimates
+has distinct physical coordinates.
+
+The short-window event has probability at most
+\(\binom{L_2}{K+1}p^{K+1}\) by a union over subsets. Since
+\((K+1)\gamma\ge h+2+\gamma\), this is at most
+\(q_*=x^{-h-2-\gamma/2}\) eventually. For the long window the same
+argument bounds the probability by
+\(\binom{G'}{N_1}p^{N_1}\le(\exp(1)G'p/N_1)^{N_1}\le6^{-N_1}\)
+when \(N_1\le G'\). The event is empty when \(N_1>G'\). The definition
+of \(N_1\) gives \(6^{-N_1}\le x^{-(h+3)\log_2 6}\le q_*\).
+
+For an odd-numbered cell the empty probability is at least
+\((1-p)^U\), which tends to \(\exp(-1)\). For an even-numbered cell
+at least \(\lfloor U/2\rfloor\) offsets have the prescribed parity.
+The events that one particular such point is its unique top are
+disjoint. Their total probability is at least
+\[
+ \lfloor U/2\rfloor(3p/4)(1-p)^{U-1}\longrightarrow 3/(8\exp(1)).
+\]
+Both limits exceed \(1/8\). Disjoint cells are independent, so each
+tile is marked with probability at least \(8^{-k_0}\). Disjoint tiles
+are independent as well. A failure string has probability at most
+\[
+ \exp(-8^{-k_0}\lfloor M/2\rfloor)
+ \le \exp(1)x^{-(h+3)(10/8)^{k_0}/2}\le q_* .
+\]
+Here \(k_0\ge7\), \(h=2+8\varepsilon\), and \(0<\varepsilon<1/52\).
+These bounds hold for both parity choices and every starting point.
+
+Two events are joined if their sets of coordinates meet. A fixed
+coordinate can occur in at most \(4G'\) events per direction, since
+each possible position in the string determines its start. The
+dependency degree is therefore at most \(D=4n(G')^2\), and
+\(Dq_*=O_\varepsilon(x^{-2+3\gamma/2}(\log x)^2)=o(1)\).
+For completeness, put \(q=2q_*\), so that
+\(q_*/(1-q)^D\le q\) for large \(x\). The probability of any event
+conditioned on avoiding any collection of the others is at most \(q\).
+Induct on the size of the collection. Separate its non-neighbours
+from its neighbours. The event is independent of the joint avoidance
+of the non-neighbours by disjointness of the coordinates. When at least
+one neighbour is present, the additional conditional probability of
+avoiding the neighbours is at least \((1-q)^D\) by the induction
+hypothesis and the chain rule. If no neighbour is present, independence
+gives the claim directly. Multiplying the successive avoidance
+probabilities now gives
+\[
+ \Pr(\text{all local events avoided})
+ \ge (1-2q_*)^{4n^2}
+ \ge \exp\big(-C x^{8\varepsilon-\gamma/2}\big).
+\]
+The last step uses \(n^2q_*\ll x^{h-2-\gamma/2}\).
+
+Avoidance implies the three orbit assertions also at a tile-index wrap.
+There are more than \(M+1\) complete tiles since
+\((M+2)\ell<d\) eventually. If a sequence of \(M+1\) complete tiles
+in the original indexing wraps, divide it where tile index zero is
+reached. One of the two uninterrupted parts has at least
+\(\lfloor M/2\rfloor\) tiles. On that part the parity of the original
+coordinate is a fixed offset from the parity relative to its physical
+start. The event list covers that start and that parity. Thus the
+unlabelled remainder of length \(d\bmod\ell\), including the case of
+odd \(d\), cannot destroy the marked tile.
+
+It remains to intersect avoidance with the two global count conditions.
+Let \(\mu=\sum_zp_z=pn(3o+1)/(4o)\). Each coset count has mean
+\(\lambda_C\mu\). For independent Bernoulli sums of mean \(m\),
+Bernstein's inequality gives failure probability at most
+\(2\exp(-t^2/(2(m+t/3)))\) for absolute deviation exceeding \(t\).
+With \(t=\mu x^{-1+\varepsilon}/(4(o+1))\), a union over the \(o\)
+cosets gives failure probability at most
+\(2o\exp(-c_o x^{79\varepsilon/8})\). On success
+\(|n_T-\mu|\le ot\), which gives both bounds in \eqref{orb:cosets}.
+Each overlap count has mean \(p_z n_2\) because \(T_2\subset A_0\).
+For \(\lambda=(pn_2)^{1/2}x^{4\varepsilon}\) one has
+\[
+ pn_2\gg x^{2+55\varepsilon/8},
+ \qquad \lambda/(pn_2)\ll x^{-1+9\varepsilon/16}=o(1).
+\]
+Bernstein and a union over the \(n\) translates give failure probability
+at most \(2n\exp(-c' x^{8\varepsilon})\) for \eqref{orb:overlap-count}.
+The sum of these two failure probabilities is smaller than the
+displayed lower bound for avoidance. Their intersection with avoidance
+therefore has positive probability.
+\end{proof}
+
+At the arithmetic host put \(h_q=\code{hPH}(q)\).
+\(\code{Arith.Loc.Good}(B,h_q,a)\) applies precisely those three
+conditions to the top positions from \(a\), with the original \(B.L_2\).
+The prime set in \code{BadOK} is
+\[
+ \mathcal P=\{q<\lceil X'\rceil:\ q\ {\rm prime},\
+       \code{IsResidueClassZero}(q),\
+       \operatorname{ord}(h_q)\ge x^{\varepsilon/4}\}.
+\]
+With \(b_q(t)=\code{bsH}(\code{stepP}(B,h_q,q),t)\), its left side is
+\[
+ \sum_{q\in\mathcal P}\frac{\log q}{q}
+   \#\{t\in T:\neg\code{Good}(B,h_q,b_q(t))\}.
+\]
+It equals zero for the set in Proposition~\ref{orb:selection}, even
+when the specified origin depends on the selected data. The right side
+is \(4C_b x^{-2}pn\sum_{q\in\mathcal P}\log q/q\), so any \(C_b\ge0\)
+works. This verifies the \code{BadOK} clause of \code{HostGood}. On
+a realization of this set, the original prime classification proves
+that a missing top at a served prime must belong to this bad set.
+Consequently \(T\setminus T_q=\varnothing\) at every served prime,
+and its omitted-top charge vanishes. The first- and second-kind prime
+losses, the net local lattice gains, and the realization of the
+selected tops by the descended columns are separate hypotheses.
+
+\begin{corollary}[Omitted tops in a previously chosen family]\label{orb:fixed-charge}
+Let a family with its actual geometric records satisfy \code{ChosenE}.
+There are constants \(C_b>0\) and \(x_0\) such that, for every
+\(x\ge x_0\) and every index of that family at \(x\), its served-prime
+charge satisfies
+\[
+ \sum_{q\ {\rm served}}4ma\frac{\log q}{q}\,|T\setminus T_q|
+    \le 64 C_b(n_Tmb)x^{-1+\varepsilon/3}.
+\]
+The bound holds for every choice of the two auxiliary real parameters
+\(C,b_o\) in the prime ledger.
+\end{corollary}
+\begin{proof}
+Each missing top contributes to the bad count at the same prime by
+the served-prime classification above. The total weighted count is
+at most \(4C_b x^{-2}pn\sum_{q\in\mathcal P}\log q/q\) by the
+original bad-top estimate. Here \(pn\le 2n_T\),
+\(a=xb\) and \(\sum_{q\in\mathcal P}\log q/q\le 2\log X'
+=2x^{\varepsilon/3}\). Multiplying by \(4ma\) gives the result.
+The eventual top-count and bad-count conditions in \code{ChosenE}
+use thresholds common to every index at the chosen scale.
+\end{proof}
+
+\paragraph{Second-kind primes below the local cutoff.}
+Fix a candidate prime \(q<p_0(k)=k^2x^{26}\). For each good representative \(v\)
+let \(N_v\) count its tops. These fibres are disjoint, so
+\(\sum_vN_v\le n_T\). The small-prime definition gives, for every
+choice of the two weight vectors,
+\[
+ 0\le \operatorname{Sig}(q)
+   =m\sum_v\min\{1,K_{\rm II}N_v r^2 k x^{-26}\}
+   \le K_{\rm II}r^2 m n_T k x^{-26}.
+\]
+The original family bounds give \(m\le\sqrt x\),
+\(n_T\le n\le x^{2+(8+1/100)\varepsilon}\) and
+\(k\le x^{9/2+(10+1/100)\varepsilon}\). Thus
+\(\operatorname{Sig}(q)\le K_{\rm II}r^2
+x^{-19+(18+2/100)\varepsilon}\le x^{-18}\) past a single threshold
+depending on the family and \(\varepsilon\). A second-kind prime in
+the ledger must be a candidate with \(\operatorname{Sig}(q)>x^{-\varepsilon}\),
+so all second-kind primes lie at or above \(p_0(k)\).
+The residual share sum for candidates below the cutoff satisfies
+\(\sum_q(\log q/q)4\operatorname{Sig}(q)\ll x^{-18}\log x\), since
+\(p_0(k)\le x^{36}\). At \(q\ge p_0(k)\) the definition instead
+uses the local quantity \code{kapI}, which depends on both weights.
+
+\paragraph{The rank loss at a large prime.}
+Fix a top and its pair of weights. Choose one admissible local ring
+setting and one target lattice. Write \(p\) for the prime, \(w\)
+for the uniformizer of the coefficient DVR \(\mathcal O\), with
+\((p)=(w^2)\), and \(D\) for the prescribed depth. There are finitely
+many dominant lifts \(\lambda\): dominance bounds the coordinates
+between the prescribed endpoints on a top, and the other coordinates
+have the prescribed cutoff. For each lift retain all actual source
+columns satisfying the edge and off-edge conditions, and all vectors
+in the prescribed filtered target lattice. Their pairings are integral.
+At dimension \(d_\lambda\), a rank \(N\) certificate is equivalent to
+an integral row combination of the evaluation matrix on finitely many
+such columns and \(N\) target vectors satisfying
+\[
+        C\big(\langle F_i,y_j\rangle\big)_{ij}
+                  \equiv p^D I_N\pmod{w^{2D+1}} .
+\]
+After division by \(p^D\) the error is in \(wM_N(\mathcal O)\)
+and the resulting matrix is invertible over \(\mathcal O\).
+The converse follows by evaluating the original interpolation on
+the standard basis. The original ring and target transport lets one
+use the same ring and lattice for all the lifts.
+\src{src/Formalism/SharpRestriction/GrowthBounds/ColumnSpanDensity/RhoLowerBoundLargeConductor.lean}{138}{the local rank-loss construction}.
+The companion \code{LargePrimePrecision.lean} checks the equivalence
+with membership in the original \code{kapISet}.
+
+On each side of the pairing take the integral span and divide by
+its annihilator. The two images are finite free: independent actual
+vectors on the opposite side give an injection into a finite power
+of \(\mathcal O\), by integrality. Their common generic rank is the
+rank of the pairing. A basis of the source image uses only finitely
+many original columns, which can all be retained as generators.
+Let \(s_{\lambda,i}\) be the Smith orders of this integral pairing,
+padded by infinity to \(d_\lambda\). The maximal certificate rank is
+\(\#\{i:s_{\lambda,i}\le 2D\}\). A shallow diagonal entry can be
+scaled to \(p^D\). Conversely, if fewer than \(N\) entries are
+shallow, a primitive integral row annihilates their columns in the
+proposed \(N\)-row test. The remaining entries vanish modulo
+\(w^{2D+1}\), whereas \(p^D\) times that row does not. Thus,
+with \(l_\lambda(t)=\sum_i\min(t,s_{\lambda,i})\), the actual
+infimum is attained and equals
+\[
+  \max\!\left(\{0\}\cup
+       \left\{\frac{l_\lambda(2D+1)-l_\lambda(2D)}{d_\lambda}
+                     : d_\lambda>0\right\}\right).
+\]
+The maximum is taken at each top and weight pair, before averaging
+over the weight box. Estimating this maximum requires the filtered
+pairings of the actual local columns.
+
+\paragraph{A consecutive-window estimate for the Gram contribution.}
+Let \(A(x)=\sum_{j=0}^{\delta}A_j\binom{x}{j}\) with
+\(A_j\in M_N(\mathbf Z_p)\), \(N>0\), and \(P=\det A\ne0\) of
+degree \(d_P\le N\delta\). For \(W\ge1\) consecutive integers \(z\),
+let \(b_z\) count the Smith orders of \(A(z)\) at least \(K\ge1\),
+including infinite orders. Normalize \(v(p)=1\) and put
+\(h_\delta=\lfloor\log_p\max(1,\delta)\rfloor\). Then
+\[
+ \frac{1}{NW}\sum_z b_z
+ \le \frac{\delta}{W}+
+ \frac{\,\big(v(\operatorname{lc}P)+d_P/(p-1)\big)/N
+                +\delta h_\delta/W\,}{K}.
+\]
+Indeed put \(m=K+h_\delta\). For \(1\le j\le\delta\) the identity
+\[
+  \binom{p^m X}{j}
+     =(-1)^{j-1}\frac{p^m X}{j}
+                    \prod_{i=1}^{j-1}(1-p^mX/i)
+\]
+and Vandermonde's formula give
+\(A(z+p^mX)-A(z)\in p^K M_N(\mathbf Z_p[X])\).
+Apply the integral Smith row and column transformations at \(z\).
+In the perturbed matrix \(b_z\) rows are divisible by \(p^K\).
+Thus the minimum coefficient valuation of \(P(z+p^mX)\) is at
+least \(K b_z\), also when \(P(z)=0\). By multiplicativity of the
+polynomial Gauss norm this minimum is
+\(v(\operatorname{lc}P)+\sum_{\alpha}\min(m,v(z-\alpha))\),
+with roots counted with multiplicity in a splitting field.
+For \(j-1<t<j\), the integers with \(v(z-\alpha)>t\) lie in one
+residue class modulo \(p^j\): the valuation of the difference of
+two distinct integers is integral. They number at most \(W/p^j+1\).
+Integrating for \(0<t<m\) bounds the mean contribution of each
+root by \(1/(p-1)+m/W\), with negative valuations only lowering it.
+Sum over the roots, divide by \(NK\), and use \(d_P\le N\delta\).
+
+In the original Gram window \(A(z)\) is the recorded matrix of
+the form multiplied by a nonzero integral scalar. This multiplication
+can only increase the deep Smith count. The original leading-coefficient
+and degree bounds now give its Gram estimate, whose normalized cost
+at the original depths is at most \(5/Y\).
+\src{src/Formalism/SharpRestriction/GrowthBounds/FockGramWindow/GramWindow2.lean}{12}{Gram window hypotheses}
+and \src{src/Formalism/SharpRestriction/GrowthBounds/FockGramWindow/InitialPointNumericBound.lean}{235}{the normalized bound}.
+This estimates the Gram contribution. The harmonic ranks, the
+off-edge restrictions on the actual columns and the required
+uniform weight-box bound on the maximum above still enter the
+large-prime loss.
+
+\begin{corollary}[Size of the overlap error]
+Use the common Fourier weights\label{orb:overlap} and thin-coordinate estimate in the
+translate comparison. Put \(B=n_Tmb\) and \(\delta_2=n_2/n\).
+Let \(w=\max_{t\in T}|a_t/b-x|\le1\), and suppose the kernels satisfy
+\[
+   \sum_h|K_h(x)|\ll xL,\qquad
+   \sum_h\sup_{|z-x|\le w}|K_h(z)-K_h(x)|\ll wL,
+   \qquad L\ll x^{\varepsilon/3}.
+\]
+Writing \(S_{\psi;q,d}(x)\) for the signed four-twist sum, the same
+set \(T\) then satisfies
+\[
+  \sup_{u\in A_0}\left|\frac{2D_u}{B\delta_2}-S_{\psi;q,d}(x)\right|
+   \ll x^{43\varepsilon/48}+w x^{\varepsilon/3}
+                   + (x\delta_2)^{-1}
+   =o(\sqrt x).
+\]
+\end{corollary}
+\begin{proof}
+Thick replacement and thin deletion cost at most \(2B/x\) in \(D_u\).
+In the remaining convolution the multiplicity at offset \(h\) is
+\(|T\cap(u-h+T_2)|\). Moving the endpoints to \(x\) costs at most
+\(O(mb(pn_2+\lambda)wL)\). The resulting discrepancy from the
+convolution with multiplicity \(n_2p_{-h}\) is \(O(mb\lambda xL)\)
+by \eqref{orb:overlap-count}. Summing the overlap errors over \(z\)
+also gives \(|n_T-\mu|\le n\lambda/n_2\). The signed four-twist sum
+is \((2n/\mu)\sum_hp_{-h}K_h(x)=O(xL)\) by finite character
+orthogonality. After normalizing, the total cost is
+\(O(xL\lambda/(pn_2)+wL+1/(x\delta_2))\). Substitution gives
+\(1-1=0\) in the main power of \(x\) and
+\((1/3+9/16)\varepsilon=43\varepsilon/48\) in the remaining power.
+\end{proof}
+
+\begin{corollary}[Overlap at the binomial scale]\label{orb:conditional-overlap}
+Condition the Bernoulli selection on avoiding all the local events of
+Proposition~\ref{orb:selection}. With conditional probability
+\(1-o(1)\), its coset and cardinality bounds hold and, simultaneously,
+\[
+ \max_{z\in H}\big||T\cap(z+T_2)|-p_z n_2\big|
+    \ll \sqrt{pn_2\log(2n)}.
+\]
+The overlap contribution in Corollary~\ref{orb:overlap} is then
+\(O(x^{-149\varepsilon/48}\sqrt{\log(2x)})\). The endpoint and
+thin-coordinate terms remain \(O(wL+1/(x\delta_2))\).
+\end{corollary}
+\begin{proof}
+Write \(\mathcal G\) for avoidance and put
+\(\eta=(1-2q_*)^{-4nG'}-1=O(x^{-2+\gamma/2}\log x)\).
+A cylinder event \(A\) specifying the states of \(j\) points meets
+the supports of at most \(4jnG'\) local events. It is independent of
+joint avoidance of all the others. Conditioning first on those others,
+the chain rule and the conditional bound \(2q_*\) from the proof of
+Proposition~\ref{orb:selection} give
+\(\Pr(A\mid\mathcal G)\le(1+\eta)^j\Pr(A)\). This holds for
+every assignment, including all zeros and the empty assignment.
+
+Let \(S\) be one coset or one translate of \(T_2\), with \(s=|S|\)
+and common inclusion probability \(\theta\in[3p/4,p]\).
+Set \(Y=|T\cap S|\). For \(u\ge0\), expand \(e^{uY}\) as the product
+of \(1+(e^u-1)\mathbf1_{z\in T}\) over \(z\in S\). All coefficients
+are nonnegative. The cylinder bound applied to each monomial gives
+\[
+ \mathbb E(e^{uY}\mid\mathcal G)
+ \le [1+(e^u-1)(1+\eta)\theta]^s.
+\]
+The same expansion for the unselected points gives this inequality
+for \(s-Y\) with \(\theta\) replaced by \(1-\theta\). Since
+\(\eta=o(p)\), both right sides are binomial moment generating
+functions with variance at most \(2ps\). Each centre moves by at most
+\(\eta s\). Uniformly for \(0<s\le n\) we have
+\(\eta\sqrt{s/p}\ll x^{-1+4\varepsilon+\gamma}\log x=o(1)\).
+For the sets here \(ps\gg x^{2+55\varepsilon/8}\). The exponential
+Markov bound for each of the two binomial moment generating functions
+thus bounds the probability of deviation from \(s\theta\) exceeding
+\(C\sqrt{ps\log(2n)}\) by \(O(n^{-3})\) for a sufficiently large
+absolute \(C\). Sum this over the \(n\) translates and the \(o\)
+cosets. For a coset this deviation is \(o(pn x^{-1+\varepsilon})\),
+so the argument for \eqref{orb:cosets} applies. Finally
+\(xL\sqrt{\log(2n)/(pn_2)}\ll
+x^{-149\varepsilon/48}\sqrt{\log(2x)}\) by the same lower bound on
+\(pn_2\).
+\end{proof}
+
+The original finite conditions appear in \code{GoodOrbit\allowbreak
+IntervalTile\allowbreak Condition.lean}, lines 10--26, with the cyclic
+window in \code{StatementB.lean}, lines 9--13. The parameters appear
+in \code{Unramified\allowbreak Quadratic\allowbreak Setting.lean}, lines
+239--252. The arithmetic host uses these conditions in
+\code{GlobalTheory/\allowbreak IsResidueClassZero.lean}, lines 96--104.
+The prime sum appears in \code{ThinScales\allowbreak IffHostBound.lean},
+lines 36--42 and 101--104. The served-prime classification is proved
+in \code{PowFourLt\allowbreak CeilThreshold\allowbreak Prime.lean},
+lines 722--761. The companion \code{MeanLoss\allowbreak Refinement.lean}
+checks Corollary~\ref{orb:fixed-charge} for the original family types.
+The small-prime share and its cutoff occur in
+\code{GrowthBounds/\allowbreak IsResidueClassZero.lean}, lines 202--203,
+227--228, 276--277 and 287--288. The orbit counts are identified and summed in
+\code{SlopeEstimateOf\allowbreak LemmaBSlopeLine.lean}, lines 129--146.

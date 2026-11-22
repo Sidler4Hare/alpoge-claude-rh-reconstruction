@@ -1,0 +1,461 @@
+\subsection{Realizing both reselected sets on the prescribed windows}
+\label{scope:reselected-realization}
+
+A family already chosen has very little freedom at a fixed scale. For any
+two of its indices \(i,i'\) at \(x\), the integer encodings of their top
+sets both equal \(\mathtt{Fm.TTn}(x)\), and their integer thick sets agree
+exactly. These are the fields \code{TT\_eq} and
+\code{realisedChain\_torus\_eq} of \code{FamCore}. The map assigning an
+index to each translate therefore cannot implement a strict thinning in
+that family. The construction below chooses a new family.
+
+\begin{proposition}[Common weights and points on a prescribed host]
+\label{scope:reselected-hosts}
+Fix \(0<\varepsilon<1/52\) and standard scale constants \(C\).
+For \(c_D\ge0\), \(c_h\ge402\) and any fixed host bound \(C_8\), there is
+a threshold, uniform in the host, above which every \code{RankVal},
+\code{HostVal} host has one pair of integer centre vectors and genuine
+Harish--Chandra parameters for every code word at every translate.
+
+For the original geometric point construction take the staged large
+parameters of \code{ObjCP}. This gives a positive upper bound on
+\(\varepsilon\). After fixing a positive \(\varepsilon\) below that bound,
+\(C_8\ge 1\), and \(C_5,c_6,C_b\),
+the size requirement on \(C\) is chosen before \(C\). Take standard
+\(C\) meeting this requirement with \(C.\mathtt{P.Cpde}=C_8\). Then \(c_D\) is
+chosen sufficiently large, \(c_h\) sufficiently large in terms of
+\(c_D\), and finally a scale threshold is fixed. At every later scale
+with exponent \(\varepsilon\), prescribe a \code{RankVal} host \(H\) satisfying
+\(H.C_{T_2}=C.C_{T_2}\) and \code{HostGood} with the canonical auxiliary
+level prime \(q_0(H)\). There is one kit of actual points from \(H\) covering
+all \(0\le u<n\). Its centres and injective word code are common to all
+translates. If such a host is prescribed at every sufficiently late scale
+in a window set \(S\), one can choose a family with
+\(\mathtt{Fm.Win}=S.\mathtt{Win}\). Any property of the scale, ranks,
+raw host with its field axioms, top set and integer thick set that holds
+on the prescribed hosts also holds at their actual points. This includes the cohomology bound
+\(\mathrm{VVle}(E,R.t,\sqrt b)\) and an overlap estimate on these same
+two sets.
+\end{proposition}
+
+\begin{proof}
+The elementary centre construction \code{exists\_weights\_in\_windows}
+takes \(a_t=\lceil a\rceil\), \(b_t=\lceil b'\rceil\) on the top set.
+Both windows have width at least one beyond a uniform threshold.
+Having fixed these vectors, apply \code{exists\_hc\_family} to each
+translate of the given host. For \(0\le j<m\), put
+\(h=\lceil x^{c_h}\rceil\). At a given embedding \(\tau\), its two arrays
+are \(b_j=B_\tau+2jh\) and \(e_j=B_\tau+(2j+1)h\).
+At a top embedding \(B_\tau=b_t+\lfloor b'/x\rfloor\), and at a thin
+embedding \(B_\tau=\lceil w''(n)\rceil\). Start every thick embedding at
+\(\lceil b\rceil\). At one thick embedding the construction adds an
+integer between zero and \(\lvert\mu(E)\rvert-1\) to satisfy the product
+condition on the roots of unity of \(E\). The arrays \(b,e,v\) and the
+two end entries of \(u\) are shared among the code words at a fixed
+translate. Each interior entry of \(u\) records its own code bit. This
+proves the weight assertion directly on the selected host.
+
+The original automorphic existence theorem applies to every admissible
+host, to every pair of centres in \code{WinOK}, to every injective code of
+the required size and to every \(u<n\), in that order. The objects in this
+assertion come from the two automorphic constructions in
+\code{MemberE}. Its four fields give the base condition, first construction,
+export and second construction used by
+\code{memberTop\_final\_contextParameters}. More precisely, for each
+admissible pre-chain and its centres and code, \code{RecExP} first
+chooses the positive word-indexed integers \(d_u\) and a positive real
+\(D_*\). For every level choice with these values and the specified
+\(\Gamma\), it supplies a single \(D\) and a layer \(Y\) over that level.
+The reconstruction, ledger and local quadratic assertions all hold on
+this same pair. The final object property applies to every compatible
+part of \(Y\). Taking the final object
+predicate to be true and applying
+\code{existsObjects\_of\_admissibleTwistDatum} with the original level-prime
+theorem gives \code{ObjCP}, including its geometric object data.
+This step uses the original automorphic and mass results. The preceding
+integer-weight construction only uses the host and the rank bounds.
+
+Choose the code once by \code{exists\_injective\_words}. For these same
+centres and this code, \code{kit\_of\_points} makes the points into a kit,
+and \code{szRow\_numAt} supplies the numerical witnesses on every point.
+The relation \code{Pt.From} carries the raw host, both sets and the centres
+from the specified host. Applying \code{exists\_famP\_of\_kits} to these
+kits on the given \(S\) gives the claimed equality of window sets.
+At each point its validity record contains the original \code{HCVal} and
+the exact equality \(\eta_{\rm Sz}=2m\lceil x^{c_h}\rceil\). The integer
+parameter construction and the choice of actual points can produce
+different permitted thick corrections. The Fourier estimate in
+Proposition~\ref{scope:reselection} is uniform over these corrections.
+\end{proof}
+
+The additional duty \code{WOK} requires a second choice of centres when
+it is used. In \code{hostWW}, first form a temporary family from the
+prescribed hosts and provisional \code{WinOK} centres. The original
+\code{windowShareRequirementClosedForm\_proof} supplies
+\code{WeightVectorExists} at every sufficiently late point. By
+\code{weightWindowRequirement\_host\_of\_point}, these vectors give new
+centres on the host from which that point came, zero off its top set and
+satisfying both \code{WinOK} and \code{WOK}. To retain a specified host
+\(H_s\) at every scale \(s\), take the scale predicate in this argument to
+be existence of duty centres on \(H_s\). The temporary family has window
+set \(S.\mathtt{Win}\) and supplies an index at every such scale. A second
+application of the universal point construction realizes the new centres
+on \(H_s\). The canonical level prime can first be installed by
+\code{hostExQW\_of\_hostExW}, which preserves the raw field, the two
+quadratic primes and the two finite sets.
+
+\paragraph{Recovering the host used by the original points.}
+Fix a host \(H\) used to construct the old kit. Write \(T'\) for the new
+top set, \(U\subseteq H.T_2\) for the new thick set in its integer
+representatives, and \(C'_2\) for the new uniform Behrend constant.
+Replace just these three fields of \(H\). The range bound and absence of
+three-term relations pass to \(U\), as does
+\(4L_w|U|\le n_0\). The remaining changes in \code{HostGood} consist
+precisely of
+\[
+ \tfrac12\delta_1 n\le|T'|\le2\delta_1 n,\qquad
+ x^{-\varepsilon}n\le|U|,\qquad
+ \frac{n_0}{L_w}\exp\!\left(-C'_2\sqrt{\log n_0\log L_w}\right)
+ \le |U|
+\]
+and the weighted bad-orbit bound on the new top set. These are the
+estimates in Proposition~\ref{scope:reselection}. The choice in
+Proposition~\ref{orb:selection} makes the bad-orbit cost zero.
+The canonical auxiliary level \(q_0(H)\) uses only the unchanged field
+and level data. The old \(\mathrm{VVle}\) bound is therefore available
+on the same field and at exactly the old rank cutoff. The coset-share
+test is supplied by the choice of \(T'\).
+
+For a signed inequality on a family assembled from the original kits,
+the provenance of the point in that inequality can be retained during
+assembly. The original \code{supplyChi} applied to
+\code{vwin\_of\_row} supplies \(\mathrm{HostExW}(3/2,(G_\psi).\mathrm{req})\),
+whose request includes both the character conditions and \(\mathrm{VVle}\).
+In \code{kitS}, each scale supplies one admissible \(H\)
+before the points for its translates are chosen. For every one of those
+points, \code{Pt.From} identifies the ranks, the raw host, the encoded
+top set and the literal integer thick set with the corresponding data
+of \(H\). Its field equality and injectivity of the encoding show that
+there exists a canonical-level
+\code{HostGood} host with precisely these ranks, raw host and sets, and
+the original \(C_2\). This property passes through the same family
+assembly in the proposition. Hence a signed estimate on these kits over
+complete windows supplies the old hosts required above, and all new
+points and centres then follow from the original construction. The
+signed estimate on every scale of those windows is still required.
+
+For an independently specified raw field, \code{hostOfField} can also
+produce a full admissible host from the page and modulus bounds,
+\code{PairWin}, \code{PairGood}, \code{FieldRows} and \code{admitted}.
+It chooses its own two sets. Finally an isolated \code{RealizedData}
+record describes the old Fourier points, character tests and rank budget.
+The standalone existence of such a record on one family and a separate
+existence statement for admissible hosts on another family do not
+identify their fields or windows. The conditional implication on
+old kits uses their common origin at each original scale.
+
+\begin{corollary}[One translate and one word at each scale]\label{scope:one-word}
+Fix the exponent, the original cyclotomic host and full page inputs,
+the uniform Fourier estimates of Proposition~\ref{scope:reselection}
+and the point construction of Proposition~\ref{scope:reselected-hosts}
+on one set of complete windows. At each scale retain the prescribed
+thick set and choose the tops of Proposition~\ref{orb:selection}
+before constructing the common points. Suppose that on these points,
+at each sufficiently late scale of the windows, there exist
+\(u_0\in A_0\) and one actual word \(i\) satisfying the local lattice
+comparisons of Section~\ref{geom:relative-finite-index} and
+\[
+       (\mathcal A_{u_0}-G_{u_0})+P_{u_0i}+\ell_{u_0i}
+                    \le E_x .
+\]
+Then both \eqref{scope:average} and \eqref{scope:missing} hold on a
+family with the same windows, fields, auxiliary primes, ranks and
+exponent, beyond one uniform threshold. If the right side in the test
+can be replaced by \((1-\lambda)E_x\) for a fixed \(0<\lambda<1\),
+the very family on which the word is tested satisfies both bounds.
+\end{corollary}
+\begin{proof}
+Write \(B=|T|mb\), \(\delta=|T_2|/n\),
+\(d_u=2D_u/(B\delta)\) and \(W=2E_x/(B\delta)\).
+The word inequality and \eqref{geom:finite-cancel} with the upper
+word loss give \(D_{u_0}\le E_x\). The kernel estimates in the
+proof of Proposition~\ref{scope:reselection} hold on the retained
+field. Corollary~\ref{orb:overlap} gives a common
+\(S=S_{\psi;q,d}(x)\) and a uniform \(r_x=o(\sqrt{x})\) with
+\(|d_u-S|\le r_x\) for every \(u\in A_0\).
+In particular \(d_u\le d_{u_0}+2r_x\).
+The original ranks give \(W\ge2\sqrt{x}\) eventually, so any
+fixed margin \(\lambda W\) absorbs \(2r_x\) on this same family.
+
+For the weak inequality, thin the thick set by the fixed factor of
+Proposition~\ref{scope:reselection} and reselect its tops. The proof
+of that proposition constructs the new admissible sets independently
+of the old discrepancy and gives \(W'\ge2W\). Use the same input
+hosts to assemble their points. With the same two primes, the new
+normalized values satisfy \(d'_u\le S+r'_x\), uniformly with
+\(r'_x=o(\sqrt{x})\). Consequently
+\[
+              d'_u\le d_{u_0}+r_x+r'_x\le W+r_x+r'_x\le W'
+                        \qquad (u\in A_0)
+\]
+beyond one threshold. This proves the pointwise estimate, and
+averaging gives its signed form on the same data. The word and the
+translate may vary with \(x\). The inequality must hold after the
+first top choice, at every scale of each required window.
+\end{proof}
+The companion \code{OneWordWindow.lean} checks the transfer to the
+original subgroup and its signed mean on \code{RealizedData}, given the
+single-word comparison and both Fourier bounds with their budget margin.
+
+There is a second way to supply the fixed margin at \(u_0\).
+At this translate take the word probabilities of
+Corollary~\ref{rank:one-minor}. Under its per-word division, height and
+variation assumptions put \(L_{u_0}=K_7+c_s I_{u_0}\), and let
+\(0<\tau\le1\) be a common lower rank ratio on the proper target HN
+cutoffs for these probabilities. The integral-column case of
+Proposition~\ref{rank:transfer} gives the pointwise bound
+\[
+ D_{u_0}\le \mathcal A_{u_0}-G_{u_0}+K_0+
+                 \frac{(1-\tau)K_3+L_{u_0}}{\tau}.
+\]
+Indeed the weighted word loss is at most \(L_{u_0}\), and the centred
+maximum source slope is at most \(K_3+L_{u_0}\). On the original
+sizes \(K_0\ll y^2P_0\), \(K_3+K_7\ll yP_0\). Thus at this single
+translate the minor and rank budget of Corollary~\ref{rank:one-minor},
+\(\mathcal A_{u_0}-G_{u_0}\le C y^2P_0\) for a uniform \(C\), and
+\(c_s I_{u_0}\ll yP_0\) suffice. Indeed \(\tau\gg y^{-4+\xi}\)
+and \(D_{u_0}\le C'(y^2+y^{5-\xi})P_0\) for a uniform \(C'\).
+This upper bound is \(o(y^5P_0)\), while \(y^5P_0\le E_x\).
+The comparison with \(S\) then transfers
+the bound to the entire first family. Finding such a translate
+on the actual selected host at each required scale remains open.
+
+\subsection{Sparse scales and intervals of realized points}\label{scope:sparse-scales}
+The companion \href{15-1-15-2-2026-11-22.pdf}{note on powers and
+translate errors}, Sections 1--4, gives a fourth-power chord bound,
+a fixed-power zero test and negative intervals for three targets.
+Here the realizations on the prescribed hosts allow these analytic
+estimates to be used with the actual geometric weights.
+
+\begin{corollary}[Testing the word inequality at fourth powers]\label{scope:fourth-powers}
+Retain the host and point supply on the full windows in
+Corollary~\ref{scope:one-word}, the full rank page of
+Corollary~\ref{pref:scale}, the uniform Behrend constant and the
+discarded-twist bounds in Corollary~\ref{ar:meanhost}. In a window
+\([Y,Z]\), \(Z=Y^{3/2}\), it suffices to establish the single-word
+inequality of Corollary~\ref{scope:one-word} at
+\[
+             \{Y,Z\}\ \cup\ \{j^4:Y\le j^4\le Z,\ j\in\mathbf N\}.
+\]
+For arbitrarily late such windows the output family satisfies both
+\eqref{scope:average} and \eqref{scope:missing} at every real scale
+in those same windows, with the original exponent and coefficient.
+The host realization at intermediate scales is still used.
+\end{corollary}
+\begin{proof}
+Put \(F(x)=G_{\mathcal F_\psi}(x)\) and
+\(\beta=1/2+97\varepsilon/16\). The formula in
+Section~\ref{pref:section} expresses \(F(x)+x\log x\) as a linear
+function plus ramps \((x/n-1)_+\) with coefficients
+\(A(n)\Lambda(n)\ge0\). On each bounded interval the sum is finite.
+For \(0<a<b\), \(x=(1-\theta)a+\theta b\), \(0\le\theta\le1\),
+convexity of these ramps gives
+\[
+  F(x)\le (1-\theta)F(a)+\theta F(b)+\frac{(x-a)(b-x)}{x}.
+\]
+Indeed the error before bounding it is
+\((1-\theta)a\log(a/x)+\theta b\log(b/x)\). Use \(\log t\le t-1\)
+on both logarithms. The resulting numerator over \(x\) is the
+weighted variance \((1-\theta)a^2+\theta b^2-x^2=(x-a)(b-x)\).
+The companion \code{PrimeWindowInterpolation.lean} verifies this
+inequality for every finite sum of nonnegative weighted ramps and
+every affine term.
+For adjacent test points \(a,b\), including the intervals cut by
+\(Y,Z\), we have \(b-a\ll x^{3/4}\). Thus the error throughout
+such an interval is at most \((b-a)^2/(4x)\ll\sqrt x\).
+
+At a tested point \(s\), the original word bound gives a normalized
+discrepancy at most \(W_s\). That discrepancy differs from the signed
+four-twist sum by \(o(\sqrt{s})\). Removing the discarded twists costs
+\(O_\psi(s^{1/2+\varepsilon})\). Hence
+\[
+    F(s)\le W_s+O_\psi(s^{1/2+\varepsilon})
+         \le C\,s^\beta/\delta_s
+\]
+by Corollary~\ref{pref:scale}, where \(\delta_s\) is its thick density.
+This step puts every test in terms of the same fixed function \(F\).
+The auxiliary primes and the fields at distinct test points may vary.
+
+At every scale \(x\) put
+\(z_x=\sqrt{\log(n_x/o)\log L_{w,x}}\) in the prescribed host data.
+For either adjacent test point \(s\), the Behrend bound gives
+\(\delta_s^{-1}\le oL_{w,s}\exp(C_2z_s)\). The page gives
+\(\log(n_x/o)=(2+8\varepsilon)\log x+O(1)\), and the width formula
+in Proposition~\ref{host:behrend} gives
+\(\log L_{w,x}=\log\log x+O_\varepsilon(1)\). Since
+\(s=x+O(x^{3/4})\), these estimates give \(z_s/z_x\to1\) uniformly.
+Thus \(\delta_s^{-1}\le\exp(Az_x)\) with a single fixed \(A>0\)
+on all sufficiently late windows. The chord inequality gives
+\(F(x)\le C' x^\beta\exp(Az_x)\) throughout them.
+
+On the prescribed host at each \(x\) now use the thinning in the proof
+of Corollary~\ref{scope:reselection-loss} with
+\(g(x)=\exp((A+1)z_x)\). The new thick density satisfies
+\(x^{-\varepsilon}\le\delta'_x\le1/(32g(x))\) eventually and its
+Behrend constant is uniform. Choose the tops with the overlap of
+Corollary~\ref{orb:overlap} and realize the resulting host. The
+new budget is at least \(2x^\beta/\delta'_x\ge64g(x)x^\beta\).
+Every new normalized discrepancy is at most
+\(F(x)+O_\psi(x^{1/2+\varepsilon})+o(\sqrt{x})\), by the same
+discarded-twist and overlap estimates on this host. One threshold
+puts this below the new budget. This proves both inequalities on
+the whole window. The number of signed word tests on it is at most
+\(2+\lfloor Z^{1/4}\rfloor=O(Y^{3/8})\). Their validity on a
+cofinal sequence of windows remains an arithmetic requirement.
+\end{proof}
+
+The same estimate applies to a mesh containing the two endpoints
+whose adjacent points satisfy \(b-a\ll a^{(1+\beta)/2}\). Here
+\(\beta<1\) since \(\varepsilon<1/52\), so \(a,b\sim x\) on such
+an interval and its chord error is \(O(x^\beta)\).
+
+If the minor and the pointwise loss bounds following
+Corollary~\ref{scope:one-word} hold at the fourth powers and endpoints,
+one may keep the first family with its overlap estimates at all scales.
+Indeed, for \(\kappa=\min(3,\xi)>0\) these bounds give
+\(D_{u_0}\le C s^{-\kappa\varepsilon}E_s\) at every tested \(s\).
+The Behrend estimate gives \(\delta_s^{-1}=s^{o(1)}\) uniformly.
+Thus the upper bounds for \(F(s)\) divided by \(s^\beta\) tend to
+zero, since \(1/2+\varepsilon<\beta\). The fourth-power chord error
+is also \(o(x^\beta)\). At every real \(x\) the same overlap and
+discarded-twist bounds put all the first family's normalized values
+below its own budget \(W_x\ge2x^\beta\) eventually.
+
+\begin{proposition}[A fixed power on a cofinal set of windows]\label{scope:fixed-powers}
+Use the full page, uniform host, Behrend and Fourier hypotheses of
+Corollary~\ref{scope:fourth-powers}. Fix the character and the exponent,
+and set \(\beta=1/2+97\varepsilon/16\). Let \(\Theta\) be the supremum
+of the real parts of the nontrivial zeros in the fixed retained family.
+Fix any positive integer \(r\) before the windows are selected.
+Suppose the single-word test holds at every integer \(r\)-th power
+in arbitrarily late complete windows, or that \eqref{scope:average}
+holds at those powers on hosts satisfying its mean Fourier comparison.
+Then \(\Theta\le\beta\), and both
+\eqref{scope:missing} and \eqref{scope:average} hold at every
+sufficiently late scale of the realized family with the overlap of
+Corollary~\ref{orb:overlap}. Conversely \(\Theta\le\beta\) suffices for
+these last two assertions on that family.
+\end{proposition}
+\begin{proof}
+For a retained primitive \(\chi\) put \(b_\chi=\mathbf1_{\chi=1}\),
+\(f_\chi(s)=(s-1)^{b_\chi}L(s,\chi)\), \(p=f'_\chi/f_\chi\) and
+\(m_0=\operatorname{ord}_0 f_\chi\). The regularized function is entire
+of order at most one, by the classical completed Hadamard product
+and the reciprocal gamma factor. See
+\href{https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf}{Koukoulopoulos,
+\emph{The Distribution of Prime Numbers}}, Chapters 8 and 11.
+Write \(\rho\) for all its nonzero zeros, counted with multiplicity,
+including the trivial ones. Subtract the logarithmic derivatives of
+the genus-one product at \(1\) and \(s\). This gives
+\[
+ \frac{p(1)-p(s)}{s(s-1)}
+    =\frac{m_0}{s^2}
+       +\sum_{\rho\ne0}\frac{1}{(1-\rho)s(s-\rho)}.
+\]
+The left side is the Mellin transform of \(G_\chi(x)-G_\chi(1)\)
+by \eqref{eq:mellin}. Since \(\sum_{\rho\ne0}|\rho|^{-3/2}<\infty\),
+termwise integration on \(\Re s>1\) and uniqueness of this transform
+for continuous functions give
+\[
+ G_\chi(x)-G_\chi(1)=m_0\log x+
+             \sum_{\rho\ne0}\frac{x^\rho-1}{\rho(1-\rho)}
+                    \qquad(x\ge1).
+\]
+The denominator also accounts for trivial zeros other than zero.
+This proves \(|F(x)|\le C_\psi x^\Theta\) for \(x\ge2\), including
+the endpoint exponent: the family contains the zeta function, so
+\(\Theta\ge1/2\). For \(0<\Re\rho<1\) and \(|v|\le1/2\),
+\[
+ |(1+v)^\rho-1|\ll
+   \min(1,(1+|\rho|)|v|)\le (1+|\rho|)^{1/2}|v|^{1/2}.
+\]
+For a negative trivial zero, the mean value theorem bounds the change
+of \(t^\rho\) by \(2|\rho|(t/2)^\rho |v|\) for \(t\ge4\).
+Summing the series and the change in \(m_0\log t\) yields
+\[
+    |F(t(1+v))-F(t)|\ll_\psi t^\Theta |v|^{1/2}.
+\]
+
+At a tested power \(s\), the single-word comparison, or the mean
+Fourier formula if the mean is given, implies
+\(F(s)\le C s^\beta/\delta_s\). Here \(\delta_s^{-1}=s^{o(1)}\)
+uniformly. Every \(x\) in a sufficiently large complete window
+is within \(O_r(x^{1-1/r})\) of an integer \(r\)-th power in that
+window. At the ends choose the adjacent power towards the interior.
+If \(\Theta>\beta\), choose \(0<\eta<\Theta-\beta\). The two bounds give
+\[
+ F(x)\le C_\eta x^{\beta+\eta}+C' x^{\Theta-1/(2r)}
+\]
+on the full windows. A fixed exponent strictly between the larger
+of these exponents and \(\Theta\) now contradicts
+Theorem~\ref{an:zero}. Thus \(\Theta\le\beta\).
+
+On the realized hosts with the overlap estimate we have
+\(d_u\le F(x)+O_\psi(x^{1/2+\varepsilon})+o(\sqrt{x})\).
+The thick-set upper bound \(4 L_{w,x}|T_{2,x}|\le n_x/o\) gives
+\(\delta_x^{-1}\ge4oL_{w,x}\to\infty\). Consequently
+\(W_x\ge2x^\beta/\delta_x\) absorbs the fixed constant in
+\(|F(x)|\le C_\psi x^\Theta\) even when \(\Theta=\beta\).
+This proves the two original inequalities at the same exponent
+on all sufficiently late scales where these hosts are supplied.
+\end{proof}
+
+In this last argument the mean witnesses and the output points
+may belong to different families. Their Fourier comparisons both
+use the fixed retained function of \(\psi\). To keep the fields and
+windows of the input family, use its prescribed hosts for the
+output points as in Proposition~\ref{scope:reselected-hosts}.
+
+\begin{corollary}[Intervals of actual points for three targets]\label{scope:negative-points}
+For the zeta target and for either nonprincipal primitive real
+character of conductor three or four, take the common admissible
+hosts supplied by the original construction with the page and Fourier
+bounds above. Select and realize the first family with the overlap
+of Corollary~\ref{orb:overlap}. For every fixed \(0<\nu<1\), every
+sufficiently late complete window of this family contains an interval
+\[
+       [t-t^{1-\nu},\ t+t^{1-\nu}]
+\]
+on which both \eqref{scope:average} and \eqref{scope:missing} hold for
+its actual points. This conclusion requires no signed-word estimate.
+\end{corollary}
+\begin{proof}
+Each of these retained families has a nontrivial zero and has none on
+the real interval \((0,1)\). For zeta use the alternating series,
+and for the other two characters pair each positive term with the
+next negative one in its Dirichlet series. Their retained families
+contain zeta. See also the
+\href{https://dlmf.nist.gov/25.10}{distribution of zeta zeros}.
+Fix \(\max(0,\Theta-\nu/2)<\theta<\Theta\). Every sufficiently late
+power window of fixed relative logarithmic width contains some \(t\)
+with \(F(t)<-t^\theta\). Otherwise the proof of Theorem~\ref{an:zero}
+applied to \(-F\) on arbitrarily late windows gives a contradiction:
+only the nonreal case of Lemma~\ref{an:isolate} can occur, and its
+lower bound uses the absolute value of the nonzero residue.
+Take \(Y^{7/6}\le t\le Y^{4/3}\) within the prescribed window.
+The local estimate for \(F\) in the preceding proof bounds its
+change on the stated interval by \(O_\psi(t^{\Theta-\nu/2})\).
+Hence \(F(x)<0\) throughout it, and both endpoints lie in
+\([Y,Y^{3/2}]\) for large \(Y\).
+
+At every such \(x\) the overlap estimate for the actual weights and
+the discarded-twist bound give
+\[
+ \max\!\left(0,\max_{u\in A_0}\frac{D_u}{E_x}\right)
+       \ll_{\psi,\varepsilon} x^{-81\varepsilon/16},
+\]
+using \(W_x\ge 2x^{1/2+97\varepsilon/16}\). A single threshold suffices
+for all translates. The original host and point supply is used on its
+own complete windows. The interval occupies a vanishing fraction of
+the scale \(t\) for fixed \(\nu>0\).
+\end{proof}

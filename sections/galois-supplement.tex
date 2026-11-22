@@ -1,0 +1,344 @@
+\subsection{Exact local data from the elementary spherical Hecke operators}
+
+At a spherical place \(w\mid\ell\) apart from \(w_0,v'\), the
+simultaneous Hecke congruence used in the odd-rank construction accepts
+any collection of integral spherical operators away from \(\ell\).
+Using the elementary symmetric operators in that collection gives a
+second proof of the two exact local comparisons. The geometric seed
+representations and the simultaneous congruence are the inputs to this
+argument.
+
+Write \(k=\overline{\mathbb Q}_\ell\) and \(\mathcal O_k=\{z\in k:|z|\le1\}\).
+For a representation \(V\) of \(G_K\), with \(K/\mathbb Q_\ell\) finite,
+write \(X(V)_{g,j}\) for the coefficient of \(t^j\) in
+\(\det(1+tV(g))\), for \(g\in G_K\) and \(1\le j\le a=\dim V\).
+These coefficients are integral on continuous representations, by a stable
+lattice over a finite coefficient field as in Lemma~\ref{newgal:coeff}.
+
+\begin{lemma}[Polynomial tests at a residual determinant]\label{addg:residual}
+Let \((X_0,z_0)\) and \((X_i,z_i)\) consist of such coefficient systems
+and an additional scalar in \(k\). Suppose for each \(\eta>0\) there
+are finitely many \(i\) and coefficients \(c_i\in k\) such that
+\[
+ \left|P(X_0,z_0)-\sum_i c_iP(X_i,z_i)\right|\le\eta
+ \qquad(P\text{ an integer polynomial in the coordinates}).
+\]
+Fix a finite coefficient DVR \(\mathcal O\subset k\) over which the
+residual determinant \(\bar D\) of \(X_0\) is defined. Let \(R\) be
+its universal local pseudodeformation ring over \(\mathcal O\) for
+\(G_K\). For each \(\eta\), one can retain only the points with residual
+determinant \(\bar D\), and choose weights \(d_i\) on these points,
+such that their evaluation maps \(x_i\) and the target map \(x_0\) satisfy
+\[
+  \left|x_0(f)-\sum_i d_i x_i(f)\right|\le\eta\quad(f\in R),
+  \qquad \left|z_0-\sum_i d_i z_i\right|\le\eta .
+\]
+\end{lemma}
+\begin{proof}
+The original tests hold for polynomials with coefficients in
+\(\mathcal O_k\) at the same precision. Apply the integer test to each
+monomial, multiply by its coefficient, and use the ultrametric inequality.
+Choose a support and weights at precision \(\min(\eta,1/2)\).
+For each point \(i\) with a
+different residual determinant, some coordinate \(j_i\) differs from the
+target modulo the maximal ideal of \(\mathcal O_k\). Indeed the
+characteristic coefficients on group elements determine a determinant on
+the group algebra by Amitsur's formula. Form the integral polynomial
+\[
+ H(X)=\prod_{i\,\mathrm{excluded}}
+       \frac{X_{j_i}-(X_i)_{j_i}}{(X_0)_{j_i}-(X_i)_{j_i}} .
+\]
+The denominators are units. Testing \(HP\) gives the same inequality
+for \(P\) with \(d_i=c_iH(X_i)\) on the retained points, since
+\(H(X_0)=1\) and all excluded evaluations vanish. The constant test
+ensures that some point remains.
+
+The universal ring is topologically generated over \(\mathcal O\) by
+the characteristic coefficients of group elements. The absolute Galois
+group of a finite extension of \(\mathbb Q_\ell\) satisfies Mazur's
+finiteness condition, so this ring is Noetherian and its topology is
+the maximal-ideal topology. See Chenevier, Corollary 1.14,
+Proposition 3.3, Remark 3.5, Example 3.6 and Proposition 3.7
+of~\cite{chenevier}, with finite extension of the coefficient DVR.
+The evaluations are continuous local maps into integer rings of finite
+extensions. For an extension with larger residue field, the coefficient
+values and \(\mathcal O\) lie in the inverse image of the chosen residue
+field, so the same universal property applies. Approximate any \(f\in R\)
+by integral coordinate polynomials in the maximal-ideal topology and
+evaluate at the target and the retained points. There are finitely many
+maps and the \(d_i\) are already fixed. Thus the precision at these maps
+can be chosen to absorb \(\max(1,\max_i|d_i|)\). Passing to the limit
+gives the first inequality. Testing the additional coordinate itself
+gives the second.
+\end{proof}
+
+\begin{proposition}[Exact periods on the odd-rank spherical subfamily]
+\label{addg:local}
+Use the geometric seed and simultaneous congruence hypotheses of the
+odd-rank construction in Sections~\ref{tr:section} and~\ref{newgal:section},
+at a spherical \(w\mid\ell\) apart from both auxiliary places. For the
+global representation \(r\) constructed from traces, \(V=r|_{G_{E_w}}\)
+has the labelled jumps \(J_\tau\) of \eqref{newgal:jumps}. Its
+Frobenius-semisimplified crystalline Weil parameter has the prescribed
+Satake eigenvalues in the normalization of Proposition~\ref{newgal:phi}.
+These conclusions hold for every coefficient prime \(\ell\).
+\end{proposition}
+\begin{proof}
+Set \(K=E_w\). At a usable spherical prime \(v\nmid\ell\), put
+\(q=\mathrm N v\) and let \(T_j\) be the hyperspecial double-coset
+operator for \(j\) uniformizer entries. On spherical fixed vectors,
+\(q^{\binom j2}T_j\) has eigenvalue the \(j\)-th elementary symmetric
+function of \(q^{(a-1)/2}B_v\). The eigenvalue of \(T_j\) is
+\(q^{j(a-j)/2}e_j(B_v)\), and the exponents
+add to \(j(a-1)/2\). The representatives and coefficients are integral
+at \(\ell\). A representation with zero fixed space satisfies the required
+scalar-action assertion there as well.
+\src{src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/SphericalOperatorsExist.lean}{146}{the elementary spherical operators and their action}
+and \src{src/Development/AbelianVarietyTheory/Statements/EllipticCurveLevels/HasLevel.lean}{36}{the admissible operator data}.
+
+For a fixed Weil element \(s\) and power, let \(b_0\) denote the
+predicted Weil trace and \(b_i\) its value at a seed. The congruence for
+the singleton \(\{w\}\) includes the coordinate \(z=cb\), with one
+nonzero scalar \(c\) fixed by the place, power and normalization. Take
+as the away-from-\(\ell\) list all the preceding elementary operators on
+usable spherical primes, indexed also by the prolongations and Frobenius
+lifts as in Section~\ref{tr:section}. The congruence permits this list
+and the local coordinate together, with the same coefficients for every
+polynomial.
+\src{src/Development/AbelianVarietyTheory/Definitions/GaloisGeometry/LimWU4OfLimWU3.lean}{46}{quantification over operator lists and the additional local coordinates}
+and \src{src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TraceLimits/LimFinOddOf.lean}{185}{normalization of the Weil power}.
+
+On a fixed finite support of this approximation the common good
+geometric Frobenius elements are dense in the global Galois group.
+The target identification away from \(\ell\) in Section~\ref{tr:section}
+and the seed characteristic-polynomial identities identify all the
+elementary coefficients at those elements. For a test in finitely many
+group elements, approach each element by common good Frobenius elements,
+keeping all its elementary degrees at the same prime. Hold \(z\) fixed.
+Continuity of the representations passes the polynomial inequality to
+the chosen elements, with the same finite support. Restriction to
+\(G_K\) gives exactly the hypothesis of Lemma~\ref{addg:residual} for
+\(X_0=X(V)\), \(X_i=X(V_i)\) and \(z_j=cb_j\). Taking the elementary
+operators directly avoids division by factorials at the small primes.
+
+Choose the fraction field of \(\mathcal O\) to contain \(c\) and the
+images of all embeddings of \(K\) over \(\mathbb Q_\ell\).
+Theorem~\ref{newgal:liu} first gives crystallinity of the actual
+restriction \(V\), including its extension classes. All the local seeds
+are crystalline of the common labelled type. In the ring \(R\) of the
+lemma, take the semistable quotient \(R^{\mathbf v,1}\) with this Hodge
+type and trivial inertial type, taking the semistability field to be
+\(K\). The quotient and its characterization on field-valued points for
+arbitrary residual multiplicities are given by A'Campo, Hevesi, Thorne
+and Whitmore, Theorem 3.3.6 in
+\href{https://arxiv.org/abs/2607.11763}{\emph{Local-global compatibility of automorphic Galois representations over CM fields at \(p\)}}.
+The local pseudorepresentation records the semisimplification. Exactness
+of crystalline periods and strictness of the de Rham filtration on
+crystalline representations give the same labelled graded multiplicities
+for a seed and its semisimplification, as also recorded for de Rham
+representations in Lemma 3.3.19 of the same paper. In particular every retained
+seed map kills the defining ideal. Apply Lemma~\ref{addg:residual} to
+each element of this ideal and let \(\eta\) tend to zero. The target
+factors through \(R^{\mathbf v,1}\). Applying the same exactness to the
+already crystalline \(V\) gives its claimed labelled jumps.
+
+The integers in each \(J_\tau\) are distinct by dominance, so this
+type fits the highest-weight convention of \S3.3.9 of the same paper.
+Use the spherical Bernstein block. By \S3.3.11 the invariant function
+given by the trace at the prescribed Weil element and power is an element
+\(F\in R^{\mathbf v,1}[1/\ell]\). Its specialization is the trace of
+the semisimple Weil representation. This trace also agrees with the
+trace on the original crystalline module by exactness. Choose \(h\ge0\)
+and \(f\in R\) lifting \(\ell^h cF\). The choice is fixed
+before \(\eta\). Each retained point has \(x_i(f)=\ell^h z_i\). The
+two inequalities of the lemma then give
+\[
+       |x_0(f)-\ell^h z_0|\le\max(1,|\ell^h|)\eta .
+\]
+Letting \(\eta\) decrease to zero and cancelling \(\ell^h c\) gives
+the predicted Weil trace on \(V\). Apply this to the first \(a\)
+powers of geometric Frobenius and use Newton's identities in
+characteristic zero. Crystallinity gives trivial inertia and zero
+monodromy. This determines the asserted parameter.
+\end{proof}
+
+\subsection{Base change for the definite-unitary eigensystems}
+
+\begin{proposition}[Attachment on the standard definite unitary group]
+\label{addg:unitary}
+Use the CM field, odd rank \(a\) and definite unitary group of
+Section~\ref{newgal:section}, with the classical local Langlands
+correspondence and Fontaine period functors. For each of its
+automorphic representations \(U\) there is a continuous semisimple
+\(r_U:G_E\to\mathrm{GL}_a(k)\). At every split spherical place
+\(w\nmid\ell\) it is unramified with geometric Frobenius multiset
+\(q_w^{(a-1)/2}B_w\). At every \(w\mid\ell\) its restriction is de Rham
+with labelled jumps \(J_\tau\) of \eqref{newgal:jumps}. If \(U\) is
+spherical there, it is crystalline and its crystalline Weil parameter
+has geometric Frobenius multiset \(q_w^{(a-1)/2}B_w\).
+This holds for all dominant integral weights and for any finite
+exceptional set \(T\) of nonsplit places in the level.
+\end{proposition}
+\begin{proof}
+The group in the construction is defined by \({}^{t}\!\bar g g=1\)
+for the identity Hermitian form over \(E/E^+\). The field hypotheses
+give an extension unramified at every finite place with every place
+over \(\ell\) split. These are the standard assumptions of Newton and
+Thorne, \S1, and their formula (1.0.1) is the displayed group.
+Their map at a split place is projection to the chosen matrix factor,
+which is the map defining the local component in \(B_w\). At infinity
+the pullback of the algebraic module along the chosen embedding gives
+the weight \(\lambda_{\iota\tau}\) used here. On the compact adelic
+quotient the continuous automorphic functions of fixed finite level
+and finite type at infinity are square integrable. Their finite-dimensional
+translates at infinity are smooth by the representation theory of compact
+Lie groups. An irreducible submodule of these automorphic forms therefore
+occurs in the discrete automorphic spectrum. The projection to some
+irreducible Hilbert summand is nonzero and maps this submodule into
+its smooth, finite-type vectors.
+\src{src/Development/AbelianVarietyTheory/Definitions/GaloisGeometry/LatticeDataThicknessBound.lean}{16}{field, automorphic and split local conditions}.
+Theorem 1.2 and Corollary 1.3 of Newton and Thorne give the discrete
+isobaric base change \(\Pi\) and \(r_U\), including compatibility
+with \(\operatorname{rec}_{E_w}(\Pi_w|\det|^{(1-a)/2})\) at split places
+and de Rhamness over \(\ell\). Their forward base change allows
+ramification at nonsplit places. At a spherical place the parameter has
+trivial inertia and zero monodromy. For a de Rham representation these
+two conditions on its Weil--Deligne parameter give crystallinity by
+semistable descent. The displayed norm twist gives the claimed factor
+of \(q_w^{(a-1)/2}\).
+Newton and Thorne,
+\href{https://arxiv.org/abs/1912.11261}{\emph{Symmetric power functoriality for holomorphic modular forms}}, \S1.
+
+For the labelled weights, let one discrete block of \(\Pi\) have
+cuspidal constituent \(\mu\) on \(\mathrm{GL}_m\) and length \(b\).
+Its archimedean constituents have twists \(\mu|\det|^{(b+1-2j)/2}\),
+\(1\le j\le b\). In the construction of \(r_U\) this block contributes
+\[
+   \bigoplus_{j=1}^{b}
+   r_{\mu|\det|^s}\otimes\varepsilon_\ell^{\,1-j},
+   \qquad s=(m+b-1-a)/2.
+\]
+Here \(\mu|\det|^s\) is regular algebraic and polarizable. This is the
+discrete-spectrum formula used in the proof of Newton and Thorne's
+corollary. See Anastassiades and Thorne,
+\href{https://arxiv.org/abs/1912.11267}{\emph{Raising the level of automorphic representations of
+\(\mathrm{GL}_{2n}\) of unitary type}}, proof of Corollary 3.4.
+For each labelled infinitesimal-character entry \(x\) of \(\mu\),
+the cuspidal weight formula in Proposition~\ref{newgal:classical} and
+the jump \(-1\) of \(\varepsilon_\ell\) give the entry
+\[
+  (m-1)/2-(x+s)+j-1
+      =(a-1)/2-\bigl(x+(b+1-2j)/2\bigr).
+\]
+Taking all entries and blocks gives \((a-1)/2\) minus the infinitesimal
+character of \(\Pi\), with multiplicity. By Theorem 1.2(3) this character
+is that of the algebraic module of \(U\). Its entries in zero-based
+indexing are \(\lambda_{\iota\tau,i}+(a-1)/2-i\). Subtraction gives
+\(i-\lambda_{\iota\tau,i}\) for \(0\le i<a\), including equal adjacent
+highest-weight entries.
+\end{proof}
+
+For example, the constant automorphic representation in odd rank
+\(a\ge3\) has highest weight zero. Its algebraically normalized Satake multiset at a
+split spherical place is \(\{1,q_w,\ldots,q_w^{a-1}\}\), so the attached
+representation is \(\bigoplus_{i=0}^{a-1}\varepsilon_\ell^{-i}\) by
+Chebotarev and semisimplicity. Its jumps \(0,\ldots,a-1\) fail
+lacunarity since \(\{1\}\) and \(\{0,2\}\) have equal means.
+For a general \(U\) the same uniqueness identifies \(r_U\) with any
+semisimple trace limit matching its good Frobenius eigenvalues.
+Proposition~\ref{addg:unitary} thus supplies the rank-\(a\) seed
+and target Galois conclusions in the classical interpretation.
+Realizing a particular seed in the prescribed cohomology tower,
+proving the simultaneous automorphic congruence, and comparing any
+separately specified period functors with Fontaine's are further assertions.
+
+\subsection{Inserting the auxiliary cuspidal type at fixed weight}
+
+\begin{proposition}\label{addg:auxiliary}
+Fix any algebraic weight of the definite group and a level away from
+the split auxiliary place \(w_0\mid\ell\). Let \(f\) be a simultaneous
+eigenform of that weight and level, with system \(\theta\).
+Take any list of integral spherical Hecke operators away from
+\(\ell\) at the hyperspecial places of the level, or more generally
+integral operators away from \(\ell\) acting by a scalar on each
+relevant local fixed space. One may also include
+fixed spherical double-coset operators or finite linear combinations
+at hyperspecial places over \(\ell\) apart from \(w_0\), after a nonzero scalar
+normalization for each operator. For every \(m\ge1\) there are finitely
+many eigensystems \(\theta_i\) of the same weight and level away from
+\(w_0\), all containing the auxiliary type of Section~\ref{newgal:section}
+at \(w_0\), and coefficients \(c_i\in k\) such that
+\[
+   \left|P(\theta)-\sum_i c_iP(\theta_i)\right|
+              \le |\ell|^m
+      \qquad(P\text{ an integer polynomial in the listed operators}).
+\]
+\end{proposition}
+\begin{proof}
+In the finite-adelic model let \(A\) be the algebraic coefficient
+representation, with \(f(\gamma g)=A(\gamma)f(g)\). Transport coefficients
+by \(\iota^{-1}\), and measure the values of \(f\) using
+\(A(g_\ell)^{-1}f(g)\). These values are left invariant. A lattice
+preserved by the compact coefficient-place part of the original level
+exists over a finite coefficient field, after shrinking the level at
+\(w_0\) if needed. The resulting supremum norm is a maximum on the
+finite double quotient and uses the same lattice at finer levels.
+Integral Hecke operators away from \(\ell\) are contractive since their
+finite sums of translations have trivial \(\ell\)-component. At each
+marked coefficient place there are finitely many matrices \(A(t_\ell)\)
+in a given operator. Multiplying its coefficients by a sufficiently
+large power of \(\ell\) makes all the summands integral in the lattice.
+These normalizations depend only on the operators and weight.
+Rescale \(f\) so a coordinate evaluation \(L\) of norm at most one
+satisfies \(L(f)=\|f\|=1\).
+
+Inside a torsion-free compact open subgroup fixing \(f\) at \(w_0\),
+choose an open \(J\) and a quotient
+\(\theta_J:J\twoheadrightarrow C=\mathbb Z/\ell^m\mathbb Z\) such
+that every nontrivial character of \(C\) inflated to \(J\) is a
+supercuspidal type. Such subgroups exist for every prime by
+Beuzart-Plessis, Theorem D.1 in the appendix to Fintzen and Shin,
+\href{https://arxiv.org/abs/2009.08476}{\emph{Congruences of algebraic automorphic forms and supercuspidal representations}}.
+For \(m=1\) one may compose a quotient of order \(\ell^2\)
+with reduction modulo \(\ell\).
+A sufficiently deep principal congruence subgroup is torsion-free by
+the convergent matrix logarithm. For \(a>1\), surjectivity follows also
+because a nontrivial character trivial on the image would occur in
+the trivial representation. In rank one a coordinate of the logarithm
+on the deep unit group gives a surjection to \(C\), and every smooth
+irreducible representation is cuspidal. In level \(\ker\theta_J\), the right
+action of \(C\) on the finite double quotient is free. Indeed the
+rational stabilizer at level \(J\) is finite by compactness at infinity
+and discreteness of the rational group in its adeles. Its projection
+at \(w_0\), after conjugation, lies in the torsion-free group \(J\).
+The faithful embedding of rational matrices into this completion
+then makes the stabilizer trivial.
+
+Choose one point of each \(C\)-orbit and let \(h\) be 1 minus
+\(\ell^m\) times the characteristic function of the selected points.
+Its sum on each orbit is zero and \(\|1-h\|=|\ell|^m\).
+Since \(f\) is \(J\)-fixed, \(hf\) has only nontrivial
+\(C\)-characters. Decomposing at the fixed weight and the finer
+level gives a finite sum \(hf=\sum_i f_i\) of Hecke eigenvectors
+in these character spaces. The decomposition follows from the
+discrete automorphic decomposition and the scalar action of the
+spherical operators on hyperspecial invariants. Each occurring
+local representation at \(w_0\) contains the indicated type.
+Every integral polynomial in the operators is contractive, so applying
+\(L P(T)\) to \(f-hf\) proves the bound with \(c_i=L(f_i)\).
+\end{proof}
+
+This fixed-weight argument preserves any prescribed finite collection
+of polynomial nonvanishing conditions already satisfied by the target.
+Integral coefficients in \(k\) are allowed by the monomial argument of
+Lemma~\ref{addg:residual}. After clearing denominators, let \(D\) be the product
+of their integral test polynomials. Apply the estimate to \(DP\)
+and divide by \(D(\theta)\ne0\). Terms with \(D(\theta_i)=0\)
+drop out, and increasing \(m\) in advance absorbs the fixed loss
+\(|D(\theta)|^{-1}\). For a polynomial required to be nonzero at
+every ordering of a Satake multiset, take the product over permutations and express this
+symmetric polynomial through the elementary spherical operators.
+This proves the auxiliary-type step at arbitrary fixed weights,
+including repeated highest-weight entries. Changing the weight to
+produce lacunarity at \(v'\), or imposing a nonvanishing condition
+that fails on the target, requires an additional argument.

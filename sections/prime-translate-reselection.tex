@@ -1,0 +1,181 @@
+\paragraph{From a signed mean to every translate at the same exponent.}
+The right side of \eqref{scope:missing} leaves more room per thick
+coordinate when the thick set is made smaller. The original host conditions
+allow a fixed proportion of that set to be retained. This permits an exact
+transfer even when equality holds in \eqref{scope:average}.
+
+\begin{proposition}[Reselection on the original windows]\label{scope:reselection}
+Fix \(\psi,\varepsilon\) as in Section~\ref{ar:section}. Suppose that on a
+set of scales the original common data satisfy \eqref{scope:average},
+the full page rank bounds, the top cardinality bounds, the Behrend lower
+bound with a uniform constant, and the hypotheses of
+Proposition~\ref{ar:mean}. Retain the cyclotomic host and the construction
+which, for each admissible choice of its two finite sets, supplies the
+common centres and the points with their actual Harish--Chandra weights.
+For assembly into a family, assume this construction is available on the
+same set of scales with the new uniform Behrend constant. In the formal
+construction one retains the input hosts of \texttt{HostExW}, the supply
+of centres satisfying \texttt{WinOK} and the duty conditions, and
+\texttt{ObjCP} for all the updated \texttt{HostGood} records before
+\texttt{kitS}. The rank budget uses the field and rank of that host.
+
+At every sufficiently late scale in this set one can choose new finite
+sets and common points for which \eqref{scope:missing} holds for every
+\(u\in A_0\), with its displayed coefficient. Both auxiliary primes,
+the field, the ranks and \(\varepsilon\) at that scale are the original
+ones. The new family also satisfies \eqref{scope:average}. If the
+input gives arbitrarily late complete windows, the output has the
+same complete windows after a uniform threshold.
+\end{proposition}
+
+\begin{proof}
+Write \(t=|T|\), \(s=|T_2|\), \(y=x^\varepsilon\), \(p=y^{-1/8}\),
+\(\delta=s/n\). Normalize a discrepancy or its budget by multiplying
+by \(2/(tmb\delta)\). The normalized budget is exactly
+\[
+ W(t,s)=2y^5\left(\frac{A_1}{s}+\frac{A_3}{ts}+\frac{A_4}{t}\right),
+ \qquad
+ A_1=\frac{n a_E(1+m^2/k)}{mb},\quad
+ A_3=2n^2my,\quad A_4=\frac{ky^2}{n}.
+\]
+The ranks satisfy \(ky^2\le n^2\sqrt{x}\) eventually, by
+\(k\le2x^{9/2+10\varepsilon}\) and \(n\ge x^{2+8\varepsilon}\).
+Also \(my\ge\sqrt{x}\) since \(m\ge\sqrt{xp}\). Thus
+\(A_4s\le A_3\) for \(s\le n\). If a new choice has
+\(t'\le4t\) and \(16s'\le s\), its first summand grows by a
+factor of at least sixteen and its second by at least four.
+The old third summand is bounded by the old second. Consequently
+\[
+                         W(t',s')\ge2W(t,s).
+\]
+Since \(t\le2np\), the second summand alone also gives
+\(W(t,s)\ge 2\sqrt{x}\,y^{97/16}/\delta\).
+
+Take any \(U\subset T_2\) of cardinality \(s'=\lfloor s/32\rfloor\)
+in the original integer representatives. For \(s\ge64\) we have
+\(s/64\le s'\le s/32\). The short range and the prohibition on
+three-point relations in Proposition~\ref{host:behrend} pass to \(U\).
+Put \(z=\sqrt{\log(n/o)\log L_w}\). If the old cardinality is at least
+\((n/o)e^{-Cz}/L_w\), the new one is at least
+\((n/o)e^{-(C+1)z}/L_w\) once \(z\ge\log64\). Also
+\(\delta'=s'/n\ge x^{-\varepsilon}\) eventually, since
+\(\log(\delta^{-1})=o(\log x)\) uniformly at these scales.
+The upper bound \(4L_ws'\le n/o\) passes to subsets as well.
+
+With \(U\) fixed, draw \(T'\) by Lemma~\ref{host:shares},
+using probabilities \(p_v=p\) on \(A_0\) and \(p_v=3p/4\) elsewhere.
+Write \(N(v)=|T'\cap(v+U)|\). These are binomial counts of mean
+\(p_vs'\). For \(\lambda=\sqrt{12ps'\log(2n)}\), a Chernoff bound and a
+union bound give \(\max_v|N(v)-p_vs'|\le\lambda\) with probability
+\(1-o(1)\). The required coset shares and \(np/2\le t'\le2np\) also
+hold with probability \(1-o(1)\). The original top cost exceeds its
+prescribed bound with probability at most \(1/4\).
+Choose a single outcome satisfying all of these conditions.
+In particular \(t'\le4t\). The updated host has the same arithmetic
+field, Artin data, level primes and thin-character bounds. In
+\texttt{HostGood} the changed requirements are the two cardinalities,
+the Behrend bound and the top cost. In \texttt{EAtH} only the coset
+shares use \(T'\). Both \(E\) and its rank cutoff in
+\(\mathrm{VVle}(E,\mathtt{R.t},\sqrt b)\) retain their values.
+
+Write \(S=S_{\psi;q,d}(x)\) for the signed four-twist sum in
+Proposition~\ref{ar:mean}. Set \(V=\exp(x^{\varepsilon/3})\),
+\(\vartheta=\exp(-c x^{\varepsilon/8})\) with the fixed thin-bound
+constant \(c>0\), and \(L=\log(2V)+n\vartheta\). In the additive
+coordinates of Lemma~\ref{ar:balance}, put
+\[
+ K_h(z')=\frac{1}{2n}\Re\sum_{\chi}
+                  \overline{\chi(1,0,h)}\,G_\chi(z').
+\]
+Subtract \(z'/V\) times each ramp at \(V\). For \(r=\ell^j\le V\)
+the inverse Fourier coefficient is
+\(Q_r(h)=2|I_\ell|^{-1}
+\mathbf1_{(1,0,h)-jF_\ell\in I_\ell}\), including ramified primes.
+It is nonnegative and \(\sum_h Q_r(h)\le2\). The resulting kernel is
+\[
+ K_h(z')=\frac{z'}{V}K_h(V)+\frac{z'\log(V/z')}{2n}
+ -\sum_{r\le V}\Lambda(r)Q_r(h)\bigl(\min(1,z'/r)-z'/V\bigr).
+\]
+The thin bound gives \(|K_h(V)|\le2V\vartheta\).
+Using \(\sum_{r\le V}\Lambda(r)/r\ll\log(2V)\) and
+\(\sum_{r\le V}\Lambda(r)\ll V\), we obtain
+\(\sum_h|K_h(x)|\ll xL\) and
+\(\sum_h\sup_{|z'-x|\le w}|K_h(z')-K_h(x)|\ll wL\)
+for \(w=\max_{t_0\in T'}|a_{t_0}/b-x|\le1\).
+
+Use the deterministic convolution calculation in the proof of
+Corollary~\ref{orb:overlap} with the present \(\lambda\). After
+thick replacement and thin deletion the multiplicity at \(h\) is
+\(N(u-h)\), with expectation \(s'p_{-h}\) for \(u\in A_0\).
+The normalized new discrepancy \(d'_u\) satisfies simultaneously
+\[
+ |d'_u-S|\ll
+      xL\frac{\lambda}{ps'}+wL+\frac1{x\delta'} .
+\]
+Here \(L\ll x^{\varepsilon/3}\) and \(ps'\gg x^{2+55\varepsilon/8}\).
+The first term is \(O(x^{-149\varepsilon/48}\sqrt{\log(2x)})\).
+Every term is \(o(W(t,s))\). This estimate uses only the genuine
+weight windows. In the original construction
+\(w_j(\tau)=B_\tau+(2j-1)\lceil x^{c_h}\rceil\) for \(1\le j\le m\).
+The estimate allows the actual thick-place corrections at every point.
+
+Write \(\bar d\) for the old normalized mean. Proposition~\ref{ar:mean}
+gives \(|S-\bar d|\ll(1+x^\varepsilon)\log(2x)+1/(x\delta)
+=o(W(t,s))\). The primes \(q,d\) in the two applications are identical.
+By hypothesis \(\bar d\le W(t,s)\). Hence
+\[
+       d'_u\le W(t,s)+o(W(t,s))\le W(t',s')\qquad(u\in A_0)
+\]
+uniformly after a single threshold. Undo the new normalization to
+obtain \eqref{scope:missing} and average it to obtain \eqref{scope:average}.
+
+In the family version, the point-construction hypothesis is used after
+\(U,T'\) have been fixed. The relation \texttt{Pt.From} carries the
+actual top and thick sets, centres and raw field to every point.
+The admissible host predicate can therefore retain the displayed
+overlap condition on both sets. The construction
+\texttt{exists\_famP\_of\_kits} preserves its input window set.
+All translates at a given scale refer to the same new points and weights.
+An isolated \texttt{RealizedData} record describes the old points and
+contains no supply of new ones. Input estimates restricted to a proper
+subinterval give the output on that subinterval. An independent window
+theorem still requires a signed arithmetic estimate at every point
+of a complete window.
+\end{proof}
+
+\begin{corollary}[An unbounded loss in the input mean]\label{scope:reselection-loss}
+In Proposition~\ref{scope:reselection} multiply the old budget
+in \eqref{scope:average} by \(g(x)\).
+Suppose \(1\le g(x)\le \exp(a z)\) for some fixed \(a\ge0\)
+and \(z=\sqrt{\log(n/o)\log L_w}\). The new pointwise and signed bounds
+still have the original coefficient. In particular any fixed power
+of \(\log x\) can be absorbed.
+\end{corollary}
+\begin{proof}
+Take \(s'=\lfloor s/(32g(x))\rfloor\). Since \(s=n x^{-o(1)}\) and
+\(g=x^{o(1)}\), we have \(s/(64g)\le s'\le s/(32g)\) eventually.
+The Behrend lower bound survives with constant \(C+a+1\), and
+\(s'/n\ge x^{-\varepsilon}\) still holds. In \(W(t',s')\) the first
+two summands are at least \(32g\) and \(8g\) times the corresponding
+old summands. Since the old third summand is bounded by the second,
+\(W(t',s')\ge2gW(t,s)\). Both Fourier comparison errors remain
+\(o(W(t,s))\), uniformly on the same scales.
+
+Conversely, for any two legal choices on these same ranks,
+\(t/t'\le4\). Comparing the three nonnegative summands separately
+gives \(W(t',s')/W(t,s)\le4\max(1,s/s')\le4n/s'\).
+The Behrend bound of the new family makes this at most
+\(4oL_w\exp(C' z)\) for its fixed constant \(C'\).
+Changing these sets can absorb losses with \(\log g=O(z)\).
+A fixed positive power of \(x\) exceeds every budget amplification
+of this form.
+\end{proof}
+
+If all large-order orbits must pass, Corollary~\ref{orb:conditional-overlap}
+gives one choice with the same order of overlap error. For this choice
+the original \texttt{BadOK} cost vanishes because it counts failed
+large-order orbit tests. The budget comparison above applies directly.
+
+The companion file \texttt{TranslateUniformity.lean} checks the subset
+and Behrend inequalities, the updated host and character records, the
+transport of both sets to the chosen points, and the budget comparison.

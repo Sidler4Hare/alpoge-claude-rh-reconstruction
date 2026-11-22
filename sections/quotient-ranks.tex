@@ -1,0 +1,662 @@
+\subsection{Which target quotients the descended columns must detect}
+\label{rank:section}
+
+Fix a scale and a translate in Section~\ref{geo:translate}. Suppress
+the translate index. Write \(R\) for the generic fibre of the dual
+target, \(d=\dim_K R>0\), \(r_i=\dim_K S_i\), and \(r=\sum_i r_i>0\).
+The rational word maps \(B_i:S_i\to R\) retain their divisor shifts.
+For \(W\subsetneq R\) defined over \(K\), let \(\pi_W:R\to R/W\),
+\(\zeta_W=\dim(R/W)/d\), and set
+\[
+ q_W=\frac{1}{r}\sum_i\operatorname{rank}_K(\pi_W B_i),
+ \qquad \tau=\min_{W\subsetneq R}q_W/\zeta_W .
+\]
+The minimum exists since the ranks are bounded integers. Taking
+\(W=0\) gives \(0\le\tau\le1\). These tests use ranks over the number
+field. The \src{src/Formalism/HarderNarasimhan/Statement.lean}{36}{original HN cutoffs} are submodules
+over the ring of integers, so their generic fibres are eligible
+\(W\)'s.
+
+\begin{proposition}[A slope comparison from ranks on quotients]\label{rank:transfer}
+Let \(s=\sum_i r_i(\mu(S_i)-h_i)/r\), and let \(U\) be the largest
+original source slope after subtracting its allowance \(h_i\) and
+the common centre \(s\). Write \(J=\sum_i g(B_i)/r\) for the cost in
+Lemma~\ref{trmean:graph}. If \(\tau>0\), then
+\[
+                   s-\mu(R)\le\frac{J+(1-\tau)U}{\tau}.
+\]
+It suffices to have \(q_W\ge\tau\zeta_W\) on the proper target HN
+cutoffs. For integral columns satisfying the prescribed heights
+one may take \(J=0\).
+\end{proposition}
+\begin{proof}
+Choose source and target slopes with their normalized rank weights
+at this translate. Denote the centred repaired source by \(S'\)
+and the centred target by \(T\). The source law has mean \(-J\)
+and is bounded above by \(U\), by the integral inclusion into the
+original source. At a real threshold \(v\), take the target cutoff
+of slope at least \(s+v\). The integral map from the repaired word
+source sends its cutoff at \(s+v+h_i\) into this target cutoff, by
+the filtration inequality in Theorem~\ref{trmean:trace}. Therefore
+\[
+       \tau\Pr(T<v)\le q_W\le\Pr(S'<v)
+\]
+when the target cutoff is proper. For the whole target the left
+side is zero. Integrate the resulting probability inequality over
+\(-\infty<v<U\). The integral of each indicator is the positive
+part of \(U\) minus the corresponding slope, hence
+\[
+ \tau(U-\mathbb ET)\le\tau\mathbb E(U-T)_+
+        \le\mathbb E(U-S')_+=U+J.
+\]
+Rearrange and use \(\mathbb ET=\mu(R)-s\). The lemma on repairs
+applies before taking ranks since the repaired source spans the
+same generic fibre.
+\end{proof}
+
+There are finite certificates for the rank condition. A set of
+words whose combined matrix has a nonzero \(d\)-rowed minor spans
+\(R\). In every quotient its sum of word ranks is at least the
+dimension of that quotient. If \(L\) disjoint sets of words have
+such minors then \(\tau\ge dL/r\). More generally give spanning
+sets \(C\) weights \(a_C\ge0\) with \(\sum_{C\ni i}a_C\le1\) for
+each word. Summing the quotient inequalities gives
+\(\tau\ge(d/r)\sum_C a_C\). Each minor can be checked at one place
+of integral reduction. For a test restricted to a specified
+codimension, one may instead verify the rank inequalities for every
+quotient of that dimension over a single finite residue field at
+which all columns are integral in lattice bases. Indeed, the
+intersection of a rational subspace with the target DVR lattice
+is saturated. Its reduction has the same codimension, and reduction
+can only decrease the ranks of the induced maps into the free
+quotient.
+
+\begin{proposition}[The quotients covered by the original frame data]\label{rank:wide}
+Use the full word maps \(A_i^{\,f}:V_i^{\,f}\to\mathcal H\) at the
+selected infinite place, including the scalar \(\sqrt{\gamma_i}\).
+The actual source isometries are \(V_i\hookrightarrow V_i^{\,f}\).
+Projection to the \(d\)-dimensional target then gives the descended
+\(B_i\) up to nonzero word scalars, in the coordinates of
+\code{frame\_at\_of}. Put \(n=\dim\mathcal H\), \(r_f=\sum_i\dim V_i^{\,f}\),
+\(\alpha=1-r/r_f\), \(\rho=d/n\), \(Q=\sum_i A_i^{\,f}A_i^{\,f*}\),
+and \(M=\operatorname{tr}Q\). Suppose \(M\ge r_f/2\), and write
+\[
+ \eta=\frac{n\operatorname{tr}(Q^2)}{M^2}-1,\qquad
+ e=\frac1{r_f}\sum_i
+      \|A_i^{\,f*}A_i^{\,f}-I\|_{\rm HS}^2,\qquad
+ D_f=\eta+5\alpha+4e .
+\]
+Every quotient with \(\rho\zeta_W\ge2D_f\) satisfies
+\(q_W\ge(\rho/10)\zeta_W\).
+\end{proposition}
+\begin{proof}
+Let \(P\) project in \(\mathcal H\) onto the orthogonal complement
+of \(W_{\mathbf C}\) inside the complex target. Its normalized trace
+is \(z=\rho\zeta_W\). In the \(i\)-th full source \(P A_i^{\,f}\)
+vanishes on the embedded kernel of \(\pi_W B_i\). The fraction of
+full source dimensions outside these kernels is exactly
+\(b=\alpha+(1-\alpha)q_W\). Positivity and the Hilbert--Schmidt
+Cauchy--Schwarz inequality give
+\[
+ z-\sqrt{z\eta}\ \le\ \frac{\operatorname{tr}(PQ)}{M}
+                  \ \le\ 2(b+\sqrt{be}).
+\]
+On the left pair \(P\) with \(nQ/M-I\) in normalized trace.
+On the right use an orthonormal basis of the kernel complement
+in each full source. Bounding the squared norms there uses \(I\)
+and \(A_i^{\,f*}A_i^{\,f}-I\), and \(r_f/M\le2\).
+Now \(2\sqrt{z\eta}\le z+\eta\) and \(4\sqrt{be}\le b+4e\).
+It follows that \(z\le\eta+5b+4e\le D_f+5q_W\). Under the stated
+size condition this gives \(z\le10q_W\).
+\end{proof}
+
+For comparison with the source, the
+\src{src/Formalism/SharpRestriction/GlobalSchurBounds/TopDensityNGeSixteen.lean}{538}{original frame comparison}
+passes the full
+maps, isometries, weights and actual \code{Bk} to the joint lattice
+theorem. The latter obtains trace and diagonal estimates for
+compressed maps in \code{ramification\_linear\_case\_holds}.
+Proposition~\ref{rank:wide} tests the full maps directly. For the
+uncompressed trace the same source bound specializes to
+\(\eta\le5\sigma\) by using identity isometries and zero rank loss
+under its original size and Gram hypotheses. A diagonal defect
+\(e\le1/4\) gives \(M\ge r_f/2\) by Cauchy--Schwarz.
+
+Thus only the integer codimensions \(1\le b<2nD_f\) need an
+additional rank test if one seeks a constant at most \(\rho/10\).
+At \(2nD_f\le1\) this list is empty. In the original period
+construction the period image surjection in \code{IndefUse.lean},
+line 463, identifies the space of rows. The
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefSide.lean}{388}{columns on these rows}
+are pairings with the actual word images. A common missed
+row is a row orthogonal to all those images, in the coordinates of
+the common row isometry. The deeper realization in \code{RowSideTie.lean},
+line 253, supplies a bijection of word labels. The kernel package in
+\code{RecBridgeSel.lean}, lines 272--280, identifies the period at
+each original label. A nonzero column at each word would say that
+each word pairs with some row. For a one-dimensional residual quotient
+we need a word pairing with its particular dual row.
+
+\begin{proposition}[A missed line under the pairwise Gram bounds]\label{rank:blind}
+For every odd prime \(p\ge41\) and every integer \(k\ge1\) there
+are \(p(p+1)\) full word maps of rank \(k\) in dimension \(n=kp+1\)
+satisfying the three bounds of \code{InputSG}. They meet the word
+size and count comparisons with \(C_{\rm pr}=1\), \(\Gamma^2=p\)
+and \(\sigma=2/p\). Every word vanishes in the same one-dimensional
+rational quotient.
+\end{proposition}
+\begin{proof}
+In \(\mathbf C^p\) take the coordinate basis and, for each
+\(a\in\mathbf F_p\), the \(p\) unit vectors
+\[
+ v_{a,b}(x)=p^{-1/2}\exp(2\pi i(ax^2+bx)/p),
+                       \qquad b,x\in\mathbf F_p .
+\]
+Each fixed \(a\) gives an orthonormal basis. Two vectors in different
+bases have squared inner product \(1/p\). For two quadratic bases
+this follows by squaring the absolute value of the unnormalized
+sum and writing \(x=x'+h\). For \(h\ne0\) the inner sum over \(x'\)
+is a nontrivial additive character sum and is zero. Only \(h=0\)
+contributes \(p\). This is the prime-dimensional construction of
+\href{https://doi.org/10.1016/0003-4916(89)90322-9}{Wootters and Fields}.
+
+For each resulting unit vector \(v\), use the isometry
+\(z\mapsto(v\otimes z,0)\) into
+\((\mathbf C^p\otimes\mathbf C^k)\oplus\mathbf C\).
+Its unnormalized columns are defined over the \(p\)-th cyclotomic
+field, with the factors \(p^{-1/2}\) placed in \(\sqrt{\gamma_i}\).
+The diagonal Gram defect is zero, and each off-diagonal squared
+Hilbert--Schmidt norm is zero or \(k/p=k^2/D_*\) with \(D_*=kp\).
+Take \(e_0=\eta_0=0\), \(\eta_1=1/(kp)\). Then
+\(n=(1+\eta_1)D_*\), \(\eta_1\le\sigma/2\),
+\(k\Gamma^2/D_*=1\), and the word count exceeds
+\(\Gamma^2/\sigma\). There is no compression. Summing the projections
+over the \(p+1\) bases gives \(Q=(p+1)I_{kp}\oplus0\), so
+\(\eta=1/(kp)\). The last coordinate receives zero from every word.
+Giving this line slope \(-L\) in an orthogonal direct sum with
+standard visible coordinates leaves the frame numbers fixed and
+decreases the target mean by \(L/n\).
+
+The missed line also persists with a nontrivial ramified rank
+ratio. Take \(k=m(T-1)^f\) and \(k'=m(T-2)^f\) with \(2k'\ge k\),
+and restrict each full map to \(k'\) coordinates of its source.
+Use the first \(k'\) coordinates throughout one of the bases and
+the last \(k'\) throughout a second basis. These two groups of
+words already span \(\mathbf C^p\otimes\mathbf C^k\). The other
+words may use either choice. The actual rank is \(k'\) throughout,
+all full Gram tests still hold, and exactly the last row is missed.
+These examples test the stated linear and size comparisons. The
+descended periods on an arithmetic host have further structure.
+\end{proof}
+
+\paragraph{Size required for the window.}
+Return to the translates and take \(y=x^\varepsilon\) and
+\(P_0=n_Ta_E(1+m^2/k)+m(B_0+N_c)\). Assume the lower comparison
+\eqref{trmean:lower}, the original level and variation bounds,
+integral columns with their height allowances, and
+\(\mathbb E(\mathcal A_u-G_u)\le C P_0\) for a uniform \(C\),
+\(c_s\mathbb E I_u\ll P_0\). Under the size hypotheses in
+Corollary~\ref{trmean:reserve}, including \(e_{\rm div}\le2\), we have
+\[
+ K_0\ll y^2P_0,\qquad
+ \mathbb E U_u\le K_3+K_7+c_s\mathbb E I_u\ll yP_0 .
+\]
+The first bound uses the separate terms of \(K_0\) in the proof
+of that corollary. On a given scale suppose
+\(\min_u\tau_u\ge c\,y^{-4+\xi}\), with fixed \(c>0\) and
+\(0<\xi<4\) on the family. Proposition~\ref{rank:transfer} and
+\eqref{trmean:lower} give
+\[
+          \mathbb E D_u\le C'(y^2+y^{5-\xi})P_0
+\]
+for a uniform \(C'\). For each fixed \(\varepsilon>0\) the right side is at most \(y^5P_0\)
+beyond one uniform threshold. The bounds for \(B_0,N_c\) in
+Corollary~\ref{trmean:reserve} then give \eqref{scope:average}.
+Thus even the rank fraction \(c\,y^{-3}\) suffices under the listed
+arithmetic inputs. If \(\rho\ge1/2\), the large quotients already
+pass this test eventually by Proposition~\ref{rank:wide}.
+No bound on the minimum target slope enters this implication.
+
+\begin{corollary}[One minor for the remaining HN quotients]\label{rank:one-minor}
+Use the original per-word lower and variation inequalities in the
+proof of Proposition~\ref{trmean:assembly} and
+Corollary~\ref{trmean:loss}, and the other arithmetic size, column
+height and loss bounds just stated. Suppose \(\rho\ge1/2\) at each
+translate. Among the proper target HN cutoffs with
+\(0<\dim(R/W)<2nD_f\), take the smallest subspace \(W_*\), if there
+is one. It suffices that on each such quotient \(R/W_*\) some set
+of words \(C\) has surjective combined image and
+\[
+                r_C:=\sum_{i\in C}r_i\le C_0\,d\,y^{4-\xi}
+\]
+for fixed \(C_0>0\), \(0<\xi<4\). Then \eqref{scope:average} holds
+on the stated scales beyond one uniform threshold. Surjectivity
+here can be witnessed by a single nonzero minor of size
+\(\dim(R/W_*)\) in the projected columns.
+\end{corollary}
+\begin{proof}
+The target HN cutoffs form a finite flag, so all the small quotients
+factor through \(R/W_*\). At this translate assign word \(i\) the
+probability
+\[
+                \omega_i=\frac{r_i}{2r}
+                         +\mathbf1_{i\in C}\frac{r_i}{2r_C}
+\]
+and distribute it uniformly on the slopes of the word. In a quotient
+with relative dimension \(\zeta_W\) the weighted fraction of
+detected source ranks is
+\(\sum_i\omega_i\operatorname{rank}(\pi_W B_i)/r_i\).
+On the large quotients the first half gives at least
+\((\rho/20)\zeta_W\) by Proposition~\ref{rank:wide}. On the small HN
+quotients the second half gives at least \((d/(2r_C))\zeta_W\).
+If there is no small HN quotient use the original word weights.
+Thus the weighted HN cutoffs have a common lower ratio
+\(\gg y^{-4+\xi}\). Recentring the source changes the numerical
+thresholds but preserves the entire target flag.
+
+The per-word estimate
+\(G_u-\mathcal M_u\le\mu(S_i)-h_i-\mu_u+K_0+\ell_i\)
+can be averaged with these probabilities. The pairwise inequality
+\(\lambda_i^{\max}-h_i-(\mu(S_j)-h_j)\le K_3+\ell_j\)
+gives \(U^\omega_u\le K_3+\sum_i\omega_i\ell_i\), and
+\(\ell_i\le c_sI_u+K_7\) for each word. The proof of
+Proposition~\ref{rank:transfer} applies to these rank probabilities,
+with zero repair cost. The preceding numerical absorption proves
+the assertion with the original \(D_u\) and \(E_x\). The choice of
+probabilities is internal to the slope estimate.
+\end{proof}
+
+Write \(b_*=\dim(R/W_*)\). If the combined image spans the quotient,
+one can select at most \(b_*\) words by enlarging the image one word
+at a time. The original \code{InputSG} even bounds the cost of each
+word. Its per-word diagonal estimate implies
+\(\dim\ker A_i^{\,f}\le e_0\dim V_i^{\,f}\), since
+\(A_i^{\,f*}A_i^{\,f}-I\) acts by \(-1\) on this kernel. Thus
+\(r_i/d\le1/(\rho(1-e_0))\le8/3\) for the stated target ratio and
+\(e_0\le1/4\). When \(b_*=1\), one nonzero projection alone suffices.
+
+The original word size comparison gives a sharper budget for higher
+codimensions. For \(k_i=\dim V_i^{\,f}\) the condition
+\code{ChProviso\_at} gives \(k_i\le C_{\rm pr}D_*/\Gamma^2\).
+In the original full Gram hypotheses
+\(D_*/r_f\le\sigma\le1/20\) and
+\(\sqrt{e_0},\eta_0\le\sigma/2\). The trace inequality
+\(M^2\le n\operatorname{tr}(Q^2)\) implies
+\[
+ \frac{D_*}{n}\le
+ \frac{1+\eta_0+(D_*/r_f)(1+\sqrt{e_0})^2}
+      {(1-\sqrt{e_0})^2}<2 .
+\]
+Indeed \(M\ge(1-\sqrt{e_0})r_f\). The diagonal terms of
+\(\operatorname{tr}(Q^2)\) are at most
+\((1+\sqrt{e_0})^2r_f\) by the Hilbert--Schmidt triangle inequality,
+and the off-diagonal terms sum to at most
+\((1+\eta_0)r_f^2/D_*\) by \code{InputSG}. Consequently the
+selected words cost \(r_C/d\le4C_{\rm pr}b_*/\Gamma^2\).
+In particular \(b_*\ll\Gamma^2y^{4-\xi}\) and surjectivity onto
+this single quotient suffice. The original source obtains the
+full-word ranks and their operator estimates in
+\code{FrameReal\_at}, with the
+\src{src/Formalism/SizeWindowBrackets/FrameTraceRatioFinEquiv.lean}{30}{pairwise Gram bounds}
+and the \src{src/Formalism/SharpRestriction/GlobalSchurBounds/Chosen.lean}{53}{two-sided word size}.
+A uniform certificate on the actual
+residual quotient is still required.
+
+The ramified rank formula explains why an estimate for the fraction
+\(\alpha\) alone cannot dispose of the issue. Assume the original
+identification \(r_i=k_i(1-1/(T_i-1))^f\) with \(T_i>2\).
+The consecutive integers \(T_i-1,T_i-2\) are coprime. Clearing
+denominators shows that for some positive integer \(m_i\)
+\[
+        k_i=m_i(T_i-1)^f,\qquad r_i=m_i(T_i-2)^f.
+\]
+Let \(N\) be the number of words. Since
+\(r_f\le NC_{\rm pr}D_*/\Gamma^2\), the same trace bound gives
+\[
+ \frac{n\alpha}{\Gamma^2}
+ \ \ge\ \frac{1}{2C_{\rm pr}N}\sum_i(k_i-r_i)
+ \ \ge\ \frac{\min_i\big((T_i-1)^f-(T_i-2)^f\big)}{2C_{\rm pr}} .
+\]
+For \(f\ge2\) the last difference is at least
+\(f(\min_i T_i-2)^{f-1}\), by the binomial theorem.
+On the original scales \(\min_i T_i\ge b=\exp(y)\). Thus the
+upper cutoff \(2nD_f\), measured in units of \(\Gamma^2\), already
+exceeds every fixed power of \(y\) from its compression term alone.
+This statement bounds the cutoff used in Proposition~\ref{rank:wide}.
+It gives no lower bound for the size of an actual missed HN quotient.
+
+There is a direct arithmetic formulation of the minor itself.
+Work in the original row coordinates at \(\mu_0\) and put
+\[
+ \begin{split}
+ U_{\rm sp}&=V_0\cap\ker\iota,\\
+ K_{\rm per}&=\{F\in V_0:\ 
+    \operatorname{perCol}(i,\mu_0,\phi,F)=0
+                       \ \text{for every actual word }i,\phi\}.
+ \end{split}
+\]
+The row map \(\iota:V_0\to EE\) is onto under the original row
+realization. The identity \(\operatorname{perCol}(i,\mu_0,\phi,F)
+=B_i(\phi)(\iota F)\) for \(F\in V_0\) identifies the common row
+annihilator with \(\iota(K_{\rm per})\), hence with
+\(K_{\rm per}/U_{\rm sp}\). The original
+\code{periodIdentity\_iff\_period\_kills} in \code{DataBu.lean},
+line 49, expresses factorization by the inclusion
+\(U_{\rm sp}\subseteq K_{\rm per}\). The word domain here is the
+ramified one. In \code{RhoDetPrimeEqMuTildeMulChiPow.lean}, lines
+165--191, \code{eMu} identifies that space and \code{jN\_basis}
+shows that images of an actual rational word basis span it over
+\(\mathbf C\). Testing all such images or their complex span gives
+the same annihilator, by linearity in \(\phi\).
+
+Put \(A_*=(R/W_*)^*_{\mathbf C}\), viewed in the row coordinates
+dual to the column target. The precise nonvanishing needed for
+the full set of words is
+\[
+                K_{\rm per}\cap\iota^{-1}(A_*)=U_{\rm sp}.
+\]
+Indeed it says that the common annihilator meets \(A_*\) in zero,
+which by finite-dimensional duality is equivalent to surjectivity
+onto \(R/W_*\). The companion \code{PeriodRadical.lean} proves this
+annihilator criterion with the actual number-field word vectors in
+\code{jN}, taking the degree-zero factorization and row surjectivity
+as inputs. For rank one this asks for one nonzero period on the
+prescribed line. In \code{CayleySignature.lean}, line 138, the row,
+vector and test witnessing a nonzero automorphic period may be
+chosen together. That quantifier does not prescribe this line.
+
+The row-lift identity in \code{PrincipalHermitian\allowbreak Lattice.lean},
+lines 101--105, diagonalizes \(\iota_Q\iota_Q^*\). For the selected
+word images let \(P_*\) be the orthogonal
+projection onto the directions of the residual quotient at the chosen
+infinite place. Here the operator whose invertibility would give the
+minor is
+\[
+   \sum_i (P_* B_i)(P_* B_i)^* .
+\]
+Its quadratic form at \(a\) is \(\sum_i\|(P_*B_i)^*a\|^2\), so its
+kernel is exactly the common annihilator in those directions, using
+the Hermitian identification with the dual. In \code{CxHecke.lean},
+lines 145--149, the row components are simultaneous eigenspaces.
+The multiplicity \code{nRows} in \code{DataRows.lean}, lines 209--215,
+counts all rows of a given label. Even in a Hecke-stable kernel,
+one detected vector in a two-dimensional space of the same eigenvalues
+can leave a one-dimensional kernel: every Hecke operator acts by a
+scalar on this whole space. The stronger period statement
+\code{LiftParameterConditions} in \code{CayleySignature.lean}, lines
+163--166, prescribes the representation on the column side and still
+chooses the row witnessing nonvanishing.
+
+\paragraph{A period test at the chosen level prime.}
+Fix one translate, a nonzero vector \(a_*\) on the prescribed dual
+line, and a lift \(F\in V_0\) with \(\iota F=a_*\). Keep this lift
+fixed for all words. The source first chooses the code, weights and
+full dimension data. For word \(i\) it then supplies a norm prime
+in \([T_i^*,(1+1/(fk))T_i^*]\), before constructing the final row
+lattice. The selection theorem does not impose pairwise distinctness
+on these primes. On one realized family the word-specific map
+\(e_{i,0}:\mathrm{Mt}_i\longrightarrow\mathrm{Amb}_{\mu_0}\)
+identifies the row used in its full period:
+\[
+ L_{i,F}(\phi)=
+  \mathrm{period}_i\bigl(\mathrm{lowerMap}_i
+       (\mathrm{evz}_i(\mathrm{col}_i\phi))\bigr)(e_{i,0}^{-1}F).
+\]
+The column chain and this row identification both depend on \(i\).
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/ExistsObjectsOfAdmissibleTwistDatum.lean}{97}{order of the level choice}
+and \src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/ExistsLevChOfLevelPrime.lean}{92}{the individual intervals};
+\src{src/Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean}{165}{word-specific row and source identifications}
+and \src{src/Formalism/LocalRingCardinality/DataKernels.lean}{192}{the full period}.
+
+In the tower argument the upper representation is fixed before the
+upper column and row are chosen together. At a descent step the
+column is expanded in a finite theta sum. Nonvanishing of the sum
+selects a summand while retaining the higher row. Unfolding chooses
+a new Schwartz function, and its theta lift of that higher row is
+the lower row. The terminal witness thus contains an existential
+position and a row. In the actual use of the unfolding identity
+the proof obtains a primed tuple of witnesses and extracts a nonzero
+summand to prove nonvanishing of an archimedean functional.
+The companion \code{PeriodWitnessChain.lean} reconstructs the
+descent from the six stated tower inputs. It keeps a supplied
+higher row whenever a nonzero test on that row is supplied.
+\src{src/Formalism/SharpRestriction/CuspSpanNormBounds/CayleySignature.lean}{154}{theta expansion, upper witness and descending test},
+\src{src/Formalism/SharpRestriction/CuspSpanNormBounds/ThresholdCubicInequalitySignPattern.lean}{1671}{the row in the descending induction} and
+\src{src/Formalism/SharpRestriction/Divisibility/InnerProductFormulaField.lean}{390}{extraction of the archimedean summand}.
+
+Changing the selected primes can change the target lattice because
+the host construction uses the image of the word-to-prime map.
+Comparing a prescribed HN line
+across two such choices would require an identification carrying
+that line and its period pairings across. Within a single realization
+the fixed lift above gives the same row for all the word tests.
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/ObjOnNarrowOfObjectsExist.lean}{720}{the marked host in the realization}.
+
+There is substantial choice of the primes before this realization.
+Fix any rational prime \(\ell\). Write \(U=T_i^*\), \(V=fk\),
+\(M=N(g_0g_1)^2\) for the original norm modulus, and \(d_K\)
+for the quadratic parameter denoted \(d\) in the norm-prime count.
+The short-interval proof first establishes a lower bound for the
+number of allowed primes, then retains just one of them. Write
+\(A,c,c'>0\) for its absolute constants. Put
+\[
+ a_i=\left\lfloor\frac{c\sqrt{\log U}}{4\log\ell}\right\rfloor,
+ \qquad M'=M\ell^{a_i}.
+\]
+For each fixed \(0<\eta<1\), every sufficiently late word window
+\((U,U(1+1/V)]\) contains at least \(U^{1-\eta}\) admissible
+level primes satisfying \(T_i\equiv1\bmod\ell^{a_i}\).
+Indeed the source hypotheses give
+\(\log N\ll x^{\varepsilon/5}\log^2 x\), \(d_K\mid N\),
+\(\log g_j\ll x^\varepsilon\), \(V\le x^{12}\), and
+\(\log U\gg x^{1/3+\varepsilon}\). Thus
+\(\log(4d_KM^2)=o(\sqrt{\log U})\) and
+\(\log V=o(\sqrt{\log U})\), uniformly in the word.
+In particular \(\log(4d_K(M')^2)\le c\sqrt{\log U}\)
+and \(1/V\ge\exp(-c\sqrt{\log U})\). The original count with
+modulus \(M'\) gives the lower bound
+\[
+        \frac{c'U}{V(4d_K(M')^2)^A\log U}
+        \ \ge\ U^{1-\eta}
+\]
+eventually, by taking logarithms. A norm generator congruent to
+one modulo \(M'\) also supplies the required generator modulo \(M\),
+and its norm is one modulo \(\ell^{a_i}\). The original excluded
+primes are below the left endpoint at these scales. The per-word
+level constructor accepts the chosen generators. The original
+realization hypothesis is then applied to this very level choice
+with its fixed \(d_i,D_*,\Gamma\). In particular any
+fixed pair of word labels can receive distinct primes, even if
+their windows coincide. For any fixed \(B\), the same greedy choice
+works for at most \(x^B\) designated words. This quantifies prime
+supply before the row lattice is formed. The companion
+\code{LevelPrimeOrbitSupply.lean} uses the original short-norm
+theorem to certify the finite count and avoidance of a prescribed
+set of smaller cardinality.
+\src{src/Development/AutomorphicArithmetic/ShortNorms/ShortNorm.lean}{8}{the uniform ray-norm count},
+\src{src/Development/AutomorphicArithmetic/ShortNorms/levelPrimeN.lean}{36}{the level-window parameters},
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/NormOnePrimeElements.lean}{15}{the norm generator and its congruence} and
+\src{src/Development/AbelianVarietyTheory/Proofs/IwasawaDecomposition/ModEqOneOfNorm.lean}{47}{assembly with the selected generators}.
+
+Use the original free finite model of the full level-zero columns.
+Each orbit is a copy of \(H^{\mathcal V}\), where
+\(H=\mathbf F_{T_i}^{\times}\), \(q_i=|H|=T_i-1\), and
+\(|\mathcal V|=f\). The model may have many orbits. Its ramified
+subspace consists exactly of functions with zero sum along each
+coordinate fibre. This follows by transporting each local norm
+operator through the model equivalence. The original source
+constructs the model from the split level and its diamond operators.
+\src{src/Formalism/LocalToGlobal/GlobalTheory/GL6/RamifiedRankEqFinrank.lean}{43}{transport of all norm kernels} and
+\src{src/Formalism/LocalToGlobal/GlobalTheory/GL6/RamifiedLatticeOfRankSlopeLength.lean}{263}{the free model at the split prime}.
+
+On one orbit put \(c(g)=L_{i,F}(\delta_g)\), using the delta
+column transported back to the full space. For any \(a\in H^{\mathcal V}\)
+use the integral-valued function supported on this orbit with values
+\[
+       w_a(g)=\prod_{v\in\mathcal V}
+          (1-q_i\mathbf1_{\{g_v=a_v\}}).
+\]
+Every coordinate sum is zero. Its period is exactly
+\(\sum_g w_a(g)c(g)\). The \(w_a\) span the ramified part on the
+orbit over \(\mathbf C\): in each coordinate their factors are the
+columns of the all-ones matrix minus \(q_i I\), which has image the
+augmentation subspace. Tensoring these matrices gives the simultaneous
+zero-sum space. Thus all these evaluations, on all orbits, vanish
+exactly when word \(i\) misses \(a_*\).
+
+There is a shorter exact test on each orbit. Fix a base point
+\(b\in H^{\mathcal V}\). In coordinate \(v\) the vectors
+\(\delta_{a_v}-\delta_{b_v}\), for \(a_v\ne b_v\), are a basis of
+the zero-sum space. Their tensors form a basis of the ramified part.
+Consequently one actual basis column of word \(i\) detects the line
+if and only if, on some orbit and for some such \(a\),
+\[
+   \sum_{S\subseteq\mathcal V}(-1)^{|S|}c(g_S)\ne0,
+   \qquad (g_S)_v=
+     \begin{cases} b_v&v\in S,\\ a_v&v\notin S.\end{cases}
+\]
+Each individual test uses only \(2^f\) full periods at the same
+level. A nonzero sum certifies detection immediately. To certify
+vanishing this way one must exhaust the orbit bases.
+
+There is an integral congruence even for arbitrary complex periods.
+On the chosen orbit let
+\(\Gamma=\sum_g\mathbf Z\,c(g)\subset\mathbf C\).
+Since every \(w_a(g)\equiv1\bmod q_i\),
+\[
+     \sum_g w_a(g)c(g)\equiv\sum_g c(g)\pmod{q_i\Gamma}.
+\]
+If the class of the sum in \(\Gamma/q_i\Gamma\) is nonzero,
+every anchor gives a ramified period detecting the line. In terms
+of the integer relations among the orbit values, the test succeeds
+exactly when no relation has all its coefficients congruent to
+one modulo \(q_i\). It applies without an algebraicity hypothesis.
+
+For a valuation test, suppose the coefficients on one orbit have a common
+complex scaling after which they belong to the fraction field of a
+discrete valuation ring. For a finite prime \(\mathfrak l\) of
+residue characteristic dividing \(T_i-1\), it suffices to show
+\[
+ v_{\mathfrak l}\!\left(\sum_g c(g)\right)
+       =\min_g v_{\mathfrak l}(c(g))<\infty
+\]
+in these coordinates. Indeed, divide by a coefficient of minimal
+valuation. The normalized sum is nonzero modulo \(\mathfrak l\), and
+every \(w_a(g)\) reduces to one. Hence every \(a\) gives a nonzero
+ramified period. On the original word space, the images under
+\(\mathrm{jN}_i\) of the number-field basis span over \(\mathbf C\).
+Linearity and the descent identity give an actual basis column
+nonzero on \(a_*\). The companion \code{RamifiedOrbitPeriod.lean}
+checks this implication with the original \(\mathrm{PtilCol}\),
+\(\mathrm{eMt}\), norm kernels and number-field basis. If the
+lift is changed by a vector in \(U_{\rm sp}\), its ramified
+evaluations stay fixed. Its two full orbit sums therefore also
+agree modulo \(\mathfrak l\) whenever both tables are integral in
+the same normalization.
+
+The strengthened choice of level prime above gives a weaker
+valuation requirement. Normalize \(v_{\mathfrak l}(\ell)=1\).
+On one orbit of the resulting actual word, assume its period values
+have a common algebraic scaling, write \(m_c=\min_g v_{\mathfrak l}(c(g))\)
+in those coordinates, and suppose \(m_c<\infty\). It suffices that
+\[
+       v_{\mathfrak l}\!\left(\sum_g c(g)\right)-m_c<a_i .
+\]
+Indeed the difference between the weighted and unweighted sums
+has valuation at least \(m_c+a_i\), as every \(w_a(g)-1\) is
+divisible by \(\ell^{a_i}\). The weighted sum then has the same
+finite valuation as the unweighted sum. Thus even a normalized
+trace divisible by \(\ell\) can certify an actual detecting column.
+It would suffice to find an orbit with finite normalized trace
+valuation \(o(\sqrt{\log T_i^*})\) on one selected word per
+required line. The estimate must hold for the row of the resulting
+realization. Prime abundance alone gives no bound on this trace.
+
+The same condition has an intrinsic form for arbitrary complex
+periods. Define \(t_\ell(S)\) for \(S=\sum_g c(g)\ne0\) as the
+largest \(k\) with \(S\in\ell^k\Gamma\), and set \(t_\ell(0)=\infty\).
+The group \(\Gamma\) is finitely generated and torsion-free, hence
+free. In any integral basis \(t_\ell(S)\) is the smallest
+\(\ell\)-adic order of its coordinates. Detection follows whenever
+\(t_\ell(S)<v_\ell(T_i-1)\), in particular when \(t_\ell(S)<a_i\).
+For example a compatible homomorphism to a fixed finite-rank
+integral lattice taking these traces to a fixed nonzero vector
+would bound all the \(t_\ell(S)\) from above. Its construction
+would have to respect the prescribed rows. For an orbit function
+equal to one on a full coordinate fibre and zero elsewhere,
+\(\Gamma=\mathbf Z\) and \(S=T_i-1\). The threshold is then
+attained and every ramified test vanishes.
+
+Two words at different odd level primes admit a common residue test
+at \(2\). For example suppose the specified line lies in a fixed
+two-dimensional row space on this realization. Lift a basis of
+that space to \(F_1,F_2\). Choose one orbit at each of two words
+\(i_1,i_2\) and form the \(2\)-by-\(2\) matrix with entries
+\[
+    C_{\nu j}=\sum_g L_{i_\nu,F_j}(\delta_g).
+\]
+If the delta coefficients are integral at a common place over \(2\)
+after nonzero row and column scalings of the tables, and the scaled
+\(C\) has nonzero determinant there, one original number-field
+basis column from each word restricts independently to the plane.
+Indeed every \(w_a\) reduces to one at both words. The resulting
+two ramified columns have a nonzero complex determinant on the two
+rows. Expand both columns in their respective descended bases and
+use bilinearity of the determinant. These words then detect every
+line in that plane between them. The same argument works directly
+with two nonproportional vectors of mixed differences over
+\(\mathbf C\). The choice of distinct primes by itself gives no
+value for either determinant.
+
+At the late levels \(T_i>2\). For \(c(a)\ne0\) write \(d(a,g)\)
+for the number of differing coordinates. A sufficient archimedean test is
+\[
+         \sum_{g\ne a}\frac{|c(g)|}{(T_i-2)^{d(a,g)}}<|c(a)|.
+\]
+This follows by dividing the evaluation by \(w_a(a)\) and taking
+absolute values. In particular any nonzero orbit table supported
+on fewer than \(T_i-1\) entries detects the row, by taking a
+coefficient of largest modulus. The coordinate-fibre example
+above attains this support threshold.
+The same vanishing holds for any table constant in one coordinate.
+The remaining arithmetic question is whether at least one selected
+word has a surviving ramified evaluation for the specified row.
+The source's choices of \(T_i\) provide neither the residue of the
+normalized full sum nor the concentration of its coefficients.
+
+\paragraph{A bound when the lowest target slopes are available.}
+Alternatively take \(H>0\), assume \(\rho_u\ge\rho_0>0\) everywhere
+and retain the same full frame data at each translate. Let
+\(T_{\rm out}=\mathbb E(-H-T)_+\), where the expectation includes
+the target rank measure, and \(J_u\) denotes the repair cost at \(u\)
+in Proposition~\ref{rank:transfer}. Applying the proof of
+Proposition~\ref{rank:wide} to the target HN cutoff at \(-t\)
+gives the following refinement of \eqref{trmean:budget-eq}:
+\[
+ \mathbb E(s_u-\mu_u)\le T_{\rm out}
+  +\frac{H\mathbb E D_{f,u}
+       +5\mathbb E\bigl(J_u+HU_u/(H+U_u)\bigr)}{\rho_0}.
+\]
+Indeed \(q_W\le\Pr_u(S'<-t)\) at that cutoff, including the zero
+target codimension case by taking \(q_W=0\). Integrate
+\(\rho_u\Pr_u(T<-t)\le D_{f,u}+5\Pr_u(S'<-t)\) from zero to \(H\).
+The repair increases the clipped negative source mean by at most
+\(J_u\). For any original centred slope \(a\le U_u\),
+\[
+       \min(H,(-a)_+)\le\frac{H(U_u-a)}{H+U_u}.
+\]
+This follows on the three intervals cut by \(-H,0\). Take the
+source mean using \(\mathbb E_u a=0\), then the translate mean.
+The rank and diagonal defects in the coefficient of \(H\) are
+linear. The original size assumptions controlling the full
+covariance may themselves involve square roots.
+
+The companion \code{RankTailTransfer.lean} proves the quotient
+rank bound for an individual cutoff, the rank test for a spanning
+set of words, the passage from the finite cutoff inequalities to the mean and the scalar
+estimates for the full frame and clipped source. The projection,
+the arithmetic identifications and the window deductions above
+are paper arguments. A lower bound on the ranks in the remaining
+small quotients of the actual family, or an arithmetic bound on
+their exceptional slopes, is needed to use this comparison on
+arbitrarily late windows.

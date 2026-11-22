@@ -1,0 +1,22 @@
+Lean 4.33.1 (x86_64-w64-windows-gnu), commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Source: RecordedHeightInput.lean
+Source SHA256: 602909BBBDF28FE9EDA3910AB59F34DD4C9341AEC4370D174C7FB33CB6C429B4
+Compiled module SHA256: 40B7AE12CF061C8A24BE86A9C013DB82085028F8EB030745D87569657AA69190
+Native build and raw logs: D:/tmp/levent151/recorded-height-20261122
+Import roots: D:/tmp/levent151/root/lib, D:/tmp/levent151/mathlib4/.lake/build/lib/lean and the matching Mathlib package build directories.
+
+lean --tstack=400000 -j1 -DmaxHeartbeats=4000000 -o RecordedHeightInput.olean RecordedHeightInput.lean
+Exit 0. The output module was placed in the native build directory.
+'Levent151.RecordedHeight.heightAt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.RecordedHeight.cloud_degree_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.RecordedHeight.node_gap_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+leanchecker -v RecordedHeightInput
+replaying RecordedHeightInput
+Exit 0. Raw output: kernel.log
+
+The official LeanChecker.replayFromImports function was also run directly against the same compiled module.
+Official LeanChecker.replayFromImports completed on RecordedHeightInput
+Exit 0. Driver and raw output: ReplayHeight.lean, kernel-direct.log
+
+The first theorem identifies the precise floor and signed mean equivalent to the original HeightAt. The second and third prove the cloud lower bound and the node difference upper bound using the original divided rows. The Chow test, the bounds on harmonic sections, the two-sided parallel twist and the CM period comparison are paper proofs in sections/recorded-height-input.tex.

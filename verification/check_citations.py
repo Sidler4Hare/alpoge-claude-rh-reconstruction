@@ -70,14 +70,15 @@ def check(paper, source, full_tree, archive=None):
         if not header or not row["declaration"] or not 1 <= int(header) <= int(row["source_line"]):
             raise ValueError("missing or impossible enclosing declaration in " + name)
         if row["root_status"] == "source_only":
-            # A source-only citation pins the theorem header in its named
+            # A source-only citation pins the declaration header in its named
             # namespace. It makes no claim to a record in the full export.
             declaration = row["declaration"]
-            namespace, _, theorem = declaration.rpartition(".")
+            namespace, _, short_name = declaration.rpartition(".")
+            pinned_header = re.match(r"^(?:theorem|def|structure)\s+([^\s:(\[]+)", lines[int(header) - 1])
             if (row["export_id"] or row["depth"] or declaration in saved_names
                     or header != row["source_line"] or namespace != source_namespace(lines[:int(header)-1])
-                    or not lines[int(header) - 1].startswith("theorem " + theorem + " ")):
-                raise ValueError("invalid source-only theorem header or path claim for " + declaration)
+                    or not pinned_header or pinned_header[1] != short_name):
+                raise ValueError("invalid source-only declaration header or path claim for " + declaration)
             source_only.add(declaration)
             continue
         if row["root_status"] not in {"reached", "exported_outside_classical_root"}:

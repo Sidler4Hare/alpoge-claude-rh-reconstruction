@@ -1,0 +1,70 @@
+2026-11-22 | Selected prime losses and common duty weights on prescribed hosts
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Working directory = D:/黎曼猜想/lean-15-1
+Reference imports = semicolon-separated pinned environment in D:/tmp/levent151/lean-path.txt
+Local prerequisite = ReselectedRealization.olean from D:/tmp/levent151/paper-repair-20261122 (checked in reselected-host-verification.log)
+Kernel replay checks the declarations in each newly compiled module against those imports.
+
+OrbitLossAtSelectedPoints
+  source SHA-256 = 3b2501d32256634be4d7a49e9c5a2cd537023fc63f08eaa52af56d27f376c4e9
+  module SHA-256 = 633e03e5264d5634f4b3de64da035bde65e37b8f5441eb0b59b2bb3fd5d1aeb6
+  direct imports:
+    import Formalism.LocalToGlobal.GlobalTheory.LossRequirementsOfSmallShares
+    import Formalism.SharpRestriction.GrowthBounds.PlaneCountTheoremWithConstants
+    import Formalism.SharpRestriction.GrowthBounds.LogarithmicSums
+  compile LEAN_PATH = <contents of lean-path.txt>
+  compile command = D:/tmp/levent151/lean-4.33.1-windows/bin/lean.exe --tstack=400000 -j1 -o D:\tmp\levent151\orbit-loss-20261122\OrbitLossAtSelectedPoints.olean OrbitLossAtSelectedPoints.lean
+  replay/axioms LEAN_PATH = D:/tmp/levent151/orbit-loss-20261122;<contents of lean-path.txt>
+  replay/axioms command = D:/tmp/levent151/lean-4.33.1-windows/bin/lean.exe --tstack=400000 -j1 --stdin
+  kernel stdin:
+    import LeanChecker
+    #eval do
+      replayFromImports `OrbitLossAtSelectedPoints
+      IO.println "Kernel replay completed for OrbitLossAtSelectedPoints"
+  axiom stdin:
+    import OrbitLossAtSelectedPoints
+    #print axioms Levent151.selectedOrbitLossAt
+    #print axioms Levent151.actualPrimeGain
+    #print axioms Levent151.selectedPrimeLosses
+  D:\tmp\levent151\orbit-loss-20261122\OrbitLossAtSelectedPoints-compile.log
+    exit_code = 0
+  D:\tmp\levent151\orbit-loss-20261122\OrbitLossAtSelectedPoints-kernel.log
+    Kernel replay completed for OrbitLossAtSelectedPoints
+    exit_code = 0
+  D:\tmp\levent151\orbit-loss-20261122\OrbitLossAtSelectedPoints-axioms.log
+    'Levent151.selectedOrbitLossAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'Levent151.actualPrimeGain' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'Levent151.selectedPrimeLosses' depends on axioms: [propext, Classical.choice, Quot.sound]
+    exit_code = 0
+
+DutyCentresOnFixedHosts
+  source SHA-256 = c93533069cf0d75e2a98b47ffa504c12a41fdec5e8f25d4294e7eb73d9ab588a
+  module SHA-256 = a69b788b9fabfdc8670cfdbed6c263d06cab98f07122b1a4629099d1ef0f2c66
+  direct imports:
+    import ReselectedRealization
+    import Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.WindowShareRequirementClosedFormProofStatement
+    import Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.WeightWindowRequirementHostOfPoint
+    import Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.WeightRequirementOfValid
+    import Formalism.SharpRestriction.GlobalSchurBounds.WeightVectorSmallSharesSeven
+  compile LEAN_PATH = D:/tmp/levent151/paper-repair-20261122;<contents of lean-path.txt>
+  compile command = D:/tmp/levent151/lean-4.33.1-windows/bin/lean.exe --tstack=400000 -j1 -o D:\tmp\levent151\orbit-loss-20261122\DutyCentresOnFixedHosts.olean DutyCentresOnFixedHosts.lean
+  replay/axioms LEAN_PATH = D:/tmp/levent151/orbit-loss-20261122;D:/tmp/levent151/paper-repair-20261122;<contents of lean-path.txt>
+  replay/axioms command = D:/tmp/levent151/lean-4.33.1-windows/bin/lean.exe --tstack=400000 -j1 --stdin
+  kernel stdin:
+    import LeanChecker
+    #eval do
+      replayFromImports `DutyCentresOnFixedHosts
+      IO.println "Kernel replay completed for DutyCentresOnFixedHosts"
+  axiom stdin:
+    import DutyCentresOnFixedHosts
+    #print axioms Levent151.dutyCentresOnFixedHosts
+    #print axioms Levent151.dutyKitOnChosenHost
+  D:\tmp\levent151\orbit-loss-20261122\DutyCentresOnFixedHosts-compile.log
+    exit_code = 0
+  D:\tmp\levent151\orbit-loss-20261122\DutyCentresOnFixedHosts-kernel.log
+    Kernel replay completed for DutyCentresOnFixedHosts
+    exit_code = 0
+  D:\tmp\levent151\orbit-loss-20261122\DutyCentresOnFixedHosts-axioms.log
+    'Levent151.dutyCentresOnFixedHosts' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'Levent151.dutyKitOnChosenHost' depends on axioms: [propext, Classical.choice, Quot.sound]
+    exit_code = 0

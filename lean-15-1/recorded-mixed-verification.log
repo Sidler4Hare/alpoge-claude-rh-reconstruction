@@ -1,0 +1,19 @@
+Lean 4.33.1 (x86_64-w64-windows-gnu), commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Source and archive context: the original project in ../lean/src, with its native compiled dependencies in D:/tmp/levent151/root/lib and the matching Mathlib build.
+Local build directory and raw logs: D:/tmp/levent151/recorded-mixed-20261122
+
+RecordedMixedComparison.lean SHA256 04AF2729CA9DC28978C65BB7F75413D841357A13ACA3BD927688C3AFF4A45617
+lean --tstack=400000 -j1 -DmaxHeartbeats=4000000 -o RecordedMixedComparison.olean RecordedMixedComparison.lean: exit 0 (compile.log)
+'Levent151.RecordedMixed.paired_frame_displacement' depends on axioms: [propext, Classical.choice, Quot.sound]
+leanchecker -v RecordedMixedComparison: exit 0 (kernel.log)
+replaying RecordedMixedComparison
+
+RecordedVolumeCarry.lean SHA256 142241C8DF62B3E9694AB0A8A7C3DA4E5954AF9E840C0FD32FC74EC93C18E70E
+lean --tstack=400000 -j1 -DmaxHeartbeats=4000000 -o RecordedVolumeCarry.olean RecordedVolumeCarry.lean: exit 0 (carry-compile.log)
+'Levent151.RecordedMixed.recorded_compVol_le_volL' depends on axioms: [propext, Classical.choice, Quot.sound]
+The official LeanChecker.replayFromImports function directly rechecked the constants of RecordedVolumeCarry against its original imports: exit 0 (ReplayCarry.lean, carry-direct-kernel.log).
+Official LeanChecker.replayFromImports completed on RecordedVolumeCarry
+leanchecker -v RecordedVolumeCarry: exit 0 (carry-kernel.log)
+replaying RecordedVolumeCarry
+
+The first module proves a same-frame two-sided absolute displacement bound, including zero evaluations. The paper derives signed constants from the intermediate diagonal inequalities in the upstream proof. The second module proves the direct recorded-to-Bergman component volume inequality at the original degree, with the original multiplier as a hypothesis. The paper's small-section existence and the recorded mean bound are separate arithmetic-geometric inputs.

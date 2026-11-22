@@ -1,0 +1,81 @@
+2026-11-22 | Prime-prefix and geometric comparisons
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Replay of each target against its imports. Target sources and compiled .olean objects are fingerprinted separately.
+The paper window equivalence, the probabilistic selection proof and the cofinal determinant estimate are not claimed as results of this module replay.
+
+PrimePrefix | 11 public theorems checked for axioms
+source SHA-256 a6d9d856101e450b7f5dacea309d99c6f7fb2afd96b23b9e7f858d2932b4efef
+compiled .olean SHA-256 ce33159f46e00b1c7a55985abbd190aa5d6d4e1f1d68734c82fc6bed38c69510
+raw kernel record D:\tmp\levent151\prime-prefix-20261122\kernel.log
+replaying PrimePrefix
+leanchecker -v PrimePrefix exit 0
+raw axiom record D:\tmp\levent151\prime-prefix-20261122\axioms.log
+'Levent151.prefixMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixReciprocal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixLine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixRamp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixLine_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixLine_le_prefixRamp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixLine_floor_eq_prefixRamp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.prefixRamp_vonMangoldt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.primePrefixLine_le_ramp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.primePrefixLine_floor_eq_ramp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.logDeficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.logDeficit_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.centredLine_div_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.centredLine_div_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.centredLine_div_at_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.G_eq_centred_primePrefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+FamilyPrefix | 2 public theorems checked for axioms
+source SHA-256 1622f7f952473de995e41491a92602261bca32b4e4070de79a375969d053348a
+compiled .olean SHA-256 ad74ed3bfee955a8a23bfdb355123907b76d3989494a185f314e90fc469ecdaf
+raw kernel record D:\tmp\levent151\family-prefix-20261122\kernel.log
+replaying FamilyPrefix
+leanchecker -v FamilyPrefix exit 0
+raw axiom record D:\tmp\levent151\family-prefix-20261122\axioms.log
+'Levent151.familyPrefixWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.familyPrincipalWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.familyLinearCentre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.Gm_eq_centred_familyPrefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.centred_familyPrefix_le_Gm' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+MeanDeterminant | 2 public theorems checked for axioms
+source SHA-256 ac06be2779aec6f3eb5450fc011511ff64e897b52c5e55a6f7de520d8270420a
+compiled .olean SHA-256 741258599feaf004f8e9267d147d8f8fe73073308ccd587b8d59b70e59b5e315
+raw kernel record D:\tmp\levent151\mean-determinant-20261122\kernel-final.log
+replaying MeanDeterminant
+leanchecker -v MeanDeterminant exit 0
+raw axiom record D:\tmp\levent151\mean-determinant-20261122\axioms-final.log
+'Levent151.gain_le_centred_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.gain_relative_determinant_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+MeanLossRefinement | 5 public theorems checked for axioms
+source SHA-256 a7122f8cad4c23222567bdabb87ecdf2fa8b4743c782caf0bade770059f58eb0
+compiled .olean SHA-256 81e6ef79a1f859240cf8dbf6454fa10dd92e9f6bbbb95fe7f129be125fe6c1a9
+raw kernel record D:\tmp\levent151\rank-page-supply-20261122\MeanLossRefinement.kernel.txt
+Kernel replay of MeanLossRefinement completed.
+raw axiom record D:\tmp\levent151\rank-page-supply-20261122\MeanLossRefinement.axioms.txt
+'Levent151.omittedTopCharge_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.omittedTopCharge_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.omittedTopCharge_of_chosen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.smallPrimeShare_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.secondPrime_ge_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+TranslateUniformity | 10 public theorems checked for axioms
+source SHA-256 1cebf5e5124880aea3863e2c6fe00d2f59b4c9daea11f3724256299d555c8c7e
+compiled .olean SHA-256 4d0eb032201bf6023a0332936c40eb5e9fa344e96abf5af098dde133dc6a7dc0
+raw kernel record D:\tmp\levent151\paper-repair-20261122\TranslateUniformity-kernel.log
+Kernel replay completed for TranslateUniformity
+exit_code = 0
+raw axiom record D:\tmp\levent151\paper-repair-20261122\TranslateUniformity-axioms.log
+'Levent151.thinSecondSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.behrend_after_thinning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.hostGood_replaceSets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.eAtH_replaceTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.from_keeps_both_sets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.fourTermAllowance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.fourth_absorbed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.translateAllowance_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.translateAllowance_gain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.pointwise_of_thinned_allowance' depends on axioms: [propext, Classical.choice, Quot.sound]

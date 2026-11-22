@@ -1,0 +1,336 @@
+\subsection{The degree of the exceptional row sublattice}
+\label{rank:exceptional-degree}
+
+Fix a translate and use \(d,n,\rho,D_f,s,U,J\) of
+Propositions~\ref{rank:transfer} and~\ref{rank:wide}. Among the target
+HN cutoffs with positive codimension \(b<2nD_f\), take the one of
+largest codimension \(b\). Call its saturated lattice \(W_*\).
+If there is no such cutoff put \(W_*=R,\ b=0\). Give
+\(A=(R/W_*)^\vee\) its dual quotient metric. It is the saturated
+sublattice of the primal row lattice annihilating \(W_*\).
+Write \(\widehat{\deg}A=b\mu(A)\) in the paper's squared-norm
+normalization and set the degree of the zero lattice to zero.
+
+\begin{proposition}[A signed degree at one cutoff]\label{rank:signed-degree}
+With \(\tau=\rho/10\), the actual full-frame and column hypotheses of
+Proposition~\ref{rank:wide} imply
+\[
+ s-\mu(R)\ \le\ \frac{J+(1-\tau)U}{\tau}
+              +\frac{b(s+U)+\widehat{\deg}A}{d}.
+\]
+The last summand is signed. It can be averaged over the translates
+before comparison with the arithmetic budget.
+\end{proposition}
+\begin{proof}
+Write the centred target slopes as \(t_1\le\cdots\le t_d\) with
+multiplicity. Replace \(t_1,\ldots,t_b\) by \(U\); denote the resulting
+rank law by \(T'\). For \(v\le U\), if the number of slopes below
+\(v\) is at most \(b\), then \(\Pr(T'<v)=0\). Otherwise the cutoff
+has codimension at least \(2nD_f\), by the maximal choice of \(b\).
+Proposition~\ref{rank:wide} and the integral filtration comparison give
+\(\tau\Pr(T'<v)\le\tau\Pr(T<v)\le\Pr(S'<v)\) for the repaired
+source law. For \(v>U\) the source probability is one. Integrating
+as in Proposition~\ref{rank:transfer} gives
+\(-\mathbb E T'\le (J+(1-\tau)U)/\tau\).
+The HN quotient has slopes \(s+t_1,\ldots,s+t_b\).
+Degree changes sign on taking its Hermitian dual by the determinant
+pairing and the inverse dual norm. Hence
+\[
+ \mathbb ET'-\mathbb ET
+      =\frac{bU-\sum_{j\le b}t_j}{d}
+      =\frac{b(s+U)+\widehat{\deg}A}{d}.
+\]
+This includes \(b=d\) and coincident HN slopes, since an HN cutoff
+only occurs at the end of a slope block. The finite rank-law argument
+is also proved in \code{ExceptionalRowDegree.lean}.
+\end{proof}
+
+There is a direct arithmetic formula for the last degree. For \(b>0\)
+take any rational map \(P\) from \(A_K\) to a Hermitian space with
+lattice \(M\), injective on \(A_K\). Put \(L=M\cap P(A_K)\) with
+induced metrics. At a finite place \(w\), let \(m_w\) be the
+valuation of \(\det P:\det A_w\to\det L_w\) in generators of the
+two local determinant lattices. It is the sum of the signed Smith
+exponents, and vanishes at all but finitely many places. At \(v\mid
+\infty\) write \(j_v=\|\det(P|_{A_v})\|\) using precisely these
+determinant metrics. Since \(K\) is totally complex, write
+\(\langle f\rangle_\infty=(2/[K:\mathbf Q])\sum_{v\mid\infty}f_v\).
+Then
+\[
+ \widehat{\deg}A=\widehat{\deg}L+
+      \big\langle \log j_v^2\big\rangle_\infty
+          -2\sum_{w\nmid\infty}
+                 \frac{\log Nw}{[K:\mathbf Q]}\,m_w .
+\]
+Indeed, evaluate both degrees on a nonzero rational generator of
+\(\det A_K\) and its image. At a finite place its order increases
+by \(m_w\), and at infinity its squared norm is multiplied by
+\(j_v^2\). Changing the generator cancels by the product formula.
+In particular one upper bound uses the height of the HN polygon of
+\(M\) at rank \(b\) for \(\widehat{\deg}L\). This follows from the
+definition of that polygon as the concave majorant of sublattice
+degrees. See \href{https://arxiv.org/abs/0803.2583}{H.~Chen,
+\emph{Positive degree and arithmetic bigness}, \S2}.
+The Jacobian uses just the \(b\) directions in \(A\). Neither
+necessity nor a cost for the remaining row directions enters this
+formula. If a map is initially given on another level of the tower,
+the equality requires its transport to the actual \(A\) with the
+specified finite lattices and metrics.
+
+For comparison with the original scale, put \(X=x^{C_H}\ge20\).
+The identity-source specialization in Proposition~\ref{rank:wide}
+gives \(\eta\le5/X\) for the full maps. The original size bounds
+give \(\alpha\le d_e\le1/(9X^2)\) and
+\(e\le e_0\le e_B/2\le1/(32X^2)\). Thus
+\[
+    D_f\le \frac5X+\frac{49}{72X^2},\qquad
+    \frac bd\le \frac{11}{\rho X}.
+\]
+If the signed degree of \(A\) satisfies \(bs+\widehat{\deg}A\le
+bXb_0\), where \(b_0\) denotes the original scale parameter
+\(\mathtt{sc.b}\), its whole contribution is at most
+\(11b_0/\rho + bU/d\). This bound asks only for the average slope
+on the exceptional quotient, even if an individual slope lies
+arbitrarily far below it. The original floor provides it. An
+independent arithmetic upper bound on the displayed determinant
+for the actual row sublattice would serve the same purpose.
+
+\paragraph{The cost of a missed bottom slope.}
+Let \(\lambda_1\le\cdots\le\lambda_d\) be the target slopes with
+multiplicity. Write \(b_*\) for the largest positive codimension of
+an HN cutoff below \(2nD_f\), taking \(b_*=0\) if there is none.
+Suppose \(0<b_*<d\), and put \(c=\lambda_{b_*+1}\).
+Under the frame and column assumptions above, with \(\tau=\rho/10\),
+\[
+ s-\mu(R)\ \le\ \frac{J+(1-\tau)U}{\tau}
+             +\frac1d\sum_{j=1}^{b_*}(c-\lambda_j).
+\]
+Indeed replace each \(\lambda_j\) by \(\max(c,\lambda_j)\). Below
+and at \(c\) the strict lower tail of this list is empty. Above
+\(c\) its lower tail agrees with the original one, and any proper
+cutoff there has codimension greater than \(b_*\). The whole-space
+and zero-space cutoffs satisfy the same comparison whenever they
+occur, using the large-quotient bound for codimension \(d\).
+Apply the distribution inequality in Proposition~\ref{rank:transfer}
+to the raised list and subtract the change of mean. For \(b_*=1\)
+the exact additional allowance is \((\lambda_2-\lambda_1)/d\).
+
+\paragraph{Replication of the extreme slope on the marked row space.}
+Use the principal marked row realization from the original passage
+between levels. Write \(M=R^\vee\) for the primal sharp row lattice
+and \(M_G\) for the common lattice, with finite group \(G\) acting
+integrally and unitarily at every infinite place. Let \(P\) be the
+sharp character subgroup, \(h=|P|\), and let \(e\) be its character
+projector. The sharp comparison supplies a rational identification
+\(\jmath:M_K\simeq e(M_G)_K\). For \(L=M_G\cap e(M_G)_K\) it gives
+\[
+             hL\subseteq\jmath M\subseteq L .
+\]
+The two metrics differ by a common scalar at each infinite place,
+so conjugation of an endomorphism by \(\jmath\) preserves its
+operator norm. The original sharp row tie identifies this metric
+and integral lattice with the ones defining the target dual.
+\src{src/Formalism/LocalToGlobal/GlobalTheory/DivPassage.lean}{70}{metric and lattice conditions},
+\src{src/Formalism/LocalToGlobal/IndefiniteReal/CutPassage3SOfSteps.lean}{71}{unitarity, stability and the lattice inclusions} and
+\src{src/Formalism/LocalToGlobal/Divisibility/RowSideTie.lean}{259}{identification of the sharp rows}.
+
+Decompose \((M_G)_K\) into copies of the occurring irreducible
+\(K[G]\)-modules \(V_s\). Suppose every occurring \(eV_s\ne0\)
+has dimension at least \(n_{\min}\). For each \(g\in G\) the map
+\[
+               T_g=h^2\jmath^{-1}e g e\jmath
+\]
+preserves \(M\). Indeed \(g\) preserves \(M_G\), \(he\) has
+integral group-ring coefficients, and the remaining factor \(h\)
+puts the image of \(L\) back in \(\jmath M\). The orthogonal
+projector \(e\) and unitarity give \(\|T_g\|_v\le h^2\) at every
+infinite place. Its squared-norm slope cost is at most \(4\log h\).
+
+Let \(\mu_1\) be the largest slope of \(M\). The whole highest HN
+step has minimum slope \(\mu_1\). Its images under all \(T_g\) lie
+in the HN step at \(\mu_1-4\log h\), by the integral image
+inequality. Pick a nonzero vector in the generic fibre of the
+highest step. Its projection to some irreducible copy \(V_s\)
+is a nonzero \(v\in eV_s\). Irreducibility gives
+\(\operatorname{span}_K\{gv:g\in G\}=V_s\). Thus the projected
+images of this vector under the \(T_g\) span \(eV_s\), and the
+lower step has rank at least \(n_{\min}\). Duality yields
+\[
+             \lambda_{n_{\min}}-\lambda_1\le4\log h .
+\]
+This argument uses the images of one HN step under the compressed
+finite-group operators. It requires no invariance of the word periods
+under those operators.
+\src{src/Formalism/HarderNarasimhan/FinalCor.lean}{9}{image in an HN cutoff}
+and \src{src/Formalism/HarderNarasimhan/HarderNarasimhanProofs/SlopeIneqMean.lean}{128}{the squared operator norm}.
+The usual height form of the filtered image inequality is also
+given by \href{https://arxiv.org/abs/0803.2583}{H.~Chen,
+\emph{Positive degree and arithmetic bigness}, \S2.5}.
+
+In the original marked realization the primitive row and finite
+character hypotheses give
+\(n_s=\dim eV_s\ge(1-d_e)(g_0g_1)^{fk}\), with
+\(d_e=8fr/\min(g_0,g_1)\). In particular \(n_{\min}>1\) on the
+late stages under the original size bounds. Since
+\(\log h\le\log|G|=\lambda_0\le4b_0\), the extra mean allowance
+when \(b_*<n_{\min}\) is at most \(16(b_*/d)b_0\).
+It is \(o(E_x)\) on the selected sizes, as \(E_x\ge n_Tmb_0 x^\beta\).
+In particular an isolated one-dimensional exceptional cutoff costs
+at most \(16b_0/d\), including when every word misses the line.
+The finite-group realization and its metric and integral ties are
+hypotheses of this deduction. A bound on the number of row labels
+alone does not supply them. For the entire window the possible
+cutoffs with \(b_*\ge n_{\min}\) still require an estimate.
+\src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/PassIn3OfRows.lean}{23}{marked character multiplicities}
+and \src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/IndefiniteScaleThetaDegree.lean}{12}{hypotheses at the selected realization};
+\src{src/Formalism/SharpRestriction/Divisibility/HookProducts/LambdaZeroLeFourB.lean}{11}{the logarithmic group-size bound}.
+
+The same operators reduce the remaining tests to subspaces stable
+under \(eK[G]e\). At a centred target threshold \(v\), let \(A_v\)
+be the dual of the quotient formed by slopes strictly below \(s+v\).
+In primal coordinates it is the strict upper HN step at \(-s-v\).
+Set \(B_v=\sum_{g\in G}T_g A_v\) and \(C=4\log h\). Then
+\[
+               A_v\subseteq B_v\subseteq A_{v+C}.
+\]
+The identity group element gives the first inclusion. The image
+inequality applied to the finitely many slopes of the strict step
+gives the second. The span of \(ege\) over \(g\in G\) is the
+algebra \(eK[G]e\), so \(B_v\) is a submodule for this algebra.
+Suppose the weighted rank comparison of Proposition~\ref{rank:transfer}
+holds with ratio \(\tau\) on the quotients dual to the nonzero
+\(B_v\). By inclusion and the source filtration inequality this gives
+\(\tau\Pr(T<v)\le\Pr(S'<v+C)\) for the original centred slopes.
+Applying the same mean comparison to \(T+C\) costs at most \(C\)
+in the target mean, once for the entire flag. Every \(B_v\) of
+dimension at least \(2nD_f\) already passes with the original rank
+weights and ratio \(\rho/10\). The outstanding rank tests in this
+version concern only the smaller nonzero submodules \(B_v\).
+
+\paragraph{How many base-level slopes a larger cutoff requires.}
+Return to both marked levels in the original row realization. Write
+\(M_0,M_1\) for the primal base and sharp lattices, \(e_i,\jmath_i\)
+for their projectors and embeddings, \(h_i=|P_i|\),
+\(d_0=\operatorname{rk}M_0\), \(d=\operatorname{rk}M_1\).
+In addition to the sandwich above, the original finite-place
+averaging formula gives \(h_i e_i M_G\subseteq\jmath_i M_i\).
+Indeed a principal lattice element has a local representative after
+multiplication by some element outside the given prime ideal.
+Averaging that representative by \(h_i e_i\) produces an integral
+row at level \(i\), with the same denominator. Intersect these
+local conditions to obtain the asserted inclusion. The metric
+identity gives \(\|x\|_i=h_i^{-1/2}\|\jmath_i x\|_G\).
+\src{src/Formalism/LocalToGlobal/IndefiniteReal/RowGSurj.lean}{159}{finite-place integral averaging}
+and \src{src/Formalism/LocalToGlobal/IndefiniteReal/CxPassMet.lean}{160}{metric scaling}.
+Thus for \(g\in G\) the integral map
+\(h_i\jmath_i^{-1}e_i g\jmath_j:M_j\to M_i\) has norm at most
+\(\sqrt{h_i h_j}\) at every infinite place.
+
+Write \(\alpha_1\ge\cdots\ge\alpha_d\) and
+\(\beta_1\ge\cdots\ge\beta_{d_0}\) for the sharp and base
+primal slopes. Put \(m_1=\min_s n_s\), \(M_1'=\max_s n_s\)
+over the occurring good types, and \(L_0=\log(h_0h_1)\).
+The base projector has rank one on each such irreducible type,
+and the sharp projector has rank \(n_s\). In the common space take
+the \(K[G]\)-span of an HN step at threshold \(\theta\) at either
+level. If this subrepresentation has multiplicities \(a_s\), its
+base and sharp projections have dimensions \(\sum_s a_s\) and
+\(\sum_s n_s a_s\). Its projection back to the starting level
+contains the starting step. Its projection to the other level lies
+in the HN step at \(\theta-L_0\) by the integral maps just
+constructed. Applying this in both directions gives
+\[
+ \beta_{\lceil i/m_1\rceil}-L_0
+      \ \le\ \alpha_i\ \le\
+       \beta_{\lceil i/M_1'\rceil}+L_0 .
+\]
+The left bound holds for \(i\le m_1 d_0\), and the right bound
+holds for all \(1\le i\le d\). At the sharp level alone the same
+averaging improves the earlier slope cost to \(2\log h_1\).
+In particular \(b_*<m_1\) costs at most
+\(2(b_*/d)\log h_1\le 8(b_*/d)b_0\).
+
+For \(b=b_*>0\) and \(j=1+\lfloor b/m_1\rfloor\le d_0\),
+duality gives the following bound on the exact clipping allowance:
+\[
+ \frac{1}{d}\sum_{i=1}^{b}(\alpha_i-\alpha_{b+1})
+ \le \frac{2L_0 b}{d}+
+         \frac{M_1'}{d}\sum_{\ell<j}(\beta_\ell-\beta_j).
+\]
+Indeed \(\alpha_{b+1}\ge\beta_j-L_0\), and each positive difference
+on the right can occur at most \(M_1'\) times in the sum of the
+upper bounds. The multiplicity estimates give
+\(M_1'/d\le(1+d_e)/((1-d_e)d_0)\).
+Since \(b<2nD_f\), \(d=\rho n\), and
+\(m_1d_0/d\ge(1-d_e)/(1+d_e)\), the required \(j\le d_0\)
+holds on the late scales with \(\rho\ge1/2\), \(D_f=O(1/X)\)
+and \(d_e=o(1)\). A larger missed cutoff therefore asks for the
+top \(\lfloor b/m_1\rfloor\) base slopes relative to the next one.
+The common marked representation supplies the multiplicities in
+this inequality. The sizes of those base slope differences are
+additional arithmetic data.
+
+There is a single sufficient base estimate. For \(q=j-1\) and
+\(\bar\beta=\mu(M_0)\), monotonicity gives
+\(d_0\bar\beta\le q\beta_1+(d_0-q)\beta_{q+1}\). Hence
+\[
+ \frac{1}{d_0}\sum_{\ell=1}^{q}(\beta_\ell-\beta_{q+1})
+     \le\frac{q}{d_0-q}\big(\beta_1-\bar\beta\big).
+\]
+Here \(q/d_0\le (b/d)(M_1'/m_1)=O(1/X)\). Consequently a bound
+\(\mu_{\max}(M_0)-\mu(M_0)=O(X E_x)\) on the required translates
+would pay for every residual cutoff at the scale \(E_x\), under
+the other frame and column hypotheses. The original base-to-sharp
+passage contains \(\mu(M_0^\vee)+H_0\) with an input
+\(H_0\ge\mu_{\max}(M_0)\). A dual-mean upper bound alone controls
+only the second term of \(\mu_{\max}(M_0)-\mu(M_0)\).
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefSide.lean}{339}{the input to the original passage}.
+
+Even a saturated quotient of a standard Euclidean lattice can
+have an arbitrarily large gap. For instance let
+\(a+bi=(2+i)^N\), so \(a^2+b^2=5^N\) and \(\gcd(a,b)=1\)
+by unique factorization in \(\mathbf Z[i]\). In
+\(\mathbf Z^3/\mathbf Z(a,b,0)\), with the quotient metric, a
+Bézout complement in the first two coordinates has squared norm
+\(5^{-N}\), and the third coordinate has squared norm one,
+orthogonally. The gap is \(N\log 5\) in the squared-norm
+convention. This example tests what follows from saturation and
+the quotient metric alone. For the actual row lattice the answer
+depends on the subspace removed by the period construction.
+
+One can pin down the remaining metric as well. Pull the actual
+base lattice at every finite place back through \(\iota_{\mu_0}\),
+and on this same lattice use the rational quotient metric at
+infinity. Let \(\beta^Q_\ell\) be its primal slopes. On each
+occupied orthogonal type \(p\) the original squared row norm,
+in these coordinates, is the quotient squared norm times
+\(\kappa_v\prod_{j=1}^{m}\lambda_{j,p,v}\).
+The base-type count expresses the rank of the type as a sum of
+nonnegative row multiplicities. A positive summand supplies a
+label with a nonzero isotypic component at every lift. The
+original component identification therefore applies at each
+embedding to every occupied type. With the original recorded
+two-sided estimate
+\[
+ |\log\lambda_{j,p,v}-H_j|\le\Delta,\qquad
+ \Delta=C f n_V^2\log(b_0\,\mathrm{rd}_E\,g_0g_1 n_V),
+\]
+the common scalar \(\kappa_v\exp(\sum_jH_j)\) shifts all slopes
+by the same amount. After removing that scalar the two squared
+metrics differ by factors between \(e^{-m\Delta}\) and
+\(e^{m\Delta}\). The integral identity map in both directions
+bounds the error in each slope by \(m\Delta\). Consequently
+\[
+ \left|\frac{1}{d_0}\sum_{\ell=1}^{q}
+  \big[(\beta_\ell-\beta_{q+1})
+         -(\beta^Q_\ell-\beta^Q_{q+1})\big]\right|
+    \le \frac{2q}{d_0}m\Delta .
+\]
+On the original sizes \(m\Delta=x^{O(1)}=o(b_0)\).
+Thus the common heat factors and these typewise errors fit in
+the mean budget. What remains here is the slope spread of the
+rational quotient with its actual glued finite lattices.
+\src{src/Formalism/LocalToGlobal/IndefiniteForms/IndefSide.lean}{304}{the scalar metric on each type},
+\src{src/Development/AbelianVarietyTheory/Proofs/IwasawaDecomposition/FinrankLiftLabelEqFinrankFace3.lean}{415}{the base type count},
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/RecInPartsExists.lean}{30}{identification of the type factors in the recorded realization} and
+\src{src/Formalism/SharpRestriction/Divisibility/LocalQuadraticParts.lean}{257}{the two-sided heat estimate}.

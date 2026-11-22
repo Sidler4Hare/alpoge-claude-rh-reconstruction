@@ -1,0 +1,28 @@
+2026-11-22 | Finite real-threshold interpolation
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Source SHA-256 = 6c72c8303e4a3f309ca075df947ef9067ae2430e81df4a634c0b8ac5a684ab5c
+Compiled module SHA-256 = 6d3b1b8807bd85f83c4ad06c8908ea31495063ef910dcbd716e303968074d07a
+Source directory = lean-15-1
+Imports use only the pinned Mathlib cache. Kernel replay checks all declarations in the new module.
+Raw output directory = D:/tmp/levent151/prime-window-interpolation-20261122
+
+Compile
+command = D:\tmp\levent151\lean-4.33.1-windows\bin\lean.exe -j1 -o D:\tmp\levent151\prime-window-interpolation-20261122\PrimeWindowInterpolation.olean PrimeWindowInterpolation.lean
+exit_code = 0
+
+Kernel replay
+command = D:\tmp\levent151\lean-4.33.1-windows\bin\leanchecker.exe -v PrimeWindowInterpolation
+output =
+replaying PrimeWindowInterpolation
+exit_code = 0
+
+Axiom inspection
+command = D:\tmp\levent151\lean-4.33.1-windows\bin\lean.exe -j1 --stdin
+stdin =
+import PrimeWindowInterpolation
+#print axioms Levent151.primeWindowInterpolation
+output =
+'Levent151.primeWindowInterpolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit_code = 0
+
+The public theorem permits any finite list of positive real thresholds, nonnegative coefficients and any affine term. The assumptions allow endpoint weights zero or one and repeated thresholds.

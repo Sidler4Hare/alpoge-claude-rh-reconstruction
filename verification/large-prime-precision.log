@@ -1,0 +1,25 @@
+Lean 4.33.1, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+LargePrimePrecision.lean SHA-256 846658ed28f8a1a91c35da2eec303f91e48468e5773717ad65e083b792d5968e
+
+compile
+exit code = 0
+
+kernel
+Kernel replay completed for LargePrimePrecision
+exit code = 0
+
+axioms
+'LargePrimePrecision.goodRankK_iff_last_digit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.clipped_length_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.column_entry_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.lpprimeAt_iff_matrix_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.mem_lifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.kapISet_iff_one_matrix_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.residue_window_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.sum_truncated_root_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.sum_bad_rank_of_clipped_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.powers_dvd_det_of_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LargePrimePrecision.smith_perturbation_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit code = 0
+
+The full Smith formula and its comparison with the Gram-window estimate are proved in the manuscript. The uniform mean of the worst loss over the actual weight boxes is an arithmetic input.

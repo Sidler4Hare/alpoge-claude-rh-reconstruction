@@ -1,0 +1,83 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Date = 2026-11-22
+Source directory = lean-15-1
+Raw outputs = D:/tmp/levent151/paper-repair-20261122/<module>-{compile,kernel,axioms}.log
+
+ReselectedHost imports TranslateUniformity. Its field and level lemma uses replaceHostSets directly.
+hostGood_replaceSets is the theorem previously checked in TranslateUniformity. The three modules contain eleven new theorems.
+Twelve axiom checks below include this imported theorem.
+
+Compiler and replay
+  Compile the local sources with the pinned compiler and reference environment, putting TranslateUniformity before ReselectedHost.
+  Stock replay program runs as lean --tstack=400000 -j1 --stdin:
+    import LeanChecker
+    #eval do
+      replayFromImports `<module>
+      IO.println "Kernel replay completed for <module>"
+  Stock axiom inspection imports the compiled module and issues #print axioms for each declaration listed below.
+
+ReselectedRealization
+  source_sha256 = c961b3884233527d46cda3eaf79fea1280d7933756224e77d1919836b0e84673
+  module_sha256 = 2f7556d017cbf1c586e50207448387f31d1f835211ec8d2997c30a7c3631edc7
+  compile_exit_code = 0
+  Kernel replay completed for ReselectedRealization
+  kernel_exit_code = 0
+  'Levent151.fixedFamilySets' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.arithmeticWeightsForReselection' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.kitsForEveryHost' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.existingWindowsOfKits' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.realizesHost_carriesBothSets' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.familyOnPrescribedHosts' depends on axioms: [propext, Classical.choice, Quot.sound]
+  axioms_exit_code = 0
+
+ReselectedHost
+  source_sha256 = cbf86ab74652775167b09d999fd8341e697b4f15fa52c352aec4abdeea848193
+  module_sha256 = 5d5ab3792aa75950b57e954979195e0e1250c8237f510c05ee3631598d5df82c
+  compile_exit_code = 0
+  Kernel replay completed for ReselectedHost
+  kernel_exit_code = 0
+  'Levent151.hostGood_replaceSets' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.reselectHost_field_and_level' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.hostOrigin_of_from' depends on axioms: [propext, Classical.choice, Quot.sound]
+  axioms_exit_code = 0
+
+ReselectedPointSupply
+  source_sha256 = 2c8275f7458ecea6bc887a494ac98b6cc0c22c6a0183b1bb70ebe89549fd6609
+  module_sha256 = 025ba49ef25e73a5717c9927dd0b8dbdd80ec774bae3f8377e900fe2326b35a0
+  compile_exit_code = 0
+  Kernel replay completed for ReselectedPointSupply
+  kernel_exit_code = 0
+  'Levent151.reselectedPointSupply' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.reselectedAnyPointSupply' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'Levent151.reselectedDutyCentres' depends on axioms: [propext, Classical.choice, Quot.sound]
+  axioms_exit_code = 0
+
+Imports used during verification
+  ReselectedRealization and ReselectedHost used the full restored original module tree and the pinned Mathlib cache.
+  TranslateUniformity source_sha256 = 1cebf5e5124880aea3863e2c6fe00d2f59b4c9daea11f3724256299d555c8c7e
+  TranslateUniformity module_sha256 = 4d0eb032201bf6023a0332936c40eb5e9fa344e96abf5af098dde133dc6a7dc0
+  ReselectedPointSupply used the reference closure in closure-replay/modules.jsonl.gz, with 16,999 unmodified modules and 541 import-table adjustments.
+  Base manifest sha256 = 9eabdb7fae28a6cc7b3b65a9af38d646fed4121f99175011e4c5417298c21d40
+  Eighteen additional legacy modules use the original declaration, proof and extension records. Stock Repack.lean rewrote the import lists, normalized both images to an empty import list, and verified their entire serializations are byte equal.
+  To reproduce the additional module lists, take the direct imports in ReselectedPointSupply.lean missing from the base replay. For each, preserve the order of its original .lean imports, keeping each module that is a direct import of ReselectedPointSupply, already exists in the base replay, or belongs to an external package.
+  The stock kernel replay above checks the new module relative to these original imported declarations.
+  Original and replay SHA-256 hashes for the additional module files follow.
+  module	original SHA-256	replayed SHA-256
+  Development.AbelianVarietyTheory.Definitions.AutomorphicMembership.RowRatW	ea1361f9659f4f92256c36b9506098094df099eb8403db3b818f6a94eac7ae97	8283d6c8848b5c3fc77f9c48b1bf3cd186ba9c31441afa4fbffa0a3a64a4215b
+  Development.AbelianVarietyTheory.Proofs.FlagMeasures.UnitaryHyperplaneVolumeRatioSiegelWeil	fd5d86b8ebf9acb4c7540f091d57c97a627f0ad35543f5a71b8d39e9776795a2	a9159b53856b01f778063dd10d11e671f04298a4ca5068ab8dee5a1326b15061
+  Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.ExistsObjectsOfAdmissibleTwistDatum	50ed32d97f2c5a5f164a24b01cba5ea1193c15d36b1b4dfc529c61545ce25413	56f95c0563371fe784bfb0a4a67585d7a8c2501b6e26ae219e051d1f02c96c63
+  Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.ExistsObjectsOfAdmissibleTwistDatumStatement	9038d1f142c59003da5ebc36bde400842b45ba1cdd4f82d7f5e768aad6e54e6d	466875231f1d65d418c237db2f268d0c76ef1e7e11f0d7ad93f2a63ca5bb433d
+  Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.NormPrimesAndLevelPrimeUnconditional	25a85e53ed89e1a0425fba81ad944e0160f9ded081ac1412be3f55ee122848d8	784f2747cba8849efad3d0f03559fe50cfee38c77f24ae9d00e10e719c06ba8e
+  Development.AbelianVarietyTheory.Proofs.GlobalInterpolation.WindowShareRequirementClosedFormProofStatement	c7f9ec0ebf6b55e482c3c349919c471eed68808384c30f21ddc380d42c7b4427	2dc1da75a17fe9f3d8cc316e973a691b11e24bea2c282e42d57639d59e4bcd20
+  Development.AbelianVarietyTheory.Proofs.IwasawaDecomposition.HoldsUIff	24f09051b1a42aad6680f2f982d5b238ba337650c0584e9fbbc969bebf65632e	4354683eecdecc59a0a9c30c4b0a41b1fc4190becd611d8589e977436b94c107
+  Development.AbelianVarietyTheory.Proofs.IwasawaDecomposition.JumpsCardOfBuilt	5a8a82d8ca2bf03c003a871fd51ecc2970f388ac434c5e48a688e41f7c149189	e32bc8999bc9bea53bb686222ad749e93c8270423e86c3ac5c1055d6487a5150
+  Development.AbelianVarietyTheory.Proofs.IwasawaDecomposition.MemberTopFinalContextParameters	6ced8004f94400b17bc00c6bd82295b540f94730c755a3f95c2949f39541225c	ca385fa77ee0513600bde17e52f8fc69517c6cb160681f811f323380955e07d6
+  Development.AbelianVarietyTheory.Proofs.IwasawaDecomposition.RowRatWOfRowTest	ae0c20b02ae3fe7b29c9991a1089a8bbba8b90ef1b6c42d595c56d7647d527cb	8c6820dcf9724a55ce1525f86746b67101ae2af59593c42aa9a26d614719164b
+  Development.AbelianVarietyTheory.Proofs.SatakeParameters.RhoMemOfMkEq	565a5281b944bdc5e8c1ecb1c91a5dc28ba0dda64cf0f8b8ea9635556d6376f8	d3d87154173f987399c001b3d1c0d7e1d12d7bae4a6d9583123a715571269b26
+  Development.AutomorphicArithmetic.CharacterBoxes.HostWW	0256fcb244d241f04c764808a12267085576892ab887cad8879dd5c11f59c0cc	1c923043bea6f264490596bb8ae5fa11d086c462d99d63b0fdf54cd810eb15f8
+  Development.AutomorphicArithmetic.CharacterBoxes.ObjCTrue	16ee8922b5d6500b1fa26c67e7a068f58bd728bb2ef18b333c4fe397b4715645	370b5bba7c17f6f7af0796e34958e95b05ca619ac4a37ec0dda6daab2de67a64
+  Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.FunctionalsSeparateOfHoweUnramOfSiegelWeil	98b09078e59780468bfe89606aa1215a981ebc2d59a658e9c14474d3f837dac7	44324d9fb1e31254672da39ce3c38328693a691ae8cdc43be8b93ac180987c9f
+  Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.TestVectorAtDatumOfJoin	fda5ffe315fedb63de1ff8644089150440b1463efeee78faba4b78c4d2cc9258	a32c51ff94fc3e179790ba74c8c560c522ed17f77421e91dc87621b70d404d59
+  Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.ExtensionWithAtProperty	56cdbeaef19d4fad88fb7c2d97254f033724c07bdaa2e07e609f90b464b30eb3	8141253a483e554858dedd0e5e21843be6df8e83144531f6a1d2ed7a43653735
+  Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.ExtensionWithOrigin	7b0ab23660a780283ba750c4f891d91ee50b055552f2cf6b776188089c2820d2	10b5de8bdca5a2fabcb1dccf458da6bc8be97498c4eb209e675e987220c1e819
+  Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.MemberBundlesLargeUnramifiedExponents	c1ba83961c94f34a7fb805a07c2b024a7b12660adae12d988681f4f3430665df	ba1b0b3ebfd7cb29dbebdec537636a77e77725de9bd1eb8707fbdae079cca3e9

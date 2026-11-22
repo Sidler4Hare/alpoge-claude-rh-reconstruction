@@ -1,0 +1,7 @@
+C_psi in [1.70301163514551287440984, 1.703011637874144740006722]
+b_Z in [0.753666416776693824303137, 0.753666416776693824381637]
+W_Z: 78498 knots <= 1000000, 1528 stationary candidates and two endpoints.
+sup((W_Z(x)-(3)*sqrt(x))/x) <= -0.000673355728126272153867 (gap [989029,989059]).
+F_psi: 78734 knots <= 1000000, 2713 stationary candidates and two endpoints.
+sup((F_psi(x)-(1/4)*sqrt(x))/x) <= -0.00022959911854728908891 (gap [979831,979873]).
+Both estimates hold for every real x in [10000, 1000000].

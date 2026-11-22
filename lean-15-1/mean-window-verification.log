@@ -1,0 +1,62 @@
+2026-11-22 | Signed translate mean and common realized windows
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+
+Default sources in lean-15-1/. Each compiled to the .olean fingerprinted below, exit 0.
+Stock LeanChecker replayed the declarations of each target against its imports.
+Source SHA-256, .olean SHA-256, module:
+fd28bd0a63aebf33bff86f115731bda3ada7bad87ab95a07d46f18b41951e0c9 2cda14b024af35533745f5ef8617c9b715bef0798b740bba991b52978ad6abd3 MeanExtraction
+e88b73c7178259638b6aceee83392a7354f1a8d8971208526aec6527591289f4 6aa9e8abb9993bc134a1de3e11079e116108a9eb11000b9cf02528f0974ee397 Equation152
+f132dff5398967a8ad075e71eb9b6c274c16f236ba3de367076f5c54c54e91ee 3a3abc123048df1fd5be1bfae2be93b65bd3cfb2b516368a3f909e07815a479a OrbitLoss
+1a21e62c3693999fe004e4b3c4b084d78b82ee5f5f2360db3e06eb7702eafe22 36dc79ed199f2899876df1dde70ea91019b807216bb39a1c5a87abeab43ffb84 WeightSpacing
+54618667144500f8dc7ea2292a29d534c4521d57cca1838f294615b9b76a7e85 38d4f827eca4d4a312bf3457187597d391f31e24302ce065d53302183487457d PrimeWindow
+7949379ccb1506266a13203dc9708e67d979210f4e410d2544db685882e42be9 dfde4400cc55e9bb43d601953f550130146c10aaa591e4d04e08b1d4a7d3bdc0 RankMeanBudget
+
+Single-module kernel checks:
+replaying MeanExtraction
+leanchecker -v MeanExtraction exit 0
+replaying Equation152
+leanchecker -v Equation152 exit 0
+replaying OrbitLoss
+leanchecker -v OrbitLoss exit 0
+replaying WeightSpacing
+leanchecker -v WeightSpacing exit 0
+replaying PrimeWindow
+leanchecker -v PrimeWindow exit 0
+replaying RankMeanBudget
+leanchecker -v RankMeanBudget exit 0
+
+Joint import of the six default modules (the original Family precedes the PageWin variant on LEAN_PATH):
+'Levent151.equation152' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.retained_le_of_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.balance_of_signedMean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.ch_core_of_signedMean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.orbitLoss_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.orbitLoss_of_chosenWall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.hcLayerSpacing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.etaSz_ge_hcSpan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.ramp_sub_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.Gchi_sub_scaled_of_ne_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.Gchi_sub_scaled_of_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.Gchi_re_sub_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.jacobiSym_even_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.family_rank_fourth_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.paperBracket_le_rank_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.paperBracket_on_page' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.family_thick_subpower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.normalized_quadratic_page_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean #print axioms exit 0
+
+The terminal imports the previously checked family construction. For the original and import-table-reduced modules, see closure-replay/README.md. This run replayed the new declarations against those imports.
+Use check_lean.py under lake env of the built original project to compile the sources.
+
+Optional same-family PageWin variant:
+Patch SHA-256 2ba6f9da00ec9cd763e1132d6554623dd287a07f300751f83e9dc96aa803ec68
+Compiled patched FamilyGeometry, Family and Equation152. In one process the patched Equation152 and RankMeanBudget imported together. #print axioms gave [propext, Classical.choice, Quot.sound] for arithmeticFamilyWithSizes, equation152 and normalized_quadratic_page_budget. Commands and file fingerprints are in closure-replay/rank-page-supply.patch.
+
+Finite arithmetic cross-check, exact rational coefficients:
+x=100 V=1000 q=3 d=23 primitive target modulo 1
+p=7 j=3 coefficient of log(p)=1314/1715
+p=23 j=2 coefficient of log(p)=471/2645
+H(x,V)=2.049262117462
+
+The Chebyshev bound for the complete higher-power error and the final transport to the retained character sum are proved in the manuscript and Chinese supplement. An independent one-sided bound on the weighted prime deficit on an entire admissible window remains open in the reconstruction.

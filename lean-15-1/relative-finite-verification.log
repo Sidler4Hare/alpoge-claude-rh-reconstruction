@@ -1,0 +1,23 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Module: RelativeFinitePart
+Replay imports: 835 original source dependency modules from clean-rebuild/replay and the pinned Mathlib cache.
+Raw logs: D:/tmp/levent151/relative-finite-part-20261122 (compile-sign.log, kernel-sign.log, axioms-sign.log)
+
+lean RelativeFinitePart exit 0
+replaying RelativeFinitePart
+leanchecker -v RelativeFinitePart exit 0
+'Levent151.finiteRoundingLoss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.finiteIndexExcess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.levelArchLoss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.finiteRoundingLoss_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.finiteIndexExcess_of_unserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.relativeSlope_eq_localDefects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.relativeSlope_le_gain_of_index_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.finiteIndexExcess_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.relativeSlope_add_levelArch_le_gain' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean --stdin exit 0
+
+The exact local identity, rounding support bound, and both branches of the nonnegative local index are formalized.
+At the word level tau vanishes, and NuDef records the finite natural length divided by the positive ramification index.
+Off the word level the original LocLe input and natural-valued tau give the length lower bound via PI.Dv.IdxW.dvIdxCalc_main.
+The resulting signed comparison retains the archimedean level term.

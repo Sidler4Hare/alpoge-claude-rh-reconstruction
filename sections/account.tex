@@ -44,10 +44,64 @@ continuity and an explicit slope bound for the retained function
 extend the analytic estimate to all real scales. The uniform upper
 bound at those squares remains an arithmetic hypothesis. Proposition~\ref{trmean:assembly} reduces it to a mean division estimate, one slope comparison and one signed loss. Corollary~\ref{trmean:reserve} gives the available margin for lattice defects at the original numerical scale.
 
+\paragraph{A finite prime criterion for the signed mean.}
+Fix one cyclotomic host and use its two auxiliary primes \(q,d\) at
+both endpoints \(2\le x\le V\). Put \(\chi_a=(\psi^a)^\ast\) and use
+the weights \(\omega_a\) of Proposition~\ref{ar:mean}. Define
+\[
+\begin{aligned}
+ c(n)&=\Big(\sum_{a=0}^{o-1}\omega_a\Re\chi_a(n)\Big)
+                   (1+J_q(n))(1-J_d(n)),\\
+ K_{x,V}(n)&=\min(1,x/n)-x/V\qquad (1\le n\le V),\\
+ I(x,V)&=x\log(V/x)-\sum_{p\le V}c(p)\log p\,K_{x,V}(p).
+\end{aligned}
+\]
+The sum in \(I\) runs over primes. For \(V=\exp(x^{\varepsilon/3})\ge x\),
+suppose the four twists for each \(a\) satisfy
+\(|G_\chi(V)|\le V\theta\), as in Proposition~\ref{host:thin}.
+Then for an absolute \(C_*\) and the uniform constant \(C_\psi\) of
+Proposition~\ref{ar:mean},
+\[
+\begin{gathered}
+ I(x,V)-C_*x^{1/3}-\mathcal E_x
+ \ \le\ \frac{2\bar D}{B\delta}\ \le\ I(x,V)+\mathcal E_x,\\
+ \mathcal E_x=C_\psi(1+x^\varepsilon)\log(2x)+4/(x\delta)
+                                      +(16/3)x\theta .
+\end{gathered}
+\]
+In particular \(I(x,V)+\mathcal E_x\le 2E_x/(B\delta)\) suffices
+for \eqref{scope:average} on these data.
+
+To prove the comparison, let \(S\) be the signed four-twist sum in
+Proposition~\ref{ar:mean}. Subtracting \(x/V\) times each ramp at \(V\)
+from its value at \(x\) cancels every linear centre. The principal
+term contributes \(x\log(V/x)\). The remaining kernel is \(-K_{x,V}\).
+The conductors of the auxiliary characters are coprime to one another
+and to that of \(\psi\), so their primitive products have the
+displayed coefficients even at ramified primes. Thus
+\[
+ S(x)=\frac{x}{V}S(V)+I(x,V)-H,\qquad
+ H=\sum_{\substack{p^j\le V\\ j\ge2}}
+                   c(p^j)\log p\,K_{x,V}(p^j).
+\]
+Since the weight at \(a=0\) is one and the sum of the other weights
+is less than \(1/3\), we have \(0\le c(n)\le16/3\). All even powers
+of \(p\ne d\) disappear. At \(p=d\) the even powers up to \(t\)
+carry at most \((\log t)/2\) in unweighted log mass. For odd \(j\ge3\),
+Chebyshev's bound gives log mass
+\(O(t^{1/3}+t^{1/5}\log(2t))=O(t^{1/3})\). Using
+\(K_{x,V}(n)=x\int_x^V {\bf 1}_{n\le t}\,dt/t^2\) gives
+\(0\le H\le C_*x^{1/3}\), uniformly in \(V,q,d,\psi\).
+The thin estimate gives \(|xS(V)/V|\le (16/3)x\theta\).
+Proposition~\ref{ar:mean} now gives both inequalities.
+Equivalently \(I=x\int_x^V(t-\sum_{p\le t}c(p)\log p)\,dt/t^2\).
+The missing bound on an entire window is a one-sided estimate for
+this weighted prime deficit.
+
 The following describes what the arithmetic proofs establish on the way to \eqref{scope:missing}.
 \begin{description}
 \item[Prime selection and the common field.] Theorem~\ref{pr:pair} treats the possible exceptional real zero and selects both primes for every required auxiliary twist and every real point in the interval. Proposition~\ref{host:art} identifies the retained and discarded characters. Lemma~\ref{host:different} constructs the lattice at finite places; Propositions~\ref{host:behrend} and \ref{host:thin} give the translated set and the uniform thin-coordinate estimate. These deductions use ordinary mathematics and the stated prime distribution theorems.
-\item[Galois representations.] Sections~\ref{tr:section} and \ref{newgal:section} realize the trace as a semisimple representation and give crystalline closure from simultaneous weighted trace congruences. The Frobenius index runs over every lift at a good prime. For a finite set of seed systems this produces a common dense set on which to interpolate. Proposition~\ref{famgal:rank} extracts the exact rank even for disconnected monodromy. Propositions~\ref{newgal:hodge} and \ref{newgal:phi} test the rectangular lattice maps on the integral period operators at the same precision as the trace congruence, allowing unbounded linear-combination coefficients. Applying those propositions at every singular intermediate weight still needs the geometric seed, simultaneous congruences and the two marked integral comparisons. Regular polarized cuspidal systems satisfying the stated local and irreducibility hypotheses have the level and adjoint Selmer conclusions of Propositions~\ref{newgal:level} and~\ref{newgal:adselmer}.
+\item[Galois representations.] Sections~\ref{tr:section} and \ref{newgal:section} realize the trace as a semisimple representation and give crystalline closure from simultaneous weighted trace congruences. Proposition~\ref{famgal:rank} extracts the exact rank even for disconnected monodromy. At the odd-rank spherical places away from the two auxiliary places, Proposition~\ref{addg:local} deduces both exact local invariants from the seed and simultaneous Hecke congruence. Proposition~\ref{addg:unitary} gives the attachment directly for the standard definite unitary group in the classical interpretation, including repeated highest-weight entries. Proposition~\ref{addg:auxiliary} imposes the auxiliary cuspidal type by simultaneous congruences at fixed weight. The change to lacunary weights at \(v'\), local nonvanishing at degenerate targets, realization in the prescribed cohomology tower, and comparison with separately specified period functors still enter the original route. The level and adjoint Selmer consequences for the indicated polarized cuspidal systems are given in Propositions~\ref{newgal:level} and~\ref{newgal:adselmer}.
 \item[Global theta matching.] Theorem~\ref{tcr:global} proves nonzero proportionality of the two periods on every matched pair in the stated tower, including positive signature and the support restriction at the distinguished prime. Proposition~\ref{famtheta:plane} supplies a hyperbolic plane on the given lattice. Propositions~\ref{tcr:descend} and \ref{tcr:unique} compare the two descent maps on arbitrary smooth inert tests and real polynomial tests. The resulting recursions include the split Euler and ramified Gauss factors. For fixed adapted geometries, real quotient maps and measures, their constant is independent of the allowed finite characters, finite matching maps and compatible Weil actions. The period scalar for an individual system may depend on that system. This settles the period comparison required here. The reproducing identity for short algebraic sections on the covers involves a separate kernel.
 \item[Theta denominators and cover metrics.]
 Theorem~\ref{intjet:semi} clears the finite denominators on the integral
@@ -83,16 +137,26 @@ indefinite cover at the stated stage sizes.
 Obtaining the compatible good covers throughout the design and
 identifying a separately constructed toroidal space of sections
 on the modified flags have their own geometric hypotheses.
-The integral restriction maps, short frames and compatible metrics
-for the modified flag spaces in the Hilbert--Samuel estimate are
-additional geometric inputs on the same components.
+Proposition~\ref{zetageo:field} constructs the coefficient field within
+the family budget. Lemma~\ref{zetageo:lattice} principalizes the two flag
+systems together and computes the change of slope from their actual
+indices and metrics. Proposition~\ref{zetageo:mean} reduces the
+component mean height to finitely many parameter sections per weight
+and component. Propositions~\ref{addh:constants} and~\ref{addh:level}
+construct rational CM points and the split half-level maps on the
+principal packet. Proposition~\ref{addh:good-lattice} identifies the
+unmodified integral lattice at good primes in central weight zero
+on a common rational cusp space. The integral modifications, the
+bad-prime indices and the required mean bound for the parameter
+sections still need uniform estimates.
 \item[Integral cohomology and deformation rings.]
 Theorem~\ref{newcoh:lemmaK} gives the low-layer estimate with an absolute
 exponent \(32\). In \eqref{sup:lengthcount} the joint arithmetic tests
 inject into the image scaled by \(\ell^{d-1}\); the universal
 coefficient quotient costs at most the torsion order in degree
-\(d-1\). The construction and the prescribed evaluations of the
-arithmetic cycle used for this injection are stated with that formula.
+\(d-1\). Lemmas~\ref{addc:residue} and~\ref{addc:filter} and
+Theorem~\ref{addc:cycle} construct these cycles and compute their
+common residue evaluations, including the exact valuation loss.
 Theorem~\ref{famsel:unit} and Proposition~\ref{famsel:stick}
 prove the auxiliary Bernoulli unit and its residual vanishing in both
 higher-rank counts. Proposition~\ref{famsel:class} gives zero at
@@ -110,10 +174,28 @@ primes in twelve of the twenty-four reduced classes modulo \(84\).
 For a target of two-power order, case III is empty, although case II
 already occurs for the zeta target (Corollary~\ref{famsel:hostdensity}). Section
 \ref{famsel:complement} sums the complementary contributions on the
-same host up to \(\lfloor v^{401}\rfloor\). That computation still
-uses the original polynomial bound \((\ell N e)^{C_\chi}\) on the
-remaining case II and III entries, the case I sum and the indicated
-field comparisons.
+same host up to \(\lfloor v^{401}\rfloor\).
+For every fixed target, Proposition~\ref{addo:compare} bounds the
+field-to-character loss at the primes dividing its order, and
+Theorem~\ref{addo:opposite} bounds the full opposite parity.
+Corollary~\ref{adds:fixed-char} handles Case IV on the same interval.
+Corollary~\ref{addo:remainder} isolates the remaining matching-parity
+character sum in Cases I, II, III and V. For the zeta target, Proposition~\ref{zetafield:descent}
+identifies each odd-prime field summand exactly with its character components.
+Corollary~\ref{famsel:zetajd} computes the finite layers at \((3,J_d)\)
+and gives the full length under its class-group exponent condition.
+Proposition~\ref{famsel:alltower} identifies all deeper layers with
+equivariant class-group homomorphisms and computes each fixed
+\((3,J_d,e)\) by a terminating test. Lemma~\ref{famsel:zetaclasssample}
+exhibits normalized length one.
+Proposition~\ref{zetaring:integer} gives one integer for the Case I
+prime sum assuming the ternary trace-product assertion. The remaining
+matching-parity entries outside the three ranges in
+Proposition~\ref{adds:order} need further estimates. For every fixed
+target Theorem~\ref{adds:dyadic-window} bounds the entire dyadic
+field contribution on the jointly selected interval. At the zeta
+target the restriction to \(E(i)\) is injective at each positive twist
+by Corollary~\ref{adds:zeta-injection}.
 
 The ternary endoscopic and odd orthogonal branches admit classical
 attachments. In the good quartic problem, Corollary~\ref{hr:imprimitive}
@@ -121,8 +203,10 @@ gives cuspidal attachment and rational symplectic adjoint Selmer
 vanishing at every non-strongly-irreducible, absolutely irreducible
 characteristic-zero point. Proposition~\ref{hr:case3strong} forces
 strong irreducibility for absolutely irreducible tests in the third
-host case, in either characteristic. Such a restriction on a test
-still leaves the strongly irreducible curves to be controlled.
+host case, in either characteristic. On a zeta host,
+Corollary~\ref{adds:quartic} restricts the imprimitive equal-characteristic
+Case II tests to explicit inducing fields and identifies their Selmer
+layers. The strongly irreducible curves still need to be controlled.
 Section~\ref{hr:tower} traces the ternary and quartic seeds,
 dimensions, markings and base changes; Lemma~\ref{hr:towerfin}
 controls the selected Hecke quotient. Covering every required test
@@ -141,10 +225,177 @@ In the family realization a local proof \(h_{\rm onto}\) is obtained from the th
 \paragraph{Mathematical review.}
 The review compared the displayed implications with the source at the points where sign, rank, normalization or quantifier order mattered. In the comparison of theta integrals, uniqueness of the scalar uses a test with nonzero integral \emph{and a matching test on the other side}; the matching step for this particular vector is now explicit in Proposition~\ref{geo:theta}. The integer clearing the terminal period denominator is divisible by the stabilizer orders in \emph{all} layers. It need not equal any one of them. The slope compression requires both a bound \(0\le\delta<1\) and a codomain of dimension \(D_0\ge(1-\delta)D\). The determinant calculation in Corollary~\ref{geo:shift-index} fixes the sign and factor of two. In the Poitou--Tate computation of Section~\ref{sup:length}, the discrete dual of \(\mathbf Z_\ell(E+1)\) has twist \(-E\), which fixes the local \(H^0\) term. \src{src/Formalism/GaloisCohomology/Statement.lean}{69}{cyclotomic action on the discrete module}. Other checks included common-factor positivity for complex residues, the strict radius gap in Lemma~\ref{an:isolate}, the power \(\lfloor v^{401}\rfloor\) preceding the cohomological rank cutoff and the family selection before the pointwise Fourier estimates. The accompanying tables record the proof status and the source locations. In particular the rank-four trace condition is checked against the variant actually used in the export, whose automorphy predicate includes additional comparison witnesses. Each source anchor is paired with an enclosing declaration and a path from the classical RH root or, for the distinct strip and restatement assertions, a path from the appropriate sibling root. These paths certify the presence of the declarations. They do not assign a separate theorem to every tactic line.
 
-The English argument proves the critical-line implication from
-\eqref{scope:missing} and also from \eqref{scope:average} with the
-specified common data. On the available paper arguments both uniform
-arithmetic estimates remain open, even when the target is zeta.
-The unresolved component, length and integral geometric inputs
-therefore prevent an independent paper proof of RH in this edition.
-Published kernel checks concern the original exported declarations.
+\input{sections/prime-prefix}
+\input{sections/prime-orbit-selection}
+\input{sections/prime-translate-reselection}
+
+In particular, on a host where the top set can be chosen and realized,
+the prime test \(W_Z(x)\le x^{1/2+11\varepsilon/2}\)
+also suffices directly for every translate. Choose the top set in
+Proposition~\ref{orb:selection}. Corollary~\ref{orb:overlap} bounds
+each normalized discrepancy minus the four-twist sum by \(o(\sqrt x)\).
+The discarded terms cost \(O_\psi(x^{1/2+\varepsilon})\);
+the lower bound for \(2E_x/(B\delta)\) in Section~\ref{pref:section}
+absorbs both errors with the original coefficient.
+
+\subsection{The remaining signed determinant bound}\label{geom:joint}
+
+In the notation of Proposition~\ref{trmean:assembly}, let
+\(\mu^N_{ui}\) be the actual slope of the descended source lattice
+for word \(i\) at translate \(u\). Write \(\langle\cdot\rangle_u\)
+for the mean with weights \(r_{ui}/r_u\), and \(\mathbb E\) for the
+uniform mean on \(A_0\). Define the signed quantity
+\[
+ J_u=\left\langle \mu^N_{ui}+A\log T_{ui}\right\rangle_u
+                       -F_u^{\,0}-S_D.
+\]
+Here \(F_u^{\,0}\) is the recorded shift and \(S_D\) the common
+centring constant in that proposition.
+
+\begin{proposition}[A single determinant budget]\label{geom:joint-test}
+Assume the original lower word-quotient comparison, lower base
+slope bound, exponent bound and level count used in
+Proposition~\ref{trmean:assembly}. Then
+\[
+ \mathbb E D_u \le A C_N+C_M+mc_EB_0+
+       \mathbb E\bigl(J_u+\ell_u+\mathcal A_u-G_u\bigr).
+\]
+Thus an upper bound by \(E_x\) for this right side on the chosen
+data suffices for \eqref{scope:average}. The signed term \(J_u\)
+can be estimated directly at the descended lattices.
+\end{proposition}
+\begin{proof}
+The quotient comparison gives
+\(G_u\le\mu^N_{ui}-F_u^{\,0}+E_{ui}+\ell_{ui}-\mu^M_{ui}\).
+Insert \(E_{ui}\le m(A\ell_g+c_EB_0)\), \(-\mu^M_{ui}\le C_M\)
+and \(\mathcal M_u=S_D-A\Lambda_u+mA\ell_g-AC_N\).
+Since \(A\ge0\) and \(\Lambda_u\le\log T_{ui}\), this yields
+\[
+  G_u-\mathcal M_u \le \mu^N_{ui}+A\log T_{ui}-F_u^{\,0}-S_D
+                      +A C_N+C_M+mc_EB_0+\ell_{ui}.
+\]
+Average by rank, add \(\mathcal A_u-G_u\), and average over translates.
+To see how the two original geometric estimates enter, set
+\(\rho_{ui}=\mu_u+h_{ui}-F_u^{\,0}-S_D+A\log T_{ui}\). Then exactly
+\[
+       J_u=s_u-\mu_u+\langle \rho_{ui}\rangle_u,\qquad
+       s_u=\langle\mu^N_{ui}-h_{ui}\rangle_u .
+\]
+The original division bound caps \(\rho_{ui}\) and the original slope
+comparison controls \(s_u-\mu_u\). This formula retains their joint
+sign before any estimate. Perfect orbit selection removes the
+omitted tops at served primes; the target determinant remains
+in this signed sum.
+\end{proof}
+
+There is a direct arithmetic reading of \(J_u\), also for words of
+different ranks. Use the actual word lattices \(N_{ui}\) over the
+totally imaginary field \(K_u\) and their determinant metrics. Set
+\(\mathcal L_u=\bigotimes_i\det N_{ui}\), \(d_u=[K_u:\mathbb Q]\).
+For any nonzero \(K_u\)-linear functional \(f_u\) on its generic fibre, write
+\(\mathfrak a_u=f_u(\mathcal L_u)\) for its fractional ideal. Then
+\[
+\begin{aligned}
+ r_u J_u={}&\frac{2}{d_u}\left(
+       \sum_{v\mid\infty}\log\|f_u\|_{v,*}^{\,2}
+                        -\log N\mathfrak a_u\right)\\
+ &+A\sum_i r_{ui}\log T_{ui}-r_u(F_u^{\,0}+S_D).
+\end{aligned}
+\]
+Indeed, choose a rational vector \(e\) on the line with \(f_u(e)=1\).
+In this basis \(\mathcal L_u=\mathfrak a_u e\) and
+\(\|e\|_v=\|f_u\|_{v,*}^{-1}\). The absolute log-covolume formula
+and \(r\mu=-\mathrm{lcv}\) at positive rank give the first term
+as \(\sum_i r_{ui}\mu^N_{ui}\). The source declarations are
+\code{covolume\_via\_basis} in \code{LcvBasis.lean}, line 324, and
+\code{mu\_log\_conductor} in \code{TwistedLattice\allowbreak Naturality.lean},
+line 101. This uses one place
+per conjugate pair and the squared Hermitian norm. Rescaling \(f_u\)
+changes the two terms in parentheses by the same amount by the product
+formula. In particular an integral functional with bounded norm
+and known image ideal provides an upper bound with its full finite
+divisibility gain. A uniform estimate for these actual norms and ideals
+would test the signed determinant budget directly.
+
+\begin{proposition}[A two-sided comparison before estimating the word data]\label{geom:relative-test}
+For every word of positive rank put
+\[
+\begin{aligned}
+ P_{ui}&=\mu^N_{ui}-\mu^M_{ui}+E_{ui}-F_u^{\,0}-\mathcal M_u,\\
+ V_{ui}&=\mu^{M,\max}_{ui}-\mu^M_{ui}.
+\end{aligned}
+\]
+The two original quotient bounds and \(\mu^N_{ui}\le\mu^{N,\max}_{ui}\)
+give
+\[
+ P_{ui}-V_{ui}-c_s mB_0
+      \ \le\ G_u-\mathcal M_u\ \le\ P_{ui}+\ell_{ui}.
+\]
+Consequently
+\(\mathbb E(\mathcal A_u-G_u+\langle P_{ui}+\ell_{ui}\rangle_u)
+\le E_x\) suffices for \eqref{scope:average}. The two-sided comparison
+itself needs neither level counts nor estimates on the local exponent
+corrections or on the base slopes.
+\end{proposition}
+\begin{proof}
+In the lower quotient bound, move \(\mu^M_{ui},F_u^{\,0},E_{ui}\)
+to the other side. This gives the upper bound for \(G_u-\mathcal M_u\).
+In the upper quotient bound use
+\(\mu^N_{ui}\le\mu^{N,\max}_{ui}\le
+\mu^{M,\max}_{ui}+G_u+F_u^{\,0}-E_{ui}+c_s mB_0\).
+Rearrange and average with the stated word ranks.
+\end{proof}
+
+The difference of slopes in \(P_{ui}\) has a single determinant line
+at each translate. Let \(d^M_{ui}\) be the actual rank of its base
+lattice and \(k_u\) a common positive multiple of these ranks. With
+the determinant metrics put
+\[
+ \mathcal L_u^{\rm rel}=
+ \bigotimes_i\left((\det N_{ui})^{\otimes k_u}\otimes
+       ((\det M_{ui})^\vee)^{\otimes k_u r_{ui}/d^M_{ui}}\right).
+\]
+Its degree in the squared-norm normalization above equals
+\(k_u\sum_i r_{ui}(\mu^N_{ui}-\mu^M_{ui})\), by additivity of
+degree. Thus the same norm and fractional-ideal formula computes
+the relative determinant, even when the descended word ranks differ
+from their base ranks. Dividing by \(k_u r_u\) restores the required
+word mean. An independent bound for this expression must evaluate
+the actual lattices and the signed local corrections on the same hosts.
+
+\input{sections/relative-finite-index}
+\input{sections/recorded-mixed-comparison}
+\input{sections/quotient-ranks}
+\input{sections/reselected-realization}
+\input{sections/orbit-loss-at-selected-points}
+\input{sections/actual-target-floor}
+\input{sections/exceptional-row-degree}
+\input{sections/recorded-height-input}
+\input{sections/sparse-window-mean}
+
+The critical-line implication uses \eqref{scope:average} at every
+scale in arbitrarily late common windows. The finite-place identity
+\eqref{geom:finite-cancel} fixes the sign of the relative
+determinant correction. Corollary~\ref{rank:one-minor} isolates a
+test on one quotient of the actual descended columns per translate,
+under the division, height and loss comparisons stated there.
+Corollary~\ref{mixrec:carry} passes recorded integral sections
+directly to the Bergman volume in the division argument.
+On the original input hosts the construction realizes both reselected
+sets with the prescribed windows. Corollary~\ref{scope:one-word}
+reduces both displayed estimates to an upper bound on one actual
+word at one translate. The direct full-window criterion is
+Corollary~\ref{scope:fourth-powers}. Proposition~\ref{scope:fixed-powers}
+gives the cofinal criterion at any fixed integer power.
+Proposition~\ref{orb:selected} bounds both prime losses on the selected
+points. Proposition~\ref{rank:signed-degree} expresses the exceptional
+slope cost by the degree of one sublattice. On the height route,
+Corollary~\ref{recheight:period-degree} identifies the required
+untwisted Chow mean per harmonic degree on the actual covers.
+Tests on a fixed
+multiplicative interval, with a power saving in the fraction of
+exceptions, suffice by Corollary~\ref{scope:sparse-transfer}.
+Corollary~\ref{scope:bounded-conductor-intervals} supplies intervals
+of actual points for every target of conductor at most \(400\,000\).
+The signed estimate on arbitrarily late complete windows, including
+the zeta specialization, remains open in the independent paper proof.

@@ -1,0 +1,17 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Module: PeriodRadical
+Replay imports: 191 original source dependency modules from clean-rebuild/replay and the pinned Mathlib cache.
+Raw logs: D:/tmp/levent151/period-radical-20261122 (compile-final.log, kernel.log, axioms.log)
+
+lean PeriodRadical exit 0
+replaying PeriodRadical
+leanchecker -v PeriodRadical exit 0
+'Levent151.periodRadical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodRadical_iff_detects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.periodRadical_iff_detects_descended' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean --stdin exit 0
+
+The general equivalence quantifies over a supplied set of allowed columns for each actual word.
+The specialization uses range (D.jN u), the image of the actual descended number-field source.
+The word-coordinate equivalence eNu u is onto this source before jN u.
+The equivalence leaves the detection of every nonzero row in the specified subspace open.

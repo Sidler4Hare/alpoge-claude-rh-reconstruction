@@ -1,0 +1,286 @@
+\subsection{A window test using only the fixed target and ordinary primes}\label{pref:section}
+
+Fix a primitive character \(\psi\) of order \(o\). Write
+\(\chi_a=(\psi^a)^\ast\) for the primitive inducers in
+Proposition~\ref{ar:mean}, with the same weights \(\omega_a\). Put
+\[
+ A(n)=\sum_{a=0}^{o-1}\omega_a\Re\chi_a(n),\qquad
+ c_\psi=1+\gamma+\sum_{a=1}^{o-1}\omega_a
+                      \Re\frac{L'(1,\chi_a)}{L(1,\chi_a)} .
+\]
+Then \(2/3\le A(n)\le4/3\). At a prime unramified in the conductor
+of \(\psi\), character orthogonality gives
+\[
+ A(p^j)=\frac{3o+o\,\mathbf1_{\psi(p)^j=1}}{3o+1}.
+\]
+At the other primes the definition by individual primitive inducers
+applies. By \eqref{eq:centred}, the fixed retained function is
+\[
+ F(x)=G_{\mathcal F_\psi}(x)
+     =\sum_{n\le x}A(n)\Lambda(n)(x/n-1)-x\log x+c_\psi x .
+\]
+
+\begin{proposition}[Removing the higher powers on a finite window]\label{pref:powers}
+Let \(2\le X\le x\le Z\), and define
+\[
+\begin{aligned}
+ b_Z&=\sum_{p\le Z}\log p\sum_a\omega_a\Re
+           \frac{\chi_a(p)^2}{p(p-\chi_a(p))},\\
+ W_Z(x)&=\sum_{p\le x} A(p)\log p\,(x/p-1)
+                       -x\log x+(c_\psi+b_Z)x .
+\end{aligned}
+\]
+The difference is nonnegative, with the exact formula
+\[
+ W_Z(x)-F(x)=\sum_{p\le Z}\sum_{j\ge2}
+           A(p^j)\log p\min(1,x/p^j).
+\]
+It is \(O(\sqrt x)\) with an absolute constant. Removing the displayed
+\(j=2\) term leaves an absolute \(O(x^{1/3})\). For each fixed
+\(\psi\), uniformly for \(Z\ge x\to\infty\),
+\[
+ W_Z(x)-F(x)=
+       2\,\frac{3o+\gcd(2,o)}{3o+1}\sqrt{x}+o_\psi(\sqrt x).
+\]
+\end{proposition}
+\begin{proof}
+For each fixed prime, summing \(\chi_a(p)^j/p^j\) for \(j\ge2\)
+gives the geometric fraction in \(b_Z\), including when \(\chi_a(p)=0\).
+Subtract the higher ramps from \(xb_Z\) and use
+\(u-(u-1)_+=\min(1,u)\) for \(u\ge0\). For \(r=2,3\) the logarithmic
+mass of powers \(p^j\le t\), \(j\ge r\), is \(O(t^{1/r})\).
+Indeed the terms \(j=r\) satisfy Chebyshev's bound and the rest are
+\(O(t^{1/(r+1)}\log(2t))\). Integrate this bound using
+\(\min(1,x/n)=x\int_x^\infty\mathbf1_{n\le t}\,dt/t^2\).
+
+On the reduced classes of the conductor, the fraction with
+\(\psi^2=1\) is \(\gcd(2,o)/o\). The prime number theorem in fixed
+arithmetic progressions (for example
+\href{https://arxiv.org/abs/1802.00085}{Bennett, Martin, O'Bryant and
+Rechnitzer}, Theorem 1.2 for moduli at least three) therefore gives
+\(\sum_{p\le v}A(p^2)\log p=(3o+\gcd(2,o))v/(3o+1)+o_\psi(v)\).
+Integration with \(v=\sqrt t\) gives the asserted leading term for
+all squares. Restricting the primes to \(p\le Z\) changes that
+integral by \(O(x/Z)\), since
+\(\sum_{p>Z}\log p/p^2\ll 1/Z\) by partial summation.
+\end{proof}
+
+\begin{proposition}[Finite test for every real point of the window]\label{pref:test}
+For the empty prefix and each prime \(p\le Z\), put
+\[
+ t_p=\sum_{\ell\le p}A(\ell)\log\ell,\qquad
+ m_p=\sum_{\ell\le p}A(\ell)\log\ell/\ell ,
+\]
+where \(\ell\) runs over primes and the empty sums vanish.
+Let \(0<\alpha<1\), \(k\ge0\). For each prefix choose a minimizer
+\(z_p\in[X,Z]\) of \(\log z+t_p/z+kz^{\alpha-1}\). Then
+\[
+ W_Z(x)\le k x^\alpha\quad(X\le x\le Z)
+\]
+holds if and only if every prefix satisfies
+\[
+       m_p+c_\psi+b_Z\le\log z_p+t_p/z_p+kz_p^{\alpha-1}.
+\]
+For fixed \(k,\alpha\) and large \(X\), it suffices to check \(X,Z\)
+and just the roots
+\[
+ z-k(1-\alpha)z^\alpha=t_p
+\]
+lying between the last prime of the active prefix and the next prime
+inside the window. An end gap is intersected with \([X,Z]\).
+\end{proposition}
+\begin{proof}
+Positivity of \(A\) gives an envelope:
+\(\sum_{p\le x}A(p)\log p(x/p-1)=\max_p(xm_p-t_p)\).
+At \(x\) the prefix through its last prime attains equality. Divide by
+\(x\) and require each line to lie below the proposed bound, then
+minimize its right side over the whole interval. For \(t_p>0\) the
+identity
+\[
+ m_p+c_\psi+b_Z-\log x-t_p/x
+ =m_p+c_\psi+b_Z-1-\log t_p
+                  -\bigl(t_p/x-1-\log(t_p/x)\bigr)
+\]
+also gives the exact loss away from the maximizer of the normalized
+line at \(x=t_p\).
+
+For the shorter list differentiate \((W_Z(x)-kx^\alpha)/x\) on
+each prime gap. Its derivative is
+\((t_p-x+k(1-\alpha)x^\alpha)/x^2\).
+The function \(x-k(1-\alpha)x^\alpha\) is strictly increasing for
+large \(x\). At a prime the derivative jumps upwards, so an interior
+maximum must occur at a gap root. There the test simplifies to
+\(m_p+c_\psi+b_Z-1-\log z\le k\alpha z^{\alpha-1}\).
+The empty prefix is covered by the same derivative formula.
+For \(\alpha=1/2\) the root is explicit:
+\(\sqrt z=k/4+\sqrt{t_p+k^2/16}\).
+The argument applies verbatim to all prime powers with masses
+\(A(p^j)\log p\) and centre \(c_\psi\), giving the direct test for \(F\).
+\end{proof}
+
+\paragraph{The implication for the actual mean.}
+Keep the common character, scale and size hypotheses of
+Corollary~\ref{ar:meanhost}, including its discarded-twist bounds.
+Write \(t=n_T,\ B=tmb,\ \delta=n_2/n\), and let \(E_x\) be the
+right side of \eqref{scope:missing}. By dropping two nonnegative
+terms and using \(a_E\ge xb\), we have
+\[
+ \frac{2E_x}{B\delta}
+ \ge \frac{2x^{5\varepsilon}}{\delta}
+       \left(\frac{x}{m}+2\frac{n}{t}m x^\varepsilon\right)
+ \ge \frac{4\sqrt2}{\delta}\sqrt{\frac nt}\,
+                   x^{1/2+11\varepsilon/2}.
+\]
+Consequently, a bound \(W_Z(x)\le x^{1/2+11\varepsilon/2}\)
+on arbitrarily late common windows \(X=Y,\ Z=Y^{3/2}\) suffices
+for \eqref{scope:average}. Indeed \(t\le n\), \(x^{-\varepsilon}
+\le\delta\le1\), \(F\le W_Z\), and
+Corollary~\ref{ar:meanhost} bounds the normalized mean minus \(F\)
+by \(O_\psi(x^{1/2+\varepsilon}+(1+x^\varepsilon)\log(2x)
++1/(x\delta))\) for the fixed uniform host constants.
+Conversely, \eqref{scope:average} on these data implies
+\(W_Z(x)\le 2E_x/(B\delta)+O_\psi(x^{1/2+\varepsilon})\).
+The finite test only uses the primes at most \(Z\) and a constant
+of the fixed target. The original host assumptions enter at the
+comparison with the mean.
+
+\begin{corollary}[Size of the required prime bound on the actual ranks]\label{pref:scale}
+On the full rank page of Proposition~\ref{scope:reselection} put
+\[
+     S_x=\delta^{-1}\sqrt{x}\,x^{97\varepsilon/16}.
+\]
+Then \(2S_x\le 2E_x/(B\delta)\le28S_x\) at every sufficiently
+large scale. In particular \(W_Z\le S_x\) on a common window
+implies \eqref{scope:average} on its data, while
+\eqref{scope:average} there implies \(W_Z\le(28+o(1))S_x\).
+If the reselected sets can be realized as in
+Corollary~\ref{scope:reselection-loss}, a fixed implicit constant
+in \(W_Z\ll S_x\) suffices for both inequalities on the new data.
+\end{corollary}
+\begin{proof}
+Write \(y=x^\varepsilon\), \(v=\sqrt{x}y^{17/16}\).
+The page gives \(\sqrt{x}y^{-1/16}\le m\le2\sqrt{x}y^{-1/16}\),
+\(y^{1/8}/2\le n/t\le2y^{1/8}\), \(a_E\le2xb\),
+\(xm\le k\), and \(ky^2\le n^2\sqrt{x}\) eventually.
+Divide the four terms in the parentheses of \eqref{scope:missing}
+by \(B\). The first is at most \(2x/m\le2v\);
+the second is at most \(2xm/k\le2v\).
+The third is \(2(n/t)my\), between \(v\) and \(8v\).
+The fourth is at most \((n/t)\sqrt{x}\le2v\) since \(n_2\le n\).
+Multiplication by \(2y^5/\delta\) proves the budget bounds.
+The discarded terms, the higher powers and the normalized mean
+remainder together cost \(o(S_x)\), uniformly at the fixed
+\(\psi,\varepsilon\). The final assertion follows by taking a
+constant \(g\) in Corollary~\ref{scope:reselection-loss}.
+\end{proof}
+
+\paragraph{The arithmetic estimate left by the test.}
+Writing \(\vartheta_A(v)=\sum_{p\le v}A(p)\log p\) and
+\(b_\infty=\lim b_Z\), there is an exact tail identity
+\[
+ \frac{W_Z(x)}x
+ =\int_x^\infty\frac{v-\vartheta_A(v)}{v^2}\,dv-(b_\infty-b_Z).
+\]
+To see this, the prime number theorem with the fixed-modulus
+de la Vall\'ee Poussin remainder gives
+\(\sum_{n\le v}A(n)\Lambda(n)/n=\log v+C+o_\psi(1)\)
+by partial summation. To identify \(C\), write the corresponding
+Dirichlet series at \(1+s\) as the integral of the last partial sum
+against \(s v^{-1-s}dv\) on \([1,\infty)\).
+As \(s\downarrow0\) the integral is \(1/s+C+o(1)\);
+the logarithmic derivatives of the primitive inducers give
+\(1/s+1-c_\psi+O_\psi(s)\). Removing the absolutely summable
+higher powers therefore gives
+\(m_p=\log p+1-c_\psi-b_\infty+o_\psi(1)\).
+Together with \(\vartheta_A(x)/x\to1\), this shows
+\(W_\infty(x)/x\to0\). Integrate its derivative
+\((\vartheta_A(x)-x)/x^2\) and restore the finite calibration.
+The qualitative prime number theorem identifies the constant and
+the known square correction. A one-sided bound on this signed
+tail at the required power throughout arbitrarily late windows is
+the outstanding estimate.
+
+\begin{corollary}[Strength of the prime test]\label{pref:zeros}
+For a fixed \(\psi\), the following are equivalent.
+\begin{enumerate}
+\item For every \(0<\eta<1/2\) there are arbitrarily late windows
+\([Y,Z]\), \(Z=Y^{3/2}\), on which \(W_Z(x)\le x^{1/2+\eta}\)
+at every real \(x\).
+\item All the retained \(L(s,\chi_a)\) are zero-free in
+\(\Re s>1/2\), away from the principal pole.
+\item For every \(0<\eta<1/2\), the same inequality holds for all
+sufficiently large \(x\) and every \(Z\ge x\).
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+In the first condition \(F\le W_Z\). Theorem~\ref{an:zero} applied
+at \(\theta=1/2+\eta\) excludes zeros to the right of that line;
+then let \(\eta\) decrease to zero. For the converse use the
+absolutely convergent inverse Mellin integral for the uncentred ramp
+on \(\Re s=2\), with integrand
+\[
+        -\frac{L'}{L}(s,\chi_a)\,\frac{x^s}{s(s-1)} .
+\]
+Under the second condition move the contour to
+\(\sigma=1/2+\eta/2\). At large heights, the fixed-character
+logarithmic derivative is \(O_{\psi,\eta}(\log(2+|\Im s|))\)
+uniformly between these lines. Indeed its local partial fraction
+formula involves the zeros within one unit of height, of which
+there are \(O_\psi(\log(2+|\Im s|))\); each denominator has modulus
+at least \(\eta/2\). The horizontal integrals tend to zero.
+The only crossed residue is at one. It gives
+\(-x(L'/L)(1,\chi_a)\) for a nonprincipal character and
+\(x(\log x-1-\gamma)\) for the principal one.
+The centres cancel these terms exactly. The new vertical integral
+is \(O_{\psi,\eta}(x^{1/2+\eta/2})\) because its kernel decays
+quadratically in height. Proposition~\ref{pref:powers} now yields
+the third condition, uniformly in \(Z\). This implies the first.
+\end{proof}
+For the trivial target the second condition is equivalent to RH by
+the functional equation. Thus proving the finite test on arbitrarily
+late windows for every sufficiently small exponent would itself give
+a proof of RH for this target.
+
+\paragraph{A complete window with a ramified quartic target.}
+Take \(\psi=\chi_{5,4}\chi_{3,2}\), where
+\(\chi_{5,4}(2)=i\). Its square is induced by the quadratic
+character of conductor five. Thus \(13A(3^j)=13+(-1)^j\),
+whereas \(A(5^j)=1\). On the complete window \(X=10^4\),
+\(Z=X^{3/2}=10^6\), outward interval arithmetic gives
+\[
+              W_Z(x)<3\sqrt{x},\qquad F(x)<\tfrac14\sqrt{x}
+                    \qquad(X\le x\le Z).
+\]
+The two computations use respectively the first powers only and all
+prime powers. There are \(78{,}498\) primes and \(78{,}734\) prime
+powers. The upward jumps of the normalized derivative leave only
+\(1{,}528\) and \(2{,}713\) possible interior maxima, respectively.
+Both endpoints are also tested. The resulting upper bounds for
+\((W_Z-3\sqrt{x})/x\) and \((F-\sqrt{x}/4)/x\) are less than
+\(-0.00067335\) and \(-0.00022959\).
+
+Here is how the constants and tests can be reproduced. For
+\(p\nmid15\) with \(d=\operatorname{ord}(\psi(p))\), the local
+coefficient of \(\log p\) in \(13b_Z\) is
+\[
+    \frac{12}{p(p-1)}+
+       4\left(\frac1{p^d-1}-\frac{\mathbf1_{d=1}}p\right).
+\]
+For \(p=3\) it is \(13/(3\cdot2)+1/(3\cdot4)\), and for \(p=5\)
+it is \(13/(5\cdot4)\). The resulting enclosures are
+\(0.7536664167<b_Z<0.7536664168\) and
+\(1.7030116351<c_\psi<1.7030116379\).
+To enclose a real or imaginary component of \(L(1)\) or \(-L'(1)\),
+sum its zero-mean signed period against \(f(t)=1/t\) or
+\(f(t)=\log(t)/t\) to a whole period ending at \(m\ge10^5\).
+Let \(P\) be its sequence of partial sums over a period, \(\bar P\)
+its period mean, and \(D\) the maximum absolute partial sum of
+\(P-\bar P\). Twice summing by parts gives a remaining tail
+\(\bar P f(m+1)\) with error at most
+\(D(f(m+1)-f(m+2))\). Both first differences are positive and
+decreasing here. The script combines these intervals by complex
+division and encloses the candidate roots by integer square roots.
+The source is \texttt{verification/prime\_prefix\_window.py}.
+This calculation verifies the fixed-character functions on one
+complete window. The common-host comparison has an asymptotic
+threshold, and arbitrarily late windows remain necessary.

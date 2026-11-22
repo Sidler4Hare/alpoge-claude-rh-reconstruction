@@ -648,11 +648,544 @@ Consequently for every finite prime set \(S\), on that field,
 \]
 Here \(C',K\) are independent of \(v\) and of the admitted host for
 fixed \(\chi\). The last inequality follows by taking logarithms
-and using the bound on \(\log(Nt)\). The comparisons on \(E\), the
-case I sum and the remaining nontrivial character bounds are used at
-the indicated source theorems. The preceding character inequality
-identifies the part of their input supplied by the independent estimates.
+and using the bound on \(\log(Nt)\). The indicated source theorems
+give the full assembly. Corollary~\ref{addo:remainder} gives the
+field-to-character comparison and bounds both the dyadic field and
+the odd-prime opposite parity. It leaves the residual matching-parity
+character sum on the same window.
 \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean}{53}{case I with both test primes},
 \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/LayerLe.lean}{16}{fixed layer and field comparisons},
 \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean}{16}{assembly of the counts}, and
 \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/CMFieldExponentialBounds/AdmissibleOfPageN.lean}{110}{dyadic, minus and plus contributions on one field}.
+
+\subsection{Quadratic characters on the zeta hosts}\label{famsel:quadraticpage}
+
+\begin{proposition}[Finite layers and stabilization for a quadratic character]
+\label{famsel:quadraticlayers}
+Let \(\psi\) have primitive quadratic inducer of fundamental discriminant
+\(\Delta\) and conductor \(f=|\Delta|\mid N\). Let \(\ell\nmid f\) be an
+odd prime, \(e>0\), \(\psi(-1)=(-1)^e\), and \(\ell-1\mid2e\).
+Define a real quadratic field \(K\) of discriminant \(D\) in the following cases:
+\[
+\begin{array}{c|c}
+  \text{condition} & D\\ \hline
+  \ell-1\nmid e & \Delta\,(-1)^{(\ell-1)/2}\ell\\
+  \ell-1\mid e,\quad (\Delta/\ell)=-1 & \Delta .
+\end{array}
+\]
+Let \(O\) be the integers in any finite extension of \(\mathbf Q_\ell\),
+\(A=(\operatorname{Frac}O/O)(\psi^{-1}\chi_\ell^{-e})\), and
+\(S=S_{\ell N}(\mathbf Q,A)\). Write \(C=\operatorname{Cl}(K)[\ell^\infty]\)
+and \(\exp C=\ell^a\), with \(a=0\) for the trivial group. Then
+\[
+ S[\ell^n]\simeq\operatorname{Hom}_{\mathbf Z}(C,O/\ell^nO)
+ \qquad(1\le n\le1+v_\ell(e)).
+\]
+In particular \(S=0\) if and only if \(\ell\nmid h_K\). If \(a\le v_\ell(e)\),
+the entire group is finite and \(w_{\ell,e,\psi}=\log|C|\).
+\end{proposition}
+\begin{proof}
+Write \(\chi_\ell=\omega_\ell\langle\chi_\ell\rangle\) with Teichm\"uller
+part \(\omega_\ell\). The \(e\)-th power of \(1+\ell\mathbf Z_\ell\)
+lies in \(1+\ell^{1+v_\ell(e)}\mathbf Z_\ell\) by the binomial theorem.
+Thus \(M_n=A[\ell^n]\), identified with \(O/\ell^nO\) by multiplication
+by \(\ell^n\) on representatives, has scalar character
+\(\psi^{-1}\omega_\ell^{-e}\). The second factor is the quadratic character
+of discriminant \((-1)^{(\ell-1)/2}\ell\) in the first case and is trivial
+in the second. The discriminants in the product are coprime. The parity
+assumption makes the resulting character even, so its field is \(K\).
+
+At \(\ell\) and every \(p\mid f\), the decomposition group acts nontrivially
+modulo the maximal ideal of \(O\). Indeed the primes of \(f\) ramify in
+\(K\), and \(\ell\) is respectively ramified or inert. Hence \(A\) has
+zero invariants on each of these groups and globally. Multiplication by
+\(\ell^n\) on \(A\) gives a unique lift of a global class killed by
+\(\ell^n\) to \(H^1(\mathbf Q,M_n)\), and a strict class lifts to zero on
+these decomposition groups. At every other prime inertia acts trivially
+on \(A\), so divisibility of \(A\) also makes \(H^1(I_p,M_n)\to H^1(I_p,A)\)
+injective. Restriction to \(G_K\) now gives a homomorphism unramified
+everywhere. Real inertia has order two. Reciprocity therefore gives a
+homomorphism from the ordinary class group.
+
+Conversely, quadratic conjugation acts on ideal classes by inversion,
+since \(\mathfrak a\overline{\mathfrak a}\) is principal. Every
+homomorphism to \(M_n\) is therefore equivariant for the sign action.
+Inflation--restriction identifies it with a unique class in
+\(H^1(\mathbf Q,M_n)\), as the quotient group has order two.
+At each ramified prime the square of the unique prime ideal is principal,
+and at an inert \(\ell\) the unique prime ideal is itself principal.
+The homomorphism kills their Frobenius elements, hence vanishes on the
+local decomposition groups over \(K\). The local quotient over \(\mathbf Q\)
+also has order at most two. At every remaining \(p\mid N\) the class is
+unramified and its value on Frobenius becomes a coboundary in \(A\):
+arithmetic Frobenius acts by \((\Delta/p)p^{-e}\), and subtracting one
+gives a nonzero scalar, surjective on \(\operatorname{Frac}O/O\).
+Here \((\Delta/p)\) is the primitive Kronecker character, including at
+\(p=2\). This verifies every local condition at level \(\ell N\).
+
+Every continuous cocycle into \(A\) has finite image, so \(S\) is
+\(\ell\)-primary. Its first layer gives the vanishing criterion. If
+\(1\le a\le v_\ell(e)\), the groups \(S[\ell^a]\subseteq S[\ell^{a+1}]\)
+have the same order by the formula. An element of larger order would
+have a multiple of order \(\ell^{a+1}\), hence \(S=S[\ell^a]\).
+For \(C\simeq\bigoplus_i\mathbf Z/\ell^{a_i}\), its \(O\)-length is then
+\(e(O/\mathbf Z_\ell)\sum_i a_i\). For \(a=0\) the first layer is already
+zero. The stated weight follows in both cases.
+\end{proof}
+
+\begin{corollary}[The \(J_d\) contribution at three]\label{famsel:zetajd}
+On a zeta host with auxiliary prime \(d>3\), at every positive odd \(e\)
+the preceding formula holds for \(\ell=3\), \(\psi=J_d\) and
+\(K=\mathbf Q(\sqrt{3d})\). Write \(C=\operatorname{Cl}(K)[3^\infty]\),
+\(\exp C=3^a\). Over the case II twists \(3\le e<t\) with \(3^a\mid e\)
+and \(e\) odd, the sum of the weights is exactly
+\[
+ \left\lfloor\frac{\lfloor(t-1)/3^a\rfloor+1}{2}\right\rfloor\log |C|
+ \qquad(t\ge2).
+\]
+\end{corollary}
+\begin{proof}
+The two quadratic discriminants are \(-d\) and \(-3\).
+Corollary~\ref{famsel:hostdensity} places \(J_d\) in case II at every
+odd \(e\ge3\) in the window. Proposition~\ref{famsel:quadraticlayers}
+gives the weight \(\log|C|\) for each odd multiple of \(3^a\).
+The floor counts these multiples starting at one. It includes \(e=1\)
+only if \(a=0\), when its weight is zero.
+\end{proof}
+
+\begin{lemma}[A positive length at an algebraic host]\label{famsel:zetaclasssample}
+For \(q=43,\ d=325079,\ t=10,\ e=3\), the algebraic zeta host has
+\(w_{3,3,J_d}=\log3\).
+\end{lemma}
+\begin{proof}
+Both numbers are prime (trial division through \(570\) suffices).
+They exceed \(2t+1\) and the fixed zeta auxiliaries \(1,3,7\).
+They satisfy \(q\equiv3\bmod8,\ d\equiv7\bmod16\) and
+\(d+1=2^3\,3^3\,5\,7\,43\).
+For \(D=3d=975237\), put \(m=\lfloor\sqrt D\rfloor=987\).
+The reduced ideals have complete quotients \((b+\sqrt D)/(2u)\).
+Enumerate \(1\le b\le m\),
+\(\lfloor(m-b)/2\rfloor<u\le\lfloor(m+b)/2\rfloor\) and
+\(4u\mid D-b^2\). These inequalities say that the quotient exceeds one
+and its conjugate lies between minus one and zero. Starting at the
+least remaining pair \((u,b)\) in lexicographic order, remove its cycle
+by iterating
+\[
+ B=2u\left\lfloor\frac{m+b}{2u}\right\rfloor-b,\qquad
+ (u,b)\longmapsto ((D-B^2)/(4u),B).
+\]
+The \(332\) pairs give beginning pairs and periods
+\((1,987),96\), \((7,975),118\), and \((7,985),118\).
+Each ordinary ideal class contributes exactly one cycle
+\cite[pp.~826--827]{louboutinMollinWilliams}, so \(h_K=3\).
+As a separate check on the factor three, \(X^3-X^2-63X+60\) has
+residues \(4,4,1,1,3,6,2\) at \(0,\ldots,6\) modulo seven, and
+discriminant \(D\). Its totally real \(S_3\) splitting field is cyclic
+of degree three over \(K\). The squarefree discriminant gives only
+transposition inertia, so this extension of \(K\) is everywhere
+unramified. Now \(a=v_3(e)=1\) gives the claimed weight. Theorem~\ref{pr:pair}
+imposes further size, progression and simultaneous analytic estimates
+when selecting a pair for a page. This example uses the algebraic host
+conditions alone.
+\end{proof}
+
+\begin{corollary}[A quadratic subsum on a common page]\label{famsel:zetasubsum}
+On a zeta host of modulus \(N\) let \(\mathcal Q\) consist of all
+nontrivial quadratic entries with \(1\le e<t\) satisfying one of the
+two conditions of Proposition~\ref{famsel:quadraticlayers} and
+\(\exp\operatorname{Cl}(K)[\ell^\infty]\mid\ell^{v_\ell(e)}\).
+For \(t\ge2\) their total weight satisfies
+\[
+ \sum_{\mathcal Q}w_{\ell,e,\psi}\le 4t(1+\log t)\log(2Nt).
+\]
+\end{corollary}
+\begin{proof}
+At dyadic layer \(r\ge2\) the host character group has the factors
+\(C_{2^r}\times C_2^2\) of Proposition~\ref{host:art}. Its quadratic
+characters and the identity are generated by the even character
+\(\eta_8=(2/\cdot)\) and the two odd characters \(J_q,J_d\).
+At most four have the prescribed parity. For each fixed \(e\), the map
+\(\ell\mapsto(\ell-1)/2\) injects the eligible primes into the positive
+divisors of \(e\). Moreover \(D\le\ell f\le\ell N\). The ideal count
+following Proposition~\ref{famsel:class} bounds \(h_K\) by
+\(\sqrt D(1+\log\sqrt D)\le D\). Each weight is therefore at most
+\(\log(2Nt)\). Counting divisor pairs gives
+\(\sum_{1\le e<t}\sum_{b\mid e}1\le t\sum_{b<t}1/b\le t(1+\log t)\).
+On the pages of Section~\ref{famsel:complement}, this bound has logarithm
+\(O(\log v)\) and fits in the stated budget even when \(f\) grows with \(N\).
+\end{proof}
+
+\begin{proposition}[Quadratic strict classes at arbitrary depth]\label{famsel:alltower}
+Retain either set of hypotheses of Proposition~\ref{famsel:quadraticlayers}.
+For every \(n\ge1\) set \(b=\max(0,n-1-v_\ell(e))\), and let
+\(Q_b\) be the subfield of \(\mathbf Q(\zeta_{\ell^{b+1}})\) of
+degree \(\ell^b\). Put \(K_n=KQ_b,\ \Gamma_n=\operatorname{Gal}(K_n/\mathbf Q)\).
+With its natural scalar action on
+\(M_n=(O/\ell^nO)(\psi^{-1}\chi_\ell^{-e})\), there is an isomorphism
+\[
+ S[\ell^n]\simeq
+ \operatorname{Hom}_{\mathbf Z[\Gamma_n]}(\operatorname{Cl}(K_n),M_n).
+\]
+For \((3,J_d)\) and any positive odd \(e\), these tests determine the
+whole length for each fixed \(d,e\). Compute successive right-hand
+sides with \(O=\mathbf Z_3\). As soon as two successive orders agree,
+their common base-three logarithm is the normalized length.
+\end{proposition}
+\begin{proof}
+Modulo \(\ell^n\) the quadratic scalar cuts out \(K\), and the
+principal-unit factor of \(\chi_\ell^{-e}\) has order \(\ell^b\).
+Indeed a generator of \(1+\ell\mathbf Z_\ell\) increases its
+valuation of the difference from one by one on taking an \(\ell\)-th
+power. Its kernel cuts out \(Q_b\). The two orders are coprime,
+so \(K_n\) is the field on which the entire scalar becomes trivial.
+In particular it is totally real.
+
+The order-two element of \(\Gamma_n\) acts by \(-1\) on \(M_n\).
+It is central, and averaging over its subgroup kills all its
+positive cohomology and leaves zero invariants. Inflation--restriction
+(or the subgroup cohomology spectral sequence) therefore gives
+\(H^i(\Gamma_n,M_n)=0\) in every degree. Restriction identifies
+global \(H^1\) with the equivariant homomorphisms from \(G_{K_n}\).
+At \(\ell\) and at every \(p\mid f\) the local residual character
+is nontrivial. The corresponding decomposition subgroup of
+\(\Gamma_n\) contains the same involution: raise an element with
+negative residual sign to the odd order of its principal-unit part.
+The same cohomology argument applies there.
+
+The injection and strict local conditions used in
+Proposition~\ref{famsel:quadraticlayers} show that a strict class
+restricts to an everywhere unramified homomorphism, hence factors
+through the ordinary ideal class group. Conversely, an equivariant
+class-group homomorphism kills the class of every prime above
+\(\ell f\): the involution fixes the prime and negates its image.
+It is thus zero on the whole local decomposition group over \(K_n\),
+and local restriction is injective at those primes. At any remaining
+prime the extension \(K_n/\mathbf Q\) is unramified. The class has
+zero inertia there, and at a prime of \(N\) outside \(\ell f\) its
+unramified value becomes a coboundary in \(A\), as before. This
+proves both directions at arbitrary \(n\), including \(b=0\).
+
+For \(J_d\) one may start with \(\mathbf Z_3\), since flat extension
+of the coefficients scales length by the ramification index. The
+groups on the left are nested. Equality of two successive orders
+forces stabilization by the element-order argument of
+Proposition~\ref{famsel:quadraticlayers}. Theorem~\ref{famsel:rate}
+at the primitive conductor \(d\) bounds the length of the host group
+by \(\exp((16de)^{102})/\log 3\), so this test terminates for each
+fixed pair. In particular it also applies when \(a>v_3(e)\).
+The bound on the number of layers in this calculation is much
+larger than the uniform polynomial estimate required in Case II.
+\end{proof}
+
+\begin{proposition}[Pure dyadic characters at three and seven]\label{famsel:dyadic}
+Let \(\eta\) be a character of the real dyadic cyclotomic factor of a
+zeta host, inflated to its modulus \(N\). At \(\ell=3\) its strict group
+vanishes for every positive even \(e\). At \(\ell=7\) it vanishes for
+every positive multiple of six, and for every positive even \(e\) if
+\(\eta\) has order at most two.
+\end{proposition}
+\begin{proof}
+For the identity character, Proposition~\ref{famsel:primary} applies:
+\(\mathbf Q(\zeta_3)^+=\mathbf Q\), and \(\mathbf Q(\zeta_7)^+\) has
+class number one by the Minkowski bound above.
+If \(\eta\) has order \(2^s>1\), it cuts out
+\(K_s=\mathbf Q(\zeta_{2^{s+2}})^+\), the unique layer of degree \(2^s\).
+Fukuda and Komatsu prove that neither three nor seven divides \(h_{K_s}\)
+for any \(s\) \cite[Corollary~1.1]{fukudaKomatsuWeber}. When \(\ell-1\mid e\),
+the residual character is \(\bar\eta^{-1}\). The classes of \(3,7\)
+modulo sign in \(\operatorname{Gal}(K_s/\mathbf Q)\) have orders
+\(2^s,2^{\max(s-1,0)}\), respectively. Indeed \(-3\) and \(-7\) are
+in \(1+4\mathbf Z_2\), with \(v_2(-3-1)=2\) and \(v_2(-7-1)=3\);
+each squaring increases these valuations by one. Proposition~\ref{famsel:class}
+therefore applies at three for every \(s\), and at seven for \(s\ge2\).
+
+It remains to consider \(\eta_8\) at seven. For \(6\mid e\), seven
+splits in \(\mathbf Q(\sqrt2)\), of class number one. The two images
+of \(\sqrt2\) modulo \(49\) are \(10,-10\). The unit \(1+\sqrt2\) has
+sixth powers \(15,36\bmod49\), hence Fermat quotient vector \((2,5)\).
+This spans the coordinate-sum-zero line in \(\mathbf F_7^2\), so
+Proposition~\ref{famsel:splitray} gives vanishing.
+For \(e\equiv2,4\bmod6\), the quadratic and cubic residual factors
+have coprime orders. Their field is
+\(L=\mathbf Q(\sqrt2)\mathbf Q(\zeta_7)^+\) and has nontrivial inertia
+at seven. Tensoring integral bases bounds its discriminant by
+\(8^3\,49^2\). Its totally real Minkowski bound is therefore at most
+\((6!/6^6)8^{3/2}49<18\). In the cubic factor \(2,3,5,11,17\) have
+degree three, and \(13\) is inert in the quadratic factor. Two ramifies
+in the quadratic factor, and seven splits there and ramifies totally
+in the cubic factor. Hence the ideals of norm below \(18\) are the unit
+ideal, two primes of norm seven and one prime of norm eight.
+Thus \(h_L\le4\), and Proposition~\ref{famsel:class} applies.
+\end{proof}
+
+The same argument treats every prime \(\ell\equiv3,5\bmod8\), every
+nontrivial pure \(\eta\), and every positive multiple \(e\) of \(\ell-1\).
+The class-number result for this congruence is Horie's theorem
+\cite[Proposition 1.1]{fukudaKomatsuWeber}. In the cyclic real dyadic
+Galois group, the image of \(\ell\) generates the quotient of order
+two modulo eight and hence the whole group. Thus the local residual
+character is nontrivial at \(\ell\), as required by
+Proposition~\ref{famsel:class}.
+
+\subsection{The odd-prime budget over the zeta host}\label{zetafield:section}
+
+Write \(E\) for the actual CM field of Proposition~\ref{host:art} at
+\(\psi_0=1\), \(G=\operatorname{Gal}(E/\mathbf Q)\), \(D=[E:\mathbf Q]\),
+and \(c\in G\) for complex conjugation. Here
+\(G\simeq C_{2^b}\times C_2^2\) and its conductor divides \(N=2^{b+2}qd\).
+In particular \(D\) is invertible at every odd prime, including \(q,d\).
+
+\begin{proposition}[Exact descent to the host characters]\label{zetafield:descent}
+For \(e>0\) and odd \(\ell\), put \(A_0=(\mathbf Q_\ell/\mathbf
+Z_\ell)(-e)\). Take a finite extension \(F/\mathbf Q_\ell\) splitting
+\(G\), with integers \(O\). For \(\xi\in\widehat G\) put
+\(A_\xi=(F/O)(\xi^{-1}\chi_\ell^{-e})\). Restriction induces an isomorphism
+\[
+ S_{\ell N}(\mathbf Q,A_\xi)
+ \simeq e_\xi\bigl(S_\ell(E,A_0)\otimes_{\mathbf Z_\ell}O\bigr),
+ \qquad e_\xi=D^{-1}\sum_{g\in G}\xi(g)^{-1}g .
+\]
+Consequently, for either sign of \(c\), the \(\mathbf Z_\ell\)-length
+of its eigenspace over \(E\) is exactly the sum of the normalized
+\(O\)-lengths for characters of that sign. The two sides have finite
+length simultaneously.
+\end{proposition}
+\begin{proof}
+Finite free scalar extension commutes with continuous cochains and
+the kernels of the local restrictions, as in Corollary~\ref{newcoh:tamepool}.
+Restriction identifies \(H^1(\mathbf Q,A_\xi)\) with the
+\(G\)-invariants of \(H^1(E,A_\xi)\) by inflation--restriction:
+all positive cohomology of \(G\) on \(\ell\)-primary coefficients
+vanishes by averaging. Untwisting over \(E\) identifies these invariants
+with the indicated \(\xi\)-part. Apply the same restriction argument
+to each local decomposition group and its inertia subgroup. Their
+quotients over the corresponding groups over \(E\) have order dividing \(D\).
+Thus local vanishing is detected over \(E\). At a finite \(w\nmid\ell\)
+above a prime of \(N\), the module \(A_0\) is unramified and its
+Frobenius scalar is \((\mathrm Nw)^{-e}\). The scalar minus one is
+nonzero and acts surjectively on the divisible module. Hence
+\(H^1_{\rm unr}(E_w,A_0)=0\), so the inertia condition over \(E\)
+already gives the extra decomposition condition there. At \(\ell\)
+both groups require vanishing on decomposition groups. This proves
+the isomorphism. The integral projectors are orthogonal and sum to
+one. Extension of one \(\mathbf Z_\ell\)-composition factor has
+\(O\)-length \(e(O/\mathbf Z_\ell)\), yielding the asserted normalization.
+\end{proof}
+
+\begin{theorem}[Uniform opposite-parity sum on zeta hosts]\label{zetafield:minus}
+For every \(t\ge2\) and every finite set \(P\) of odd primes,
+\[
+ \sum_{\ell\in P}\ \sum_{1\le e<t}
+ \sum_{\xi(c)=(-1)^{e+1}} w_{\ell,e,\xi}
+ \ \ll\ D t^2\bigl(D+\log(2Nt)\bigr)
+\]
+with an absolute constant. In this formula the same definition of \(w\)
+is used at both parities. The matching parity \(\xi(c)=(-1)^e\)
+is the one tested by Cases I--V and Z.
+\end{theorem}
+\begin{proof}
+Fix \(n=e+1\ge2\), let \(\Sigma\) consist of infinity and the primes
+of \(N\), and put \(U=\operatorname{Spec}\mathcal O_{E,\Sigma}[1/\ell]\).
+By global Poitou--Tate duality the dual of the strict kernel over \(E\)
+embeds \(G\)-equivariantly in \(H^2_{\rm et}(U,\mathbf Z_\ell(n))\).
+Indeed a strict class is unramified off \(\Sigma\cup\{\ell\}\) and
+locally zero throughout this set, as proved above. Duality identifies
+its dual with the degree-two localization kernel for the Tate dual.
+The map from restricted Galois cohomology to \'{e}tale cohomology
+in degree two is injective by the comparison in the proof of
+Theorem~\ref{newcoh:lemmaK}. Complex conjugation has the same sign
+on a component and its dual.
+
+The refined Coates--Sinnott theorem of Greither and Popescu
+\cite[Theorem 6.11]{greitherPopescuCS} identifies the
+\((1+(-1)^nc)/2\) part of the zeroth Fitting ideal of this \(H^2\)
+with the annihilator of \(H^1_{\rm et}(U,\mathbf Z_\ell(n))_{\rm tors}\)
+times the equivariant value \(\Theta_\Sigma(1-n)\).
+The base is totally real, \(\Sigma\) contains the ramified primes, and
+the cyclotomic \(\mu\)-invariant required for the CM subfield of
+\(E(\mu_\ell)\) vanishes by Ferrero--Washington~\cite{ferreroWashington},
+since that field is abelian over \(\mathbf Q\).
+The theorem permits \(\ell\notin\Sigma\) by its Lemma 6.12.
+
+A single integer annihilates this \(H^1\)-torsion for every odd \(\ell\):
+\[
+ W_n=(3^{Dn}-1)(5^{Dn}-1).
+\]
+The torsion comes from \(H^0(E,(\mathbf Q_\ell/\mathbf Z_\ell)(n))\)
+by the coefficient exact sequence. For \(p=3\) or \(5\) different
+from \(\ell\), Frobenius over a place \(w\mid p\) acts there by
+\(p^{f_wn}\), with \(f_w\mid D\). This proves the assertion. Consequently,
+in each character component of sign \((-1)^n\), the length of \(H^2\)
+over \(O\) is at most the valuation
+\(v_O(W_n L_\Sigma(1-n,\xi^{-1}))\), with \(v_O(\pi_O)=1\).
+Indeed the projected Fitting ideal contains this scalar and the
+zeroth Fitting ideal of a finite torsion module over a DVR is the
+uniformizer to its length. The scalar is nonzero by the functional
+equation at this parity, the Euler product at \(n>1\), and the
+nonvanishing of the finitely removed Euler factors.
+
+For an integral bound independent of \(\ell\), set \(C_n=nN(n+1)!\).
+The imprimitive value is \(-N^{n-1}\sum_{u=1}^{N}\xi(u)B_n(u/N)/n\),
+extending the character by zero off the units. The Bernoulli recursion
+gives \((j+1)!B_j\in\mathbf Z\) by induction. Expanding \(B_n(u/N)\)
+therefore shows that \(C_nL_\Sigma(1-n,\xi)\) is an algebraic integer.
+The product
+\[
+  P_n=\prod_{\xi(c)=(-1)^n} C_nW_nL_\Sigma(1-n,\xi)
+\]
+is a nonzero rational integer since the set of factors is Galois stable.
+Inversion permutes those characters. Projecting after scalar extension
+and applying Proposition~\ref{zetafield:descent} gives
+\(\sum_{\xi(c)=(-1)^n}w_{\ell,e,\xi}\le v_\ell(P_n)\log\ell\).
+Here the division by \(e(O/\mathbf Z_\ell)\) converts \(v_O\) to \(v_\ell\).
+The Fourier series of \(B_n\) gives \(\sup_{[0,1]}|B_n|\le4n!\).
+Thus \(|L_\Sigma(1-n,\xi)|\le 4n!N^n\) and
+\(\log |P_n|\ll Dn(D+\log(2Nn))\).
+Summing the prime valuations costs at most this logarithm.
+Summation for \(2\le n\le t\) proves the theorem.
+\end{proof}
+
+Since \(D\le N\) and \(\log(Nt)\le 2v^{\varepsilon/4}\) on the admitted
+page, the logarithm of this bound is \(O(v^{\varepsilon/4})\). This
+supplies the entire odd-prime minus contribution in the zeta specialization
+of Section~\ref{famsel:complement}. For the matching parity, Case III is
+empty. At \(\ell=3,7\) and \(e\ge2\), a Case IV host character must
+be trivial: the auxiliary primes exceed \(2t+1\) and the fixed exceptional
+primes, and a character of the 2-group has odd order only when trivial.
+Its strict group vanishes by Proposition~\ref{famsel:primary}, since
+\(\mathbf Q(\zeta_3)^+=\mathbf Q\) and \(h_{\mathbf Q(\zeta_7)^+}=1\).
+Theorem~\ref{adds:dyadic-window} supplies the dyadic field contribution
+on the jointly selected interval. The general Case I sum and the
+outstanding II and V entries still enter the full budget.
+
+\subsection{The two deformation counts at the trivial target}\label{zetaring:section}
+
+Fix the primitive target \(1\), a zeta host \(h\) as in
+Proposition~\ref{host:art}, and a twist \(1\le e<t\). Denote a
+character of this host by \(\xi\). The field used for the ternary
+deformations is \(K=\mathbf Q(\sqrt{-7})\): seven is the least
+prime \(p\ge7\) congruent to three modulo four and coprime to one.
+The host CM field \(E\) of Proposition~\ref{zetafield:descent} can
+have arbitrarily large degree. The two fields perform different
+restriction operations.
+
+\begin{proposition}[A common integer for Case I]\label{zetaring:integer}
+Assume the ternary trace-product assertion \(\mathrm{PropGK}\)
+over \(K\). On every admitted zeta host with \(q,d>13\) there is a
+positive integer \(B_{h,e}\), independent of the coefficient DVRs
+and of the finite set of Case I primes, such that at each such \(\ell\)
+all the lengths are finite and
+\[
+ \sum_{\xi(c)=(-1)^e}w_{\ell,e,\xi}
+ \le 2v_\ell(B_{h,e})\log\ell,\qquad
+ \log B_{h,e}\le c_5\,\frac{[E:\mathbf Q]}2
+       [N(e+1)]^A\log(11\cdot13).
+\]
+The constants \(c_5,A\) are the two constants of \(\mathrm{PropGK}\)
+for the single field \(K\).
+\end{proposition}
+\begin{proof}
+For each kernel \(H\) of a complex host character of the stated
+parity apply the trace-product assertion at \(p=11,13\). Both primes
+are prime to \(30N|\Delta_K|\). For each \(p\) it gives an integer
+\(m_{H,p}\ne0\) of log absolute value at most
+\(c_5\varphi([(\mathbf Z/N)^\times:H])[N(e+1)]^A\log p\).
+At any Case I prime \(\ell\ne p\), the order of the character is
+a power of two, and its local factor at \(\ell\) has square one:
+the only odd primes of \(N\) are \(q,d\), with quadratic local
+factors. The field \(K\) has discriminant \(-7\) and class number
+one by Minkowski's bound \(2\sqrt7/\pi<2\). Here \(7\nmid N\)
+and \(\ell\ne7\). Inertia at seven acts trivially on the residual
+cyclotomic and host characters and nontrivially on \(K\).
+This verifies the kernel condition in \(\mathrm{GD}\).
+The remaining tests are precisely evenness of \(N\), positivity
+of \(e\), the prescribed parity and \(\ell-1\nmid2e\). The assertion
+gives finiteness and bounds the sum of the normalized lengths in
+the orbit by \(2v_\ell(m_{H,p})\). Its integer is chosen before
+the coefficient prime, the embedding and the coefficient ring.
+For each \(H\) form a positive integer \(b_H\) by using the lesser
+of these two valuations at primes other than 11 and 13, the valuation
+of \(m_{H,13}\) at 11, and that of \(m_{H,11}\) at 13.
+Then \(b_H\mid |m_{H,11}m_{H,13}|\).
+
+The characters with kernel \(H\) are precisely the faithful
+characters of the cyclic quotient. Their number is its totient,
+and raising such a character to an exponent coprime to its order
+preserves its parity. Thus these orbits partition the chosen half
+of \(\widehat G\), independently of the splitting coefficient field.
+Evaluation at \(c\) is onto \(\{\pm1\}\) since \(J_d(c)=-1\).
+The sum of the totients is exactly \([E:\mathbf Q]/2\).
+Multiplying the \(b_H\) gives the claimed integer. Summing the
+first inequality over any finite set of primes costs at most
+\(2\log B_{h,e}\).
+\end{proof}
+
+The deformation-theoretic content of this proposition is concentrated
+in its hypothesis. The rank-three single-character estimate chooses
+a Frobenius test \(\sigma\) separating the split trace
+\(u+1+u^{-1}\) from the traces of the admissible systems, where
+\(u\) is the restricted twisted character at \(\sigma\). On the
+represented deformation ring, the strict cohomology injects into
+the module used for the lower cotangent bound. The upper model bound
+is a sum of valuations of the differences of traces over a finite
+set meeting the required orbits. Its application needs finiteness of
+the invariant algebra, the control of the one-sided points and
+rigidity at the two-sided points. The resulting single-character
+bound has the factor two of Theorem~\ref{newcoh:orbitdegree}.
+The automorphic congruence count passes from these differences to
+\(m_{H,p}\) for an entire kernel orbit. In particular a separate
+pointwise estimate for each coefficient prime does not furnish the
+integer in the proposition. The
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/FOneCharU.lean}{19}{single-character deformation bound}
+is used in the \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LinkedUnlE.lean}{49}{rank-three count}.
+
+For Case II the residual character has prime-to-\(\ell\) part of
+even order, the twist has \(e\ge2\), and the additional prime test is
+that of Section~\ref{famsel:complement}. In the rank-four theorem
+one specializes its auxiliary level to \(n'=h.n_{\rm II}(\ell,\xi)\)
+and \(p_1=1\). The joint theorem for II and III then gives its first
+conjunct. The following steps describe what that conjunct uses.
+\begin{enumerate}
+\item The rank-four zero-weight condition quantifies over each
+allowed lift. Failure of module finiteness produces an
+equal-characteristic valuation-ring test with an element \(x\) of
+the zero-weight algebra such that \(x^{\ell^j}\ne x\) for every
+\(j>0\). Lemma~\ref{dp:detect} gives the algebraic detection
+argument. The Case II component theorem transports this particular
+test to a point killing the tower ideal \(J\). It uses the residual
+chain and specialization of the pair of representations. Together
+with the finite tower quotient this excludes the nonconstant test.
+\item The remaining two rank-four conclusions exclude the forbidden
+endomorphisms and control every required irreducible point by an
+automorphic system. The model construction identifies the strict
+Selmer module, chooses a nonvanishing Frobenius and uses the
+cotangent bounds on a family meeting the minimal orbits. The
+congruence count and rigidity bound the resulting sum. Its output
+for one admissible \((\ell,e,\xi)\) is finiteness together with
+\(w_{\ell,e,\xi}\le(\ell N e)^C\). Here \(\ell\) occurs on the
+right because this count is applied one prime at a time.
+\end{enumerate}
+At \((3,J_d)\) every odd \(3\le e<t\) enters this first conjunct.
+In fact its prime-to-three part is \(J_d\), its three- and two-local
+factors are trivial, and its conductor at two has exponent zero.
+With the project's notation \(f_0=\operatorname{ord}_{4}(3)=2\),
+\(n_0=v_2(3^2-1)=3\), and the trivial target has conductor and order
+one. Thus the
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean}{221}{Case II level}
+is \(n'=\lceil\log_2\max(192N,1728)\rceil=\lceil\log_2(192N)\rceil\),
+since \(16\mid N\). At \(e=1\) these same parameters give
+\(R_1=16\cdot3^2\cdot4^3=9216>2^{c_2}=1\), placing that twist
+in the large-\(R_1\) part of Case V. The rank-four
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/Gsp4PromodularityCaseTwo.lean}{101}{Case II component theorem}
+enters the \src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftingOfCohomology.lean}{33}{joint count}.
+Corollary~\ref{famsel:zetajd} independently computes its finite
+layers in the base quadratic field and, under the class-group exponent
+condition, its entire length. Proposition~\ref{famsel:alltower} computes
+all further layers in finite real abelian extensions and gives a
+terminating test at every fixed pair. The value in
+Lemma~\ref{famsel:zetaclasssample} is positive. Bounding the deeper
+layers uniformly as \(d,e\) vary still requires an estimate.
+For the other Case II characters the same rank-four
+arithmetic inputs are needed outside the families already treated.
+The original proof-value paths for both counts are described in
+Section~\ref{audit:countpaths}.

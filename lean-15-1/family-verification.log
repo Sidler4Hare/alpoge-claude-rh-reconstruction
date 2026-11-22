@@ -1,0 +1,28 @@
+Lean 4.33.1 (819816b2e0a3bf405af45ae5c7af2491d8f5bee6)
+Original compressed export SHA-256: 61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381
+
+check_family_witnesses.py against solution.ndjson.zst, exit 0:
+topDesWin returns input binders 6, 7. TopShape uses Cabs, C0, eD, eL = [2, 3, 2, 0].
+
+Original proof terms (expression identifiers in this export):
+  topDesWin                         70548012   four single-constructor eliminators
+    Exists.intro                    70547980   bvar 22 -> input binder 6 (eD)
+    Exists.intro                    70547979   bvar 21 -> input binder 7 (eL)
+  shape_closed_link_n_of_green      75520194
+    topDesWin application           75520125   20 arguments; arguments 4..7 are
+                                              665498, 3204862, 665498, 295964
+  forall_goal_of_shape_of_hyps application 80597595 in zero_free_all_of_green_v_win
+                                              receives the shape at argument 5
+  every_character_of_theta_integrals_local_matching: body 657234207 takes the
+    geometry at argument 3, application 657234206 of nonempty_hyps_definite_side_of_closed_bound.
+  every_character_of_literature_of_vWin: body 893073887 supplies seven arguments;
+    its fifth is the 15-argument covolume comparison at 893073883.
+  everyCharacter_of_row: body 997980698 supplies the literature record 997980694
+    and the vwin_of_row application 997980697. The closed everyCharacter proof
+    value 1065212057 applies everyCharacter_of_row to the closed row at 1065212056.
+
+Fresh geometry stage, native Lean 4.33.1, original TopShape and ShapeOf imports:
+  'Levent151.arithmeticFamilyOfGeometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+  exit 0
+The three arguments after the primitive character are Green, the nonempty geometry
+record, and the host supply for that character. This entry covers the geometry stage.

@@ -1,0 +1,242 @@
+\subsection{Integral cycles detecting the twisted norm}\label{addc:section}
+
+We construct the cycles and the common family of evaluations used in
+\eqref{sup:lengthcount}. Write \(A=\mathbf Z/q\), \(q=\ell^\nu\),
+\(w=\ell^c\), \(\kappa=1+w\), \(a=\kappa^E\), \(M=2E+1<w\).
+Here \(\nu\ge c\), and \(c\ge2\) if \(\ell=2\). The layer \(F/L'\)
+is cyclic with generator \(\gamma\), and contains a primitive
+\(q\)-th root \(\zeta\) on which \(\gamma\) acts by \(\kappa\).
+In this cyclotomic layer \(\gamma\) and \(\kappa\bmod q\) have the
+same order. Write \(C_q=\langle h\rangle\) for the group of order \(q\).
+All bar chains below have coefficients in \(A\).
+
+\begin{lemma}[One integral test for each residue field]\label{addc:residue}
+Let \(k\) be a finite field containing a primitive root
+\(\xi\) of order \(q\), and let \(v:k^\times\to A\) be a
+homomorphism. There are homology evaluations \(\theta_V\) of degree
+\(M\) on \(\mathrm{GL}(V)\) for finite-dimensional \(k\)-spaces \(V\).
+They are invariant under change of basis and additive under direct
+sum of representations. Put
+\[
+ z=\sum_{j_1,\dots,j_E\bmod q}
+       [h^{j_1}|h|\cdots|h^{j_E}|h]\in C_{2E}(C_q;A).
+\]
+If \(h\) acts on \(V=\bigoplus_x V_x\) by \(\xi^x\) on \(V_x\),
+and \(g=\bigoplus_x g_x\) preserves the summands, then the prism
+of \(g\) on the image of \(z\) has value
+\(\sum_x x^E v(\det g_x)\).
+\end{lemma}
+\begin{proof}
+The first face in the boundary of \(z\) occurs \(q\) times. The
+other faces cancel in consecutive pairs after translating a summation
+index by one, including the last face. Thus \(z\) is a cycle.
+Write \(|k^\times|=q m\) and choose a generator with \(m\)-th power
+\(\xi\). Such a generator exists since units modulo \(qm\) surject
+onto units modulo \(q\), by prime-power reduction and the Chinese
+remainder theorem. With \(L(b)\) its integer discrete logarithm in
+\([0,qm)\), put
+\[
+   u(b,d)=\frac{L(b)+L(d)-L(bd)}{qm}\pmod q .
+\]
+This symmetric two-cocycle has zero coboundary by cancellation of
+the four logarithmic differences. On \(k^\times\) take the cup
+product \(u^{\smile E}\smile v\). The prism of \(g\) inserts \(g\)
+in every position with alternating signs. Terms in the first \(2E\)
+positions cancel in pairs by symmetry of \(u\). The final insertion
+contributes \(v(g)\) times the product of the \(E\) carries. For
+\(h\mapsto\xi^x\), summing each carry over \(j\bmod q\) gives
+\(q L(\xi^x)/(qm)\equiv x\bmod q\) by telescoping. This gives
+\(x^E v(g)\) in dimension one.
+
+For general \(V\), sum this cocycle over the lines of \(V\).
+More explicitly, lift a bar simplex through the action on
+\(\mathbf P(V)(k)\), once for each starting line. Choose one nonzero
+vector \(v_x\) on each line. For arrows \(g_1,\ldots,g_M\) and initial
+line \(x_0\), put \(x_i=g_i^{-1}x_{i-1}\) and read the scalar \(b_i\)
+from \(g_i v_{x_i}=b_i v_{x_{i-1}}\). Evaluate the cocycle on these
+scalars. Composition multiplies the scalars and
+the arrows permute the starting lines, so the sum commutes with the
+bar faces. Changing the vectors gives naturally isomorphic functors
+from the action groupoid to \(k^\times\). The simplicial prism of
+that natural isomorphism gives the same value on cycles. This also
+proves invariance under change of basis. For a block sum \(V\oplus W\),
+lines with nonzero first projection lie over \(\mathbf P(V)\) with
+\(|k|^{\dim W}\) lifts per line. Normalize their first projections
+by the chosen vectors of \(V\). Their scalars are the scalars in \(V\).
+The other lines are precisely \(\mathbf P(W)\).
+Since \(|k|\equiv1\bmod q\), the evaluation is additive.
+
+On a scalar block the prism value is a homomorphism in \(g\).
+Indeed, composing the prisms for two successive arrows gives the
+prism for their product modulo the boundary over their two-simplex.
+Here both arrows centralize the cycle. This homomorphism factors
+through the determinant. In dimension at least two the elementary
+matrices generate \(\mathrm{SL}(V)\), and each is a commutator
+with a diagonal matrix since \(|k|>2\). Its value on
+\(\operatorname{diag}(b,1,\dots,1)\) follows from additivity and the
+one-dimensional computation. Applying additivity to all character
+blocks gives the formula. In this application each block prism is
+the image of the same cycle on \(C_q\times\mathbf Z\).
+\end{proof}
+
+\begin{lemma}[Isolation of one cyclic direction]\label{addc:filter}
+Set \(d_t(h)=(h,h^t)\) for \(0\le t\le M\) and
+\(\chi_t(j_1,j_2)=j_1+t j_2\) on \(J=A^2\).
+There are \(n_t\in A\), with \(n_{t_0}\) a unit, and a chain \(B\)
+on \(C_q^2\) with \(\partial B=\sum_t n_t(d_t)_*z\).
+For this \(t_0\) there is an \emph{integer}-valued function \(\eta\)
+on \(J\) such that, in the integral group ring of the additive group
+of \(A\),
+\[
+ (\chi_t)_*\eta=0\quad(t\ne t_0),\qquad
+ (\chi_{t_0})_*\eta=\sum_{i=0}^M p_i[\kappa^i],\qquad
+ \sum_i p_i X^i=P(X)=\prod_{j=0}^{M-1}(X-\kappa^j).
+\]
+Here pushforward adds coefficients in each fibre and \([x]\) is a
+group-ring basis element.
+\end{lemma}
+\begin{proof}
+Tensor the two cyclic periodic free resolutions over \(\mathbf Z\)
+to resolve the trivial module for \(C_q^2\). After tensoring with
+trivial coefficients \(A\), the maps \(h-1\) and the norm both
+vanish. Thus \(H_{2E}(C_q^2;A)\simeq A^{2E+1}\). The \(M+1\)
+classes give an \(M\)-by-\((M+1)\) matrix. Its Smith form over
+\(\mathbf Z/\ell^\nu\) has a free zero column. Transporting its
+coordinate vector back gives a relation with a unit entry, hence
+the bounding chain \(B\).
+
+Let \(U=X^w-1\) and let \(T\) act on \(\mathbf Z[X]\) by
+\(Tf(X)=f(X^\kappa)\). Then \(Tf\equiv f\bmod U\) and
+\(TU=(1+U)^\kappa-1\equiv\kappa U\bmod U^2\). Consequently
+\((T-\kappa^j)(U^j f)\) is divisible by \(U^{j+1}\). Applying
+the \(M\) factors to \(X\) shows that \(\sum_i p_i X^{\kappa^i}\)
+is divisible by \(U^M\) over \(\mathbf Z\). Substitute \(X=[1]\)
+in the group ring. Write the resulting element as
+\(([w]-[0])^M H\). For each \(t\ne t_0\) choose \(b_t\in A\) with
+\((t_0-t)b_t=w\). This is possible since \(0<|t_0-t|\le M<w\)
+and \(q\) is an \(\ell\)-power. Lift \(H\) by \(x\mapsto(x,0)\)
+and multiply it by
+\(\prod_{t\ne t_0}([(-t b_t,b_t)]-[(0,0)])\).
+Pushing the product forward gives precisely the two asserted
+formulas. The argument also covers \(c=\nu\).
+\end{proof}
+
+\begin{theorem}[Simultaneous cycles for the arithmetic detector]\label{addc:cycle}
+Suppose that \(\alpha\in F^\times\) and an integral-coefficient
+divisor \(\mathfrak d\) satisfy
+\(\operatorname{div}\alpha=(\gamma^{-1}-a)\mathfrak d\), with
+\((\gamma^{-1}\mathfrak d)(P)=\mathfrak d(\gamma P)\).
+There are a matrix size \(N\), a cycle \(y_\alpha\) of degree \(M\)
+on \(\mathrm{GL}_N(\mathcal O_{L'})\), and a finite set of excluded
+primes. At every remaining prime \(P\) of \(F\) of relative residue
+degree one, reduction followed by Lemma~\ref{addc:residue}, with
+\(\xi=\bar\zeta\), gives
+\[
+ \Phi_P(y_\alpha)=
+  \prod_{\substack{0\le j<M\\j\ne E}}(a-\kappa^j)\,
+       v_P^\times\!\left(\overline{N_{\gamma,a}\alpha}\right).
+\]
+The evaluation family can be fixed independently of \(\alpha\) once
+the indices \(v_P^\times\) have been chosen.
+\end{theorem}
+\begin{proof}
+Put \(Q(X)=P(X)/(X-a)\) and \(\beta=Q(\gamma^{-1})\alpha\),
+where an integral group-ring operator acts multiplicatively on
+\(F^\times\). Then
+\(\operatorname{div}\beta=P(\gamma^{-1})\mathfrak d\).
+Let \(\mathfrak a\) be the fractional ideal of divisor \(\mathfrak d\).
+On \(F^J\) consider the two \(\mathcal O_{L'}\)-lattices
+\[
+ \Lambda_0=\bigoplus_{j\in J}\mathcal O_F,\qquad
+ \Lambda_1=\bigoplus_{j\in J}\mathfrak a^{\eta(j)}.
+\]
+The diagonal representation \(\rho\) of \(C_q^2\), with characters
+\(j\) evaluated at \(\zeta\), preserves both. We construct
+\(L'\)-linear isomorphisms \(g_t:\Lambda_0\to\Lambda_1\) commuting
+with \(\rho d_t\). For \(t\ne t_0\), use the blocks
+\(\chi_t(j)=x\). The determinant ideal of each target block is the
+unit ideal by Lemma~\ref{addc:filter}. Over the Dedekind domain
+\(\mathcal O_F\), a sum of \(s>0\) fractional ideals is isomorphic
+to \(\mathcal O_F^{s-1}\) plus their product. Indeed, after scaling
+two ideals to coprime integral representatives their sum map onto
+\(\mathcal O_F\) splits with kernel isomorphic to their product.
+Iteration proves the assertion. Thus one may choose the map on
+each block with determinant \(1\), correcting its determinant by
+a unit on a source coordinate.
+
+At \(t_0\), on each coordinate with \(\chi_{t_0}(j)=\kappa^i\)
+modulo \(q\), change coordinates by the \(L'\)-automorphism
+\(\gamma^{-i}\) of \(F\). This is unambiguous by the equality of
+orders in the layer. The character on these coordinates becomes \(1\)
+in additive exponent notation, so \(h\) acts as \(\zeta\).
+Keep the other coordinates unchanged. On the combined exponent-one
+block the determinant divisor of the transformed target is
+\(\sum_i p_i\gamma^{-i}\mathfrak d=\operatorname{div}\beta\).
+Every other block has determinant divisor zero. The same ideal
+argument gives a map of determinant \(\beta\) on the exponent-one
+block and \(1\) elsewhere. This block is nonempty since \(j=(1,0)\)
+occurs. Undo the coordinate change to obtain \(g_{t_0}\).
+
+Write \(H=\operatorname{Aut}_{\mathcal O_{L'}}(\Lambda_0)\),
+\(g_*=g_{t_0}\), \(\rho'=g_*^{-1}\rho g_*\), \(k_t=g_*^{-1}g_t\).
+Both \(\rho,\rho'\) and all \(k_t\) take values in \(H\).
+In the bar construction write \(P_g\) for the homotopy from the
+identity to conjugation by \(g^{-1}\). Form the chain in \(H\)
+\[
+ y=n_{t_0}^{-1}\left(\rho'_* B-\rho_* B+
+           \sum_t n_t P_{k_t}(\rho'd_t)_*z\right).
+\]
+Indeed \(k_t^{-1}(\rho'd_t)k_t=\rho d_t\), so the prism boundary
+formula and \(\partial B=\sum_t n_t(d_t)_*z\) give \(\partial y=0\).
+In the group containing \(H\) and the \(g_t\), this cycle is
+homologous to \(n_{t_0}^{-1}\sum_t n_t P_{g_t}(\rho d_t)_*z\).
+To see this, apply the prism identity to \(\rho_*B\) at \(g_*\).
+Modulo a boundary it replaces \(\rho'_*B-\rho_*B\) by
+\(P_{g_*}\rho_*\partial B\). On each summand the two consecutive
+prisms are homologous to the prism of \(g_*k_t=g_t\), using the
+boundary of the triangle for the two composable conjugations.
+The finite projective \(\mathcal O_{L'}\)-module \(\Lambda_0\)
+is a summand of a finite free module. Extending the \(H\)-action
+by the identity on a projective complement gives the asserted cycle
+\(y_\alpha\) on an integral general linear group.
+
+Exclude ramification, primes dividing \(q\), and all conjugates of
+the supports of \(\operatorname{div}\alpha\) and \(\mathfrak d\).
+Also discard the finitely many places needed to make the lattices
+equal and the displayed maps and their inverses integral. These
+exclusions make all conjugates of \(\alpha,\beta\) units before
+the residue test. At a remaining relative-degree-one place the Galois extension
+splits over the residue field \(k\). The reduction of \(\Lambda_0\)
+therefore has coordinates \((\sigma,j)\), with
+\(\sigma\in\operatorname{Gal}(F/L')\). In those coordinates conjugating
+an \(F\)-coordinate by a power of \(\gamma\) merely permutes its
+embeddings. Write \(\sigma\zeta=\zeta^{k_\sigma}\).
+The trivial complement contributes zero in positive degree.
+By Lemma~\ref{addc:residue}, every \(t\ne t_0\) contributes zero
+because its block determinants are \(1\). The remaining prism
+contributes \(\sum_\sigma k_\sigma^E v_P^\times(\overline{\sigma\beta})\).
+The unit coefficient \(n_{t_0}\) has already been divided out.
+Replacing \(\alpha\) by \(\gamma^{-i}\alpha\) in this last weighted
+sum for \(\alpha\) multiplies it by \(a^i\), by reindexing
+\(\sigma\mapsto\sigma\gamma^i\). For \(\alpha\) the sum is
+\(v_P^\times(\overline{N_{\gamma,a}\alpha})\).
+Applying \(Q\) gives the claimed factor \(Q(a)\). All residue
+evaluations use the single construction of Lemma~\ref{addc:residue}.
+\end{proof}
+
+In particular one can use the union of the excluded sets for all
+representatives of the finite image \(I\) in \eqref{sup:lengthcount}.
+Stabilization preserves the value and repeating a block \(b'\) times
+multiplies it by \(b'\), by direct-sum additivity. The exact valuation of \(Q(a)\) is
+\((M-1)c+2v_\ell(E!)\): the distances \(|j-E|\) run twice through
+\(1,\ldots,E\), and \(v_\ell(\kappa^n-1)=c+v_\ell(n)\) by the
+binomial formula, with \(c\ge2\) at two. Thus the scaled test
+\(\ell^{M-1}\Phi\) already detects the norm raised to the power
+\(\ell^{M-1+(M-1)c+2v_\ell(E!)}\), which suffices for the stated
+choice of \(b\). The finite-direction filter, the residue cocycle
+and the assembly on the two lattices have corresponding constructions
+in the pinned source.
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/ExpStep.lean}{116}{Integral direction filter},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/FProd.lean}{101}{cyclic residue cocycle},
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/STrans.lean}{411}{transfer over the projective lines}, and
+\src{src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/LatticeBlockClasses/CJoin.lean}{5}{arithmetic cycle on the common lattice}.

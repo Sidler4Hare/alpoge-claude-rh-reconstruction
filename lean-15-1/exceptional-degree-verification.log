@@ -1,0 +1,29 @@
+Lean 4.33.1 (x86_64-w64-windows-gnu), commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Source: ExceptionalRowDegree.lean
+Source SHA-256: E6526A0CA31EBC8F1D934CB9829326EC08054ABB06DF5B84CD3F3CC8F48B07A8
+Module SHA-256: F3B17CB5BFE194A55A0B984BA521610A93E67B0ECE14897CE565D1027A08A825
+Direct import: RankTailTransfer (see quotient-rank-verification.log).
+Compilation of the final source into D:/tmp/levent151/row-degree-20261122/ExceptionalRowDegree.olean exited with code 0.
+The replay and axiom checks used the build directory, D:/tmp/levent151/relative-ranks-final-20261122 and the pinned import roots in D:/tmp/levent151/lean-path.txt.
+
+Kernel input (lean --tstack=400000 -j1 --stdin):
+import LeanChecker
+#eval do
+  replayFromImports `ExceptionalRowDegree
+  IO.println "Kernel replay completed for ExceptionalRowDegree"
+
+Kernel output:
+Kernel replay completed for ExceptionalRowDegree
+Exit code: 0
+
+Axiom input (lean --stdin):
+import ExceptionalRowDegree
+#print axioms Levent151.meanTarget_of_exceptionalRows
+#print axioms Levent151.meanTarget_of_clippedRankCutoffs
+
+Axiom output:
+'Levent151.meanTarget_of_exceptionalRows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.meanTarget_of_clippedRankCutoffs' depends on axioms: [propext, Classical.choice, Quot.sound]
+Exit code: 0
+
+The declarations compare finite weighted slope laws. The clipped comparison assumes a CDF inequality strictly above the cutoff and charges the exact weighted deficit below it. The application to the Hermitian lattice and the signed local determinant formula are proved in the manuscript.

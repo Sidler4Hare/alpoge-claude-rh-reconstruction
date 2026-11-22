@@ -1,0 +1,18 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Module: OneWordWindow (final selected-word lower-bound signature)
+Raw logs: D:/tmp/levent151/one-word-window-20261122 (compile-final.log, kernel-final.log, axioms-final.log)
+Main module imports: the previously verified Equation152 and MeanDeterminant replay caches.
+Cache order: realized-mean-28ca15eb, rank-page-supply-20261122, mean-determinant-20261122, mean-extraction-20261122, clean-rebuild/local, closed-kernel/lib, clean-rebuild/replay, required-modules/lib, lean-path.txt.
+
+lean OneWordWindow exit 0
+Official LeanChecker.replayFromImports completed on OneWordWindow
+LeanChecker replayFromImports exit 0
+'Levent151.RealizedData.oneWordFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.RealizedData.oneWordFactor_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.RealizedData.oneWordBudget_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.oneWordWindow' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean #print axioms exit 0
+
+The sole quotient-slope input is the second inequality of QuotientSlopeBoundsWith at the selected word.
+The theorem also uses an explicit ASK identity for the selected translate, two overlap bounds around the common centre, and normalized budget room.
+The finite-set choice and the arithmetic proof of the overlap estimates are inputs.

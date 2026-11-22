@@ -1620,7 +1620,7 @@ selected good-level condition. In the indefinite short-section
 step one has \(p,q\ge1\), \([E:\mathbb Q]/2>2\), \(p+q=r\).
 In the notation of the source, the stage hypothesis is
 \(Y.\mathrm{Good}(e,o)\), with
-\(\log M\le30L\), field size at most \(3L\), \(\log(fr)\le L\)
+\(\log M\le30L\), host field size at most \(3L\), \(\log(fr)\le L\)
 and \(o\le391(frL)^2\). The dominant final weight has its block
 gap at least \(8fr+10\) and logarithmic size at most \(10L\).
 The following applications on this same \(Y,Z\) distinguish the
@@ -1683,3 +1683,228 @@ following source steps.
 \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/HilbertSamuelBergmanFrameBound.lean}{26}{Frame and kernel bounds at the family stage};
 \src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/HodgeBundleWeights/ExistsDegreeParametersBound.lean}{33}{Combination on a common cover and component}.
 \end{enumerate}
+
+\subsection{The coefficient field and the two flag systems on a family stage}
+\label{zetageo:section}
+
+\begin{proposition}[A coefficient field for the deep level]\label{zetageo:field}
+Write \(s(F)=\log[F:\mathbf Q]+\log\operatorname{rd}(F)\), where
+\(\operatorname{rd}(F)=|\Delta_F|^{1/[F:\mathbf Q]}\).
+At a stage as above let \(F_0\) be the initial coefficient field,
+\(K=\mathbf Q(\sqrt{-d})\) the imaginary quadratic field of the
+marking, and \(g_0,g_1\) the two host level factors. Suppose that
+\(\Delta_K=-d\), that \(3,5\) split in \(K\), and that
+\((15,g_0g_1)=1\). Put \(m=g_0g_1\,15^u\) for \(u\ge0\), \(m\ge3\).
+There is a choice of a half of the split \(15^u\)-level, and a
+field \(F\supset F_0K(\zeta_m)\) containing the CM \(j\)-invariants
+and normalized Weber values of the \(m\)-torsion for the full order
+\(\mathcal O_K\). It satisfies
+\[
+ s(F)\le s(F_0)+\log 2+\tfrac32\log d+3\log m.
+\]
+On the family with \(u=\lfloor3L/\log3\rfloor\), \(L\ge1\),
+\(\log g_i\le9L+1,\ \log d\le L,\ s(F_0)\le217Z_0^2\) and
+\(Z_0=frL\ge8L\), this gives \(s(F)\le391Z_0^2\).
+\end{proposition}
+\begin{proof}
+Choose one prime over three and one over five. Equivalently, choose
+a root of \(-d\) at each prime and combine the roots to a unit
+\(a\bmod 15\). The ideal \(I=(15,a+\sqrt{-d})^u\) is coprime
+to its conjugate and \(I\bar I=(15^u)\), by reduction at the four
+distinct primes. This is the required half level.
+Let \(R\) be the ray class field of \(K\) of modulus \(m\mathcal O_K\).
+The ray class exact sequence gives
+\([R:K]\le h_K|(\mathcal O_K/m)^\times|\le d m^2\).
+Indeed each ideal class has an integral representative of norm
+at most \(2\sqrt d/\pi\) by Minkowski. There are at most
+\(\sum_{n\le\sqrt d}\sum_{a\mid n}1\le\sqrt d(1+\log\sqrt d)\le d\)
+such ideals, by the quadratic Euler factors. The conductor of each
+ray class character divides \(m\mathcal O_K\). The
+conductor--discriminant formula in \(R/K\) thus gives
+\(\operatorname{rd}(R)\le\sqrt d\,m\). Conjugation preserves the
+modulus, so \(R/\mathbf Q\) is normal. The Artin action on
+\(\zeta_m\) factors through this ray class group by the ideal norm.
+The main theorem of complex multiplication in its Weber form gives
+the stated CM values in \(R\)~\cite{coxCM}.
+
+Take \(F=F_0R\). Degrees are submultiplicative under compositum, and
+\(\operatorname{rd}(F)\le\operatorname{rd}(F_0)\operatorname{rd}(R)\).
+For the latter inequality, base change of the different gives
+\(\mathfrak D_{R/\mathbf Q}\mathcal O_F\subseteq
+\mathfrak D_{F/F_0}\). Apply the tower discriminant formula and
+take the \([F:\mathbf Q]\)-th root. The two bounds for \(R\) give the
+claimed estimate. Since \(15\le3^3\), one has \(u\log15\le9L\) and
+\(\log m\le27L+2\). The increase in \(s\) is at most \(90L\)
+for \(L\ge1\). In fact \(90L\le(90/64)Z_0^2\), giving
+\(s(F)<219Z_0^2\) inside the stated budget. This estimate uses
+the same \(L,f,r\) for every component of the stage.
+\end{proof}
+
+Propositions~\ref{addh:constants} and~\ref{addh:level} realize the
+component constants and the split half-level map on the principal
+marked packet over this \(F\). The compatible charts and the integral
+comparisons on modified flags enter the construction of the good cover \(Y\).
+Their combination and the bounds on the selected stage are recorded
+in the \src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsGoodCoverOverSizedField.lean}{111}{construction of the marked cover}
+and the \src{src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/DeepExistenceStatement.lean}{29}{uniform field-size calculation}.
+
+\begin{lemma}[One modification and the cost of changing the lattice]
+\label{zetageo:lattice}
+On a smooth compactified flag component over its coefficient field
+suppose the two systems of Proposition~\ref{newtheta:modified} have
+no base points on the marked open \(U\). There is one smooth proper
+modification, an isomorphism over \(U\), on which both moving systems
+are generated by their given sections. If the rational map of either
+system is birational onto its image, its moving system on the
+modification has that same property.
+
+Let \(M,M'\) be full \(\mathcal O_F\)-lattices in the same space of
+sections of rank \(a>0\), with Hermitian metrics at infinity. Put
+\(H=M\cap M'\). At each embedding \(\sigma\), let \(d_\sigma\)
+be the determinant norm of the identity from the metric on \(M\)
+to that on \(M'\). For normalized Arakelov slopes,
+\[
+ \widehat\mu(M')-\widehat\mu(M)
+ =\frac{\log|M'/H|-\log|M/H|-\sum_\sigma\log d_\sigma}
+        {a[F:\mathbf Q]} .
+\]
+Here both embeddings over a complex place are counted.
+\end{lemma}
+\begin{proof}
+Principalize the product of the two base ideals in characteristic
+zero, with centres outside \(U\)~\cite{wlodarczyk}. On the resulting
+integral variety each factor is invertible: for \(IJ\) invertible
+the fractional ideal \(J(IJ)^{-1}\) is an inverse to \(I\).
+Divide the pulled-back sections by a local generator of each
+factor. Their coefficients now generate the unit ideal. The two
+maps agree with the original rational maps on the dense open.
+Proposition~\ref{newtheta:modified} then gives the adjoint
+inclusion whenever its extension and cusp identifications hold.
+For the slope formula, compute the degree of the determinant
+of \(H\) first with each metric. Passing from \(H\) to either
+superlattice adds the logarithm of its finite index in the
+unnormalized degree. Changing the metric subtracts the logarithm
+of the determinant norm at each embedding. Divide by the common
+rank and field degree.
+\end{proof}
+
+In particular equality of the two rational section spaces determines
+neither finite index in this formula. For a comparison with a
+separately defined integral flag lattice, these indices and the
+determinant norms must be evaluated on the same \(Y,Z\) that
+produced the sections. This is one place where a pointwise proof
+of \eqref{scope:missing} needs more than an archimedean norm estimate.
+
+\begin{proposition}[A finite test for the component mean height]\label{zetageo:mean}
+Fix a good cover, a weight \(u\) with the required gap, and the
+finite valuation conditions used at that gap. On each component
+\(Z\) let \(D\) be the flag dimension, \(\delta_Z>0\) its prescribed
+top degree, \(d_F=[F:\mathbf Q]\), and \(L_{Z,m}\) its mixed integral
+cusp lattice in weight \(mu\). Give it the supremum of the marked
+norms over all good embeddings and frames.
+Suppose the following sections belong to these actual lattices and
+their products belong to the lattices of the summed weights, with
+submultiplicative norms.
+\begin{itemize}
+\item There are \(D+1\) nonzero sections \(s_0,\ldots,s_D\) in
+degree \(m_0\in8\mathbf Z_{>0}\). The ratios \(s_i/s_0\)
+\((1\le i\le D)\) are algebraically independent over \(F\) and
+the function field of \(Z\) has degree \(r=m_0^D\delta_Z\) over
+the field of these ratios.
+\item There are \(r\) nonzero sections \(b_j\) in one degree
+\(m_0 k_0\) such that \(b_j/s_0^{k_0}\) form a basis for this field
+extension. All sections used here have finite positive norm.
+\end{itemize}
+Then the mixed component volume slope satisfies
+\[
+ \operatorname{compVolSlope}_Z(u)\ \ge\
+ a_Z:=-\frac{\sum_{i=0}^D\log\|s_i\|}{(D+1)m_0}.
+\]
+If these finite systems are available on every component and
+\(|I|^{-1}\sum_{Z\in I}a_Z\ge-X\), they give the required component
+mean with error \(X\). The degrees \(m_0,k_0\) and systems may
+depend on the weight and the component.
+\end{proposition}
+\begin{proof}
+In degree \(m=m_0(k_0+k)\) take all products \(b_j s^\alpha\) with
+\(\alpha_i\ge0,\ \sum_i\alpha_i=k\). Dividing by \(s_0^{k+k_0}\)
+and using the two independence assumptions proves that these products
+are \(F\)-linearly independent. Multiply them by a fixed integral
+basis of \(\mathcal O_F\) over \(\mathbf Z\). We obtain
+\(R_k=d_F r\binom{k+D}{D}\) independent integral sections \(v_j\).
+In particular \(D!R_k/(d_Fm^D)\to\delta_Z\).
+On averaging over all the monomials each exponent has mean
+\(k/(D+1)\), by symmetry. Thus, writing
+\(\lambda_j=-m^{-1}\log\|v_j\|\), one has
+\(\liminf_k R_k^{-1}\sum_j\lambda_j\ge a_Z\).
+The fixed sections \(b_j\) and the coefficient basis cost \(O(1/m)\)
+in this average.
+
+For any real \(t\), form the integer combinations with coefficients
+between zero and \(\lfloor e^{m(t+\lambda_j)}/R_k\rfloor\) inclusive.
+They are distinct and have norm at most \(e^{mt}\). Their log count
+is at least both zero and
+\(mR_k(t+R_k^{-1}\sum_j\lambda_j)-R_k\log R_k\).
+The mixed volume \(V_Z(t)\) takes the limsup of the log count on
+degrees \(m=8k'\), multiplied by \(D!/(d_Fm^{D+1})\).
+Our degrees are a subsequence and \(\log R_k=o(m)\). Hence
+\[
+ V_Z(t)\ge\delta_Z\max(0,t+a_Z),\qquad
+ \inf_{t\in\mathbf R}\bigl(V_Z(t)/\delta_Z-t\bigr)\ge a_Z .
+\]
+The infimum is the component volume slope. Taking the \(a_Z\) as
+witnesses gives the mean assertion. No interchange of a component
+average with a limsup is needed.
+\end{proof}
+
+For the family's \src{src/Development/AbelianVarietyTheory/Definitions/Divisors/SemiposAtOfPositive.lean}{101}{mean height condition},
+the lattices in this test use the height valuations at the primes
+selected by the weight and gap and the recorded valuations elsewhere.
+The numerical requirement is the displayed mean with
+\(X=C\,\mathrm{errX}(s,u,g)\), for a single \(C\) over the admitted
+stages and weights. If the \(s_i\) give a finite map to
+\(\mathbf P^D\) from a model of degree \(\delta_Z\) in weight \(u\),
+the projection formula gives the required degree \(r\).
+A finite map also supplies the generic basis from sufficiently high
+twists of its coherent direct image on projective space. Pulling that
+basis back into the specified cusp spaces and placing it in the mixed
+lattices are part of the stated hypotheses. Only the norms of the
+\(D+1\) parameter sections enter the final mean.
+
+There is a quantitative way to choose the parameters. Suppose \(s\)
+integral sections in degree \(m_0\), of norm at most \(H\), define
+a base-point-free map onto a projective variety of dimension \(D\)
+and degree \(\delta'\). Its Chow form in \(D+1\) hyperplanes is
+nonzero and has degree \(\delta'\) in each block. Polynomial
+interpolation in each coefficient supplies hyperplanes with
+coefficients in \(\{0,\ldots,\delta'\}\) where this form is nonzero.
+Their common center misses the image. Projection from that center
+is finite on the image: the pullback of a hyperplane is ample, so
+no curve is contracted. Its degree is \(\delta'\) by the projection
+formula. The resulting parameter sections have norm at most
+\(s\delta'H\). If the original map has generic degree \(g\) with
+\(g\delta'=m_0^D\delta_Z\), and the generic basis belongs to the
+mixed lattices as above, this gives the explicit lower bound
+\(-m_0^{-1}\log(s\delta'H)\) for the component volume slope.
+
+To pass from one stage to the family, first fix a common threshold
+at which the host, core-field and size bounds of
+Proposition~\ref{zetageo:field} hold for every admitted point and
+stage. On the resulting good covers, suppose the marked flag
+identifications, integral restrictions, short frames and their
+metric bounds specified above hold with uniform constants. Suppose
+also the height and rank comparisons following Lemma~\ref{geo:component}
+hold there, in particular the lower bound on the component average
+of \(\ell_Z\), which can now be supplied by
+Proposition~\ref{zetageo:mean}. Proposition~\ref{newtheta:aggregate} then gives
+\(\mu_{\rm cover}\ge-2(3C_1+C_2+4)E_P\) at every such stage.
+After the stated descent and Gram comparisons,
+Proposition~\ref{geo:covolume} absorbs the exponential error with
+one threshold depending only on the fixed constants. Only the
+finitely many thresholds for uniform estimates are combined here.
+The marked integral comparisons and the mean height of the actual
+components remain inputs to this application. The formal proof
+combines the height inputs at the
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/HeightLowerBoundGeneral.lean}{21}{component height theorem}
+and passes from the covers to the grid at the
+\src{src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopCovolG.lean}{49}{covolume descent}.

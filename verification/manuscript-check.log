@@ -1,8 +1,8 @@
-250 A4 pages; 281 LaTeX labels; 16 document bookmarks; 74 bibliography entries.
-57 proof-status entries, all mapped to numbered statements and printed pages.
-All 281 PDF destinations match their printed headings or equations. All printed and recorded page numbers agree.
-615 source references to 431 files and 578 distinct Lean line destinations. Every destination is present in the PDF, including the source-only mean theorem at line 199.
-1935 link annotations. Embedded fonts: 33. Extent of visible text in PDF points: 74.42, 61.48, 521.41, 800.19.
+329 A4 pages; 380 LaTeX labels; 16 document bookmarks; 79 bibliography entries.
+96 proof-status entries, all mapped to numbered statements and printed pages.
+All 380 PDF destinations match their printed headings or equations. All printed and recorded page numbers agree.
+737 source references to 511 files and 687 distinct Lean line destinations. Every destination is present in the PDF.
+2522 link annotations. Embedded fonts: 34. Extent of visible text in PDF points: 74.42, 61.03, 521.41, 800.19.
 No missing glyph, unresolved cross-reference, underfull or overfull box in the final TeX log. No empty page or text outside the print margins.
-These tests check the English manuscript, links and numerical statement locations. The new English theorems have paper proofs. The earlier finite-group Lean bridges have separate logs.
-A clean rebuild from the extracted source distribution reproduced all 250 pages in extracted text and 72-dpi raster, 1935 link rectangles and targets, 16 bookmarks and 713 named destinations.
+The new Galois, twisted-norm, Selmer and marked-cover arguments are paper proofs. The citation audit checks the pinned Lean declarations used for comparison. Finite cycle checks matched 1746 bar-prism evaluations and 81 integer valuation identities.
+Lean checks cover the original short-norm count with an extra congruence, the conditional tower descent, the orbit residue and integral-span implications, the clipped mean, and the one-lattice large-prime test. The marked slope comparison and the full Smith rank formula are paper deductions. Uniform detection or the residual arithmetic slope and local rank bounds remain open.

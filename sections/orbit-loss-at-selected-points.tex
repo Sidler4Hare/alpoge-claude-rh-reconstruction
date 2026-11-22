@@ -1,0 +1,172 @@
+\subsection{The prime losses at the selected translates}
+\label{orb:selected-loss}
+
+Write \(B=n_Tmb\), where \(a_E=xb\). At an actual point let
+\(\sigma_p=\operatorname{Sig}(p)\), evaluated with its recorded integer
+weights \(a,b_{\rm top}\), and put \(\theta=x^{-\varepsilon}\).
+The candidates are the primes in \code{sAt}. The selected weights satisfy
+\begin{equation}\label{orb:selected-W}
+ \sum_{p\ \mathrm{candidate}}\frac{\log p}{p}
+       \bigl(2{\bf1}_{\sigma_p>\theta}+4\sigma_p\bigr)
+       \le x^{-9}.
+\end{equation}
+This is the predicate \code{ChW\_at}. On a kit carrying \code{WOK},
+\code{wreq\_of\_wok} identifies the arithmetic share with the point
+share for each \code{Pt.From} with canonical representatives, valuations
+and zero weights off the tops. The equality uses both weight vectors.
+The same centres therefore give \eqref{orb:selected-W} at all the
+translates supplied by Proposition~\ref{scope:reselected-hosts}.
+More explicitly, fix the complete windows \(S\) and select the entire
+host \(H_s\), including both sets, at each scale. In the staged range
+of the original point and weight existence theorems the order is
+\[
+   \exists x_1\quad\forall s\in S,\ s.x\ge x_1\quad
+   \exists(a_s,b_s)\ \text{on }H_s\quad
+   \forall\,0\le u<n_s\quad\exists\,p_u\ \text{from }H_s,a_s,b_s .
+\]
+First build the temporary family with provisional in-window centres.
+At a kit point satisfying \code{WeightVectorExists}, the theorem
+\code{weightWindowRequirement\_host\_of\_point} supplies duty
+centres on its prescribed \(H_s\). Apply \code{WClosed} to this family.
+Its windows are exactly \(S\), so an index at each late \(s\in S\)
+recovers the duty centres at that same scale. Apply \code{kit\_of\_points}
+again with these centres to obtain all the \(p_u\).
+In particular selecting \(H_s\) by Proposition~\ref{orb:selection}
+preserves its overlap and large-order properties throughout both
+applications. The scale bound may depend on the prescribed sequence
+of hosts.
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/WeightWindowRequirementHostOfPoint.lean}{17}{returning from a point to its prescribed host}
+\src{src/Development/AbelianVarietyTheory/Proofs/GlobalInterpolation/WeightRequirementOfValid.lean}{32}{the share inequality at a point of the common kit}.
+
+\begin{proposition}[The signed prime loss on a selected point]\label{orb:selected}
+Fix an original family \code{FamP} at exponent \(\varepsilon\).
+There are \(C\ge0\) and \(x_0\) such that at every \(x\ge x_0\) and
+every family point with \(n_T>0\), \eqref{orb:selected-W}, and
+\[
+  \sum_{p\ \mathrm{large\ order}}\frac{\log p}{p}
+       \#\{\text{bad tops for }p\}\le n_Tx^{-2+\varepsilon},
+\]
+each tied reading of the asks with its required finite cutoff satisfies
+\[
+          \mathcal A_u-G_u\le CB,\qquad I_u\le Bx^{-8}.
+\]
+In particular, for a common kit whose points satisfy these conditions,
+every \(\kappa\ge0\) gives
+\[
+   \mathbb E_{u\in A_0}(\mathcal A_u-G_u+\kappa I_u)
+        \le (C+\kappa x^{-8})B .
+\]
+\end{proposition}
+\begin{proof}
+For an orbit representative \(v\) let \(N_v\) be its number of tops.
+The ordinary parameter choice gives
+\(S_v\le 2mN_v a_E/p\) by \code{svBound\_of}. The defining
+estimate for the orbit term now gives
+\(\mathrm{io}_p\le 4m n_T a_E\,\sigma_p/p\).
+All shares are nonnegative by the definition of the local infimum.
+Multiply by \(\log p\), sum and use \eqref{orb:selected-W}.
+The identification \code{IO\_at} gives \(I_u\le
+m n_T a_E x^{-9}=Bx^{-8}\).
+
+For the gain comparison set \(b_o=b^{x^{-\varepsilon/2}}\).
+For all sufficiently large \(x\), all the family indices, all
+in-window vectors and every inert prime \(p\le X''\), the local
+computed functions satisfy
+\[
+ \sum_j\sum_{t\in T_p}
+    \bigl(\mathrm{askP}_{jtp}-\mathrm{lo}_p\bigr)-m\,\mathrm{fl}_p
+ \le \sum_j\mathrm{gainP}_{jp}-\mathrm{\tau P}_p .
+\]
+Here the constants in \(\mathrm{lo}_p,\mathrm{fl}_p\) are uniform and
+the bound includes the recorded vectors. To see the required inputs,
+\code{family\_first\_lemma} supplies the count at good representatives,
+and \code{family\_sizes\_bound} supplies the numerical prime windows.
+Its positive coefficient \(K_{\rm La}\) follows at any late point
+from \(\mathcal L_a=K_{\rm La}N_1^2\log a_E>0\).
+The numerical estimates \code{numStar\_ev}, \code{facts\_ev} and
+the representative count give \code{starAll\_of}. The additional
+exponent in \code{gain\_bound\_at\_of\_star} is bounded directly
+by rounding its recorded value
+\(\lceil C_e f k^2\log_p a_E\rceil\).
+For \(p\le X''\le a_E\) one has \(fk^2\log_p a_E\ge1\), so
+replacing \(C_e\) by \(C_e+1\) absorbs the rounding.
+
+On a served prime the point's fill identities identify these asks
+and gains with the finite ledger. Enlarging the constant \(c\)
+in its floor terms to \(4|c|+1\) gives the displayed inequality
+with the ledger floors. Missing tops on served primes enter the
+large-order bad-top sum. On a first-kind prime \code{firstHyp\_at}
+puts the prime in the small-order set or in one of the specified
+bands about \(X'\). For a second-kind prime
+\(\sigma_p>\theta\), and its entire cost is at most
+\[
+    4m n_T a_E\sum_{\mathrm{second}\ p}\frac{\log p}{p}
+        \le 2Bx^{-8}.
+\]
+The original numerical discriminant estimate
+\code{joint\_discriminant\_eventually} combines these bounds with
+the high-prime and floor terms, giving
+\(\mathcal A_u-G_u\le(3C_{\rm par}+13)B\).
+The parameter windows bound \(C_{\rm par}\) uniformly in \(x,u\).
+Taking the uniform mean proves the last assertion. The independent
+Lean implementation is \code{OrbitLossAtSelectedPoints.lean}.
+\end{proof}
+
+For the original construction, the large-prime step in
+\eqref{orb:selected-W} involves a further finite average.
+When \(p\ge p_0(k)\), \code{kapI} is the infimum of the losses
+that satisfy \code{LPprime} in every admissible local DVR setting
+and for every dominant lift of the prescribed top weights. In
+this predicate the threshold is \(\lceil t_{\rm rec}\rceil\), the
+allowed error level is \(D_{\rm I}\), and the accompanying level
+is \(8(D_{\rm I}+1)\). On an orbit of length \(n'\) with \(N\) tops,
+let \(d_y\) be the backward distance from a non-type-V top \(y\)
+to the nearest type-V top, with value zero if none exists.
+With cyclic indices the threshold \code{tIf} is
+\[
+\begin{aligned}
+ t_{\rm rec}={}&
+   \sum_{\substack{y\ {\rm non\text{-}V}\\ d_y>0}}
+        \min\{b_y,a_{y-d_y}/p^{d_y}\}\\
+ &+K_1NN_1\bigl(a_E/p^2+\mathcal L_a a_E/(pk)\bigr)\\
+ &+K_2N\bigl(Q_pc_6+kQ_p+k\log_p a_E+c_G\bigr)+2n'c_G ,
+ \qquad Q_p=p^{G'} .
+\end{aligned}
+\]
+Here \(c_6\) is the local \code{c6f} at this prime and orbit length.
+Thus each contributing top reads one predecessor and its actual
+integer weights. The segment theorem has its own real threshold
+\(t_{\rm seg}\) and holds for every integer \(t\ge t_{\rm seg}\).
+The inequality \code{tI\_le\_tIf} gives
+\(t_{\rm seg}\le t_{\rm rec}\le\lceil t_{\rm rec}\rceil\).
+The original
+\code{type\_one\_hypothesis\_of\_segments} transfers the local
+segment estimate to the infimum using this inequality.
+For each fixed good \(v\), the resulting bound over its local
+weight box is
+\[
+ \mathbb E_{a,b_{\rm top}}\mathrm{kapI}_{p,v}
+      \le C_m N_v N_1 x^{-13}\le N_v x^{-12}.
+\]
+The disjoint top fibres have \(\sum_vN_v\le n_T\).
+The finite box argument of \code{meanEx\_of} followed by
+\code{weight\_condition\_of\_mean\_excess} selects one common pair
+of vectors satisfying \eqref{orb:selected-W}. This is where the
+original construction uses its local representation estimates.
+The independent bounds above apply once that pair is realized.
+For an arbitrary prescribed vector the definition alone gives
+\(0\le\mathrm{kapI}\le1\).
+In particular the elementary construction by rounding the two
+endpoints only establishes the window inequalities. The local
+\code{LPprime} estimate over the weight box is an input from the
+original proof in the duty-centre construction.
+
+The selection of Proposition~\ref{orb:selection} makes the bad-top
+cost zero. On the common selected kit, \(B\le n_T a_E\le P_0\) in
+the notation of Corollary~\ref{scope:one-word}. Thus its two prime
+loss requirements already hold at every eligible translate, before
+estimating any word height. For
+Corollary~\ref{trmean:loss} one can take \(e_{\rm loss}=0\) and
+\(c_{\rm loss}=\max(C,1)\). The remaining comparison in
+\eqref{scope:average} concerns \(G_u-\mathcal M_u\) at the
+recorded word and target lattices.

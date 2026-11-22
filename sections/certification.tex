@@ -42,3 +42,45 @@ projection and averaging steps. The signs of the arithmetic characters,
 the estimates for the three discarded twists, and the geometric input
 are justified at their respective places in the text.
 \par\endgroup
+
+\subsection{Proof values of the two deformation counts}\label{audit:countpaths}
+
+The proof value of the cohomological window theorem directly uses both
+the rank-three Case I count and the joint rank-four Case II and III
+count. The accompanying archive \path{verification/zeta-count-trace.zip}
+gives the original names and expression IDs for the steps described
+in Section~\ref{zetaring:section}. In particular it records the
+ternary single-character ring construction, the quartic test detecting
+nonfiniteness, and the specialization killing the tower ideal in the
+Case II component argument.
+
+The 96 selected declarations lie in the classical RH dependency tree.
+All 99 direct references have two witnesses: a constant in the original
+compiled value, and a path from the value root to that constant in the
+original serialized export. Of these edges, 85 are also immediate
+value edges of the saved breadth-first tree. That tree retains one
+parent for each declaration. The archive contains 2,935 original
+records, including the complete name chains and the type and value
+indices for all 95 definitions and theorems. The remaining declaration
+is the constructor \(\mathrm{And.intro}\). The verifier checks every
+path and can re-extract the original modules from their pinned
+archives. The zeta host calculations and the mixed component mean
+criterion are paper arguments.
+
+The following pairs are expression IDs in the unmodified export.
+The last column counts child-expression steps inside one stored
+value. The full sequences, including the two ends of each path,
+are in \path{proof-edges.tsv} in the archive.
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Reference in the stored value & Value root & Constant leaf & Steps\\
+\midrule
+Window to ternary count                 & 991824206 & 991824173 & 12\\
+Window to joint quartic count           & 991824206 & 991824164 & 7\\
+Quartic count to conjunction constructor & 952152235 & 1242      & 14\\
+Nonfinite test to ambient point         & 962691518 & 962667923 & 57\\
+Case II propagation to its last step    & 962437115 & 962426112 & 157\\
+\bottomrule
+\end{tabular}
+\end{center}

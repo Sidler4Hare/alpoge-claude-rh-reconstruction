@@ -1,0 +1,205 @@
+\subsection{Comparison of the recorded and mixed component volumes}
+\label{mixrec:section}
+
+Fix a marked cover with coefficient field \(F\), Galois CM host
+field \(E\), level integer \(M'\), component \(Z\), and algebraic
+weight \(u\). Set \(d_E=[E:\mathbf Q]\) and
+\begin{align*}
+ S_B&=\{p\text{ prime}:\ p\le B\ \text{or}\ p\mid 2|\Delta_E|M'\},\\
+ c_p&=\frac{1}{p-1}+\frac{v_p(|\Delta_E|)}{d_E},
+ \qquad K_B=\sum_{p\in S_B}c_p\log p .
+\end{align*}
+The recorded lattice imposes nonnegative valuations at all recorded
+algebraic integral frames. The mixed lattice replaces these tests
+over \(S_B\) by Hodge--Tate frames. Both use the same rational cusp
+rules on \(Z\), and the same supremum over the good embeddings and
+marked archimedean frames. Write \(V_{\rm rec}(t),V_{\rm mix}(t)\)
+for their component volumes, counted on weights \(mu\) with
+\(m\in8\mathbf Z_{>0}\). With the same \(\delta_Z=\operatorname{topDeg}_Z(u)>0\)
+as in Proposition~\ref{zetageo:mean}, put
+\(\ell_\star=\inf_t(V_\star(t)/\delta_Z-t)\).
+
+Let \(a_s\) be the exponents of the tangent diagonal in
+\(\code{exOf}(u,0)\), and let
+\(W_+=\sum_s(a_s)_+\), \(W_-=\sum_s(-a_s)_+\).
+At a CM-type embedding they are the first \(p_0\) entries of \(u\).
+At its conjugate they are the negatives of the remaining \(q_0\)
+entries in reverse order, where \((p_0,q_0)\) is the signature.
+In particular \(W_++W_-=\|u\|_1\).
+
+\begin{proposition}[Changing finite tests at a fixed weight]\label{mixrec:change}
+For every \(\eta>0\) and \(t\in\mathbf R\),
+\[
+     V_{\rm rec}(t)\le V_{\rm mix}(t+W_+K_B+\eta),\qquad
+     V_{\rm mix}(t)\le V_{\rm rec}(t+W_-K_B+\eta).
+\]
+The component slopes satisfy the extended-real inequalities
+\[
+           \ell_{\rm rec}-W_+K_B
+                  \ \le\ \ell_{\rm mix}\
+                  \le\ \ell_{\rm rec}+W_-K_B .
+\]
+These bounds hold also when a signature block is empty.
+\end{proposition}
+\begin{proof}
+Fix \(p\in S_B\), a place \(\mathfrak l\) of \(F\) above it and a
+Hodge--Tate test at \(\mathfrak l\). Its definition includes its
+underlying algebraic integral frame \(y_0\), its ramification
+normalization, and a lift to the \(p\)-adic comparison field. Thus
+\(y_0\) defines a recorded test \(v_0\) at the same place. Conversely
+every recorded test there has such a lift. Write \(w\) for the
+Hodge--Tate test and \(e_{\mathfrak l}=\operatorname{ord}_{\mathfrak l}(p)\).
+The lifted recorded frame and the Hodge--Tate frame differ by a
+triangular matrix with tangent diagonal \(t_s\). In the multiplicative
+valuation \(\nu\) of the comparison field one has
+\[
+       -c_p\le h_s:=\frac{\log\nu(t_s)}{\log\nu(p)}\le0 .
+\]
+Indeed the recorded eigenspace lattice is contained in the
+Hodge--Tate lattice, giving \(\nu(t_s)\ge1\). The reverse inclusion
+after multiplication by a \((p-1)\)-st root \(b\) of \(p\) and a
+local different factor \(d\) gives \(\nu(bdt_s)\le1\). Put
+\(L=-\log\nu(p)>0\). In \code{SumAbsExOfLe.lean}, lines 328--344,
+the logarithmic bounds before the final relaxation are
+\(\log\nu(b)=-L/(p-1)\) and
+\(\log\nu(d)\ge-Lv_p(|\Delta_E|)/d_E\). Their sum gives
+\(0\le\log\nu(t_s)\le Lc_p\). The comparison of weights
+and evaluation in lines 346--364 computes the same diagonal factor
+for every cusp rule \(f\) of weight \(mu\), giving
+\[
+             w(f)=v_0(f)+m e_{\mathfrak l}\sum_s a_s h_s .
+\]
+The scalar coordinate has valuation zero. If the evaluation vanishes,
+both readings are \(+\infty\), and the equality still holds. The
+finite displacement lies between \(-m e_{\mathfrak l}c_pW_+\) and
+\(m e_{\mathfrak l}c_pW_-\). The reverse choice of a lift for a
+prescribed recorded frame is \code{htCmp} in the same file,
+lines 378--387. This gives both quantifiers over tests.
+
+Put \(A_{\pm,m}=\prod_{p\in S_B}p^{\lceil m c_pW_\pm\rceil}\).
+At each \(\mathfrak l\mid p\), a rational integer power \(p^j\)
+adds exactly \(j e_{\mathfrak l}\) to the additive valuation.
+Multiplication by \(A_{+,m}\) therefore sends the recorded lattice
+injectively into the mixed lattice of the same weight. Multiplication
+by \(A_{-,m}\) gives the reverse injection. Away from \(S_B\) all
+the factors are units and the tests agree. At every archimedean frame
+the corresponding norm is multiplied by \(A_{\pm,m}\), with
+\[
+        0\le \log A_{\pm,m}-mW_\pm K_B
+                    \le \sum_{p\in S_B}\log p .
+\]
+Here \(B\), the cover and \(u\) are fixed before the degree tends to
+infinity. For all sufficiently large multiples of eight, the upper
+error is at most \(m\eta\). The two injections then compare the
+counts in the indicated norm balls at that same degree.
+Taking their normalized logarithmic upper limits gives the first
+two inequalities. Dividing by \(\delta_Z\), shifting \(t\) in
+the infimum and letting \(\eta\) decrease to zero gives the claims
+for the slopes. The normalizing coefficient-field degree is the
+same on both sides.
+\end{proof}
+
+On the selected hosts, \(M'\) has at most fifteen distinct prime
+factors and \(s=\code{ell}(D)\ge R_E:=\log\operatorname{rd}(E)\ge0\).
+Put \(Q=\lfloor B\rfloor\) at \(B=\code{bndB}(u,g)\). Here
+\(B\ge4fr^2\ge288\), since \(f\ge m\ge2\) and
+\(r=k+m-1\ge6\). The sum of \(\log p/(p-1)\) for \(p\le Q\)
+is at most \(\log B+3\) by \code{SumLogDivPredLeReal.lean}, lines
+12--14. Among the remaining primes of \(S_B\), those in
+\code{Host.small} contribute at most \(4R_E/Q\) by
+\code{BadCount.lean}, lines 18--33. There are at most seventeen
+others by \code{BadPrimes.lean}, line 56. Each contributes at most
+\(\log(Q+1)/Q\), since \(t\mapsto\log t/(t-1)\) decreases for
+\(t>1\). The discriminant parts sum to \(R_E\), since \(S_B\)
+contains every discriminant prime. Consequently
+\begin{align*}
+ K_B&\le\log B+3+17\,\frac{\log(Q+1)}{Q}
+                 +\left(1+\frac4Q\right)R_E\\
+    &\le 2(\log B+R_E).
+\end{align*}
+The second line uses \(Q\ge288\), so the term with coefficient
+seventeen is less than one and \(\log B>4\). The first line also gives
+\(K_B\le(1+O(1/\log B))(\log B+R_E)\) as \(B\) grows, uniformly
+in \(R_E\ge0\). The first summand of \(\code{errX}(s,u,g)\)
+is \((\log B+s)\|u\|_1\), and its remaining term is nonnegative. Thus
+\[
+                       W_\pm K_B\le2\,\code{errX}(s,u,g).
+\]
+The component average therefore raises the recorded constant \(C\)
+to at most \(C+2\) in the mixed bound. The original estimate charges
+\(40v_p(|\Delta_E|)/d_E\) locally and gives \(C+44\) for \(B\ge4\)
+by \code{htCost\_le} in \code{BudgetOfSizeAndWeight.lean}, lines
+71--108.
+
+For a fixed admissible stage,
+\code{heightAt\_of} in \code{HeightOfMeanBound.lean}, lines 85--95,
+uses that mean only at \(u'=\code{uPrime}(u_1)\) and at the gap
+supplied by its \code{BudgetAt} witness. Hence a common recorded
+bound at those particular pairs already gives the mean used by that
+application. In the actual tower the stage \(j\) has signature
+\((k+j-1,m-j)\). The definition \code{Covers} in
+\code{CovolXOfCovol.lean}, lines 220--223, takes \(1\le j<m\).
+At the compact stage \(j=m\) the separate \code{LowDef} bound on
+line 247 enters through the Gram estimate and its base comparison.
+
+\begin{corollary}[Carrying recorded sections]\label{mixrec:carry}
+Fix a component and a witness for \code{Mult} from \(u'\) to \(u_1\)
+with cost \(c\). Write \(V^L_{u_1}\) for the Bergman volume on that
+component. For every \(t\in\mathbf R\) and \(\eta>0\),
+\[
+       V_{{\rm rec},u'}(t)\le V^L_{u_1}(t+c+\eta).
+\]
+\end{corollary}
+\begin{proof}
+At degree \(8k\) multiply each recorded section \(f\) by
+\(\alpha_k\theta^k\), where \(\theta\) is the carrying section of
+\code{Mult}. The balanced scalar lemma applied to its prescribed
+finite and archimedean data gives \(\alpha_k\ne0\) with
+\(v_{\mathfrak l}(\alpha_k)\ge 8k e(\mathfrak l)\) at every
+finite place. Recorded integrality of \(f\) now gives the finite
+bound for the product at every recorded test. At the good embeddings
+the carrying bound and the archimedean bound for \(\alpha_k\) give
+the Bergman cutoff \(t+c+\eta\) once the scalar lemma's fixed
+constant is at most \(8k\eta\). The generic value of \(\theta\)
+is nonzero, so multiplication is injective on the component cusp
+rules. Taking the normalized upper limit proves the assertion.
+These are the finite and archimedean inequalities of
+\code{WeightAbsEntrySumNonneg.lean}, lines 194--260, with the
+recorded integrality bound inserted directly.
+\end{proof}
+
+In the component height argument of \code{HeightOfMeanBound.lean},
+lines 48--81, a recorded lower slope \(s_Z\) at \(u'\) can therefore
+be passed directly to the Bergman upper bound at \(u_1\). With the
+same short generators, birationality, degree comparison and
+cutoff \(c_s\), letting \(\eta\) decrease to zero gives
+\[
+         (1-\rho)(s_Z+c_s)_+\le h_Z+c_s+c .
+\]
+The carrying cost \(c\) is the only shift between the two volumes
+in this application.
+
+In Proposition~\ref{zetageo:mean} the parameter sections and
+products can now be tested in the recorded lattices. If the required
+rational cusp sections for the generic field basis exist, and their
+fixed-degree recorded lattice spans the rational cusp space, a
+single positive integer clears all their denominators. Its logarithm
+contributes \(O(1/m)\) in the monomial count on this component.
+If recorded cusp sections \(f_j\) of the parameter degree already
+give a birational system, the generic basis may be chosen among
+products of those sections and \(s_0\). Indeed, over the field of
+the parameter ratios the \(f_j/s_0\) generate the finite function
+field extension whenever the \(s_i\) lie in their span.
+Monomials in these generators span the extension as a vector space.
+Choose a basis of monomials and use \(s_0\) to put their numerators
+in a common degree. The product hypotheses of
+Proposition~\ref{zetageo:mean} then give their recorded integrality.
+The remaining quantitative input is the mean of the recorded
+parameter heights in the marked supremum norm, with the projective
+degree and rational cusp-space identifications of that proposition.
+The Petersson bounds in Corollary~\ref{cmeig:final} concern a fixed
+good indefinite cover and its final weight. Applying them throughout
+the chosen family still requires the supremum estimates and the
+identifications on its modified flag components. The final row lattice
+\(RR\) has its own gluing and metric in the slope comparison of
+Section~\ref{geo:translate}.

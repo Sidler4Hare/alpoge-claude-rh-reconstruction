@@ -1,0 +1,6 @@
+Lean 4.33.1
+Downstream.lean compilation exit 0
+'Levent151.zeroFreeLevel_of_gmWindows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.primitiveHalfPlane_of_strengthened' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Levent151.riemannHypothesis_of_strengthened' depends on axioms: [propext, Classical.choice, Quot.sound]
+Axiom audit exit 0

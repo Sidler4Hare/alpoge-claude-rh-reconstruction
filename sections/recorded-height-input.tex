@@ -1,0 +1,587 @@
+\subsection{The signed mean of the final Chow heights}\label{recheight:input}
+
+Fix an admissible indefinite stage, a good deep cover and its divided
+weight \(u_1\). Let \(I\) be its finite nonempty set of marked
+components, \(h_Z\) the normalized Chow height \(\code{Y.ht}\) at
+\(u_1\), and \(\bar h=|I|^{-1}\sum_{Z\in I}h_Z\). Write \(D\) for the
+flag dimension, \(T=\code{lenT}\), \(0\le\rho<1\) for the relative
+degree loss, \(z=7(D^2/T+D\rho)\), and \(E=\code{unitE}\).
+The following criterion concerns the original Petersson metric and
+integral cusp lattice on this cover.
+
+\begin{proposition}[Exact final-weight height budget]\label{recheight:criterion}
+Put \(A=6D+10+T(z+2\rho)\). For \(B=CE\ge0\), with \(A,T>0\),
+the assertion \(\code{HeightAt}\) at constant \(C\) is equivalent to
+\begin{align}
+ h_Z&\ge -B/A \qquad(Z\in I),\label{recheight:floor}\\
+ \bar h&\ge-\rho B/A-(2-\rho)B/T .\label{recheight:mean}
+\end{align}
+In particular, its least nonnegative budget \(B\), regarded as a real
+number, equals
+\[
+ \max\left\{A\max_{Z\in I}(-h_Z)_+,\,
+       \frac{(-\bar h)_+}{\rho/A+(2-\rho)/T}\right\}.
+\]
+\end{proposition}
+\begin{proof}
+In the original definition the common cutoff \(s\), carrying
+allowance \(c\), and mean allowance \(X\) are nonnegative and satisfy
+\(As,Tc,TX\le B\). Fix these and suppose \(h_Z+s\ge0\).
+Since \(h_Z+s+c\ge0\), the component condition on the auxiliary
+slope \(\ell_Z\) is exactly
+\[
+ (1-\rho)(\ell_Z+s)_+\le h_Z+s+c
+ \quad\Longleftrightarrow\quad
+ \ell_Z\le \frac{h_Z+\rho s+c}{1-\rho}.
+\]
+Taking equality simultaneously at every component shows that
+\(\bar\ell\ge-X\) is possible exactly when
+\(\bar h+\rho s+c+(1-\rho)X\ge0\).
+Both remaining tests are increasing in \(s,c,X\), so their largest
+allowed values \(s=B/A,\ c=X=B/T\) attain the claimed criterion.
+Solving the two inequalities for \(B\) gives the displayed minimum.
+This uses the ordinary component average in
+\code{CovolXOfCovol.lean}, lines 146--151. In particular it involves
+the actual weight \(u_1\) in both tests.
+\end{proof}
+
+The original short generators already give \eqref{recheight:floor}
+at their budget. Indeed, their common Petersson radius \(\Lambda\)
+satisfies \(A\log\Lambda\ll E\), and the Chow-form lower bound
+gives \(h_Z+\log\Lambda\ge0\). Also
+\(A=7D^2+6D+10+(7D+2)T\rho\). Hence
+\[
+  2-\rho\ \le\ 2-\rho+T\rho/A
+          \ \le\ 2-\rho+1/(7D+2).
+\]
+After the floor, it suffices to bound \(T(-\bar h)_+\) by a constant
+multiple of \(E\), independently of the stage. Positive component
+heights contribute in full to this test. The next estimate gives a
+direct way of testing it without transferring sections to a different
+weight.
+
+\begin{proposition}[A Petersson test on the Chow form]\label{recheight:chow}
+Let \(K\) be the totally complex coefficient field on a component.
+Take \(D+1\) nonzero rational sections \(s_0,\ldots,s_D\) in its
+final cusp space for which its Chow form \(F\) satisfies
+\(F(s_0,\ldots,s_D)\ne0\). Their hyperplanes then have empty common
+intersection with the projective image. At a finite place \(v\), put
+\(\gamma_v(s)=|\pi_v|_v^{e_v(s)}\), where
+\(e_v(s)=\max\{j\in\mathbf Z:s\in\pi_v^j\mathcal L_v\}\) for the
+original local cusp lattice \(\mathcal L_v\). Use the absolute values
+of the product formula with the sum over all complex embeddings.
+Define
+\[
+ H_{\rm Pet}(s)=\frac{1}{[K:\mathbf Q]}
+   \left(\sum_{\sigma:K\hookrightarrow\mathbf C}
+           \log\|s\|_{{\rm Pet},\sigma}
+         +\sum_{v\ {\rm finite}}\log\gamma_v(s)\right).
+\]
+This quantity depends only on the line \(Ks\). On the original
+component one has
+\[
+        h_Z\ \ge\ -\frac{1}{D+1}\sum_{j=0}^D H_{\rm Pet}(s_j).
+\]
+The signed costs may therefore be averaged over the blocks,
+embeddings and marked components before applying
+\eqref{recheight:mean}.
+\end{proposition}
+\begin{proof}
+Choose the integral frame and the Hermitian matrices in the
+definition of the image height. Write \(\delta>0\) for the block
+degree of \(F\), \(N\) for the frame dimension, \(w\) for its
+integral generating columns, and \(a=F(s_0,\ldots,s_D)\in K^\times\).
+At \(v\), each \(\pi_v^{-e_v(s_j)}s_j\) is an integral combination
+of the columns of \(w\). The nonarchimedean triangle inequality
+and homogeneity give
+\[
+ \log|a|_v\le
+     \log\|\operatorname{linSubst}(w)F\|_{{\rm Gauss},v}
+      +\delta\sum_{j=0}^D\log\gamma_v(s_j).
+\]
+At \(\sigma\), specialize the first block in direction \(s_0\),
+then the second in direction \(s_1\), and continue. At every step
+the coefficient of degree \(\delta\) is precisely the form with that
+block specialized. It is nonzero because its ultimate value is
+\(\sigma(a)\ne0\). The directional Jensen inequality
+\code{mean\_leadingCoeff\_le} in
+\code{MeasurePreservingRotBlock.lean}, line 310, bounds the loss of
+the spherical logarithmic mean at that step by
+\(\delta(\log\|s_j\|_{{\rm Pet},\sigma}+H_{N-1}/2)\), where
+\(H_{N-1}\) is the harmonic number. The sum of the harmonic terms
+cancels the correction in \(\code{formHeight}\) in
+\code{PointHeight.lean}, line 30. Summing over all places cancels
+the terms in \(a\) by the product formula. Division by
+\([K:\mathbf Q](D+1)\delta\) gives the inequality. A scalar
+multiple of any \(s_j\) adds the logarithmic product of that scalar
+at all places, which is zero. In particular, a common denominator
+may be cleared at zero cost. For integral sections all finite
+terms in \(H_{\rm Pet}\) are nonpositive.
+\end{proof}
+
+Rational test tuples exist because the Chow form is nonzero and
+\(K\) is infinite. A quantitative version also allows subspaces
+with different prices. For each block \(j\), choose integral
+sections spanning a subspace \(U_j\), each of norm at most
+\(e^{q_j}\) at every embedding, and suppose
+\(F|_{\prod_j U_j}\ne0\). Retain a basis from each list, of length
+at most \(N\). The restricted Chow polynomial has individual
+variable degrees at most \(\delta\). It has a nonzero value on the
+integer grid \(\{0,\ldots,\delta\}\) in all its variables, by
+successive univariate interpolation. The resulting sections have
+norms at most \(N\delta e^{q_j}\), and thus
+\[
+       h_Z\ge-\frac1{D+1}\sum_{j=0}^D q_j-\log(N\delta).
+\]
+In particular no integral spanning assertion is needed for the
+cheaper subspaces. Under the original Hilbert--Samuel size bounds
+\(\log N,\log\delta\le P_0\), \(TP_0\le\sqrt b\le E\), choosing a
+nonvanishing tuple by this grid costs at most \(2\sqrt b\) in the
+mean budget.
+
+The price of using the original short family everywhere can be read
+at the same weight. Set \(Z_0=frL\),
+\(W=\sum_{\tau,k}|u_1(\tau,k)|\). The family gives
+\(\log\Lambda\le C_s(Z_0^3W+Z_0^5)\).
+The stage equalities and bounds from \code{QuoIff.lean}, lines
+41--54, and \code{ShortOfInputs.lean}, lines 138--154, give
+\[
+    E=fmbL\log\log x,\qquad P\ge Z_0^{12},\qquad
+    PTD^2L\le b,\qquad TW\le 8frb .
+\]
+In particular the entire weight-independent term satisfies
+\[
+       TZ_0^5\le\frac{b}{D^2L Z_0^7}=o(E)
+\]
+along the actual late stages. The bound for the weight-dependent
+term gives \(TZ_0^3W/E\le 8Z_0^3r/(mL\log\log x)\). The right-hand
+side grows on the selected family, where \(r\ge k\ge m\) and
+\(f\asymp x^{2+8\epsilon}\). This upper estimate leaves the signed
+mean in \eqref{recheight:mean} open.
+
+One can discard a quantified proportion of expensive tests. At each
+component suppose the subspaces in the preceding grid construction
+give a nonzero Chow restriction. Use the original short family,
+with cost \(q_j=\log\Lambda\), on at most a fraction \(\theta\) of
+all component--block pairs, and suppose the sum of the other \(q_j\)
+divided by \(|I|(D+1)\) is at most \(M\). Then
+\[
+       -T\bar h\le TM+T\theta\log\Lambda+2\sqrt b .
+\]
+If \(\theta\le A/T\) the entire exceptional contribution is paid by
+the previously proved cutoff bound \(A\log\Lambda\ll E\). This
+yields the original \(\code{HeightAt}\) once \(TM\ll E\) uniformly.
+The numerical inequalities alone give no control of this last
+signed cost. For instance, multiplying all Hermitian norms of a
+projective section space by \(e^a\) leaves its underlying lattice,
+degrees, birational map and curvature fixed. In the definition of its
+Chow height the archimedean frame matrices become \(e^{-a}A_\sigma\),
+so the normalized height on every component decreases by \(a\).
+The Petersson normalization of the selected family is fixed. A
+signed height estimate at that normalization, or test tuples meeting
+the bound above, supplies the further arithmetic input.
+
+\paragraph{Removing the uniform weight factor on the selected hosts.}
+There is a sharper bound on these same \(h_Z\). Write \(j\) for the
+indefinite stage, \(p=k+j-1,\ q=m-j,\ r=p+q\), and \(\lambda=u_1\).
+In this paragraph \(h=4(fr+1)\), \(n_\theta=2h\), and the algebraic
+weight rows are numbered from one. Put
+\[
+ J_\tau=\lambda_{\tau,p}-1-h,\qquad
+ \begin{aligned}
+ d_+&=\sum_\tau\sum_{a\le p}
+                 (\lambda_{\tau,a}-\lambda_{\tau,p}+1),\\
+ d_-&=\sum_\tau\sum_{a>p}
+                 (\lambda_{\tau,p}-\lambda_{\tau,a}-2h-1),\qquad
+ d_\theta=d_++d_- .
+ \end{aligned}
+\]
+All these summands are nonnegative by the gap at the wall. They are
+the sizes of the two harmonic partitions. At the first embedding
+the rule \(\code{wtOf}\) subtracts \(h\) from
+\(\lambda_{\tau,a}-J_\tau\), while at its conjugate it takes
+\(-(\lambda_{\tau,a}-J_\tau)-h\) in reverse order.
+Thus \(d_\theta\) is the original polynomial degree, invariant under
+adding a constant to all entries of any one weight row.
+The determinant multiplier at the end of the construction has
+exponents \(-J_\tau\).
+
+\begin{proposition}[Harmonic degree at the final metric]\label{recheight:harmonic}
+On the selected good covers of Theorem~\ref{bfam:oncharts}, with the
+original Petersson and finite integration tests, there is a uniform
+constant \(C_*\) such that at every sufficiently late admissible stage
+\[
+ -h_Z\ \le\ C_*L d_\theta+
+       \tfrac12(p-q) A_{J_d}\sum_\tau J_\tau
+       +O\bigl(Z_0^3+\log(N\delta_Z)\bigr).
+\]
+Here \(N\) and \(\delta_Z\) are the frame dimension and the Chow degree
+on \(Z\). Under the original Hilbert--Samuel size bounds the last
+term, multiplied by \(T\), is \(o(E)\).
+\end{proposition}
+\begin{proof}
+Write \(v_\tau\) for the undivided anchor denoted by \(W.w\) in
+\code{DividedWeightUnique.lean}, lines 14--69. The divided rows are
+nonincreasing and are zero at row \(k-1\). Row \(p\) is a node,
+since \(p-1\ge k-1\). By \code{nodes\_far\_and\_spread} in
+\code{DividedWeightNodesFarAndSpread.lean}, line 59,
+\(-\lambda_{\tau,p}\ge v_\tau/(2T)\). The first \(k-1\) entries
+are nonnegative. It follows that
+\begin{equation}\label{recheight:degree-lower}
+       T d_\theta\ge \tfrac12(k-1)\sum_\tau v_\tau .
+\end{equation}
+For \(a>p\), sum the definition of the adjacent divided differences
+from row \(p\) to \(a\). Each quotient uses integer floor and the
+same positive denominator \(T+D+1\). The correction at the wall is
+at most \(2\), as is every other correction. Both end rows of the
+undivided weight are within \(\eta+S+r\) of \(-v_\tau\). Hence
+\[
+  T(\lambda_{\tau,p}-\lambda_{\tau,a})
+                \le 2(\eta+S)+4r .
+\]
+By \code{QuoIff.lean}, lines 50--56, \(P(\eta+S)\le100w''\)
+and \(w''\le2v_\tau\). The row hypotheses give \(v_\tau\ge20rT\),
+and \(T\ge PD^2\ge P\). In particular
+\[
+      T d_-\le \frac{401q}{P}\sum_\tau v_\tau,\qquad
+      p\,d_-\le\frac{802pq}{P(k-1)}d_\theta .
+\]
+Here \(p\le 2(k-1)\) and \(P\ge Z_0^{12}\).
+
+Use the polynomial construction of Proposition~\ref{bfam:harm}
+with the \(p\) large-block coefficient vectors chosen first.
+The \(q\) other vectors are obtained by the adjugate projection
+there. The two blocks can be exchanged, with complex conjugation
+of the input vectors. This preserves their integrality in the
+corresponding row algebra, mixed contractions, and the interpolation
+proof of spanning. In the notation of that proof each first vector
+has norm at most the grid bound \(H\), each projected vector at most
+\(H^{2p+1}\), and \(\log H\ll L\). A determinant of order \(a\)
+in either block has at most \(a!\le r^a\) terms. The resulting
+logarithmic coefficient bound at each embedding is therefore
+\[
+       O\bigl(L(d_\theta+2p d_-)\bigr)=O(Ld_\theta).
+\]
+
+In Proposition~\ref{intjet:arch} the independent contracting
+vectors may be taken to have trace norm at most
+\(\sqrt{[E_0:\mathbf Q]}\,n_\theta\operatorname{rd}(E_0)\),
+where \(E_0\) denotes the host field. This is the bound for the
+same self-dual column lattice in Proposition~\ref{bfam:harm}.
+It replaces the factor \(2fn_\theta |\Delta_{E_0}|\) in the
+polydisc radius. At the normalized half maximum,
+\(\log^+(\lambda_{\min}^{-1})\ll L\) by
+Corollary~\ref{bfam:metric}, so the logarithm of the inverse
+radius is \(O(L)\). The flag normalization there gives
+\((2/\pi)^{d_\theta/2}\) in place of the eigenframe factor.
+Using \(\log(d_\theta!)\le d_\theta\log\max(1,d_\theta)\le20Ld_\theta\)
+and the root discriminant bound for the coefficient field gives a
+logarithmic Petersson bound
+\(O(Ld_\theta+Lfrn_\theta+Z_0^2)\) for the rescaled raw rules.
+
+At the finite tests it suffices to use the cyclotomic modulus
+\(Q_0\) of Proposition~\ref{host:period} in place of
+\(|\Delta_{E_0}|\) in the jet denominator. Indeed, for
+\(K_0=\mathbf Q(\zeta_{Q_0})\), differentiation of \(X^{Q_0}-1\)
+at \(\zeta_{Q_0}\) shows that the different
+\((\Phi_{Q_0}'(\zeta_{Q_0}))\) divides \(Q_0\mathcal O_{K_0}\).
+The tower law for differents yields
+\(Q_0\mathfrak D_{E_0}^{-1}\subseteq\mathcal O_{E_0}\).
+Thus \(Q_0 b_i^\vee\) is integral for every trace-dual basis vector.
+This is the use of the field discriminant in the nonconjugate
+quadratic jet estimate of Lemma~\ref{intjet:der}. Every paired
+derivative has cost at most \(v(Q_0)\), and multiplication by
+\(D_M^2\), now with \(D_M=M^{frn_\theta}(M Q_0)^{d_\theta}\),
+clears the same tests by Theorem~\ref{intjet:semi}. Since
+\(\log Q_0=o(L)\) and \(\log M\ll L\), this adds
+\(O(Ld_\theta+Lfrn_\theta)\). The key costs
+\(O((fr)^2)\) independently of the weight.
+
+For the parallel determinant let \(a_v\) be its common order at
+the tests above \(v\), in the normalization giving
+\(\operatorname{ord}_v(c)\) to a scalar \(c\). On multiplying any
+integral section, its order in the target lattice is at least
+\(\lfloor a_v\rfloor\). Its Petersson norm is multiplied by the
+constant pointwise norm of this determinant at the embedding.
+Consequently its contribution to \(H_{\rm Pet}\) is at most the
+negative of its arithmetic degree plus
+\(\sum_{\ell\in B_{\rm bad}}\log\ell\), since the common orders
+are integers off the original bad set by
+Proposition~\ref{cmeig:hyperspecial}. The actual degree in
+\eqref{ctwist:degree} is
+\(-\frac12(p-q)A_{J_d}\sum_\tau J_\tau\). The residual rounding
+is \(O(Z_0^2)\). The parallel factor is identical on every member of
+the spanning family, so one may first apply the integer-grid argument
+to the raw integral sections and then multiply the chosen tuple.
+The resulting \(O(\log(N\delta_Z))\) cost is measured before the
+common twist. Applying Proposition~\ref{recheight:chow} and using
+\(TZ_0^5=o(E)\), \(T\log(N\delta_Z)\le2\sqrt b=o(E)\), proves the
+assertion.
+\end{proof}
+
+The price that remains can be compared with the actual weight
+window. The same spread estimate, between row \(k-1\) and row
+\(p\) before the wall, gives
+\[
+ \frac{v_\tau}{2T}\le -J_\tau
+       \le\frac{3v_\tau}{2T}+h+1 .
+\]
+As \(r\le2(k-1)\) and \(|A_{J_d}|=o(L)\), the absolute size of the
+parallel contribution, after multiplication by \(T\), is
+\(o(LTd_\theta)+o(E)\) by \eqref{recheight:degree-lower} and the
+bound for \(TZ_0^5\). On the actual kits of
+Proposition~\ref{scope:reselected-hosts}, each of the \(n_2\) thick
+embeddings has Harish--Chandra parameter \(e_i\ge b\). The estimate
+\(\lvert v_\tau-e_i\rvert\le20b/r\) follows from
+\code{AnchorBoundStatement.lean}, lines 43--45 and 156--162.
+All anchors are nonnegative, so \(\sum v_\tau\ge n_2 b/2\) once
+\(r\ge40\). Put \(\delta_2=n_2/n\). Since \(f=2n\),
+\[
+       \frac{LTd_\theta}{E}
+          \ \ge\ \frac{(k-1)\delta_2}{8m\log\log x}.
+\]
+For the selected ranks in Lemma~\ref{host:rank} and
+\(\delta_2\ge x^{-\epsilon}\), this is
+\(\gg x^{4+145\epsilon/16}/\log\log x\). Thus even after removing
+the rank and host factors per harmonic derivative, the uniform
+absolute estimate has a larger scale than the available signed
+budget. The lower bound here concerns the actual harmonic degree.
+The unknown quantity in \eqref{recheight:mean} is the signed
+Petersson Chow height. In the original route
+\code{HeightOfSteps.lean}, lines 19--43, obtains it via
+\code{MeanAll}. The general height theorem in
+\code{HeightLowerBoundGeneral.lean}, line 21, takes \code{DeepStR}.
+The original volume route constructs a root tower and applies its
+\code{MeanSlope} at the actual weight and cutoff in
+\code{AbelianCmCompLawsBound.lean}, lines 68--93. This is a separate
+conclusion of \code{VolumeTheoremX} in \code{GoodTowerExistsX.lean},
+lines 28--36. In the arithmetic Hilbert--Samuel statement
+\code{MoriwakiSt.lean}, lines 15--27, applying the limiting
+identity requires nonnegative arithmetic degrees at all horizontal
+points for the metric being used. The limit then equals its arithmetic
+intersection number. To deduce the terminal height budget for this
+family one must obtain the positive height quantified below.
+
+\begin{corollary}[The positive height needed before the parallel twist]
+\label{recheight:untwisted}
+At the same stage let \(h_Z^0\) be the Chow height at the weight
+\(\lambda^0_{\tau,a}=\lambda_{\tau,a}-J_\tau\), at the original
+central parameter zero and using its own integral cusp lattice.
+Write \(e\) for the dyadic page index of
+Proposition~\ref{host:art}. Then
+\begin{align}
+ A_{J_d}&\le \tfrac{\gamma}{2}+\log(2\sqrt\pi)
+                   -(e+1-2^{-e})\log2 , \label{recheight:cmsign}\\
+ \left|h_Z-h_Z^0+\tfrac12(p-q) A_{J_d}
+                          \sum_\tau J_\tau\right|
+              &\le\sum_{\ell\in B_{\rm bad}}\log\ell .
+                 \label{recheight:flatboth}
+\end{align}
+Consequently, on the actual kits above, any fixed budget
+\(\code{HeightAt}(C)\) requires
+\[
+        T\bar h^0\ge \frac{(p-q)n_2 b}{8}
+                      (\log n-O_\psi(1))-O_C(E).
+\]
+In units of \(E\), for \(\delta_2\ge x^{-\epsilon}\) and the ranks of
+Lemma~\ref{host:rank}, the positive term is
+\(\gg x^{4+129\epsilon/16}\log x/\log\log x\).
+\end{corollary}
+\begin{proof}
+For the real odd quadratic character \(\chi=J_d\), its completed
+function is
+\(\Lambda(s)=(d/\pi)^{(s+1)/2}\Gamma((s+1)/2)L(s,\chi)\).
+The functional equation pairs its nontrivial zeros about \(1/2\).
+In the Hadamard product centred there, combining a zero with its
+image under \(s\mapsto1-s\) gives a product of quadratic factors
+converging locally absolutely. After extracting a possible zero
+at the centre the remaining exponential factor is constant by the
+functional equation. Thus \(\Lambda'(1)/\Lambda(1)\) is the
+symmetrically paired sum of \(1/(1-\rho_0)\), with any central zero
+counted with multiplicity. Every summand has nonnegative real part,
+because \(\Re\rho_0\le1\), and \(L(1,\chi)\ne0\).
+Consequently \(L'(1,\chi)/L(1,\chi)\ge
+-\frac12\log(d/\pi)+\gamma/2\).
+
+The host contains both the real \(2^{e+2}\)-cyclotomic field \(U\)
+and \(\mathbf Q(\sqrt{-d})\), whose discriminants are coprime.
+The conductor--discriminant formula gives
+\(\operatorname{rd}(U\mathbf Q(\sqrt{-d}))=\sqrt d\operatorname{rd}(U)\)
+because the conductors in the second half of its character group are \(d\)
+times those in the first. In the cyclic character group of \(U\),
+there are \(2^{a-1}\) characters of exact order \(2^a\), each of
+conductor \(2^{a+2}\), for \(1\le a\le e\). The characters of order
+dividing \(2^a\) factor through the even unit quotient of modulus
+\(2^{a+2}\), cyclic of that order. Taking the degree-normalized sum
+of these conductor logarithms gives
+\(\log\operatorname{rd}(U)=(e+1-2^{-e})\log 2\).
+The tower discriminant inequality and the identity for \(A_{J_d}\)
+in Proposition~\ref{host:period} now yield \eqref{recheight:cmsign}.
+
+For \eqref{recheight:flatboth}, let \(t\) be the actual parallel
+product with the common order \(a_v\) at all tests over \(v\) from
+Theorem~\ref{cmeig:splitmodel}. Multiplication
+identifies the rational cusp spaces in the two weights since
+both \(t\) and its inverse preserve the cusp condition. Their
+projective images coincide in corresponding bases since all generic
+coordinates have been multiplied by the same nonzero function.
+Let \(\mathcal L^0,\mathcal L\) be their integral lattices, and set
+\[
+ \mathfrak a_-=\prod_v\mathfrak p_v^{-\lfloor a_v\rfloor},
+ \qquad
+ \mathfrak a_+=\prod_v\mathfrak p_v^{-\lceil a_v\rceil}.
+\]
+Testing \(t\) and \(t^{-1}\) at every finite place gives
+\(\mathfrak a_-\mathcal L^0\subseteq t^{-1}\mathcal L
+\subseteq\mathfrak a_+\mathcal L^0\). For the second inclusion,
+\(\mathfrak a_+^{-1}t^{-1}\mathcal L\subseteq\mathcal L^0\)
+and the fractional ideal is invertible. This uses the component
+test for the actual lattice in \code{ExistsFlatSecRankZero.lean},
+line 277. At \(v\) containment of generating lattices implies the
+same ordering of the Gauss norms of the substituted form, since
+the smaller generating columns are integral combinations of the
+larger ones. By homogeneity, after normalization the finite
+displacement lies between \(\lfloor a_v\rfloor\log N v/[K:\mathbf Q]\)
+and \(\lceil a_v\rceil\log N v/[K:\mathbf Q]\).
+The archimedean displacement is exactly
+\(-[K:\mathbf Q]^{-1}\sum_\sigma\log\|t\|_\sigma\), by the constant
+pointwise metric in the two Petersson norms. Proposition~\ref{cmeig:hyperspecial}
+gives integral orders off the bad set. Comparison with the degree in \eqref{ctwist:degree}
+proves \eqref{recheight:flatboth}.
+
+Now \(p>q\), \(J_\tau<0\), \(A_{J_d}\le-\log n+O_\psi(1)\),
+and \(T\sum_\tau |J_\tau|\ge\frac12\sum_\tau v_\tau\).
+Average \eqref{recheight:flatboth} over the components and apply
+\eqref{recheight:mean}. The finite error costs
+\(O(TZ_0^2)=o(E)\), and the actual thick anchors contribute at
+least \(n_2b/2\) to \(\sum_\tau v_\tau\). This gives the asserted
+necessary positive main term. Its normalized size follows from
+\(p-q\ge k-m\), \(f=2n\), \(L=x^\epsilon\) and the rank bounds.
+\end{proof}
+
+\begin{corollary}[The CM period per harmonic degree]\label{recheight:period-degree}
+Uniformly on the same components at all sufficiently late stages,
+\[
+    T\left|h_Z-h_Z^0+\tfrac12|A_{J_d}|\,d_\theta\right|=o(E).
+\]
+With the previously established uniform short-generator cutoff, a
+uniform \(\code{HeightAt}\) budget is therefore equivalent to
+\[
+       T\left(\tfrac12|A_{J_d}|\,d_\theta-\bar h^0\right)_+=O(E).
+\]
+\end{corollary}
+\begin{proof}
+In a cloud row \(a\le k-1\) the undivided weight lies between
+zero and \(S\). Summing the divided differences up to the zero
+anchor at row \(k-1\) gives \(0\le T\lambda_{\tau,a}\le S+2r\)
+by \code{div\_gap\_sum} in \code{DividedWeightEntriesSignsSizes.lean},
+line 29. Each of the remaining \(m\) rows is a node. Summing from
+either node to the other, in increasing order, gives
+\(T|\lambda_{\tau,a}-\lambda_{\tau,p}|\le2(S+\eta)+4r\).
+As in Proposition~\ref{recheight:harmonic} the latter bound is
+at most \(401v_\tau/P\). Separate the contribution of the first
+\(k-1\) entries to \(d_+\). All residual summands in \(d_\theta\)
+are nonnegative, and the extra \(1\) in each of the other positive
+rows costs at most \(fm\). Hence
+\[
+ 0\le T\left(d_\theta-(k-1)\sum_\tau(|J_\tau|-h)\right)
+       \le \frac{401r}{P}\sum_\tau v_\tau+Tfm .
+\]
+The signature satisfies \(|(p-q)-(k-1)|\le m\). The anchor bounds give
+\(T\sum_\tau|J_\tau|\le\tfrac32\sum_\tau v_\tau+Tf(h+1)\) and
+\(\sum_\tau v_\tau\le4fb\). Since \(h=4(fr+1)\) and \(P\ge r\),
+\[
+ T\left|d_\theta-(p-q)\sum_\tau|J_\tau|\right|
+         \ll fmb+T(fr)^2 .
+\]
+Multiplication by \(|A_{J_d}|\le3L\) gives \(o(E)\) since
+\(Lfmb/E=1/\log\log x\) and \(LT(fr)^2\le TZ_0^5=o(E)\).
+Both \(A_{J_d}\) and all \(J_\tau\) are negative at late stages.
+Substituting in \eqref{recheight:flatboth} gives the first assertion.
+Average over \(I\) and apply Proposition~\ref{recheight:criterion}
+with its established floor for the second.
+\end{proof}
+
+The same CM coefficient occurs for every admissible parallel split
+of these harmonic partitions. If \(J'_\tau\) is another such split,
+the last first-block exponent
+\(\lambda_{\tau,p}-J'_\tau-h\ge1\) gives
+\(J'_\tau=J_\tau-t_\tau\) with \(t_\tau\ge0\). The two sizes change
+by \(p\sum t_\tau\) and \(-q\sum t_\tau\), respectively.
+Hence \(d'_\theta-d_\theta=(p-q)\sum t_\tau\), exactly the change
+in \((p-q)\sum|J_\tau|\). The difference estimated in the proof is
+invariant under all these choices.
+The row constraint is built into the integral theta model.
+Scaling any first-block row acts on each supported monomial by the
+sum of the nonnegative exponents of its variables in that row.
+Asking for a strictly negative exponent at that row therefore
+forces the polynomial to vanish. The variables at the conjugate
+embedding carry the other block's weights. Abstract dual tensors
+would require an additional construction of nonzero holomorphic
+sections at the prescribed integral level and Petersson metric.
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/RowDeg.lean}{40}{row weights of supported monomials}
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean}{235}{the integral harmonic model}.
+For a balanced real dual partner \(U(h,h)\) with \(h\ge p+q\),
+the vacuum shift is zero and the joint-harmonic degree of the
+corresponding \(K\)-type is the sum of the absolute values of its
+weights in that convention. See
+\href{https://www.cambridge.org/core/journals/canadian-journal-of-mathematics/article/first-occurrence-for-the-dual-pairs-up-q-ur-s/067CC33C0E6A7CA220B464E50B7A65AA}
+{A.~Paul, \emph{First Occurrence for the Dual Pairs}, Lemma 2.5}.
+In the recorded global construction each column uses a section of a
+positive power of the polarization. Directly dualizing one column
+makes its line anti-ample on a positive-dimensional abelian fibre.
+An effective divisor there has nonnegative intersection with an
+ample complete-intersection curve, whereas this line has negative
+degree on that curve. Thus that dual column has no nonzero global
+holomorphic section. A global construction realizing the balanced
+local degree with the specified integral lattices remains open.
+\src{src/Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean}{261}{the polarization power on each column}.
+
+\paragraph{The parallel label in the restriction tower.}
+For comparison, fix a tower and its prime cutoff \(B\), and write
+\(N\) for its weight-row length and \(j\) for its signature index.
+The signed label in the height expansion, divided by
+\((\dim\mathrm{Fl}+1)\operatorname{flagDeg}(u)\), is
+\[
+ \mathcal S_B(u)=\sum_\tau
+   \left(A_0\sum_{i<j}u_{\tau,i}+b_0\sum_i u_{\tau,i}\right),
+\]
+where the tower indices \(i\) start at zero. Adding a constant to a
+row commutes with the fixed Hodge correction in \(w'\). In particular,
+for \(u^0=u-J\), the label changes by
+\[
+ \mathcal S_B(u^0)-\mathcal S_B(u)
+        =-(jA_0+Nb_0)\sum_\tau J_\tau .
+\]
+This is the label identity in the tower expansion.
+\src{src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/TowerT2.lean}{133}{evaluation of the two label functionals}.
+At \(j=p,\ N=p+q\), matching
+this change to the CM displacement \(h_Z^0-h_Z\) in
+\eqref{recheight:flatboth}, up to its stated rounding, would use the
+coefficient \(jA_0+Nb_0=-\tfrac12(p-q)A_{J_d}\).
+
+In the tower, \(jA_0+Nb_0\) equals the negative volume average of
+\(h(B,c,\tau)\) at any fixed \(\tau\).
+\src{src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/CutoffCoefficientsBound.lean}{66}{the normalized coefficient identity}.
+The actual witness is the
+cutoff-two \code{RootFlat.ht} minus the sum of
+\(e_{\ell,\tau}\log\ell\) over good primes \(2<\ell\le B\).
+\src{src/Development/AutomorphicSpectrum/Proofs/GeometryProofs/PropFTopHolds.lean}{30}{the cutoff-dependent flat height}.
+The coefficient is zero if every Frobenius value at that prime lands in the first
+summand. If the value lands in that summand exactly at odd iterates,
+the coefficient is \((N-2j)\ell/(\ell^2-1)\).
+\src{src/Development/AutomorphicSpectrum/Proofs/GeometryProofs/DeltaTermLogDegreeBound.lean}{11}{the two Frobenius coefficients}.
+Thus in these split and inert cases the inert-prime contribution to
+\(jA_0+Nb_0\) is
+\[
+       -(2j-N)\sum_{\substack{2<\ell\le B\\
+                         \ell\ {\rm good,\ inert}}}
+                      \frac{\ell\log\ell}{\ell^2-1}.
+\]
+This term persists even if the cutoff-two height is identified with
+the CM degree on the same component. The label measures a displacement
+between weights. For an absolute lower bound at the untwisted weight,
+\code{TowerT2.lean}, lines 107 and 143--155, uses only nonnegativity
+of the remaining flag-height term and an absolute bound on the
+remainder. These estimates do not supply the positive untwisted Chow
+height required by Corollary~\ref{recheight:period-degree}.
